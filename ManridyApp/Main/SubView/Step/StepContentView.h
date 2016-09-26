@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  StepContentView.h
 //  ManridyApp
 //
 //  Created by JustFei on 16/9/26.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface StepContentView : UIView
 
 @end
-
