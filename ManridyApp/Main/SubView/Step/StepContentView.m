@@ -46,6 +46,13 @@
     
 }
 
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+//    // 1.自己先处理事件...
+//    NSLog(@"do somthing...");
+//    // 2.再调用系统的默认做法，再把事件交给上一个响应者处理
+//    [super touchesBegan:touches withEvent:event];
+//}
+
 #pragma mark - 获取当前View的控制器的方法
 - (UIViewController *)findViewController:(UIView *)sourceView
 {

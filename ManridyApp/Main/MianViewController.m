@@ -12,6 +12,7 @@
 #import "TemperatureContentView.h"
 #import "SleepContentView.h"
 #import "BloodPressureContentView.h"
+#import "MenuContentView.h"
 
 #define WIDTH self.view.frame.size.width
 #define HEIGHT self.view.frame.size.height
@@ -20,12 +21,15 @@
 {
     NSArray *titleArr;
     UIButton *_titleButton;
+    BOOL isShowList;
 }
 @property (nonatomic ,weak) UIScrollView *backGroundView;
 
 @property (nonatomic ,weak) UIPageControl *pageControl;
 
 @property (nonatomic ,assign) BOOL didEndDecelerating;
+
+@property (nonatomic ,weak) MenuContentView *menuView;
 
 @end
 
@@ -58,6 +62,8 @@
     self.backGroundView.backgroundColor = [UIColor whiteColor];
     
     self.pageControl.tintColor = [UIColor redColor];
+    
+    self.menuView.backgroundColor = [UIColor blueColor];
 }
 
 - (void)showHistoryView
@@ -72,7 +78,34 @@
 
 - (void)showTheList
 {
+    if (!isShowList) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.menuView.frame = CGRectMake(30, 150, self.view.frame.size.width - 60, self.view.frame.size.width - 60);
+            isShowList = YES;
+            
+            self.backGroundView.scrollEnabled = NO;
+        }];
+    }else {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.menuView.frame = CGRectMake(30, - (self.view.frame.size.width - 60) - 50, self.view.frame.size.width - 60, self.view.frame.size.width - 60);
+            isShowList = NO;
+            
+            self.backGroundView.scrollEnabled = YES;
+        }];
+    }
     
+}
+
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    if (isShowList) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.menuView.frame = CGRectMake(30, - (self.view.frame.size.width - 60) - 50, self.view.frame.size.width - 60, self.view.frame.size.width - 60);
+            isShowList = NO;
+        }];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -143,12 +176,30 @@
     return _backGroundView;
 }
 
+- (MenuContentView *)menuView
+{
+    if (!_menuView) {
+        MenuContentView *view = [[MenuContentView alloc] initWithFrame:CGRectMake(30, - (self.view.frame.size.width - 60) - 50, self.view.frame.size.width - 60, self.view.frame.size.width - 60)];
+        view.layer.cornerRadius = 15;
+        view.layer.masksToBounds = true;
+        
+        [self.view addSubview:view];
+        _menuView = view;
+    }
+    
+    return _menuView;
+}
+
 - (UIPageControl *)pageControl
 {
     if (!_pageControl) {
         UIPageControl *view = [[UIPageControl alloc] initWithFrame:CGRectMake(54, 338, 212, 37)];
         view.numberOfPages = 5;
         view.currentPage = 0;
+        view.enabled = NO;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenMenuView)];
+        [view addGestureRecognizer:tap];
         
         [self.view addSubview:view];
         _pageControl = view;

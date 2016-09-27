@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FunctionCell">
+            <rect key="frame" x="0.0" y="0.0" width="73" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="73" height="100"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="计步" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGQ-aV-cvs">
+                        <rect key="frame" x="0.0" y="79" width="73" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S8-e1-03t">
+                        <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="73" id="HOl-aU-gA0"/>
+                        </constraints>
+                        <state key="normal">
+                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="PGQ-aV-cvs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Bv8-k3-3us"/>
+                <constraint firstItem="3S8-e1-03t" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="H1s-Nj-GcP"/>
+                <constraint firstItem="3S8-e1-03t" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="IdF-Ce-eOF"/>
+                <constraint firstAttribute="trailing" secondItem="3S8-e1-03t" secondAttribute="trailing" id="RXI-cq-wzP"/>
+                <constraint firstAttribute="trailing" secondItem="PGQ-aV-cvs" secondAttribute="trailing" id="orv-fL-XSW"/>
+                <constraint firstAttribute="bottom" secondItem="PGQ-aV-cvs" secondAttribute="bottom" id="x0C-Be-6jt"/>
+                <constraint firstItem="PGQ-aV-cvs" firstAttribute="top" secondItem="3S8-e1-03t" secondAttribute="bottom" constant="8" id="xKP-9T-gj3"/>
+            </constraints>
+            <size key="customSize" width="73" height="100"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="xKP-9T-gj3"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="functionButton" destination="3S8-e1-03t" id="XhT-7U-T3h"/>
+                <outlet property="functionLabel" destination="PGQ-aV-cvs" id="NwO-Mb-e4y"/>
+            </connections>
+            <point key="canvasLocation" x="316.5" y="365"/>
+        </collectionViewCell>
+    </objects>
+</document>
