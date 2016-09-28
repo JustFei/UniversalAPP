@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^GoToTargetViewBlock)(NSInteger);
+
 @interface MenuContentView : UIView
+
+@property (nonatomic ,copy) GoToTargetViewBlock goToTargetViewBlcok;
 
 @end

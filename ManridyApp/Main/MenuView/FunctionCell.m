@@ -10,6 +10,14 @@
 
 @implementation FunctionCell
 
+- (IBAction)chooseViewAction:(UIButton *)sender
+{
+    if (self.chooseViewActionBlock) {
+        self.chooseViewActionBlock();
+    }
+}
+
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

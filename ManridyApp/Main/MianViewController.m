@@ -14,13 +14,15 @@
 #import "BloodPressureContentView.h"
 #import "MenuContentView.h"
 
+#import "SettingViewController.h"
+
 #define WIDTH self.view.frame.size.width
 #define HEIGHT self.view.frame.size.height
 
 @interface MainViewController () <UIScrollViewDelegate>
 {
-    NSArray *titleArr;
-    UIButton *_titleButton;
+    NSArray *_titleArr;
+    
     BOOL isShowList;
 }
 @property (nonatomic ,weak) UIScrollView *backGroundView;
@@ -31,6 +33,12 @@
 
 @property (nonatomic ,weak) MenuContentView *menuView;
 
+@property (nonatomic ,strong) UIButton *titleButton;
+
+//@property (nonatomic ,strong) UIButton *leftButton;
+
+@property (nonatomic ,strong) UIButton *rightButton;
+
 @end
 
 @implementation MainViewController
@@ -39,24 +47,37 @@
 {
     [super viewDidLoad];
     
-    titleArr = @[@"计步",@"心率",@"体温",@"睡眠",@"血压"];
+    _titleArr = @[@"计步",@"心率",@"体温",@"睡眠",@"血压"];
     
     [self createUI];
 }
 
 - (void)createUI
 {
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@""] style:UIBarButtonItemStylePlain target:self action:@selector(showHistoryView)];
+    //left
+//    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(16, 17, 20, 20)];
+//    leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [leftButton setImage:[UIImage imageNamed:@"all_data_icon"] forState:UIControlStateNormal];
+//    [leftButton addTarget:self action:@selector(showHistoryView) forControlEvents:UIControlEventTouchUpInside];
+//    leftButton.backgroundColor = [UIColor whiteColor];
+//    [leftButton setTitle:@"fanhui" forState:UIControlStateNormal];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"all_data_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showHistoryView)];
     self.navigationItem.leftBarButtonItem = leftItem;
     
-    _titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_titleButton setTitle:titleArr[0] forState:UIControlStateNormal];
-    [_titleButton setTintColor:[UIColor whiteColor]];
-    [_titleButton addTarget:self action:@selector(showTheList) forControlEvents:UIControlEventTouchUpInside];
+    //title
+    self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.titleButton setTitle:_titleArr[0] forState:UIControlStateNormal];
+    [self.titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.titleButton addTarget:self action:@selector(showTheList) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.titleView = self.titleButton;
     
-    self.navigationItem.titleView = _titleButton;
-    
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@""] style:UIBarButtonItemStylePlain target:self action:@selector(showSettingView)];
+    //right
+//    self.rightButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 17, 20, 20)];
+//    self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [self.rightButton setImage:[UIImage imageNamed:@"all_set_icon"] forState:UIControlStateNormal];
+//    [self.rightButton addTarget:self action:@selector(showSettingView) forControlEvents:UIControlEventTouchUpInside];
+//    self.rightButton.backgroundColor = [UIColor whiteColor];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"all_set_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettingView)];
     self.navigationItem.rightBarButtonItem = rightItem;
     
     self.backGroundView.backgroundColor = [UIColor whiteColor];
@@ -73,14 +94,15 @@
 
 - (void)showSettingView
 {
-    
+    SettingViewController *vc = [[SettingViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)showTheList
 {
     if (!isShowList) {
         [UIView animateWithDuration:0.5 animations:^{
-            self.menuView.frame = CGRectMake(30, 150, self.view.frame.size.width - 60, self.view.frame.size.width - 60);
+            self.menuView.frame = CGRectMake(30, 100, self.view.frame.size.width - 60, self.view.frame.size.width - 60);
             isShowList = YES;
             
             self.backGroundView.scrollEnabled = NO;
@@ -96,8 +118,7 @@
     
 }
 
-
-
+#warning 考虑写到subview里面去
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     if (isShowList) {
@@ -123,7 +144,7 @@
     
     int i = roundf(index);
     
-    _titleButton.titleLabel.text = titleArr[i];
+    [self.titleButton setTitle:_titleArr[i] forState:UIControlStateNormal];
     self.pageControl.currentPage = i;
 }
 
@@ -138,7 +159,7 @@
         
         int i = roundf(index);
         
-        _titleButton.titleLabel.text = titleArr[i];
+        [self.titleButton setTitle:_titleArr[i] forState:UIControlStateNormal];
         self.pageControl.currentPage = i;
     }
 }
@@ -183,6 +204,22 @@
         view.layer.cornerRadius = 15;
         view.layer.masksToBounds = true;
         
+        view.goToTargetViewBlcok = ^(NSInteger row) {
+            [self.backGroundView setContentOffset:CGPointMake(row * WIDTH, -64) animated:YES];
+            
+            //修改title和pagecontrol
+            [self.titleButton setTitle:_titleArr[row] forState:UIControlStateNormal];
+            self.pageControl.currentPage = row;
+            
+            //修改menuView的frame
+            [UIView animateWithDuration:0.5 animations:^{
+                self.menuView.frame = CGRectMake(30, - (self.view.frame.size.width - 60) - 50, self.view.frame.size.width - 60, self.view.frame.size.width - 60);
+                
+                self.backGroundView.scrollEnabled = YES;
+                isShowList = NO;
+            }];
+        };
+        
         [self.view addSubview:view];
         _menuView = view;
     }
@@ -197,9 +234,6 @@
         view.numberOfPages = 5;
         view.currentPage = 0;
         view.enabled = NO;
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenMenuView)];
-        [view addGestureRecognizer:tap];
         
         [self.view addSubview:view];
         _pageControl = view;

@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		104A70551D9B639C00CC73F5 /* all_data_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 104A70521D9B639C00CC73F5 /* all_data_icon.png */; };
+		104A70561D9B639C00CC73F5 /* all_data_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 104A70531D9B639C00CC73F5 /* all_data_icon@2x.png */; };
+		104A70571D9B639C00CC73F5 /* all_data_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 104A70541D9B639C00CC73F5 /* all_data_icon@3x.png */; };
+		104A705B1D9B63B100CC73F5 /* all_set_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 104A70581D9B63B100CC73F5 /* all_set_icon.png */; };
+		104A705C1D9B63B100CC73F5 /* all_set_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 104A70591D9B63B100CC73F5 /* all_set_icon@2x.png */; };
+		104A705D1D9B63B100CC73F5 /* all_set_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 104A705A1D9B63B100CC73F5 /* all_set_icon@3x.png */; };
+		104A70611D9B720500CC73F5 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A70601D9B720500CC73F5 /* SettingViewController.m */; };
+		104A70641D9B724D00CC73F5 /* SettingContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A70631D9B724D00CC73F5 /* SettingContentView.m */; };
+		104A70681D9BA46A00CC73F5 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A70671D9BA46A00CC73F5 /* UserInfoViewController.m */; };
+		104A706D1D9BAD2B00CC73F5 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A706B1D9BAD2B00CC73F5 /* UserInfoCell.m */; };
+		104A706E1D9BAD2B00CC73F5 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 104A706C1D9BAD2B00CC73F5 /* UserInfoCell.xib */; };
 		10CB0F031D9A13960063AD0C /* MenuContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CB0F021D9A13960063AD0C /* MenuContentView.m */; };
 		10CB0F071D9A25130063AD0C /* FunctionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CB0F051D9A25130063AD0C /* FunctionCell.m */; };
 		10CB0F081D9A25130063AD0C /* FunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10CB0F061D9A25130063AD0C /* FunctionCell.xib */; };
@@ -124,6 +135,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		104A70521D9B639C00CC73F5 /* all_data_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = all_data_icon.png; sourceTree = "<group>"; };
+		104A70531D9B639C00CC73F5 /* all_data_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_data_icon@2x.png"; sourceTree = "<group>"; };
+		104A70541D9B639C00CC73F5 /* all_data_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_data_icon@3x.png"; sourceTree = "<group>"; };
+		104A70581D9B63B100CC73F5 /* all_set_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = all_set_icon.png; sourceTree = "<group>"; };
+		104A70591D9B63B100CC73F5 /* all_set_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_set_icon@2x.png"; sourceTree = "<group>"; };
+		104A705A1D9B63B100CC73F5 /* all_set_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_set_icon@3x.png"; sourceTree = "<group>"; };
+		104A705F1D9B720500CC73F5 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Setting/SettingViewController.h; sourceTree = "<group>"; };
+		104A70601D9B720500CC73F5 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Setting/SettingViewController.m; sourceTree = "<group>"; };
+		104A70621D9B724D00CC73F5 /* SettingContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingContentView.h; path = Setting/SettingContentView.h; sourceTree = "<group>"; };
+		104A70631D9B724D00CC73F5 /* SettingContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingContentView.m; path = Setting/SettingContentView.m; sourceTree = "<group>"; };
+		104A70661D9BA46A00CC73F5 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoViewController.h; path = Setting/UserInfo/UserInfoViewController.h; sourceTree = "<group>"; };
+		104A70671D9BA46A00CC73F5 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoViewController.m; path = Setting/UserInfo/UserInfoViewController.m; sourceTree = "<group>"; };
+		104A706A1D9BAD2B00CC73F5 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoCell.h; path = Setting/UserInfo/UserInfoCell.h; sourceTree = "<group>"; };
+		104A706B1D9BAD2B00CC73F5 /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoCell.m; path = Setting/UserInfo/UserInfoCell.m; sourceTree = "<group>"; };
+		104A706C1D9BAD2B00CC73F5 /* UserInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserInfoCell.xib; path = Setting/UserInfo/UserInfoCell.xib; sourceTree = "<group>"; };
 		10CB0F011D9A13960063AD0C /* MenuContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuContentView.h; path = Main/MenuView/MenuContentView.h; sourceTree = "<group>"; };
 		10CB0F021D9A13960063AD0C /* MenuContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuContentView.m; path = Main/MenuView/MenuContentView.m; sourceTree = "<group>"; };
 		10CB0F041D9A25130063AD0C /* FunctionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FunctionCell.h; path = Main/MenuView/FunctionCell.h; sourceTree = "<group>"; };
@@ -262,6 +288,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		104A705E1D9B71C300CC73F5 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				104A70691D9BAD0200CC73F5 /* SetView */,
+				104A70651D9BA3D400CC73F5 /* UserInfo */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		104A70651D9BA3D400CC73F5 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				104A70661D9BA46A00CC73F5 /* UserInfoViewController.h */,
+				104A70671D9BA46A00CC73F5 /* UserInfoViewController.m */,
+				104A706A1D9BAD2B00CC73F5 /* UserInfoCell.h */,
+				104A706B1D9BAD2B00CC73F5 /* UserInfoCell.m */,
+				104A706C1D9BAD2B00CC73F5 /* UserInfoCell.xib */,
+			);
+			name = UserInfo;
+			sourceTree = "<group>";
+		};
+		104A70691D9BAD0200CC73F5 /* SetView */ = {
+			isa = PBXGroup;
+			children = (
+				104A705F1D9B720500CC73F5 /* SettingViewController.h */,
+				104A70601D9B720500CC73F5 /* SettingViewController.m */,
+				104A70621D9B724D00CC73F5 /* SettingContentView.h */,
+				104A70631D9B724D00CC73F5 /* SettingContentView.m */,
+			);
+			name = SetView;
+			sourceTree = "<group>";
+		};
 		10CB0F001D9A11DA0063AD0C /* MenuView */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +354,7 @@
 				10F5F70A1D98C6280045FA4C /* AppDelegate.h */,
 				10F5F70B1D98C6280045FA4C /* AppDelegate.m */,
 				10F5F7211D98ED950045FA4C /* Main */,
+				104A705E1D9B71C300CC73F5 /* Setting */,
 				10F5F7071D98C6280045FA4C /* Supporting Files */,
 			);
 			path = ManridyApp;
@@ -327,6 +386,12 @@
 		10F5F7251D98F31B0045FA4C /* image */ = {
 			isa = PBXGroup;
 			children = (
+				104A70581D9B63B100CC73F5 /* all_set_icon.png */,
+				104A70591D9B63B100CC73F5 /* all_set_icon@2x.png */,
+				104A705A1D9B63B100CC73F5 /* all_set_icon@3x.png */,
+				104A70521D9B639C00CC73F5 /* all_data_icon.png */,
+				104A70531D9B639C00CC73F5 /* all_data_icon@2x.png */,
+				104A70541D9B639C00CC73F5 /* all_data_icon@3x.png */,
 				10CB0F091D9A8A190063AD0C /* list_blood_icon.png */,
 				10CB0F0A1D9A8A190063AD0C /* list_blood_icon@2x.png */,
 				10CB0F0B1D9A8A190063AD0C /* list_blood_icon@3x.png */,
@@ -561,6 +626,7 @@
 				10CB0F1C1D9A8A190063AD0C /* list_heart_icon@2x.png in Resources */,
 				10F5F77E1D98F3560045FA4C /* walk_target_icon@2x.png in Resources */,
 				10F5F78F1D9904D80045FA4C /* StepContentView.xib in Resources */,
+				104A705D1D9B63B100CC73F5 /* all_set_icon@3x.png in Resources */,
 				10F5F7461D98F31B0045FA4C /* set_bty_icon@3x.png in Resources */,
 				10F5F7781D98F3560045FA4C /* walk_run_now@2x.png in Resources */,
 				10F5F7D91D99253B0045FA4C /* SleepContentView.xib in Resources */,
@@ -582,6 +648,7 @@
 				10F5F7F01D9927C60045FA4C /* sleep_target@2x.png in Resources */,
 				10F5F7171D98C6280045FA4C /* LaunchScreen.storyboard in Resources */,
 				10F5F7C61D9923D90045FA4C /* temper_notice_low@2x.png in Resources */,
+				104A70551D9B639C00CC73F5 /* all_data_icon.png in Resources */,
 				10CB0F1E1D9A8A190063AD0C /* list_sleep_icon.png in Resources */,
 				10F5F7481D98F31B0045FA4C /* set_lost_icon@2x.png in Resources */,
 				10F5F7ED1D9927C60045FA4C /* sleep_old_icon@2x.png in Resources */,
@@ -594,7 +661,9 @@
 				10F5F7C31D9923D90045FA4C /* temper_notice_high@2x.png in Resources */,
 				10F5F77D1D98F3560045FA4C /* walk_target_icon.png in Resources */,
 				10F5F7A91D991EAB0045FA4C /* TemperatureContentView.xib in Resources */,
+				104A705C1D9B63B100CC73F5 /* all_set_icon@2x.png in Resources */,
 				10F5F7421D98F31B0045FA4C /* set_ble_icon@2x.png in Resources */,
+				104A70571D9B639C00CC73F5 /* all_data_icon@3x.png in Resources */,
 				10F5F7C21D9923D90045FA4C /* temper_notice_high.png in Resources */,
 				10F5F7441D98F31B0045FA4C /* set_bty_icon.png in Resources */,
 				10CB0F1D1D9A8A190063AD0C /* list_heart_icon@3x.png in Resources */,
@@ -603,7 +672,9 @@
 				10CB0F231D9A8A190063AD0C /* list_temper_icon@3x.png in Resources */,
 				10F5F7CE1D9923D90045FA4C /* temper_set_alert_high.png in Resources */,
 				10CB0F1A1D9A8A190063AD0C /* list_blood_icon@3x.png in Resources */,
+				104A705B1D9B63B100CC73F5 /* all_set_icon.png in Resources */,
 				10F5F7F71D9928050045FA4C /* temper_alart_icon@3x.png in Resources */,
+				104A70561D9B639C00CC73F5 /* all_data_icon@2x.png in Resources */,
 				10F5F7D21D9923D90045FA4C /* temper_set_alert_low@2x.png in Resources */,
 				10F5F7471D98F31B0045FA4C /* set_lost_icon.png in Resources */,
 				10F5F7A01D991C700045FA4C /* heart_now_icon@3x.png in Resources */,
@@ -629,6 +700,7 @@
 				10F5F76D1D98F3560045FA4C /* walk_circle1@3x.png in Resources */,
 				10F5F7A31D991C700045FA4C /* heart_old_icon@3x.png in Resources */,
 				10F5F7791D98F3560045FA4C /* walk_run_now@3x.png in Resources */,
+				104A706E1D9BAD2B00CC73F5 /* UserInfoCell.xib in Resources */,
 				10F5F7C41D9923D90045FA4C /* temper_notice_high@3x.png in Resources */,
 				10F5F7EE1D9927C60045FA4C /* sleep_old_icon@3x.png in Resources */,
 				10F5F74C1D98F31B0045FA4C /* set_user_icon@3x.png in Resources */,
@@ -665,10 +737,14 @@
 				10F5F70C1D98C6280045FA4C /* AppDelegate.m in Sources */,
 				10F5F7931D991BF40045FA4C /* HeartRateContentView.m in Sources */,
 				10F5F7DD1D9927270045FA4C /* BloodPressureContentView.m in Sources */,
+				104A70681D9BA46A00CC73F5 /* UserInfoViewController.m in Sources */,
 				10F5F7D71D99251B0045FA4C /* SleepContentView.m in Sources */,
 				10F5F78D1D98F8E10045FA4C /* StepContentView.m in Sources */,
+				104A706D1D9BAD2B00CC73F5 /* UserInfoCell.m in Sources */,
+				104A70641D9B724D00CC73F5 /* SettingContentView.m in Sources */,
 				10CB0F031D9A13960063AD0C /* MenuContentView.m in Sources */,
 				10F5F7091D98C6280045FA4C /* main.m in Sources */,
+				104A70611D9B720500CC73F5 /* SettingViewController.m in Sources */,
 				10CB0F071D9A25130063AD0C /* FunctionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -724,7 +800,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -762,7 +838,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

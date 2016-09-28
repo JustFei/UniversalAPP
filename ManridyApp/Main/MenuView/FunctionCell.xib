@@ -28,6 +28,9 @@
                         <state key="normal">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="chooseViewAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Dhv-0f-O5p"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

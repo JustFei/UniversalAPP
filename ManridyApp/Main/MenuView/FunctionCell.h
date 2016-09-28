@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^ChooseViewActionBlock)(void);
+
 @interface FunctionCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIButton *functionButton;
 @property (weak, nonatomic) IBOutlet UILabel *functionLabel;
+
+@property (nonatomic ,copy) ChooseViewActionBlock chooseViewActionBlock;
 
 @end

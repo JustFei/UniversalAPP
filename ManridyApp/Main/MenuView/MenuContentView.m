@@ -89,6 +89,14 @@
     cell.functionLabel.text = _dataArr[indexPath.row];
     [cell.functionButton setImage:[UIImage imageNamed:_imageNameArr[indexPath.row]] forState:UIControlStateNormal];
     
+    cell.chooseViewActionBlock = ^(void) {
+        NSLog(@"回调了");
+        
+        if (self.goToTargetViewBlcok) {
+            self.goToTargetViewBlcok(indexPath.row);
+        }
+    };
+    
     return cell;
 }
 
