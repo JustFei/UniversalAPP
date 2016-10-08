@@ -8,7 +8,7 @@
 
 #import "UserInfoCell.h"
 
-@implementation UserInfoCell
+@implementation UserInfoCell 
 
 - (void)awakeFromNib {
     [super awakeFromNib];

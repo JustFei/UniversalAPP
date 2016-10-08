@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserInfoCell : UITableViewCell
+typedef void(^UserInfoTextFieldBlock)(UITextField *);
+
+@interface UserInfoCell : UITableViewCell 
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UILabel *unitLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
+
+@property (nonatomic ,copy) UserInfoTextFieldBlock userInfoTextFieldBlock;
 
 @end

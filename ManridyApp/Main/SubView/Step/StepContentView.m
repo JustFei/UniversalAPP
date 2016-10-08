@@ -7,6 +7,7 @@
 //
 
 #import "StepContentView.h"
+#import "StepTargetViewController.h"
 
 @interface StepContentView ()
 @property (weak, nonatomic) IBOutlet UILabel *stepLabel;
@@ -41,8 +42,10 @@
     
     
 }
-- (IBAction)setTargetAction:(UIButton *)sender {
-    
+- (IBAction)setTargetAction:(UIButton *)sender
+{
+    StepTargetViewController *vc = [[StepTargetViewController alloc] initWithNibName:@"StepTargetViewController" bundle:nil];
+    [[self findViewController:self].navigationController pushViewController:vc animated:YES];
     
 }
 

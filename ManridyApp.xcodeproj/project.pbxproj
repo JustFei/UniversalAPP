@@ -18,6 +18,29 @@
 		104A70681D9BA46A00CC73F5 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A70671D9BA46A00CC73F5 /* UserInfoViewController.m */; };
 		104A706D1D9BAD2B00CC73F5 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A706B1D9BAD2B00CC73F5 /* UserInfoCell.m */; };
 		104A706E1D9BAD2B00CC73F5 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 104A706C1D9BAD2B00CC73F5 /* UserInfoCell.xib */; };
+		10C47E9A1DA88F9900D949CA /* BindPeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C47E991DA88F9900D949CA /* BindPeripheralViewController.m */; };
+		10C47EAD1DA8A55F00D949CA /* ble_break_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47E9B1DA8A55F00D949CA /* ble_break_icon.png */; };
+		10C47EAE1DA8A55F00D949CA /* ble_break_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47E9C1DA8A55F00D949CA /* ble_break_icon@2x.png */; };
+		10C47EAF1DA8A55F00D949CA /* ble_break_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47E9D1DA8A55F00D949CA /* ble_break_icon@3x.png */; };
+		10C47EB01DA8A55F00D949CA /* ble_connect.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47E9E1DA8A55F00D949CA /* ble_connect.png */; };
+		10C47EB11DA8A55F00D949CA /* ble_connect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47E9F1DA8A55F00D949CA /* ble_connect@2x.png */; };
+		10C47EB21DA8A55F00D949CA /* ble_connect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EA01DA8A55F00D949CA /* ble_connect@3x.png */; };
+		10C47EB31DA8A55F00D949CA /* ble_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EA11DA8A55F00D949CA /* ble_icon.png */; };
+		10C47EB41DA8A55F00D949CA /* ble_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EA21DA8A55F00D949CA /* ble_icon@2x.png */; };
+		10C47EB51DA8A55F00D949CA /* ble_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EA31DA8A55F00D949CA /* ble_icon@3x.png */; };
+		10C47EB61DA8A55F00D949CA /* ble_lock_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EA41DA8A55F00D949CA /* ble_lock_close.png */; };
+		10C47EB71DA8A55F00D949CA /* ble_lock_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EA51DA8A55F00D949CA /* ble_lock_close@2x.png */; };
+		10C47EB81DA8A55F00D949CA /* ble_lock_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EA61DA8A55F00D949CA /* ble_lock_close@3x.png */; };
+		10C47EB91DA8A55F00D949CA /* ble_lock_oper.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EA71DA8A55F00D949CA /* ble_lock_oper.png */; };
+		10C47EBA1DA8A55F00D949CA /* ble_lock_oper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EA81DA8A55F00D949CA /* ble_lock_oper@2x.png */; };
+		10C47EBB1DA8A55F00D949CA /* ble_lock_oper@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EA91DA8A55F00D949CA /* ble_lock_oper@3x.png */; };
+		10C47EBC1DA8A55F00D949CA /* ble_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EAA1DA8A55F00D949CA /* ble_refresh.png */; };
+		10C47EBD1DA8A55F00D949CA /* ble_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EAB1DA8A55F00D949CA /* ble_refresh@2x.png */; };
+		10C47EBE1DA8A55F00D949CA /* ble_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EAC1DA8A55F00D949CA /* ble_refresh@3x.png */; };
+		10C47EC11DA8C4FA00D949CA /* StepTargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C47EC01DA8C4FA00D949CA /* StepTargetViewController.m */; };
+		10C47EC31DA8C83C00D949CA /* StepTargetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EC21DA8C83C00D949CA /* StepTargetViewController.xib */; };
+		10C47EC71DA8DE0D00D949CA /* TemperatureWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C47EC51DA8DE0D00D949CA /* TemperatureWarningViewController.m */; };
+		10C47EC81DA8DE0D00D949CA /* TemperatureWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EC61DA8DE0D00D949CA /* TemperatureWarningViewController.xib */; };
 		10CB0F031D9A13960063AD0C /* MenuContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CB0F021D9A13960063AD0C /* MenuContentView.m */; };
 		10CB0F071D9A25130063AD0C /* FunctionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CB0F051D9A25130063AD0C /* FunctionCell.m */; };
 		10CB0F081D9A25130063AD0C /* FunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10CB0F061D9A25130063AD0C /* FunctionCell.xib */; };
@@ -150,6 +173,32 @@
 		104A706A1D9BAD2B00CC73F5 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoCell.h; path = Setting/UserInfo/UserInfoCell.h; sourceTree = "<group>"; };
 		104A706B1D9BAD2B00CC73F5 /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoCell.m; path = Setting/UserInfo/UserInfoCell.m; sourceTree = "<group>"; };
 		104A706C1D9BAD2B00CC73F5 /* UserInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserInfoCell.xib; path = Setting/UserInfo/UserInfoCell.xib; sourceTree = "<group>"; };
+		10C47E981DA88F9900D949CA /* BindPeripheralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BindPeripheralViewController.h; path = Setting/BindPeripheral/BindPeripheralViewController.h; sourceTree = "<group>"; };
+		10C47E991DA88F9900D949CA /* BindPeripheralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BindPeripheralViewController.m; path = Setting/BindPeripheral/BindPeripheralViewController.m; sourceTree = "<group>"; };
+		10C47E9B1DA8A55F00D949CA /* ble_break_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ble_break_icon.png; sourceTree = "<group>"; };
+		10C47E9C1DA8A55F00D949CA /* ble_break_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_break_icon@2x.png"; sourceTree = "<group>"; };
+		10C47E9D1DA8A55F00D949CA /* ble_break_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_break_icon@3x.png"; sourceTree = "<group>"; };
+		10C47E9E1DA8A55F00D949CA /* ble_connect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ble_connect.png; sourceTree = "<group>"; };
+		10C47E9F1DA8A55F00D949CA /* ble_connect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_connect@2x.png"; sourceTree = "<group>"; };
+		10C47EA01DA8A55F00D949CA /* ble_connect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_connect@3x.png"; sourceTree = "<group>"; };
+		10C47EA11DA8A55F00D949CA /* ble_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ble_icon.png; sourceTree = "<group>"; };
+		10C47EA21DA8A55F00D949CA /* ble_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_icon@2x.png"; sourceTree = "<group>"; };
+		10C47EA31DA8A55F00D949CA /* ble_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_icon@3x.png"; sourceTree = "<group>"; };
+		10C47EA41DA8A55F00D949CA /* ble_lock_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ble_lock_close.png; sourceTree = "<group>"; };
+		10C47EA51DA8A55F00D949CA /* ble_lock_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_lock_close@2x.png"; sourceTree = "<group>"; };
+		10C47EA61DA8A55F00D949CA /* ble_lock_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_lock_close@3x.png"; sourceTree = "<group>"; };
+		10C47EA71DA8A55F00D949CA /* ble_lock_oper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ble_lock_oper.png; sourceTree = "<group>"; };
+		10C47EA81DA8A55F00D949CA /* ble_lock_oper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_lock_oper@2x.png"; sourceTree = "<group>"; };
+		10C47EA91DA8A55F00D949CA /* ble_lock_oper@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_lock_oper@3x.png"; sourceTree = "<group>"; };
+		10C47EAA1DA8A55F00D949CA /* ble_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ble_refresh.png; sourceTree = "<group>"; };
+		10C47EAB1DA8A55F00D949CA /* ble_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_refresh@2x.png"; sourceTree = "<group>"; };
+		10C47EAC1DA8A55F00D949CA /* ble_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_refresh@3x.png"; sourceTree = "<group>"; };
+		10C47EBF1DA8C4FA00D949CA /* StepTargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepTargetViewController.h; path = Main/SubView/Step/StepTargetViewController.h; sourceTree = "<group>"; };
+		10C47EC01DA8C4FA00D949CA /* StepTargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepTargetViewController.m; path = Main/SubView/Step/StepTargetViewController.m; sourceTree = "<group>"; };
+		10C47EC21DA8C83C00D949CA /* StepTargetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StepTargetViewController.xib; path = Main/SubView/Step/StepTargetViewController.xib; sourceTree = "<group>"; };
+		10C47EC41DA8DE0D00D949CA /* TemperatureWarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemperatureWarningViewController.h; path = Main/SubView/Temperature/TemperatureWarningViewController.h; sourceTree = "<group>"; };
+		10C47EC51DA8DE0D00D949CA /* TemperatureWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemperatureWarningViewController.m; path = Main/SubView/Temperature/TemperatureWarningViewController.m; sourceTree = "<group>"; };
+		10C47EC61DA8DE0D00D949CA /* TemperatureWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TemperatureWarningViewController.xib; path = Main/SubView/Temperature/TemperatureWarningViewController.xib; sourceTree = "<group>"; };
 		10CB0F011D9A13960063AD0C /* MenuContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuContentView.h; path = Main/MenuView/MenuContentView.h; sourceTree = "<group>"; };
 		10CB0F021D9A13960063AD0C /* MenuContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuContentView.m; path = Main/MenuView/MenuContentView.m; sourceTree = "<group>"; };
 		10CB0F041D9A25130063AD0C /* FunctionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FunctionCell.h; path = Main/MenuView/FunctionCell.h; sourceTree = "<group>"; };
@@ -291,6 +340,7 @@
 		104A705E1D9B71C300CC73F5 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				10C47E971DA88F7500D949CA /* BindPeripheral */,
 				104A70691D9BAD0200CC73F5 /* SetView */,
 				104A70651D9BA3D400CC73F5 /* UserInfo */,
 			);
@@ -318,6 +368,15 @@
 				104A70631D9B724D00CC73F5 /* SettingContentView.m */,
 			);
 			name = SetView;
+			sourceTree = "<group>";
+		};
+		10C47E971DA88F7500D949CA /* BindPeripheral */ = {
+			isa = PBXGroup;
+			children = (
+				10C47E981DA88F9900D949CA /* BindPeripheralViewController.h */,
+				10C47E991DA88F9900D949CA /* BindPeripheralViewController.m */,
+			);
+			name = BindPeripheral;
 			sourceTree = "<group>";
 		};
 		10CB0F001D9A11DA0063AD0C /* MenuView */ = {
@@ -386,6 +445,24 @@
 		10F5F7251D98F31B0045FA4C /* image */ = {
 			isa = PBXGroup;
 			children = (
+				10C47E9B1DA8A55F00D949CA /* ble_break_icon.png */,
+				10C47E9C1DA8A55F00D949CA /* ble_break_icon@2x.png */,
+				10C47E9D1DA8A55F00D949CA /* ble_break_icon@3x.png */,
+				10C47E9E1DA8A55F00D949CA /* ble_connect.png */,
+				10C47E9F1DA8A55F00D949CA /* ble_connect@2x.png */,
+				10C47EA01DA8A55F00D949CA /* ble_connect@3x.png */,
+				10C47EA11DA8A55F00D949CA /* ble_icon.png */,
+				10C47EA21DA8A55F00D949CA /* ble_icon@2x.png */,
+				10C47EA31DA8A55F00D949CA /* ble_icon@3x.png */,
+				10C47EA41DA8A55F00D949CA /* ble_lock_close.png */,
+				10C47EA51DA8A55F00D949CA /* ble_lock_close@2x.png */,
+				10C47EA61DA8A55F00D949CA /* ble_lock_close@3x.png */,
+				10C47EA71DA8A55F00D949CA /* ble_lock_oper.png */,
+				10C47EA81DA8A55F00D949CA /* ble_lock_oper@2x.png */,
+				10C47EA91DA8A55F00D949CA /* ble_lock_oper@3x.png */,
+				10C47EAA1DA8A55F00D949CA /* ble_refresh.png */,
+				10C47EAB1DA8A55F00D949CA /* ble_refresh@2x.png */,
+				10C47EAC1DA8A55F00D949CA /* ble_refresh@3x.png */,
 				104A70581D9B63B100CC73F5 /* all_set_icon.png */,
 				104A70591D9B63B100CC73F5 /* all_set_icon@2x.png */,
 				104A705A1D9B63B100CC73F5 /* all_set_icon@3x.png */,
@@ -510,6 +587,9 @@
 				10F5F78B1D98F8E10045FA4C /* StepContentView.h */,
 				10F5F78C1D98F8E10045FA4C /* StepContentView.m */,
 				10F5F78E1D9904D80045FA4C /* StepContentView.xib */,
+				10C47EBF1DA8C4FA00D949CA /* StepTargetViewController.h */,
+				10C47EC01DA8C4FA00D949CA /* StepTargetViewController.m */,
+				10C47EC21DA8C83C00D949CA /* StepTargetViewController.xib */,
 			);
 			name = Step;
 			sourceTree = "<group>";
@@ -530,6 +610,9 @@
 				10F5F7A51D991E990045FA4C /* TemperatureContentView.h */,
 				10F5F7A61D991E990045FA4C /* TemperatureContentView.m */,
 				10F5F7A81D991EAB0045FA4C /* TemperatureContentView.xib */,
+				10C47EC41DA8DE0D00D949CA /* TemperatureWarningViewController.h */,
+				10C47EC51DA8DE0D00D949CA /* TemperatureWarningViewController.m */,
+				10C47EC61DA8DE0D00D949CA /* TemperatureWarningViewController.xib */,
 			);
 			name = Temperature;
 			sourceTree = "<group>";
@@ -625,12 +708,19 @@
 				10F5F7491D98F31B0045FA4C /* set_lost_icon@3x.png in Resources */,
 				10CB0F1C1D9A8A190063AD0C /* list_heart_icon@2x.png in Resources */,
 				10F5F77E1D98F3560045FA4C /* walk_target_icon@2x.png in Resources */,
+				10C47EBC1DA8A55F00D949CA /* ble_refresh.png in Resources */,
+				10C47EB71DA8A55F00D949CA /* ble_lock_close@2x.png in Resources */,
 				10F5F78F1D9904D80045FA4C /* StepContentView.xib in Resources */,
 				104A705D1D9B63B100CC73F5 /* all_set_icon@3x.png in Resources */,
+				10C47EB21DA8A55F00D949CA /* ble_connect@3x.png in Resources */,
 				10F5F7461D98F31B0045FA4C /* set_bty_icon@3x.png in Resources */,
 				10F5F7781D98F3560045FA4C /* walk_run_now@2x.png in Resources */,
+				10C47EBB1DA8A55F00D949CA /* ble_lock_oper@3x.png in Resources */,
+				10C47EC81DA8DE0D00D949CA /* TemperatureWarningViewController.xib in Resources */,
+				10C47EB91DA8A55F00D949CA /* ble_lock_oper.png in Resources */,
 				10F5F7D91D99253B0045FA4C /* SleepContentView.xib in Resources */,
 				10F5F7741D98F3560045FA4C /* walk_mileage_icon.png in Resources */,
+				10C47EB41DA8A55F00D949CA /* ble_icon@2x.png in Resources */,
 				10F5F7721D98F3560045FA4C /* walk_foot_icon@2x.png in Resources */,
 				10F5F76C1D98F3560045FA4C /* walk_circle1@2x.png in Resources */,
 				10F5F7681D98F3560045FA4C /* walk_Calorie_icon.png in Resources */,
@@ -640,15 +730,18 @@
 				10F5F7EC1D9927C60045FA4C /* sleep_old_icon.png in Resources */,
 				10F5F7F11D9927C60045FA4C /* sleep_target@3x.png in Resources */,
 				10F5F7E91D9927C60045FA4C /* sleep_now_icon.png in Resources */,
+				10C47EAE1DA8A55F00D949CA /* ble_break_icon@2x.png in Resources */,
 				10F5F79F1D991C700045FA4C /* heart_now_icon@2x.png in Resources */,
 				10F5F7EF1D9927C60045FA4C /* sleep_target.png in Resources */,
 				10F5F7401D98F31B0045FA4C /* set_alart_icon@3x.png in Resources */,
 				10F5F7D31D9923D90045FA4C /* temper_set_alert_low@3x.png in Resources */,
 				10F5F7D01D9923D90045FA4C /* temper_set_alert_high@3x.png in Resources */,
+				10C47EB61DA8A55F00D949CA /* ble_lock_close.png in Resources */,
 				10F5F7F01D9927C60045FA4C /* sleep_target@2x.png in Resources */,
 				10F5F7171D98C6280045FA4C /* LaunchScreen.storyboard in Resources */,
 				10F5F7C61D9923D90045FA4C /* temper_notice_low@2x.png in Resources */,
 				104A70551D9B639C00CC73F5 /* all_data_icon.png in Resources */,
+				10C47EB31DA8A55F00D949CA /* ble_icon.png in Resources */,
 				10CB0F1E1D9A8A190063AD0C /* list_sleep_icon.png in Resources */,
 				10F5F7481D98F31B0045FA4C /* set_lost_icon@2x.png in Resources */,
 				10F5F7ED1D9927C60045FA4C /* sleep_old_icon@2x.png in Resources */,
@@ -661,6 +754,7 @@
 				10F5F7C31D9923D90045FA4C /* temper_notice_high@2x.png in Resources */,
 				10F5F77D1D98F3560045FA4C /* walk_target_icon.png in Resources */,
 				10F5F7A91D991EAB0045FA4C /* TemperatureContentView.xib in Resources */,
+				10C47EB11DA8A55F00D949CA /* ble_connect@2x.png in Resources */,
 				104A705C1D9B63B100CC73F5 /* all_set_icon@2x.png in Resources */,
 				10F5F7421D98F31B0045FA4C /* set_ble_icon@2x.png in Resources */,
 				104A70571D9B639C00CC73F5 /* all_data_icon@3x.png in Resources */,
@@ -668,6 +762,7 @@
 				10F5F7441D98F31B0045FA4C /* set_bty_icon.png in Resources */,
 				10CB0F1D1D9A8A190063AD0C /* list_heart_icon@3x.png in Resources */,
 				10CB0F251D9A8A190063AD0C /* list_walk_icon@2x.png in Resources */,
+				10C47EC31DA8C83C00D949CA /* StepTargetViewController.xib in Resources */,
 				10F5F7691D98F3560045FA4C /* walk_Calorie_icon@2x.png in Resources */,
 				10CB0F231D9A8A190063AD0C /* list_temper_icon@3x.png in Resources */,
 				10F5F7CE1D9923D90045FA4C /* temper_set_alert_high.png in Resources */,
@@ -676,6 +771,7 @@
 				10F5F7F71D9928050045FA4C /* temper_alart_icon@3x.png in Resources */,
 				104A70561D9B639C00CC73F5 /* all_data_icon@2x.png in Resources */,
 				10F5F7D21D9923D90045FA4C /* temper_set_alert_low@2x.png in Resources */,
+				10C47EAF1DA8A55F00D949CA /* ble_break_icon@3x.png in Resources */,
 				10F5F7471D98F31B0045FA4C /* set_lost_icon.png in Resources */,
 				10F5F7A01D991C700045FA4C /* heart_now_icon@3x.png in Resources */,
 				10F5F77C1D98F3560045FA4C /* walk_run_old@3x.png in Resources */,
@@ -694,6 +790,7 @@
 				10F5F7141D98C6280045FA4C /* Assets.xcassets in Resources */,
 				10CB0F191D9A8A190063AD0C /* list_blood_icon@2x.png in Resources */,
 				10F5F77B1D98F3560045FA4C /* walk_run_old@2x.png in Resources */,
+				10C47EBE1DA8A55F00D949CA /* ble_refresh@3x.png in Resources */,
 				10F5F7C91D9923D90045FA4C /* temper_now_icon@2x.png in Resources */,
 				10F5F7751D98F3560045FA4C /* walk_mileage_icon@2x.png in Resources */,
 				10CB0F1B1D9A8A190063AD0C /* list_heart_icon.png in Resources */,
@@ -701,7 +798,9 @@
 				10F5F7A31D991C700045FA4C /* heart_old_icon@3x.png in Resources */,
 				10F5F7791D98F3560045FA4C /* walk_run_now@3x.png in Resources */,
 				104A706E1D9BAD2B00CC73F5 /* UserInfoCell.xib in Resources */,
+				10C47EB51DA8A55F00D949CA /* ble_icon@3x.png in Resources */,
 				10F5F7C41D9923D90045FA4C /* temper_notice_high@3x.png in Resources */,
+				10C47EB81DA8A55F00D949CA /* ble_lock_close@3x.png in Resources */,
 				10F5F7EE1D9927C60045FA4C /* sleep_old_icon@3x.png in Resources */,
 				10F5F74C1D98F31B0045FA4C /* set_user_icon@3x.png in Resources */,
 				10F5F7411D98F31B0045FA4C /* set_ble_icon.png in Resources */,
@@ -710,11 +809,15 @@
 				10F5F7771D98F3560045FA4C /* walk_run_now.png in Resources */,
 				10F5F7C71D9923D90045FA4C /* temper_notice_low@3x.png in Resources */,
 				10F5F74A1D98F31B0045FA4C /* set_user_icon.png in Resources */,
+				10C47EBD1DA8A55F00D949CA /* ble_refresh@2x.png in Resources */,
 				10F5F7731D98F3560045FA4C /* walk_foot_icon@3x.png in Resources */,
+				10C47EAD1DA8A55F00D949CA /* ble_break_icon.png in Resources */,
 				10F5F76A1D98F3560045FA4C /* walk_Calorie_icon@3x.png in Resources */,
 				10F5F7F51D9928050045FA4C /* temper_alart_icon.png in Resources */,
+				10C47EB01DA8A55F00D949CA /* ble_connect.png in Resources */,
 				10F5F74F1D98F31B0045FA4C /* set_userphoto@3x.png in Resources */,
 				10F5F7CC1D9923D90045FA4C /* temper_ole_icon@2x.png in Resources */,
+				10C47EBA1DA8A55F00D949CA /* ble_lock_oper@2x.png in Resources */,
 				10F5F7DF1D9927390045FA4C /* BloodPressureContentView.xib in Resources */,
 				10F5F7761D98F3560045FA4C /* walk_mileage_icon@3x.png in Resources */,
 				10F5F7711D98F3560045FA4C /* walk_foot_icon.png in Resources */,
@@ -737,9 +840,12 @@
 				10F5F70C1D98C6280045FA4C /* AppDelegate.m in Sources */,
 				10F5F7931D991BF40045FA4C /* HeartRateContentView.m in Sources */,
 				10F5F7DD1D9927270045FA4C /* BloodPressureContentView.m in Sources */,
+				10C47E9A1DA88F9900D949CA /* BindPeripheralViewController.m in Sources */,
 				104A70681D9BA46A00CC73F5 /* UserInfoViewController.m in Sources */,
+				10C47EC11DA8C4FA00D949CA /* StepTargetViewController.m in Sources */,
 				10F5F7D71D99251B0045FA4C /* SleepContentView.m in Sources */,
 				10F5F78D1D98F8E10045FA4C /* StepContentView.m in Sources */,
+				10C47EC71DA8DE0D00D949CA /* TemperatureWarningViewController.m in Sources */,
 				104A706D1D9BAD2B00CC73F5 /* UserInfoCell.m in Sources */,
 				104A70641D9B724D00CC73F5 /* SettingContentView.m in Sources */,
 				10CB0F031D9A13960063AD0C /* MenuContentView.m in Sources */,

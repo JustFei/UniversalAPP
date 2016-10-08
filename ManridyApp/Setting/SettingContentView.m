@@ -8,6 +8,7 @@
 
 #import "SettingContentView.h"
 #import "UserInfoViewController.h"
+#import "BindPeripheralViewController.h"
 
 @interface SettingContentView () <UITableViewDelegate ,UITableViewDataSource >
 {
@@ -42,7 +43,7 @@
     self.headView.frame = CGRectMake(self.center.x - 62.5, 80, 125, 125);
     self.userNameLabel.frame = CGRectMake(self.center.x - 100, 215, 200, 34);
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 261, self.frame.size.width, 13)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.width * 261 / 320, self.frame.size.width, 13)];
     view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     [self addSubview:view];
     
@@ -92,7 +93,12 @@
             [[self findViewController:self].navigationController pushViewController:vc animated:YES];
         }
             break;
-            
+         
+        case 4:
+        {
+            BindPeripheralViewController *vc = [[BindPeripheralViewController alloc] init];
+            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
+        }
         default:
             break;
     }

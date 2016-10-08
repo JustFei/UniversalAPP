@@ -14,6 +14,7 @@
     NSArray *_nameArr;
     NSArray *_fieldPlaceholdeArr;
     NSArray *_unitArr;
+    UITextField *_tempField;
 }
 
 @property (nonatomic ,weak) UIButton *headButton;
@@ -67,11 +68,21 @@
     //注意从字典取出来的是对象，而 CGRect CGFloat 都是基本数据类型，一次需要转换
     CGFloat keyboardY = keyboardFrame.origin.y;
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:0.2 animations:^{
-            self.view.transform = CGAffineTransformMakeTranslation(0, keyboardY - self.view.frame.size.height);
-        }];
-    });
+    //如果键盘的Y值小于textField的y值，就偏移
+//    if (keyboardY < _tempField.frame.origin.y + _tempField.frame.size.height) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:0.25 animations:^{
+                self.view.transform = CGAffineTransformMakeTranslation(0, keyboardY - self.view.frame.size.height);
+            }];
+        });
+    
+    if ((keyboardY - self.view.frame.size.height) >= 0) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController.navigationBar setHidden:NO];
+        });
+    }else {
+        [self.navigationController.navigationBar setHidden:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,6 +101,11 @@
 }
 
 #pragma mark - UITextFieldDelegate
+//- (void)textFieldDidBeginEditing:(UITextField *)textField
+//{
+//    _tempField = textField;
+//}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     
@@ -120,10 +136,15 @@
     }else {
         [cell.genderLabel setHidden:YES];
         cell.textField.placeholder = _fieldPlaceholdeArr[indexPath.row];
+        cell.textField.delegate = self;
     }
     
     [cell.nameLabel setText:_nameArr[indexPath.row]];
     [cell.unitLabel setText:_unitArr[indexPath.row]];
+    
+    cell.userInfoTextFieldBlock = ^(UITextField * textField) {
+        _tempField = textField;
+    };
     
     return cell;
 }

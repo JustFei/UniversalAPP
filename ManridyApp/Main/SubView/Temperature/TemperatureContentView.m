@@ -7,6 +7,7 @@
 //
 
 #import "TemperatureContentView.h"
+#import "TemperatureWarningViewController.h"
 
 @implementation TemperatureContentView
 
@@ -20,6 +21,11 @@
     }
     return self;
 }
+- (IBAction)temperatureWarningAction:(UIButton *)sender
+{
+    TemperatureWarningViewController *vc = [[TemperatureWarningViewController alloc] initWithNibName:@"TemperatureWarningViewController" bundle:nil];
+    [[self findViewController:self].navigationController pushViewController:vc animated:YES];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -28,5 +34,19 @@
     // Drawing code
 }
 */
+
+
+#pragma mark - 获取当前View的控制器的方法
+- (UIViewController *)findViewController:(UIView *)sourceView
+{
+    id target=sourceView;
+    while (target) {
+        target = ((UIResponder *)target).nextResponder;
+        if ([target isKindOfClass:[UIViewController class]]) {
+            break;
+        }
+    }
+    return target;
+}
 
 @end

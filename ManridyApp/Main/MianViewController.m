@@ -82,7 +82,7 @@
     
     self.backGroundView.backgroundColor = [UIColor whiteColor];
     
-    self.pageControl.tintColor = [UIColor redColor];
+    self.pageControl.tintColor = [UIColor clearColor];
     
     self.menuView.backgroundColor = [UIColor blueColor];
 }
@@ -230,7 +230,7 @@
 - (UIPageControl *)pageControl
 {
     if (!_pageControl) {
-        UIPageControl *view = [[UIPageControl alloc] initWithFrame:CGRectMake(54, 338, 212, 37)];
+        UIPageControl *view = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 338, self.view.frame.size.width, 37)];
         view.numberOfPages = 5;
         view.currentPage = 0;
         view.enabled = NO;
