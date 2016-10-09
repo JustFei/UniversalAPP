@@ -17,9 +17,9 @@ typedef enum : NSUInteger {
 @interface TemperatureWarningViewController () <UIPickerViewDelegate ,UIPickerViewDataSource >
 {
     DataArrType _dataType;
-    NSArray *_highArr;
-    NSArray *_lowArr;
-    NSArray *_intervalArr;
+    NSMutableArray *_highArr;
+    NSMutableArray *_lowArr;
+    NSMutableArray *_intervalArr;
 }
 @property (weak, nonatomic) IBOutlet UILabel *highLabel;
 
@@ -61,9 +61,21 @@ typedef enum : NSUInteger {
     
     self.navigationItem.title = @"报警设置";
     
-    _highArr = @[@"35",@"36",@"37",@"38",@"39",@"40",@"41"];
-    _lowArr = @[@"39",@"38",@"37",@"36",@"35",@"34",@"33"];
-    _intervalArr = @[@"10",@"20",@"30",@"40",@"50",@"60"];
+    _highArr = [NSMutableArray array];
+    _lowArr = [NSMutableArray array];
+    _intervalArr = [NSMutableArray array];
+    
+    for (float i = 41.0; i >= 35.0; i = i - 0.1) {
+        [_highArr addObject:[NSString stringWithFormat:@"%0.1f",i]];
+    }
+    
+    for (float i = 38.0; i >= 33.0; i = i - 0.1) {
+        [_lowArr addObject:[NSString stringWithFormat:@"%0.1f",i]];
+    }
+    
+    for (int i = 30; i >= 1; i --) {
+        [_intervalArr addObject:[NSString stringWithFormat:@"%d",i]];
+    }
     
     UITapGestureRecognizer *highTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHighPickerView)];
     self.highLabel.userInteractionEnabled = YES;
@@ -116,6 +128,7 @@ typedef enum : NSUInteger {
     switch (_dataType) {
         case DataArrTypeHigh:
             return _highArr[row];
+            
             break;
             
         case DataArrTypeLow:
@@ -124,6 +137,29 @@ typedef enum : NSUInteger {
             
         case DataArrTypeInterval:
             return _intervalArr[row];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    switch (_dataType) {
+        case DataArrTypeHigh:
+            [self.highLabel setText:_highArr[row]];
+            
+            break;
+            
+        case DataArrTypeLow:
+            [self.lowLabel setText:_lowArr[row]];
+            
+            break;
+            
+        case DataArrTypeInterval:
+            [self.intervalLabel setText:_intervalArr[row]];
+            
             break;
             
         default:
@@ -246,8 +282,10 @@ typedef enum : NSUInteger {
 {
     if (self.highSwitch.isOn) {
         _dataType = DataArrTypeHigh;
-        [self.temperaturePickView reloadAllComponents];
-        self.temperaturePickView.hidden = NO;
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            [self changePickerViewFrame];
+        }];
     }
 }
 
@@ -255,8 +293,10 @@ typedef enum : NSUInteger {
 {
     if (self.lowSwitch.isOn) {
         _dataType = DataArrTypeLow;
-        [self.temperaturePickView reloadAllComponents];
-        self.temperaturePickView.hidden = NO;
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            [self changePickerViewFrame];
+        }];
     }
 }
 
@@ -264,8 +304,10 @@ typedef enum : NSUInteger {
 {
     if (self.intervalSwitch.isOn) {
         _dataType = DataArrTypeInterval;
-        [self.temperaturePickView reloadAllComponents];
-        [self.temperaturePickView setHidden:NO];
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            [self changePickerViewFrame];
+        }];
     }
 }
 
@@ -273,14 +315,35 @@ typedef enum : NSUInteger {
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.temperaturePickView setHidden:YES];
+//
+//    [UIView animateWithDuration:0.2 animations:^{
+//        self.temperaturePickView.frame = CGRectMake(0, 0, 0, 0);
+//        self.temperaturePickView.center = self.view.center;
+//    }];
+    
+}
+
+#pragma mark - change PickerView frame
+- (void)changePickerViewFrame
+{
+    self.temperaturePickView.hidden = NO;
+#if 0
+    CGRect rect = self.temperaturePickView.frame;
+    rect.size = CGSizeMake(self.view.frame.size.width * 300 / 320, self.view.frame.size.width * 200 / 320);
+    
+    self.temperaturePickView.frame = rect;
+    self.temperaturePickView.center = self.view.center;
+#endif
+    [self.temperaturePickView reloadAllComponents];
 }
 
 #pragma mark - 懒加载
 - (UIPickerView *)temperaturePickView
 {
     if (!_temperaturePickView) {
-        UIPickerView *view = [[UIPickerView alloc] initWithFrame:CGRectMake(self.view.center.x - 150, 200, 300, 200)];
+        UIPickerView *view = [[UIPickerView alloc] initWithFrame:CGRectMake(self.view.center.x - self.view.frame.size.width * 150 / 320, self.view.center.y - self.view.frame.size.width * 100 / 320, self.view.frame.size.width * 300 / 320, self.view.frame.size.width * 200 / 320)];
         view.backgroundColor = [UIColor whiteColor];
+        
         view.delegate = self;
         view.dataSource = self;
         

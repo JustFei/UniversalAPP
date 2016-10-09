@@ -7,6 +7,7 @@
 //
 
 #import "SleepContentView.h"
+#import "SleepSettingViewController.h"
 
 @implementation SleepContentView
 
@@ -20,6 +21,11 @@
     }
     return self;
 }
+- (IBAction)sleepTargetAction:(UIButton *)sender {
+    SleepSettingViewController *vc = [[SleepSettingViewController alloc] initWithNibName:@"SleepSettingViewController" bundle:nil];
+    
+    [[self findViewController:self].navigationController pushViewController:vc animated:YES];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -28,5 +34,18 @@
     // Drawing code
 }
 */
+
+#pragma mark - 获取当前View的控制器的方法
+- (UIViewController *)findViewController:(UIView *)sourceView
+{
+    id target=sourceView;
+    while (target) {
+        target = ((UIResponder *)target).nextResponder;
+        if ([target isKindOfClass:[UIViewController class]]) {
+            break;
+        }
+    }
+    return target;
+}
 
 @end

@@ -56,7 +56,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
-#warning 键盘弹出，view上升，但是y值不准确，回头改一下。
 - (void)keyboardWillChangeFrame:(NSNotification *)notification
 {
     NSLog(@"%@",notification);

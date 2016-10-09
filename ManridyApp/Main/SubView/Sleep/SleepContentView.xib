@@ -96,6 +96,9 @@
                                 <constraint firstAttribute="width" constant="20" id="r9t-c9-H4K"/>
                             </constraints>
                             <state key="normal" image="walk_target_icon.png"/>
+                            <connections>
+                                <action selector="sleepTargetAction:" destination="-1" eventType="touchUpInside" id="dRp-LY-tQX"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="缺乏睡眠" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cp-Ww-0rR">
                             <rect key="frame" x="125" y="278" width="70" height="22"/>
