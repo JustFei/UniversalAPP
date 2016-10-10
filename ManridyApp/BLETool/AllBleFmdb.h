@@ -11,12 +11,12 @@
 @class manridyModel;
 
 @interface AllBleFmdb : NSObject
-
+#if 0
 - (void)saveMotionToDataBase:(manridyModel *)manridyModel;
 
 - (void)saveSleepToDataBase:(manridyModel *)manridyModel;
 
 //离线保存GPS数据
 - (void)saveGPSToDataBase:(manridyModel *)manridyModel;
-
+#endif
 @end

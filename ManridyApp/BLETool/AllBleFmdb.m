@@ -9,14 +9,12 @@
 #import "AllBleFmdb.h"
 #import "manridyModel.h"
 
-#import "MotionFmdbTool.h"
-#import "MotionDailyDataModel.h"
+#import "FMDBTool.h"
 
-#import "SleepDailyDataModel.h"
-#import "SleepFmdbTool.h"
+//#import "SleepDailyDataModel.h"
 
 @interface AllBleFmdb ()
-
+#if 0
 @property (nonatomic ,strong) MotionFmdbTool *motionFmTool;
 
 @property (nonatomic ,strong) MotionDailyDataModel *MotionModel;
@@ -26,11 +24,11 @@
 @property (strong, nonatomic) SleepDailyDataModel *SleepModel;
 
 @property (nonatomic ,copy) NSString *currentDateStr;
-
+#endif
 @end
 
 @implementation AllBleFmdb
-
+#if 0
 - (instancetype)init
 {
     self = [super init];
@@ -123,5 +121,5 @@
     
     return _MotionModel;
 }
-
+#endif
 @end

@@ -73,22 +73,4 @@
     return _clockModelArr;
 }
 
-- (GPSModel *)gpsModel
-{
-    if (!_gpsModel) {
-        _gpsModel = [[GPSModel alloc] init];
-    }
-    
-    return _gpsModel;
-}
-
-- (GPSDailyDataModel *)gpsDailyModel
-{
-    if (!_gpsDailyModel) {
-        _gpsDailyModel = [[GPSDailyDataModel alloc] init];
-    }
-    
-    return  _gpsDailyModel;
-}
-
 @end

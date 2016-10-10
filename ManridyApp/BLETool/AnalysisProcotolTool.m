@@ -10,7 +10,7 @@
 #import "AnalysisProcotolTool.h"
 #import "manridyModel.h"
 #import "NSStringTool.h"
-#import "ClockModel.h"
+//#import "ClockModel.h"
 
 @interface AnalysisProcotolTool ()<CLLocationManagerDelegate>
 
@@ -116,7 +116,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         model.setTimeModel.time = timeStr;
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
         
-        //        DeBugLog(@"设定了时间为：%@\n%@",timeStr,model.setTimeModel.time);
+        //        NSLog(@"设定了时间为：%@\n%@",timeStr,model.setTimeModel.time);
     }else if ([head isEqualToString:@"80"]) {
         model.isReciveDataRight = ResponsEcorrectnessDataFail;
     }
@@ -124,6 +124,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 
+#if 0
 //解析闹钟数据 (01|81)
 - (manridyModel *)analysisClockData:(NSData *)data WithHeadStr:(NSString *)head
 {
@@ -154,7 +155,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
                 [model.clockModelArr addObject:clockModel];
             }
         }
-        DeBugLog(@"闹钟的数据为 == %@",model.clockModelArr);
+        NSLog(@"闹钟的数据为 == %@",model.clockModelArr);
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
     }else if ([head isEqualToString:@"81"]) {
         model.isReciveDataRight = ResponsEcorrectnessDataFail;
@@ -163,6 +164,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 
+#endif
 //解析获取运动信息的数据（03|83）
 - (manridyModel *)analysisGetSportData:(NSData *)data WithHeadStr:(NSString *)head
 {
@@ -172,17 +174,17 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     if ([head isEqualToString:@"03"]) {
         NSData *stepData = [data subdataWithRange:NSMakeRange(2, 3)];
         int stepValue = [NSStringTool parseIntFromData:stepData];
-        //        DeBugLog(@"今日步数 = %d",stepValue);
+        //        NSLog(@"今日步数 = %d",stepValue);
         NSString *stepStr = [NSString stringWithFormat:@"%d",stepValue];
         
         NSData *mileageData = [data subdataWithRange:NSMakeRange(5, 3)];
         int mileageValue = [NSStringTool parseIntFromData:mileageData];
-        //        DeBugLog(@"今日里程数 = %d",mileageValue);
+        //        NSLog(@"今日里程数 = %d",mileageValue);
         NSString *mileageStr = [NSString stringWithFormat:@"%d",mileageValue];
         
         NSData *kcalData = [data subdataWithRange:NSMakeRange(8, 3)];
         int kcalValue = [NSStringTool parseIntFromData:kcalData];
-        //        DeBugLog(@"卡路里 = %d",kcalValue);
+        //        NSLog(@"卡路里 = %d",kcalValue);
         NSString *kCalStr = [NSString stringWithFormat:@"%d",kcalValue];
         
         model.sportModel.stepNumber = stepStr;
@@ -214,7 +216,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     
     return model;
 }
-
+#if 0
 //解析获取GPS历史的数据（05|85）
 - (manridyModel *)analysisHistoryGPSData:(NSData *)data WithHeadStr:(NSString *)head
 {
@@ -234,12 +236,12 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         lat.c[1]=b[index + 2];
         lat.c[2]=b[index + 1];
         lat.c[3]=b[index + 0];
-        DeBugLog(@"lat = %f %x\n",lat.v,lat.i);
+        NSLog(@"lat = %f %x\n",lat.v,lat.i);
         lon.c[0]=d[index + 3];
         lon.c[1]=d[index + 2];
         lon.c[2]=d[index + 1];
         lon.c[3]=d[index + 0];
-        DeBugLog(@"lon = %f %x\n",lon.v,lon.i);
+        NSLog(@"lon = %f %x\n",lon.v,lon.i);
         model.gpsDailyModel.lon = lon.v;
         model.gpsDailyModel.lat = lat.v;
         
@@ -268,17 +270,17 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         if (sumPackage != 0) {
             if (self.staticLon && self.staticLat) {
                 if ((self.staticLat - lat.v > 0.1 || self.staticLat - lat.v < -0.1) || (self.staticLon -lon.v > 0.1 || self.staticLon - lon.v < -0.1)) {
-                    DeBugLog(@"错误的经纬度为 == lon:%f, lat:%f",lon.v ,lat.v);
+                    NSLog(@"错误的经纬度为 == lon:%f, lat:%f",lon.v ,lat.v);
                     return nil;
                 }else {
                     
-                    DeBugLog(@"当前GPS = lon:%f,lat:%f \n上一个GPS = lon:%f,lat:%f",lon.v ,lat.v ,self.staticLon ,self.staticLat);
+                    NSLog(@"当前GPS = lon:%f,lat:%f \n上一个GPS = lon:%f,lat:%f",lon.v ,lat.v ,self.staticLon ,self.staticLat);
                     self.staticLon = lon.v;
                     self.staticLat = lat.v;
                 }
             }
         }else {
-            DeBugLog(@"没有历史数据");
+            NSLog(@"没有历史数据");
         }
         
         //还有个经纬度方向的数据没有解析，暂时没想到怎么解析
@@ -288,7 +290,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     
     return model;
 }
-
+#endif
 //解析用户信息的数据（06|86）
 - (manridyModel *)analysisUserInfoData:(NSData *)data WithHeadStr:(NSString *)head
 {
@@ -468,7 +470,7 @@ union LAT{
     unsigned char c[4];
     unsigned int i;
 }lat;
-
+#if 0
 //解析自动上报GPS的数据（0D|8D）
 - (manridyModel *)analysisGPSData:(NSData *)data WithHeadStr:(NSString *)head
 {
@@ -488,12 +490,12 @@ union LAT{
         lat.c[1]=b[index + 2];
         lat.c[2]=b[index + 1];
         lat.c[3]=b[index + 0];
-        DeBugLog(@"lat = %f %x\n",lat.v,lat.i);
+        NSLog(@"lat = %f %x\n",lat.v,lat.i);
         lon.c[0]=d[index + 3];
         lon.c[1]=d[index + 2];
         lon.c[2]=d[index + 1];
         lon.c[3]=d[index + 0];
-        DeBugLog(@"lon = %f %x\n",lon.v,lon.i);
+        NSLog(@"lon = %f %x\n",lon.v,lon.i);
         model.gpsDailyModel.lon = lon.v;
         model.gpsDailyModel.lat = lat.v;
         
@@ -521,11 +523,11 @@ union LAT{
         //筛选正确数据，当前位置为纬度:22.663294 经度:113.994034
         if (self.staticLon && self.staticLat) {
             if ((self.staticLat - lat.v > 0.1 || self.staticLat - lat.v < -0.1) || (self.staticLon -lon.v > 0.1 || self.staticLon - lon.v < -0.1)) {
-                DeBugLog(@"错误的经纬度为 == lon:%f, lat:%f",lon.v ,lat.v);
+                NSLog(@"错误的经纬度为 == lon:%f, lat:%f",lon.v ,lat.v);
                 return nil;
             }else {
                 
-                DeBugLog(@"当前GPS = lon:%f,lat:%f \n上一个GPS = lon:%f,lat:%f",lon.v ,lat.v ,self.staticLon ,self.staticLat);
+                NSLog(@"当前GPS = lon:%f,lat:%f \n上一个GPS = lon:%f,lat:%f",lon.v ,lat.v ,self.staticLon ,self.staticLat);
                 self.staticLon = lon.v;
                 self.staticLat = lat.v;
             }
@@ -538,5 +540,5 @@ union LAT{
     
     return model;
 }
-
+#endif
 @end

@@ -13,9 +13,6 @@
 #import "HeartRateModel.h"
 #import "SleepModel.h"
 #import "SportTargetModel.h"
-#import "ClockModel.h"
-#import "GPSModel.h"
-#import "GPSDailyDataModel.h"
 
 typedef enum : NSUInteger {
     ResponsEcorrectnessDataFail = 0,
@@ -32,8 +29,6 @@ typedef enum : NSUInteger {
     ReturnModelTypeSleepModel,
     ReturnModelTypeSportZeroModel,
     ReturnModelTypeHeartRateStateModel,
-    ReturnModelTypeGPSCurrentModel,
-    ReturnModelTypeGPSHistoryModel,
 } ReturnModelType;
 
 typedef enum : NSUInteger {
@@ -73,12 +68,6 @@ typedef enum : NSUInteger {
 
 //闹钟数据模型
 @property (nonatomic ,strong) NSMutableArray *clockModelArr;
-
-//GPS的数据模型
-@property (nonatomic ,strong) GPSModel *gpsModel;
-
-//GPS的每日数据模型
-@property (nonatomic ,strong) GPSDailyDataModel *gpsDailyModel;
 
 @end
 

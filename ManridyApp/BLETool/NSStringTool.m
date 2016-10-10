@@ -60,7 +60,7 @@
         [data appendBytes:&intValue length:1];
     }
     
-    //    DeBugLog(@"data = %@",data);
+    //    NSLog(@"data = %@",data);
     return data;
 }
 
@@ -218,7 +218,7 @@
             for (int i = 0; i < count; i ++) {
                 targetStr = [NSString stringWithFormat:@"0%@",targetStr];
             }
-            //            DeBugLog(@"%@",targetStr);
+            //            NSLog(@"%@",targetStr);
         }
         
         NSString *protocolStr = [NSString stringWithFormat:@"FC0701%@",targetStr];

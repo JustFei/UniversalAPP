@@ -25,7 +25,7 @@
 - (manridyModel *)analysisSetTimeData:(NSData *)data WithHeadStr:(NSString *)head;
 
 //解析闹钟数据 (01|81)
-- (manridyModel *)analysisClockData:(NSData *)data WithHeadStr:(NSString *)head;
+//- (manridyModel *)analysisClockData:(NSData *)data WithHeadStr:(NSString *)head;
 
 //解析获取运动信息的数据（03|83）
 - (manridyModel *)analysisGetSportData:(NSData *)data WithHeadStr:(NSString *)head;
@@ -34,7 +34,7 @@
 - (manridyModel *)analysisSportZeroData:(NSData *)data WithHeadStr:(NSString *)head;
 
 //解析获取GPS历史的数据（05|85）
-- (manridyModel *)analysisHistoryGPSData:(NSData *)data WithHeadStr:(NSString *)head;
+//- (manridyModel *)analysisHistoryGPSData:(NSData *)data WithHeadStr:(NSString *)head;
 
 //解析用户信息的数据（06|86）
 - (manridyModel *)analysisUserInfoData:(NSData *)data WithHeadStr:(NSString *)head;
@@ -52,6 +52,6 @@
 - (manridyModel *)analysisSleepData:(NSData *)data WithHeadStr:(NSString *)head;
 
 //解析GPS的数据（0D|8D）
-- (manridyModel *)analysisGPSData:(NSData *)data WithHeadStr:(NSString *)head;
+//- (manridyModel *)analysisGPSData:(NSData *)data WithHeadStr:(NSString *)head;
 
 @end
