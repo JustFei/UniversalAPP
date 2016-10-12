@@ -9,13 +9,13 @@
 #import "BindPeripheralViewController.h"
 #import "BLETool.h"
 #import "manridyBleDevice.h"
+#import "MBProgressHUD.h"
 
 @interface BindPeripheralViewController () <UITableViewDelegate ,UITableViewDataSource ,BleDiscoverDelegate ,BleConnectDelegate ,UIAlertViewDelegate>
 {
     NSMutableArray *_dataArr;
     NSInteger index;
     BOOL _isConnected;
-    BOOL _isUnconnected;
 }
 
 @property (nonatomic ,weak) UIView *downView;
@@ -27,7 +27,7 @@
 
 @property (nonatomic ,strong) UIImageView *lockImageView;
 
-@property (nonatomic ,strong) UIImageView *connectImageView;
+@property (nonatomic ,weak) UIImageView *connectImageView;
 
 @property (nonatomic ,strong) UIImageView *refreshImageView;
 
@@ -36,6 +36,8 @@
 @property (nonatomic ,strong) UILabel *perNameLabel;
 
 @property (nonatomic ,strong) BLETool *myBleTool;
+
+@property (nonatomic ,strong) MBProgressHUD *hud;
 
 @end
 
@@ -56,20 +58,17 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStylePlain target:self action:@selector(searchPeripheral)];
     self.navigationItem.rightBarButtonItem = rightItem;
     
+    BOOL isBinded = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
+    if (isBinded) {
+        [self createBindView];
+    }else {
+       [self creatUnBindView];
+    }
+    
     self.navigationItem.title = @"设备绑定";
     
     self.view.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
     
-    [self creatUpView];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)creatUpView
-{
     UIImageView *bluetoothImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 80, self.view.frame.size.width * 120 / 320, 30, 46)];
     [self.view addSubview:bluetoothImageView];
     [bluetoothImageView setImage:[UIImage imageNamed:@"ble_icon"]];
@@ -78,34 +77,47 @@
     [self.view addSubview:self.lockImageView];
     [self.lockImageView setImage:[UIImage imageNamed:@"ble_lock_oper"]];
     
-    self.connectImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 25, self.view.frame.size.width * 136.5 / 320, 50, 13)];
-    [self.view addSubview:self.connectImageView];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width * 261 / 320, self.view.frame.size.width, 13)];
+    view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+    [self.view addSubview:view];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)createBindView
+{
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    [self.connectImageView setImage:[UIImage imageNamed:@"ble_connect"]];
+    
+    [self.peripheralList setHidden:YES];
+    [self.bindButton setHidden:YES];
+    
+    [self.refreshImageView setHidden:YES];
+    
+    [self.bindStateLabel setText:@"已绑定设备"];
+    
+    [self.perNameLabel setHidden:NO];
+    [self.perNameLabel setAlpha:0.5];
+    [self.perNameLabel setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"bindPeripheralName"]];
+    
+    [self.disbindButton setHidden:NO];
+    [self.disbindButton setAlpha:1];
+}
+
+- (void)creatUnBindView
+{
+    self.navigationItem.rightBarButtonItem.enabled = YES;
     [self.connectImageView setImage: [UIImage imageNamed:@"ble_break_icon"]];
     
     [self.peripheralList setHidden:YES];
     [self.bindButton setHidden:YES];
     
-    self.refreshImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.downView.center.x - 44, 100, 88, 78.5)];
-    [self.downView addSubview:self.refreshImageView];
-    [self.refreshImageView setImage:[UIImage imageNamed:@"ble_refresh"]];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(searchPeripheral)];
-    [self.refreshImageView addGestureRecognizer:tap];
+    [self.refreshImageView setHidden:NO];
     
-    self.bindStateLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, self.view.frame.size.width * 190 / 320, 200, 19)];
-    [self.view addSubview:self.bindStateLabel];
     [self.bindStateLabel setText:@"未绑定设备"];
-    [self.bindStateLabel setTextColor:[UIColor colorWithWhite:1 alpha:0.4]];
-    self.bindStateLabel.textAlignment = NSTextAlignmentCenter;
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width * 261 / 320, self.view.frame.size.width, 13)];
-    view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
-    [self.view addSubview:view];
-    
-    self.perNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, self.view.frame.size.width * 220 / 320, 200, 19)];
-    self.perNameLabel.alpha = 0;
-    [self.view addSubview:self.perNameLabel];
-    [self.perNameLabel setTextColor:[UIColor colorWithWhite:1 alpha:0.4]];
-    self.perNameLabel.textAlignment = NSTextAlignmentCenter;
-    [self.perNameLabel setHidden:YES];
 }
 
 #pragma mark - Action
@@ -132,16 +144,34 @@
 - (void)bindPeripheral
 {
     if (index != -1) {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+        
         manridyBleDevice *device = _dataArr[index];
         [self.myBleTool connectDevice:device];
+        self.myBleTool.isReconnect = YES;
         _isConnected = YES;
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        self.hud.mode = MBProgressHUDModeAnnularDeterminate;
+        self.hud.mode = MBProgressHUDModeIndeterminate;
+        [self.hud.label setText:@"正在连接设备..."];
     }
 }
 
 - (void)disbindPeripheral
 {
-    _isUnconnected = YES;
+    _isConnected = NO;
+    self.myBleTool.isReconnect = NO;
     [self.myBleTool unConnectDevice];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"bindPeripheralID"];
+    [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"bindPeripheralName"];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isBind"];
+    
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    
+    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:@"已成功解除绑定" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+    view.tag = 102;
+    [view show];
 }
 
 - (void)deletAllRowsAtTableView
@@ -231,7 +261,7 @@
             break;
         case 102:
         {
-            if (_isUnconnected) {
+            if (!_isConnected) {
                 [self deletAllRowsAtTableView];
                 [self.peripheralList setHidden:YES];
                 
@@ -275,32 +305,27 @@
 }
 
 #pragma mark - BleConnectDelegate
+//这里我使用peripheral.identifier作为设备的唯一标识，没有使用mac地址，如果出现id变化导致无法连接的情况，请转成用mac地址作为唯一标识。
 - (void)manridyBLEDidConnectDevice:(manridyBleDevice *)device
 {
+    [self.hud hideAnimated:YES];
+    
     [self.myBleTool stopScan];
     
-#if 0
-    //移除cell
-    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-    NSInteger i = _dataArr.count;
-    for (NSInteger row = i - 1; row >= 0; row --) {
-        if (row != index) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-            [indexPaths addObject:indexPath];
-            [_dataArr removeObjectAtIndex:row];
-        }
-    }
-    [self.peripheralList deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-#endif
+    [[NSUserDefaults standardUserDefaults] setValue:device.peripheral.identifier.UUIDString forKey:@"bindPeripheralID"];
+    [[NSUserDefaults standardUserDefaults] setValue:device.deviceName forKey:@"bindPeripheralName"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isBind"];
+    
     UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"已绑定设备：%@",device.deviceName] delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
     view.tag = 100;
     [view show];
 }
 
+
 - (void)manridyBLEDidFailConnectDevice:(manridyBleDevice *)device
 {
+    self.navigationItem.rightBarButtonItem.enabled = YES;
     _isConnected = NO;
-    
     UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:@"连接异常，请靠近设备并尝试再次连接" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     view.tag = 101;
     [view show];
@@ -313,18 +338,69 @@
     [self.bindButton setHidden:YES];
     
     index = 0;
-    
 }
 
-- (void)manridyBLEDidDisconnectDevice:(manridyBleDevice *)device
-{
-    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:@"已成功解除绑定" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
-    view.tag = 102;
-    [view show];
-    
-}
+
 
 #pragma mark - 懒加载
+- (UIImageView *)connectImageView
+{
+    if (!_connectImageView) {
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 25, self.view.frame.size.width * 136.5 / 320, 50, 13)];
+        [self.view addSubview:view];
+        _connectImageView = view;
+    }
+    
+    return _connectImageView;
+}
+
+- (UIImageView *)refreshImageView
+{
+    if (!_refreshImageView) {
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(self.downView.center.x - 44, 100, 88, 78.5)];
+        [view setImage:[UIImage imageNamed:@"ble_refresh"]];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(searchPeripheral)];
+        [view addGestureRecognizer:tap];
+        view.userInteractionEnabled = YES;
+        
+        [self.downView addSubview:view];
+        _refreshImageView = view;
+    }
+    
+    return _refreshImageView;
+}
+
+- (UILabel *)bindStateLabel
+{
+    if (!_bindStateLabel) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, self.view.frame.size.width * 190 / 320, 200, 19)];
+        [label setTextColor:[UIColor colorWithWhite:1 alpha:0.4]];
+        label.textAlignment = NSTextAlignmentCenter;
+        
+        [self.view addSubview:label];
+        _bindStateLabel = label;
+    }
+    
+    return _bindStateLabel;
+}
+
+- (UILabel *)perNameLabel
+{
+    if (!_perNameLabel) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, self.view.frame.size.width * 220 / 320, 200, 19)];
+        label.alpha = 0;
+        
+        [label setTextColor:[UIColor colorWithWhite:1 alpha:0.4]];
+        label.textAlignment = NSTextAlignmentCenter;
+        [label setHidden:YES];
+        
+        [self.view addSubview:label];
+        _perNameLabel = label;
+    }
+    
+    return _perNameLabel;
+}
+
 - (UIView *)downView
 {
     if (!_downView) {

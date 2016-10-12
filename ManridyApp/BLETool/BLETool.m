@@ -22,10 +22,7 @@
 
 
 @interface BLETool () <CBCentralManagerDelegate,CBPeripheralDelegate>
-{
-    BOOL isDisconnect;
-    BOOL isReconnect;
-}
+
 
 @property (nonatomic ,strong) CBCharacteristic *notifyCharacteristic;
 @property (nonatomic ,strong) CBCharacteristic *writeCharacteristic;
@@ -111,16 +108,16 @@ static BLETool *bleTool = nil;
 
 - (void)unConnectDevice
 {
-    isDisconnect = 1;
+//    isDisconnect = 1;
     if (self.currentDev.peripheral) {
         [self.myCentralManager cancelPeripheralConnection:self.currentDev.peripheral];
     }
 }
 
-- (void)reConnectDevice:(BOOL)isConnect
-{
-    isReconnect = isConnect;
-}
+//- (void)reConnectDevice:(BOOL)isConnect
+//{
+//    isReconnect = isConnect;
+//}
 
 - (NSArray *)retrieveConnectedPeripherals
 {
@@ -355,7 +352,7 @@ static BLETool *bleTool = nil;
     if (central.state == CBCentralManagerStatePoweredOn) {
         //            [SVProgressHUD showInfoWithStatus:@"设备打开成功，开始扫描设备"];
 //        NSLog(@"蓝牙已打开");
-//        [_myCentralManager scanForPeripheralsWithServices:nil options:nil];
+        [_myCentralManager scanForPeripheralsWithServices:nil options:nil];
     }else {
 //        NSLog(@"蓝牙已关闭");
     }
@@ -407,35 +404,29 @@ static BLETool *bleTool = nil;
 //断开连接
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
+//    if ([self.connectDelegate respondsToSelector:@selector(manridyBLEDidDisconnectDevice:)]) {
+//        self.connectState = kBLEstateDisConnected;
+//        [self.connectDelegate manridyBLEDidDisconnectDevice:self.currentDev];
+//    }
+//#if 0
+    //如果不是主动断开
+    NSLog(@"不需要断线重连");
     if ([self.connectDelegate respondsToSelector:@selector(manridyBLEDidDisconnectDevice:)]) {
-        self.connectState = kBLEstateDisConnected;
         [self.connectDelegate manridyBLEDidDisconnectDevice:self.currentDev];
     }
-#if 0
-    //如果不是主动断开
-    if (!isDisconnect) {
+
+    if (self.isReconnect) {
+        NSLog(@"需要断线重连");
+        [self.myCentralManager connectPeripheral:self.currentDev.peripheral options:nil];
         
-        if (isReconnect) {
-            [self.myCentralManager connectPeripheral:self.currentDev.peripheral options:nil];
-        }else {
-//            NSLog(@"不需要断线重连");
-        }
+        UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:@"设备意外断开，等待重连" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+        view.tag = 103;
+        [view show];
         
     }else {
-        if (!error) {
-//            NSLog(@"断开成功");
-            
-            if ([self.connectDelegate respondsToSelector:@selector(manridyBLEDidDisconnectDevice:)]) {
-                [self.connectDelegate manridyBLEDidDisconnectDevice:self.currentDev];
-                
-                self.currentDev = nil;
-            }
-            
-        }else {
-//            NSLog(@"断开失败 error = %@", error);
-        }
+        self.currentDev = nil;
     }
-#endif
+
 }
 
 #pragma mark - CBPeripheralDelegate
@@ -450,8 +441,15 @@ static BLETool *bleTool = nil;
 
 //获得某服务的特征
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
+    
+//    NSLog(@"Discovered characteristic %@", service.characteristics);
+    
     for (CBCharacteristic *characteristic in service.characteristics) {
-//        NSLog(@"Discovered characteristic %@", characteristic.UUID);
+        
+//        [peripheral readValueForCharacteristic:characteristic];
+//        
+//        [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+
         
         //保存写入特征
         if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:kWriteCharacteristicUUID]]) {
@@ -490,7 +488,36 @@ static BLETool *bleTool = nil;
 //订阅特征值发送变化的通知，所有获取到的值都将在这里进行处理
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    NSLog(@"notifyCharacteristic is change = %@",characteristic.value);
+//    NSLog(@"notifyCharacteristic is change = %@",characteristic.value);
+//    
+//    NSString *value = [NSString stringWithFormat:@"%@",characteristic.value];
+//    
+//    NSMutableString *macString = [[NSMutableString alloc] init];
+//    
+//    [macString appendString:[[value substringWithRange:NSMakeRange(16, 2)] uppercaseString]];
+//    
+//    [macString appendString:@":"];
+//    
+//    [macString appendString:[[value substringWithRange:NSMakeRange(14, 2)] uppercaseString]];
+//    
+//    [macString appendString:@":"];
+//    
+//    [macString appendString:[[value substringWithRange:NSMakeRange(12, 2)] uppercaseString]];
+//    
+//    [macString appendString:@":"];
+//    
+//    [macString appendString:[[value substringWithRange:NSMakeRange(5, 2)] uppercaseString]];
+//    
+//    [macString appendString:@":"];
+//    
+//    [macString appendString:[[value substringWithRange:NSMakeRange(3, 2)] uppercaseString]];
+//    
+//    [macString appendString:@":"];
+//    
+//    [macString appendString:[[value substringWithRange:NSMakeRange(1, 2)] uppercaseString]];
+//    
+//    NSLog(@"macString:%@",macString);
+    
     
     [self analysisDataWithCharacteristic:characteristic.value];
     

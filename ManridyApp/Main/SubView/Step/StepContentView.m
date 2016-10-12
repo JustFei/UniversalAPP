@@ -8,11 +8,14 @@
 
 #import "StepContentView.h"
 #import "StepTargetViewController.h"
+#import "BLETool.h"
 
-@interface StepContentView ()
+@interface StepContentView () <BleReceiveDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *stepLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mileageAndkCalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weekStatisticsLabel;
+
+@property (nonatomic ,strong) BLETool *myBleTool;
 
 @end
 
@@ -25,6 +28,8 @@
         
         self = [[NSBundle mainBundle] loadNibNamed:@"StepContentView" owner:self options:nil].firstObject;
         self.frame = frame;
+        self.myBleTool = [BLETool shareInstance];
+        self.myBleTool.receiveDelegate = self;
     }
     return self;
 }
@@ -33,21 +38,31 @@
 {
     [super layoutSubviews];
     
-    [self createUI];
     
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.myBleTool writeMotionRequestToPeripheral];
+    });
 }
 
-- (void)createUI
-{
-    
-    
-}
-
+#pragma mark - Action
 - (IBAction)setTargetAction:(UIButton *)sender
 {
     StepTargetViewController *vc = [[StepTargetViewController alloc] initWithNibName:@"StepTargetViewController" bundle:nil];
     [[self findViewController:self].navigationController pushViewController:vc animated:YES];
     
+}
+
+#pragma mark - BleReceiveDelegate
+- (void)receiveMotionDataWithModel:(manridyModel *)manridyModel
+{
+    if (manridyModel.isReciveDataRight) {
+        if (manridyModel.receiveDataType == ReturnModelTypeSportModel) {
+            [self.stepLabel setText:manridyModel.sportModel.stepNumber];
+            [self.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@公里/%@千卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
+            //保存motion数据到数据库
+        }
+    }
 }
 
 //- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{

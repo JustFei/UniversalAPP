@@ -8,8 +8,12 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "BLETool.h"
+#import "manridyBleDevice.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <BleDiscoverDelegate, BleConnectDelegate>
+
+@property (nonatomic ,strong) BLETool *myBleTool;
 
 @end
 
@@ -22,6 +26,16 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    self.myBleTool = [BLETool shareInstance];
+    self.myBleTool.discoverDelegate = self;
+    self.myBleTool.connectDelegate = self;
+    
+    BOOL isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
+    
+    if (isBind) {
+        [self.myBleTool scanDevice];
+    }
     
     MainViewController *vc = [[MainViewController alloc] init];
     
@@ -38,6 +52,14 @@
     self.window.rootViewController = nc;
     
     return YES;
+}
+
+- (void)manridyBLEDidDiscoverDeviceWithMAC:(manridyBleDevice *)device
+{
+    NSString *bindUUIDString = [[NSUserDefaults standardUserDefaults] objectForKey:@"bindPeripheralID"];
+    if ([device.peripheral.identifier.UUIDString isEqualToString:bindUUIDString]) {
+        [self.myBleTool connectDevice:device];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

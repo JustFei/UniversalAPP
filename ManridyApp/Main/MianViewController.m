@@ -39,10 +39,13 @@
 
 @property (nonatomic ,strong) UIButton *rightButton;
 
+@property (nonatomic ,strong) StepContentView *stepView;
+
 @end
 
 @implementation MainViewController
 
+#pragma mark - lifeCycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -85,6 +88,10 @@
     self.pageControl.tintColor = [UIColor clearColor];
     
     self.menuView.backgroundColor = [UIColor blueColor];
+    
+
+    
+    
 }
 
 - (void)showHistoryView
@@ -175,8 +182,8 @@
         view.delegate = self;
         view.bounces = NO;
         
-        StepContentView *stepView = [[StepContentView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
-        [view addSubview:stepView];
+        self.stepView = [[StepContentView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+        [view addSubview:self.stepView];
         
         HeartRateContentView *heartRateView = [[HeartRateContentView alloc] initWithFrame:CGRectMake(WIDTH, 0, WIDTH, HEIGHT)];
         [view addSubview:heartRateView];

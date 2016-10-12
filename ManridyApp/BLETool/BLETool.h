@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "manridyModel.h"
 
 @class manridyModel;
@@ -117,6 +118,8 @@ typedef enum{
 @property (nonatomic ,weak) id <BleConnectDelegate>connectDelegate;
 
 @property (nonatomic ,weak) id <BleReceiveDelegate>receiveDelegate;
+
+@property (nonatomic ,assign) BOOL isReconnect;
 
 #pragma mark - action of connecting layer -连接层操作
 //扫描设备
