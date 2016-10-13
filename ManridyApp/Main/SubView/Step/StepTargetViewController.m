@@ -11,7 +11,10 @@
 #import "MBProgressHUD.h"
 
 @interface StepTargetViewController () < BleReceiveDelegate>
-
+{
+    float height;
+    float weight;
+}
 @property (weak, nonatomic) IBOutlet UITextField *stepTargetTextField;
 
 @property (weak, nonatomic) IBOutlet UILabel *mileageTargetLabel;
@@ -30,10 +33,11 @@
     
     self.navigationItem.title = @"目标设置";
     
+    weight = 75.0;
+    height = 180.0;
+    
     self.myBleTool = [BLETool shareInstance];
     self.myBleTool.receiveDelegate = self;
-    
-    [self.stepTargetTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventValueChanged];
     
     self.saveButton.layer.masksToBounds = YES;
     self.saveButton.clipsToBounds = YES;
@@ -65,26 +69,26 @@
 }
 
 #pragma mark - UITextFieldDelegate
-//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-//{
-//    NSString *targetString = [textField.text stringByAppendingString:string];
-////    NSLog(@"now == %@",targetString);
-//    if (targetString.length >= 6) {
-//        targetString = textField.text;
-//        NSInteger targetInteger = targetString.integerValue;
-//        
-//        [self.mileageTargetLabel setText:[NSString stringWithFormat:@"%ld",targetInteger]];
-//        [self.kcalTargetLabel setText:[NSString stringWithFormat:@"%ld",targetInteger]];
-//        return NO;
-//    }
-//    
-//    NSInteger targetInteger = targetString.integerValue;
-//    
-//    [self.mileageTargetLabel setText:[NSString stringWithFormat:@"%ld",targetInteger]];
-//    [self.kcalTargetLabel setText:[NSString stringWithFormat:@"%ld",targetInteger]];
-//    
-//    return YES;
-//}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *targetString = [textField.text stringByAppendingString:string];
+//    NSLog(@"now == %@",targetString);
+    if (targetString.length >= 6) {
+        targetString = textField.text;
+        NSInteger targetInteger = targetString.integerValue;
+        
+        [self.mileageTargetLabel setText:[NSString stringWithFormat:@"%ld",targetInteger]];
+        [self.kcalTargetLabel setText:[NSString stringWithFormat:@"%ld",targetInteger]];
+        return NO;
+    }
+    
+    NSInteger targetInteger = targetString.integerValue;
+    
+    [self.mileageTargetLabel setText:[NSString stringWithFormat:@"%ld",targetInteger]];
+    [self.kcalTargetLabel setText:[NSString stringWithFormat:@"%ld",targetInteger]];
+    
+    return YES;
+}
 
 #pragma mark - Action
 - (IBAction)saveInfoAction:(UIButton *)sender
@@ -102,13 +106,25 @@
     [self.view endEditing:YES];
 }
 
-- (void)textFieldDidChange:(UITextField *)textField
-{
-    NSLog(@"%@",textField.text);
-    [self.mileageTargetLabel setText:textField.text];
-    [self.kcalTargetLabel setText:textField.text];
+
+- (IBAction)textFieldDidChange:(UITextField *)sender {
+    if (sender.text.length <= 5) {
+        [self.mileageTargetLabel setText:[NSString stringWithFormat:@"%0.2f",[self getMileage:sender.text.integerValue]]];
+        [self.kcalTargetLabel setText:[NSString stringWithFormat:@"%0.2f",[self getKcal:sender.text.integerValue]]];
+    }else {
+        self.stepTargetTextField.text = [self.stepTargetTextField.text substringToIndex:5];
+    }
 }
 
+- (float)getMileage:(NSInteger)step
+{
+    return (70 + (170 - (height ? height : 170))) * step / 100.0;
+}
+
+- (float)getKcal:(NSInteger)step
+{
+    return ([self getMileage:step] / 100.0) * 0.0766666666667 * (weight ? weight : 60);
+}
 
 
 /*

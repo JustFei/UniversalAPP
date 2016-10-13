@@ -9,7 +9,7 @@
 #import "UserInfoViewController.h"
 #import "UserInfoCell.h"
 
-@interface UserInfoViewController () <UITableViewDelegate ,UITableViewDataSource ,UITextFieldDelegate >
+@interface UserInfoViewController () <UITableViewDelegate ,UITableViewDataSource ,UITextFieldDelegate ,UINavigationControllerDelegate ,UIImagePickerControllerDelegate ,UIAlertViewDelegate>
 {
     NSArray *_nameArr;
     NSArray *_fieldPlaceholdeArr;
@@ -17,7 +17,7 @@
     UITextField *_tempField;
 }
 
-@property (nonatomic ,weak) UIButton *headButton;
+@property (nonatomic ,weak) UIImageView *headImageView;
 
 @property (nonatomic ,weak) UITextField *userNameTextField;
 
@@ -41,7 +41,7 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
     
-    self.headButton.backgroundColor = [UIColor clearColor];
+    self.headImageView.backgroundColor = [UIColor redColor];
     self.userNameTextField.borderStyle = UITextBorderStyleNone;
     self.userNameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
@@ -91,12 +91,57 @@
 
 - (void)setHeadImage
 {
-    
+    /**
+     *  弹出提示框
+     */
+    //初始化提示框
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    //按钮：从相册选择，类型：UIAlertActionStyleDefault
+    [alert addAction:[UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImagePickerController *PickerImage = [[UIImagePickerController alloc]init];
+        //获取方式1：通过相册（呈现全部相册），UIImagePickerControllerSourceTypePhotoLibrary
+        //获取方式2，通过相机，UIImagePickerControllerSourceTypeCamera
+        //获取方方式3，通过相册（呈现全部图片），UIImagePickerControllerSourceTypeSavedPhotosAlbum
+        PickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;//方式1
+        //允许编辑，即放大裁剪
+        PickerImage.allowsEditing = YES;
+        //自代理
+        PickerImage.delegate = self;
+        //页面跳转
+        [self presentViewController:PickerImage animated:YES completion:nil];
+    }]];
+    //按钮：拍照，类型：UIAlertActionStyleDefault
+    [alert addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImagePickerController *PickerImage = [[UIImagePickerController alloc]init];
+        //获取方式1：通过相册（呈现全部相册），UIImagePickerControllerSourceTypePhotoLibrary
+        //获取方式2，通过相机，UIImagePickerControllerSourceTypeCamera
+        //获取方方式3，通过相册（呈现全部图片），UIImagePickerControllerSourceTypeSavedPhotosAlbum
+        PickerImage.sourceType = UIImagePickerControllerSourceTypeCamera;//方式1
+        //允许编辑，即放大裁剪
+        PickerImage.allowsEditing = YES;
+        //自代理
+        PickerImage.delegate = self;
+        //页面跳转
+        [self presentViewController:PickerImage animated:YES completion:nil];
+    }]];
+    //按钮：取消，类型：UIAlertActionStyleCancel
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+}
+
+//PickerImage完成后的代理方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    //定义一个newPhoto，用来存放我们选择的图片。
+    UIImage *newPhoto = [info objectForKey:@"UIImagePickerControllerEditedImage"];
+    //把newPhono设置成头像
+    [self.headImageView setImage:newPhoto];
+    //关闭当前界面，即回到主界面去
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -154,21 +199,27 @@
 }
 
 #pragma mark - 懒加载
-- (UIButton *)headButton
+- (UIImageView *)headImageView
 {
-    if (!_headButton) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.view.center.x - 63.5, 80, 127, 127)];
+    if (!_headImageView) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 63.5, 80, 127, 127)];
+        imageView.backgroundColor = [UIColor redColor];
+        imageView.image = [UIImage imageNamed:@"set_userphoto"];
         
-        [button setBackgroundImage:[UIImage imageNamed:@"set_userphoto"] forState:UIControlStateNormal];
-        [button setTitle:@"设置头像" forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(setHeadImage) forControlEvents:UIControlEventTouchUpInside];
+        imageView.layer.masksToBounds = YES;
+        imageView.layer.borderWidth = 1;
+        imageView.layer.borderColor = [UIColor whiteColor].CGColor;
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2;
         
-        [self.view addSubview:button];
-        _headButton = button;
+        imageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setHeadImage)];
+        [imageView addGestureRecognizer:tap];
+        
+        [self.view addSubview:imageView];
+        _headImageView = imageView;
     }
     
-    return _headButton;
+    return _headImageView;
 }
 
 - (UITextField *)userNameTextField

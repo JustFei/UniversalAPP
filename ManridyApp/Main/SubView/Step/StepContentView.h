@@ -10,4 +10,8 @@
 
 @interface StepContentView : UIView
 
+@property (weak, nonatomic) IBOutlet UILabel *stepLabel;
+@property (weak, nonatomic) IBOutlet UILabel *mileageAndkCalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *weekStatisticsLabel;
+
 @end

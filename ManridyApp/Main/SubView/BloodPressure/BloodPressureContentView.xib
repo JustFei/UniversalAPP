@@ -5,7 +5,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BloodPressureContentView"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BloodPressureContentView">
+            <connections>
+                <outlet property="bloodPressureHighState" destination="V32-7N-z28" id="VCV-L7-YQJ"/>
+                <outlet property="bloodPressureLabel" destination="3tT-Ww-UQj" id="dEb-J9-mzi"/>
+                <outlet property="bloodPressureLowState" destination="2VG-hJ-Cat" id="4uL-Ck-hmg"/>
+                <outlet property="heartRateLabel" destination="fyy-sv-sZa" id="tcY-fU-XVf"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="uff-X1-m9v" customClass="BloodPressureContentView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>

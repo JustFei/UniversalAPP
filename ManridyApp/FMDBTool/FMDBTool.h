@@ -10,6 +10,7 @@
 #import "FMDB.h"
 
 @class StepDataModel;
+@class UserInfoModel;
 
 typedef enum : NSUInteger {
     SQLTypeStep = 0,
@@ -17,6 +18,7 @@ typedef enum : NSUInteger {
     SQLTypeTemperature,
     SQLTypeSleep,
     SQLTypeBloodPressure,
+    SQLTypeUserInfoModel,
 } SQLType;
 
 @interface FMDBTool : NSObject

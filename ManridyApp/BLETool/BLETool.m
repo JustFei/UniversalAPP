@@ -410,7 +410,7 @@ static BLETool *bleTool = nil;
 //    }
 //#if 0
     //如果不是主动断开
-    NSLog(@"不需要断线重连");
+//    NSLog(@"不需要断线重连");
     if ([self.connectDelegate respondsToSelector:@selector(manridyBLEDidDisconnectDevice:)]) {
         [self.connectDelegate manridyBLEDidDisconnectDevice:self.currentDev];
     }
@@ -488,36 +488,7 @@ static BLETool *bleTool = nil;
 //订阅特征值发送变化的通知，所有获取到的值都将在这里进行处理
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-//    NSLog(@"notifyCharacteristic is change = %@",characteristic.value);
-//    
-//    NSString *value = [NSString stringWithFormat:@"%@",characteristic.value];
-//    
-//    NSMutableString *macString = [[NSMutableString alloc] init];
-//    
-//    [macString appendString:[[value substringWithRange:NSMakeRange(16, 2)] uppercaseString]];
-//    
-//    [macString appendString:@":"];
-//    
-//    [macString appendString:[[value substringWithRange:NSMakeRange(14, 2)] uppercaseString]];
-//    
-//    [macString appendString:@":"];
-//    
-//    [macString appendString:[[value substringWithRange:NSMakeRange(12, 2)] uppercaseString]];
-//    
-//    [macString appendString:@":"];
-//    
-//    [macString appendString:[[value substringWithRange:NSMakeRange(5, 2)] uppercaseString]];
-//    
-//    [macString appendString:@":"];
-//    
-//    [macString appendString:[[value substringWithRange:NSMakeRange(3, 2)] uppercaseString]];
-//    
-//    [macString appendString:@":"];
-//    
-//    [macString appendString:[[value substringWithRange:NSMakeRange(1, 2)] uppercaseString]];
-//    
-//    NSLog(@"macString:%@",macString);
-    
+    NSLog(@"updateValue == %@",characteristic);
     
     [self analysisDataWithCharacteristic:characteristic.value];
     

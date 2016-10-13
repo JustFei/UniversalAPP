@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TemperatureContentView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *currentTemperature;
+@property (weak, nonatomic) IBOutlet UILabel *temperatureState;
 
 @end

@@ -5,12 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
-            <connections>
-                <outlet property="heartRateLabel" destination="Awu-gB-sWC" id="0pt-Ab-5EC"/>
-                <outlet property="heartStateLabel" destination="mQq-V4-Tap" id="vR7-GL-s0H"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="92I-Ty-4z5" customClass="HeartRateContentView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -143,6 +138,10 @@
                 <constraint firstItem="xze-WW-jw8" firstAttribute="top" secondItem="92I-Ty-4z5" secondAttribute="top" id="pfD-c7-ZVG"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="heartRateLabel" destination="Awu-gB-sWC" id="1VU-39-pkH"/>
+                <outlet property="heartStateLabel" destination="mQq-V4-Tap" id="jkw-2i-swl"/>
+            </connections>
             <point key="canvasLocation" x="116" y="375"/>
         </view>
     </objects>

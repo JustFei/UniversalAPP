@@ -151,6 +151,10 @@
                 <constraint firstAttribute="trailing" secondItem="53Y-LZ-eJy" secondAttribute="trailing" id="s5V-4S-k16"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="currentTemperature" destination="xeA-lN-4WV" id="2w7-p8-dwz"/>
+                <outlet property="temperatureState" destination="pCc-CM-5u4" id="g37-4U-GeB"/>
+            </connections>
             <point key="canvasLocation" x="116" y="375"/>
         </view>
     </objects>

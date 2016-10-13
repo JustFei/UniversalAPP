@@ -8,6 +8,7 @@
 
 #import "FMDBTool.h"
 #import "StepDataModel.h"
+#import "UserInfoModel.h"
 
 
 @implementation FMDBTool
@@ -50,6 +51,11 @@ static FMDatabase *_fmdb;
                 break;
             case SQLTypeBloodPressure:
                 
+                break;
+            case SQLTypeUserInfoModel:
+            {
+                [_fmdb executeQuery:@"create table if not exists MotionData(id integer primary key, username text, gender text, age integer, height integer, weight integer, steplength integer);"];
+            }
                 break;
                 
             default:
@@ -160,5 +166,19 @@ static FMDatabase *_fmdb;
 #pragma mark - SleepData
 
 #pragma mark - BloodPressureData
+
+#pragma mark - UserInfoData
+- (BOOL)insertUserInfoModel:(UserInfoModel *)model
+{
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO MotionData(username, gender, age, height, weight, steplength) VALUES ('%@', '%@', '%ld', '%ld', '%ld', '%ld');", model.userName, model.gender, model.age, model.height, model.weight, model.stepLength];
+    
+    BOOL result = [_fmdb executeUpdate:insertSql];
+    if (result) {
+        NSLog(@"插入Motion数据成功");
+    }else {
+        NSLog(@"插入Motion数据失败");
+    }
+    return result;
+}
 
 @end

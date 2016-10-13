@@ -10,10 +10,6 @@
 
 @interface HeartRateContentView ()
 
-@property (weak, nonatomic) IBOutlet UILabel *heartRateLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *heartStateLabel;
-
 @end
 
 @implementation HeartRateContentView

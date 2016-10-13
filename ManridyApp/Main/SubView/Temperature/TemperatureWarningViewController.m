@@ -158,7 +158,7 @@ typedef enum : NSUInteger {
             break;
             
         case DataArrTypeInterval:
-            [self.intervalLabel setText:_intervalArr[row]];
+            [self.intervalLabel setText:[NSString stringWithFormat:@"%@ 分钟",_intervalArr[row]]];
             
             break;
             

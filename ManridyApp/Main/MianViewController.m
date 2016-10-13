@@ -13,13 +13,14 @@
 #import "SleepContentView.h"
 #import "BloodPressureContentView.h"
 #import "MenuContentView.h"
+#import "BLETool.h"
 
 #import "SettingViewController.h"
 
 #define WIDTH self.view.frame.size.width
 #define HEIGHT self.view.frame.size.height
 
-@interface MainViewController () <UIScrollViewDelegate>
+@interface MainViewController () <UIScrollViewDelegate ,BleReceiveDelegate>
 {
     NSArray *_titleArr;
     
@@ -41,6 +42,16 @@
 
 @property (nonatomic ,strong) StepContentView *stepView;
 
+@property (nonatomic ,strong) HeartRateContentView *heartRateView;
+
+@property (nonatomic ,strong) TemperatureContentView *temperatureView;
+
+@property (nonatomic ,strong) SleepContentView *sleepView;
+
+@property (nonatomic ,strong) BloodPressureContentView  *bloodPressureView;
+
+@property (nonatomic ,strong) BLETool *myBleTool;
+
 @end
 
 @implementation MainViewController
@@ -53,6 +64,67 @@
     _titleArr = @[@"计步",@"心率",@"体温",@"睡眠",@"血压"];
     
     [self createUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.myBleTool = [BLETool shareInstance];
+    self.myBleTool.receiveDelegate = self;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        switch (self.pageControl.currentPage) {
+            case 0:
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 0) {
+                        [self.myBleTool writeMotionRequestToPeripheral];
+                    }
+                });
+            }
+                break;
+            case 1:
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 1) {
+                        [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataLastData];
+                    }
+                });
+            }
+                break;
+            case 2:
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 2) {
+                        //读取当前体温
+                    }
+                });
+            }
+                break;
+            case 3:
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 3) {
+                        [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
+                    }
+                });
+            }
+                break;
+            case 4:
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 4) {
+                        //读取血压数据
+                    }
+                });
+            }
+                break;
+                
+            default:
+                break;
+        }
+    });
+    
+    
 }
 
 - (void)createUI
@@ -94,6 +166,102 @@
     
 }
 
+#pragma mark - BleReceiveDelegate
+//不同数据类型的回调
+//set time
+- (void)receiveSetTimeDataWithModel:(manridyModel *)manridyModel
+{
+    
+}
+
+//motion data
+- (void)receiveMotionDataWithModel:(manridyModel *)manridyModel
+{
+    if (manridyModel.isReciveDataRight) {
+        if (manridyModel.receiveDataType == ReturnModelTypeSportModel) {
+            [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
+            [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@公里/%@千卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
+            //保存motion数据到数据库
+        }
+    }
+}
+
+//motion zero
+- (void)receiveSetMotionZeroWithModel:(manridyModel *)manridyModel
+{
+    
+}
+
+//set heart rate test state
+- (void)receiveHeartRateTestWithModel:(manridyModel *)manridyModel
+{
+    
+}
+
+//get heart rate data
+- (void)receiveHeartRateDataWithModel:(manridyModel *)manridyModel
+{
+    if (manridyModel.isReciveDataRight) {
+        if (manridyModel.receiveDataType == ReturnModelTypeHeartRateModel) {
+            [self.heartRateView.heartRateLabel setText:manridyModel.heartRateModel.heartRate];
+        }
+    }
+}
+
+//get sleepInfo
+- (void)receiveSleepInfoWithModel:(manridyModel *)manridyModel
+{
+    if (manridyModel.isReciveDataRight) {
+        if (manridyModel.receiveDataType == ReturnModelTypeSleepModel) {
+            self.sleepView.sleepSumLabel.text = manridyModel.sleepModel.sumDataCount;
+            [self.sleepView.sleepSumLabel setText:@"test"];
+            self.sleepView.deepAndLowSleepLabel.text = [NSString stringWithFormat:@"深睡%@小时/浅睡%@小时",manridyModel.sleepModel.deepSleep ,manridyModel.sleepModel.lowSleep];
+            
+            NSInteger sleepSum = manridyModel.sleepModel.sumDataCount.integerValue;
+            
+            if (sleepSum <= 4) {
+                [self.sleepView.sleepStateLabel setText:@"极度缺乏睡眠"];
+                [self.sleepView.sleepStateLabel setTextColor:[UIColor redColor]];
+                
+                [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor redColor]];
+                [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor blackColor]];
+                [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor blackColor]];
+                [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor blackColor]];
+                
+            }else if (sleepSum > 4 && sleepSum < 6) {
+                [self.sleepView.sleepStateLabel setText:@"缺乏睡眠"];
+                [self.sleepView.sleepStateLabel setTextColor:[UIColor orangeColor]];
+                
+                [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor blackColor]];
+                [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor orangeColor]];
+                [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor blackColor]];
+                [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor blackColor]];
+                
+            }else if (sleepSum >= 6 && sleepSum < 8) {
+                [self.sleepView.sleepStateLabel setText:@"睡眠良好"];
+                [self.sleepView.sleepStateLabel setTextColor:[UIColor yellowColor]];
+                
+                [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor blackColor]];
+                [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor blackColor]];
+                [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor yellowColor]];
+                [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor blackColor]];
+                
+            }else if (sleepSum >= 8) {
+                [self.sleepView.sleepStateLabel setText:@"睡眠充足"];
+                [self.sleepView.sleepStateLabel setTextColor:[UIColor greenColor]];
+                
+                [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor blackColor]];
+                [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor blackColor]];
+                [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor blackColor]];
+                [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor greenColor]];
+                
+            }
+        }
+    }
+}
+
+
+#pragma mark - Action
 - (void)showHistoryView
 {
     
@@ -153,6 +321,58 @@
     
     [self.titleButton setTitle:_titleArr[i] forState:UIControlStateNormal];
     self.pageControl.currentPage = i;
+    
+    switch (self.pageControl.currentPage) {
+        case 0:
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.pageControl.currentPage == 0) {
+                    [self.myBleTool writeMotionRequestToPeripheral];
+                }
+            });
+        }
+            break;
+        case 1:
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.pageControl.currentPage == 1) {
+                    [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataLastData];
+                }
+            });
+        }
+            break;
+        case 2:
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.pageControl.currentPage == 2) {
+                    //读取当前体温
+                }
+            });
+        }
+            break;
+        case 3:
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.pageControl.currentPage == 3) {
+                    [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
+                }
+            });
+        }
+            break;
+        case 4:
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.pageControl.currentPage == 4) {
+                    //读取血压数据
+                }
+            });
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 
@@ -185,17 +405,17 @@
         self.stepView = [[StepContentView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
         [view addSubview:self.stepView];
         
-        HeartRateContentView *heartRateView = [[HeartRateContentView alloc] initWithFrame:CGRectMake(WIDTH, 0, WIDTH, HEIGHT)];
-        [view addSubview:heartRateView];
+        self.heartRateView = [[HeartRateContentView alloc] initWithFrame:CGRectMake(WIDTH, 0, WIDTH, HEIGHT)];
+        [view addSubview:self.heartRateView];
         
-        TemperatureContentView *temperatureView = [[TemperatureContentView alloc] initWithFrame:CGRectMake(2 * WIDTH, 0, WIDTH, HEIGHT)];
-        [view addSubview:temperatureView];
+        self.temperatureView = [[TemperatureContentView alloc] initWithFrame:CGRectMake(2 * WIDTH, 0, WIDTH, HEIGHT)];
+        [view addSubview:self.temperatureView];
         
-        SleepContentView *sleepView = [[SleepContentView alloc] initWithFrame:CGRectMake(3 * WIDTH, 0, WIDTH, HEIGHT)];
-        [view addSubview:sleepView];
+        self.sleepView = [[SleepContentView alloc] initWithFrame:CGRectMake(3 * WIDTH, 0, WIDTH, HEIGHT)];
+        [view addSubview:self.sleepView];
         
-        BloodPressureContentView  *bloodPressureView = [[BloodPressureContentView alloc] initWithFrame:CGRectMake(4 * WIDTH, 0, WIDTH, HEIGHT)];
-        [view addSubview:bloodPressureView];
+        self.bloodPressureView = [[BloodPressureContentView alloc] initWithFrame:CGRectMake(4 * WIDTH, 0, WIDTH, HEIGHT)];
+        [view addSubview:self.bloodPressureView];
         
         [self.view addSubview:view];
         _backGroundView = view;

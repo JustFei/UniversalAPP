@@ -10,10 +10,8 @@
 #import "StepTargetViewController.h"
 #import "BLETool.h"
 
-@interface StepContentView () <BleReceiveDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *stepLabel;
-@property (weak, nonatomic) IBOutlet UILabel *mileageAndkCalLabel;
-@property (weak, nonatomic) IBOutlet UILabel *weekStatisticsLabel;
+@interface StepContentView ()
+
 
 @property (nonatomic ,strong) BLETool *myBleTool;
 
@@ -28,8 +26,6 @@
         
         self = [[NSBundle mainBundle] loadNibNamed:@"StepContentView" owner:self options:nil].firstObject;
         self.frame = frame;
-        self.myBleTool = [BLETool shareInstance];
-        self.myBleTool.receiveDelegate = self;
     }
     return self;
 }
@@ -53,17 +49,7 @@
     
 }
 
-#pragma mark - BleReceiveDelegate
-- (void)receiveMotionDataWithModel:(manridyModel *)manridyModel
-{
-    if (manridyModel.isReciveDataRight) {
-        if (manridyModel.receiveDataType == ReturnModelTypeSportModel) {
-            [self.stepLabel setText:manridyModel.sportModel.stepNumber];
-            [self.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@公里/%@千卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
-            //保存motion数据到数据库
-        }
-    }
-}
+
 
 //- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
 //    // 1.自己先处理事件...
