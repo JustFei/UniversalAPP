@@ -10,7 +10,7 @@
 
 @implementation StepDataModel
 
-+ (instancetype)modelWith: (NSString *)date step:(NSString *)step kCal:(NSString *)kCal mileage:(NSString *)mileage bpm:(NSString *)bpm
++ (instancetype)modelWith: (NSString *)date step:(NSString *)step kCal:(NSString *)kCal mileage:(NSString *)mileage
 {
     StepDataModel *model = [[StepDataModel alloc] init];
     model.date = date;

@@ -31,6 +31,6 @@
 @property (nonatomic , copy) NSString *mileage;
 
 
-+ (instancetype)modelWith: (NSString *)date step:(NSString *)step kCal:(NSString *)kCal mileage:(NSString *)mileage bpm:(NSString *)bpm;
++ (instancetype)modelWith: (NSString *)date step:(NSString *)step kCal:(NSString *)kCal mileage:(NSString *)mileage;
 
 @end

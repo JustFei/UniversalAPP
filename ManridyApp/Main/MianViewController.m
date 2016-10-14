@@ -14,6 +14,8 @@
 #import "BloodPressureContentView.h"
 #import "MenuContentView.h"
 #import "BLETool.h"
+#import "FMDBTool.h"
+#import "StepDataModel.h"
 
 #import "SettingViewController.h"
 
@@ -51,6 +53,8 @@
 @property (nonatomic ,strong) BloodPressureContentView  *bloodPressureView;
 
 @property (nonatomic ,strong) BLETool *myBleTool;
+
+@property (nonatomic ,strong) FMDBTool *myFmdbTool;
 
 @end
 
@@ -182,6 +186,22 @@
             [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
             [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@公里/%@千卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
             //保存motion数据到数据库
+            
+            NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+            [dateformatter setDateFormat:@"YYYY-MM-dd"];
+            NSDate *currentDate = [NSDate date];
+            NSString *currentDateString = [dateformatter stringFromDate:currentDate];
+            
+            NSArray *stepArr = [self.myFmdbTool queryStepWithDate:currentDateString];
+            
+            StepDataModel *model = [StepDataModel modelWith:currentDateString step:manridyModel.sportModel.stepNumber kCal:manridyModel.sportModel.kCalNumber mileage:manridyModel.sportModel.mileageNumber];
+            
+            
+            if (stepArr.count == 0) {
+                [self.myFmdbTool insertStepModel:model];
+            }else {
+                [self.myFmdbTool modifyStepWithDate:currentDateString model:model];
+            }
         }
     }
 }
@@ -467,6 +487,17 @@
     }
     
     return _pageControl;
+}
+
+- (FMDBTool *)myFmdbTool
+{
+    if (!_myFmdbTool) {
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"username"]) {
+            _myFmdbTool = [[FMDBTool alloc] initWithPath:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
+        }
+    }
+    
+    return _myFmdbTool;
 }
 
 @end

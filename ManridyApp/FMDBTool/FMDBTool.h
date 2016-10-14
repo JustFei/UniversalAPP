@@ -23,7 +23,7 @@ typedef enum : NSUInteger {
 
 @interface FMDBTool : NSObject
 
-- (instancetype)initWithPath:(NSString *)path withSQLType:(SQLType)sqlType;
+- (instancetype)initWithPath:(NSString *)path;
 
 #pragma mark - StepData 
 //插入模型数据
@@ -45,5 +45,12 @@ typedef enum : NSUInteger {
 #pragma mark - SleepData
 
 #pragma mark - BloodPressureData
+
+#pragma mark - UserInfoData
+- (BOOL)insertUserInfoModel:(UserInfoModel *)model;
+
+- (NSArray *)queryAllUserInfo;
+
+- (BOOL)modifyUserInfoWithID:(NSInteger)Id model:(UserInfoModel *)model;
 
 @end

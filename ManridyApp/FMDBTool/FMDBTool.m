@@ -22,7 +22,7 @@ static FMDatabase *_fmdb;
  *  @param path 数据库名字，以用户名+MotionData命名
  *
  */
-- (instancetype)initWithPath:(NSString *)path withSQLType:(SQLType)sqlType
+- (instancetype)initWithPath:(NSString *)path
 {
     self = [super init];
     
@@ -35,32 +35,14 @@ static FMDatabase *_fmdb;
         if ([_fmdb open]) {
             NSLog(@"数据库打开成功");
         }
-        switch (sqlType) {
-            case SQLTypeStep:
-                [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists MotionData(id integer primary key, date text, step text, kCal text, mileage text);"]];
-                break;
-            case SQLTypeHeartRate:
-                //心率数据库还没有建立好
-                [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists GPSData(id integer primary key, );"]];
-                break;
-            case SQLTypeTemperature:
-                
-                break;
-            case SQLTypeSleep:
-                
-                break;
-            case SQLTypeBloodPressure:
-                
-                break;
-            case SQLTypeUserInfoModel:
-            {
-                [_fmdb executeQuery:@"create table if not exists MotionData(id integer primary key, username text, gender text, age integer, height integer, weight integer, steplength integer);"];
-            }
-                break;
-                
-            default:
-                break;
-        }
+
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists MotionData(id integer primary key, date text, step text, kCal text, mileage text);"]];
+        
+        //心率数据库还没有建立好
+        //                [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists GPSData(id integer primary key, );"]];
+        
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists UserInfoData(id integer primary key, username text, gender text, age integer, height integer, weight integer, steplength integer);"]];
+        
     }
     
     return self;
@@ -170,7 +152,7 @@ static FMDatabase *_fmdb;
 #pragma mark - UserInfoData
 - (BOOL)insertUserInfoModel:(UserInfoModel *)model
 {
-    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO MotionData(username, gender, age, height, weight, steplength) VALUES ('%@', '%@', '%ld', '%ld', '%ld', '%ld');", model.userName, model.gender, model.age, model.height, model.weight, model.stepLength];
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO UserInfoData(username, gender, age, height, weight, steplength) VALUES ('%@', '%@', '%ld', '%ld', '%ld', '%ld');", model.userName, model.gender, (long)model.age, model.height, model.weight, model.stepLength];
     
     BOOL result = [_fmdb executeUpdate:insertSql];
     if (result) {
@@ -180,5 +162,51 @@ static FMDatabase *_fmdb;
     }
     return result;
 }
+
+- (NSArray *)queryAllUserInfo {
+    
+    NSString *queryString;
+    
+    queryString = [NSString stringWithFormat:@"SELECT * FROM UserInfoData;"];
+    
+    NSMutableArray *arrM = [NSMutableArray array];
+    FMResultSet *set = [_fmdb executeQuery:queryString];
+    
+    while ([set next]) {
+        
+        NSString *userName = [set stringForColumn:@"username"];
+        NSString *gender = [set stringForColumn:@"gender"];
+        NSInteger age = [set intForColumn:@"age"];
+        NSInteger height = [set intForColumn:@"height"];
+        NSInteger weight = [set intForColumn:@"weight"];
+        NSInteger steplength = [set intForColumn:@"steplength"];
+        
+        UserInfoModel *model = [UserInfoModel userInfoModelWithUserName:userName andGender:gender andAge:age andHeight:height andWeight:weight andStepLength:steplength];
+        
+        NSLog(@"%@,%@,%ld,%ld,%ld,%ld",model.userName ,model.gender ,model.age ,model.height ,model.weight ,model.stepLength);
+        
+        [arrM addObject:model];
+    }
+    
+    NSLog(@"Motion查询成功");
+    return arrM;
+}
+
+- (BOOL)modifyUserInfoWithID:(NSInteger)Id model:(UserInfoModel *)model
+{
+    
+    NSString *modifySql = [NSString stringWithFormat:@"update UserInfoData set username = ?, gender = ?, age = ?, height = ?, weight = ?, steplength = ? where id = ?" ];
+    
+    BOOL modifyResult = [_fmdb executeUpdate:modifySql, model.userName, model.gender, model.age, model.height, model.weight, model.stepLength, Id];
+    
+    if (modifyResult) {
+        NSLog(@"Motion数据修改成功");
+    }else {
+        NSLog(@"Motion数据修改失败");
+    }
+    
+    return modifyResult;
+}
+
 
 @end

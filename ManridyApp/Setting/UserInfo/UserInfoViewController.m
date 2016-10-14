@@ -8,6 +8,10 @@
 
 #import "UserInfoViewController.h"
 #import "UserInfoCell.h"
+#import "FMDBTool.h"
+#import "UserInfoModel.h"
+#import "MBProgressHUD.h"
+#import "UserListViewController.h"
 
 @interface UserInfoViewController () <UITableViewDelegate ,UITableViewDataSource ,UITextFieldDelegate ,UINavigationControllerDelegate ,UIImagePickerControllerDelegate ,UIAlertViewDelegate>
 {
@@ -21,9 +25,23 @@
 
 @property (nonatomic ,weak) UITextField *userNameTextField;
 
+@property (nonatomic ,weak) UILabel *genderLabel;
+
+@property (nonatomic ,weak) UITextField *ageTextField;
+
+@property (nonatomic ,weak) UITextField *heightTextField;
+
+@property (nonatomic ,weak) UITextField *weightTextField;
+
+@property (nonatomic ,weak) UITextField *steplengthTextField;
+
 @property (nonatomic ,weak) UITableView *infoTableView;
 
 @property (nonatomic ,weak) UIButton *saveButton;
+
+@property (nonatomic ,strong) FMDBTool *myFmdbTool;
+
+@property (nonatomic ,strong) MBProgressHUD *hud;
 
 @end
 
@@ -38,6 +56,8 @@
     _unitArr = @[@"",@"(岁)",@"(cm)",@"(kg)",@"(cm)"];
     
     self.navigationItem.title = @"用户信息";
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换用户" style:UIBarButtonItemStylePlain target:self action:@selector(changeUser)];
     
     self.view.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
     
@@ -89,6 +109,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Action
 - (void)setHeadImage
 {
     /**
@@ -144,6 +165,47 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark -ButtonAction
+- (void)saveUserInfo
+{
+    if (self.userNameTextField.text.length != 0 || self.ageTextField.text.length != 0 || self.heightTextField.text.length != 0 || self.weightTextField.text.length != 0 || self.steplengthTextField.text.length != 0) {
+        
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.mode = MBProgressHUDModeIndeterminate;
+        
+        NSArray *userArr = [self.myFmdbTool queryAllUserInfo];
+        
+        UserInfoModel *model = [UserInfoModel userInfoModelWithUserName:self.userNameTextField.text andGender:self.genderLabel.text andAge:self.ageTextField.text.integerValue andHeight:self.heightTextField.text.integerValue andWeight:self.weightTextField.text.integerValue andStepLength:self.steplengthTextField.text.integerValue];
+       
+        if (userArr.count != 0) {
+           BOOL isSuccess = [self.myFmdbTool insertUserInfoModel:model];
+            if (isSuccess) {
+                self.hud.label.text = @"保存成功！";
+                [self.hud hideAnimated:YES afterDelay:1];
+            }else {
+                self.hud.label.text = @"保存失败，请重新尝试！";
+                [self.hud hideAnimated:YES afterDelay:1];
+            }
+        }else {
+//            [self.myFmdbTool modifyUserInfoWithID:1 model:model];
+        }
+    }else {
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"信息输入不完整，可能会对数据测量产生影响，请输入完整！" preferredStyle:UIAlertControllerStyleAlert];
+        [vc addAction:[UIAlertAction actionWithTitle:@"提示" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        
+        [self presentViewController:vc animated:YES completion:nil];
+         
+    }
+}
+
+- (void)changeUser
+{
+    UserListViewController *vc = [[UserListViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - UITextFieldDelegate
 //- (void)textFieldDidBeginEditing:(UITextField *)textField
 //{
@@ -177,10 +239,31 @@
     if (indexPath.row == 0) {
         [cell.genderLabel setHidden:NO];
         [cell.textField setHidden:YES];
+        
+        self.genderLabel = cell.genderLabel;
     }else {
         [cell.genderLabel setHidden:YES];
         cell.textField.placeholder = _fieldPlaceholdeArr[indexPath.row];
         cell.textField.delegate = self;
+        
+        switch (indexPath.row) {
+            case 1:
+                self.ageTextField = cell.textField;
+                break;
+            case 2:
+                self.heightTextField = cell.textField;
+                break;
+            case 3:
+                self.weightTextField = cell.textField;
+                break;
+            case 4:
+                self.steplengthTextField = cell.textField;
+                break;
+                
+            default:
+                break;
+        }
+        
     }
     
     [cell.nameLabel setText:_nameArr[indexPath.row]];
@@ -265,6 +348,7 @@
 {
     if (!_saveButton) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.view.center.x - 85, self.infoTableView.frame.origin.y + 220 + 20, 170, 44)];
+        [button addTarget:self action:@selector(saveUserInfo) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:@"保存" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         button.clipsToBounds = YES;
@@ -275,6 +359,16 @@
     }
     
     return _saveButton;
+}
+
+- (FMDBTool *)myFmdbTool
+{
+    if (!_myFmdbTool) {
+        _myFmdbTool = [[FMDBTool alloc] initWithPath:@"UserList"];
+        [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text forKey:@"username"];
+    }
+    
+    return _myFmdbTool;
 }
 
 /*
