@@ -51,6 +51,6 @@ typedef enum : NSUInteger {
 
 - (NSArray *)queryAllUserInfo;
 
-- (BOOL)modifyUserInfoWithID:(NSInteger)Id model:(UserInfoModel *)model;
+- (BOOL)modifyUserInfoWithID:(NSInteger)ID model:(UserInfoModel *)model;
 
 @end

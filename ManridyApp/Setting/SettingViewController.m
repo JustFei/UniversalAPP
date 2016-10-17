@@ -23,7 +23,19 @@
     
     self.navigationItem.title = @"设置";
     
-    self.setView.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+   self.setView.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
+//    [self.view addSubview:self.setView];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    [self.setView removeFromSuperview];
 }
 
 - (void)didReceiveMemoryWarning {

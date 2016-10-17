@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *stepLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mileageAndkCalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weekStatisticsLabel;
+@property (weak, nonatomic) IBOutlet UIView *downView;
 
 @end

@@ -41,6 +41,12 @@
     [super layoutSubviews];
     
     self.headView.frame = CGRectMake(self.center.x - 62.5, 80, 125, 125);
+    self.headView.layer.masksToBounds = YES;
+    self.headView.layer.cornerRadius = self.headView.frame.size.width / 2;
+    self.headView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.headView.layer.borderWidth = 1;
+    
+    
     self.userNameLabel.frame = CGRectMake(self.center.x - 100, 215, 200, 34);
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.width * 261 / 320, self.frame.size.width, 13)];
@@ -50,6 +56,16 @@
     self.functionTableView.frame = CGRectMake(0, 274, self.frame.size.width, self.frame.size.height - 274);
     
     self.headView.layer.cornerRadius = self.headView.frame.size.width / 2;
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]) {
+        [self.userNameLabel setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]];
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userheadimage"]) {
+//        [self.headView setImage:[[NSUserDefaults standardUserDefaults] objectForKey:@"userheadimage"]];
+        NSData *imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"userheadimage"];
+        [self.headView setImage:[UIImage imageWithData:imageData]];
+    }
 }
 
 #pragma mark - UITabelViewDelegate && UITableViewDataSource
@@ -110,7 +126,7 @@
     if (!_headView) {
         UIImageView *view = [[UIImageView alloc] init];
         view.image = [UIImage imageNamed:@""];
-        view.backgroundColor = [UIColor redColor];
+        view.backgroundColor = [UIColor whiteColor];
         
         [self addSubview:view];
         _headView = view;

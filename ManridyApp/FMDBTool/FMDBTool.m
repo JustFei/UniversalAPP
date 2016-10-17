@@ -58,7 +58,7 @@ static FMDatabase *_fmdb;
  */
 - (BOOL)insertStepModel:(StepDataModel *)model
 {
-    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO MotionData(date, step, kCal, mileage, bpm) VALUES ('%@', '%@', '%@', '%@');", model.date, model.step, model.kCal, model.mileage];
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO MotionData(date, step, kCal, mileage) VALUES ('%@', '%@', '%@', '%@');", model.date, model.step, model.kCal, model.mileage];
     
     BOOL result = [_fmdb executeUpdate:insertSql];
     if (result) {
@@ -192,12 +192,12 @@ static FMDatabase *_fmdb;
     return arrM;
 }
 
-- (BOOL)modifyUserInfoWithID:(NSInteger)Id model:(UserInfoModel *)model
+- (BOOL)modifyUserInfoWithID:(NSInteger)ID model:(UserInfoModel *)model
 {
     
     NSString *modifySql = [NSString stringWithFormat:@"update UserInfoData set username = ?, gender = ?, age = ?, height = ?, weight = ?, steplength = ? where id = ?" ];
     
-    BOOL modifyResult = [_fmdb executeUpdate:modifySql, model.userName, model.gender, model.age, model.height, model.weight, model.stepLength, Id];
+    BOOL modifyResult = [_fmdb executeUpdate:modifySql, model.userName, model.gender, @(model.age), @(model.height), @(model.weight), @(model.stepLength), @(ID)];
     
     if (modifyResult) {
         NSLog(@"Motion数据修改成功");

@@ -10,9 +10,13 @@
 #import "MainViewController.h"
 #import "BLETool.h"
 #import "manridyBleDevice.h"
+#import <CoreTelephony/CTCallCenter.h>
+#import <CoreTelephony/CTCall.h>
 
 @interface AppDelegate () <BleDiscoverDelegate, BleConnectDelegate>
-
+{
+    CTCallCenter *_callCenter;
+}
 @property (nonatomic ,strong) BLETool *myBleTool;
 
 @end
@@ -26,6 +30,14 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    
+    
+    // 监控通话信息
+    CTCallCenter *center = [[CTCallCenter alloc] init];
+    _callCenter = center;
+    // 获取并输出手机的运营商信息
+    [self aboutCall];
     
     self.myBleTool = [BLETool shareInstance];
     self.myBleTool.discoverDelegate = self;
@@ -52,6 +64,27 @@
     self.window.rootViewController = nc;
     
     return YES;
+}
+
+- (void) aboutCall{
+    //获取电话接入信息
+    _callCenter.callEventHandler = ^(CTCall *call){
+        if ([call.callState isEqualToString:CTCallStateDisconnected]){
+            NSLog(@"Call has been disconnected");
+            
+        }else if ([call.callState isEqualToString:CTCallStateConnected]){
+            NSLog(@"Call has just been connected");
+            
+        }else if([call.callState isEqualToString:CTCallStateIncoming]){
+            NSLog(@"Call is incoming");
+            
+        }else if ([call.callState isEqualToString:CTCallStateDialing]){
+            NSLog(@"call is dialing");
+            
+        }else{
+            NSLog(@"Nothing is done");
+        }
+    };
 }
 
 - (void)manridyBLEDidDiscoverDeviceWithMAC:(manridyBleDevice *)device

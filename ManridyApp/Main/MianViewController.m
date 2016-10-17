@@ -492,8 +492,8 @@
 - (FMDBTool *)myFmdbTool
 {
     if (!_myFmdbTool) {
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"username"]) {
-            _myFmdbTool = [[FMDBTool alloc] initWithPath:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]) {
+            _myFmdbTool = [[FMDBTool alloc] initWithPath:[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]];
         }
     }
     

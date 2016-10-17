@@ -10,18 +10,26 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
-		<key>04A560F52D217CB48455040D73A48C5E</key>
+		<key>001BFFBCAF0F61AFD08FE826515C4A55</key>
 		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>fileRef</key>
+			<string>89EC2896B9EA0CA0193709948C0DFCE9</string>
 			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>9F12FB4A63E20F601CFB2E64A65B57C1</string>
-			<key>remoteInfo</key>
-			<string>FMDB</string>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>048349151A69F8E9082E0AB1F4F61B1A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7782225E6187B09651259B783E060FB5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>050B66E154969A68944942A22BD9B314</key>
 		<dict>
@@ -109,10 +117,93 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
+		<key>07F802EBE02096BCE33E49FDF871736C</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>F6605AED164D341D7FA378B74CA795B5</string>
+				<string>D76D29EF7147D17DF6E021B840A7DBAE</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>0A61CB7839CCF361AAE20196FCB9E18E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>JBShapeLineLayer.h</string>
+			<key>path</key>
+			<string>Classes/Line/Layers/JBShapeLineLayer.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0B74A5845A99CE82257E9F7D768B7BFB</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>51D492F842E8160CF68D96FB6ED5199F</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/JBChartView/JBChartView-prefix.pch</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>0CE63AB507E3EEDD5966E3CAA7836DE8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C36D97A159B0C7FED67FAE32389DC264</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>0EACC4DEDBD71C44AE963FC7C34D7A05</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>3296E277CE972FEE37068FFFFA9E2EDE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
 		<key>0EF8E9AA652DBE2745A7D5C8CD2E3BDE</key>
 		<dict>
 			<key>fileRef</key>
-			<string>BCA7265C71B0E24B7C42FB40BBD1831B</string>
+			<string>9B6C3A712FCE3C530A417FC011178D18</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -124,7 +215,7 @@
 		<key>0F8A8E0D6FAEBF758E0B4D620335F094</key>
 		<dict>
 			<key>fileRef</key>
-			<string>3CC1ACD603EF57EA44C7F8DAC9B81AF3</string>
+			<string>9ECE9229F29F38E6356EC6452BBF4B3B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -134,6 +225,30 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>10EA3974BE6E521964C5B036DAB078D1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EA2A1DB08E809C2227547CA265D4F8F4</string>
+				<string>2572238247ED5F970BDBD1E518AEEA9A</string>
+				<string>916EB41D96B28E4AD0AC61F384A42974</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/FMDB</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>114D60FAB6332611931FAAC0C509F069</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1834BC43D10DBFAD3018EE56E5FA34B9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>122DA2E5084A4393C29BE363C764795C</key>
 		<dict>
@@ -148,32 +263,48 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>16F0EF10B9566DD930A3F09DAA280999</key>
+		<key>142D15DCE317A0FE981CD21344954108</key>
 		<dict>
-			<key>buildConfigurationList</key>
-			<string>AFAD958916CE262D530DC0264BFD0659</string>
-			<key>buildPhases</key>
-			<array>
-				<string>F0BF6158F9064B4E763A0D23ECC2C3BD</string>
-				<string>A3B9F7E92760F13A1E3102C8DFB3A20A</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>4DD7ECB48C80A016AED19F4120F3A26B</string>
-				<string>3254EA7A9239797B0F555DD9503F5E0C</string>
-			</array>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
 			<key>isa</key>
-			<string>PBXNativeTarget</string>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>CDB1C8A47DD3943770D41E1A3B42F7DF</string>
+			<key>remoteInfo</key>
+			<string>JBChartView</string>
+		</dict>
+		<key>168D236D689DC6F94C0F98C85B5AB6F8</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>Pods-ManridyApp</string>
-			<key>productName</key>
-			<string>Pods-ManridyApp</string>
-			<key>productReference</key>
-			<string>8E795BE9E99FE1948EAB5C496399E237</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
+			<string>JBLineChartLinesView.m</string>
+			<key>path</key>
+			<string>Classes/Line/Views/JBLineChartLinesView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1834BC43D10DBFAD3018EE56E5FA34B9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>JBLineChartDotView.m</string>
+			<key>path</key>
+			<string>Classes/Line/Views/JBLineChartDotView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>19815733281B0FA04AC447C1AA107169</key>
 		<dict>
@@ -188,6 +319,57 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>1A165CADE938C238CFA8085791F60E67</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>JBGradientBarView.m</string>
+			<key>path</key>
+			<string>Classes/Bar/Views/JBGradientBarView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1A9FAFDF5B78B3831195E3BC0E6DF632</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>524701FD96C8F0CE1DA22BA8B7FB3727</string>
+				<string>C778AFBDC0DCCAA6A4AFCD1036CF98C6</string>
+				<string>A3F4C2F7A307DC3990F5CA5CCF2F6BD3</string>
+				<string>38EFEBF920D45D3250B7BB6C1104C990</string>
+				<string>9ECE9229F29F38E6356EC6452BBF4B3B</string>
+				<string>9B6C3A712FCE3C530A417FC011178D18</string>
+				<string>D84DE166B0A26CF1B511446C2521319D</string>
+				<string>C274914B419F6DB5296B55E329969802</string>
+				<string>F159407E41DC92EC103052CFA0AD2A95</string>
+				<string>C14A7C43A5A18BF1962B4CA9E0E5CEF9</string>
+				<string>B91FD965D353F0366FE26B9878EABA14</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>standard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1B37A7980A5BC6B283C3DF348CA953AF</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>9A5667A348928AE72EFD75A2665F94FA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
 		<key>1B8FB356F4CF6DF7487B9252E983A93E</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -201,37 +383,38 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>1C730648885EC1B4EEC51F8CD713E313</key>
+		<key>1D460DEBDF7EC78BCB047150AF03102B</key>
 		<dict>
-			<key>baseConfigurationReference</key>
-			<string>3CC453E6A9B100582E3E31F67B59D1BD</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
+			<key>fileRef</key>
+			<string>1A165CADE938C238CFA8085791F60E67</string>
 			<key>isa</key>
-			<string>XCBuildConfiguration</string>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1D853CFC3150EC05640B81BE6172F497</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
 			<key>name</key>
-			<string>Debug</string>
+			<string>JBChartView</string>
+			<key>target</key>
+			<string>CDB1C8A47DD3943770D41E1A3B42F7DF</string>
+			<key>targetProxy</key>
+			<string>142D15DCE317A0FE981CD21344954108</string>
+		</dict>
+		<key>1EAFB2BC849703514C938D3E7AD238FA</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>NSMutableArray+JBStack.h</string>
+			<key>path</key>
+			<string>Classes/Additions/NSMutableArray+JBStack.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>1F97048AF18C3EFEDE731BDEECCD58A8</key>
 		<dict>
@@ -247,10 +430,65 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
+		<key>1FF441B5A2347F84E1F33E6D4CB58B59</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>JBLineChartDotsView.m</string>
+			<key>path</key>
+			<string>Classes/Line/Views/JBLineChartDotsView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2572238247ED5F970BDBD1E518AEEA9A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FMDB-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>280DF29D4EB3B796B3EEABA7D33E19C8</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>MBProgressHUD-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>281A9540C32020379E3DE369DBFD22D6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1EAFB2BC849703514C938D3E7AD238FA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
 		<key>282081E035E7A843068E8BCC2E07C217</key>
 		<dict>
 			<key>fileRef</key>
-			<string>7D7A44D103A51A262E2B3664489EDAEF</string>
+			<string>C274914B419F6DB5296B55E329969802</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -258,6 +496,40 @@
 				<key>COMPILER_FLAGS</key>
 				<string>-DOS_OBJECT_USE_OBJC=0</string>
 			</dict>
+		</dict>
+		<key>2D1F36F394E14B3676E814FD558D6BD3</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>51D492F842E8160CF68D96FB6ED5199F</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/JBChartView/JBChartView-prefix.pch</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
 		</dict>
 		<key>2D8E8EC45A3A1A1D94AE762CB5028504</key>
 		<dict>
@@ -273,17 +545,10 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>3050B887C4ED8319339E6CF6CA9FB9AE</key>
+		<key>2E7D4EE95806438DE28F41F4F95A2193</key>
 		<dict>
 			<key>fileRef</key>
-			<string>37ECA5F82C19F792E4F5146A01C56514</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>313531CEDA0294311D87B4F4C3F073F4</key>
-		<dict>
-			<key>fileRef</key>
-			<string>CAEB568CD807FA2F9D2D104A6C592703</string>
+			<string>C306E9DC2F24F631A8E10E6BCC949D7C</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -294,31 +559,39 @@
 				</array>
 			</dict>
 		</dict>
-		<key>32516D1BACCDEDE524A78326B2A14665</key>
+		<key>313531CEDA0294311D87B4F4C3F073F4</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>fileRef</key>
+			<string>F159407E41DC92EC103052CFA0AD2A95</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>FMDatabase.m</string>
-			<key>path</key>
-			<string>src/fmdb/FMDatabase.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
-		<key>3254EA7A9239797B0F555DD9503F5E0C</key>
+		<key>319BDF36DB9B89C24C517EFC9FE6185D</key>
 		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>EC7BD822E3A1E8B46C2D0EBE032F994B</string>
+			</array>
 			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>MBProgressHUD</string>
-			<key>target</key>
-			<string>D058B89EB3B3DF45457A2DCD3971AFFE</string>
-			<key>targetProxy</key>
-			<string>5A5AB8DC7CCC4677EA692B6E566D5F90</string>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>3296E277CE972FEE37068FFFFA9E2EDE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1B8FB356F4CF6DF7487B9252E983A93E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>3776843F8B3D5AD0956869AB1B21CFAD</key>
 		<dict>
@@ -326,21 +599,6 @@
 			<string>37ECA5F82C19F792E4F5146A01C56514</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>37BD77960CB78235D8E728A6E82AB4AF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>FMDatabaseAdditions.h</string>
-			<key>path</key>
-			<string>src/fmdb/FMDatabaseAdditions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>37ECA5F82C19F792E4F5146A01C56514</key>
 		<dict>
@@ -354,6 +612,72 @@
 			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework</string>
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>382A12F8ABABF389A18F9CF6621939CD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9FEA3DC5EFA65F40B17500C35C671813</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>38A3A52DD447EE62AA4536067C62ED2D</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>9F12FB4A63E20F601CFB2E64A65B57C1</string>
+			<key>remoteInfo</key>
+			<string>FMDB</string>
+		</dict>
+		<key>38EFEBF920D45D3250B7BB6C1104C990</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>FMDatabaseAdditions.m</string>
+			<key>path</key>
+			<string>src/fmdb/FMDatabaseAdditions.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3A42C5CE54AE4D7A5CD35290A4D81422</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>CEEA41A9E7C4B42CA95D4218F6D0AD19</string>
+				<string>2E7D4EE95806438DE28F41F4F95A2193</string>
+				<string>A3FF50F94157C67AC812ADD1D3FF1E7E</string>
+				<string>382A12F8ABABF389A18F9CF6621939CD</string>
+				<string>B249B965376F794FE4D4EF016A2521A5</string>
+				<string>631693358344BD51D28D27F7C0461DBD</string>
+				<string>C63B613BCA115FB49A812CDB392A9EFF</string>
+				<string>5F1BC851B99204E73A5A1A48A0681AF7</string>
+				<string>85BB4EE8693D2CC8568CC2F83C19FB44</string>
+				<string>001BFFBCAF0F61AFD08FE826515C4A55</string>
+				<string>679D4EC8D9BD2739DB98303FB900B8BB</string>
+				<string>281A9540C32020379E3DE369DBFD22D6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
 		</dict>
 		<key>3AC899FD215914230EB9D8B57AD910D0</key>
 		<dict>
@@ -369,21 +693,6 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>3CC1ACD603EF57EA44C7F8DAC9B81AF3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>FMDatabasePool.h</string>
-			<key>path</key>
-			<string>src/fmdb/FMDatabasePool.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>3CC453E6A9B100582E3E31F67B59D1BD</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -397,7 +706,27 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>3D08B903C612F00D0F163E8D91006126</key>
+		<key>3D0F69C4CA35EB6A1F686BA88B19B4F6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2572238247ED5F970BDBD1E518AEEA9A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>466E0E12CC40B6CFF4C2CF82AC1BD03B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>MBProgressHUD-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4712380D64ECB0225F329022E21DA375</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -406,41 +735,26 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>FMDatabaseAdditions.m</string>
+			<string>JBChartView.m</string>
 			<key>path</key>
-			<string>src/fmdb/FMDatabaseAdditions.m</string>
+			<string>Classes/Base/JBChartView.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>3D0F69C4CA35EB6A1F686BA88B19B4F6</key>
+		<key>48CA9D091C0A28EDFCB6335779FCE49B</key>
 		<dict>
-			<key>fileRef</key>
-			<string>E4218FBA6F9722BEF76950CBA81D39DA</string>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
 			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3E9CC3E4E7441CC8DD888DCB493596A3</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>BF3FBFFF10AEA36FAAA01CA320DF52A0</string>
-				<string>32516D1BACCDEDE524A78326B2A14665</string>
-				<string>37BD77960CB78235D8E728A6E82AB4AF</string>
-				<string>3D08B903C612F00D0F163E8D91006126</string>
-				<string>3CC1ACD603EF57EA44C7F8DAC9B81AF3</string>
-				<string>BCA7265C71B0E24B7C42FB40BBD1831B</string>
-				<string>B2CE9596B3FBD972F7483C5B852E3716</string>
-				<string>7D7A44D103A51A262E2B3664489EDAEF</string>
-				<string>CAEB568CD807FA2F9D2D104A6C592703</string>
-				<string>6E821650B8FC0D68B5DA52063BADD083</string>
-				<string>6454526665CBBA67599AE6CF49AAA40F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXFileReference</string>
 			<key>name</key>
-			<string>standard</string>
+			<string>libMBProgressHUD.a</string>
+			<key>path</key>
+			<string>libMBProgressHUD.a</string>
 			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>491C720A163A8404747C03716693AA4C</key>
 		<dict>
@@ -455,34 +769,62 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>4B38C8B912A867BD7D914C7EF0B3301E</key>
+		<key>4976E61626C9CB5AC75C599A9908C5BC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DEAA9ACE92FC7EB1D2076EEFC5AB5ECC</string>
+				<string>C999A008C40DBA4A5E2D464B99D4A292</string>
+				<string>84C65755CF2745D6D265F10078A6ADCB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>MBProgressHUD</string>
+			<key>path</key>
+			<string>MBProgressHUD</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4ED6E4A0BE7774BA5B134D985389EB68</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F214EE22AB6A8707C6CC1A4713CBDA9D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>51D492F842E8160CF68D96FB6ED5199F</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>text.xcconfig</string>
 			<key>path</key>
-			<string>MBProgressHUD-dummy.m</string>
+			<string>JBChartView.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>4DD7ECB48C80A016AED19F4120F3A26B</key>
+		<key>524701FD96C8F0CE1DA22BA8B7FB3727</key>
 		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXTargetDependency</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>FMDB</string>
-			<key>target</key>
-			<string>9F12FB4A63E20F601CFB2E64A65B57C1</string>
-			<key>targetProxy</key>
-			<string>04A560F52D217CB48455040D73A48C5E</string>
+			<string>FMDatabase.h</string>
+			<key>path</key>
+			<string>src/fmdb/FMDatabase.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>52FAB57F24EB28EC1C7C03783F28D0DE</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>5A971EB0A5ACA7C788666605BBF17413</string>
+			<string>B0460F8CA2EAC8377400768C04827E23</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
@@ -513,37 +855,20 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>5306D4EE4770887402A3735418DB0E38</key>
+		<key>561C602E602ABEAE60CFD8F59C463025</key>
 		<dict>
-			<key>baseConfigurationReference</key>
-			<string>9D28646744B1D9AA4FD885693D9B12E4</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>XCBuildConfiguration</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>Release</string>
+			<string>JBLineChartDotsView.h</string>
+			<key>path</key>
+			<string>Classes/Line/Views/JBLineChartDotsView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>564A14CA4640C4C015EAFE835FE67FD7</key>
 		<dict>
@@ -571,6 +896,45 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>58479B6D10E3C8E601F67570AE0A4265</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>98CD6092016863134888438188F206DB</string>
+				<string>C36D97A159B0C7FED67FAE32389DC264</string>
+				<string>C306E9DC2F24F631A8E10E6BCC949D7C</string>
+				<string>4712380D64ECB0225F329022E21DA375</string>
+				<string>9ADCB7E490104187BBE01E91505937D4</string>
+				<string>1A165CADE938C238CFA8085791F60E67</string>
+				<string>9FEA3DC5EFA65F40B17500C35C671813</string>
+				<string>73F07D208FBE7237237D041FB25C0F11</string>
+				<string>561C602E602ABEAE60CFD8F59C463025</string>
+				<string>1FF441B5A2347F84E1F33E6D4CB58B59</string>
+				<string>F8702A3B8054225CA296C68316EFF9C0</string>
+				<string>1834BC43D10DBFAD3018EE56E5FA34B9</string>
+				<string>839185B6A15693F1012E2F37194FDF22</string>
+				<string>F214EE22AB6A8707C6CC1A4713CBDA9D</string>
+				<string>70D62A1E7BDEFFA3320B4C486726D924</string>
+				<string>168D236D689DC6F94C0F98C85B5AB6F8</string>
+				<string>E49C42A58A91724C83B1A8748890772F</string>
+				<string>6611B038A06721D9415E52EECB98CB8E</string>
+				<string>89EC2896B9EA0CA0193709948C0DFCE9</string>
+				<string>F784697B72E695A815FF712796A6CFA9</string>
+				<string>0A61CB7839CCF361AAE20196FCB9E18E</string>
+				<string>641DB836A87EC1529710E02BA70D0E7D</string>
+				<string>1EAFB2BC849703514C938D3E7AD238FA</string>
+				<string>7782225E6187B09651259B783E060FB5</string>
+				<string>C3B28594239AEE51F5F8A60E0736E25D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>JBChartView</string>
+			<key>path</key>
+			<string>JBChartView</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>587B76A3E381AF7C3EFFDF6754D39288</key>
 		<dict>
 			<key>fileRef</key>
@@ -578,36 +942,53 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>5A5AB8DC7CCC4677EA692B6E566D5F90</key>
+		<key>5F1BC851B99204E73A5A1A48A0681AF7</key>
 		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>fileRef</key>
+			<string>70D62A1E7BDEFFA3320B4C486726D924</string>
 			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>D058B89EB3B3DF45457A2DCD3971AFFE</string>
-			<key>remoteInfo</key>
-			<string>MBProgressHUD</string>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
-		<key>5A971EB0A5ACA7C788666605BBF17413</key>
+		<key>631693358344BD51D28D27F7C0461DBD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F8702A3B8054225CA296C68316EFF9C0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>641DB836A87EC1529710E02BA70D0E7D</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>JBShapeLineLayer.m</string>
 			<key>path</key>
-			<string>MBProgressHUD.xcconfig</string>
+			<string>Classes/Line/Layers/JBShapeLineLayer.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>641F071BD177C0FD805ECAF1D202F7CB</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>9C242E89CAF1E4576C536E72E3310F78</string>
+			<string>EA2A1DB08E809C2227547CA265D4F8F4</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
@@ -638,7 +1019,14 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
-		<key>6454526665CBBA67599AE6CF49AAA40F</key>
+		<key>648E7F45D6E4DCE98EED9D4E2F003C1E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>280DF29D4EB3B796B3EEABA7D33E19C8</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6611B038A06721D9415E52EECB98CB8E</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -647,23 +1035,16 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>FMResultSet.m</string>
+			<string>JBLineChartPoint.m</string>
 			<key>path</key>
-			<string>src/fmdb/FMResultSet.m</string>
+			<string>Classes/Line/Models/JBLineChartPoint.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>648E7F45D6E4DCE98EED9D4E2F003C1E</key>
+		<key>679D4EC8D9BD2739DB98303FB900B8BB</key>
 		<dict>
 			<key>fileRef</key>
-			<string>4B38C8B912A867BD7D914C7EF0B3301E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>695A3FA15E903AE48EB0B3BE336F2467</key>
-		<dict>
-			<key>fileRef</key>
-			<string>EEDB74CAE46C2464B8833E6B1B23A3F0</string>
+			<string>0A61CB7839CCF361AAE20196FCB9E18E</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -674,22 +1055,26 @@
 				</array>
 			</dict>
 		</dict>
-		<key>69E452D781C2C39C0E66BCAC8DFF4B12</key>
+		<key>695A3FA15E903AE48EB0B3BE336F2467</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>9C242E89CAF1E4576C536E72E3310F78</string>
-				<string>E4218FBA6F9722BEF76950CBA81D39DA</string>
-				<string>AB30D47966DAB57E3795AFC66B7C5B5E</string>
-			</array>
+			<key>fileRef</key>
+			<string>DEAA9ACE92FC7EB1D2076EEFC5AB5ECC</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/FMDB</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>697B974972EF8FC88614B40C75429F31</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F784697B72E695A815FF712796A6CFA9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>6B128A845E83B3D1AACF46D5075CFEA6</key>
 		<dict>
@@ -698,7 +1083,32 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>6E821650B8FC0D68B5DA52063BADD083</key>
+		<key>6C03F1ABD933FF0B45F9BF3CDA6BA779</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>0CE63AB507E3EEDD5966E3CAA7836DE8</string>
+				<string>7657CC94A980453D49EC1A8F3AA21320</string>
+				<string>E9FBF60CF0785A4AB4E391EEE946D347</string>
+				<string>1D460DEBDF7EC78BCB047150AF03102B</string>
+				<string>893F6945F378214F5CA0CB23EBB2E26C</string>
+				<string>D3BD5456540A72BE24F8EE0518E66F75</string>
+				<string>114D60FAB6332611931FAAC0C509F069</string>
+				<string>4ED6E4A0BE7774BA5B134D985389EB68</string>
+				<string>E964F65AAFB6512E4D1DE5A4ACD2ABB1</string>
+				<string>D85D58C9F696AAD110661AF73FA392DB</string>
+				<string>697B974972EF8FC88614B40C75429F31</string>
+				<string>824E4E0AB296CA17CDEFED6D924F2663</string>
+				<string>048349151A69F8E9082E0AB1F4F61B1A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>70D62A1E7BDEFFA3320B4C486726D924</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -707,9 +1117,59 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>FMResultSet.h</string>
+			<string>JBLineChartLinesView.h</string>
 			<key>path</key>
-			<string>src/fmdb/FMResultSet.h</string>
+			<string>Classes/Line/Views/JBLineChartLinesView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>73F07D208FBE7237237D041FB25C0F11</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>JBGradientLineLayer.m</string>
+			<key>path</key>
+			<string>Classes/Line/Layers/JBGradientLineLayer.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>76169881CA89EDF28664D49AABA2B5A3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>JBChartView-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7657CC94A980453D49EC1A8F3AA21320</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C0E99314927BEC06BD7648EBE38C102F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7782225E6187B09651259B783E060FB5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>NSMutableArray+JBStack.m</string>
+			<key>path</key>
+			<string>Classes/Additions/NSMutableArray+JBStack.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -734,29 +1194,14 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>7D7A44D103A51A262E2B3664489EDAEF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>FMDatabaseQueue.m</string>
-			<key>path</key>
-			<string>src/fmdb/FMDatabaseQueue.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>7DB346D0F39D3F0E887471402A8071AB</key>
 		<dict>
 			<key>children</key>
 			<array>
 				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
 				<string>122DA2E5084A4393C29BE363C764795C</string>
-				<string>9BD921B62B6E2A15E89EEEE045E337F8</string>
-				<string>875429B7ADE8968ECDD313012582D715</string>
+				<string>DB8012E41C01FA72830137EF2680FA18</string>
+				<string>C893269CDBA9F864F926698AD2C617F4</string>
 				<string>9E278F52231E0F261F5A68F68926DABC</string>
 			</array>
 			<key>isa</key>
@@ -764,10 +1209,17 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>824E4E0AB296CA17CDEFED6D924F2663</key>
+		<dict>
+			<key>fileRef</key>
+			<string>641DB836A87EC1529710E02BA70D0E7D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>826575B9A58179AA47A170DFE367328C</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>5A971EB0A5ACA7C788666605BBF17413</string>
+			<string>B0460F8CA2EAC8377400768C04827E23</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
@@ -798,6 +1250,21 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
+		<key>839185B6A15693F1012E2F37194FDF22</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>JBLineChartLine.h</string>
+			<key>path</key>
+			<string>Classes/Line/Models/JBLineChartLine.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>84AF63084FFE4472EFC6131BD113B13D</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -811,7 +1278,45 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>85B557222A5D1F6D6EF08A57EC6333FB</key>
+		<key>84C65755CF2745D6D265F10078A6ADCB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>B0460F8CA2EAC8377400768C04827E23</string>
+				<string>280DF29D4EB3B796B3EEABA7D33E19C8</string>
+				<string>466E0E12CC40B6CFF4C2CF82AC1BD03B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/MBProgressHUD</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>85BB4EE8693D2CC8568CC2F83C19FB44</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E49C42A58A91724C83B1A8748890772F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>893F6945F378214F5CA0CB23EBB2E26C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>73F07D208FBE7237237D041FB25C0F11</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>89EC2896B9EA0CA0193709948C0DFCE9</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -819,23 +1324,10 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>MBProgressHUD-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>875429B7ADE8968ECDD313012582D715</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>FD607C4A83A1CCD1EE09517F0F68E154</string>
-				<string>FEA04ACE77184E0FEB802F4733D0AF79</string>
-				<string>8E795BE9E99FE1948EAB5C496399E237</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Products</string>
+			<string>JBLineChartView.h</string>
+			<key>path</key>
+			<string>Classes/Line/JBLineChartView.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -860,7 +1352,7 @@
 		<key>8E22345807C46884D17DD8C2728A6201</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>9C242E89CAF1E4576C536E72E3310F78</string>
+			<string>EA2A1DB08E809C2227547CA265D4F8F4</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
@@ -891,20 +1383,46 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>8E795BE9E99FE1948EAB5C496399E237</key>
+		<key>916EB41D96B28E4AD0AC61F384A42974</key>
 		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
 			<key>includeInIndex</key>
-			<string>0</string>
+			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libPods-ManridyApp.a</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
 			<key>path</key>
-			<string>libPods-ManridyApp.a</string>
+			<string>FMDB-prefix.pch</string>
 			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>965F81359E3B8E6C6D22DCAEE5EE5D95</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>07F802EBE02096BCE33E49FDF871736C</string>
+			<key>buildPhases</key>
+			<array>
+				<string>0EACC4DEDBD71C44AE963FC7C34D7A05</string>
+				<string>1B37A7980A5BC6B283C3DF348CA953AF</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>A994A766D886EBD55E9D39D9AF8DFFD8</string>
+				<string>1D853CFC3150EC05640B81BE6172F497</string>
+				<string>C12F0703DA0FBC51F1FD7CB4FF466AB3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-ManridyApp</string>
+			<key>productName</key>
+			<string>Pods-ManridyApp</string>
+			<key>productReference</key>
+			<string>FAA0126CF538ED49C85836845AE27269</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
 		</dict>
 		<key>988FA15379A4032C312C2049FB88101A</key>
 		<dict>
@@ -921,6 +1439,28 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>98CD6092016863134888438188F206DB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>JBBarChartView.h</string>
+			<key>path</key>
+			<string>Classes/Bar/JBBarChartView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A5667A348928AE72EFD75A2665F94FA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>37ECA5F82C19F792E4F5146A01C56514</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>9AB254A0FF9C0E1ECCCC3CA36E6AC016</key>
 		<dict>
 			<key>isa</key>
@@ -934,30 +1474,33 @@
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
-		<key>9BD921B62B6E2A15E89EEEE045E337F8</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>AAAA79EBD63ECD1409DEE0B2331BC66E</string>
-				<string>E5924B23D8854943E90BD0129ED5396B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9C242E89CAF1E4576C536E72E3310F78</key>
+		<key>9ADCB7E490104187BBE01E91505937D4</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>JBGradientBarView.h</string>
 			<key>path</key>
-			<string>FMDB.xcconfig</string>
+			<string>Classes/Bar/Views/JBGradientBarView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9B6C3A712FCE3C530A417FC011178D18</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>FMDatabasePool.m</string>
+			<key>path</key>
+			<string>src/fmdb/FMDatabasePool.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -987,6 +1530,21 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>9ECE9229F29F38E6356EC6452BBF4B3B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FMDatabasePool.h</string>
+			<key>path</key>
+			<string>src/fmdb/FMDatabasePool.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>9F12FB4A63E20F601CFB2E64A65B57C1</key>
 		<dict>
 			<key>buildConfigurationList</key>
@@ -1008,14 +1566,29 @@
 			<key>productName</key>
 			<string>FMDB</string>
 			<key>productReference</key>
-			<string>FD607C4A83A1CCD1EE09517F0F68E154</string>
+			<string>DB00392C67CC940BB3A214C2E5230391</string>
 			<key>productType</key>
 			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>9FEA3DC5EFA65F40B17500C35C671813</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>JBGradientLineLayer.h</string>
+			<key>path</key>
+			<string>Classes/Line/Layers/JBGradientLineLayer.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>A350C5704A1F233DAD830E081E00F8C1</key>
 		<dict>
 			<key>fileRef</key>
-			<string>3D08B903C612F00D0F163E8D91006126</string>
+			<string>38EFEBF920D45D3250B7BB6C1104C990</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1024,25 +1597,41 @@
 				<string>-DOS_OBJECT_USE_OBJC=0</string>
 			</dict>
 		</dict>
-		<key>A3B9F7E92760F13A1E3102C8DFB3A20A</key>
+		<key>A3F4C2F7A307DC3990F5CA5CCF2F6BD3</key>
 		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>3050B887C4ED8319339E6CF6CA9FB9AE</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FMDatabaseAdditions.h</string>
+			<key>path</key>
+			<string>src/fmdb/FMDatabaseAdditions.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
-		<key>AAAA79EBD63ECD1409DEE0B2331BC66E</key>
+		<key>A3FF50F94157C67AC812ADD1D3FF1E7E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9ADCB7E490104187BBE01E91505937D4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>A493C5D08EC91815B4C6F385D262FC58</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>3E9CC3E4E7441CC8DD888DCB493596A3</string>
-				<string>69E452D781C2C39C0E66BCAC8DFF4B12</string>
+				<string>1A9FAFDF5B78B3831195E3BC0E6DF632</string>
+				<string>10EA3974BE6E521964C5B036DAB078D1</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1053,47 +1642,43 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>AB30D47966DAB57E3795AFC66B7C5B5E</key>
+		<key>A994A766D886EBD55E9D39D9AF8DFFD8</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>FMDB-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AFAD958916CE262D530DC0264BFD0659</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>1C730648885EC1B4EEC51F8CD713E313</string>
-				<string>5306D4EE4770887402A3735418DB0E38</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>B2CE9596B3FBD972F7483C5B852E3716</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>PBXTargetDependency</string>
 			<key>name</key>
-			<string>FMDatabaseQueue.h</string>
+			<string>FMDB</string>
+			<key>target</key>
+			<string>9F12FB4A63E20F601CFB2E64A65B57C1</string>
+			<key>targetProxy</key>
+			<string>38A3A52DD447EE62AA4536067C62ED2D</string>
+		</dict>
+		<key>B0460F8CA2EAC8377400768C04827E23</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
 			<key>path</key>
-			<string>src/fmdb/FMDatabaseQueue.h</string>
+			<string>MBProgressHUD.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B249B965376F794FE4D4EF016A2521A5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>561C602E602ABEAE60CFD8F59C463025</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
 		<key>B37F0F91F85060E28F1DAAB522DC7EC1</key>
 		<dict>
@@ -1171,7 +1756,7 @@
 		<key>B418C9BDCF8C6BAC2E3942F157BB6D4C</key>
 		<dict>
 			<key>fileRef</key>
-			<string>37BD77960CB78235D8E728A6E82AB4AF</string>
+			<string>A3F4C2F7A307DC3990F5CA5CCF2F6BD3</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1188,6 +1773,21 @@
 			<string>D64AB8C0A1E815C07C6F968F76F7E559</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>B91FD965D353F0366FE26B9878EABA14</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>FMResultSet.m</string>
+			<key>path</key>
+			<string>src/fmdb/FMResultSet.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>BA6428E9F66FD5A23C0A2E06ED26CD2F</key>
 		<dict>
@@ -1206,7 +1806,46 @@
 			<key>xcLanguageSpecificationIdentifier</key>
 			<string>xcode.lang.ruby</string>
 		</dict>
-		<key>BCA7265C71B0E24B7C42FB40BBD1831B</key>
+		<key>C0E99314927BEC06BD7648EBE38C102F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>JBChartView-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C12F0703DA0FBC51F1FD7CB4FF466AB3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>MBProgressHUD</string>
+			<key>target</key>
+			<string>D058B89EB3B3DF45457A2DCD3971AFFE</string>
+			<key>targetProxy</key>
+			<string>CD756274E7FB3291D814E3DF56625C39</string>
+		</dict>
+		<key>C14A7C43A5A18BF1962B4CA9E0E5CEF9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FMResultSet.h</string>
+			<key>path</key>
+			<string>src/fmdb/FMResultSet.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C274914B419F6DB5296B55E329969802</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1215,30 +1854,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>FMDatabasePool.m</string>
+			<string>FMDatabaseQueue.m</string>
 			<key>path</key>
-			<string>src/fmdb/FMDatabasePool.m</string>
+			<string>src/fmdb/FMDatabaseQueue.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>BE48E36DDCA7529B08CB6C210CC4712D</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>5A971EB0A5ACA7C788666605BBF17413</string>
-				<string>4B38C8B912A867BD7D914C7EF0B3301E</string>
-				<string>85B557222A5D1F6D6EF08A57EC6333FB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/MBProgressHUD</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BF3FBFFF10AEA36FAAA01CA320DF52A0</key>
+		<key>C306E9DC2F24F631A8E10E6BCC949D7C</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1247,16 +1869,106 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>FMDatabase.h</string>
+			<string>JBChartView.h</string>
 			<key>path</key>
-			<string>src/fmdb/FMDatabase.h</string>
+			<string>Classes/Base/JBChartView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C36D97A159B0C7FED67FAE32389DC264</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>JBBarChartView.m</string>
+			<key>path</key>
+			<string>Classes/Bar/JBBarChartView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C3B28594239AEE51F5F8A60E0736E25D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>51D492F842E8160CF68D96FB6ED5199F</string>
+				<string>C0E99314927BEC06BD7648EBE38C102F</string>
+				<string>76169881CA89EDF28664D49AABA2B5A3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/JBChartView</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C63B613BCA115FB49A812CDB392A9EFF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>839185B6A15693F1012E2F37194FDF22</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>C778AFBDC0DCCAA6A4AFCD1036CF98C6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>FMDatabase.m</string>
+			<key>path</key>
+			<string>src/fmdb/FMDatabase.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C893269CDBA9F864F926698AD2C617F4</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DB00392C67CC940BB3A214C2E5230391</string>
+				<string>F6A1244769A6B8FD2DAA553E26AA5012</string>
+				<string>48CA9D091C0A28EDFCB6335779FCE49B</string>
+				<string>FAA0126CF538ED49C85836845AE27269</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C999A008C40DBA4A5E2D464B99D4A292</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>MBProgressHUD.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>CA027706DD6805766F1F4EC548E72440</key>
 		<dict>
 			<key>fileRef</key>
-			<string>32516D1BACCDEDE524A78326B2A14665</string>
+			<string>C778AFBDC0DCCAA6A4AFCD1036CF98C6</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1265,27 +1977,64 @@
 				<string>-DOS_OBJECT_USE_OBJC=0</string>
 			</dict>
 		</dict>
-		<key>CAEB568CD807FA2F9D2D104A6C592703</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>FMDB.h</string>
-			<key>path</key>
-			<string>src/fmdb/FMDB.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>CCA9C08C9CBDE367B7BB38B6C0547B94</key>
 		<dict>
 			<key>fileRef</key>
-			<string>E2BDAC4F9D5A30F704D37B7C615D28B7</string>
+			<string>C999A008C40DBA4A5E2D464B99D4A292</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>CD756274E7FB3291D814E3DF56625C39</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>D058B89EB3B3DF45457A2DCD3971AFFE</string>
+			<key>remoteInfo</key>
+			<string>MBProgressHUD</string>
+		</dict>
+		<key>CDB1C8A47DD3943770D41E1A3B42F7DF</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>FB53F49A575208B9F4969DB1143F6A1E</string>
+			<key>buildPhases</key>
+			<array>
+				<string>6C03F1ABD933FF0B45F9BF3CDA6BA779</string>
+				<string>319BDF36DB9B89C24C517EFC9FE6185D</string>
+				<string>3A42C5CE54AE4D7A5CD35290A4D81422</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>JBChartView</string>
+			<key>productName</key>
+			<string>JBChartView</string>
+			<key>productReference</key>
+			<string>F6A1244769A6B8FD2DAA553E26AA5012</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>CEEA41A9E7C4B42CA95D4218F6D0AD19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>98CD6092016863134888438188F206DB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
 		<key>D058B89EB3B3DF45457A2DCD3971AFFE</key>
 		<dict>
@@ -1308,14 +2057,14 @@
 			<key>productName</key>
 			<string>MBProgressHUD</string>
 			<key>productReference</key>
-			<string>FEA04ACE77184E0FEB802F4733D0AF79</string>
+			<string>48CA9D091C0A28EDFCB6335779FCE49B</string>
 			<key>productType</key>
 			<string>com.apple.product-type.library.static</string>
 		</dict>
 		<key>D0C5FF5485EAA2CDA03E9796B407697A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B2CE9596B3FBD972F7483C5B852E3716</string>
+			<string>D84DE166B0A26CF1B511446C2521319D</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1329,7 +2078,7 @@
 		<key>D0D5FFE53407F16C9CD3D0ECF43ACE93</key>
 		<dict>
 			<key>fileRef</key>
-			<string>BF3FBFFF10AEA36FAAA01CA320DF52A0</string>
+			<string>524701FD96C8F0CE1DA22BA8B7FB3727</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1339,6 +2088,13 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>D3BD5456540A72BE24F8EE0518E66F75</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1FF441B5A2347F84E1F33E6D4CB58B59</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>D41D8CD98F00B204E9800998ECF8427E</key>
 		<dict>
@@ -1366,7 +2122,7 @@
 			<key>mainGroup</key>
 			<string>7DB346D0F39D3F0E887471402A8071AB</string>
 			<key>productRefGroup</key>
-			<string>875429B7ADE8968ECDD313012582D715</string>
+			<string>C893269CDBA9F864F926698AD2C617F4</string>
 			<key>projectDirPath</key>
 			<string></string>
 			<key>projectReferences</key>
@@ -1376,8 +2132,9 @@
 			<key>targets</key>
 			<array>
 				<string>9F12FB4A63E20F601CFB2E64A65B57C1</string>
+				<string>CDB1C8A47DD3943770D41E1A3B42F7DF</string>
 				<string>D058B89EB3B3DF45457A2DCD3971AFFE</string>
-				<string>16F0EF10B9566DD930A3F09DAA280999</string>
+				<string>965F81359E3B8E6C6D22DCAEE5EE5D95</string>
 			</array>
 		</dict>
 		<key>D64AB8C0A1E815C07C6F968F76F7E559</key>
@@ -1406,6 +2163,60 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>D76D29EF7147D17DF6E021B840A7DBAE</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>9D28646744B1D9AA4FD885693D9B12E4</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>D84DE166B0A26CF1B511446C2521319D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FMDatabaseQueue.h</string>
+			<key>path</key>
+			<string>src/fmdb/FMDatabaseQueue.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D85D58C9F696AAD110661AF73FA392DB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6611B038A06721D9415E52EECB98CB8E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>D89D42E51D160380C262AB055B889685</key>
 		<dict>
 			<key>children</key>
@@ -1421,10 +2232,53 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>DB00392C67CC940BB3A214C2E5230391</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libFMDB.a</string>
+			<key>path</key>
+			<string>libFMDB.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>DB8012E41C01FA72830137EF2680FA18</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>A493C5D08EC91815B4C6F385D262FC58</string>
+				<string>58479B6D10E3C8E601F67570AE0A4265</string>
+				<string>4976E61626C9CB5AC75C599A9908C5BC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DEAA9ACE92FC7EB1D2076EEFC5AB5ECC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>MBProgressHUD.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>DEFA3504695E9DFDE1177DAB22884470</key>
 		<dict>
 			<key>fileRef</key>
-			<string>6454526665CBBA67599AE6CF49AAA40F</string>
+			<string>B91FD965D353F0366FE26B9878EABA14</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1433,46 +2287,18 @@
 				<string>-DOS_OBJECT_USE_OBJC=0</string>
 			</dict>
 		</dict>
-		<key>E2BDAC4F9D5A30F704D37B7C615D28B7</key>
+		<key>E49C42A58A91724C83B1A8748890772F</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>MBProgressHUD.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E4218FBA6F9722BEF76950CBA81D39DA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>FMDB-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E5924B23D8854943E90BD0129ED5396B</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>EEDB74CAE46C2464B8833E6B1B23A3F0</string>
-				<string>E2BDAC4F9D5A30F704D37B7C615D28B7</string>
-				<string>BE48E36DDCA7529B08CB6C210CC4712D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>MBProgressHUD</string>
+			<string>JBLineChartPoint.h</string>
 			<key>path</key>
-			<string>MBProgressHUD</string>
+			<string>Classes/Line/Models/JBLineChartPoint.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1490,7 +2316,41 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>EEDB74CAE46C2464B8833E6B1B23A3F0</key>
+		<key>E964F65AAFB6512E4D1DE5A4ACD2ABB1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>168D236D689DC6F94C0F98C85B5AB6F8</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E9FBF60CF0785A4AB4E391EEE946D347</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4712380D64ECB0225F329022E21DA375</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>EA2A1DB08E809C2227547CA265D4F8F4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>FMDB.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EC7BD822E3A1E8B46C2D0EBE032F994B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>37ECA5F82C19F792E4F5146A01C56514</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F159407E41DC92EC103052CFA0AD2A95</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1498,35 +2358,109 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FMDB.h</string>
 			<key>path</key>
-			<string>MBProgressHUD.h</string>
+			<string>src/fmdb/FMDB.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>EF26EA2FB85D11E7F7F8204307A9AC8A</key>
+		<key>F214EE22AB6A8707C6CC1A4713CBDA9D</key>
 		<dict>
-			<key>fileRef</key>
-			<string>1B8FB356F4CF6DF7487B9252E983A93E</string>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXBuildFile</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>JBLineChartLine.m</string>
+			<key>path</key>
+			<string>Classes/Line/Models/JBLineChartLine.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
-		<key>F0BF6158F9064B4E763A0D23ECC2C3BD</key>
+		<key>F6605AED164D341D7FA378B74CA795B5</key>
 		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>EF26EA2FB85D11E7F7F8204307A9AC8A</string>
-			</array>
+			<key>baseConfigurationReference</key>
+			<string>3CC453E6A9B100582E3E31F67B59D1BD</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
 			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>F6A1244769A6B8FD2DAA553E26AA5012</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
 			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libJBChartView.a</string>
+			<key>path</key>
+			<string>libJBChartView.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>F784697B72E695A815FF712796A6CFA9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>JBLineChartView.m</string>
+			<key>path</key>
+			<string>Classes/Line/JBLineChartView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F8702A3B8054225CA296C68316EFF9C0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>JBLineChartDotView.h</string>
+			<key>path</key>
+			<string>Classes/Line/Views/JBLineChartDotView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>F977B243321331B58666E9284634101A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>6E821650B8FC0D68B5DA52063BADD083</string>
+			<string>C14A7C43A5A18BF1962B4CA9E0E5CEF9</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1537,7 +2471,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>FD607C4A83A1CCD1EE09517F0F68E154</key>
+		<key>FAA0126CF538ED49C85836845AE27269</key>
 		<dict>
 			<key>explicitFileType</key>
 			<string>archive.ar</string>
@@ -1546,26 +2480,25 @@
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>name</key>
-			<string>libFMDB.a</string>
+			<string>libPods-ManridyApp.a</string>
 			<key>path</key>
-			<string>libFMDB.a</string>
+			<string>libPods-ManridyApp.a</string>
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
-		<key>FEA04ACE77184E0FEB802F4733D0AF79</key>
+		<key>FB53F49A575208B9F4969DB1143F6A1E</key>
 		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
+			<key>buildConfigurations</key>
+			<array>
+				<string>0B74A5845A99CE82257E9F7D768B7BFB</string>
+				<string>2D1F36F394E14B3676E814FD558D6BD3</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
 			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libMBProgressHUD.a</string>
-			<key>path</key>
-			<string>libMBProgressHUD.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
+			<string>XCConfigurationList</string>
 		</dict>
 	</dict>
 	<key>rootObject</key>

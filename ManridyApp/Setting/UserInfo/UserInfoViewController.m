@@ -19,6 +19,7 @@
     NSArray *_fieldPlaceholdeArr;
     NSArray *_unitArr;
     UITextField *_tempField;
+    NSArray *_userArr;
 }
 
 @property (nonatomic ,weak) UIImageView *headImageView;
@@ -57,13 +58,26 @@
     
     self.navigationItem.title = @"用户信息";
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换用户" style:UIBarButtonItemStylePlain target:self action:@selector(changeUser)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换用户" style:UIBarButtonItemStylePlain target:self action:@selector(changeUser)];
     
     self.view.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
     
-    self.headImageView.backgroundColor = [UIColor redColor];
+    _userArr = [self.myFmdbTool queryAllUserInfo];
+    
+    
+    
+    [self.saveButton setBackgroundColor:[UIColor whiteColor]];
+    
+    if (_userArr.count == 0) {
+        [self setInitUI];
+    }else {
+        [self setSaveUI:_userArr];
+    }
+    
     self.userNameTextField.borderStyle = UITextBorderStyleNone;
     self.userNameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    
+    
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 261, self.view.frame.size.width, 13)];
     view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
@@ -71,18 +85,34 @@
     
     self.infoTableView.backgroundColor = [UIColor clearColor];
     
-    [self.saveButton setBackgroundColor:[UIColor whiteColor]];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+
+
+- (void)setInitUI
+{
+    self.headImageView.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)setSaveUI:(NSArray *)userArr
+{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]) {
+        NSLog(@"hello == %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]);
+        [self.userNameTextField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]];
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userheadimage"]) {
+        NSData *imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"userheadimage"];
+        [self.headImageView setImage:[UIImage imageWithData:imageData]];
+    }
+    
 }
 
 - (void)keyboardWillChangeFrame:(NSNotification *)notification
 {
-    NSLog(@"%@",notification);
-    
     //1. 获取键盘的 Y 值
     CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    //或者  keyboardFrame = [[notification.userInfo objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+;
     
     //注意从字典取出来的是对象，而 CGRect CGFloat 都是基本数据类型，一次需要转换
     CGFloat keyboardY = keyboardFrame.origin.y;
@@ -177,18 +207,38 @@
         
         UserInfoModel *model = [UserInfoModel userInfoModelWithUserName:self.userNameTextField.text andGender:self.genderLabel.text andAge:self.ageTextField.text.integerValue andHeight:self.heightTextField.text.integerValue andWeight:self.weightTextField.text.integerValue andStepLength:self.steplengthTextField.text.integerValue];
        
-        if (userArr.count != 0) {
+        if (userArr.count == 0) {
            BOOL isSuccess = [self.myFmdbTool insertUserInfoModel:model];
             if (isSuccess) {
                 self.hud.label.text = @"保存成功！";
+                
+                NSData *imageData = UIImagePNGRepresentation(self.headImageView.image);
+                [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:@"userheadimage"];
+                
                 [self.hud hideAnimated:YES afterDelay:1];
             }else {
                 self.hud.label.text = @"保存失败，请重新尝试！";
                 [self.hud hideAnimated:YES afterDelay:1];
             }
         }else {
-//            [self.myFmdbTool modifyUserInfoWithID:1 model:model];
+            BOOL isSuccess = [self.myFmdbTool modifyUserInfoWithID:1 model:model];
+            if (isSuccess) {
+                self.hud.label.text = @"修改成功！";
+                
+                NSData *imageData = UIImagePNGRepresentation(self.headImageView.image);
+                [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:@"userheadimage"];
+                
+                [self.hud hideAnimated:YES afterDelay:1];
+            }else {
+                self.hud.label.text = @"修改失败，请重新尝试！";
+                [self.hud hideAnimated:YES afterDelay:1];
+            }
         }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text forKey:@"currentusername"];
+        
+        NSLog(@"gang gang set == %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]);
+        
     }else {
         UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"信息输入不完整，可能会对数据测量产生影响，请输入完整！" preferredStyle:UIAlertControllerStyleAlert];
         [vc addAction:[UIAlertAction actionWithTitle:@"提示" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -240,6 +290,11 @@
         [cell.genderLabel setHidden:NO];
         [cell.textField setHidden:YES];
         
+        if (_userArr.count != 0) {
+            UserInfoModel *model = _userArr.firstObject;
+            [cell.genderLabel setText:model.gender];
+        }
+        
         self.genderLabel = cell.genderLabel;
     }else {
         [cell.genderLabel setHidden:YES];
@@ -248,16 +303,45 @@
         
         switch (indexPath.row) {
             case 1:
+            {
                 self.ageTextField = cell.textField;
+                if (_userArr.count != 0) {
+                    UserInfoModel *model = _userArr.firstObject;
+                    [self.ageTextField setText:[NSString stringWithFormat:@"%ld",model.age]];
+                }
+            }
                 break;
             case 2:
+            {
                 self.heightTextField = cell.textField;
+                if (_userArr.count != 0) {
+                    UserInfoModel *model = _userArr.firstObject;
+                    [self.heightTextField setText:[NSString stringWithFormat:@"%ld",model.height]];
+                }
+                
+            }
+                
                 break;
             case 3:
+            {
                 self.weightTextField = cell.textField;
+                if (_userArr.count != 0) {
+                    UserInfoModel *model = _userArr.firstObject;
+                    [self.weightTextField setText:[NSString stringWithFormat:@"%ld",model.weight]];
+                }
+                
+            }
+                
                 break;
             case 4:
+            {
                 self.steplengthTextField = cell.textField;
+                if (_userArr.count != 0) {
+                    UserInfoModel *model = _userArr.firstObject;
+                    [self.steplengthTextField setText:[NSString stringWithFormat:@"%ld",model.stepLength]];
+                }
+                
+            }
                 break;
                 
             default:
@@ -310,7 +394,7 @@
     if (!_userNameTextField) {
         UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(self.view.center.x - 100, 215, 200, 34)];
         textField.placeholder = @"请输入用户名";
-        textField.delegate = self;
+//        textField.delegate = self;
         
         [textField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
         textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -365,7 +449,7 @@
 {
     if (!_myFmdbTool) {
         _myFmdbTool = [[FMDBTool alloc] initWithPath:@"UserList"];
-        [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text forKey:@"username"];
+        [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text forKey:@""];
     }
     
     return _myFmdbTool;

@@ -77,6 +77,8 @@
 		10CB0F241D9A8A190063AD0C /* list_walk_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10CB0F151D9A8A190063AD0C /* list_walk_icon.png */; };
 		10CB0F251D9A8A190063AD0C /* list_walk_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10CB0F161D9A8A190063AD0C /* list_walk_icon@2x.png */; };
 		10CB0F261D9A8A190063AD0C /* list_walk_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10CB0F171D9A8A190063AD0C /* list_walk_icon@3x.png */; };
+		10EE961D1DB4BFC70048D594 /* PhoneRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EE961C1DB4BFC70048D594 /* PhoneRemindViewController.m */; };
+		10EE961F1DB4C06E0048D594 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EE961E1DB4C06E0048D594 /* CoreTelephony.framework */; };
 		10F5F7091D98C6280045FA4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7081D98C6280045FA4C /* main.m */; };
 		10F5F70C1D98C6280045FA4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F70B1D98C6280045FA4C /* AppDelegate.m */; };
 		10F5F7141D98C6280045FA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7131D98C6280045FA4C /* Assets.xcassets */; };
@@ -273,6 +275,9 @@
 		10CB0F151D9A8A190063AD0C /* list_walk_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_walk_icon.png; sourceTree = "<group>"; };
 		10CB0F161D9A8A190063AD0C /* list_walk_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_walk_icon@2x.png"; sourceTree = "<group>"; };
 		10CB0F171D9A8A190063AD0C /* list_walk_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_walk_icon@3x.png"; sourceTree = "<group>"; };
+		10EE961B1DB4BFC70048D594 /* PhoneRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneRemindViewController.h; path = Setting/PhoneRemind/PhoneRemindViewController.h; sourceTree = "<group>"; };
+		10EE961C1DB4BFC70048D594 /* PhoneRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneRemindViewController.m; path = Setting/PhoneRemind/PhoneRemindViewController.m; sourceTree = "<group>"; };
+		10EE961E1DB4C06E0048D594 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		10F5F7041D98C6270045FA4C /* ManridyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManridyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10F5F7081D98C6280045FA4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		10F5F70A1D98C6280045FA4C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -389,6 +394,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EE961F1DB4C06E0048D594 /* CoreTelephony.framework in Frameworks */,
 				908CCA620B40F374EFCBF7AD /* libPods.a in Frameworks */,
 				286703898AC331628EEC7AE2 /* libPods-ManridyApp.a in Frameworks */,
 			);
@@ -455,6 +461,7 @@
 		104A705E1D9B71C300CC73F5 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				10EE961A1DB4BFA70048D594 /* PhoneRemind */,
 				10C47E971DA88F7500D949CA /* BindPeripheral */,
 				104A70691D9BAD0200CC73F5 /* SetView */,
 				104A70651D9BA3D400CC73F5 /* UserInfo */,
@@ -525,6 +532,15 @@
 				10CB0F061D9A25130063AD0C /* FunctionCell.xib */,
 			);
 			name = MenuView;
+			sourceTree = "<group>";
+		};
+		10EE961A1DB4BFA70048D594 /* PhoneRemind */ = {
+			isa = PBXGroup;
+			children = (
+				10EE961B1DB4BFC70048D594 /* PhoneRemindViewController.h */,
+				10EE961C1DB4BFC70048D594 /* PhoneRemindViewController.m */,
+			);
+			name = PhoneRemind;
 			sourceTree = "<group>";
 		};
 		10F5F6FB1D98C6270045FA4C = {
@@ -794,6 +810,7 @@
 		AC2AC006B33A3099561DC0AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10EE961E1DB4C06E0048D594 /* CoreTelephony.framework */,
 				019AFD2849F28207558D163A /* libPods.a */,
 				E29C089A52A5A0DEF5ACCBBF /* libPods-ManridyApp.a */,
 			);
@@ -1064,6 +1081,7 @@
 				10F5F7DD1D9927270045FA4C /* BloodPressureContentView.m in Sources */,
 				102474E51DAA412F00F70E4F /* AllBleFmdb.m in Sources */,
 				102474FE1DAA41E000F70E4F /* SportTargetModel.m in Sources */,
+				10EE961D1DB4BFC70048D594 /* PhoneRemindViewController.m in Sources */,
 				10C47E9A1DA88F9900D949CA /* BindPeripheralViewController.m in Sources */,
 				102474FB1DAA41E000F70E4F /* SetTimeModel.m in Sources */,
 				109D4E771DAF7B7300E11890 /* UserInfoModel.m in Sources */,
