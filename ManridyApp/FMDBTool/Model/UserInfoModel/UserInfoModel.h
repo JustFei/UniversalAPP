@@ -22,6 +22,8 @@
 
 @property (nonatomic ,assign) NSInteger stepLength;
 
-+ (instancetype)userInfoModelWithUserName:(NSString *)userName andGender:(NSString *)gender andAge:(NSInteger)age andHeight:(NSInteger)height andWeight:(NSInteger)weight andStepLength:(NSInteger)stepLength;
+@property (nonatomic ,assign) NSInteger stepTarget;
+
++ (instancetype)userInfoModelWithUserName:(NSString *)userName andGender:(NSString *)gender andAge:(NSInteger)age andHeight:(NSInteger)height andWeight:(NSInteger)weight andStepLength:(NSInteger)stepLength andStepTarget:(NSInteger)stepTarget;
 
 @end

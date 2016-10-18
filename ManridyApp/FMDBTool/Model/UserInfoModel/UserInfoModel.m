@@ -10,7 +10,7 @@
 
 @implementation UserInfoModel
 
-+ (instancetype)userInfoModelWithUserName:(NSString *)userName andGender:(NSString *)gender andAge:(NSInteger)age andHeight:(NSInteger)height andWeight:(NSInteger)weight andStepLength:(NSInteger)stepLength
++ (instancetype)userInfoModelWithUserName:(NSString *)userName andGender:(NSString *)gender andAge:(NSInteger)age andHeight:(NSInteger)height andWeight:(NSInteger)weight andStepLength:(NSInteger)stepLength andStepTarget:(NSInteger)stepTarget
 {
     UserInfoModel *model = [[UserInfoModel alloc] init];
     
@@ -20,6 +20,7 @@
     model.height = height;
     model.weight = weight;
     model.stepLength = stepLength;
+    model.stepTarget = stepTarget;
     
     return model;
 }

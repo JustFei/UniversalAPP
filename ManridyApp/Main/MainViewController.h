@@ -11,4 +11,6 @@
 
 @interface MainViewController :UIViewController
 
+- (void)writeData;
+
 @end

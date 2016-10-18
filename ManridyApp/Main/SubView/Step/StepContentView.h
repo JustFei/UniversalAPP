@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *weekStatisticsLabel;
 @property (weak, nonatomic) IBOutlet UIView *downView;
 
+- (void)drawProgress:(CGFloat )progress;
+
 @end

@@ -27,6 +27,7 @@
     NSArray *_titleArr;
     
     BOOL isShowList;
+    NSArray *_userArr;
 }
 @property (nonatomic ,weak) UIScrollView *backGroundView;
 
@@ -67,6 +68,8 @@
     
     _titleArr = @[@"计步",@"心率",@"体温",@"睡眠",@"血压"];
     
+    
+    
     [self createUI];
 }
 
@@ -75,60 +78,62 @@
     self.myBleTool = [BLETool shareInstance];
     self.myBleTool.receiveDelegate = self;
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        switch (self.pageControl.currentPage) {
-            case 0:
-            {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    if (self.pageControl.currentPage == 0) {
-                        [self.myBleTool writeMotionRequestToPeripheral];
-                    }
-                });
-            }
-                break;
-            case 1:
-            {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    if (self.pageControl.currentPage == 1) {
-                        [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataLastData];
-                    }
-                });
-            }
-                break;
-            case 2:
-            {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    if (self.pageControl.currentPage == 2) {
-                        //读取当前体温
-                    }
-                });
-            }
-                break;
-            case 3:
-            {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    if (self.pageControl.currentPage == 3) {
-                        [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
-                    }
-                });
-            }
-                break;
-            case 4:
-            {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    if (self.pageControl.currentPage == 4) {
-                        //读取血压数据
-                    }
-                });
-            }
-                break;
-                
-            default:
-                break;
+    _userArr = [self.myFmdbTool queryAllUserInfo];
+    
+}
+
+- (void)writeData
+{
+    switch (self.pageControl.currentPage) {
+        case 0:
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.pageControl.currentPage == 0) {
+                    [self.myBleTool writeMotionRequestToPeripheral];
+                }
+            });
         }
-    });
-    
-    
+            break;
+        case 1:
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.pageControl.currentPage == 1) {
+                    [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataLastData];
+                }
+            });
+        }
+            break;
+        case 2:
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.pageControl.currentPage == 2) {
+                    //读取当前体温
+                }
+            });
+        }
+            break;
+        case 3:
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.pageControl.currentPage == 3) {
+                    [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
+                }
+            });
+        }
+            break;
+        case 4:
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.pageControl.currentPage == 4) {
+                    //读取血压数据
+                }
+            });
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)createUI
@@ -185,6 +190,27 @@
         if (manridyModel.receiveDataType == ReturnModelTypeSportModel) {
             [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
             [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@公里/%@千卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
+            
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                NSArray *userArr = [self.myFmdbTool queryAllUserInfo];
+                if (_userArr.count != 0) {
+                    
+                    UserInfoModel *model = _userArr.firstObject;
+                    
+                    if (model.stepTarget != 0) {
+                        float progress = (float)manridyModel.sportModel.stepNumber.integerValue / model.stepTarget;
+                        
+                        NSLog(@"current progress = %f",progress);
+                        
+                        if (progress <= 1) {
+                            [self.stepView drawProgress:progress];
+                        }else if (progress >= 1) {
+                            [self.stepView drawProgress:1];
+                        }
+                    }
+                }
+//            });
+            
             //保存motion数据到数据库
             
             NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
@@ -192,16 +218,20 @@
             NSDate *currentDate = [NSDate date];
             NSString *currentDateString = [dateformatter stringFromDate:currentDate];
             
-            NSArray *stepArr = [self.myFmdbTool queryStepWithDate:currentDateString];
             
-            StepDataModel *model = [StepDataModel modelWith:currentDateString step:manridyModel.sportModel.stepNumber kCal:manridyModel.sportModel.kCalNumber mileage:manridyModel.sportModel.mileageNumber];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSArray *stepArr = [self.myFmdbTool queryStepWithDate:currentDateString];
+                
+                StepDataModel *model = [StepDataModel modelWith:currentDateString step:manridyModel.sportModel.stepNumber kCal:manridyModel.sportModel.kCalNumber mileage:manridyModel.sportModel.mileageNumber];
+                
+                if (stepArr.count == 0) {
+                    [self.myFmdbTool insertStepModel:model];
+                }else {
+                    [self.myFmdbTool modifyStepWithDate:currentDateString model:model];
+                }
+            });
             
             
-            if (stepArr.count == 0) {
-                [self.myFmdbTool insertStepModel:model];
-            }else {
-                [self.myFmdbTool modifyStepWithDate:currentDateString model:model];
-            }
         }
     }
 }
@@ -440,7 +470,7 @@
         [self.view addSubview:view];
         _backGroundView = view;
     }
-    
+
     return _backGroundView;
 }
 
@@ -492,9 +522,9 @@
 - (FMDBTool *)myFmdbTool
 {
     if (!_myFmdbTool) {
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]) {
-            _myFmdbTool = [[FMDBTool alloc] initWithPath:[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]];
-        }
+        
+        _myFmdbTool = [[FMDBTool alloc] initWithPath:@"UserList"];
+        
     }
     
     return _myFmdbTool;

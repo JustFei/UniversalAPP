@@ -53,4 +53,6 @@ typedef enum : NSUInteger {
 
 - (BOOL)modifyUserInfoWithID:(NSInteger)ID model:(UserInfoModel *)model;
 
+- (BOOL)modifyStepTargetWithID:(NSInteger)ID model:(NSInteger)stepTarget;
+
 @end

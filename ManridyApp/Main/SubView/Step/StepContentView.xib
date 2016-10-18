@@ -120,6 +120,7 @@
             <connections>
                 <outlet property="downView" destination="VoQ-kG-BTQ" id="YBx-VK-07P"/>
                 <outlet property="mileageAndkCalLabel" destination="8wT-kz-VMz" id="mi9-J9-D4g"/>
+                <outlet property="progressImageView" destination="0ej-qs-qpu" id="87m-qU-Ygp"/>
                 <outlet property="stepLabel" destination="kCX-kz-kc3" id="tGA-UY-5CY"/>
                 <outlet property="weekStatisticsLabel" destination="Rwp-9Z-xNi" id="yG0-pp-0ad"/>
             </connections>

@@ -41,7 +41,7 @@ static FMDatabase *_fmdb;
         //心率数据库还没有建立好
         //                [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists GPSData(id integer primary key, );"]];
         
-        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists UserInfoData(id integer primary key, username text, gender text, age integer, height integer, weight integer, steplength integer);"]];
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists UserInfoData(id integer primary key, username text, gender text, age integer, height integer, weight integer, steplength integer, steptarget integer);"]];
         
     }
     
@@ -156,9 +156,9 @@ static FMDatabase *_fmdb;
     
     BOOL result = [_fmdb executeUpdate:insertSql];
     if (result) {
-        NSLog(@"插入Motion数据成功");
+        NSLog(@"插入UserInfoData数据成功");
     }else {
-        NSLog(@"插入Motion数据失败");
+        NSLog(@"插入UserInfoData数据失败");
     }
     return result;
 }
@@ -180,15 +180,16 @@ static FMDatabase *_fmdb;
         NSInteger height = [set intForColumn:@"height"];
         NSInteger weight = [set intForColumn:@"weight"];
         NSInteger steplength = [set intForColumn:@"steplength"];
+        NSInteger stepTarget = [set intForColumn:@"steptarget"];
         
-        UserInfoModel *model = [UserInfoModel userInfoModelWithUserName:userName andGender:gender andAge:age andHeight:height andWeight:weight andStepLength:steplength];
+        UserInfoModel *model = [UserInfoModel userInfoModelWithUserName:userName andGender:gender andAge:age andHeight:height andWeight:weight andStepLength:steplength andStepTarget:stepTarget];
         
         NSLog(@"%@,%@,%ld,%ld,%ld,%ld",model.userName ,model.gender ,model.age ,model.height ,model.weight ,model.stepLength);
         
         [arrM addObject:model];
     }
     
-    NSLog(@"Motion查询成功");
+    NSLog(@"UserInfoData查询成功");
     return arrM;
 }
 
@@ -200,13 +201,27 @@ static FMDatabase *_fmdb;
     BOOL modifyResult = [_fmdb executeUpdate:modifySql, model.userName, model.gender, @(model.age), @(model.height), @(model.weight), @(model.stepLength), @(ID)];
     
     if (modifyResult) {
-        NSLog(@"Motion数据修改成功");
+        NSLog(@"UserInfoData数据修改成功");
     }else {
-        NSLog(@"Motion数据修改失败");
+        NSLog(@"UserInfoData数据修改失败");
     }
     
     return modifyResult;
 }
 
+- (BOOL)modifyStepTargetWithID:(NSInteger)ID model:(NSInteger)stepTarget
+{
+    NSString *modifySql = [NSString stringWithFormat:@"update UserInfoData set steptarget = ? where id = ?"];
+    
+    BOOL modifyResult = [_fmdb executeUpdate:modifySql, @(stepTarget), @(ID)];
+    
+    if (modifyResult) {
+        NSLog(@"添加运动目标成功");
+    }else {
+        NSLog(@"添加运动目标失败");
+    }
+    
+    return modifyResult;
+}
 
 @end

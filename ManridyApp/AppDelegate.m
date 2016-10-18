@@ -19,6 +19,8 @@
 }
 @property (nonatomic ,strong) BLETool *myBleTool;
 
+@property (nonatomic ,strong) MainViewController *mainVc;
+
 @end
 
 @implementation AppDelegate
@@ -45,13 +47,15 @@
     
     BOOL isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
     
+    
+    
+    self.mainVc = [[MainViewController alloc] init];
+    
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:self.mainVc];
+    
     if (isBind) {
         [self.myBleTool scanDevice];
     }
-    
-    MainViewController *vc = [[MainViewController alloc] init];
-    
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
     
     //设置navigationBar为透明无线
     [nc.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -93,6 +97,11 @@
     if ([device.peripheral.identifier.UUIDString isEqualToString:bindUUIDString]) {
         [self.myBleTool connectDevice:device];
     }
+}
+
+- (void)manridyBLEDidConnectDevice:(manridyBleDevice *)device
+{
+    [self.mainVc writeData];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

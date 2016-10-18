@@ -205,7 +205,7 @@
         
         NSArray *userArr = [self.myFmdbTool queryAllUserInfo];
         
-        UserInfoModel *model = [UserInfoModel userInfoModelWithUserName:self.userNameTextField.text andGender:self.genderLabel.text andAge:self.ageTextField.text.integerValue andHeight:self.heightTextField.text.integerValue andWeight:self.weightTextField.text.integerValue andStepLength:self.steplengthTextField.text.integerValue];
+        UserInfoModel *model = [UserInfoModel userInfoModelWithUserName:self.userNameTextField.text andGender:self.genderLabel.text andAge:self.ageTextField.text.integerValue andHeight:self.heightTextField.text.integerValue andWeight:self.weightTextField.text.integerValue andStepLength:self.steplengthTextField.text.integerValue andStepTarget:0];
        
         if (userArr.count == 0) {
            BOOL isSuccess = [self.myFmdbTool insertUserInfoModel:model];
