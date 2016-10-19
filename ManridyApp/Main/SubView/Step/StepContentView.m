@@ -7,28 +7,11 @@
 //
 
 #import "StepContentView.h"
-#import "StepTargetViewController.h"
-#import "BLETool.h"
-#import "JBChartView.h"
-#import "JBLineChartView.h"
 
-@interface StepContentView () <JBLineChartViewDelegate ,JBLineChartViewDataSource >
-{
-    NSArray *_dataArr;
-    double add;
-}
-@property (weak, nonatomic) IBOutlet UIImageView *progressImageView;
 
-@property (nonatomic ,strong) BLETool *myBleTool;
+@interface StepContentView () 
 
-@property (nonatomic ,weak) JBLineChartView *stepChartView;
 
-@property (nonatomic, assign) CGFloat progress;
-
-//创建全局属性
-@property (nonatomic, strong) CAShapeLayer *shapeLayer;
-
-@property (nonatomic ,strong) NSTimer *timer;
 
 @end
 
@@ -41,7 +24,6 @@
         
         self = [[NSBundle mainBundle] loadNibNamed:@"StepContentView" owner:self options:nil].firstObject;
         self.frame = frame;
-        _dataArr = @[@3,@6,@3,@5,@7,@9,@3];
     }
     return self;
 }
@@ -50,30 +32,21 @@
 {
     [super layoutSubviews];
     
-    self.stepChartView.frame = CGRectMake(10, 10, self.downView.frame.size.width - 20, self.downView.frame.size.height - 20);
-    
-    [self.stepChartView setState:JBChartViewStateCollapsed];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.myBleTool writeMotionRequestToPeripheral];
-    });
-    
     //创建出CAShapeLayer
     self.shapeLayer = [CAShapeLayer layer];
     self.shapeLayer.fillColor = [UIColor clearColor].CGColor;
     
     //设置线条的宽度和颜色
-    self.shapeLayer.lineWidth = 2.0f;
-    self.shapeLayer.strokeColor = [UIColor redColor].CGColor;
+    self.shapeLayer.lineWidth = 5.0f;
+    self.shapeLayer.strokeColor = [UIColor yellowColor].CGColor;
     
-    CGPoint center = CGPointMake(self.progressImageView.center.x, self.progressImageView.center.y + 5);
-    CGFloat radius = self.progressImageView.frame.size.width / 2 - 10;
+    CGPoint center = CGPointMake(self.progressImageView.center.x, self.progressImageView.center.y + 6.5);
+    CGFloat radius = self.progressImageView.frame.size.width / 2 - 20;
     CGFloat startA = (M_PI * (- 90) / 180.0);  //圆起点位置
     CGFloat endA = (M_PI * (270) / 180.0);  //圆终点位置
     //设置stroke起始点
     self.shapeLayer.strokeStart = 0;
     self.shapeLayer.strokeEnd = 0;
-    add = 0.1;
     UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:startA endAngle:endA clockwise:YES];//上面说明过了用来构建圆形
     
     //让贝塞尔曲线与CAShapeLayer产生联系
@@ -89,47 +62,24 @@
     self.shapeLayer.strokeEnd = progress;
 }
 
-- (void)circleAnimationTypeOne
+- (void)showChartView
 {
-    if (self.shapeLayer.strokeEnd > 1 && self.shapeLayer.strokeStart < 1) {
-        self.shapeLayer.strokeStart += add;
-    }else if(self.shapeLayer.strokeStart == 0){
-        self.shapeLayer.strokeEnd += add;
-    }
-     
-    if (self.shapeLayer.strokeEnd == 0) {
-        self.shapeLayer.strokeStart = 0;
-    }
+    [self.stepChart setXLabels:self.dateArr];
     
-    if (self.shapeLayer.strokeStart == self.shapeLayer.strokeEnd) {
-        self.shapeLayer.strokeEnd = 0;
-    }
-}
-
-- (void)circleAnimationTypeTwo
-{
-    CGFloat valueOne = arc4random() % 100 / 100.0f;
-    CGFloat valueTwo = arc4random() % 100 / 100.0f;
+    PNLineChartData *data02 = [PNLineChartData new];
+    data02.color = PNTwitterColor;
+    data02.itemCount = self.stepChart.xLabels.count;
+    data02.getData = ^(NSUInteger index) {
+        CGFloat yValue = [self.dataArr[index] floatValue];
+        return [PNLineChartDataItem dataItemWithY:yValue];
+    };
     
-    self.shapeLayer.strokeStart = valueOne < valueTwo ? valueOne : valueTwo;
-    self.shapeLayer.strokeEnd = valueTwo > valueOne ? valueTwo : valueOne;
+    self.stepChart.chartData = @[data02];
+    [self.stepChart strokeChart];
+    
+    self.stepChart.showSmoothLines = YES;
 }
 
-#pragma mark - JBLineChartViewDelegate && JBLineChartViewDataSource
-- (CGFloat)lineChartView:(JBLineChartView *)lineChartView verticalValueForHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex
-{
-    return [_dataArr[horizontalIndex] floatValue];
-}
-
-- (NSUInteger)numberOfLinesInLineChartView:(JBLineChartView *)lineChartView
-{
-    return 7;
-}
-
-- (NSUInteger)lineChartView:(JBLineChartView *)lineChartView numberOfVerticalValuesAtLineIndex:(NSUInteger)lineIndex
-{
-    return (unsigned long)_dataArr[lineIndex];
-}
 
 #pragma mark - Action
 - (IBAction)setTargetAction:(UIButton *)sender
@@ -140,20 +90,26 @@
 }
 
 #pragma mark - 懒加载
-- (JBLineChartView *)stepChartView
+- (PNLineChart *)stepChart
 {
-    if (!_stepChartView) {
-        JBLineChartView *view = [[JBLineChartView alloc] init];
-        view.backgroundColor = [UIColor redColor];
-        
-        view.dataSource = self;
-        view.delegate = self;
+    if (!_stepChart) {
+        PNLineChart *view = [[PNLineChart alloc] initWithFrame: CGRectMake(5, 5, self.downView.frame.size.width - 10, self.downView.frame.size.height - 10)];
+        view.backgroundColor = [UIColor clearColor];
         
         [self.downView addSubview:view];
-        _stepChartView = view;
+        _stepChart = view;
     }
     
-    return _stepChartView;
+    return _stepChart;
+}
+
+- (FMDBTool *)myFmdbTool
+{
+    if (!_myFmdbTool) {
+        _myFmdbTool = [[FMDBTool alloc] initWithPath:@"UserList"];
+    }
+    
+    return _myFmdbTool;
 }
 
 #pragma mark - 获取当前View的控制器的方法

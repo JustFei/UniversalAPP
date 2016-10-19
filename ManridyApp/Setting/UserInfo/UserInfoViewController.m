@@ -88,6 +88,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
+- (void)dealloc
+{
+    //注销掉所有代理和关闭数据库
+    self.infoTableView.delegate = nil;
+    self.infoTableView.dataSource = nil;
+    [self.myFmdbTool CloseDataBase];
+}
+
 
 - (void)setInitUI
 {

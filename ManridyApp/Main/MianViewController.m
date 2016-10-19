@@ -68,9 +68,69 @@
     
     _titleArr = @[@"计步",@"心率",@"体温",@"睡眠",@"血压"];
     
-    
-    
+    self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
     [self createUI];
+    
+    self.stepView.dateArr = [self getWeekBeginAndEnd:[NSDate date]];
+    self.stepView.dataArr = [NSMutableArray array];
+    self.sleepView.dateArr = self.heartRateView.dateArr = self.temperatureView.dateArr = self.stepView.dateArr;
+    
+    for (NSString *dateString in self.stepView.dateArr) {
+        NSString *dateStr = [dateString stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
+        NSLog(@"querystring == %@",dateStr);
+        NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateStr];
+        
+        if (queryArr.count == 0) {
+            [self.stepView.dataArr addObject:@0];
+        }else {
+            StepDataModel *model = queryArr.firstObject;
+            
+            [self.stepView.dataArr addObject:[NSNumber numberWithInteger:model.step.integerValue]];
+        }
+    }
+    
+    [self.stepView showChartView];
+    [self.heartRateView showChartView];
+    [self.temperatureView showChartView];
+    [self.sleepView showChartView];
+    
+    [self hiddenFunctionView];
+}
+
+- (void)showFunctionView
+{
+    self.backGroundView.scrollEnabled = YES;
+    self.stepView.downView.hidden = NO;
+    self.stepView.stepChart.hidden = NO;
+    self.pageControl.hidden = NO;
+    self.stepView.weekStatisticsLabel.hidden = NO;
+    self.stepView.mileageAndkCalLabel.hidden = NO;
+    self.stepView.todayLabel.hidden = NO;
+    
+    [self.stepView.stepLabel setText:@"0"];
+    [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:50]];
+}
+
+- (void)hiddenFunctionView
+{
+    int currentPage = floor((self.backGroundView.contentOffset.x - self.view.frame.size.width / 2) / self.view.frame.size.width) + 1;
+    
+    if (currentPage != 0) {
+//        self.backGroundView.contentOffset = CGPointMake(-self.view.frame.size.width * currentPage, -64);
+#warning offset to firstView
+    }
+    
+    
+    self.backGroundView.scrollEnabled = NO;
+    self.stepView.downView.hidden = YES;
+    self.stepView.stepChart.hidden = YES;
+    self.pageControl.hidden = YES;
+    self.stepView.weekStatisticsLabel.hidden = YES;
+    self.stepView.mileageAndkCalLabel.hidden = YES;
+    self.stepView.todayLabel.hidden = YES;
+    
+    [self.stepView.stepLabel setText:@"设备连接中。。。"];
+    [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:15]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -79,7 +139,6 @@
     self.myBleTool.receiveDelegate = self;
     
     _userArr = [self.myFmdbTool queryAllUserInfo];
-    
 }
 
 - (void)writeData
@@ -165,13 +224,46 @@
     self.navigationItem.rightBarButtonItem = rightItem;
     
     self.backGroundView.backgroundColor = [UIColor whiteColor];
+//    [self hiddenFunctionView];
     
     self.pageControl.tintColor = [UIColor clearColor];
     
     self.menuView.backgroundColor = [UIColor blueColor];
-    
+}
 
+- (NSArray *)getWeekBeginAndEnd:(NSDate *)newDate
+{
+    //获取当前周的开始和结束日期
+    int currentWeek = 0;
+    NSTimeInterval appendDay = 24 * 60 * 60;
+    NSTimeInterval secondsPerDay1 = 24 * 60 * 60 * (abs(currentWeek)*7);
+    if (currentWeek > 0)
+    {
+        newDate = [newDate dateByAddingTimeInterval:+secondsPerDay1];//目标时间
+    }else{
+        newDate = [newDate dateByAddingTimeInterval:-secondsPerDay1];//目标时间
+    }
     
+    double interval = 0;
+    NSDate *beginDate = nil;
+    NSDate *endDate = nil;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    [calendar setFirstWeekday:2];//设定周一为周首日
+    BOOL ok = [calendar rangeOfUnit:NSWeekCalendarUnit startDate:&beginDate interval:&interval forDate:newDate];
+    if (ok) {
+        endDate = [beginDate dateByAddingTimeInterval:interval - 1];
+    }else {
+        //        break;
+    }
+    
+    NSDateFormatter *myDateFormatter = [[NSDateFormatter alloc] init];
+    [myDateFormatter setDateFormat:@"yyyy/MM/dd"];
+    
+    NSArray *dateArr = @[[myDateFormatter stringFromDate:beginDate],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+appendDay]],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+ appendDay * 2]],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+ appendDay * 3]],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+ appendDay * 4]],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+ appendDay * 5]],[myDateFormatter stringFromDate:endDate]];
+    
+    //    [self getWeekDataWith:dateArr];
+    return dateArr;
     
 }
 
@@ -190,9 +282,7 @@
         if (manridyModel.receiveDataType == ReturnModelTypeSportModel) {
             [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
             [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@公里/%@千卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
-            
-//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//                NSArray *userArr = [self.myFmdbTool queryAllUserInfo];
+
                 if (_userArr.count != 0) {
                     
                     UserInfoModel *model = _userArr.firstObject;
@@ -209,7 +299,6 @@
                         }
                     }
                 }
-//            });
             
             //保存motion数据到数据库
             
@@ -219,7 +308,7 @@
             NSString *currentDateString = [dateformatter stringFromDate:currentDate];
             
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSArray *stepArr = [self.myFmdbTool queryStepWithDate:currentDateString];
                 
                 StepDataModel *model = [StepDataModel modelWith:currentDateString step:manridyModel.sportModel.stepNumber kCal:manridyModel.sportModel.kCalNumber mileage:manridyModel.sportModel.mileageNumber];
@@ -314,7 +403,7 @@
 #pragma mark - Action
 - (void)showHistoryView
 {
-    
+    self.pageControl.hidden = YES;
 }
 
 - (void)showSettingView

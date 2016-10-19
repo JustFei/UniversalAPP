@@ -8,6 +8,13 @@
 
 #import "SleepContentView.h"
 #import "SleepSettingViewController.h"
+#import "PNChart.h"
+
+@interface SleepContentView ()
+
+@property (nonatomic ,strong) PNBarChart *sleepChart;
+
+@end
 
 @implementation SleepContentView
 
@@ -21,19 +28,41 @@
     }
     return self;
 }
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.sleepChart.backgroundColor = [UIColor redColor];
+}
+
+- (void)showChartView
+{
+    [self.sleepChart setXLabels:self.dateArr];
+    [self.sleepChart setYLabels:@[@7,@6,@5.5,@8,@7.5,@9.5,@10]];
+    [self.sleepChart strokeChart];
+}
+
+
+
 - (IBAction)sleepTargetAction:(UIButton *)sender {
     SleepSettingViewController *vc = [[SleepSettingViewController alloc] initWithNibName:@"SleepSettingViewController" bundle:nil];
     
     [[self findViewController:self].navigationController pushViewController:vc animated:YES];
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+#pragma mark - 懒加载
+- (PNBarChart *)sleepChart
+{
+    if (!_sleepChart) {
+        PNBarChart *view = [[PNBarChart alloc] initWithFrame:CGRectMake(5, 5, self.downView.frame.size.width - 10, self.downView.frame.size.width - 10)];
+        view.backgroundColor = [UIColor clearColor];
+        
+        [self.downView addSubview:view];
+        _sleepChart = view;
+    }
+    
+    return _sleepChart;
 }
-*/
 
 #pragma mark - 获取当前View的控制器的方法
 - (UIViewController *)findViewController:(UIView *)sourceView

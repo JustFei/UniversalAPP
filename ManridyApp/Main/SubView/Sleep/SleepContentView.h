@@ -21,7 +21,11 @@
 
 @property (weak, nonatomic) IBOutlet UIView *sleepStateView4;
 
+@property (weak, nonatomic) IBOutlet UIView *downView;
 
+@property (nonatomic ,strong) NSArray *dateArr;
+@property (nonatomic ,strong) NSMutableArray *dataArr;
 
+- (void)showChartView;
 
 @end

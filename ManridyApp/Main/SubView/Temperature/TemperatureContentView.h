@@ -11,5 +11,11 @@
 @interface TemperatureContentView : UIView
 @property (weak, nonatomic) IBOutlet UILabel *currentTemperature;
 @property (weak, nonatomic) IBOutlet UILabel *temperatureState;
+@property (weak, nonatomic) IBOutlet UIView *downView;
+
+@property (nonatomic ,strong) NSArray *dateArr;
+@property (nonatomic ,strong) NSMutableArray *dataArr;
+
+- (void)showChartView;
 
 @end

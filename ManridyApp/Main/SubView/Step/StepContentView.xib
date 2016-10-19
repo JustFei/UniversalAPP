@@ -17,24 +17,13 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VoQ-kG-BTQ">
-                    <rect key="frame" x="8" y="405" width="304" height="155"/>
-                    <color key="backgroundColor" red="0.1450980392" green="0.60392156860000001" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9c-y2-W5j">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="375"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walk_run_now.png" translatesAutoresizingMaskIntoConstraints="NO" id="0ej-qs-qpu">
-                            <rect key="frame" x="31" y="61" width="258" height="271"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="258" id="c1V-Mm-Xcc"/>
-                                <constraint firstAttribute="height" constant="271" id="ixf-Nr-zkk"/>
-                            </constraints>
-                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCX-kz-kc3">
-                            <rect key="frame" x="90" y="183" width="140" height="38"/>
+                            <rect key="frame" x="70" y="183" width="181" height="38"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="140" id="0GD-u5-05u"/>
+                                <constraint firstAttribute="width" constant="181" id="0GD-u5-05u"/>
                                 <constraint firstAttribute="height" constant="38" id="9xT-gZ-6vx"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="50"/>
@@ -78,6 +67,13 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walk_run_now.png" translatesAutoresizingMaskIntoConstraints="NO" id="0ej-qs-qpu">
+                            <rect key="frame" x="31" y="61" width="258" height="271"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="258" id="c1V-Mm-Xcc"/>
+                                <constraint firstAttribute="height" constant="271" id="ixf-Nr-zkk"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.14509803921568629" green="0.60392156862745094" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -102,6 +98,10 @@
                         </mask>
                     </variation>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VoQ-kG-BTQ">
+                    <rect key="frame" x="8" y="405" width="304" height="155"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -122,6 +122,7 @@
                 <outlet property="mileageAndkCalLabel" destination="8wT-kz-VMz" id="mi9-J9-D4g"/>
                 <outlet property="progressImageView" destination="0ej-qs-qpu" id="87m-qU-Ygp"/>
                 <outlet property="stepLabel" destination="kCX-kz-kc3" id="tGA-UY-5CY"/>
+                <outlet property="todayLabel" destination="tgk-fV-KOc" id="2j6-XF-QrM"/>
                 <outlet property="weekStatisticsLabel" destination="Rwp-9Z-xNi" id="yG0-pp-0ad"/>
             </connections>
         </view>

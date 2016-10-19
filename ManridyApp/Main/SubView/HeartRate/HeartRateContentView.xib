@@ -139,6 +139,7 @@
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
+                <outlet property="downView" destination="ybr-MX-XhN" id="Gqh-vP-qOL"/>
                 <outlet property="heartRateLabel" destination="Awu-gB-sWC" id="1VU-39-pkH"/>
                 <outlet property="heartStateLabel" destination="mQq-V4-Tap" id="jkw-2i-swl"/>
             </connections>

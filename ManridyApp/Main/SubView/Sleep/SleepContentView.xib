@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SleepContentView">
             <connections>
                 <outlet property="deepAndLowSleepLabel" destination="gtr-da-WQW" id="DBq-VD-wOX"/>
+                <outlet property="downView" destination="Qxk-3h-F6a" id="ySc-xi-ahX"/>
                 <outlet property="sleepStateLabel" destination="3Cp-Ww-0rR" id="oU2-tk-ERc"/>
                 <outlet property="sleepStateView1" destination="w6P-gI-XL0" id="180-dx-8q1"/>
                 <outlet property="sleepStateView2" destination="UWd-Sd-7Yc" id="SIi-yY-bYA"/>

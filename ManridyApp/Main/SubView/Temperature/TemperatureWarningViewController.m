@@ -91,6 +91,12 @@ typedef enum : NSUInteger {
     
 }
 
+- (void)dealloc
+{
+    self.temperaturePickView.delegate = nil;
+    self.temperaturePickView.dataSource = nil;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

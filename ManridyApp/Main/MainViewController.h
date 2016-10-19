@@ -13,4 +13,8 @@
 
 - (void)writeData;
 
+- (void)showFunctionView;
+
+- (void)hiddenFunctionView;
+
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MainViewController.h"
+
 #import "BLETool.h"
 #import "manridyBleDevice.h"
 #import <CoreTelephony/CTCallCenter.h>
@@ -18,8 +18,6 @@
     CTCallCenter *_callCenter;
 }
 @property (nonatomic ,strong) BLETool *myBleTool;
-
-@property (nonatomic ,strong) MainViewController *mainVc;
 
 @end
 
@@ -52,9 +50,9 @@
     self.mainVc = [[MainViewController alloc] init];
     
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:self.mainVc];
-    
     if (isBind) {
         [self.myBleTool scanDevice];
+        self.myBleTool.isReconnect = YES;
     }
     
     //设置navigationBar为透明无线
@@ -66,6 +64,7 @@
     [nc.navigationBar setTitleTextAttributes:@{@"NSForegroundColorAttributeName":[UIColor whiteColor], @"NSFontAttributeName":[UIFont systemFontOfSize:15]}];
     
     self.window.rootViewController = nc;
+    
     
     return YES;
 }
@@ -101,7 +100,14 @@
 
 - (void)manridyBLEDidConnectDevice:(manridyBleDevice *)device
 {
+//    [self.mainVc showFunctionView];
     [self.mainVc writeData];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.myBleTool stopScan];
+#warning complete connectState!!!!
+        
+    });
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

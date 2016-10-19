@@ -70,8 +70,12 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:YES];
-    
     self.myBleTool.receiveDelegate = nil;
+}
+
+- (void)dealloc
+{
+    [self.myFmdbTool CloseDataBase];
 }
 
 - (void)didReceiveMemoryWarning {

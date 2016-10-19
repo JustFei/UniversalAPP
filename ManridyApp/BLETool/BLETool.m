@@ -13,6 +13,7 @@
 #import "NSStringTool.h"
 #import "AnalysisProcotolTool.h"
 #import "AllBleFmdb.h"
+#import "AppDelegate.h"
 
 #define kServiceUUID              @"F000EFE0-0000-4000-0000-00000000B000"
 #define kWriteCharacteristicUUID  @"F000EFE1-0451-4000-0000-00000000B000"
@@ -388,6 +389,9 @@ static BLETool *bleTool = nil;
     peripheral.delegate = self;
     //传入nil会返回所有服务;一般会传入你想要服务的UUID所组成的数组,就会返回指定的服务
     [peripheral discoverServices:nil];
+    
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    [delegate.mainVc showFunctionView];
 }
 
 //连接失败
@@ -422,6 +426,9 @@ static BLETool *bleTool = nil;
         UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:@"设备意外断开，等待重连" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
         view.tag = 103;
         [view show];
+        
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        [delegate.mainVc hiddenFunctionView];
         
     }else {
         self.currentDev = nil;

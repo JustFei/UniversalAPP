@@ -224,4 +224,10 @@ static FMDatabase *_fmdb;
     return modifyResult;
 }
 
+#pragma mark - CloseData
+- (void)CloseDataBase
+{
+    [_fmdb close];
+}
+
 @end

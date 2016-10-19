@@ -306,8 +306,8 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         int heightValue = [NSStringTool parseIntFromData:height];
         NSString *heightStr = [NSString stringWithFormat:@"%d",heightValue];
         
-        model.userInfoModel.weight = weightStr;
-        model.userInfoModel.height = heightStr;
+        model.userInfoModel.weight = weightStr.integerValue;
+        model.userInfoModel.height = heightStr.integerValue;
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
         
     }else if ([head isEqualToString:@"86"]) {

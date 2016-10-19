@@ -55,4 +55,8 @@ typedef enum : NSUInteger {
 
 - (BOOL)modifyStepTargetWithID:(NSInteger)ID model:(NSInteger)stepTarget;
 
+
+#pragma mark - CloseData
+- (void)CloseDataBase;
+
 @end
