@@ -8,8 +8,11 @@
 
 //#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "StepContentView.h"
 
 @interface MainViewController :UIViewController
+
+@property (nonatomic ,strong) StepContentView *stepView;
 
 - (void)writeData;
 

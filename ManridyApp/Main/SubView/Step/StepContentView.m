@@ -7,11 +7,10 @@
 //
 
 #import "StepContentView.h"
+#import "AppDelegate.h"
 
 
 @interface StepContentView () 
-
-
 
 @end
 
@@ -31,6 +30,10 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reScanPeripheral)];
+    self.stepLabel.userInteractionEnabled = YES;
+    [self.stepLabel addGestureRecognizer:tap];
     
     //创建出CAShapeLayer
     self.shapeLayer = [CAShapeLayer layer];
@@ -56,6 +59,8 @@
     [self.layer addSublayer:self.shapeLayer];
 
 }
+
+
 
 - (void)drawProgress:(CGFloat )progress
 {
@@ -87,6 +92,28 @@
     StepTargetViewController *vc = [[StepTargetViewController alloc] initWithNibName:@"StepTargetViewController" bundle:nil];
     [[self findViewController:self].navigationController pushViewController:vc animated:YES];
     
+}
+
+//重新扫描的点击动作
+- (void)reScanPeripheral
+{
+     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    
+    BOOL isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
+    if (isBind) {
+        [delegate.myBleTool scanDevice];
+        [delegate.mainVc.stepView.stepLabel setText:@"设备连接中。。。"];
+        delegate.myBleTool.isReconnect = YES;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [delegate.myBleTool stopScan];
+#warning complete connectState!!!!
+            if (delegate.myBleTool.connectState == kBLEstateDisConnected) {
+                [delegate.mainVc.stepView.stepLabel setText:@"未连接上设备，点击重试"];
+            }
+            
+        });
+    }
 }
 
 #pragma mark - 懒加载

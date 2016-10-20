@@ -19,8 +19,8 @@ typedef enum : NSUInteger {
 
 typedef enum{
     kBLEstateDisConnected = 0,
-    kBLEstateDidConnected ,
-    kBLEstateBindUnConnected ,
+    kBLEstateDidConnected,
+//    kBLEstateBindUnConnected,
 }kBLEstate;
 
 @class manridyBleDevice;

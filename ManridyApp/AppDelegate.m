@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "BLETool.h"
+
 #import "manridyBleDevice.h"
 #import <CoreTelephony/CTCallCenter.h>
 #import <CoreTelephony/CTCall.h>
@@ -17,7 +17,7 @@
 {
     CTCallCenter *_callCenter;
 }
-@property (nonatomic ,strong) BLETool *myBleTool;
+
 
 @end
 
@@ -53,6 +53,15 @@
     if (isBind) {
         [self.myBleTool scanDevice];
         self.myBleTool.isReconnect = YES;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.myBleTool stopScan];
+#warning complete connectState!!!!
+            if (self.myBleTool.connectState == kBLEstateDisConnected) {
+                [self.mainVc.stepView.stepLabel setText:@"未连接上设备，点击重试"];
+            }
+            
+        });
     }
     
     //设置navigationBar为透明无线
@@ -103,11 +112,7 @@
 //    [self.mainVc showFunctionView];
     [self.mainVc writeData];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.myBleTool stopScan];
-#warning complete connectState!!!!
-        
-    });
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

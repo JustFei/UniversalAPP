@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
+#import "BLETool.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic ,strong) MainViewController *mainVc;
+@property (nonatomic ,strong) BLETool *myBleTool;
 
 @end
 

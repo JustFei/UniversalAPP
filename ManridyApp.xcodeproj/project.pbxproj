@@ -19,6 +19,10 @@
 		102474FC1DAA41E000F70E4F /* SleepModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474F21DAA41E000F70E4F /* SleepModel.m */; };
 		102474FD1DAA41E000F70E4F /* SportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474F41DAA41E000F70E4F /* SportModel.m */; };
 		102474FE1DAA41E000F70E4F /* SportTargetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474F61DAA41E000F70E4F /* SportTargetModel.m */; };
+		103820F21DB86F1300E92410 /* StepHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103820F11DB86F1300E92410 /* StepHistoryViewController.m */; };
+		103820F61DB8704200E92410 /* StepHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 103820F51DB8704200E92410 /* StepHistoryViewController.xib */; };
+		103820F91DB892CD00E92410 /* DropdownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 103820F81DB892CD00E92410 /* DropdownMenuView.m */; };
+		103820FC1DB89B2300E92410 /* TitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103820FB1DB89B2300E92410 /* TitleMenuViewController.m */; };
 		103E4BFC1DB0C77E0051BF03 /* UserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103E4BFB1DB0C77E0051BF03 /* UserListViewController.m */; };
 		1042FC7A1DA9F20400467F01 /* SleepSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1042FC781DA9F20400467F01 /* SleepSettingViewController.m */; };
 		1042FC7B1DA9F20400467F01 /* SleepSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1042FC791DA9F20400467F01 /* SleepSettingViewController.xib */; };
@@ -204,6 +208,13 @@
 		102474F41DAA41E000F70E4F /* SportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SportModel.m; path = BLETool/Model/SportModel.m; sourceTree = "<group>"; };
 		102474F51DAA41E000F70E4F /* SportTargetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SportTargetModel.h; path = BLETool/Model/SportTargetModel.h; sourceTree = "<group>"; };
 		102474F61DAA41E000F70E4F /* SportTargetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SportTargetModel.m; path = BLETool/Model/SportTargetModel.m; sourceTree = "<group>"; };
+		103820F01DB86F1300E92410 /* StepHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepHistoryViewController.h; path = History/Step/StepHistoryViewController.h; sourceTree = "<group>"; };
+		103820F11DB86F1300E92410 /* StepHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepHistoryViewController.m; path = History/Step/StepHistoryViewController.m; sourceTree = "<group>"; };
+		103820F51DB8704200E92410 /* StepHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StepHistoryViewController.xib; path = History/Step/StepHistoryViewController.xib; sourceTree = "<group>"; };
+		103820F71DB892CD00E92410 /* DropdownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropdownMenuView.h; path = History/Step/DropdownMenuView.h; sourceTree = "<group>"; };
+		103820F81DB892CD00E92410 /* DropdownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropdownMenuView.m; path = History/Step/DropdownMenuView.m; sourceTree = "<group>"; };
+		103820FA1DB89B2300E92410 /* TitleMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleMenuViewController.h; path = History/Step/TitleMenuViewController.h; sourceTree = "<group>"; };
+		103820FB1DB89B2300E92410 /* TitleMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleMenuViewController.m; path = History/Step/TitleMenuViewController.m; sourceTree = "<group>"; };
 		103E4BFA1DB0C77E0051BF03 /* UserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserListViewController.h; path = Setting/UserInfo/UserListViewController.h; sourceTree = "<group>"; };
 		103E4BFB1DB0C77E0051BF03 /* UserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserListViewController.m; path = Setting/UserInfo/UserListViewController.m; sourceTree = "<group>"; };
 		1042FC771DA9F20400467F01 /* SleepSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepSettingViewController.h; path = Main/SubView/Sleep/SleepSettingViewController.h; sourceTree = "<group>"; };
@@ -458,6 +469,28 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		103820EE1DB86E9000E92410 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				103820EF1DB86EE000E92410 /* Step */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
+		103820EF1DB86EE000E92410 /* Step */ = {
+			isa = PBXGroup;
+			children = (
+				103820F01DB86F1300E92410 /* StepHistoryViewController.h */,
+				103820F11DB86F1300E92410 /* StepHistoryViewController.m */,
+				103820F51DB8704200E92410 /* StepHistoryViewController.xib */,
+				103820F71DB892CD00E92410 /* DropdownMenuView.h */,
+				103820F81DB892CD00E92410 /* DropdownMenuView.m */,
+				103820FA1DB89B2300E92410 /* TitleMenuViewController.h */,
+				103820FB1DB89B2300E92410 /* TitleMenuViewController.m */,
+			);
+			name = Step;
+			sourceTree = "<group>";
+		};
 		104A705E1D9B71C300CC73F5 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -568,6 +601,7 @@
 				109FBB981DAA18A8008FF0D3 /* FMDBTool */,
 				10F5F7211D98ED950045FA4C /* Main */,
 				104A705E1D9B71C300CC73F5 /* Setting */,
+				103820EE1DB86E9000E92410 /* History */,
 				10F5F7071D98C6280045FA4C /* Supporting Files */,
 			);
 			path = ManridyApp;
@@ -965,6 +999,7 @@
 				10F5F73B1D98F31B0045FA4C /* set_about_icon.png in Resources */,
 				10F5F7CF1D9923D90045FA4C /* temper_set_alert_high@2x.png in Resources */,
 				10F5F77F1D98F3560045FA4C /* walk_target_icon@3x.png in Resources */,
+				103820F61DB8704200E92410 /* StepHistoryViewController.xib in Resources */,
 				10F5F77A1D98F3560045FA4C /* walk_run_old.png in Resources */,
 				10CB0F261D9A8A190063AD0C /* list_walk_icon@3x.png in Resources */,
 				10F5F7C51D9923D90045FA4C /* temper_notice_low.png in Resources */,
@@ -1070,6 +1105,7 @@
 				10F5F7841D98F8640045FA4C /* MianViewController.m in Sources */,
 				1042FC7A1DA9F20400467F01 /* SleepSettingViewController.m in Sources */,
 				102474E91DAA412F00F70E4F /* NSStringTool.m in Sources */,
+				103820F21DB86F1300E92410 /* StepHistoryViewController.m in Sources */,
 				102474E71DAA412F00F70E4F /* BLETool.m in Sources */,
 				10F5F7A71D991E990045FA4C /* TemperatureContentView.m in Sources */,
 				102474E81DAA412F00F70E4F /* manridyBleDevice.m in Sources */,
@@ -1096,10 +1132,12 @@
 				104A70641D9B724D00CC73F5 /* SettingContentView.m in Sources */,
 				103E4BFC1DB0C77E0051BF03 /* UserListViewController.m in Sources */,
 				102474FD1DAA41E000F70E4F /* SportModel.m in Sources */,
+				103820F91DB892CD00E92410 /* DropdownMenuView.m in Sources */,
 				109FBB9B1DAA18FB008FF0D3 /* FMDBTool.m in Sources */,
 				10CB0F031D9A13960063AD0C /* MenuContentView.m in Sources */,
 				10F5F7091D98C6280045FA4C /* main.m in Sources */,
 				104A70611D9B720500CC73F5 /* SettingViewController.m in Sources */,
+				103820FC1DB89B2300E92410 /* TitleMenuViewController.m in Sources */,
 				10CB0F071D9A25130063AD0C /* FunctionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -92,6 +92,7 @@ static BLETool *bleTool = nil;
 - (void)scanDevice
 {
     [self.deviceArr removeAllObjects];
+    self.connectState = kBLEstateDisConnected;
     [_myCentralManager scanForPeripheralsWithServices:nil options:nil];
 }
 
@@ -408,13 +409,8 @@ static BLETool *bleTool = nil;
 //断开连接
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
-//    if ([self.connectDelegate respondsToSelector:@selector(manridyBLEDidDisconnectDevice:)]) {
-//        self.connectState = kBLEstateDisConnected;
-//        [self.connectDelegate manridyBLEDidDisconnectDevice:self.currentDev];
-//    }
-//#if 0
-    //如果不是主动断开
-//    NSLog(@"不需要断线重连");
+
+    self.connectState = kBLEstateDisConnected;
     if ([self.connectDelegate respondsToSelector:@selector(manridyBLEDidDisconnectDevice:)]) {
         [self.connectDelegate manridyBLEDidDisconnectDevice:self.currentDev];
     }

@@ -7,7 +7,6 @@
 //
 
 #import "MainViewController.h"
-#import "StepContentView.h"
 #import "HeartRateContentView.h"
 #import "TemperatureContentView.h"
 #import "SleepContentView.h"
@@ -16,6 +15,7 @@
 #import "BLETool.h"
 #import "FMDBTool.h"
 #import "StepDataModel.h"
+#import "StepHistoryViewController.h"
 
 #import "SettingViewController.h"
 
@@ -43,7 +43,7 @@
 
 @property (nonatomic ,strong) UIButton *rightButton;
 
-@property (nonatomic ,strong) StepContentView *stepView;
+//@property (nonatomic ,strong) StepContentView *stepView;
 
 @property (nonatomic ,strong) HeartRateContentView *heartRateView;
 
@@ -107,6 +107,8 @@
     self.stepView.mileageAndkCalLabel.hidden = NO;
     self.stepView.todayLabel.hidden = NO;
     
+    self.stepView.stepLabel.userInteractionEnabled = NO;
+    
     [self.stepView.stepLabel setText:@"0"];
     [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:50]];
 }
@@ -116,8 +118,11 @@
     int currentPage = floor((self.backGroundView.contentOffset.x - self.view.frame.size.width / 2) / self.view.frame.size.width) + 1;
     
     if (currentPage != 0) {
-//        self.backGroundView.contentOffset = CGPointMake(-self.view.frame.size.width * currentPage, -64);
-#warning offset to firstView
+        NSLog(@"%f",currentPage * self.view.frame.size.width);
+        NSLog(@"content前 == %@",NSStringFromCGRect(self.backGroundView.frame));
+        [self.backGroundView setContentOffset:CGPointMake(0, 0) animated:YES];
+        NSLog(@"content后 == %@",NSStringFromCGRect(self.backGroundView.frame));
+//#warning offset to firstView
     }
     
     
@@ -403,7 +408,18 @@
 #pragma mark - Action
 - (void)showHistoryView
 {
-    self.pageControl.hidden = YES;
+    int currentPage = floor((self.backGroundView.contentOffset.x - self.view.frame.size.width / 2) / self.view.frame.size.width) + 1;
+    switch (currentPage) {
+        case 0:
+        {
+            StepHistoryViewController *vc = [[StepHistoryViewController alloc] initWithNibName:@"StepHistoryViewController" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)showSettingView
@@ -535,6 +551,7 @@
 {
     if (!_backGroundView) {
         UIScrollView *view = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -64, WIDTH, HEIGHT + 64)];
+        view.showsVerticalScrollIndicator = NO;
         
         view.contentSize = CGSizeMake(5 * WIDTH, 0);
         view.pagingEnabled = YES;
