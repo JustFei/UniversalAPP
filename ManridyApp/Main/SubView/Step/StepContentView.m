@@ -8,9 +8,12 @@
 
 #import "StepContentView.h"
 #import "AppDelegate.h"
+#import "StepHistoryViewController.h"
 
 
 @interface StepContentView () 
+
+
 
 @end
 
@@ -107,7 +110,6 @@
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [delegate.myBleTool stopScan];
-#warning complete connectState!!!!
             if (delegate.myBleTool.connectState == kBLEstateDisConnected) {
                 [delegate.mainVc.stepView.stepLabel setText:@"未连接上设备，点击重试"];
             }

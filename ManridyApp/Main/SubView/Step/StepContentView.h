@@ -39,6 +39,8 @@
 @property (nonatomic ,strong) NSArray *dateArr;
 @property (nonatomic ,strong) NSMutableArray *dataArr;
 
+
+
 - (void)drawProgress:(CGFloat )progress;
 - (void)showChartView;
 

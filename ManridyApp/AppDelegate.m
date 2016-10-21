@@ -56,7 +56,6 @@
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.myBleTool stopScan];
-#warning complete connectState!!!!
             if (self.myBleTool.connectState == kBLEstateDisConnected) {
                 [self.mainVc.stepView.stepLabel setText:@"未连接上设备，点击重试"];
             }

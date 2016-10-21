@@ -21,8 +21,6 @@
 		102474FE1DAA41E000F70E4F /* SportTargetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474F61DAA41E000F70E4F /* SportTargetModel.m */; };
 		103820F21DB86F1300E92410 /* StepHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103820F11DB86F1300E92410 /* StepHistoryViewController.m */; };
 		103820F61DB8704200E92410 /* StepHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 103820F51DB8704200E92410 /* StepHistoryViewController.xib */; };
-		103820F91DB892CD00E92410 /* DropdownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 103820F81DB892CD00E92410 /* DropdownMenuView.m */; };
-		103820FC1DB89B2300E92410 /* TitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103820FB1DB89B2300E92410 /* TitleMenuViewController.m */; };
 		103E4BFC1DB0C77E0051BF03 /* UserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103E4BFB1DB0C77E0051BF03 /* UserListViewController.m */; };
 		1042FC7A1DA9F20400467F01 /* SleepSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1042FC781DA9F20400467F01 /* SleepSettingViewController.m */; };
 		1042FC7B1DA9F20400467F01 /* SleepSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1042FC791DA9F20400467F01 /* SleepSettingViewController.xib */; };
@@ -37,6 +35,10 @@
 		104A70681D9BA46A00CC73F5 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A70671D9BA46A00CC73F5 /* UserInfoViewController.m */; };
 		104A706D1D9BAD2B00CC73F5 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A706B1D9BAD2B00CC73F5 /* UserInfoCell.m */; };
 		104A706E1D9BAD2B00CC73F5 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 104A706C1D9BAD2B00CC73F5 /* UserInfoCell.xib */; };
+		10826A531DBA12600031DB83 /* DropdownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10826A501DBA12600031DB83 /* DropdownMenuView.m */; };
+		10826A541DBA12600031DB83 /* TitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10826A521DBA12600031DB83 /* TitleMenuViewController.m */; };
+		10826A581DBA17540031DB83 /* HeartRateHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10826A571DBA17540031DB83 /* HeartRateHistoryViewController.m */; };
+		10826A5A1DBA17840031DB83 /* HeartRateHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10826A591DBA17840031DB83 /* HeartRateHistoryViewController.xib */; };
 		109D4E771DAF7B7300E11890 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 109D4E761DAF7B7300E11890 /* UserInfoModel.m */; };
 		109FBB9B1DAA18FB008FF0D3 /* FMDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 109FBB9A1DAA18FB008FF0D3 /* FMDBTool.m */; };
 		109FBB9D1DAA1934008FF0D3 /* StepContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 109FBB9C1DAA1934008FF0D3 /* StepContentView.xib */; };
@@ -211,10 +213,6 @@
 		103820F01DB86F1300E92410 /* StepHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepHistoryViewController.h; path = History/Step/StepHistoryViewController.h; sourceTree = "<group>"; };
 		103820F11DB86F1300E92410 /* StepHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepHistoryViewController.m; path = History/Step/StepHistoryViewController.m; sourceTree = "<group>"; };
 		103820F51DB8704200E92410 /* StepHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StepHistoryViewController.xib; path = History/Step/StepHistoryViewController.xib; sourceTree = "<group>"; };
-		103820F71DB892CD00E92410 /* DropdownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropdownMenuView.h; path = History/Step/DropdownMenuView.h; sourceTree = "<group>"; };
-		103820F81DB892CD00E92410 /* DropdownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropdownMenuView.m; path = History/Step/DropdownMenuView.m; sourceTree = "<group>"; };
-		103820FA1DB89B2300E92410 /* TitleMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleMenuViewController.h; path = History/Step/TitleMenuViewController.h; sourceTree = "<group>"; };
-		103820FB1DB89B2300E92410 /* TitleMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleMenuViewController.m; path = History/Step/TitleMenuViewController.m; sourceTree = "<group>"; };
 		103E4BFA1DB0C77E0051BF03 /* UserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserListViewController.h; path = Setting/UserInfo/UserListViewController.h; sourceTree = "<group>"; };
 		103E4BFB1DB0C77E0051BF03 /* UserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserListViewController.m; path = Setting/UserInfo/UserListViewController.m; sourceTree = "<group>"; };
 		1042FC771DA9F20400467F01 /* SleepSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepSettingViewController.h; path = Main/SubView/Sleep/SleepSettingViewController.h; sourceTree = "<group>"; };
@@ -235,6 +233,13 @@
 		104A706A1D9BAD2B00CC73F5 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoCell.h; path = Setting/UserInfo/UserInfoCell.h; sourceTree = "<group>"; };
 		104A706B1D9BAD2B00CC73F5 /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoCell.m; path = Setting/UserInfo/UserInfoCell.m; sourceTree = "<group>"; };
 		104A706C1D9BAD2B00CC73F5 /* UserInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserInfoCell.xib; path = Setting/UserInfo/UserInfoCell.xib; sourceTree = "<group>"; };
+		10826A4F1DBA12600031DB83 /* DropdownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropdownMenuView.h; path = History/MonthDropDownMenuView/DropdownMenuView.h; sourceTree = "<group>"; };
+		10826A501DBA12600031DB83 /* DropdownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropdownMenuView.m; path = History/MonthDropDownMenuView/DropdownMenuView.m; sourceTree = "<group>"; };
+		10826A511DBA12600031DB83 /* TitleMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleMenuViewController.h; path = History/MonthDropDownMenuView/TitleMenuViewController.h; sourceTree = "<group>"; };
+		10826A521DBA12600031DB83 /* TitleMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleMenuViewController.m; path = History/MonthDropDownMenuView/TitleMenuViewController.m; sourceTree = "<group>"; };
+		10826A561DBA17540031DB83 /* HeartRateHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateHistoryViewController.h; path = History/Heart/HeartRateHistoryViewController.h; sourceTree = "<group>"; };
+		10826A571DBA17540031DB83 /* HeartRateHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateHistoryViewController.m; path = History/Heart/HeartRateHistoryViewController.m; sourceTree = "<group>"; };
+		10826A591DBA17840031DB83 /* HeartRateHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeartRateHistoryViewController.xib; path = History/Heart/HeartRateHistoryViewController.xib; sourceTree = "<group>"; };
 		109D4E751DAF7B7300E11890 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoModel.h; path = FMDBTool/Model/UserInfoModel/UserInfoModel.h; sourceTree = "<group>"; };
 		109D4E761DAF7B7300E11890 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoModel.m; path = FMDBTool/Model/UserInfoModel/UserInfoModel.m; sourceTree = "<group>"; };
 		109FBB991DAA18FB008FF0D3 /* FMDBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDBTool.h; path = FMDBTool/FMDBTool.h; sourceTree = "<group>"; };
@@ -472,7 +477,9 @@
 		103820EE1DB86E9000E92410 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				10826A4E1DBA12540031DB83 /* MonthDropDownMenuView */,
 				103820EF1DB86EE000E92410 /* Step */,
+				10826A551DBA126A0031DB83 /* HeartRate */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -483,10 +490,6 @@
 				103820F01DB86F1300E92410 /* StepHistoryViewController.h */,
 				103820F11DB86F1300E92410 /* StepHistoryViewController.m */,
 				103820F51DB8704200E92410 /* StepHistoryViewController.xib */,
-				103820F71DB892CD00E92410 /* DropdownMenuView.h */,
-				103820F81DB892CD00E92410 /* DropdownMenuView.m */,
-				103820FA1DB89B2300E92410 /* TitleMenuViewController.h */,
-				103820FB1DB89B2300E92410 /* TitleMenuViewController.m */,
 			);
 			name = Step;
 			sourceTree = "<group>";
@@ -525,6 +528,27 @@
 				104A70631D9B724D00CC73F5 /* SettingContentView.m */,
 			);
 			name = SetView;
+			sourceTree = "<group>";
+		};
+		10826A4E1DBA12540031DB83 /* MonthDropDownMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				10826A4F1DBA12600031DB83 /* DropdownMenuView.h */,
+				10826A501DBA12600031DB83 /* DropdownMenuView.m */,
+				10826A511DBA12600031DB83 /* TitleMenuViewController.h */,
+				10826A521DBA12600031DB83 /* TitleMenuViewController.m */,
+			);
+			name = MonthDropDownMenuView;
+			sourceTree = "<group>";
+		};
+		10826A551DBA126A0031DB83 /* HeartRate */ = {
+			isa = PBXGroup;
+			children = (
+				10826A561DBA17540031DB83 /* HeartRateHistoryViewController.h */,
+				10826A571DBA17540031DB83 /* HeartRateHistoryViewController.m */,
+				10826A591DBA17840031DB83 /* HeartRateHistoryViewController.xib */,
+			);
+			name = HeartRate;
 			sourceTree = "<group>";
 		};
 		109D4E741DAF7B3900E11890 /* UserInfoModel */ = {
@@ -1019,6 +1043,7 @@
 				104A706E1D9BAD2B00CC73F5 /* UserInfoCell.xib in Resources */,
 				10C47EB51DA8A55F00D949CA /* ble_icon@3x.png in Resources */,
 				10F5F7C41D9923D90045FA4C /* temper_notice_high@3x.png in Resources */,
+				10826A5A1DBA17840031DB83 /* HeartRateHistoryViewController.xib in Resources */,
 				10C47EB81DA8A55F00D949CA /* ble_lock_close@3x.png in Resources */,
 				10F5F7EE1D9927C60045FA4C /* sleep_old_icon@3x.png in Resources */,
 				10F5F74C1D98F31B0045FA4C /* set_user_icon@3x.png in Resources */,
@@ -1132,12 +1157,13 @@
 				104A70641D9B724D00CC73F5 /* SettingContentView.m in Sources */,
 				103E4BFC1DB0C77E0051BF03 /* UserListViewController.m in Sources */,
 				102474FD1DAA41E000F70E4F /* SportModel.m in Sources */,
-				103820F91DB892CD00E92410 /* DropdownMenuView.m in Sources */,
+				10826A531DBA12600031DB83 /* DropdownMenuView.m in Sources */,
 				109FBB9B1DAA18FB008FF0D3 /* FMDBTool.m in Sources */,
 				10CB0F031D9A13960063AD0C /* MenuContentView.m in Sources */,
 				10F5F7091D98C6280045FA4C /* main.m in Sources */,
+				10826A581DBA17540031DB83 /* HeartRateHistoryViewController.m in Sources */,
 				104A70611D9B720500CC73F5 /* SettingViewController.m in Sources */,
-				103820FC1DB89B2300E92410 /* TitleMenuViewController.m in Sources */,
+				10826A541DBA12600031DB83 /* TitleMenuViewController.m in Sources */,
 				10CB0F071D9A25130063AD0C /* FunctionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

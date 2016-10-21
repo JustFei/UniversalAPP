@@ -11,18 +11,32 @@
 #import "FMDBTool.h"
 #import "DropdownMenuView.h"
 #import "TitleMenuViewController.h"
+#import "StepDataModel.h"
 
 
 
 @interface StepHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate>
+{
+    NSInteger sumStep;
+    NSInteger sumMileage;
+    NSInteger sumkCal;
+    NSInteger haveDataDays;
+}
+
 @property (weak, nonatomic) IBOutlet UILabel *averageStepLabel;
 @property (weak, nonatomic) IBOutlet UILabel *averagerMileageAndkCalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sumStepAndMilAndkCal;
 @property (weak, nonatomic) IBOutlet UIButton *mouthButton;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIView *downView;
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
 
+@property (nonatomic ,strong) UIButton *titleButton;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+
 @property (nonatomic ,weak) PNBarChart *stepBarChart;
+
+@property (nonatomic ,strong) UISwipeGestureRecognizer *oneFingerSwipedown;
 
 @end
 
@@ -31,6 +45,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.titleButton setTitle:@"历史记录" forState:UIControlStateNormal];
+    [self.titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.navigationItem.titleView = self.titleButton;
+    
+    if (!self.navigationController) {
+        [self.backButton setHidden:NO];
+        [self.backButton addTarget:self action:@selector(oneFingerSwipeDown:) forControlEvents:UIControlEventTouchUpInside];
+    }else {
+        [self.backButton setHidden:YES];
+    }
+    
+    
+    
 
     //获取这个月的天数
     NSDate *today = [NSDate date]; //Get a date object for today's date
@@ -39,8 +68,7 @@
                            inUnit:NSMonthCalendarUnit
                           forDate:today];
     
-    NSArray *dataArr = [self getHistoryDataWithIntDays:days.length];
-    
+//    NSArray *dataArr = [self getHistoryDataWithIntDays:days.length];
     
     NSMutableArray *dateArr = [NSMutableArray array];
     
@@ -49,14 +77,35 @@
     }
     
     //这里存在这样一个问题，当y轴数据都为0时，会出现显示很多很多个0在Y轴上
-    [self.stepBarChart setXLabels:dateArr];
-    [self.stepBarChart setYValues:dataArr];
+//    [self.stepBarChart setXLabels:dateArr];
+//    [self.stepBarChart setYValues:dataArr];
+//    
+//    [self.stepBarChart strokeChart];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
     
-    [self.stepBarChart strokeChart];
+    self.oneFingerSwipedown =
+    [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerSwipeDown:)];
+    [self.oneFingerSwipedown setDirection:UISwipeGestureRecognizerDirectionDown];
+    [self.view addGestureRecognizer:self.oneFingerSwipedown];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    [self.view removeGestureRecognizer:self.oneFingerSwipedown];
 }
 
 - (NSArray *)getHistoryDataWithIntDays:(NSInteger)days
 {
+    sumStep = 0;
+    sumMileage = 0;
+    sumkCal = 0;
+    haveDataDays = 0;
+    
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
     unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
@@ -69,16 +118,33 @@
     
     NSMutableArray *dataArr = [NSMutableArray array];
     
-    for (NSInteger i = 1; i <= days; i ++) {
-        NSString *dateStr = [NSString stringWithFormat:@"%ld-%ld-%02ld",iCurYear ,iCurMonth ,i];
-        NSLog(@"%@",dateStr);
-        
-        if ([self.myFmdbTool queryStepWithDate:dateStr].count == 0) {
-            [dataArr addObject:@0];
-        }else {
-            [dataArr addObject:[self.myFmdbTool queryStepWithDate:dateStr].firstObject];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (NSInteger i = 1; i <= days; i ++) {
+            NSString *dateStr = [NSString stringWithFormat:@"%ld-%ld-%02ld",iCurYear ,iCurMonth ,i];
+            NSLog(@"%@",dateStr);
+            
+            NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateStr];
+            if (queryArr.count == 0) {
+                [dataArr addObject:@0];
+            }else {
+                StepDataModel *model = queryArr.firstObject;
+                
+                sumStep += model.step.integerValue;
+                sumMileage += model.mileage.integerValue;
+                sumkCal += model.kCal.integerValue;
+                haveDataDays ++;
+                
+                [dataArr addObject:@(model.step.integerValue)];
+            }
         }
-    }
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.sumStepAndMilAndkCal setText:[NSString stringWithFormat:@"本月计步统计：共（%ld步/%ld公里/%ld千卡）",sumStep ,sumMileage ,sumkCal]];
+            [self.averageStepLabel setText:[NSString stringWithFormat:@"%ld",(sumStep / haveDataDays)]];
+            [self.averagerMileageAndkCalLabel setText:[NSString stringWithFormat:@"%ld公里/%ld千卡",(sumMileage / haveDataDays) ,(sumkCal / haveDataDays)]];
+        });
+    });
+    
+    
     
     return dataArr;
 }
@@ -112,6 +178,11 @@
     
     // 3.显示下拉菜单
     [dropdownMenuView showFrom:sender];
+}
+
+- (void)oneFingerSwipeDown:(UISwipeGestureRecognizer *)recognizer
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - DropdownMenuDelegate
@@ -157,7 +228,6 @@
 -(void)pop
 {
     NSLog(@"用户点击了右侧弹出下拉菜单按钮");
-    
 }
 
 #pragma mark - 懒加载
@@ -165,7 +235,20 @@
 {
     if (!_stepBarChart) {
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 0, self.downView.frame.size.width, self.downView.frame.size.height)];
-        view.backgroundColor = [UIColor yellowColor];
+        view.backgroundColor = [UIColor clearColor];
+        
+        view.yChartLabelWidth = 20.0;
+        view.chartMarginLeft = 30.0;
+        view.chartMarginRight = 10.0;
+        view.chartMarginTop = 5.0;
+        view.chartMarginBottom = 10.0;
+        view.isGradientShow = NO;
+        view.isShowNumbers = NO;
+        view.labelMarginTop = 5.0;
+        view.showChartBorder = YES;
+        view.showXLabel = YES;
+        view.showYLabel = NO;
+        [view setStrokeColor:[UIColor blackColor]];
         
         [self.downView addSubview:view];
         _stepBarChart = view;

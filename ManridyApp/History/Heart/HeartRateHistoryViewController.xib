@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月计步统计：共 (0步/0公里/0千卡）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rwp-9Z-xNi">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月心率统计：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rwp-9Z-xNi">
                     <rect key="frame" x="8" y="383" width="304" height="14"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,19 +61,12 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日评价步数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgk-fV-KOc">
-                            <rect key="frame" x="118" y="144" width="85" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月平均心率" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgk-fV-KOc">
+                            <rect key="frame" x="109" y="144" width="102" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walk_run_old.png" translatesAutoresizingMaskIntoConstraints="NO" id="0ej-qs-qpu">
-                            <rect key="frame" x="31" y="61" width="258" height="271"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="258" id="c1V-Mm-Xcc"/>
-                                <constraint firstAttribute="height" constant="271" id="ixf-Nr-zkk"/>
-                            </constraints>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nik-V7-UXU">
                             <rect key="frame" x="266" y="61" width="46" height="30"/>
                             <constraints>
@@ -100,6 +93,13 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_old_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="0ej-qs-qpu">
+                            <rect key="frame" x="31" y="61" width="258" height="271"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="258" id="c1V-Mm-Xcc"/>
+                                <constraint firstAttribute="height" constant="271" id="ixf-Nr-zkk"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.039215686274509803" green="0.35686274509803922" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -142,9 +142,10 @@
                 <constraint firstItem="E9c-y2-W5j" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xa7-zc-SXr"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="618" y="306"/>
         </view>
     </objects>
     <resources>
-        <image name="walk_run_old.png" width="258" height="270"/>
+        <image name="heart_old_icon.png" width="258" height="267"/>
     </resources>
 </document>

@@ -57,6 +57,8 @@
 
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
 
+@property (nonatomic ,strong) UISwipeGestureRecognizer *oneFingerSwipeUp;
+
 @end
 
 @implementation MainViewController
@@ -95,7 +97,31 @@
     [self.sleepView showChartView];
     
     [self hiddenFunctionView];
+    
+    
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    
+    self.myBleTool = [BLETool shareInstance];
+    self.myBleTool.receiveDelegate = self;
+    
+    _userArr = [self.myFmdbTool queryAllUserInfo];
+    self.oneFingerSwipeUp =
+    [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerSwipeUp:)];
+    [self.oneFingerSwipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
+    [self.view addGestureRecognizer:self.oneFingerSwipeUp];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"会走这方法");
+    [self.view removeGestureRecognizer:self.oneFingerSwipeUp];
+}
+
+
 
 - (void)showFunctionView
 {
@@ -136,14 +162,6 @@
     
     [self.stepView.stepLabel setText:@"设备连接中。。。"];
     [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:15]];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.myBleTool = [BLETool shareInstance];
-    self.myBleTool.receiveDelegate = self;
-    
-    _userArr = [self.myFmdbTool queryAllUserInfo];
 }
 
 - (void)writeData
@@ -420,6 +438,25 @@
         default:
             break;
     }
+}
+
+- (void)oneFingerSwipeUp:(UISwipeGestureRecognizer *)recognizer
+{
+    int currentPage = floor((self.backGroundView.contentOffset.x - self.view.frame.size.width / 2) / self.view.frame.size.width) + 1;
+    switch (currentPage) {
+        case 0:
+        {
+            StepHistoryViewController *vc = [[StepHistoryViewController alloc] initWithNibName:@"StepHistoryViewController" bundle:nil];
+            //  添加动作
+            [self presentViewController: vc animated:YES completion:nil];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
 }
 
 - (void)showSettingView

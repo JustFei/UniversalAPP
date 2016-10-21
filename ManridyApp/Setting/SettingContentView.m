@@ -91,6 +91,7 @@
     
     cell.imageView.image = [UIImage imageNamed:_imageNameArr[indexPath.row]];
     cell.textLabel.text = _dataArr[indexPath.row];
+    [cell.textLabel setTextColor:[UIColor whiteColor]];
     
     return cell;
 }
@@ -102,6 +103,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor colorWithRed:48.0 / 255.0 green:110.0 / 255.0 blue:187.0 / 255.0 alpha:0.7];
+    
     switch (indexPath.row) {
         case 0:
         {
