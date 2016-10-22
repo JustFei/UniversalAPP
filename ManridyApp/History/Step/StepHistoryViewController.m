@@ -21,6 +21,8 @@
     NSInteger sumMileage;
     NSInteger sumkCal;
     NSInteger haveDataDays;
+    NSMutableArray *_dateArr;
+    NSMutableArray *_dataArr;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *averageStepLabel;
@@ -33,6 +35,7 @@
 
 @property (nonatomic ,strong) UIButton *titleButton;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (nonatomic ,weak) PNBarChart *stepBarChart;
 
@@ -42,6 +45,7 @@
 
 @implementation StepHistoryViewController
 
+#pragma mark - lifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -53,9 +57,11 @@
     
     if (!self.navigationController) {
         [self.backButton setHidden:NO];
+        [self.titleLabel setHidden:NO];
         [self.backButton addTarget:self action:@selector(oneFingerSwipeDown:) forControlEvents:UIControlEventTouchUpInside];
     }else {
         [self.backButton setHidden:YES];
+        [self.titleLabel setHidden:YES];
     }
     
     
@@ -67,20 +73,16 @@
     NSRange days = [c rangeOfUnit:NSDayCalendarUnit
                            inUnit:NSMonthCalendarUnit
                           forDate:today];
-    
-//    NSArray *dataArr = [self getHistoryDataWithIntDays:days.length];
-    
-    NSMutableArray *dateArr = [NSMutableArray array];
+    _dateArr = [NSMutableArray array];
+    _dataArr = [NSMutableArray array];
     
     for (int i = 1; i <= days.length; i ++) {
-        [dateArr addObject:@(i)];
+        [_dateArr addObject:@(i)];
     }
     
     //这里存在这样一个问题，当y轴数据都为0时，会出现显示很多很多个0在Y轴上
-//    [self.stepBarChart setXLabels:dateArr];
-//    [self.stepBarChart setYValues:dataArr];
-//    
-//    [self.stepBarChart strokeChart];
+    [self.stepBarChart setXLabels:_dateArr];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -93,13 +95,21 @@
     [self.view addGestureRecognizer:self.oneFingerSwipedown];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    
+    //绘制图表放在这里不会造成UI卡顿
+    [self getHistoryDataWithIntDays:_dateArr.count];
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:YES];
     [self.view removeGestureRecognizer:self.oneFingerSwipedown];
 }
 
-- (NSArray *)getHistoryDataWithIntDays:(NSInteger)days
+- (void)getHistoryDataWithIntDays:(NSInteger)days
 {
     sumStep = 0;
     sumMileage = 0;
@@ -116,7 +126,8 @@
     
     NSInteger iCurMonth = [components month];  //当前的月份
     
-    NSMutableArray *dataArr = [NSMutableArray array];
+//    _dataArr = [NSMutableArray array];
+    [_dataArr removeAllObjects];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
@@ -125,7 +136,7 @@
             
             NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateStr];
             if (queryArr.count == 0) {
-                [dataArr addObject:@0];
+                [_dataArr addObject:@0];
             }else {
                 StepDataModel *model = queryArr.firstObject;
                 
@@ -134,19 +145,23 @@
                 sumkCal += model.kCal.integerValue;
                 haveDataDays ++;
                 
-                [dataArr addObject:@(model.step.integerValue)];
+                if (self.stepBarChart.yMaxValue < model.step.integerValue) {
+                    self.stepBarChart.yMaxValue = model.step.integerValue + 10;
+                }
+                
+                [_dataArr addObject:@(model.step.integerValue)];
             }
         }
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             [self.sumStepAndMilAndkCal setText:[NSString stringWithFormat:@"本月计步统计：共（%ld步/%ld公里/%ld千卡）",sumStep ,sumMileage ,sumkCal]];
             [self.averageStepLabel setText:[NSString stringWithFormat:@"%ld",(sumStep / haveDataDays)]];
             [self.averagerMileageAndkCalLabel setText:[NSString stringWithFormat:@"%ld公里/%ld千卡",(sumMileage / haveDataDays) ,(sumkCal / haveDataDays)]];
+            
+            [self.stepBarChart setYValues:_dataArr];
+            
+            [self.stepBarChart strokeChart];
         });
     });
-    
-    
-    
-    return dataArr;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -169,8 +184,8 @@
     
     CGRect temp = titleMenuVC.view.frame;
     
-    temp.size.width = self.view.frame.size.width/2;
-    temp.size.height = self.view.frame.size.height/2;
+    temp.size.width = 57;
+    temp.size.height = 250;
     
     titleMenuVC.view.frame = temp;
     
@@ -215,14 +230,14 @@
     // ...
 }
 
-#pragma mark 打开好友关注动态控制器
--(void)friendsearch
-{
-    NSLog(@"用户点击了左侧按钮");
-    
-//    FriendAttentionStatusViewController *friendAttentionStatusVC = [[FriendAttentionStatusViewController alloc]init];
-//    [self.navigationController pushViewController:friendAttentionStatusVC animated:YES];
-}
+//#pragma mark 打开好友关注动态控制器
+//-(void)friendsearch
+//{
+//    NSLog(@"用户点击了左侧按钮");
+//    
+////    FriendAttentionStatusViewController *friendAttentionStatusVC = [[FriendAttentionStatusViewController alloc]init];
+////    [self.navigationController pushViewController:friendAttentionStatusVC animated:YES];
+//}
 
 #pragma mark 弹出下拉菜单
 -(void)pop
@@ -247,8 +262,12 @@
         view.labelMarginTop = 5.0;
         view.showChartBorder = YES;
         view.showXLabel = YES;
-        view.showYLabel = NO;
+        view.showYLabel = YES;
         [view setStrokeColor:[UIColor blackColor]];
+        view.yMinValue = 0;
+        view.yMaxValue = 10;
+        view.yLabelSum = 10;
+        [view setXLabelSkip:5];
         
         [self.downView addSubview:view];
         _stepBarChart = view;

@@ -79,7 +79,7 @@
     CGRect newFrame = [from convertRect:from.bounds toView:window];
     
     CGPoint centerPoint = _containerView.center;
-    centerPoint.x = CGRectGetMinX(newFrame);
+    centerPoint.x = CGRectGetMinX(newFrame) + newFrame.size.width / 2;
     _containerView.center = centerPoint;
     
     

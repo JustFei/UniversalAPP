@@ -181,7 +181,7 @@
 
             if (labelAddCount == _xLabelSkip) {
                 NSString *labelText = [_xLabels[index] description];
-                PNChartLabel * label = [[PNChartLabel alloc] initWithFrame:CGRectMake(0, 0, _xLabelWidth, kXLabelHeight)];
+                PNChartLabel * label = [[PNChartLabel alloc] initWithFrame:CGRectMake(0, 0, _xLabelWidth + 5, kXLabelHeight)];
                 label.font = _labelFont;
                 label.textColor = _labelTextColor;
                 [label setTextAlignment:NSTextAlignmentCenter];

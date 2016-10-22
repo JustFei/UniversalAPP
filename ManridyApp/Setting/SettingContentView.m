@@ -93,6 +93,13 @@
     cell.textLabel.text = _dataArr[indexPath.row];
     [cell.textLabel setTextColor:[UIColor whiteColor]];
     
+//    cell.contentView.backgroundColor = [UIColor colorWithRed:48.0 / 255.0 green:110.0 / 255.0 blue:187.0 / 255.0 alpha:0.7];
+    UIView *view = [[UIView alloc] initWithFrame:cell.contentView.frame];
+    
+    view.backgroundColor = [UIColor colorWithRed:48.0 / 255.0 green:110.0 / 255.0 blue:187.0 / 255.0 alpha:0.7];//设置选中后cell的背景颜色
+    
+    cell.selectedBackgroundView = view;
+    
     return cell;
 }
 
@@ -103,8 +110,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor colorWithRed:48.0 / 255.0 green:110.0 / 255.0 blue:187.0 / 255.0 alpha:0.7];
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
     
     switch (indexPath.row) {
         case 0:
@@ -144,7 +151,7 @@
     if (!_userNameLabel) {
         UILabel *label = [[UILabel alloc] init];
         label.text = @"用户名";
-        label.tintColor = [UIColor whiteColor];
+        label.textColor = [UIColor whiteColor];
         label.textAlignment = NSTextAlignmentCenter;
         
         [self addSubview:label];

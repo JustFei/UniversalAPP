@@ -47,29 +47,29 @@
     self.collectionView.frame = self.bounds;
 }
 
-- (void)chooseView:(UIButton *)sender
-{
-    switch (sender.tag) {
-        case 100:
-            
-            break;
-        case 101:
-            
-            break;
-        case 102:
-            
-            break;
-        case 103:
-            
-            break;
-        case 104:
-            
-            break;
-            
-        default:
-            break;
-    }
-}
+//- (void)chooseView:(UIButton *)sender
+//{
+//    switch (sender.tag) {
+//        case 100:
+//            
+//            break;
+//        case 101:
+//            
+//            break;
+//        case 102:
+//            
+//            break;
+//        case 103:
+//            
+//            break;
+//        case 104:
+//            
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//}
 
 #pragma mark - UICollectionViewDelegate && UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

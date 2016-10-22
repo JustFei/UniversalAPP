@@ -83,6 +83,9 @@
 		10CB0F241D9A8A190063AD0C /* list_walk_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10CB0F151D9A8A190063AD0C /* list_walk_icon.png */; };
 		10CB0F251D9A8A190063AD0C /* list_walk_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10CB0F161D9A8A190063AD0C /* list_walk_icon@2x.png */; };
 		10CB0F261D9A8A190063AD0C /* list_walk_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10CB0F171D9A8A190063AD0C /* list_walk_icon@3x.png */; };
+		10DE11A61DBAFBB000B824C5 /* all_back_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10DE11A31DBAFBB000B824C5 /* all_back_icon.png */; };
+		10DE11A71DBAFBB000B824C5 /* all_back_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10DE11A41DBAFBB000B824C5 /* all_back_icon@2x.png */; };
+		10DE11A81DBAFBB000B824C5 /* all_back_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10DE11A51DBAFBB000B824C5 /* all_back_icon@3x.png */; };
 		10EE961D1DB4BFC70048D594 /* PhoneRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EE961C1DB4BFC70048D594 /* PhoneRemindViewController.m */; };
 		10EE961F1DB4C06E0048D594 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EE961E1DB4C06E0048D594 /* CoreTelephony.framework */; };
 		10F5F7091D98C6280045FA4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7081D98C6280045FA4C /* main.m */; };
@@ -291,6 +294,9 @@
 		10CB0F151D9A8A190063AD0C /* list_walk_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_walk_icon.png; sourceTree = "<group>"; };
 		10CB0F161D9A8A190063AD0C /* list_walk_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_walk_icon@2x.png"; sourceTree = "<group>"; };
 		10CB0F171D9A8A190063AD0C /* list_walk_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_walk_icon@3x.png"; sourceTree = "<group>"; };
+		10DE11A31DBAFBB000B824C5 /* all_back_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = all_back_icon.png; sourceTree = "<group>"; };
+		10DE11A41DBAFBB000B824C5 /* all_back_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_back_icon@2x.png"; sourceTree = "<group>"; };
+		10DE11A51DBAFBB000B824C5 /* all_back_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_back_icon@3x.png"; sourceTree = "<group>"; };
 		10EE961B1DB4BFC70048D594 /* PhoneRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneRemindViewController.h; path = Setting/PhoneRemind/PhoneRemindViewController.h; sourceTree = "<group>"; };
 		10EE961C1DB4BFC70048D594 /* PhoneRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneRemindViewController.m; path = Setting/PhoneRemind/PhoneRemindViewController.m; sourceTree = "<group>"; };
 		10EE961E1DB4C06E0048D594 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -659,6 +665,9 @@
 		10F5F7251D98F31B0045FA4C /* image */ = {
 			isa = PBXGroup;
 			children = (
+				10DE11A31DBAFBB000B824C5 /* all_back_icon.png */,
+				10DE11A41DBAFBB000B824C5 /* all_back_icon@2x.png */,
+				10DE11A51DBAFBB000B824C5 /* all_back_icon@3x.png */,
 				10C47E9B1DA8A55F00D949CA /* ble_break_icon.png */,
 				10C47E9C1DA8A55F00D949CA /* ble_break_icon@2x.png */,
 				10C47E9D1DA8A55F00D949CA /* ble_break_icon@3x.png */,
@@ -961,6 +970,7 @@
 				10C47EB91DA8A55F00D949CA /* ble_lock_oper.png in Resources */,
 				10F5F7D91D99253B0045FA4C /* SleepContentView.xib in Resources */,
 				10F5F7741D98F3560045FA4C /* walk_mileage_icon.png in Resources */,
+				10DE11A71DBAFBB000B824C5 /* all_back_icon@2x.png in Resources */,
 				10C47EB41DA8A55F00D949CA /* ble_icon@2x.png in Resources */,
 				10F5F7721D98F3560045FA4C /* walk_foot_icon@2x.png in Resources */,
 				10F5F76C1D98F3560045FA4C /* walk_circle1@2x.png in Resources */,
@@ -1001,6 +1011,7 @@
 				104A70571D9B639C00CC73F5 /* all_data_icon@3x.png in Resources */,
 				10F5F7C21D9923D90045FA4C /* temper_notice_high.png in Resources */,
 				10F5F7441D98F31B0045FA4C /* set_bty_icon.png in Resources */,
+				10DE11A81DBAFBB000B824C5 /* all_back_icon@3x.png in Resources */,
 				10CB0F1D1D9A8A190063AD0C /* list_heart_icon@3x.png in Resources */,
 				10CB0F251D9A8A190063AD0C /* list_walk_icon@2x.png in Resources */,
 				10C47EC31DA8C83C00D949CA /* StepTargetViewController.xib in Resources */,
@@ -1068,6 +1079,7 @@
 				10F5F76F1D98F3560045FA4C /* walk_circle2@2x.png in Resources */,
 				10F5F7431D98F31B0045FA4C /* set_ble_icon@3x.png in Resources */,
 				10F5F7A11D991C700045FA4C /* heart_old_icon.png in Resources */,
+				10DE11A61DBAFBB000B824C5 /* all_back_icon.png in Resources */,
 				10F5F7971D991C210045FA4C /* HeartRateContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

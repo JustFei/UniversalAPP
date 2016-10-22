@@ -16,6 +16,7 @@
 #import "FMDBTool.h"
 #import "StepDataModel.h"
 #import "StepHistoryViewController.h"
+#import "HeartRateHistoryViewController.h"
 
 #import "SettingViewController.h"
 
@@ -82,16 +83,18 @@
         NSLog(@"querystring == %@",dateStr);
         NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateStr];
         
+        StepDataModel *model = [[StepDataModel alloc] init];
+        
         if (queryArr.count == 0) {
-            [self.stepView.dataArr addObject:@0];
+            [self.stepView.dataArr addObject:model];
         }else {
-            StepDataModel *model = queryArr.firstObject;
+            model = queryArr.firstObject;
             
-            [self.stepView.dataArr addObject:[NSNumber numberWithInteger:model.step.integerValue]];
+            [self.stepView.dataArr addObject:model];
         }
     }
     
-    [self.stepView showChartView];
+    
     [self.heartRateView showChartView];
     [self.temperatureView showChartView];
     [self.sleepView showChartView];
@@ -113,18 +116,25 @@
     [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerSwipeUp:)];
     [self.oneFingerSwipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
     [self.view addGestureRecognizer:self.oneFingerSwipeUp];
+    
+    [self.stepView showChartView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:YES];
     NSLog(@"会走这方法");
     [self.view removeGestureRecognizer:self.oneFingerSwipeUp];
 }
 
-
+- (void)dealloc
+{
+    [self.myFmdbTool CloseDataBase];
+}
 
 - (void)showFunctionView
 {
+    [self.stepView showChartView];
     self.backGroundView.scrollEnabled = YES;
     self.stepView.downView.hidden = NO;
     self.stepView.stepChart.hidden = NO;
@@ -144,11 +154,10 @@
     int currentPage = floor((self.backGroundView.contentOffset.x - self.view.frame.size.width / 2) / self.view.frame.size.width) + 1;
     
     if (currentPage != 0) {
-        NSLog(@"%f",currentPage * self.view.frame.size.width);
-        NSLog(@"content前 == %@",NSStringFromCGRect(self.backGroundView.frame));
-        [self.backGroundView setContentOffset:CGPointMake(0, 0) animated:YES];
-        NSLog(@"content后 == %@",NSStringFromCGRect(self.backGroundView.frame));
-//#warning offset to firstView
+        
+        [self.backGroundView setContentOffset:CGPointMake(0 * WIDTH, -64) animated:YES];
+        [self.titleButton setTitle:_titleArr[0] forState:UIControlStateNormal];
+        self.pageControl.currentPage = 0;
     }
     
     
@@ -221,13 +230,13 @@
 - (void)createUI
 {
     //left
-//    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(16, 17, 20, 20)];
-//    leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [leftButton setImage:[UIImage imageNamed:@"all_data_icon"] forState:UIControlStateNormal];
-//    [leftButton addTarget:self action:@selector(showHistoryView) forControlEvents:UIControlEventTouchUpInside];
-//    leftButton.backgroundColor = [UIColor whiteColor];
-//    [leftButton setTitle:@"fanhui" forState:UIControlStateNormal];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"all_data_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showHistoryView)];
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(16, 17, 20, 20)];
+//    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setImage:[UIImage imageNamed:@"all_data_icon"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(showHistoryView) forControlEvents:UIControlEventTouchUpInside];
+    leftButton.tintColor = [UIColor whiteColor];
+    [leftButton setTitle:@"fanhui" forState:UIControlStateNormal];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem = leftItem;
     
     //title
@@ -238,12 +247,12 @@
     self.navigationItem.titleView = self.titleButton;
     
     //right
-//    self.rightButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 17, 20, 20)];
+    self.rightButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 17, 20, 20)];
 //    self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.rightButton setImage:[UIImage imageNamed:@"all_set_icon"] forState:UIControlStateNormal];
-//    [self.rightButton addTarget:self action:@selector(showSettingView) forControlEvents:UIControlEventTouchUpInside];
-//    self.rightButton.backgroundColor = [UIColor whiteColor];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"all_set_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettingView)];
+    [self.rightButton setImage:[UIImage imageNamed:@"all_set_icon"] forState:UIControlStateNormal];
+    [self.rightButton addTarget:self action:@selector(showSettingView) forControlEvents:UIControlEventTouchUpInside];
+    self.rightButton.tintColor = [UIColor whiteColor];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightButton];
     self.navigationItem.rightBarButtonItem = rightItem;
     
     self.backGroundView.backgroundColor = [UIColor whiteColor];
@@ -434,6 +443,12 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
+        case 1:
+        {
+            HeartRateHistoryViewController *vc = [[HeartRateHistoryViewController alloc] initWithNibName:@"HeartRateHistoryViewController" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
             
         default:
             break;
@@ -451,6 +466,12 @@
             [self presentViewController: vc animated:YES completion:nil];
         }
             break;
+        case 1:
+        {
+            HeartRateHistoryViewController *vc = [[HeartRateHistoryViewController alloc] initWithNibName:@"HeartRateHistoryViewController" bundle:nil];
+            [self presentViewController:vc animated:YES completion:nil];
+        }
+            break;
             
         default:
             break;
@@ -462,6 +483,9 @@
 - (void)showSettingView
 {
     SettingViewController *vc = [[SettingViewController alloc] init];
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"all_back_icon"] style:UIBarButtonItemStylePlain target:nil action:nil];
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -546,7 +570,7 @@
         {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (self.pageControl.currentPage == 3) {
-                    [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
+                    [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
                 }
             });
         }

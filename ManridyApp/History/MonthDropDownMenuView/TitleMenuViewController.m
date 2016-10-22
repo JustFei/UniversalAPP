@@ -23,6 +23,8 @@
     NSArray *mouthArr = @[@"1月",@"2月",@"3月",@"4月",@"5月",@"6月",@"7月",@"8月",@"9月",@"10月",@"11月",@"12月"];
     
     _data = [NSMutableArray arrayWithArray:mouthArr];
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     [self.tableView reloadData];
 }
@@ -43,6 +45,7 @@
     
     NSString * name = _data[indexPath.row];
     cell.textLabel.text = name;
+    [cell.textLabel setFont:[UIFont systemFontOfSize:11]];
     
     return cell;
 }

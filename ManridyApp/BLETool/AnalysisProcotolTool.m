@@ -364,7 +364,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         
         const unsigned char *hexBytes = [data bytes];
         
-        NSString *TyStr = [NSString stringWithFormat:@"02%x", hexBytes[1]];
+        NSString *TyStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
         
         if ([TyStr isEqualToString:@"00"]) {
             model.heartRateModel.heartRateState = HeartRateDataLastData;
@@ -410,7 +410,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         
         const unsigned char *hexBytes = [data bytes];
         
-        NSString *TyStr = [NSString stringWithFormat:@"02%x", hexBytes[1]];
+        NSString *TyStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
         
         if ([TyStr isEqualToString:@"00"]) {
             model.sleepModel.sleepState = SleepDataLastData;

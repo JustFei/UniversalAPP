@@ -125,6 +125,8 @@
 {
     NSLog(@"search peripheral.");
     
+    index = -1;
+    
     [self deletAllRowsAtTableView];
     
     [self.myBleTool scanDevice];
@@ -154,6 +156,10 @@
 //        self.hud.mode = MBProgressHUDModeAnnularDeterminate;
         self.hud.mode = MBProgressHUDModeIndeterminate;
         [self.hud.label setText:@"正在连接设备..."];
+    }else {
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"请选择设备以绑定。" preferredStyle:UIAlertControllerStyleAlert];
+        [vc addAction:[UIAlertAction actionWithTitle:@"去选择" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:vc animated:YES completion:nil];
     }
 }
 
@@ -162,6 +168,7 @@
     _isConnected = NO;
     self.myBleTool.isReconnect = NO;
     [self.myBleTool unConnectDevice];
+    index = -1;
     
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"bindPeripheralID"];
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"bindPeripheralName"];

@@ -21,7 +21,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.title = @"设置";
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    [titleLabel setText:@"设置"];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    self.navigationItem.titleView = titleLabel;
     
     
 }

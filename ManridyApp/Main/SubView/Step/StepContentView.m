@@ -12,7 +12,11 @@
 
 
 @interface StepContentView () 
-
+{
+    NSInteger sumStep;
+    NSInteger sumMileage;
+    NSInteger sumkCal;
+}
 
 
 @end
@@ -26,6 +30,9 @@
         
         self = [[NSBundle mainBundle] loadNibNamed:@"StepContentView" owner:self options:nil].firstObject;
         self.frame = frame;
+        sumStep = 0;
+        sumMileage = 0;
+        sumkCal = 0;
     }
     return self;
 }
@@ -60,7 +67,6 @@
     
     //添加并显示
     [self.layer addSublayer:self.shapeLayer];
-
 }
 
 
@@ -77,15 +83,37 @@
     PNLineChartData *data02 = [PNLineChartData new];
     data02.color = PNTwitterColor;
     data02.itemCount = self.stepChart.xLabels.count;
+    data02.inflexionPointColor = PNLightBlue;
+    data02.inflexionPointStyle = PNLineChartPointStyleCircle;
     data02.getData = ^(NSUInteger index) {
-        CGFloat yValue = [self.dataArr[index] floatValue];
+        
+        StepDataModel *model = self.dataArr[index];
+        CGFloat yValue;
+        if (model.step != 0) {
+            yValue = model.step.integerValue;
+
+        }else {
+            yValue = 0;
+        }
+        
         return [PNLineChartDataItem dataItemWithY:yValue];
     };
     
     self.stepChart.chartData = @[data02];
     [self.stepChart strokeChart];
     
-    self.stepChart.showSmoothLines = YES;
+    for (int i = 0; i < self.dataArr.count; i ++) {
+        StepDataModel *model = self.dataArr[i];
+        
+        if (model.step != 0) {
+            sumStep += model.step.integerValue;
+            sumMileage += model.mileage.integerValue;
+            sumkCal += model.kCal.integerValue;
+        }
+    }
+    
+    [self.weekStatisticsLabel setText:[NSString stringWithFormat:@"本周计步统计：%ld步（%ld公里/%ld千卡）",sumStep ,sumMileage ,sumkCal]];
+    sumStep = sumMileage = sumkCal = 0;
 }
 
 
@@ -124,6 +152,10 @@
     if (!_stepChart) {
         PNLineChart *view = [[PNLineChart alloc] initWithFrame: CGRectMake(5, 5, self.downView.frame.size.width - 10, self.downView.frame.size.height - 10)];
         view.backgroundColor = [UIColor clearColor];
+        view.showCoordinateAxis = YES;
+        
+        view.yGridLinesColor = [UIColor clearColor];
+        view.showYGridLines = YES;
         
         [self.downView addSubview:view];
         _stepChart = view;
