@@ -31,4 +31,6 @@ typedef enum : NSUInteger {
 //心率数据
 @property (nonatomic ,copy) NSString *heartRate;
 
+@property (nonatomic ,copy) NSString *date;
+
 @end

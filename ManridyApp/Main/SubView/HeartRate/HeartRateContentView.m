@@ -36,34 +36,71 @@
 
 - (void)showChartView
 {
-    [self.heartChart setXLabels:self.dateArr];
+    NSMutableArray *xLabelArr = [NSMutableArray array];
+    
+    for (__strong NSString *dateStr in self.dateArr) {
+        dateStr = [dateStr substringFromIndex:5];
+        NSLog(@"querystring == %@",dateStr);
+        
+        [xLabelArr addObject:dateStr];
+    }
+    
+    [self.heartChart setXLabels:xLabelArr];
     
     PNLineChartData *data02 = [PNLineChartData new];
     data02.color = PNTwitterColor;
     data02.itemCount = self.heartChart.xLabels.count;
+    data02.inflexionPointColor = PNLightBlue;
+    data02.inflexionPointStyle = PNLineChartPointStyleCircle;
     data02.getData = ^(NSUInteger index) {
         CGFloat yValue = [self.dataArr[index] floatValue];
+        NSLog(@"%f",yValue);
         return [PNLineChartDataItem dataItemWithY:yValue];
     };
     
     self.heartChart.chartData = @[data02];
+    
     [self.heartChart strokeChart];
     
-    self.heartChart.showSmoothLines = YES;
 }
 
 #pragma mark - 懒加载
 - (PNLineChart *)heartChart
 {
     if (!_heartChart) {
-        PNLineChart *view = [[PNLineChart alloc] initWithFrame:CGRectMake(5, 5, self.downView.frame.size.width - 10, self.downView.frame.size.width - 10)];
+        PNLineChart *view = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, self.downView.frame.size.width, self.downView.frame.size.height)];
         view.backgroundColor = [UIColor clearColor];
+        view.showCoordinateAxis = YES;
+        view.yValueMin = 0;
+        view.yValueMax = 10;
+        
+        view.yGridLinesColor = [UIColor clearColor];
+        view.showYGridLines = YES;
+        
         
         [self.downView addSubview:view];
         _heartChart = view;
     }
     
     return _heartChart;
+}
+
+- (NSMutableArray *)dateArr
+{
+    if (!_dateArr) {
+        _dateArr = [NSMutableArray array];
+    }
+    
+    return _dateArr;
+}
+
+- (NSMutableArray *)dataArr
+{
+    if (!_dataArr) {
+        _dataArr = [NSMutableArray array];
+    }
+    
+    return _dataArr;
 }
 
 @end

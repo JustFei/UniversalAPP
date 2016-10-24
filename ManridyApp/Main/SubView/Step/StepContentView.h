@@ -10,7 +10,7 @@
 #import "StepTargetViewController.h"
 #import "BLETool.h"
 #import "PNChart.h"
-#import "FMDBTool.h"
+//#import "FMDBTool.h"
 #import "StepDataModel.h"
 
 @interface StepContentView : UIView
@@ -34,9 +34,9 @@
 
 @property (nonatomic ,strong) NSTimer *timer;
 
-@property (nonatomic ,strong) FMDBTool *myFmdbTool;
+//@property (nonatomic ,strong) FMDBTool *myFmdbTool;
 
-@property (nonatomic ,strong) NSArray *dateArr;
+@property (nonatomic ,strong) NSMutableArray *dateArr;
 @property (nonatomic ,strong) NSMutableArray *dataArr;
 
 

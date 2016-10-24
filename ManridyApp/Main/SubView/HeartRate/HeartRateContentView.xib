@@ -18,8 +18,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybr-MX-XhN">
-                    <rect key="frame" x="8" y="405" width="304" height="155"/>
-                    <color key="backgroundColor" red="0.1450980392" green="0.60392156860000001" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="0.0" y="397" width="320" height="171"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xze-WW-jw8">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="375"/>
@@ -126,12 +126,12 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ybr-MX-XhN" firstAttribute="top" secondItem="bEB-IB-Z7L" secondAttribute="bottom" constant="8" id="EBs-vi-GSB"/>
-                <constraint firstItem="ybr-MX-XhN" firstAttribute="leading" secondItem="92I-Ty-4z5" secondAttribute="leading" constant="8" id="FSX-8d-gPt"/>
+                <constraint firstItem="ybr-MX-XhN" firstAttribute="top" secondItem="bEB-IB-Z7L" secondAttribute="bottom" id="EBs-vi-GSB"/>
+                <constraint firstItem="ybr-MX-XhN" firstAttribute="leading" secondItem="92I-Ty-4z5" secondAttribute="leading" id="FSX-8d-gPt"/>
                 <constraint firstItem="xze-WW-jw8" firstAttribute="leading" secondItem="92I-Ty-4z5" secondAttribute="leading" id="IVO-vn-bJc"/>
                 <constraint firstItem="bEB-IB-Z7L" firstAttribute="top" secondItem="xze-WW-jw8" secondAttribute="bottom" constant="8" id="LgP-8A-weL"/>
-                <constraint firstAttribute="trailing" secondItem="ybr-MX-XhN" secondAttribute="trailing" constant="8" id="Ppn-rv-GF1"/>
-                <constraint firstAttribute="bottom" secondItem="ybr-MX-XhN" secondAttribute="bottom" constant="8" id="YzS-6u-LJh"/>
+                <constraint firstAttribute="trailing" secondItem="ybr-MX-XhN" secondAttribute="trailing" id="Ppn-rv-GF1"/>
+                <constraint firstAttribute="bottom" secondItem="ybr-MX-XhN" secondAttribute="bottom" id="YzS-6u-LJh"/>
                 <constraint firstItem="bEB-IB-Z7L" firstAttribute="leading" secondItem="92I-Ty-4z5" secondAttribute="leading" constant="8" id="aZm-VG-Rfa"/>
                 <constraint firstAttribute="trailing" secondItem="bEB-IB-Z7L" secondAttribute="trailing" constant="8" id="buN-RG-vdZ"/>
                 <constraint firstAttribute="trailing" secondItem="xze-WW-jw8" secondAttribute="trailing" id="cEx-Bc-QRE"/>

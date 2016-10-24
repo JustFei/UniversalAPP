@@ -28,24 +28,24 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
 {
     self = [super init];
     if (self) {
-        self.locationManager = [[CLLocationManager alloc] init];
-        self.locationManager.delegate = self;
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        
-        /** 由于IOS8中定位的授权机制改变 需要进行手动授权
-         * 获取授权认证，两个方法：
-         */
-        [self.locationManager requestWhenInUseAuthorization];
-//        [self.locationManager requestAlwaysAuthorization];
-        
-        if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-            NSLog(@"requestAlwaysAuthorization");
-            [self.locationManager requestAlwaysAuthorization];
-        }
-        
-        //开始定位，不断调用其代理方法
-        [self.locationManager startUpdatingLocation];
-        NSLog(@"start gps");
+//        self.locationManager = [[CLLocationManager alloc] init];
+//        self.locationManager.delegate = self;
+//        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//        
+//        /** 由于IOS8中定位的授权机制改变 需要进行手动授权
+//         * 获取授权认证，两个方法：
+//         */
+//        [self.locationManager requestWhenInUseAuthorization];
+////        [self.locationManager requestAlwaysAuthorization];
+//        
+//        if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+//            NSLog(@"requestAlwaysAuthorization");
+//            [self.locationManager requestAlwaysAuthorization];
+//        }
+//        
+//        //开始定位，不断调用其代理方法
+//        [self.locationManager startUpdatingLocation];
+//        NSLog(@"start gps");
     }
     return self;
 }
@@ -389,8 +389,12 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         int HrVale = [NSStringTool parseIntFromData:Hr];
         NSString *HrStr = [NSString stringWithFormat:@"%d",HrVale];
         
+        NSData *date = [data subdataWithRange:NSMakeRange(6, 3)];
+        NSString *dateStr = [NSString stringWithFormat:@"20%@",date];
+        
         model.heartRateModel.time = timeStr;
         model.heartRateModel.heartRate = HrStr;
+        model.heartRateModel.date = dateStr;
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
         
     }else if ([head isEqualToString:@"8a"] || [head isEqualToString:@"8A"]) {

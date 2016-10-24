@@ -74,30 +74,9 @@
     self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
     [self createUI];
     
-    self.stepView.dateArr = [self getWeekBeginAndEnd:[NSDate date]];
-    self.stepView.dataArr = [NSMutableArray array];
-    self.sleepView.dateArr = self.heartRateView.dateArr = self.temperatureView.dateArr = self.stepView.dateArr;
+    self.stepView.dateArr = (NSMutableArray *)[self getWeekBeginAndEnd:[NSDate date]];
+    self.sleepView.dateArr = self.temperatureView.dateArr = self.stepView.dateArr;
     
-    for (NSString *dateString in self.stepView.dateArr) {
-        NSString *dateStr = [dateString stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
-        NSLog(@"querystring == %@",dateStr);
-        NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateStr];
-        
-        StepDataModel *model = [[StepDataModel alloc] init];
-        
-        if (queryArr.count == 0) {
-            [self.stepView.dataArr addObject:model];
-        }else {
-            model = queryArr.firstObject;
-            
-            [self.stepView.dataArr addObject:model];
-        }
-    }
-    
-    
-    [self.heartRateView showChartView];
-    [self.temperatureView showChartView];
-    [self.sleepView showChartView];
     
     [self hiddenFunctionView];
     
@@ -116,6 +95,31 @@
     [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerSwipeUp:)];
     [self.oneFingerSwipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
     [self.view addGestureRecognizer:self.oneFingerSwipeUp];
+    
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    NSMutableArray *dataArr = [NSMutableArray array];
+    
+    for (NSString *dateString in self.stepView.dateArr) {
+        NSString *dateStr = [dateString stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
+        NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateStr];
+        
+        StepDataModel *model = [[StepDataModel alloc] init];
+        
+        if (queryArr.count == 0) {
+            [dataArr addObject:model];
+        }else {
+            model = queryArr.firstObject;
+            
+            [dataArr addObject:model];
+        }
+    }
+    
+    self.stepView.dataArr = dataArr;
     
     [self.stepView showChartView];
 }
@@ -160,8 +164,8 @@
         self.pageControl.currentPage = 0;
     }
     
-    
-    self.backGroundView.scrollEnabled = NO;
+    //为了测试，将滚动调为YES
+    self.backGroundView.scrollEnabled = YES;
     self.stepView.downView.hidden = YES;
     self.stepView.stepChart.hidden = YES;
     self.pageControl.hidden = YES;
@@ -189,7 +193,7 @@
         {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (self.pageControl.currentPage == 1) {
-                    [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataLastData];
+                    [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
                 }
             });
         }
@@ -364,17 +368,32 @@
 }
 
 //set heart rate test state
-- (void)receiveHeartRateTestWithModel:(manridyModel *)manridyModel
-{
-    
-}
+//- (void)receiveHeartRateTestWithModel:(manridyModel *)manridyModel
+//{
+//    
+//}
 
 //get heart rate data
 - (void)receiveHeartRateDataWithModel:(manridyModel *)manridyModel
 {
     if (manridyModel.isReciveDataRight) {
         if (manridyModel.receiveDataType == ReturnModelTypeHeartRateModel) {
-            [self.heartRateView.heartRateLabel setText:manridyModel.heartRateModel.heartRate];
+            
+            NSLog(@"%@",manridyModel.heartRateModel.sumDataCount);
+            
+            //当总数据为00时说明没有数据，可以不用存储
+            if (![manridyModel.heartRateModel.sumDataCount isEqualToString:@"0"]) {
+                
+                //如果当前数据为最后一条数据时，在屏幕上显示，其他的数据全部存储到数据库即可
+                if ([manridyModel.heartRateModel.currentDataCount isEqualToString:manridyModel.heartRateModel.sumDataCount]) {
+                    [self.heartRateView.heartRateLabel setText:manridyModel.heartRateModel.heartRate];
+                }
+                
+                [self.myFmdbTool insertHeartRateModel:manridyModel.heartRateModel];
+            }
+            
+            
+            
         }
     }
 }
@@ -552,7 +571,56 @@
         {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (self.pageControl.currentPage == 1) {
-                    [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataLastData];
+                    [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
+                    
+                    NSArray *heartRateArr = [self.myFmdbTool queryHeartRateWithDate:nil];
+                    
+#warning -[__NSArrayI removeAllObjects]: unrecognized selector sent to instance 0x15f58c930
+                    [self.heartRateView.dateArr removeAllObjects];
+                    [self.heartRateView.dateArr removeAllObjects];
+                    
+//                    [self.myFmdbTool deleteHeartRateData:nil];
+                    
+
+                    if (heartRateArr.count > 7) {
+                        for (NSInteger index = heartRateArr.count - 7; index < heartRateArr.count; index ++) {
+                            HeartRateModel *model = heartRateArr[index];
+                            [self.heartRateView.dateArr addObject:model.time];
+                            [self.heartRateView.dataArr addObject:model.heartRate];
+                            
+                            if (index == heartRateArr.count - 1) {
+                                [self.heartRateView.heartRateLabel setText:model.heartRate];
+                                
+                                NSInteger heart = model.heartRate.integerValue;
+                                
+                                if (heart < 50) {
+#warning heartRate 数值的4个标准。。。
+                                }
+                                
+                            }
+                        }
+                        
+                        [self.heartRateView showChartView];
+                    }else if (heartRateArr.count > 0) {
+                        for (NSInteger index = 0; index < heartRateArr.count; index ++) {
+                            HeartRateModel *model = heartRateArr[index];
+                            model.time = 0;
+                            model.heartRate = 0;
+                            [self.heartRateView.dateArr addObject:model.time];
+                            [self.heartRateView.dataArr addObject:model.heartRate];
+                        }
+                        
+                        [self.heartRateView showChartView];
+                    }else if (heartRateArr.count == 0) {
+                        self.heartRateView.dateArr = self.stepView.dateArr;
+                        for (int i = 0; i < 7; i ++) {
+                            [self.heartRateView.dataArr addObject:@"0"];
+                        }
+                        
+                        [self.heartRateView showChartView];
+                    }
+
+                    
                 }
             });
         }

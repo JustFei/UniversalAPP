@@ -64,6 +64,24 @@
     return _sleepChart;
 }
 
+- (NSMutableArray *)dateArr
+{
+    if (!_dateArr) {
+        _dateArr = [NSMutableArray array];
+    }
+    
+    return _dateArr;
+}
+
+- (NSMutableArray *)dataArr
+{
+    if (!_dataArr) {
+        _dataArr = [NSMutableArray array];
+    }
+    
+    return _dataArr;
+}
+
 #pragma mark - 获取当前View的控制器的方法
 - (UIViewController *)findViewController:(UIView *)sourceView
 {

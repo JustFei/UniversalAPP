@@ -14,7 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *heartStateLabel;
 
-@property (nonatomic ,strong) NSArray *dateArr;
+@property (nonatomic ,strong) NSMutableArray *dateArr;
 @property (nonatomic ,strong) NSMutableArray *dataArr;
 
 - (void)showChartView;

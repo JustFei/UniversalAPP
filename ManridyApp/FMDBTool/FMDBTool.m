@@ -8,6 +8,7 @@
 
 #import "FMDBTool.h"
 #import "StepDataModel.h"
+#import "HeartRateModel.h"
 #import "UserInfoModel.h"
 
 
@@ -38,8 +39,8 @@ static FMDatabase *_fmdb;
 
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists MotionData(id integer primary key, date text, step text, kCal text, mileage text);"]];
         
-        //心率数据库还没有建立好
-        //                [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists GPSData(id integer primary key, );"]];
+
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists HeartRateData(id integer primary key,date text, time text, heartRate text);"]];
         
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists UserInfoData(id integer primary key, username text, gender text, age integer, height integer, weight integer, steplength integer, steptarget integer);"]];
         
@@ -80,15 +81,21 @@ static FMDatabase *_fmdb;
     
     NSString *queryString;
     
+    FMResultSet *set;
+    
     if (date == nil) {
         queryString = [NSString stringWithFormat:@"SELECT * FROM MotionData;"];
+        
+        set = [_fmdb executeQuery:queryString];
     }else {
         //这里一定不能将？用需要查询的日期代替掉
         queryString = [NSString stringWithFormat:@"SELECT * FROM MotionData where date = ?;"];
+        
+        set = [_fmdb executeQuery:queryString ,date];
     }
     
     NSMutableArray *arrM = [NSMutableArray array];
-    FMResultSet *set = [_fmdb executeQuery:queryString ,date];
+    
     
     while ([set next]) {
         
@@ -142,6 +149,70 @@ static FMDatabase *_fmdb;
 }
 
 #pragma mark - HeartRateData
+- (BOOL)insertHeartRateModel:(HeartRateModel *)model
+{
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO HeartRateData(date, time, heartRate) VALUES ('%@', '%@', '%@');", model.date, model.time, model.heartRate];
+    
+    BOOL result = [_fmdb executeUpdate:insertSql];
+    if (result) {
+        NSLog(@"插入HeartRate数据成功");
+    }else {
+        NSLog(@"插入HeartRate数据失败");
+    }
+    return result;
+}
+
+- (NSArray *)queryHeartRateWithDate:(NSString *)date
+{
+    NSString *queryString;
+    
+    FMResultSet *set;
+    
+    if (date == nil) {
+        queryString = [NSString stringWithFormat:@"SELECT * FROM HeartRateData;"];
+        
+        set = [_fmdb executeQuery:queryString];
+    }else {
+        queryString = [NSString stringWithFormat:@"SELECT * FROM HeartRateData where date = ?;"];
+        
+        set = [_fmdb executeQuery:queryString ,date];
+    }
+    
+    NSMutableArray *arrM = [NSMutableArray array];
+    
+    while ([set next]) {
+        
+        NSString *time = [set stringForColumn:@"time"];
+        NSString *heartRate = [set stringForColumn:@"heartRate"];
+        NSString *date = [set stringForColumn:@"date"];
+        
+        HeartRateModel *model = [[HeartRateModel alloc] init];
+        
+        model.time = time;
+        model.heartRate = heartRate;
+        model.date = date;
+        
+        NSLog(@"%@的数据：心率=%@",time ,heartRate);
+        
+        [arrM addObject:model];
+    }
+    
+    NSLog(@"heartRate查询成功");
+    return arrM;
+}
+
+- (BOOL)deleteHeartRateData:(NSString *)deleteSql
+{
+    BOOL result = [_fmdb executeUpdate:@"delete from HeartRateData;"];
+    
+    if (result) {
+        NSLog(@"删除成功");
+    }else {
+        NSLog(@"删除失败");
+    }
+    
+    return result;
+}
 
 #pragma mark - TemperatureData
 

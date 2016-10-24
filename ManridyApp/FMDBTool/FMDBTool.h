@@ -10,6 +10,7 @@
 #import "FMDB.h"
 
 @class StepDataModel;
+@class HeartRateModel;
 @class UserInfoModel;
 
 typedef enum : NSUInteger {
@@ -39,6 +40,11 @@ typedef enum : NSUInteger {
 - (BOOL)modifyStepWithDate:(NSString *)date model:(StepDataModel *)model;
 
 #pragma mark - HeartRateData
+- (BOOL)insertHeartRateModel:(HeartRateModel *)model;
+
+- (NSArray *)queryHeartRateWithDate:(NSString *)date;
+
+- (BOOL)deleteHeartRateData:(NSString *)deleteSql;
 
 #pragma mark - TemperatureData
 

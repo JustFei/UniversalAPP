@@ -63,9 +63,6 @@
         [self.backButton setHidden:YES];
         [self.titleLabel setHidden:YES];
     }
-    
-    
-    
 
     //获取这个月的天数
     NSDate *today = [NSDate date]; //Get a date object for today's date
@@ -225,19 +222,7 @@
     
     // 修改导航栏的标题
     [self.mouthButton setTitle:title forState:UIControlStateNormal];
-    
-    // 调用根据搜索条件返回相应的微博数据
-    // ...
 }
-
-//#pragma mark 打开好友关注动态控制器
-//-(void)friendsearch
-//{
-//    NSLog(@"用户点击了左侧按钮");
-//    
-////    FriendAttentionStatusViewController *friendAttentionStatusVC = [[FriendAttentionStatusViewController alloc]init];
-////    [self.navigationController pushViewController:friendAttentionStatusVC animated:YES];
-//}
 
 #pragma mark 弹出下拉菜单
 -(void)pop

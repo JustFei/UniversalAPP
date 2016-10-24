@@ -10,6 +10,7 @@
                 <outlet property="backButton" destination="oWQ-lW-GlY" id="sVH-mG-Kj8"/>
                 <outlet property="downView" destination="VoQ-kG-BTQ" id="m0J-ZF-9ah"/>
                 <outlet property="heartRateLabel" destination="kCX-kz-kc3" id="sXX-nO-VZ8"/>
+                <outlet property="mouthButton" destination="nik-V7-UXU" id="A22-hF-dRh"/>
                 <outlet property="pageControl" destination="hoH-8t-wsN" id="OOD-oE-rnj"/>
                 <outlet property="state1" destination="Kc4-a7-RQA" id="gy8-kG-6RD"/>
                 <outlet property="state2" destination="Led-dP-EZs" id="2ZH-sv-EGi"/>
@@ -69,6 +70,9 @@
                             <state key="normal" title="10月">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="chooseMouthAction:" destination="-1" eventType="touchUpInside" id="nZs-tT-PvV"/>
+                            </connections>
                         </button>
                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="12" translatesAutoresizingMaskIntoConstraints="NO" id="hoH-8t-wsN">
                             <rect key="frame" x="31" y="338" width="258" height="37"/>
@@ -83,13 +87,6 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_old_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="0ej-qs-qpu">
-                            <rect key="frame" x="31" y="61" width="258" height="271"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="258" id="c1V-Mm-Xcc"/>
-                                <constraint firstAttribute="height" constant="271" id="ixf-Nr-zkk"/>
-                            </constraints>
-                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kc4-a7-RQA" userLabel="1">
                             <rect key="frame" x="105" y="233" width="26" height="2"/>
                             <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -132,6 +129,13 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_old_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="0ej-qs-qpu">
+                            <rect key="frame" x="31" y="61" width="258" height="271"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="258" id="c1V-Mm-Xcc"/>
+                                <constraint firstAttribute="height" constant="271" id="ixf-Nr-zkk"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.039215686274509803" green="0.35686274509803922" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>

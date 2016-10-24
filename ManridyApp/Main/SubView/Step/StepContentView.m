@@ -1,4 +1,4 @@
-//
+
 //  StepContentView.m
 //  ManridyApp
 //
@@ -33,6 +33,9 @@
         sumStep = 0;
         sumMileage = 0;
         sumkCal = 0;
+        
+        self.dateArr = [NSMutableArray array];
+        self.dataArr = [NSMutableArray array];
     }
     return self;
 }
@@ -78,7 +81,18 @@
 
 - (void)showChartView
 {
-    [self.stepChart setXLabels:self.dateArr];
+    NSMutableArray *xLabelArr = [NSMutableArray array];
+    
+    for (__strong NSString *dateStr in self.dateArr) {
+        dateStr = [dateStr substringFromIndex:5];
+        NSLog(@"querystring == %@",dateStr);
+        
+        [xLabelArr addObject:dateStr];
+    }
+    
+    
+    
+    [self.stepChart setXLabels:xLabelArr];
     
     PNLineChartData *data02 = [PNLineChartData new];
     data02.color = PNTwitterColor;
@@ -164,13 +178,22 @@
     return _stepChart;
 }
 
-- (FMDBTool *)myFmdbTool
+- (NSMutableArray *)dateArr
 {
-    if (!_myFmdbTool) {
-        _myFmdbTool = [[FMDBTool alloc] initWithPath:@"UserList"];
+    if (!_dateArr) {
+        _dateArr = [NSMutableArray array];
     }
     
-    return _myFmdbTool;
+    return _dateArr;
+}
+
+- (NSMutableArray *)dataArr
+{
+    if (!_dataArr) {
+        _dataArr = [NSMutableArray array];
+    }
+    
+    return _dataArr;
 }
 
 #pragma mark - 获取当前View的控制器的方法
