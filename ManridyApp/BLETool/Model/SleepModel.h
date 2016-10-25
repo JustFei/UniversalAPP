@@ -31,4 +31,8 @@ typedef enum : NSUInteger {
 //浅度睡眠时间
 @property (nonatomic ,copy) NSString *lowSleep;
 
+@property (nonatomic ,copy) NSString *sumSleep;
+
+@property (nonatomic ,copy) NSString *date;
+
 @end

@@ -50,6 +50,8 @@
 
 @property (nonatomic ,strong) UIButton *titleButton;
 
+
+
 @end
 
 @implementation HeartRateHistoryViewController
@@ -138,29 +140,34 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
-            NSString *dateStr = [NSString stringWithFormat:@"<%02ld%ld%02ld>",iCurYear ,iCurMonth ,i];
-            NSLog(@"%@",dateStr);
+            NSString *dateStr = [NSString stringWithFormat:@"20<%ld%ld%02ld>",iCurYear ,iCurMonth ,i];
+            
+            NSInteger max = 40;
+            NSInteger min = 40;
             
             NSArray *queryArr = [self.myFmdbTool queryHeartRateWithDate:dateStr];
             if (queryArr.count == 0) {
-                [_maxDataArr addObject:@0];
-                [_minDataArr addObject:@0];
+                [_maxDataArr addObject:@(max)];
+                [_minDataArr addObject:@(min)];
             }else if (queryArr.count == 1) {
                 HeartRateModel *model = queryArr.firstObject;
                 haveDataDays ++;
                 sumHeartRate += model.heartRate.integerValue;
                 
-                if (self.heartLineChartView.yValueMax < model.heartRate.integerValue) {
-                    self.heartLineChartView.yValueMax = model.heartRate.integerValue + 10;
-                }
+//                if (self.heartLineChartView.yValueMax < model.heartRate.integerValue + 30) {
+//                    self.heartLineChartView.yValueMax = model.heartRate.integerValue + 50;
+//                }
                 
                 //如果只有一次心率数据的话，最大值和最小值都是该值
                 [_minDataArr addObject:@(model.heartRate.integerValue)];
                 [_maxDataArr addObject:@(model.heartRate.integerValue)];
             }else {
+                HeartRateModel *model = queryArr.firstObject;
                 
-                NSInteger max = 0;
-                NSInteger min = 0;
+                if (model.heartRate != 0) {
+                    min = model.heartRate.integerValue;
+                }
+                
                 for (HeartRateModel *model in queryArr) {
                     haveDataDays ++;
                     sumHeartRate += model.heartRate.integerValue;
@@ -174,18 +181,49 @@
                     }
                 }
 
+                NSLog(@"max == %ld",max);
+                NSLog(@"min == %ld",min);
+                
+//                if (self.heartLineChartView.yValueMax < max + 30) {
+//                    self.heartLineChartView.yValueMax = max + 30;
+//                }
+                
                 [_maxDataArr addObject:@(max)];
                 [_minDataArr addObject:@(min)];
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.heartRateLabel setText: [NSString stringWithFormat:@"%ld",sumHeartRate / haveDataDays]];
+            
+            NSInteger averageNumber = sumHeartRate / haveDataDays;
+            
+            [self.heartRateLabel setText: [NSString stringWithFormat:@"%ld",averageNumber]];
+            
+            if (averageNumber < 60) {
+                self.state1.backgroundColor = [UIColor redColor];
+                self.state2.backgroundColor = [UIColor blackColor];
+                self.state3.backgroundColor = [UIColor blackColor];
+                self.state4.backgroundColor = [UIColor blackColor];
+                self.stateLabel.text = @"偏低";
+            }else if (averageNumber >= 60 && averageNumber <= 100) {
+                self.state1.backgroundColor = [UIColor blackColor];
+                self.state2.backgroundColor = [UIColor greenColor];
+                self.state3.backgroundColor = [UIColor greenColor];
+                self.state4.backgroundColor = [UIColor blackColor];
+                self.stateLabel.text = @"正常";
+            }else {
+                self.state1.backgroundColor = [UIColor blackColor];
+                self.state2.backgroundColor = [UIColor blackColor];
+                self.state3.backgroundColor = [UIColor blackColor];
+                self.state4.backgroundColor = [UIColor redColor];
+                self.stateLabel.text = @"偏高";
+            }
             
             // Line Chart #1
             NSArray * data01Array = _minDataArr;
             PNLineChartData *data01 = [PNLineChartData new];
             data01.color = PNBlue;
             data01.itemCount = data01Array.count;
+            data01.lineWidth = 1;
             data01.getData = ^(NSUInteger index) {
                 CGFloat yValue = [data01Array[index] floatValue];
                 return [PNLineChartDataItem dataItemWithY:yValue];
@@ -196,6 +234,7 @@
             PNLineChartData *data02 = [PNLineChartData new];
             data02.color = PNRed;
             data02.itemCount = data02Array.count;
+            data02.lineWidth = 1;
             data02.getData = ^(NSUInteger index) {
                 CGFloat yValue = [data02Array[index] floatValue];
                 return [PNLineChartDataItem dataItemWithY:yValue];
@@ -233,8 +272,8 @@
 #pragma mark - TitleMenuDelegate
 -(void)selectAtIndexPath:(NSIndexPath *)indexPath title:(NSString *)title
 {
-    NSLog(@"indexPath = %ld", indexPath.row);
-    NSLog(@"当前选择了%@", title);
+//    NSLog(@"indexPath = %ld", indexPath.row);
+//    NSLog(@"当前选择了%@", title);
     
     // 修改导航栏的标题
     [self.mouthButton setTitle:title forState:UIControlStateNormal];
@@ -243,7 +282,7 @@
 #pragma mark -弹出下拉菜单
 -(void)pop
 {
-    NSLog(@"用户点击了右侧弹出下拉菜单按钮");
+//    NSLog(@"用户点击了右侧弹出下拉菜单按钮");
 }
 
 #pragma mark - Action
@@ -280,10 +319,10 @@
 - (PNLineChart *)heartLineChartView
 {
     if (!_heartLineChartView) {
-        PNLineChart *view = [[PNLineChart alloc] initWithFrame:CGRectMake(-20, 0, self.downView.frame.size.width + 20, self.downView.frame.size.height)];
+        PNLineChart *view = [[PNLineChart alloc] initWithFrame:self.downView.bounds];
         view.showCoordinateAxis = YES;
-        view.yValueMin = 0;
-        view.yValueMax = 10;
+        view.yValueMin = 40;
+        view.yValueMax = 110;
         view.xLabelFont = [UIFont systemFontOfSize:10];
         
         view.yGridLinesColor = [UIColor clearColor];

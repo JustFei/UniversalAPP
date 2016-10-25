@@ -16,6 +16,10 @@
 
 @property (nonatomic ,copy) NSMutableArray *dateArr;
 @property (nonatomic ,strong) NSMutableArray *dataArr;
+@property (weak, nonatomic) IBOutlet UIView *state1;
+@property (weak, nonatomic) IBOutlet UIView *state2;
+@property (weak, nonatomic) IBOutlet UIView *state3;
+@property (weak, nonatomic) IBOutlet UIView *state4;
 
 - (void)showChartView;
 

@@ -17,6 +17,7 @@
 #import "StepDataModel.h"
 #import "StepHistoryViewController.h"
 #import "HeartRateHistoryViewController.h"
+#import "SleepHistoryViewController.h"
 
 #import "SettingViewController.h"
 
@@ -399,14 +400,17 @@
 {
     if (manridyModel.isReciveDataRight) {
         if (manridyModel.receiveDataType == ReturnModelTypeSleepModel) {
-            self.sleepView.sleepSumLabel.text = manridyModel.sleepModel.sumDataCount;
+            self.sleepView.sleepSumLabel.text = manridyModel.sleepModel.sumSleep;
             [self.sleepView.sleepSumLabel setText:@"test"];
             self.sleepView.deepAndLowSleepLabel.text = [NSString stringWithFormat:@"深睡%@小时/浅睡%@小时",manridyModel.sleepModel.deepSleep ,manridyModel.sleepModel.lowSleep];
             
+            //插入睡眠数据，如果sumCount为0的话，就不做保存
+            [self.myFmdbTool insertSleepModel:manridyModel.sleepModel];
+            
             NSInteger sleepSum = manridyModel.sleepModel.sumDataCount.integerValue;
             
-            if (sleepSum <= 4) {
-                [self.sleepView.sleepStateLabel setText:@"极度缺乏睡眠"];
+            if (sleepSum <= 6) {
+                [self.sleepView.sleepStateLabel setText:@"睡眠不足"];
                 [self.sleepView.sleepStateLabel setTextColor:[UIColor redColor]];
                 
                 [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor redColor]];
@@ -414,8 +418,8 @@
                 [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor blackColor]];
                 [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor blackColor]];
                 
-            }else if (sleepSum > 4 && sleepSum < 6) {
-                [self.sleepView.sleepStateLabel setText:@"缺乏睡眠"];
+            }else if (sleepSum > 6 && sleepSum < 7) {
+                [self.sleepView.sleepStateLabel setText:@"睡眠偏少"];
                 [self.sleepView.sleepStateLabel setTextColor:[UIColor orangeColor]];
                 
                 [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor blackColor]];
@@ -423,8 +427,8 @@
                 [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor blackColor]];
                 [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor blackColor]];
                 
-            }else if (sleepSum >= 6 && sleepSum < 8) {
-                [self.sleepView.sleepStateLabel setText:@"睡眠良好"];
+            }else if (sleepSum >= 7 && sleepSum < 8) {
+                [self.sleepView.sleepStateLabel setText:@"睡眠正常"];
                 [self.sleepView.sleepStateLabel setTextColor:[UIColor yellowColor]];
                 
                 [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor blackColor]];
@@ -485,6 +489,22 @@
         {
             HeartRateHistoryViewController *vc = [[HeartRateHistoryViewController alloc] initWithNibName:@"HeartRateHistoryViewController" bundle:nil];
             [self presentViewController:vc animated:YES completion:nil];
+        }
+            break;
+        case 2:
+        {
+            //体温
+        }
+            break;
+        case 3:
+        {
+            SleepHistoryViewController *vc = [[SleepHistoryViewController alloc] initWithNibName:@"SleepHistoryViewController" bundle:nil];
+            [self presentViewController:vc animated:YES completion:nil];
+        }
+            break;
+        case 4:
+        {
+            //血压
         }
             break;
             
@@ -577,7 +597,9 @@
                     if (heartRateArr.count > 7) {
                         for (NSInteger index = heartRateArr.count - 7; index < heartRateArr.count; index ++) {
                             HeartRateModel *model = heartRateArr[index];
-                            [self.heartRateView.dateArr addObject:model.time];
+                            NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
+                            [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
+                            [self.heartRateView.dateArr addObject:mutableTime];
                             [self.heartRateView.dataArr addObject:model.heartRate];
                             
                             if (index == heartRateArr.count - 1) {
@@ -585,10 +607,28 @@
                                 
                                 NSInteger heart = model.heartRate.integerValue;
                                 
-                                if (heart < 50) {
-#warning heartRate 数值的4个标准。。。
+                                if (heart < 60) {
+                                    self.heartRateView.state1.backgroundColor = [UIColor redColor];
+                                    self.heartRateView.state2.backgroundColor = [UIColor blackColor];
+                                    self.heartRateView.state3.backgroundColor = [UIColor blackColor];
+                                    self.heartRateView.state4.backgroundColor = [UIColor blackColor];
+                                    
+                                    self.heartRateView.heartStateLabel.text = @"偏低";
+                                }else if (heart >= 60 && heart <= 100) {
+                                    self.heartRateView.state1.backgroundColor = [UIColor blackColor];
+                                    self.heartRateView.state2.backgroundColor = [UIColor greenColor];
+                                    self.heartRateView.state3.backgroundColor = [UIColor greenColor];
+                                    self.heartRateView.state4.backgroundColor = [UIColor blackColor];
+                                    
+                                    self.heartRateView.heartStateLabel.text = @"正常";
+                                }else {
+                                    self.heartRateView.state1.backgroundColor = [UIColor blackColor];
+                                    self.heartRateView.state2.backgroundColor = [UIColor blackColor];
+                                    self.heartRateView.state3.backgroundColor = [UIColor blackColor];
+                                    self.heartRateView.state4.backgroundColor = [UIColor redColor];
+                                    
+                                    self.heartRateView.heartStateLabel.text = @"偏高";
                                 }
-                                
                             }
                         }
                         
@@ -596,9 +636,12 @@
                     }else if (heartRateArr.count > 0) {
                         for (NSInteger index = 0; index < heartRateArr.count; index ++) {
                             HeartRateModel *model = heartRateArr[index];
-                            model.time = 0;
-                            model.heartRate = 0;
-                            [self.heartRateView.dateArr addObject:model.time];
+//                            model.time = 0;
+//                            model.heartRate = 0;
+                            
+                            NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
+                            [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
+                            [self.heartRateView.dateArr addObject:mutableTime];
                             [self.heartRateView.dataArr addObject:model.heartRate];
                         }
                         
@@ -638,6 +681,8 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (self.pageControl.currentPage == 3) {
                     [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
+                    
+                    
                 }
             });
         }

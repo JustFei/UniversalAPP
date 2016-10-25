@@ -12,6 +12,7 @@
 @class StepDataModel;
 @class HeartRateModel;
 @class UserInfoModel;
+@class SleepModel;
 
 typedef enum : NSUInteger {
     SQLTypeStep = 0,
@@ -49,6 +50,11 @@ typedef enum : NSUInteger {
 #pragma mark - TemperatureData
 
 #pragma mark - SleepData
+- (BOOL)insertSleepModel:(SleepModel *)model;
+
+- (NSArray *)querySleepWithDate:(NSString *)date;
+
+- (BOOL)modifySleepWithID:(NSInteger)ID model:(SleepModel *)model;
 
 #pragma mark - BloodPressureData
 

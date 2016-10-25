@@ -43,8 +43,6 @@
     [self.sleepChart strokeChart];
 }
 
-
-
 - (IBAction)sleepTargetAction:(UIButton *)sender {
     SleepSettingViewController *vc = [[SleepSettingViewController alloc] initWithNibName:@"SleepSettingViewController" bundle:nil];
     

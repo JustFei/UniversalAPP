@@ -10,6 +10,26 @@
 
 @interface SleepHistoryViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *sleepLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *state1;
+
+@property (weak, nonatomic) IBOutlet UIView *state2;
+
+@property (weak, nonatomic) IBOutlet UIView *state3;
+
+@property (weak, nonatomic) IBOutlet UIView *state4;
+
+@property (weak, nonatomic) IBOutlet UILabel *stateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *monthButton;
+
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *downView;
+
 @end
 
 @implementation SleepHistoryViewController
@@ -23,15 +43,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

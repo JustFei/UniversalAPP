@@ -10,6 +10,7 @@
 #import "StepDataModel.h"
 #import "HeartRateModel.h"
 #import "UserInfoModel.h"
+#import "SleepModel.h"
 
 
 @implementation FMDBTool
@@ -36,13 +37,15 @@ static FMDatabase *_fmdb;
         if ([_fmdb open]) {
             NSLog(@"数据库打开成功");
         }
+        
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists UserInfoData(id integer primary key, username text, gender text, age integer, height integer, weight integer, steplength integer, steptarget integer);"]];
 
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists MotionData(id integer primary key, date text, step text, kCal text, mileage text);"]];
         
 
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists HeartRateData(id integer primary key,date text, time text, heartRate text);"]];
         
-        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists UserInfoData(id integer primary key, username text, gender text, age integer, height integer, weight integer, steplength integer, steptarget integer);"]];
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists SleepData(id integer primary key,date text, startTime text, endTime text, deepSleep text, lowSleep text, currentDataCount text, sumDataCount text);"]];
         
     }
     
@@ -217,6 +220,70 @@ static FMDatabase *_fmdb;
 #pragma mark - TemperatureData
 
 #pragma mark - SleepData
+- (BOOL)insertSleepModel:(SleepModel *)model
+{
+    
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO SleepData(date, startTime, endTime, deepSleep, lowSleep, currentDataCount, sumDataCount) VALUES ('%@', '%@', '%@', '%@', '%@', '%@', '%@');", model.date, model.startTime, model.endTime, model.deepSleep, model.lowSleep, model.currentDataCount, model.sumDataCount];
+    
+    BOOL result = [_fmdb executeUpdate:insertSql];
+    if (result) {
+        NSLog(@"插入SleepData数据成功");
+    }else {
+        NSLog(@"插入SleepData数据失败");
+    }
+    return result;
+}
+
+- (NSArray *)querySleepWithDate:(NSString *)date
+{
+    NSString *queryString;
+    
+    FMResultSet *set;
+    
+    if (date == nil) {
+        queryString = [NSString stringWithFormat:@"SELECT * FROM SleepData;"];
+        
+        set = [_fmdb executeQuery:queryString];
+    }else {
+        queryString = [NSString stringWithFormat:@"SELECT * FROM SleepData where date = ?;"];
+        
+        set = [_fmdb executeQuery:queryString ,date];
+    }
+    
+    NSMutableArray *arrM = [NSMutableArray array];
+    
+    while ([set next]) {
+        
+        NSString *startTime = [set stringForColumn:@"startTime"];
+        NSString *endTime = [set stringForColumn:@"endTime"];
+        NSString *deepSleep = [set stringForColumn:@"deepSleep"];
+        NSString *lowSleep = [set stringForColumn:@"lowSleep"];
+        NSString *currentDataCount = [set stringForColumn:@"currentDataCount"];
+        NSString *sumDataCount = [set stringForColumn:@"sumDataCount"];
+        
+        SleepModel *model = [[SleepModel alloc] init];
+        
+        model.startTime = startTime;
+        model.endTime = endTime;
+        model.deepSleep = deepSleep;
+        model.lowSleep = lowSleep;
+        model.currentDataCount = currentDataCount;
+        model.sumDataCount = sumDataCount;
+        model.date = date;
+        
+        NSLog(@"current == %@, sum == %@, lowSleep == %@, deepSleep == %@",currentDataCount ,sumDataCount ,lowSleep , deepSleep);
+        
+        [arrM addObject:model];
+    }
+    
+    NSLog(@"sleep查询成功");
+    return arrM;
+}
+
+- (BOOL)modifySleepWithID:(NSInteger)ID model:(SleepModel *)model
+{
+    return YES;
+}
 
 #pragma mark - BloodPressureData
 

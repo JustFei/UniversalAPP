@@ -12,7 +12,7 @@
                 <outlet property="heartRateLabel" destination="kCX-kz-kc3" id="sXX-nO-VZ8"/>
                 <outlet property="mouthButton" destination="nik-V7-UXU" id="A22-hF-dRh"/>
                 <outlet property="pageControl" destination="hoH-8t-wsN" id="OOD-oE-rnj"/>
-                <outlet property="state1" destination="Kc4-a7-RQA" id="gy8-kG-6RD"/>
+                <outlet property="state1" destination="Kc4-a7-RQA" id="sh8-kV-q4p"/>
                 <outlet property="state2" destination="Led-dP-EZs" id="2ZH-sv-EGi"/>
                 <outlet property="state3" destination="a8H-9E-Pts" id="ASf-C3-ICw"/>
                 <outlet property="state4" destination="FpZ-zf-Vip" id="YQo-oQ-zoq"/>

@@ -142,6 +142,10 @@
                 <outlet property="downView" destination="ybr-MX-XhN" id="Gqh-vP-qOL"/>
                 <outlet property="heartRateLabel" destination="Awu-gB-sWC" id="1VU-39-pkH"/>
                 <outlet property="heartStateLabel" destination="mQq-V4-Tap" id="jkw-2i-swl"/>
+                <outlet property="state1" destination="92X-Tg-A0A" id="ZAY-Sy-E5T"/>
+                <outlet property="state2" destination="urf-jH-vKJ" id="GQl-tE-bZg"/>
+                <outlet property="state3" destination="RVl-Vs-wfd" id="RJT-8Q-odX"/>
+                <outlet property="state4" destination="LR2-tG-6XU" id="pGJ-hM-MtW"/>
             </connections>
             <point key="canvasLocation" x="116" y="375"/>
         </view>

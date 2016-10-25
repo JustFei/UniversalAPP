@@ -334,7 +334,7 @@
         [progressline setLineWidth:1.0];
         [progressline setLineCapStyle:kCGLineCapSquare];
         _chartBottomLine.path = progressline.CGPath;
-        _chartBottomLine.strokeColor = [_chartBorderColor CGColor];;
+        _chartBottomLine.strokeColor = [_chartBorderColor CGColor];
         _chartBottomLine.strokeEnd = 1.0;
 
         [self.layer addSublayer:_chartBottomLine];

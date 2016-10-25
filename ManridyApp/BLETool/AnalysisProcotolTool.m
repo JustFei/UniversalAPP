@@ -456,10 +456,15 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         int lowSleepVale = [NSStringTool parseIntFromData:lowSleep];
         NSString *lowSleepStr = [NSString stringWithFormat:@"%d",lowSleepVale];
         
+        int sumSleepVale = deepSleepVale + lowSleepVale;
+        NSString *sumSleepStr = [NSString stringWithFormat:@"%d",sumSleepVale];
+        
         model.sleepModel.startTime = startTimeStr;
         model.sleepModel.endTime = endTimeStr;
         model.sleepModel.deepSleep = deepSleepStr;
         model.sleepModel.lowSleep = lowSleepStr;
+        model.sleepModel.sumSleep = sumSleepStr;
+        model.sleepModel.date = [startTimeStr substringWithRange:NSMakeRange(0, 6)];
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
         
     }else if ([head isEqualToString:@"8c"] || [head isEqualToString:@"8C"]) {
