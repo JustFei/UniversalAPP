@@ -74,7 +74,7 @@
     self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
     [self createUI];
     
-    self.stepView.dateArr = (NSMutableArray *)[self getWeekBeginAndEnd:[NSDate date]];
+    self.stepView.dateArr = [self getWeekBeginAndEnd:[NSDate date]];
     self.sleepView.dateArr = self.temperatureView.dateArr = self.stepView.dateArr;
     
     
@@ -164,8 +164,8 @@
         self.pageControl.currentPage = 0;
     }
     
-    //为了测试，将滚动调为YES
-    self.backGroundView.scrollEnabled = YES;
+    //为了方便测试，可以将滚动调为YES
+    self.backGroundView.scrollEnabled = NO;
     self.stepView.downView.hidden = YES;
     self.stepView.stepChart.hidden = YES;
     self.pageControl.hidden = YES;
@@ -267,7 +267,7 @@
     self.menuView.backgroundColor = [UIColor blueColor];
 }
 
-- (NSArray *)getWeekBeginAndEnd:(NSDate *)newDate
+- (NSMutableArray *)getWeekBeginAndEnd:(NSDate *)newDate
 {
     //获取当前周的开始和结束日期
     int currentWeek = 0;
@@ -298,8 +298,7 @@
     
     NSArray *dateArr = @[[myDateFormatter stringFromDate:beginDate],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+appendDay]],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+ appendDay * 2]],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+ appendDay * 3]],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+ appendDay * 4]],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+ appendDay * 5]],[myDateFormatter stringFromDate:endDate]];
     
-    //    [self getWeekDataWith:dateArr];
-    return dateArr;
+    return [NSMutableArray arrayWithArray:dateArr];
     
 }
 
@@ -385,15 +384,12 @@
             if (![manridyModel.heartRateModel.sumDataCount isEqualToString:@"0"]) {
                 
                 //如果当前数据为最后一条数据时，在屏幕上显示，其他的数据全部存储到数据库即可
-                if ([manridyModel.heartRateModel.currentDataCount isEqualToString:manridyModel.heartRateModel.sumDataCount]) {
+//                if ([manridyModel.heartRateModel.currentDataCount isEqualToString:manridyModel.heartRateModel.sumDataCount]) {
                     [self.heartRateView.heartRateLabel setText:manridyModel.heartRateModel.heartRate];
-                }
+//                }
                 
                 [self.myFmdbTool insertHeartRateModel:manridyModel.heartRateModel];
             }
-            
-            
-            
         }
     }
 }
@@ -503,7 +499,7 @@
 {
     SettingViewController *vc = [[SettingViewController alloc] init];
     
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"all_back_icon"] style:UIBarButtonItemStylePlain target:nil action:nil];
+//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"all_back_icon"] style:UIBarButtonItemStylePlain target:nil action:nil];
     
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -575,12 +571,8 @@
                     
                     NSArray *heartRateArr = [self.myFmdbTool queryHeartRateWithDate:nil];
                     
-#warning -[__NSArrayI removeAllObjects]: unrecognized selector sent to instance 0x15f58c930
                     [self.heartRateView.dateArr removeAllObjects];
-                    [self.heartRateView.dateArr removeAllObjects];
-                    
-//                    [self.myFmdbTool deleteHeartRateData:nil];
-                    
+                    [self.heartRateView.dataArr removeAllObjects];
 
                     if (heartRateArr.count > 7) {
                         for (NSInteger index = heartRateArr.count - 7; index < heartRateArr.count; index ++) {
@@ -612,7 +604,14 @@
                         
                         [self.heartRateView showChartView];
                     }else if (heartRateArr.count == 0) {
-                        self.heartRateView.dateArr = self.stepView.dateArr;
+                        
+                        for (NSString *dateString in self.stepView.dateArr) {
+                            NSString *monthStr = [dateString substringWithRange:NSMakeRange(5, 2)];
+                            NSString *dayStr = [dateString substringWithRange:NSMakeRange(8, 2)];
+                            
+                            [self.heartRateView.dateArr addObject:[NSString stringWithFormat:@"%@/%@",monthStr ,dayStr]];
+                        }
+                        
                         for (int i = 0; i < 7; i ++) {
                             [self.heartRateView.dataArr addObject:@"0"];
                         }

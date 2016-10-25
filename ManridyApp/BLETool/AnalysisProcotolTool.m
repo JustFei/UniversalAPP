@@ -392,7 +392,15 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         NSData *date = [data subdataWithRange:NSMakeRange(6, 3)];
         NSString *dateStr = [NSString stringWithFormat:@"20%@",date];
         
-        model.heartRateModel.time = timeStr;
+        NSString *monthStr = [timeStr substringWithRange:NSMakeRange(3, 2)];
+        NSString *dayStr = [timeStr substringWithRange:NSMakeRange(5, 2)];
+        
+        NSString *hourStr = [timeStr substringWithRange:NSMakeRange(7, 2)];
+        NSString *minStr = [timeStr substringWithRange:NSMakeRange(10, 2)];
+        
+        NSString *dateString = [NSString stringWithFormat:@"%@/%@-%@:%@",monthStr ,dayStr ,hourStr ,minStr];
+        
+        model.heartRateModel.time = dateString;
         model.heartRateModel.heartRate = HrStr;
         model.heartRateModel.date = dateStr;
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;

@@ -36,16 +36,21 @@
 
 - (void)showChartView
 {
-    NSMutableArray *xLabelArr = [NSMutableArray array];
     
-    for (__strong NSString *dateStr in self.dateArr) {
-        dateStr = [dateStr substringFromIndex:5];
-        NSLog(@"querystring == %@",dateStr);
-        
-        [xLabelArr addObject:dateStr];
-    }
+//    for (__strong NSString *dateStr in self.dateArr) {
+//        NSString *monthStr = [dateStr substringWithRange:NSMakeRange(3, 2)];
+//        NSString *dayStr = [dateStr substringWithRange:NSMakeRange(5, 2)];
+//        
+//        NSString *hourStr = [dateStr substringWithRange:NSMakeRange(7, 2)];
+//        NSString *minStr = [dateStr substringWithRange:NSMakeRange(10, 2)];
+//        
+//        NSString *dateString = [NSString stringWithFormat:@"\n%@/%@\n%@:%@",monthStr ,dayStr ,hourStr ,minStr];
+//        NSLog(@"%@", dateString);
+//        
+//        [xLabelArr addObject:dateString];
+//    }
     
-    [self.heartChart setXLabels:xLabelArr];
+    [self.heartChart setXLabels:self.dateArr];
     
     PNLineChartData *data02 = [PNLineChartData new];
     data02.color = PNTwitterColor;
@@ -68,7 +73,7 @@
 - (PNLineChart *)heartChart
 {
     if (!_heartChart) {
-        PNLineChart *view = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, self.downView.frame.size.width, self.downView.frame.size.height)];
+        PNLineChart *view = [[PNLineChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
         view.showCoordinateAxis = YES;
         view.yValueMin = 0;

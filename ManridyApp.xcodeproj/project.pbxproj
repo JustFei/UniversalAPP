@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1012C7211DBEFE470013E99B /* SleepHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1012C71F1DBEFE470013E99B /* SleepHistoryViewController.m */; };
+		1012C7221DBEFE470013E99B /* SleepHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1012C7201DBEFE470013E99B /* SleepHistoryViewController.xib */; };
 		102474D81DAA277B00F70E4F /* StepDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474D71DAA277B00F70E4F /* StepDataModel.m */; };
 		102474E51DAA412F00F70E4F /* AllBleFmdb.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474DC1DAA412F00F70E4F /* AllBleFmdb.m */; };
 		102474E61DAA412F00F70E4F /* AnalysisProcotolTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474DE1DAA412F00F70E4F /* AnalysisProcotolTool.m */; };
@@ -189,6 +191,9 @@
 
 /* Begin PBXFileReference section */
 		019AFD2849F28207558D163A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1012C71E1DBEFE470013E99B /* SleepHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepHistoryViewController.h; path = History/Sleep/SleepHistoryViewController.h; sourceTree = "<group>"; };
+		1012C71F1DBEFE470013E99B /* SleepHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SleepHistoryViewController.m; path = History/Sleep/SleepHistoryViewController.m; sourceTree = "<group>"; };
+		1012C7201DBEFE470013E99B /* SleepHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SleepHistoryViewController.xib; path = History/Sleep/SleepHistoryViewController.xib; sourceTree = "<group>"; };
 		102474D61DAA277B00F70E4F /* StepDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepDataModel.h; path = FMDBTool/Model/StepModel/StepDataModel.h; sourceTree = "<group>"; };
 		102474D71DAA277B00F70E4F /* StepDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepDataModel.m; path = FMDBTool/Model/StepModel/StepDataModel.m; sourceTree = "<group>"; };
 		102474DB1DAA412F00F70E4F /* AllBleFmdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllBleFmdb.h; path = BLETool/AllBleFmdb.h; sourceTree = "<group>"; };
@@ -425,6 +430,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1012C71D1DBEFE280013E99B /* Sleep */ = {
+			isa = PBXGroup;
+			children = (
+				1012C71E1DBEFE470013E99B /* SleepHistoryViewController.h */,
+				1012C71F1DBEFE470013E99B /* SleepHistoryViewController.m */,
+				1012C7201DBEFE470013E99B /* SleepHistoryViewController.xib */,
+			);
+			name = Sleep;
+			sourceTree = "<group>";
+		};
 		102474D41DAA274200F70E4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +498,7 @@
 		103820EE1DB86E9000E92410 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				1012C71D1DBEFE280013E99B /* Sleep */,
 				10826A4E1DBA12540031DB83 /* MonthDropDownMenuView */,
 				103820EF1DB86EE000E92410 /* Step */,
 				10826A551DBA126A0031DB83 /* HeartRate */,
@@ -1065,6 +1081,7 @@
 				10F5F7C71D9923D90045FA4C /* temper_notice_low@3x.png in Resources */,
 				10F5F74A1D98F31B0045FA4C /* set_user_icon.png in Resources */,
 				10C47EBD1DA8A55F00D949CA /* ble_refresh@2x.png in Resources */,
+				1012C7221DBEFE470013E99B /* SleepHistoryViewController.xib in Resources */,
 				10F5F7731D98F3560045FA4C /* walk_foot_icon@3x.png in Resources */,
 				10C47EAD1DA8A55F00D949CA /* ble_break_icon.png in Resources */,
 				10F5F76A1D98F3560045FA4C /* walk_Calorie_icon@3x.png in Resources */,
@@ -1164,6 +1181,7 @@
 				102474D81DAA277B00F70E4F /* StepDataModel.m in Sources */,
 				10F5F7D71D99251B0045FA4C /* SleepContentView.m in Sources */,
 				10F5F78D1D98F8E10045FA4C /* StepContentView.m in Sources */,
+				1012C7211DBEFE470013E99B /* SleepHistoryViewController.m in Sources */,
 				10C47EC71DA8DE0D00D949CA /* TemperatureWarningViewController.m in Sources */,
 				104A706D1D9BAD2B00CC73F5 /* UserInfoCell.m in Sources */,
 				104A70641D9B724D00CC73F5 /* SettingContentView.m in Sources */,

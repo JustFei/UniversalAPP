@@ -128,7 +128,7 @@
     
     NSDateComponents *components = [calendar components:unitFlags fromDate:[NSDate date]];
     
-    NSInteger iCurYear = [components year];  //当前的年份
+    NSInteger iCurYear = [components year] % 100;  //当前的年份
     
     NSInteger iCurMonth = [components month];  //当前的月份
     
@@ -138,7 +138,7 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
-            NSString *dateStr = [NSString stringWithFormat:@"%ld-%ld-%02ld",iCurYear ,iCurMonth ,i];
+            NSString *dateStr = [NSString stringWithFormat:@"<%02ld%ld%02ld>",iCurYear ,iCurMonth ,i];
             NSLog(@"%@",dateStr);
             
             NSArray *queryArr = [self.myFmdbTool queryHeartRateWithDate:dateStr];
@@ -280,11 +280,11 @@
 - (PNLineChart *)heartLineChartView
 {
     if (!_heartLineChartView) {
-        PNLineChart *view = [[PNLineChart alloc] initWithFrame:self.downView.bounds];
+        PNLineChart *view = [[PNLineChart alloc] initWithFrame:CGRectMake(-20, 0, self.downView.frame.size.width + 20, self.downView.frame.size.height)];
         view.showCoordinateAxis = YES;
         view.yValueMin = 0;
         view.yValueMax = 10;
-        view.chartMarginTop = 5.0;
+        view.xLabelFont = [UIFont systemFontOfSize:10];
         
         view.yGridLinesColor = [UIColor clearColor];
         view.showYGridLines = YES;
