@@ -70,7 +70,7 @@
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBY-KA-arW" userLabel="4">
                             <rect key="frame" x="189" y="240" width="26" height="2"/>
-                            <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.1137254902" green="0.44705882349999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="26" id="G0S-cQ-1ix"/>
                                 <constraint firstAttribute="height" constant="2" id="tO0-pt-VGf"/>
@@ -78,7 +78,7 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zyv-r5-4rf" userLabel="3">
                             <rect key="frame" x="161" y="240" width="26" height="2"/>
-                            <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.1137254902" green="0.44705882349999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="2" id="7il-rJ-wsI"/>
                                 <constraint firstAttribute="width" constant="26" id="LeP-Pc-30l"/>
@@ -86,7 +86,7 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWd-Sd-7Yc" userLabel="2">
                             <rect key="frame" x="133" y="240" width="26" height="2"/>
-                            <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.1137254902" green="0.44705882349999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="26" id="Etc-zD-kXd"/>
                                 <constraint firstAttribute="height" constant="2" id="j4X-8F-cMi"/>
@@ -94,7 +94,7 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6P-gI-XL0" userLabel="1">
                             <rect key="frame" x="105" y="240" width="26" height="2"/>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="26" id="5DB-ff-oQX"/>
                                 <constraint firstAttribute="height" constant="2" id="cRh-Oq-eDu"/>

@@ -21,6 +21,8 @@
 		102474FC1DAA41E000F70E4F /* SleepModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474F21DAA41E000F70E4F /* SleepModel.m */; };
 		102474FD1DAA41E000F70E4F /* SportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474F41DAA41E000F70E4F /* SportModel.m */; };
 		102474FE1DAA41E000F70E4F /* SportTargetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474F61DAA41E000F70E4F /* SportTargetModel.m */; };
+		1033145B1DC0622D0089B4EB /* TempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103314591DC0622D0089B4EB /* TempViewController.m */; };
+		1033145C1DC0622D0089B4EB /* TempViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1033145A1DC0622D0089B4EB /* TempViewController.xib */; };
 		103820F21DB86F1300E92410 /* StepHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103820F11DB86F1300E92410 /* StepHistoryViewController.m */; };
 		103820F61DB8704200E92410 /* StepHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 103820F51DB8704200E92410 /* StepHistoryViewController.xib */; };
 		103E4BFC1DB0C77E0051BF03 /* UserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103E4BFB1DB0C77E0051BF03 /* UserListViewController.m */; };
@@ -218,6 +220,9 @@
 		102474F41DAA41E000F70E4F /* SportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SportModel.m; path = BLETool/Model/SportModel.m; sourceTree = "<group>"; };
 		102474F51DAA41E000F70E4F /* SportTargetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SportTargetModel.h; path = BLETool/Model/SportTargetModel.h; sourceTree = "<group>"; };
 		102474F61DAA41E000F70E4F /* SportTargetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SportTargetModel.m; path = BLETool/Model/SportTargetModel.m; sourceTree = "<group>"; };
+		103314581DC0622D0089B4EB /* TempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempViewController.h; path = History/Temp/TempViewController.h; sourceTree = "<group>"; };
+		103314591DC0622D0089B4EB /* TempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempViewController.m; path = History/Temp/TempViewController.m; sourceTree = "<group>"; };
+		1033145A1DC0622D0089B4EB /* TempViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TempViewController.xib; path = History/Temp/TempViewController.xib; sourceTree = "<group>"; };
 		103820F01DB86F1300E92410 /* StepHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepHistoryViewController.h; path = History/Step/StepHistoryViewController.h; sourceTree = "<group>"; };
 		103820F11DB86F1300E92410 /* StepHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepHistoryViewController.m; path = History/Step/StepHistoryViewController.m; sourceTree = "<group>"; };
 		103820F51DB8704200E92410 /* StepHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StepHistoryViewController.xib; path = History/Step/StepHistoryViewController.xib; sourceTree = "<group>"; };
@@ -495,13 +500,24 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		103314571DC062160089B4EB /* Temp */ = {
+			isa = PBXGroup;
+			children = (
+				103314581DC0622D0089B4EB /* TempViewController.h */,
+				103314591DC0622D0089B4EB /* TempViewController.m */,
+				1033145A1DC0622D0089B4EB /* TempViewController.xib */,
+			);
+			name = Temp;
+			sourceTree = "<group>";
+		};
 		103820EE1DB86E9000E92410 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				1012C71D1DBEFE280013E99B /* Sleep */,
 				10826A4E1DBA12540031DB83 /* MonthDropDownMenuView */,
 				103820EF1DB86EE000E92410 /* Step */,
 				10826A551DBA126A0031DB83 /* HeartRate */,
+				103314571DC062160089B4EB /* Temp */,
+				1012C71D1DBEFE280013E99B /* Sleep */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -1019,6 +1035,7 @@
 				10F5F74B1D98F31B0045FA4C /* set_user_icon@2x.png in Resources */,
 				10CB0F211D9A8A190063AD0C /* list_temper_icon.png in Resources */,
 				10F5F7C31D9923D90045FA4C /* temper_notice_high@2x.png in Resources */,
+				1033145C1DC0622D0089B4EB /* TempViewController.xib in Resources */,
 				10F5F77D1D98F3560045FA4C /* walk_target_icon.png in Resources */,
 				10F5F7A91D991EAB0045FA4C /* TemperatureContentView.xib in Resources */,
 				10C47EB11DA8A55F00D949CA /* ble_connect@2x.png in Resources */,
@@ -1192,6 +1209,7 @@
 				10CB0F031D9A13960063AD0C /* MenuContentView.m in Sources */,
 				10F5F7091D98C6280045FA4C /* main.m in Sources */,
 				10826A581DBA17540031DB83 /* HeartRateHistoryViewController.m in Sources */,
+				1033145B1DC0622D0089B4EB /* TempViewController.m in Sources */,
 				104A70611D9B720500CC73F5 /* SettingViewController.m in Sources */,
 				10826A541DBA12600031DB83 /* TitleMenuViewController.m in Sources */,
 				10CB0F071D9A25130063AD0C /* FunctionCell.m in Sources */,

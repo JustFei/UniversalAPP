@@ -89,7 +89,7 @@
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kc4-a7-RQA" userLabel="1">
                             <rect key="frame" x="105" y="233" width="26" height="2"/>
-                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="26" id="Oi5-QK-LOT"/>
                                 <constraint firstAttribute="height" constant="2" id="jAs-SP-wxu"/>

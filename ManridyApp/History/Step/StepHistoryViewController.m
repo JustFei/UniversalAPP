@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *averageStepLabel;
 @property (weak, nonatomic) IBOutlet UILabel *averagerMileageAndkCalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sumStepAndMilAndkCal;
-@property (weak, nonatomic) IBOutlet UIButton *mouthButton;
+@property (weak, nonatomic) IBOutlet UIButton *monthButton;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIView *downView;
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
@@ -40,6 +40,8 @@
 @property (nonatomic ,weak) PNBarChart *stepBarChart;
 
 @property (nonatomic ,strong) UISwipeGestureRecognizer *oneFingerSwipedown;
+
+
 
 @end
 
@@ -221,7 +223,7 @@
     NSLog(@"当前选择了%@", title);
     
     // 修改导航栏的标题
-    [self.mouthButton setTitle:title forState:UIControlStateNormal];
+    [self.monthButton setTitle:title forState:UIControlStateNormal];
 }
 
 #pragma mark 弹出下拉菜单

@@ -24,6 +24,8 @@
 #define WIDTH self.view.frame.size.width
 #define HEIGHT self.view.frame.size.height
 
+#define kCurrentStateOFF [UIColor colorWithRed:53.0 / 255.0 green:113.0 / 225.0 blue:161.0 / 255.0 alpha:1]
+
 @interface MainViewController () <UIScrollViewDelegate ,BleReceiveDelegate>
 {
     NSArray *_titleArr;
@@ -166,7 +168,7 @@
     }
     
     //为了方便测试，可以将滚动调为YES
-    self.backGroundView.scrollEnabled = NO;
+    self.backGroundView.scrollEnabled = YES;
     self.stepView.downView.hidden = YES;
     self.stepView.stepChart.hidden = YES;
     self.pageControl.hidden = YES;
@@ -385,9 +387,7 @@
             if (![manridyModel.heartRateModel.sumDataCount isEqualToString:@"0"]) {
                 
                 //如果当前数据为最后一条数据时，在屏幕上显示，其他的数据全部存储到数据库即可
-//                if ([manridyModel.heartRateModel.currentDataCount isEqualToString:manridyModel.heartRateModel.sumDataCount]) {
-                    [self.heartRateView.heartRateLabel setText:manridyModel.heartRateModel.heartRate];
-//                }
+                [self.heartRateView.heartRateLabel setText:manridyModel.heartRateModel.heartRate];
                 
                 [self.myFmdbTool insertHeartRateModel:manridyModel.heartRateModel];
             }
@@ -400,51 +400,54 @@
 {
     if (manridyModel.isReciveDataRight) {
         if (manridyModel.receiveDataType == ReturnModelTypeSleepModel) {
-            self.sleepView.sleepSumLabel.text = manridyModel.sleepModel.sumSleep;
-            [self.sleepView.sleepSumLabel setText:@"test"];
-            self.sleepView.deepAndLowSleepLabel.text = [NSString stringWithFormat:@"深睡%@小时/浅睡%@小时",manridyModel.sleepModel.deepSleep ,manridyModel.sleepModel.lowSleep];
             
-            //插入睡眠数据，如果sumCount为0的话，就不做保存
-            [self.myFmdbTool insertSleepModel:manridyModel.sleepModel];
-            
-            NSInteger sleepSum = manridyModel.sleepModel.sumDataCount.integerValue;
-            
-            if (sleepSum <= 6) {
-                [self.sleepView.sleepStateLabel setText:@"睡眠不足"];
-                [self.sleepView.sleepStateLabel setTextColor:[UIColor redColor]];
+            if (![manridyModel.sleepModel.sumDataCount isEqualToString:@"0"]) {
+                self.sleepView.sleepSumLabel.text = manridyModel.sleepModel.sumSleep;
+                [self.sleepView.sleepSumLabel setText:@"test"];
+                self.sleepView.deepAndLowSleepLabel.text = [NSString stringWithFormat:@"深睡%@小时/浅睡%@小时",manridyModel.sleepModel.deepSleep ,manridyModel.sleepModel.lowSleep];
                 
-                [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor redColor]];
-                [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor blackColor]];
-                [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor blackColor]];
-                [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor blackColor]];
+                //插入睡眠数据，如果sumCount为0的话，就不做保存
+                [self.myFmdbTool insertSleepModel:manridyModel.sleepModel];
                 
-            }else if (sleepSum > 6 && sleepSum < 7) {
-                [self.sleepView.sleepStateLabel setText:@"睡眠偏少"];
-                [self.sleepView.sleepStateLabel setTextColor:[UIColor orangeColor]];
+                NSInteger sleepSum = manridyModel.sleepModel.sumDataCount.integerValue;
                 
-                [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor blackColor]];
-                [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor orangeColor]];
-                [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor blackColor]];
-                [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor blackColor]];
-                
-            }else if (sleepSum >= 7 && sleepSum < 8) {
-                [self.sleepView.sleepStateLabel setText:@"睡眠正常"];
-                [self.sleepView.sleepStateLabel setTextColor:[UIColor yellowColor]];
-                
-                [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor blackColor]];
-                [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor blackColor]];
-                [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor yellowColor]];
-                [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor blackColor]];
-                
-            }else if (sleepSum >= 8) {
-                [self.sleepView.sleepStateLabel setText:@"睡眠充足"];
-                [self.sleepView.sleepStateLabel setTextColor:[UIColor greenColor]];
-                
-                [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor blackColor]];
-                [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor blackColor]];
-                [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor blackColor]];
-                [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor greenColor]];
-                
+                if (sleepSum <= 6) {
+                    [self.sleepView.sleepStateLabel setText:@"睡眠不足"];
+                    [self.sleepView.sleepStateLabel setTextColor:[UIColor redColor]];
+
+                    [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor redColor]];
+                    [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
+                    [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
+                    [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
+                    
+                }else if (sleepSum > 6 && sleepSum < 7) {
+                    [self.sleepView.sleepStateLabel setText:@"睡眠偏少"];
+                    [self.sleepView.sleepStateLabel setTextColor:[UIColor orangeColor]];
+                    
+                    [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
+                    [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor orangeColor]];
+                    [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
+                    [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
+                    
+                }else if (sleepSum >= 7 && sleepSum < 8) {
+                    [self.sleepView.sleepStateLabel setText:@"睡眠正常"];
+                    [self.sleepView.sleepStateLabel setTextColor:[UIColor yellowColor]];
+                    
+                    [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
+                    [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
+                    [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor yellowColor]];
+                    [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
+                    
+                }else if (sleepSum >= 8) {
+                    [self.sleepView.sleepStateLabel setText:@"睡眠充足"];
+                    [self.sleepView.sleepStateLabel setTextColor:[UIColor greenColor]];
+                    
+                    [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
+                    [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
+                    [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
+                    [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor greenColor]];
+                    
+                }
             }
         }
     }
@@ -466,6 +469,17 @@
         {
             HeartRateHistoryViewController *vc = [[HeartRateHistoryViewController alloc] initWithNibName:@"HeartRateHistoryViewController" bundle:nil];
             [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 3:
+        {
+            SleepHistoryViewController *vc = [[SleepHistoryViewController alloc] initWithNibName:@"SleepHistoryViewController" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 4:
+        {
+            
         }
             break;
             
@@ -609,22 +623,22 @@
                                 
                                 if (heart < 60) {
                                     self.heartRateView.state1.backgroundColor = [UIColor redColor];
-                                    self.heartRateView.state2.backgroundColor = [UIColor blackColor];
-                                    self.heartRateView.state3.backgroundColor = [UIColor blackColor];
-                                    self.heartRateView.state4.backgroundColor = [UIColor blackColor];
+                                    self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
+                                    self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
+                                    self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
                                     
                                     self.heartRateView.heartStateLabel.text = @"偏低";
                                 }else if (heart >= 60 && heart <= 100) {
-                                    self.heartRateView.state1.backgroundColor = [UIColor blackColor];
+                                    self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
                                     self.heartRateView.state2.backgroundColor = [UIColor greenColor];
                                     self.heartRateView.state3.backgroundColor = [UIColor greenColor];
-                                    self.heartRateView.state4.backgroundColor = [UIColor blackColor];
+                                    self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
                                     
                                     self.heartRateView.heartStateLabel.text = @"正常";
                                 }else {
-                                    self.heartRateView.state1.backgroundColor = [UIColor blackColor];
-                                    self.heartRateView.state2.backgroundColor = [UIColor blackColor];
-                                    self.heartRateView.state3.backgroundColor = [UIColor blackColor];
+                                    self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
+                                    self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
+                                    self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
                                     self.heartRateView.state4.backgroundColor = [UIColor redColor];
                                     
                                     self.heartRateView.heartStateLabel.text = @"偏高";

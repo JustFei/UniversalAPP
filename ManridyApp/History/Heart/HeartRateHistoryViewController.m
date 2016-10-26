@@ -13,6 +13,9 @@
 #import "DropdownMenuView.h"
 #import "TitleMenuViewController.h"
 
+
+#define kStateOFF [UIColor colorWithRed:77.0 / 255.0 green:132.0 / 255.0 blue:195.0 / 255.0 alpha:1]
+
 @interface HeartRateHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate>
 {
     NSInteger sumHeartRate;
@@ -200,20 +203,20 @@
             
             if (averageNumber < 60) {
                 self.state1.backgroundColor = [UIColor redColor];
-                self.state2.backgroundColor = [UIColor blackColor];
-                self.state3.backgroundColor = [UIColor blackColor];
-                self.state4.backgroundColor = [UIColor blackColor];
+                self.state2.backgroundColor = kStateOFF;
+                self.state3.backgroundColor = kStateOFF;
+                self.state4.backgroundColor = kStateOFF;
                 self.stateLabel.text = @"偏低";
             }else if (averageNumber >= 60 && averageNumber <= 100) {
-                self.state1.backgroundColor = [UIColor blackColor];
+                self.state1.backgroundColor = kStateOFF;
                 self.state2.backgroundColor = [UIColor greenColor];
                 self.state3.backgroundColor = [UIColor greenColor];
-                self.state4.backgroundColor = [UIColor blackColor];
+                self.state4.backgroundColor = kStateOFF;
                 self.stateLabel.text = @"正常";
             }else {
-                self.state1.backgroundColor = [UIColor blackColor];
-                self.state2.backgroundColor = [UIColor blackColor];
-                self.state3.backgroundColor = [UIColor blackColor];
+                self.state1.backgroundColor = kStateOFF;
+                self.state2.backgroundColor = kStateOFF;
+                self.state3.backgroundColor = kStateOFF;
                 self.state4.backgroundColor = [UIColor redColor];
                 self.stateLabel.text = @"偏高";
             }
