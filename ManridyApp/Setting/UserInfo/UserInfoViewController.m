@@ -13,13 +13,14 @@
 #import "MBProgressHUD.h"
 #import "UserListViewController.h"
 
-@interface UserInfoViewController () <UITableViewDelegate ,UITableViewDataSource ,UITextFieldDelegate ,UINavigationControllerDelegate ,UIImagePickerControllerDelegate ,UIAlertViewDelegate>
+@interface UserInfoViewController () <UITableViewDelegate ,UITableViewDataSource ,UITextFieldDelegate ,UINavigationControllerDelegate ,UIImagePickerControllerDelegate ,UIAlertViewDelegate ,UIPickerViewDelegate ,UIPickerViewDataSource>
 {
     NSArray *_nameArr;
     NSArray *_fieldPlaceholdeArr;
     NSArray *_unitArr;
     UITextField *_tempField;
     NSArray *_userArr;
+    NSArray *_genderArr;
 }
 
 @property (nonatomic ,weak) UIImageView *headImageView;
@@ -44,6 +45,8 @@
 
 @property (nonatomic ,strong) MBProgressHUD *hud;
 
+@property (nonatomic ,weak) UIPickerView *genderPickerView;
+
 @end
 
 @implementation UserInfoViewController
@@ -55,6 +58,7 @@
     _nameArr = @[@"性别",@"年龄",@"身高",@"体重",@"步长"];
     _fieldPlaceholdeArr = @[@"",@"请输入年龄",@"请输入身高",@"请输入体重",@"请输入步长"];
     _unitArr = @[@"",@"(岁)",@"(cm)",@"(kg)",@"(cm)"];
+    _genderArr = @[@"男",@"女"];
     
     self.navigationItem.title = @"用户信息";
     
@@ -86,6 +90,8 @@
     self.infoTableView.backgroundColor = [UIColor clearColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    
 }
 
 - (void)dealloc
@@ -118,27 +124,33 @@
 
 - (void)keyboardWillChangeFrame:(NSNotification *)notification
 {
-    //1. 获取键盘的 Y 值
-    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-;
-    
-    //注意从字典取出来的是对象，而 CGRect CGFloat 都是基本数据类型，一次需要转换
-    CGFloat keyboardY = keyboardFrame.origin.y;
-    
-    //如果键盘的Y值小于textField的y值，就偏移
-//    if (keyboardY < _tempField.frame.origin.y + _tempField.frame.size.height) {
+    if (self.userNameTextField.isEditing) {
+        return;
+    }else {
+        
+        //1. 获取键盘的 Y 值
+        CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        ;
+        
+        //注意从字典取出来的是对象，而 CGRect CGFloat 都是基本数据类型，一次需要转换
+        CGFloat keyboardY = keyboardFrame.origin.y;
+        
+        //如果键盘的Y值小于textField的y值，就偏移
+        //    if (keyboardY < _tempField.frame.origin.y + _tempField.frame.size.height) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:0.25 animations:^{
                 self.view.transform = CGAffineTransformMakeTranslation(0, keyboardY - self.view.frame.size.height);
             }];
         });
-    
-    if ((keyboardY - self.view.frame.size.height) >= 0) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.navigationController.navigationBar setHidden:NO];
-        });
-    }else {
-        [self.navigationController.navigationBar setHidden:YES];
+        
+        if ((keyboardY - self.view.frame.size.height) >= 0) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController.navigationBar setHidden:NO];
+            });
+        }else {
+            [self.navigationController.navigationBar setHidden:YES];
+        }
+        
     }
 }
 
@@ -191,6 +203,7 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+    self.genderPickerView.hidden = YES;
 }
 
 //PickerImage完成后的代理方法
@@ -203,9 +216,25 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)chooseGender
+{
+    self.genderPickerView.hidden = NO;
+    self.genderPickerView.backgroundColor = [UIColor colorWithRed:48.0 / 255.0 green:110.0 / 255.0 blue:187.0 / 255.0 alpha:1];
+    if (_userArr.count != 0) {
+        UserInfoModel *model = _userArr.firstObject;
+        if ([model.gender isEqualToString:@"男"]) {
+            [self.genderPickerView selectRow:0 inComponent:0 animated:NO];
+        }else {
+            [self.genderPickerView selectRow:1 inComponent:0 animated:NO];
+        }
+    }
+}
+
 #pragma mark -ButtonAction
 - (void)saveUserInfo
 {
+    [self.view endEditing:YES];
+    
     if (self.userNameTextField.text.length != 0 || self.ageTextField.text.length != 0 || self.heightTextField.text.length != 0 || self.weightTextField.text.length != 0 || self.steplengthTextField.text.length != 0) {
         
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -264,16 +293,107 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-#pragma mark - UITextFieldDelegate
-//- (void)textFieldDidBeginEditing:(UITextField *)textField
-//{
-//    _tempField = textField;
-//}
+#pragma mark - UIPickerViewDataSource有关的代理方法
+//返回列数（必须实现）
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
 
+//返回每列里边的行数（必须实现）
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+        //返回表情数组的个数
+    return _genderArr.count;
+}
+
+#pragma mark - UIPickerViewDelegate处理有关的代理方法
+//设置组件的宽度
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
+{
+    return 100;
+}
+//设置组件中每行的高度
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
+{
+    return 50;
+}
+//设置组件中每行的标题row:行
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return _genderArr[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    [self.genderLabel setText:_genderArr[row]];
+}
+
+#pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     
     [textField resignFirstResponder];
+    
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    switch (textField.tag) {
+        case 101:
+        {
+            if (string.length == 0) return YES;
+            
+            NSInteger existedLength = textField.text.length;
+            NSInteger selectedLength = range.length;
+            NSInteger replaceLength = string.length;
+            if (existedLength - selectedLength + replaceLength > 3) {
+                return NO;
+            }
+        }
+            break;
+        case 102:
+        {
+            if (string.length == 0) return YES;
+            
+            NSInteger existedLength = textField.text.length;
+            NSInteger selectedLength = range.length;
+            NSInteger replaceLength = string.length;
+            if (existedLength - selectedLength + replaceLength > 3) {
+                return NO;
+            }
+        }
+            break;
+        case 103:
+        {
+            if (string.length == 0) return YES;
+            
+            NSInteger existedLength = textField.text.length;
+            NSInteger selectedLength = range.length;
+            NSInteger replaceLength = string.length;
+            if (existedLength - selectedLength + replaceLength > 3) {
+                return NO;
+            }
+        }
+            break;
+        case 104:
+        {
+            if (string.length == 0) return YES;
+            
+            NSInteger existedLength = textField.text.length;
+            NSInteger selectedLength = range.length;
+            NSInteger replaceLength = string.length;
+            if (existedLength - selectedLength + replaceLength > 3) {
+                return NO;
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
     
     return YES;
 }
@@ -296,6 +416,9 @@
     
     if (indexPath.row == 0) {
         [cell.genderLabel setHidden:NO];
+        cell.genderLabel.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseGender)];
+        [cell.genderLabel addGestureRecognizer:tap];
         [cell.textField setHidden:YES];
         
         if (_userArr.count != 0) {
@@ -312,6 +435,7 @@
         switch (indexPath.row) {
             case 1:
             {
+                cell.textField.tag = 101;
                 self.ageTextField = cell.textField;
                 if (_userArr.count != 0) {
                     UserInfoModel *model = _userArr.firstObject;
@@ -321,6 +445,7 @@
                 break;
             case 2:
             {
+                cell.textField.tag = 102;
                 self.heightTextField = cell.textField;
                 if (_userArr.count != 0) {
                     UserInfoModel *model = _userArr.firstObject;
@@ -332,6 +457,7 @@
                 break;
             case 3:
             {
+                cell.textField.tag = 103;
                 self.weightTextField = cell.textField;
                 if (_userArr.count != 0) {
                     UserInfoModel *model = _userArr.firstObject;
@@ -343,6 +469,7 @@
                 break;
             case 4:
             {
+                cell.textField.tag = 104;
                 self.steplengthTextField = cell.textField;
                 if (_userArr.count != 0) {
                     UserInfoModel *model = _userArr.firstObject;
@@ -461,6 +588,20 @@
     }
     
     return _myFmdbTool;
+}
+
+- (UIPickerView *)genderPickerView
+{
+    if (!_genderPickerView) {
+        UIPickerView *view = [[UIPickerView alloc] initWithFrame:CGRectMake(10, 200, self.view.frame.size.width - 20, 100)];
+        view.delegate = self;
+        view.dataSource = self;
+        
+        [self.view addSubview:view];
+        _genderPickerView = view;
+    }
+    
+    return _genderPickerView;
 }
 
 /*

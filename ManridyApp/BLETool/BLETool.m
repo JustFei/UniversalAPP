@@ -34,6 +34,8 @@
 
 @property (nonatomic ,strong) AllBleFmdb *fmTool;
 
+@property (nonatomic ,strong) UIAlertView *disConnectView;
+
 @end
 
 @implementation BLETool
@@ -393,6 +395,8 @@ static BLETool *bleTool = nil;
     
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     [delegate.mainVc showFunctionView];
+    
+    [self.disConnectView dismissWithClickedButtonIndex:0 animated:NO];
 }
 
 //连接失败
@@ -419,9 +423,9 @@ static BLETool *bleTool = nil;
         NSLog(@"需要断线重连");
         [self.myCentralManager connectPeripheral:self.currentDev.peripheral options:nil];
         
-        UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:@"设备意外断开，等待重连" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
-        view.tag = 103;
-        [view show];
+        self.disConnectView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"设备意外断开，等待重连" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+        self.disConnectView.tag = 103;
+        [self.disConnectView show];
         
         AppDelegate *delegate = [UIApplication sharedApplication].delegate;
         [delegate.mainVc hiddenFunctionView];

@@ -29,7 +29,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *averagerMileageAndkCalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sumStepAndMilAndkCal;
 @property (weak, nonatomic) IBOutlet UIButton *monthButton;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIView *downView;
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
 
@@ -40,8 +39,6 @@
 @property (nonatomic ,weak) PNBarChart *stepBarChart;
 
 @property (nonatomic ,strong) UISwipeGestureRecognizer *oneFingerSwipedown;
-
-
 
 @end
 
@@ -79,9 +76,7 @@
         [_dateArr addObject:@(i)];
     }
     
-    //这里存在这样一个问题，当y轴数据都为0时，会出现显示很多很多个0在Y轴上
     [self.stepBarChart setXLabels:_dateArr];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -99,7 +94,7 @@
     [super viewDidAppear:YES];
     
     //绘制图表放在这里不会造成UI卡顿
-    [self getHistoryDataWithIntDays:_dateArr.count];
+    [self getHistoryDataWithIntDays:_dateArr.count withDate:[NSDate date]];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -108,7 +103,7 @@
     [self.view removeGestureRecognizer:self.oneFingerSwipedown];
 }
 
-- (void)getHistoryDataWithIntDays:(NSInteger)days
+- (void)getHistoryDataWithIntDays:(NSInteger)days withDate:(NSDate *)date
 {
     sumStep = 0;
     sumMileage = 0;
@@ -119,7 +114,7 @@
     
     unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
     
-    NSDateComponents *components = [calendar components:unitFlags fromDate:[NSDate date]];
+    NSDateComponents *components = [calendar components:unitFlags fromDate:date];
     
     NSInteger iCurYear = [components year];  //当前的年份
     
@@ -155,6 +150,7 @@
             [self.sumStepAndMilAndkCal setText:[NSString stringWithFormat:@"本月计步统计：共（%ld步/%ld公里/%ld千卡）",sumStep ,sumMileage ,sumkCal]];
             [self.averageStepLabel setText:[NSString stringWithFormat:@"%ld",(sumStep / haveDataDays)]];
             [self.averagerMileageAndkCalLabel setText:[NSString stringWithFormat:@"%ld公里/%ld千卡",(sumMileage / haveDataDays) ,(sumkCal / haveDataDays)]];
+            
             
             [self.stepBarChart setYValues:_dataArr];
             
@@ -219,11 +215,33 @@
 #pragma mark - TitleMenuDelegate
 -(void)selectAtIndexPath:(NSIndexPath *)indexPath title:(NSString *)title
 {
-    NSLog(@"indexPath = %ld", indexPath.row);
     NSLog(@"当前选择了%@", title);
     
     // 修改导航栏的标题
     [self.monthButton setTitle:title forState:UIControlStateNormal];
+    
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *currentFormatter = [[NSDateFormatter alloc] init];
+    currentFormatter.dateFormat = @"yyyy";
+    NSString *yyyyStr = [currentFormatter stringFromDate:currentDate];
+
+    NSString *string = [NSString stringWithFormat:@"%@-%ld-15", yyyyStr, indexPath.row + 1];
+    currentFormatter.dateFormat = @"yyyy-MM-dd";
+    NSDate *date=[currentFormatter dateFromString:string];
+    
+    //获取这个月的天数
+    NSCalendar *c = [NSCalendar currentCalendar];
+    NSRange days = [c rangeOfUnit:NSDayCalendarUnit
+                           inUnit:NSMonthCalendarUnit
+                          forDate:date];
+    
+    [_dateArr removeAllObjects];
+    for (int i = 1; i <= days.length; i ++) {
+        [_dateArr addObject:[NSString stringWithFormat:@"%d",i]];
+    }
+    
+    [self.stepBarChart setXLabels:_dateArr];
+    [self getHistoryDataWithIntDays:days.length withDate:date];
 }
 
 #pragma mark 弹出下拉菜单

@@ -11,8 +11,7 @@
                 <outlet property="averagerMileageAndkCalLabel" destination="8wT-kz-VMz" id="fTB-8R-QEW"/>
                 <outlet property="backButton" destination="oWQ-lW-GlY" id="ofA-uO-Idb"/>
                 <outlet property="downView" destination="VoQ-kG-BTQ" id="arb-0K-Tzm"/>
-                <outlet property="mouthButton" destination="nik-V7-UXU" id="HiS-2e-3iy"/>
-                <outlet property="pageControl" destination="hoH-8t-wsN" id="NUu-aI-1Er"/>
+                <outlet property="monthButton" destination="nik-V7-UXU" id="o28-MO-KCP"/>
                 <outlet property="sumStepAndMilAndkCal" destination="Rwp-9Z-xNi" id="DtH-6f-fnH"/>
                 <outlet property="titleLabel" destination="OBV-ct-Vbc" id="AGh-OC-56I"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kjL-HW-Bzb"/>
@@ -88,9 +87,6 @@
                                 <action selector="chooseMouthAction:" destination="-1" eventType="touchUpInside" id="Uch-n0-dSB"/>
                             </connections>
                         </button>
-                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="12" translatesAutoresizingMaskIntoConstraints="NO" id="hoH-8t-wsN">
-                            <rect key="frame" x="31" y="338" width="258" height="37"/>
-                        </pageControl>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-lW-GlY">
                             <rect key="frame" x="8" y="23" width="55" height="36"/>
                             <constraints>
@@ -120,9 +116,7 @@
                         <constraint firstItem="kCX-kz-kc3" firstAttribute="centerX" secondItem="E9c-y2-W5j" secondAttribute="centerX" id="QW5-ya-B8j"/>
                         <constraint firstAttribute="trailing" secondItem="nik-V7-UXU" secondAttribute="trailing" constant="8" id="RKb-FD-cHt"/>
                         <constraint firstItem="OBV-ct-Vbc" firstAttribute="centerY" secondItem="oWQ-lW-GlY" secondAttribute="centerY" id="Sas-83-UdL"/>
-                        <constraint firstItem="hoH-8t-wsN" firstAttribute="top" secondItem="0ej-qs-qpu" secondAttribute="bottom" constant="6" id="TIe-ko-ydS"/>
                         <constraint firstItem="s62-xy-M4s" firstAttribute="centerX" secondItem="kCX-kz-kc3" secondAttribute="centerX" id="UTR-l3-uMn"/>
-                        <constraint firstItem="hoH-8t-wsN" firstAttribute="trailing" secondItem="0ej-qs-qpu" secondAttribute="trailing" id="Uuh-Bi-eNT"/>
                         <constraint firstAttribute="height" constant="375" id="bxX-gl-MAH"/>
                         <constraint firstItem="tgk-fV-KOc" firstAttribute="centerX" secondItem="E9c-y2-W5j" secondAttribute="centerX" id="cHC-5h-IwK"/>
                         <constraint firstItem="kCX-kz-kc3" firstAttribute="top" secondItem="E9c-y2-W5j" secondAttribute="top" constant="183" id="eO7-or-pkx"/>
@@ -133,7 +127,6 @@
                         <constraint firstItem="8wT-kz-VMz" firstAttribute="top" secondItem="s62-xy-M4s" secondAttribute="bottom" constant="17" id="mPI-J5-14b"/>
                         <constraint firstItem="OBV-ct-Vbc" firstAttribute="centerX" secondItem="E9c-y2-W5j" secondAttribute="centerX" id="ow6-KL-GV3"/>
                         <constraint firstItem="nik-V7-UXU" firstAttribute="top" secondItem="0ej-qs-qpu" secondAttribute="top" id="rsq-es-RlS"/>
-                        <constraint firstItem="hoH-8t-wsN" firstAttribute="leading" secondItem="0ej-qs-qpu" secondAttribute="leading" id="yeX-mb-vHe"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VoQ-kG-BTQ">

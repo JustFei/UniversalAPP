@@ -5,18 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SleepContentView">
-            <connections>
-                <outlet property="deepAndLowSleepLabel" destination="gtr-da-WQW" id="DBq-VD-wOX"/>
-                <outlet property="downView" destination="Qxk-3h-F6a" id="ySc-xi-ahX"/>
-                <outlet property="sleepStateLabel" destination="3Cp-Ww-0rR" id="oU2-tk-ERc"/>
-                <outlet property="sleepStateView1" destination="w6P-gI-XL0" id="180-dx-8q1"/>
-                <outlet property="sleepStateView2" destination="UWd-Sd-7Yc" id="SIi-yY-bYA"/>
-                <outlet property="sleepStateView3" destination="Zyv-r5-4rf" id="eHd-Hm-TJZ"/>
-                <outlet property="sleepStateView4" destination="fBY-KA-arW" id="Ja8-MH-hWA"/>
-                <outlet property="sleepSumLabel" destination="YQc-5G-8TM" id="1zN-mB-wfc"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="glG-8L-ndL" customClass="SleepContentView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -26,9 +15,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="375"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQc-5G-8TM">
-                            <rect key="frame" x="90" y="183" width="140" height="38"/>
+                            <rect key="frame" x="70" y="183" width="180" height="38"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="140" id="SBT-X9-myG"/>
+                                <constraint firstAttribute="width" constant="180" id="SBT-X9-myG"/>
                                 <constraint firstAttribute="height" constant="38" id="otv-87-99V"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="50"/>
@@ -61,13 +50,6 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sleep_now_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="h2H-0x-LTA">
-                            <rect key="frame" x="31" y="61" width="258" height="271"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="258" id="0p8-sE-Vnh"/>
-                                <constraint firstAttribute="height" constant="271" id="w9h-ya-oc0"/>
-                            </constraints>
-                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBY-KA-arW" userLabel="4">
                             <rect key="frame" x="189" y="240" width="26" height="2"/>
                             <color key="backgroundColor" red="0.1137254902" green="0.44705882349999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -108,7 +90,7 @@
                             </constraints>
                             <state key="normal" image="walk_target_icon.png"/>
                             <connections>
-                                <action selector="sleepTargetAction:" destination="-1" eventType="touchUpInside" id="dRp-LY-tQX"/>
+                                <action selector="sleepTargetAction:" destination="glG-8L-ndL" eventType="touchUpInside" id="qCx-Pc-Wt1"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="缺乏睡眠" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cp-Ww-0rR">
@@ -121,6 +103,13 @@
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sleep_now_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="h2H-0x-LTA">
+                            <rect key="frame" x="31" y="61" width="258" height="271"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="258" id="0p8-sE-Vnh"/>
+                                <constraint firstAttribute="height" constant="271" id="w9h-ya-oc0"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.1450980392" green="0.60392156860000001" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -155,25 +144,35 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qxk-3h-F6a">
-                    <rect key="frame" x="8" y="405" width="304" height="155"/>
-                    <color key="backgroundColor" red="0.1450980392" green="0.60392156860000001" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qxk-3h-F6a" customClass="SleepContentView">
+                    <rect key="frame" x="0.0" y="397" width="320" height="171"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="YMG-93-Tfc" firstAttribute="leading" secondItem="glG-8L-ndL" secondAttribute="leading" id="9Jx-ku-xvo"/>
-                <constraint firstItem="Qxk-3h-F6a" firstAttribute="top" secondItem="D5s-3A-N5T" secondAttribute="bottom" constant="8" id="A5i-uo-koC"/>
+                <constraint firstItem="Qxk-3h-F6a" firstAttribute="top" secondItem="D5s-3A-N5T" secondAttribute="bottom" id="A5i-uo-koC"/>
                 <constraint firstAttribute="trailing" secondItem="D5s-3A-N5T" secondAttribute="trailing" constant="8" id="FUe-Je-r6k"/>
                 <constraint firstItem="D5s-3A-N5T" firstAttribute="top" secondItem="YMG-93-Tfc" secondAttribute="bottom" constant="8" id="LWB-qf-2Ph"/>
                 <constraint firstItem="YMG-93-Tfc" firstAttribute="top" secondItem="glG-8L-ndL" secondAttribute="top" id="RpH-hR-1hE"/>
-                <constraint firstItem="Qxk-3h-F6a" firstAttribute="leading" secondItem="glG-8L-ndL" secondAttribute="leading" constant="8" id="WTP-Vt-cUk"/>
-                <constraint firstAttribute="bottom" secondItem="Qxk-3h-F6a" secondAttribute="bottom" constant="8" id="e1B-qs-F55"/>
+                <constraint firstItem="Qxk-3h-F6a" firstAttribute="leading" secondItem="glG-8L-ndL" secondAttribute="leading" id="WTP-Vt-cUk"/>
+                <constraint firstAttribute="bottom" secondItem="Qxk-3h-F6a" secondAttribute="bottom" id="e1B-qs-F55"/>
                 <constraint firstItem="D5s-3A-N5T" firstAttribute="leading" secondItem="glG-8L-ndL" secondAttribute="leading" constant="8" id="fcq-YC-OQB"/>
-                <constraint firstAttribute="trailing" secondItem="Qxk-3h-F6a" secondAttribute="trailing" constant="8" id="jyJ-aP-7U8"/>
+                <constraint firstAttribute="trailing" secondItem="Qxk-3h-F6a" secondAttribute="trailing" id="jyJ-aP-7U8"/>
                 <constraint firstAttribute="trailing" secondItem="YMG-93-Tfc" secondAttribute="trailing" id="r2v-MB-GIF"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="deepAndLowSleepLabel" destination="gtr-da-WQW" id="jsl-Xy-czD"/>
+                <outlet property="downView" destination="Qxk-3h-F6a" id="pKo-I7-FQH"/>
+                <outlet property="sleepStateLabel" destination="3Cp-Ww-0rR" id="dY3-8E-hst"/>
+                <outlet property="sleepStateView1" destination="w6P-gI-XL0" id="7Jg-hU-otQ"/>
+                <outlet property="sleepStateView2" destination="UWd-Sd-7Yc" id="Ziq-ru-NlA"/>
+                <outlet property="sleepStateView3" destination="Zyv-r5-4rf" id="e1z-Nm-d5c"/>
+                <outlet property="sleepStateView4" destination="fBY-KA-arW" id="cVP-fH-6sa"/>
+                <outlet property="sleepSumLabel" destination="YQc-5G-8TM" id="MoC-Gr-vcS"/>
+            </connections>
             <point key="canvasLocation" x="116" y="375"/>
         </view>
     </objects>

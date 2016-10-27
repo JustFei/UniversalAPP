@@ -36,9 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIView *state4;
 
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
-@property (weak, nonatomic) IBOutlet UIButton *mouthButton;
-
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UIButton *monthButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -113,7 +111,7 @@
     [super viewDidAppear:YES];
     
     //绘制图表放在这里不会造成UI卡顿
-    [self getHistoryDataWithIntDays:_dateArr.count];
+    [self getHistoryDataWithIntDays:_dateArr.count withDate:[NSDate date]];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -122,7 +120,7 @@
     [self.view removeGestureRecognizer:self.oneFingerSwipedown];
 }
 
-- (void)getHistoryDataWithIntDays:(NSInteger)days
+- (void)getHistoryDataWithIntDays:(NSInteger)days withDate:(NSDate *)date
 {
     sumHeartRate = 0;
     haveDataDays = 0;
@@ -131,7 +129,7 @@
     
     unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
     
-    NSDateComponents *components = [calendar components:unitFlags fromDate:[NSDate date]];
+    NSDateComponents *components = [calendar components:unitFlags fromDate:date];
     
     NSInteger iCurYear = [components year] % 100;  //当前的年份
     
@@ -275,11 +273,34 @@
 #pragma mark - TitleMenuDelegate
 -(void)selectAtIndexPath:(NSIndexPath *)indexPath title:(NSString *)title
 {
-//    NSLog(@"indexPath = %ld", indexPath.row);
-//    NSLog(@"当前选择了%@", title);
+    NSLog(@"选择了%ld月",indexPath.row + 1);
+    // 修改导航栏的标题
+    [self.monthButton setTitle:title forState:UIControlStateNormal];
     
     // 修改导航栏的标题
-    [self.mouthButton setTitle:title forState:UIControlStateNormal];
+    [self.monthButton setTitle:title forState:UIControlStateNormal];
+    
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *currentFormatter = [[NSDateFormatter alloc] init];
+    currentFormatter.dateFormat = @"yyyy";
+    NSString *yyyyStr = [currentFormatter stringFromDate:currentDate];
+    
+    NSString *string = [NSString stringWithFormat:@"%@-%ld-15", yyyyStr, indexPath.row + 1];
+    currentFormatter.dateFormat = @"yyyy-MM-dd";
+    NSDate *date=[currentFormatter dateFromString:string];
+    
+    //获取这个月的天数
+    NSCalendar *c = [NSCalendar currentCalendar];
+    NSRange days = [c rangeOfUnit:NSDayCalendarUnit
+                           inUnit:NSMonthCalendarUnit
+                          forDate:date];
+    
+    [_dateArr removeAllObjects];
+    for (int i = 1; i <= days.length; i ++) {
+        [_dateArr addObject:[NSString stringWithFormat:@"%d",i]];
+    }
+    
+    [self getHistoryDataWithIntDays:days.length withDate:date];
 }
 
 #pragma mark -弹出下拉菜单

@@ -464,7 +464,10 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         model.sleepModel.deepSleep = deepSleepStr;
         model.sleepModel.lowSleep = lowSleepStr;
         model.sleepModel.sumSleep = sumSleepStr;
-        model.sleepModel.date = [startTimeStr substringWithRange:NSMakeRange(0, 6)];
+        if (![startTimeStr isEqualToString:@"0"]) {
+            model.sleepModel.date = [startTimeStr substringWithRange:NSMakeRange(0, 6)];
+        }
+        
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
         
     }else if ([head isEqualToString:@"8c"] || [head isEqualToString:@"8C"]) {

@@ -36,20 +36,6 @@
 
 - (void)showChartView
 {
-    
-//    for (__strong NSString *dateStr in self.dateArr) {
-//        NSString *monthStr = [dateStr substringWithRange:NSMakeRange(3, 2)];
-//        NSString *dayStr = [dateStr substringWithRange:NSMakeRange(5, 2)];
-//        
-//        NSString *hourStr = [dateStr substringWithRange:NSMakeRange(7, 2)];
-//        NSString *minStr = [dateStr substringWithRange:NSMakeRange(10, 2)];
-//        
-//        NSString *dateString = [NSString stringWithFormat:@"\n%@/%@\n%@:%@",monthStr ,dayStr ,hourStr ,minStr];
-//        NSLog(@"%@", dateString);
-//        
-//        [xLabelArr addObject:dateString];
-//    }
-    
     [self.heartChart setXLabels:self.dateArr];
     
     PNLineChartData *data02 = [PNLineChartData new];

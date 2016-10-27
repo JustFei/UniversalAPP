@@ -10,8 +10,7 @@
                 <outlet property="backButton" destination="oWQ-lW-GlY" id="sVH-mG-Kj8"/>
                 <outlet property="downView" destination="VoQ-kG-BTQ" id="m0J-ZF-9ah"/>
                 <outlet property="heartRateLabel" destination="kCX-kz-kc3" id="sXX-nO-VZ8"/>
-                <outlet property="mouthButton" destination="nik-V7-UXU" id="A22-hF-dRh"/>
-                <outlet property="pageControl" destination="hoH-8t-wsN" id="OOD-oE-rnj"/>
+                <outlet property="monthButton" destination="nik-V7-UXU" id="Ns4-Pf-m2i"/>
                 <outlet property="state1" destination="Kc4-a7-RQA" id="sh8-kV-q4p"/>
                 <outlet property="state2" destination="Led-dP-EZs" id="2ZH-sv-EGi"/>
                 <outlet property="state3" destination="a8H-9E-Pts" id="ASf-C3-ICw"/>
@@ -74,9 +73,6 @@
                                 <action selector="chooseMouthAction:" destination="-1" eventType="touchUpInside" id="nZs-tT-PvV"/>
                             </connections>
                         </button>
-                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="12" translatesAutoresizingMaskIntoConstraints="NO" id="hoH-8t-wsN">
-                            <rect key="frame" x="31" y="338" width="258" height="37"/>
-                        </pageControl>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-lW-GlY">
                             <rect key="frame" x="8" y="23" width="55" height="36"/>
                             <constraints>
@@ -148,8 +144,6 @@
                         <constraint firstItem="a8H-9E-Pts" firstAttribute="top" secondItem="Kc4-a7-RQA" secondAttribute="top" id="Oej-ge-j4u"/>
                         <constraint firstItem="kCX-kz-kc3" firstAttribute="centerX" secondItem="E9c-y2-W5j" secondAttribute="centerX" id="QW5-ya-B8j"/>
                         <constraint firstAttribute="trailing" secondItem="nik-V7-UXU" secondAttribute="trailing" constant="8" id="RKb-FD-cHt"/>
-                        <constraint firstItem="hoH-8t-wsN" firstAttribute="top" secondItem="0ej-qs-qpu" secondAttribute="bottom" constant="6" id="TIe-ko-ydS"/>
-                        <constraint firstItem="hoH-8t-wsN" firstAttribute="trailing" secondItem="0ej-qs-qpu" secondAttribute="trailing" id="Uuh-Bi-eNT"/>
                         <constraint firstAttribute="height" constant="375" id="bxX-gl-MAH"/>
                         <constraint firstItem="tgk-fV-KOc" firstAttribute="centerX" secondItem="E9c-y2-W5j" secondAttribute="centerX" id="cHC-5h-IwK"/>
                         <constraint firstItem="TiG-Bf-0J2" firstAttribute="centerX" secondItem="E9c-y2-W5j" secondAttribute="centerX" id="e0p-NA-aVb"/>
@@ -164,7 +158,6 @@
                         <constraint firstItem="FpZ-zf-Vip" firstAttribute="centerX" secondItem="E9c-y2-W5j" secondAttribute="centerX" constant="42" id="vx6-hY-1Mb"/>
                         <constraint firstItem="FpZ-zf-Vip" firstAttribute="top" secondItem="Kc4-a7-RQA" secondAttribute="top" id="xWk-2I-kKL"/>
                         <constraint firstItem="Led-dP-EZs" firstAttribute="top" secondItem="kCX-kz-kc3" secondAttribute="bottom" constant="12" id="xjs-80-2f3"/>
-                        <constraint firstItem="hoH-8t-wsN" firstAttribute="leading" secondItem="0ej-qs-qpu" secondAttribute="leading" id="yeX-mb-vHe"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VoQ-kG-BTQ">

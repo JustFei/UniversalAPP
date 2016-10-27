@@ -78,7 +78,7 @@
     [self createUI];
     
     self.stepView.dateArr = [self getWeekBeginAndEnd:[NSDate date]];
-    self.sleepView.dateArr = self.temperatureView.dateArr = self.stepView.dateArr;
+    self.temperatureView.dateArr = self.stepView.dateArr;
     
     
     [self hiddenFunctionView];
@@ -401,7 +401,7 @@
     if (manridyModel.isReciveDataRight) {
         if (manridyModel.receiveDataType == ReturnModelTypeSleepModel) {
             
-            if (![manridyModel.sleepModel.sumDataCount isEqualToString:@"0"]) {
+            if (manridyModel.sleepModel.sumDataCount) {
                 self.sleepView.sleepSumLabel.text = manridyModel.sleepModel.sumSleep;
                 [self.sleepView.sleepSumLabel setText:@"test"];
                 self.sleepView.deepAndLowSleepLabel.text = [NSString stringWithFormat:@"深睡%@小时/浅睡%@小时",manridyModel.sleepModel.deepSleep ,manridyModel.sleepModel.lowSleep];
@@ -695,8 +695,7 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (self.pageControl.currentPage == 3) {
                     [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
-                    
-                    
+                    [self.sleepView showChartView];
                 }
             });
         }

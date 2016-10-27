@@ -195,12 +195,8 @@ static FMDatabase *_fmdb;
         model.heartRate = heartRate;
         model.date = date;
         
-        NSLog(@"%@的数据：心率=%@",time ,heartRate);
-        
         [arrM addObject:model];
     }
-    
-    NSLog(@"heartRate查询成功");
     return arrM;
 }
 

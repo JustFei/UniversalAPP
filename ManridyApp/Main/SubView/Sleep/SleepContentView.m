@@ -11,8 +11,11 @@
 #import "PNChart.h"
 
 @interface SleepContentView ()
-
-@property (nonatomic ,strong) PNBarChart *sleepChart;
+{
+    NSArray *_textArr;
+}
+@property (nonatomic ,weak) PNBarChart *deepSleepChart;
+@property (nonatomic ,weak) PNBarChart *sumSleepChart;
 
 @end
 
@@ -25,6 +28,7 @@
         
         self = [[NSBundle mainBundle] loadNibNamed:@"SleepContentView" owner:self options:nil].firstObject;
         self.frame = frame;
+        _textArr = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7"];
     }
     return self;
 }
@@ -32,15 +36,18 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    self.sleepChart.backgroundColor = [UIColor redColor];
 }
 
 - (void)showChartView
 {
-    [self.sleepChart setXLabels:self.dateArr];
-    [self.sleepChart setYLabels:@[@7,@6,@5.5,@8,@7.5,@9.5,@10]];
-    [self.sleepChart strokeChart];
+    [self.sumSleepChart setXLabels:_textArr];
+    [self.sumSleepChart setYValues:@[@6,@7,@8,@9,@10,@11,@12]];
+    [self.sumSleepChart strokeChart];
+    
+    [self.deepSleepChart setXLabels:_textArr];
+    [self.deepSleepChart setYValues:@[@5,@6,@7,@8,@9,@10,@11]];
+    [self.deepSleepChart strokeChart];
+    
 }
 
 - (IBAction)sleepTargetAction:(UIButton *)sender {
@@ -49,17 +56,58 @@
     [[self findViewController:self].navigationController pushViewController:vc animated:YES];
 }
 #pragma mark - 懒加载
-- (PNBarChart *)sleepChart
+- (PNBarChart *)deepSleepChart
 {
-    if (!_sleepChart) {
-        PNBarChart *view = [[PNBarChart alloc] initWithFrame:CGRectMake(5, 5, self.downView.frame.size.width - 10, self.downView.frame.size.width - 10)];
+    if (!_deepSleepChart) {
+        PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
+        [view setStrokeColor:[UIColor yellowColor]];
+        view.barBackgroundColor = [UIColor clearColor];
+        view.yChartLabelWidth = 20.0;
+        view.chartMarginLeft = 30.0;
+        view.chartMarginRight = 10.0;
+        view.chartMarginTop = 5.0;
+        view.chartMarginBottom = 10.0;
+        view.yMinValue = 0;
+        view.yMaxValue = 15;
+        view.showXLabel = YES;
+        view.showYLabel = YES;
+        view.showChartBorder = NO;
+        view.isShowNumbers = NO;
+        view.isGradientShow = NO;
         
         [self.downView addSubview:view];
-        _sleepChart = view;
+        _deepSleepChart = view;
     }
     
-    return _sleepChart;
+    return _deepSleepChart;
+}
+
+- (PNBarChart *)sumSleepChart
+{
+    if (!_sumSleepChart) {
+        PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
+        view.backgroundColor = [UIColor clearColor];
+        [view setStrokeColor:[UIColor redColor]];
+        view.barBackgroundColor = [UIColor clearColor];
+        view.yChartLabelWidth = 20.0;
+        view.chartMarginLeft = 30.0;
+        view.chartMarginRight = 10.0;
+        view.chartMarginTop = 5.0;
+        view.chartMarginBottom = 10.0;
+        view.yMinValue = 0;
+        view.yMaxValue = 15;
+        view.showXLabel = YES;
+        view.showYLabel = YES;
+        view.showChartBorder = YES;
+        view.isShowNumbers = NO;
+        view.isGradientShow = NO;
+        
+        [self.downView addSubview:view];
+        _sumSleepChart = view;
+    }
+    
+    return _sumSleepChart;
 }
 
 - (NSMutableArray *)dateArr
