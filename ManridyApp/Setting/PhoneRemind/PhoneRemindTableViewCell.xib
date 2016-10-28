@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PhoneRemindTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="防丢提醒" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrg-F5-JOs">
+                        <rect key="frame" x="50" y="11" width="55" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="hMv-hP-0xB"/>
+                            <constraint firstAttribute="height" constant="21" id="jpT-Ia-jhw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kl3-V7-FYW">
+                        <rect key="frame" x="138" y="9" width="45" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="2y2-NT-oqt"/>
+                            <constraint firstAttribute="width" constant="45" id="BJg-fl-CcC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yg7-u6-cvg">
+                        <rect key="frame" x="263" y="6" width="51" height="31"/>
+                        <connections>
+                            <action selector="changeState:" destination="KGk-i7-Jjw" eventType="valueChanged" id="49X-R2-J62"/>
+                        </connections>
+                    </switch>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f7E-Wb-jAn">
+                        <rect key="frame" x="8" y="9" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="Ggh-cd-33n"/>
+                            <constraint firstAttribute="width" constant="25" id="vZM-zt-PKL"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Jrg-F5-JOs" firstAttribute="leading" secondItem="f7E-Wb-jAn" secondAttribute="trailing" constant="17" id="05l-AX-5hS"/>
+                    <constraint firstItem="kl3-V7-FYW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="24t-lp-D8x"/>
+                    <constraint firstItem="Jrg-F5-JOs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9Iq-De-u6W"/>
+                    <constraint firstItem="yg7-u6-cvg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EUX-Ep-hIo"/>
+                    <constraint firstItem="f7E-Wb-jAn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="H43-HZ-8uM"/>
+                    <constraint firstItem="f7E-Wb-jAn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kqG-Ts-OVd"/>
+                    <constraint firstItem="yg7-u6-cvg" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="rDF-ls-lga"/>
+                    <constraint firstItem="kl3-V7-FYW" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="yew-VR-wQg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+            <connections>
+                <outlet property="functionName" destination="Jrg-F5-JOs" id="2nH-oe-Fw0"/>
+                <outlet property="iconImageView" destination="f7E-Wb-jAn" id="MAa-d7-gza"/>
+                <outlet property="timeLabel" destination="kl3-V7-FYW" id="9ga-uT-7D8"/>
+                <outlet property="timeSwitch" destination="yg7-u6-cvg" id="3d1-8E-iHw"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

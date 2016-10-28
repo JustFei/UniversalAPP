@@ -281,6 +281,19 @@ static FMDatabase *_fmdb;
     return YES;
 }
 
+- (BOOL)deleteSleepData:(NSString *)deleteSql
+{
+    BOOL result = [_fmdb executeUpdate:@"delete from SleepData"];
+    
+    if (result) {
+        NSLog(@"Sleep表删除成功");
+    }else {
+        NSLog(@"Sleep表删除失败");
+    }
+    
+    return result;
+}
+
 #pragma mark - BloodPressureData
 
 #pragma mark - UserInfoData

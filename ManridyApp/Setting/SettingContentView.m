@@ -9,6 +9,7 @@
 #import "SettingContentView.h"
 #import "UserInfoViewController.h"
 #import "BindPeripheralViewController.h"
+#import "PhoneRemindViewController.h"
 
 @interface SettingContentView () <UITableViewDelegate ,UITableViewDataSource >
 {
@@ -117,6 +118,12 @@
         case 0:
         {
             UserInfoViewController *vc = [[UserInfoViewController alloc] init];
+            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 1:
+        {
+            PhoneRemindViewController *vc = [[PhoneRemindViewController alloc] init];
             [[self findViewController:self].navigationController pushViewController:vc animated:YES];
         }
             break;

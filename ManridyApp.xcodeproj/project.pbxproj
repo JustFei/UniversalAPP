@@ -187,6 +187,25 @@
 		10F5F7F51D9928050045FA4C /* temper_alart_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7F21D9928050045FA4C /* temper_alart_icon.png */; };
 		10F5F7F61D9928050045FA4C /* temper_alart_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7F31D9928050045FA4C /* temper_alart_icon@2x.png */; };
 		10F5F7F71D9928050045FA4C /* temper_alart_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7F41D9928050045FA4C /* temper_alart_icon@3x.png */; };
+		10FF5CDA1DC33BEA0059FE00 /* PhoneRemindTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FF5CD81DC33BEA0059FE00 /* PhoneRemindTableViewCell.m */; };
+		10FF5CDB1DC33BEA0059FE00 /* PhoneRemindTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CD91DC33BEA0059FE00 /* PhoneRemindTableViewCell.xib */; };
+		10FF5CE81DC341150059FE00 /* alert_call.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CDC1DC341150059FE00 /* alert_call.png */; };
+		10FF5CE91DC341150059FE00 /* alert_call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CDD1DC341150059FE00 /* alert_call@2x.png */; };
+		10FF5CEA1DC341150059FE00 /* alert_call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CDE1DC341150059FE00 /* alert_call@3x.png */; };
+		10FF5CEB1DC341150059FE00 /* alert_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CDF1DC341150059FE00 /* alert_clock.png */; };
+		10FF5CEC1DC341150059FE00 /* alert_clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CE01DC341150059FE00 /* alert_clock@2x.png */; };
+		10FF5CED1DC341150059FE00 /* alert_clock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CE11DC341150059FE00 /* alert_clock@3x.png */; };
+		10FF5CEE1DC341150059FE00 /* alert_lose.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CE21DC341150059FE00 /* alert_lose.png */; };
+		10FF5CEF1DC341150059FE00 /* alert_lose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CE31DC341150059FE00 /* alert_lose@2x.png */; };
+		10FF5CF01DC341150059FE00 /* alert_lose@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CE41DC341150059FE00 /* alert_lose@3x.png */; };
+		10FF5CF11DC341150059FE00 /* alert_sms.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CE51DC341150059FE00 /* alert_sms.png */; };
+		10FF5CF21DC341150059FE00 /* alert_sms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CE61DC341150059FE00 /* alert_sms@2x.png */; };
+		10FF5CF31DC341150059FE00 /* alert_sms@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CE71DC341150059FE00 /* alert_sms@3x.png */; };
+		10FF5CF61DC352FB0059FE00 /* PhoneRemindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FF5CF51DC352FB0059FE00 /* PhoneRemindView.m */; };
+		10FF5CF91DC35AEC0059FE00 /* SectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FF5CF81DC35AEC0059FE00 /* SectionModel.m */; };
+		10FF5CFD1DC35F2E0059FE00 /* all_next_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFA1DC35F2E0059FE00 /* all_next_icon.png */; };
+		10FF5CFE1DC35F2E0059FE00 /* all_next_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFB1DC35F2E0059FE00 /* all_next_icon@2x.png */; };
+		10FF5CFF1DC35F2E0059FE00 /* all_next_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFC1DC35F2E0059FE00 /* all_next_icon@3x.png */; };
 		286703898AC331628EEC7AE2 /* libPods-ManridyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E29C089A52A5A0DEF5ACCBBF /* libPods-ManridyApp.a */; };
 		908CCA620B40F374EFCBF7AD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 019AFD2849F28207558D163A /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -414,6 +433,28 @@
 		10F5F7F21D9928050045FA4C /* temper_alart_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temper_alart_icon.png; sourceTree = "<group>"; };
 		10F5F7F31D9928050045FA4C /* temper_alart_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temper_alart_icon@2x.png"; sourceTree = "<group>"; };
 		10F5F7F41D9928050045FA4C /* temper_alart_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temper_alart_icon@3x.png"; sourceTree = "<group>"; };
+		10FF5CD71DC33BEA0059FE00 /* PhoneRemindTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneRemindTableViewCell.h; path = Setting/PhoneRemind/PhoneRemindTableViewCell.h; sourceTree = "<group>"; };
+		10FF5CD81DC33BEA0059FE00 /* PhoneRemindTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneRemindTableViewCell.m; path = Setting/PhoneRemind/PhoneRemindTableViewCell.m; sourceTree = "<group>"; };
+		10FF5CD91DC33BEA0059FE00 /* PhoneRemindTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhoneRemindTableViewCell.xib; path = Setting/PhoneRemind/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
+		10FF5CDC1DC341150059FE00 /* alert_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert_call.png; sourceTree = "<group>"; };
+		10FF5CDD1DC341150059FE00 /* alert_call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_call@2x.png"; sourceTree = "<group>"; };
+		10FF5CDE1DC341150059FE00 /* alert_call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_call@3x.png"; sourceTree = "<group>"; };
+		10FF5CDF1DC341150059FE00 /* alert_clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert_clock.png; sourceTree = "<group>"; };
+		10FF5CE01DC341150059FE00 /* alert_clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_clock@2x.png"; sourceTree = "<group>"; };
+		10FF5CE11DC341150059FE00 /* alert_clock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_clock@3x.png"; sourceTree = "<group>"; };
+		10FF5CE21DC341150059FE00 /* alert_lose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert_lose.png; sourceTree = "<group>"; };
+		10FF5CE31DC341150059FE00 /* alert_lose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_lose@2x.png"; sourceTree = "<group>"; };
+		10FF5CE41DC341150059FE00 /* alert_lose@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_lose@3x.png"; sourceTree = "<group>"; };
+		10FF5CE51DC341150059FE00 /* alert_sms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert_sms.png; sourceTree = "<group>"; };
+		10FF5CE61DC341150059FE00 /* alert_sms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_sms@2x.png"; sourceTree = "<group>"; };
+		10FF5CE71DC341150059FE00 /* alert_sms@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_sms@3x.png"; sourceTree = "<group>"; };
+		10FF5CF41DC352FB0059FE00 /* PhoneRemindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneRemindView.h; path = Setting/PhoneRemind/PhoneRemindView.h; sourceTree = "<group>"; };
+		10FF5CF51DC352FB0059FE00 /* PhoneRemindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneRemindView.m; path = Setting/PhoneRemind/PhoneRemindView.m; sourceTree = "<group>"; };
+		10FF5CF71DC35AEC0059FE00 /* SectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionModel.h; path = Setting/PhoneRemind/SectionModel.h; sourceTree = "<group>"; };
+		10FF5CF81DC35AEC0059FE00 /* SectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SectionModel.m; path = Setting/PhoneRemind/SectionModel.m; sourceTree = "<group>"; };
+		10FF5CFA1DC35F2E0059FE00 /* all_next_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = all_next_icon.png; sourceTree = "<group>"; };
+		10FF5CFB1DC35F2E0059FE00 /* all_next_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_next_icon@2x.png"; sourceTree = "<group>"; };
+		10FF5CFC1DC35F2E0059FE00 /* all_next_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_next_icon@3x.png"; sourceTree = "<group>"; };
 		51E7E25A2038629CE0551722 /* Pods-ManridyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManridyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ManridyApp/Pods-ManridyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B4DF2AA8C8141136C107AA64 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CA8334923FDB1910A71A43E9 /* Pods-ManridyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManridyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ManridyApp/Pods-ManridyApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -535,10 +576,10 @@
 		104A705E1D9B71C300CC73F5 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				10EE961A1DB4BFA70048D594 /* PhoneRemind */,
-				10C47E971DA88F7500D949CA /* BindPeripheral */,
 				104A70691D9BAD0200CC73F5 /* SetView */,
 				104A70651D9BA3D400CC73F5 /* UserInfo */,
+				10EE961A1DB4BFA70048D594 /* PhoneRemind */,
+				10C47E971DA88F7500D949CA /* BindPeripheral */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -634,6 +675,13 @@
 			children = (
 				10EE961B1DB4BFC70048D594 /* PhoneRemindViewController.h */,
 				10EE961C1DB4BFC70048D594 /* PhoneRemindViewController.m */,
+				10FF5CD71DC33BEA0059FE00 /* PhoneRemindTableViewCell.h */,
+				10FF5CD81DC33BEA0059FE00 /* PhoneRemindTableViewCell.m */,
+				10FF5CD91DC33BEA0059FE00 /* PhoneRemindTableViewCell.xib */,
+				10FF5CF41DC352FB0059FE00 /* PhoneRemindView.h */,
+				10FF5CF51DC352FB0059FE00 /* PhoneRemindView.m */,
+				10FF5CF71DC35AEC0059FE00 /* SectionModel.h */,
+				10FF5CF81DC35AEC0059FE00 /* SectionModel.m */,
 			);
 			name = PhoneRemind;
 			sourceTree = "<group>";
@@ -697,6 +745,21 @@
 		10F5F7251D98F31B0045FA4C /* image */ = {
 			isa = PBXGroup;
 			children = (
+				10FF5CFA1DC35F2E0059FE00 /* all_next_icon.png */,
+				10FF5CFB1DC35F2E0059FE00 /* all_next_icon@2x.png */,
+				10FF5CFC1DC35F2E0059FE00 /* all_next_icon@3x.png */,
+				10FF5CDC1DC341150059FE00 /* alert_call.png */,
+				10FF5CDD1DC341150059FE00 /* alert_call@2x.png */,
+				10FF5CDE1DC341150059FE00 /* alert_call@3x.png */,
+				10FF5CDF1DC341150059FE00 /* alert_clock.png */,
+				10FF5CE01DC341150059FE00 /* alert_clock@2x.png */,
+				10FF5CE11DC341150059FE00 /* alert_clock@3x.png */,
+				10FF5CE21DC341150059FE00 /* alert_lose.png */,
+				10FF5CE31DC341150059FE00 /* alert_lose@2x.png */,
+				10FF5CE41DC341150059FE00 /* alert_lose@3x.png */,
+				10FF5CE51DC341150059FE00 /* alert_sms.png */,
+				10FF5CE61DC341150059FE00 /* alert_sms@2x.png */,
+				10FF5CE71DC341150059FE00 /* alert_sms@3x.png */,
 				10DE11A31DBAFBB000B824C5 /* all_back_icon.png */,
 				10DE11A41DBAFBB000B824C5 /* all_back_icon@2x.png */,
 				10DE11A51DBAFBB000B824C5 /* all_back_icon@3x.png */,
@@ -980,7 +1043,9 @@
 				10F5F7A21D991C700045FA4C /* heart_old_icon@2x.png in Resources */,
 				10F5F7451D98F31B0045FA4C /* set_bty_icon@2x.png in Resources */,
 				10F5F7EA1D9927C60045FA4C /* sleep_now_icon@2x.png in Resources */,
+				10FF5CE81DC341150059FE00 /* alert_call.png in Resources */,
 				10F5F7F61D9928050045FA4C /* temper_alart_icon@2x.png in Resources */,
+				10FF5CF11DC341150059FE00 /* alert_sms.png in Resources */,
 				10F5F73C1D98F31B0045FA4C /* set_about_icon@2x.png in Resources */,
 				10CB0F081D9A25130063AD0C /* FunctionCell.xib in Resources */,
 				10F5F7EB1D9927C60045FA4C /* sleep_now_icon@3x.png in Resources */,
@@ -993,10 +1058,12 @@
 				10C47EBC1DA8A55F00D949CA /* ble_refresh.png in Resources */,
 				10C47EB71DA8A55F00D949CA /* ble_lock_close@2x.png in Resources */,
 				104A705D1D9B63B100CC73F5 /* all_set_icon@3x.png in Resources */,
+				10FF5CF21DC341150059FE00 /* alert_sms@2x.png in Resources */,
 				10C47EB21DA8A55F00D949CA /* ble_connect@3x.png in Resources */,
 				109FBB9D1DAA1934008FF0D3 /* StepContentView.xib in Resources */,
 				10F5F7461D98F31B0045FA4C /* set_bty_icon@3x.png in Resources */,
 				10F5F7781D98F3560045FA4C /* walk_run_now@2x.png in Resources */,
+				10FF5CDB1DC33BEA0059FE00 /* PhoneRemindTableViewCell.xib in Resources */,
 				10C47EBB1DA8A55F00D949CA /* ble_lock_oper@3x.png in Resources */,
 				10C47EC81DA8DE0D00D949CA /* TemperatureWarningViewController.xib in Resources */,
 				10C47EB91DA8A55F00D949CA /* ble_lock_oper.png in Resources */,
@@ -1007,6 +1074,7 @@
 				10F5F7721D98F3560045FA4C /* walk_foot_icon@2x.png in Resources */,
 				10F5F76C1D98F3560045FA4C /* walk_circle1@2x.png in Resources */,
 				10F5F7681D98F3560045FA4C /* walk_Calorie_icon.png in Resources */,
+				10FF5CED1DC341150059FE00 /* alert_clock@3x.png in Resources */,
 				10F5F76E1D98F3560045FA4C /* walk_circle2.png in Resources */,
 				10F5F7CD1D9923D90045FA4C /* temper_ole_icon@3x.png in Resources */,
 				10F5F74D1D98F31B0045FA4C /* set_userphoto.png in Resources */,
@@ -1027,6 +1095,7 @@
 				10C47EB31DA8A55F00D949CA /* ble_icon.png in Resources */,
 				10CB0F1E1D9A8A190063AD0C /* list_sleep_icon.png in Resources */,
 				10F5F7481D98F31B0045FA4C /* set_lost_icon@2x.png in Resources */,
+				10FF5CEB1DC341150059FE00 /* alert_clock.png in Resources */,
 				10F5F7ED1D9927C60045FA4C /* sleep_old_icon@2x.png in Resources */,
 				10F5F7C81D9923D90045FA4C /* temper_now_icon.png in Resources */,
 				10CB0F221D9A8A190063AD0C /* list_temper_icon@2x.png in Resources */,
@@ -1048,7 +1117,9 @@
 				10CB0F1D1D9A8A190063AD0C /* list_heart_icon@3x.png in Resources */,
 				10CB0F251D9A8A190063AD0C /* list_walk_icon@2x.png in Resources */,
 				10C47EC31DA8C83C00D949CA /* StepTargetViewController.xib in Resources */,
+				10FF5CF01DC341150059FE00 /* alert_lose@3x.png in Resources */,
 				10F5F7691D98F3560045FA4C /* walk_Calorie_icon@2x.png in Resources */,
+				10FF5CFE1DC35F2E0059FE00 /* all_next_icon@2x.png in Resources */,
 				10CB0F231D9A8A190063AD0C /* list_temper_icon@3x.png in Resources */,
 				10F5F7CE1D9923D90045FA4C /* temper_set_alert_high.png in Resources */,
 				10CB0F1A1D9A8A190063AD0C /* list_blood_icon@3x.png in Resources */,
@@ -1061,16 +1132,21 @@
 				10F5F7471D98F31B0045FA4C /* set_lost_icon.png in Resources */,
 				10F5F7A01D991C700045FA4C /* heart_now_icon@3x.png in Resources */,
 				10F5F77C1D98F3560045FA4C /* walk_run_old@3x.png in Resources */,
+				10FF5CEA1DC341150059FE00 /* alert_call@3x.png in Resources */,
 				10F5F73D1D98F31B0045FA4C /* set_about_icon@3x.png in Resources */,
 				10F5F7D11D9923D90045FA4C /* temper_set_alert_low.png in Resources */,
+				10FF5CFF1DC35F2E0059FE00 /* all_next_icon@3x.png in Resources */,
 				10F5F7CB1D9923D90045FA4C /* temper_ole_icon.png in Resources */,
 				10F5F73B1D98F31B0045FA4C /* set_about_icon.png in Resources */,
 				10F5F7CF1D9923D90045FA4C /* temper_set_alert_high@2x.png in Resources */,
+				10FF5CFD1DC35F2E0059FE00 /* all_next_icon.png in Resources */,
 				10F5F77F1D98F3560045FA4C /* walk_target_icon@3x.png in Resources */,
 				103820F61DB8704200E92410 /* StepHistoryViewController.xib in Resources */,
 				10F5F77A1D98F3560045FA4C /* walk_run_old.png in Resources */,
 				10CB0F261D9A8A190063AD0C /* list_walk_icon@3x.png in Resources */,
+				10FF5CEC1DC341150059FE00 /* alert_clock@2x.png in Resources */,
 				10F5F7C51D9923D90045FA4C /* temper_notice_low.png in Resources */,
+				10FF5CE91DC341150059FE00 /* alert_call@2x.png in Resources */,
 				10F5F79E1D991C700045FA4C /* heart_now_icon.png in Resources */,
 				10CB0F181D9A8A190063AD0C /* list_blood_icon.png in Resources */,
 				10F5F73E1D98F31B0045FA4C /* set_alart_icon.png in Resources */,
@@ -1089,9 +1165,12 @@
 				10F5F7C41D9923D90045FA4C /* temper_notice_high@3x.png in Resources */,
 				10826A5A1DBA17840031DB83 /* HeartRateHistoryViewController.xib in Resources */,
 				10C47EB81DA8A55F00D949CA /* ble_lock_close@3x.png in Resources */,
+				10FF5CEE1DC341150059FE00 /* alert_lose.png in Resources */,
 				10F5F7EE1D9927C60045FA4C /* sleep_old_icon@3x.png in Resources */,
 				10F5F74C1D98F31B0045FA4C /* set_user_icon@3x.png in Resources */,
 				10F5F7411D98F31B0045FA4C /* set_ble_icon.png in Resources */,
+				10FF5CEF1DC341150059FE00 /* alert_lose@2x.png in Resources */,
+				10FF5CF31DC341150059FE00 /* alert_sms@3x.png in Resources */,
 				10CB0F241D9A8A190063AD0C /* list_walk_icon.png in Resources */,
 				10F5F76B1D98F3560045FA4C /* walk_circle1.png in Resources */,
 				10F5F7771D98F3560045FA4C /* walk_run_now.png in Resources */,
@@ -1179,6 +1258,7 @@
 				103820F21DB86F1300E92410 /* StepHistoryViewController.m in Sources */,
 				102474E71DAA412F00F70E4F /* BLETool.m in Sources */,
 				10F5F7A71D991E990045FA4C /* TemperatureContentView.m in Sources */,
+				10FF5CF91DC35AEC0059FE00 /* SectionModel.m in Sources */,
 				102474E81DAA412F00F70E4F /* manridyBleDevice.m in Sources */,
 				10F5F70C1D98C6280045FA4C /* AppDelegate.m in Sources */,
 				10F5F7931D991BF40045FA4C /* HeartRateContentView.m in Sources */,
@@ -1201,6 +1281,7 @@
 				1012C7211DBEFE470013E99B /* SleepHistoryViewController.m in Sources */,
 				10C47EC71DA8DE0D00D949CA /* TemperatureWarningViewController.m in Sources */,
 				104A706D1D9BAD2B00CC73F5 /* UserInfoCell.m in Sources */,
+				10FF5CDA1DC33BEA0059FE00 /* PhoneRemindTableViewCell.m in Sources */,
 				104A70641D9B724D00CC73F5 /* SettingContentView.m in Sources */,
 				103E4BFC1DB0C77E0051BF03 /* UserListViewController.m in Sources */,
 				102474FD1DAA41E000F70E4F /* SportModel.m in Sources */,
@@ -1210,6 +1291,7 @@
 				10F5F7091D98C6280045FA4C /* main.m in Sources */,
 				10826A581DBA17540031DB83 /* HeartRateHistoryViewController.m in Sources */,
 				1033145B1DC0622D0089B4EB /* TempViewController.m in Sources */,
+				10FF5CF61DC352FB0059FE00 /* PhoneRemindView.m in Sources */,
 				104A70611D9B720500CC73F5 /* SettingViewController.m in Sources */,
 				10826A541DBA12600031DB83 /* TitleMenuViewController.m in Sources */,
 				10CB0F071D9A25130063AD0C /* FunctionCell.m in Sources */,

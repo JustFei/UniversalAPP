@@ -24,7 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIView *downView;
 
 @property (nonatomic ,strong) NSMutableArray *dateArr;
-@property (nonatomic ,strong) NSMutableArray *dataArr;
+@property (nonatomic ,strong) NSMutableArray *sumDataArr;
+@property (nonatomic ,strong) NSMutableArray *deepDataArr;
 
 - (void)showChartView;
 

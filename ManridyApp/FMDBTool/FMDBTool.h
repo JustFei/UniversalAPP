@@ -56,6 +56,8 @@ typedef enum : NSUInteger {
 
 - (BOOL)modifySleepWithID:(NSInteger)ID model:(SleepModel *)model;
 
+- (BOOL)deleteSleepData:(NSString *)deleteSql;
+
 #pragma mark - BloodPressureData
 
 #pragma mark - UserInfoData

@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Main/SubView/HeartRate/HeartRateContentView.m"
-            timestampString = "499252937.952165"
+            filePath = "ManridyApp/Setting/PhoneRemind/PhoneRemindView.m"
+            timestampString = "499343905.228497"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-heartChart"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Main/SubView/HeartRate/HeartRateContentView.m"
-            timestampString = "499252937.952165"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "-heartChart"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-onExpand:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

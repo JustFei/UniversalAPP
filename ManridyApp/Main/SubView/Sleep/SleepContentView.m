@@ -12,7 +12,7 @@
 
 @interface SleepContentView ()
 {
-    NSArray *_textArr;
+    NSMutableArray *_textArr;
 }
 @property (nonatomic ,weak) PNBarChart *deepSleepChart;
 @property (nonatomic ,weak) PNBarChart *sumSleepChart;
@@ -28,7 +28,7 @@
         
         self = [[NSBundle mainBundle] loadNibNamed:@"SleepContentView" owner:self options:nil].firstObject;
         self.frame = frame;
-        _textArr = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7"];
+        _textArr = [NSMutableArray array];
     }
     return self;
 }
@@ -40,14 +40,20 @@
 
 - (void)showChartView
 {
+    for (NSInteger i = 1; i <= _sumDataArr.count; i ++) {
+        [_textArr addObject:@(i)];
+    }
+    
     [self.sumSleepChart setXLabels:_textArr];
-    [self.sumSleepChart setYValues:@[@6,@7,@8,@9,@10,@11,@12]];
+    [self.sumSleepChart setYValues:self.sumDataArr];
     [self.sumSleepChart strokeChart];
     
     [self.deepSleepChart setXLabels:_textArr];
-    [self.deepSleepChart setYValues:@[@5,@6,@7,@8,@9,@10,@11]];
+    [self.deepSleepChart setYValues:self.deepDataArr];
     [self.deepSleepChart strokeChart];
     
+    [self.sumDataArr removeObjectAtIndex:self.sumDataArr.count - 1];
+    [self.deepDataArr removeObjectAtIndex:self.deepDataArr.count - 1];
 }
 
 - (IBAction)sleepTargetAction:(UIButton *)sender {
@@ -119,13 +125,22 @@
     return _dateArr;
 }
 
-- (NSMutableArray *)dataArr
+- (NSMutableArray *)sumDataArr
 {
-    if (!_dataArr) {
-        _dataArr = [NSMutableArray array];
+    if (!_sumDataArr) {
+        _sumDataArr = [NSMutableArray array];
     }
     
-    return _dataArr;
+    return _sumDataArr;
+}
+
+- (NSMutableArray *)deepDataArr
+{
+    if (!_deepDataArr) {
+        _deepDataArr = [NSMutableArray array];
+    }
+    
+    return _deepDataArr;
 }
 
 #pragma mark - 获取当前View的控制器的方法

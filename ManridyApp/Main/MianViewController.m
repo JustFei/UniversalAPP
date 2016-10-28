@@ -18,6 +18,7 @@
 #import "StepHistoryViewController.h"
 #import "HeartRateHistoryViewController.h"
 #import "SleepHistoryViewController.h"
+#import "MBProgressHUD.h"
 
 #import "SettingViewController.h"
 
@@ -32,6 +33,7 @@
     
     BOOL isShowList;
     NSArray *_userArr;
+    NSInteger _currentPage;
 }
 @property (nonatomic ,weak) UIScrollView *backGroundView;
 
@@ -63,6 +65,8 @@
 
 @property (nonatomic ,strong) UISwipeGestureRecognizer *oneFingerSwipeUp;
 
+@property (nonatomic ,strong) MBProgressHUD *hud;
+
 @end
 
 @implementation MainViewController
@@ -82,7 +86,7 @@
     
     
     [self hiddenFunctionView];
-    
+    _currentPage = 0;
     
 }
 
@@ -401,20 +405,53 @@
     if (manridyModel.isReciveDataRight) {
         if (manridyModel.receiveDataType == ReturnModelTypeSleepModel) {
             
-            if (manridyModel.sleepModel.sumDataCount) {
+            //如果历史数据，插入数据库
+            if (manridyModel.sleepModel.sleepState == SleepDataLastData) {
+                
+                //如果历史数据总数不为空
+                if (manridyModel.sleepModel.sumDataCount.integerValue) {
+                    NSDate *currentDate = [NSDate date];
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    formatter.dateFormat = @"yyyy-MM-dd";
+                    NSString *currentDateString = [formatter stringFromDate:currentDate];
+                    
+                    manridyModel.sleepModel.date = currentDateString;
+                    
+                    //插入历史睡眠数据，如果sumCount为0的话，就不做保存
+                    [self.myFmdbTool insertSleepModel:manridyModel.sleepModel];
+                    
+                    //如果历史数据全部载入完成，写入当前睡眠数据
+                    if ([manridyModel.sleepModel.currentDataCount isEqualToString:manridyModel.sleepModel.sumDataCount]) {
+                        [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
+                        
+                        NSArray *sleepDataArr = [self.myFmdbTool querySleepWithDate:currentDateString];
+                        
+                        for (SleepModel *model in sleepDataArr) {
+                            [self.sleepView.sumDataArr addObject:@(model.sumSleep.integerValue)];
+                            [self.sleepView.deepDataArr addObject:@(model.deepSleep.integerValue)];
+                        }
+                    }
+                }
+            }else {
                 self.sleepView.sleepSumLabel.text = manridyModel.sleepModel.sumSleep;
-                [self.sleepView.sleepSumLabel setText:@"test"];
                 self.sleepView.deepAndLowSleepLabel.text = [NSString stringWithFormat:@"深睡%@小时/浅睡%@小时",manridyModel.sleepModel.deepSleep ,manridyModel.sleepModel.lowSleep];
                 
-                //插入睡眠数据，如果sumCount为0的话，就不做保存
-                [self.myFmdbTool insertSleepModel:manridyModel.sleepModel];
+                [self.hud hideAnimated:YES];
                 
-                NSInteger sleepSum = manridyModel.sleepModel.sumDataCount.integerValue;
+                //当前的数据传过来，就直接进行添加到数据源中进行图表的绘制
+                [self.sleepView.sumDataArr addObject:@(manridyModel.sleepModel.sumSleep.integerValue)];
+                [self.sleepView.deepDataArr addObject:@(manridyModel.sleepModel.deepSleep.integerValue)];
+                
+                [self.sleepView showChartView];
+                
+                
+                
+                NSInteger sleepSum = manridyModel.sleepModel.sumSleep.integerValue;
                 
                 if (sleepSum <= 6) {
                     [self.sleepView.sleepStateLabel setText:@"睡眠不足"];
                     [self.sleepView.sleepStateLabel setTextColor:[UIColor redColor]];
-
+                    
                     [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor redColor]];
                     [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
                     [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
@@ -587,135 +624,144 @@
     [self.titleButton setTitle:_titleArr[i] forState:UIControlStateNormal];
     self.pageControl.currentPage = i;
     
-    switch (self.pageControl.currentPage) {
-        case 0:
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if (self.pageControl.currentPage == 0) {
-                    [self.myBleTool writeMotionRequestToPeripheral];
-                }
-            });
-        }
-            break;
-        case 1:
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if (self.pageControl.currentPage == 1) {
-                    [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
-                    
-                    NSArray *heartRateArr = [self.myFmdbTool queryHeartRateWithDate:nil];
-                    
-                    [self.heartRateView.dateArr removeAllObjects];
-                    [self.heartRateView.dataArr removeAllObjects];
-
-                    if (heartRateArr.count > 7) {
-                        for (NSInteger index = heartRateArr.count - 7; index < heartRateArr.count; index ++) {
-                            HeartRateModel *model = heartRateArr[index];
-                            NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
-                            [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
-                            [self.heartRateView.dateArr addObject:mutableTime];
-                            [self.heartRateView.dataArr addObject:model.heartRate];
-                            
-                            if (index == heartRateArr.count - 1) {
-                                [self.heartRateView.heartRateLabel setText:model.heartRate];
+    if (_currentPage != self.pageControl.currentPage) {
+        switch (self.pageControl.currentPage) {
+            case 0:
+            {
+                _currentPage = 0;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 0) {
+                        [self.myBleTool writeMotionRequestToPeripheral];
+                        
+                    }
+                });
+            }
+                break;
+            case 1:
+            {
+                _currentPage = 1;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 1) {
+                        [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
+                        
+                        NSArray *heartRateArr = [self.myFmdbTool queryHeartRateWithDate:nil];
+                        
+                        [self.heartRateView.dateArr removeAllObjects];
+                        [self.heartRateView.dataArr removeAllObjects];
+                        
+                        if (heartRateArr.count > 7) {
+                            for (NSInteger index = heartRateArr.count - 7; index < heartRateArr.count; index ++) {
+                                HeartRateModel *model = heartRateArr[index];
+                                NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
+                                [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
+                                [self.heartRateView.dateArr addObject:mutableTime];
+                                [self.heartRateView.dataArr addObject:model.heartRate];
                                 
-                                NSInteger heart = model.heartRate.integerValue;
-                                
-                                if (heart < 60) {
-                                    self.heartRateView.state1.backgroundColor = [UIColor redColor];
-                                    self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
-                                    self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
-                                    self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
+                                if (index == heartRateArr.count - 1) {
+                                    [self.heartRateView.heartRateLabel setText:model.heartRate];
                                     
-                                    self.heartRateView.heartStateLabel.text = @"偏低";
-                                }else if (heart >= 60 && heart <= 100) {
-                                    self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
-                                    self.heartRateView.state2.backgroundColor = [UIColor greenColor];
-                                    self.heartRateView.state3.backgroundColor = [UIColor greenColor];
-                                    self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
+                                    NSInteger heart = model.heartRate.integerValue;
                                     
-                                    self.heartRateView.heartStateLabel.text = @"正常";
-                                }else {
-                                    self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
-                                    self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
-                                    self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
-                                    self.heartRateView.state4.backgroundColor = [UIColor redColor];
-                                    
-                                    self.heartRateView.heartStateLabel.text = @"偏高";
+                                    if (heart < 60) {
+                                        self.heartRateView.state1.backgroundColor = [UIColor redColor];
+                                        self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
+                                        self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
+                                        self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
+                                        
+                                        self.heartRateView.heartStateLabel.text = @"偏低";
+                                    }else if (heart >= 60 && heart <= 100) {
+                                        self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
+                                        self.heartRateView.state2.backgroundColor = [UIColor greenColor];
+                                        self.heartRateView.state3.backgroundColor = [UIColor greenColor];
+                                        self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
+                                        
+                                        self.heartRateView.heartStateLabel.text = @"正常";
+                                    }else {
+                                        self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
+                                        self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
+                                        self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
+                                        self.heartRateView.state4.backgroundColor = [UIColor redColor];
+                                        
+                                        self.heartRateView.heartStateLabel.text = @"偏高";
+                                    }
                                 }
                             }
-                        }
-                        
-                        [self.heartRateView showChartView];
-                    }else if (heartRateArr.count > 0) {
-                        for (NSInteger index = 0; index < heartRateArr.count; index ++) {
-                            HeartRateModel *model = heartRateArr[index];
-//                            model.time = 0;
-//                            model.heartRate = 0;
                             
-                            NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
-                            [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
-                            [self.heartRateView.dateArr addObject:mutableTime];
-                            [self.heartRateView.dataArr addObject:model.heartRate];
-                        }
-                        
-                        [self.heartRateView showChartView];
-                    }else if (heartRateArr.count == 0) {
-                        
-                        for (NSString *dateString in self.stepView.dateArr) {
-                            NSString *monthStr = [dateString substringWithRange:NSMakeRange(5, 2)];
-                            NSString *dayStr = [dateString substringWithRange:NSMakeRange(8, 2)];
+                            [self.heartRateView showChartView];
+                        }else if (heartRateArr.count > 0) {
+                            for (NSInteger index = 0; index < heartRateArr.count; index ++) {
+                                HeartRateModel *model = heartRateArr[index];
+                                //                            model.time = 0;
+                                //                            model.heartRate = 0;
+                                
+                                NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
+                                [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
+                                [self.heartRateView.dateArr addObject:mutableTime];
+                                [self.heartRateView.dataArr addObject:model.heartRate];
+                            }
                             
-                            [self.heartRateView.dateArr addObject:[NSString stringWithFormat:@"%@/%@",monthStr ,dayStr]];
+                            [self.heartRateView showChartView];
+                        }else if (heartRateArr.count == 0) {
+                            
+                            for (NSString *dateString in self.stepView.dateArr) {
+                                NSString *monthStr = [dateString substringWithRange:NSMakeRange(5, 2)];
+                                NSString *dayStr = [dateString substringWithRange:NSMakeRange(8, 2)];
+                                
+                                [self.heartRateView.dateArr addObject:[NSString stringWithFormat:@"%@/%@",monthStr ,dayStr]];
+                            }
+                            
+                            for (int i = 0; i < 7; i ++) {
+                                [self.heartRateView.dataArr addObject:@"0"];
+                            }
+                            
+                            [self.heartRateView showChartView];
                         }
-                        
-                        for (int i = 0; i < 7; i ++) {
-                            [self.heartRateView.dataArr addObject:@"0"];
-                        }
-                        
-                        [self.heartRateView showChartView];
                     }
-
-                    
-                }
-            });
+                });
+            }
+                break;
+            case 2:
+            {
+                _currentPage = 2;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 2) {
+                        //读取当前体温
+                    }
+                });
+            }
+                break;
+            case 3:
+            {
+                _currentPage = 3;
+                
+                self.hud = [MBProgressHUD showHUDAddedTo:self.sleepView.downView animated:YES];
+                self.hud.mode = MBProgressHUDModeIndeterminate;
+                [self.hud.label setText:@"正在同步数据"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 3) {
+                        [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
+                        
+//                        [self.sleepView showChartView];
+                    }
+                });
+            }
+                break;
+            case 4:
+            {
+                _currentPage = 4;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 4) {
+                        //读取血压数据
+                    }
+                });
+            }
+                break;
+                
+            default:
+                break;
         }
-            break;
-        case 2:
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if (self.pageControl.currentPage == 2) {
-                    //读取当前体温
-                }
-            });
-        }
-            break;
-        case 3:
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if (self.pageControl.currentPage == 3) {
-                    [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
-                    [self.sleepView showChartView];
-                }
-            });
-        }
-            break;
-        case 4:
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if (self.pageControl.currentPage == 4) {
-                    //读取血压数据
-                }
-            });
-        }
-            break;
-            
-        default:
-            break;
     }
-    
 }
-
 
 // 再次拖拽的时候，判断有没有因为滑动太快而没有调用结束减速的方法。
 // 如果没有，四舍五入手动确定位置。这样就可以解决滑动过快的问题
