@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1A3596A23EFB61A35408BF11'
-               BlueprintName = 'Pods-ManridyApp'
+               BlueprintIdentifier = '11929A53A8AD141288485C2968E5803E'
+               BlueprintName = 'PNChart'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-ManridyApp.a'>
+               BuildableName = 'libPNChart.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

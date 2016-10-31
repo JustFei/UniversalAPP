@@ -88,6 +88,15 @@
 #pragma mark - Action
 - (void)presentPickerView:(UIButton *)sender
 {
+    NSString *selectButtonTitle = sender.titleLabel.text;
+    
+    NSArray *time = [selectButtonTitle componentsSeparatedByString:@":"];
+    NSString *hour = time.firstObject;
+    NSString *min = time.lastObject;
+    
+    [self.timePicker selectRow:hour.integerValue inComponent:0 animated:NO];
+    [self.timePicker selectRow:min.integerValue inComponent:1 animated:NO];
+    
     self.timePicker.hidden = NO;
     self.selectButton = sender;
     
@@ -138,7 +147,19 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    [self.selectButton setTitle:[NSString stringWithFormat:@"%@:%@",_hourArr[row] ,_minArr[row]] forState:UIControlStateNormal];
+    NSString *selectButtonTitle = self.selectButton.titleLabel.text;
+    
+    NSArray *time = [selectButtonTitle componentsSeparatedByString:@":"];
+    NSString *hour = time.firstObject;
+    NSString *min = time.lastObject;
+    
+    if (component == 0) {
+        hour = _hourArr[row];
+    }else if (component == 1){
+        min = _minArr[row];
+    }
+    
+    [self.selectButton setTitle:[NSString stringWithFormat:@"%@:%@",hour ,min] forState:UIControlStateNormal];
 }
 
 #pragma mark - UITableViewDelegate && UITableViewDataSource

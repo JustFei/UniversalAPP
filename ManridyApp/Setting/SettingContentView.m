@@ -54,7 +54,7 @@
     view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     [self addSubview:view];
     
-    self.functionTableView.frame = CGRectMake(0, 274, self.frame.size.width, self.frame.size.height - 274);
+    self.functionTableView.frame = CGRectMake(0, self.frame.size.width * 274 / 320, self.frame.size.width, self.frame.size.height - self.frame.size.width * 274 / 320);
     
     self.headView.layer.cornerRadius = self.headView.frame.size.width / 2;
     

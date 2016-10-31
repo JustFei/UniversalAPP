@@ -76,8 +76,8 @@
         view.chartMarginBottom = 10.0;
         view.yMinValue = 0;
         view.yMaxValue = 15;
-        view.showXLabel = YES;
-        view.showYLabel = YES;
+        view.showLabel = YES;
+//        view.showYLabel = YES;
         view.showChartBorder = NO;
         view.isShowNumbers = NO;
         view.isGradientShow = NO;
@@ -103,8 +103,8 @@
         view.chartMarginBottom = 10.0;
         view.yMinValue = 0;
         view.yMaxValue = 15;
-        view.showXLabel = YES;
-        view.showYLabel = YES;
+        view.showLabel = YES;
+//        view.showYLabel = YES;
         view.showChartBorder = YES;
         view.isShowNumbers = NO;
         view.isGradientShow = NO;

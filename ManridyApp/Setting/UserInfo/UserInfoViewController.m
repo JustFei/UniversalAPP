@@ -497,7 +497,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return self.view.frame.size.width * 44 / 320;
 }
 
 #pragma mark - 懒加载
@@ -546,7 +546,7 @@
 - (UITableView *)infoTableView
 {
     if (!_infoTableView) {
-        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 274, self.view.frame.size.width, 220) style:UITableViewStylePlain];
+        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 274, self.view.frame.size.width, self.view.frame.size.width * 220 / 320) style:UITableViewStylePlain];
         view.scrollEnabled = NO;
         view.allowsSelection = NO;
         
@@ -566,7 +566,7 @@
 - (UIButton *)saveButton
 {
     if (!_saveButton) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.view.center.x - 85, self.infoTableView.frame.origin.y + 220 + 20, 170, 44)];
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.view.center.x - 85, self.view.frame.size.height - 64, 170, 44)];
         [button addTarget:self action:@selector(saveUserInfo) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:@"保存" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -593,7 +593,7 @@
 - (UIPickerView *)genderPickerView
 {
     if (!_genderPickerView) {
-        UIPickerView *view = [[UIPickerView alloc] initWithFrame:CGRectMake(10, 200, self.view.frame.size.width - 20, 100)];
+        UIPickerView *view = [[UIPickerView alloc] initWithFrame:CGRectMake(10, self.view.frame.size.width * 200 / 320, self.view.frame.size.width - 20, self.view.frame.size.width * 100 / 320)];
         view.delegate = self;
         view.dataSource = self;
         

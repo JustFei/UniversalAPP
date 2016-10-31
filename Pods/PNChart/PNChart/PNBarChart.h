@@ -60,10 +60,6 @@ typedef NSString *(^PNYLabelFormatter)(CGFloat yLabelValue);
 /** Controls whether labels should be displayed. */
 @property (nonatomic) BOOL showLabel;
 
-//修改后可以实行X,Y轴Label分开显示
-@property (nonatomic) BOOL showYLabel;
-@property (nonatomic) BOOL showXLabel;
-
 /** Controls whether the chart border line should be displayed. */
 @property (nonatomic) BOOL showChartBorder;
 
