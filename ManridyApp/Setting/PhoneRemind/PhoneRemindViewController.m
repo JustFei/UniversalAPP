@@ -12,13 +12,21 @@
 #import "PhoneRemindView.h"
 
 
-@interface PhoneRemindViewController () <UITableViewDelegate ,UITableViewDataSource >
+@interface PhoneRemindViewController () <UITableViewDelegate ,UITableViewDataSource ,UIPickerViewDelegate ,UIPickerViewDataSource >
 {
     NSArray *_funcArr;
     NSArray *_clockArr;
     NSArray *_imageArr;
+    NSMutableArray *_sectionArr;
+    
+    NSMutableArray *_hourArr;
+    NSMutableArray *_minArr;
 }
 @property (nonatomic ,weak) UITableView *remindTableView;
+
+@property (nonatomic ,weak) UIPickerView *timePicker;
+
+@property (nonatomic ,weak) UIButton *selectButton;
 
 @end
 
@@ -27,9 +35,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _sectionArr = [NSMutableArray array];
+    
     _funcArr = @[@"来电提醒",@"短信提醒",@"防丢提醒",@"闹钟设置"];
     _imageArr = @[@"alert_call",@"alert_sms",@"alert_lose",@"alert_clock"];
     _clockArr = @[@"闹钟1",@"闹钟2",@"闹钟3"];
+    
+    [self getPickerViewDataSource];
+    
+    SectionModel *sectionModel = [[SectionModel alloc] init];
+    sectionModel.functionName = _funcArr[3];
+    sectionModel.imageName = _imageArr[3];
+    sectionModel.arrowImageName = @"all_next_icon";
+    sectionModel.isExpanded = NO;
+    [_sectionArr addObject:sectionModel];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
     [titleLabel setText:@"提醒设置"];
@@ -52,6 +71,76 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - GetData
+- (void)getPickerViewDataSource
+{
+    _hourArr = [NSMutableArray array];
+    _minArr = [NSMutableArray array];
+    
+    for (int i = 0; i < 24; i ++ ) {
+        [_hourArr addObject:[NSString stringWithFormat:@"%02d",i]];
+    }
+    for (int min = 0; min < 60; min ++) {
+        [_minArr addObject:[NSString stringWithFormat:@"%02d",min]];
+    }
+}
+
+#pragma mark - Action
+- (void)presentPickerView:(UIButton *)sender
+{
+    self.timePicker.hidden = NO;
+    self.selectButton = sender;
+    
+}
+
+- (void)touchesBegan
+{
+    if (!self.timePicker.hidden) {
+        self.timePicker.hidden = YES;
+    }
+    
+    
+}
+
+#pragma mark - UIPickerViewDelegate && UIPickerViewDateSource
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 2;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if (component == 0) {
+        return _hourArr.count;
+    }else {
+        return _minArr.count;
+    }
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
+{
+    return 50;
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
+{
+    return 30;
+}
+
+- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if (component == 0) {
+        return _hourArr[row];
+    }else {
+        return _minArr[row];
+    }
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    [self.selectButton setTitle:[NSString stringWithFormat:@"%@:%@",_hourArr[row] ,_minArr[row]] forState:UIControlStateNormal];
+}
+
 #pragma mark - UITableViewDelegate && UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -60,11 +149,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     if (section == 0) {
         return 3;
     }else {
-        return 3;
+        SectionModel *model = _sectionArr.firstObject;
+        return model.isExpanded ? 3 : 0;
     }
 }
 
@@ -78,14 +167,16 @@
             cell.iconImageView.image = [UIImage imageNamed:_imageArr[indexPath.row]];
             cell.functionName.text = _funcArr[indexPath.row];
             [cell.timeSwitch setOn:NO];
-            cell.timeLabel.hidden = YES;
+            cell.timeButton.hidden = YES;
         }
             break;
         case 1:
         {
             cell.functionName.text = _clockArr[indexPath.row];
-            cell.timeLabel.text = @"08:00";
+            [cell.timeButton setTitle:@"08:00" forState:UIControlStateNormal];
             [cell.timeSwitch setOn:NO];
+            cell.timeButton.tag = indexPath.row;
+            [cell.timeButton addTarget:self action:@selector(presentPickerView:) forControlEvents:UIControlEventTouchUpInside];
         }
             break;
             
@@ -114,12 +205,9 @@
         return nil;
     }else {
         PhoneRemindView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"phoneHead"];
-        view.backgroundColor = [UIColor clearColor];
+        view.backgroundColor = [UIColor redColor];
         
-        SectionModel *sectionModel = [[SectionModel alloc] init];
-        sectionModel.functionName = _funcArr[3];
-        sectionModel.imageName = _imageArr[3];
-        sectionModel.arrowImageName = @"all_next_icon";
+        SectionModel *sectionModel = _sectionArr.firstObject;
         view.model = sectionModel;
         view.expandCallback = ^(BOOL isExpanded) {
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:section]
@@ -135,6 +223,9 @@
 {
     if (!_remindTableView) {
         UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height - 16)];
+        view.allowsSelection = NO;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesBegan)];
+        [view addGestureRecognizer:tap];
         
         view.backgroundColor = [UIColor clearColor];
         
@@ -148,6 +239,22 @@
     }
     
     return _remindTableView;
+}
+
+- (UIPickerView *)timePicker
+{
+    if (!_timePicker) {
+        UIPickerView *view = [[UIPickerView alloc] initWithFrame:CGRectMake(20, 200, self.view.frame.size.width - 40, 200)];
+        
+        view.delegate = self;
+        view.dataSource = self;
+        
+        view.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:view];
+        _timePicker = view;
+    }
+    
+    return _timePicker;
 }
 
 @end

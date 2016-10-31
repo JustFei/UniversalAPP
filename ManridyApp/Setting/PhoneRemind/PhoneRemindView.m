@@ -9,6 +9,8 @@
 #import "PhoneRemindView.h"
 #import "SectionModel.h"
 
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+
 @implementation PhoneRemindView
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier {
@@ -16,12 +18,14 @@
     }
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.backgroundColor = [UIColor redColor];
+    button.backgroundColor = [UIColor clearColor];
     [button addTarget:self action:@selector(onExpand:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:button];
-    button.frame = CGRectMake(0, 0, self.contentView.frame.size.width, 44);
+    button.frame = CGRectMake(0, 0, WIDTH, 44);
     
-    self.contentView.backgroundColor = [UIColor clearColor];
+    NSLog(@"button.frame == %@",NSStringFromCGRect(button.frame));
+    
+    self.contentView.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
     
     return self;
 }
@@ -33,10 +37,10 @@
     
     self.arrowImageView.image = [UIImage imageNamed:model.arrowImageName];
     self.iconImageView.image = [UIImage imageNamed:model.imageName];
-    if (model.isExpanded) {
+    if (!model.isExpanded) {
         self.arrowImageView.transform = CGAffineTransformIdentity;
     } else {
-        self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
+        self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI / 2);
     }
     
     self.functionLabel.text = model.functionName;
@@ -50,7 +54,7 @@
         if (self.model.isExpanded) {
             self.arrowImageView.transform = CGAffineTransformIdentity;
         } else {
-            self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI / 2);
         }
     }];
     
@@ -86,26 +90,14 @@
 - (UIImageView *)arrowImageView
 {
     if (!_arrowImageView) {
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(self.contentView.frame.size.width - 32, self.contentView.center.y - 7, 24, 14)];
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH - 20, 15, 11, 15)];
         [self.contentView addSubview:view];
         _arrowImageView = view;
+        
+        NSLog(@"headerViewRect == %@",NSStringFromCGRect(_arrowImageView.frame));
     }
     
     return _arrowImageView;
 }
-
-//- (UIButton *)button
-//{
-//    if (!_button) {
-//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//        button.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
-//        [button addTarget:self action:@selector(onExpand:) forControlEvents:UIControlEventTouchUpInside];
-//        
-//        [self.contentView addSubview:button];
-//        _button = button;
-//    }
-//    
-//    return _button;
-//}
 
 @end
