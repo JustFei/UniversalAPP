@@ -90,8 +90,6 @@
         [xLabelArr addObject:dateStr];
     }
     
-    
-    
     [self.stepChart setXLabels:xLabelArr];
     
     PNLineChartData *data02 = [PNLineChartData new];
@@ -101,10 +99,10 @@
     data02.inflexionPointStyle = PNLineChartPointStyleCircle;
     data02.getData = ^(NSUInteger index) {
         
-        StepDataModel *model = self.dataArr[index];
+        SportModel *model = self.dataArr[index];
         CGFloat yValue;
-        if (model.step != 0) {
-            yValue = model.step.integerValue;
+        if (model.stepNumber != 0) {
+            yValue = model.stepNumber.integerValue;
 
         }else {
             yValue = 0;
@@ -117,12 +115,12 @@
     [self.stepChart strokeChart];
     
     for (int i = 0; i < self.dataArr.count; i ++) {
-        StepDataModel *model = self.dataArr[i];
+        SportModel *model = self.dataArr[i];
         
-        if (model.step != 0) {
-            sumStep += model.step.integerValue;
-            sumMileage += model.mileage.integerValue;
-            sumkCal += model.kCal.integerValue;
+        if (model.stepNumber != 0) {
+            sumStep += model.stepNumber.integerValue;
+            sumMileage += model.mileageNumber.integerValue;
+            sumkCal += model.kCalNumber.integerValue;
         }
     }
     
@@ -142,7 +140,7 @@
 //重新扫描的点击动作
 - (void)reScanPeripheral
 {
-     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     BOOL isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
     if (isBind) {
@@ -155,7 +153,6 @@
             if (delegate.myBleTool.connectState == kBLEstateDisConnected) {
                 [delegate.mainVc.stepView.stepLabel setText:@"未连接上设备，点击重试"];
             }
-            
         });
     }
 }

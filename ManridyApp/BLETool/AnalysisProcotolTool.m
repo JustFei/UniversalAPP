@@ -182,6 +182,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         
         if ([ENStr isEqualToString:@"01"]) {
             //这里不做单纯获取step的数据的操作
+            model.sportModel.motionType = MotionTypeStep;
         }else if ([ENStr isEqualToString:@"07"]) {
             NSData *stepData = [data subdataWithRange:NSMakeRange(2, 3)];
             int stepValue = [NSStringTool parseIntFromData:stepData];
@@ -198,12 +199,19 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
             //        NSLog(@"卡路里 = %d",kcalValue);
             NSString *kCalStr = [NSString stringWithFormat:@"%d",kcalValue];
             
+            NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+            [dateformatter setDateFormat:@"yyyy/MM/dd"];
+            NSDate *currentDate = [NSDate date];
+            NSString *currentDateString = [dateformatter stringFromDate:currentDate];
+            
+            model.sportModel.date = currentDateString;
             model.sportModel.stepNumber = stepStr;
             model.sportModel.mileageNumber = mileageStr;
             model.sportModel.kCalNumber = kCalStr;
-            
+            model.sportModel.motionType = MotionTypeStepAndkCal;
         }else if ([ENStr isEqualToString:@"80"]) {
             model.sportModel.sumDataCount = historyDataCount.integerValue;
+            model.sportModel.motionType = MotionTypeCountOfData;
         }else if ([ENStr isEqualToString:@"C0"] || [ENStr isEqualToString:@"c0"]) {
             model.sportModel.sumDataCount = historyDataCount.integerValue;
             model.sportModel.currentDataCount = currentDataCount.integerValue;
@@ -218,13 +226,17 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
             NSData *stepData = [data subdataWithRange:NSMakeRange(9, 3)];
             NSString *stepStr = [NSString stringWithFormat:@"%@",stepData];
             
-            NSString *dateStr = [NSString stringWithFormat:@"%@/%@/%@",yearStr ,monthStr ,dayStr];
+            NSString *dateStr = [NSString stringWithFormat:@"20%@/%@/%@",yearStr ,monthStr ,dayStr];
+//            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//            [formatter setDateFormat:@"yyyy/MM/dd"];
+//            NSDate *date = [formatter dateFromString:dateStr];
             
             NSLog(@"yy == %@ , mm == %@ , dd == %@ , date == %@",yearStr ,monthStr ,dayStr ,dateStr );
             NSLog(@"step = %@",stepStr);
     
             model.sportModel.stepNumber = stepStr;
             model.sportModel.date = dateStr;
+            model.sportModel.motionType = MotionTypeDataInPeripheral;
         }
     }else if ([head isEqualToString:@"83"]) {
         model.isReciveDataRight = ResponsEcorrectnessDataFail;
@@ -461,25 +473,32 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
             model.sleepModel.sleepState = SleepDataLastData;
             
         }else if ([TyStr isEqualToString:@"01"]) {
-            NSData *sum = [data subdataWithRange:NSMakeRange(2, 2)];
+            NSData *sum = [data subdataWithRange:NSMakeRange(2, 1)];
             int sumVale = [NSStringTool parseIntFromData:sum];
-            NSString *sumStr = [NSString stringWithFormat:@"%d",sumVale];
+//            NSString *sumStr = [NSString stringWithFormat:@"%d",sumVale];
             
-            NSData *current = [data subdataWithRange:NSMakeRange(4, 2)];
+            NSData *current = [data subdataWithRange:NSMakeRange(3, 1)];
             int currentVale = [NSStringTool parseIntFromData:current];
-            NSString *currentStr = [NSString stringWithFormat:@"%d",currentVale];
-            model.sleepModel.sumDataCount = sumStr;
-            model.sleepModel.currentDataCount = currentStr;
+//            NSString *currentStr = [NSString stringWithFormat:@"%d",currentVale];
+            model.sleepModel.sumDataCount = sumVale;
+            model.sleepModel.currentDataCount = currentVale;
             model.sleepModel.sleepState = SleepDataHistoryData;
+            NSLog(@"analysis : sumCount == %d,currentCount == %d",sumVale ,currentVale);
         }
         
         NSData *startTime = [data subdataWithRange:NSMakeRange(4, 5)];
-        int startTimeVale = [NSStringTool parseIntFromData:startTime];
-        NSString *startTimeStr = [NSString stringWithFormat:@"%d",startTimeVale];
+        NSString *startTimeStr = [NSString stringWithFormat:@"%@",startTime];
+        NSString *yy = [startTimeStr substringWithRange:NSMakeRange(1, 2)];
+        NSString *MM = [startTimeStr substringWithRange:NSMakeRange(3, 2)];
+        NSString *dd = [startTimeStr substringWithRange:NSMakeRange(5, 2)];
+        startTimeStr = [NSString stringWithFormat:@"20%@/%@/%@",yy ,MM ,dd];
         
         NSData *endTime = [data subdataWithRange:NSMakeRange(9, 5)];
-        int endTimeVale = [NSStringTool parseIntFromData:endTime];
-        NSString *endTimeStr = [NSString stringWithFormat:@"%d",endTimeVale];
+        NSString *endTimeStr = [NSString stringWithFormat:@"%@",endTime];
+        NSString *endyy = [endTimeStr substringWithRange:NSMakeRange(1, 2)];
+        NSString *endMM = [endTimeStr substringWithRange:NSMakeRange(3, 2)];
+        NSString *enddd = [endTimeStr substringWithRange:NSMakeRange(5, 2)];
+        endTimeStr = [NSString stringWithFormat:@"20%@/%@/%@",endyy ,endMM ,enddd];
         
         NSData *deepSleep = [data subdataWithRange:NSMakeRange(14, 2)];
         int deepSleepVale = [NSStringTool parseIntFromData:deepSleep];
@@ -496,7 +515,8 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         model.sleepModel.endTime = endTimeStr;
         model.sleepModel.deepSleep = deepSleepStr;
         model.sleepModel.lowSleep = lowSleepStr;
-        model.sleepModel.sumSleep = sumSleepStr;        
+        model.sleepModel.sumSleep = sumSleepStr;
+        model.sleepModel.date = endTimeStr;
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
         
     }else if ([head isEqualToString:@"8c"] || [head isEqualToString:@"8C"]) {

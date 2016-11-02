@@ -9,6 +9,8 @@
 #import "SleepHistoryViewController.h"
 #import "DropdownMenuView.h"
 #import "TitleMenuViewController.h"
+#import "PNChart.h"
+#import "FMDBTool.h"
 
 @interface SleepHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate>
 
@@ -32,14 +34,18 @@
 
 @property (weak, nonatomic) IBOutlet UIView *downView;
 
+@property (nonatomic ,strong) PNBarChart *deepSleepChart;
+@property (nonatomic ,strong) PNBarChart *sumSleepChart;
+
 @property (nonatomic ,strong) UIButton *titleButton;
 
 @property (nonatomic ,strong) UISwipeGestureRecognizer *oneFingerSwipedown;
-
+@property (nonatomic ,strong) FMDBTool *myFmdbTool;
 @end
 
 @implementation SleepHistoryViewController
 
+#pragma mark - lifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -61,6 +67,8 @@
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
     NSInteger month = [components month];
     [self.monthButton setTitle:[NSString stringWithFormat:@"%ld月",month] forState:UIControlStateNormal];
+    
+    [self getDataFromDB];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -77,6 +85,17 @@
 {
     [super viewDidDisappear:YES];
     [self.view removeGestureRecognizer:self.oneFingerSwipedown];
+}
+
+#pragma mark - DB
+- (void)getDataFromDB
+{
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy/MM/dd";
+    NSString *currentDateString = [formatter stringFromDate:currentDate];
+    NSArray *_dataArr = [self.myFmdbTool querySleepWithDate:currentDateString];
+    //这里需要循环查询31次。11.2
 }
 
 #pragma mark - Action
@@ -146,6 +165,69 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - 懒加载
+- (PNBarChart *)sumSleepChart
+{
+    if (!_sumSleepChart) {
+        PNBarChart *view = [[PNBarChart alloc] init];
+        view.backgroundColor = [UIColor clearColor];
+        [view setStrokeColor:[UIColor redColor]];
+        view.barBackgroundColor = [UIColor clearColor];
+        view.yChartLabelWidth = 20.0;
+        view.chartMarginLeft = 30.0;
+        view.chartMarginRight = 10.0;
+        view.chartMarginTop = 5.0;
+        view.chartMarginBottom = 10.0;
+        view.yMinValue = 0;
+        view.yMaxValue = 15;
+        view.showLabel = YES;
+        //        view.showYLabel = YES;
+        view.showChartBorder = YES;
+        view.isShowNumbers = NO;
+        view.isGradientShow = NO;
+        
+        [self.downView addSubview:view];
+        _sumSleepChart = view;
+    }
+    
+    return _sumSleepChart;
+}
+
+- (PNBarChart *)deepSleepChart
+{
+    if (!_deepSleepChart) {
+        PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
+        view.backgroundColor = [UIColor clearColor];
+        [view setStrokeColor:[UIColor yellowColor]];
+        view.barBackgroundColor = [UIColor clearColor];
+        view.yChartLabelWidth = 20.0;
+        view.chartMarginLeft = 30.0;
+        view.chartMarginRight = 10.0;
+        view.chartMarginTop = 5.0;
+        view.chartMarginBottom = 10.0;
+        view.yMinValue = 0;
+        view.yMaxValue = 15;
+        view.showLabel = YES;
+        //        view.showYLabel = YES;
+        view.showChartBorder = NO;
+        view.isShowNumbers = NO;
+        view.isGradientShow = NO;
+        
+        [self.downView addSubview:view];
+        _deepSleepChart = view;
+    }
+    
+    return _deepSleepChart;
+}
+
+- (FMDBTool *)myFmdbTool
+{
+    if (!_myFmdbTool) {
+        _myFmdbTool = [[FMDBTool alloc] initWithPath:@"UserList"];
+    }
+    return _myFmdbTool;
 }
 
 @end

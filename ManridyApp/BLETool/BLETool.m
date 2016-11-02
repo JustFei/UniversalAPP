@@ -571,7 +571,7 @@ static BLETool *bleTool = nil;
 //订阅特征值发送变化的通知，所有获取到的值都将在这里进行处理
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    NSLog(@"updateValue == %@",characteristic);
+    NSLog(@"updateValue == %@",characteristic.value);
     
     [self analysisDataWithCharacteristic:characteristic.value];
     
@@ -580,9 +580,9 @@ static BLETool *bleTool = nil;
 //写入某特征值后的回调
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
     if (error) {
-        NSLog(@"Error writing characteristic value: %@",[error localizedDescription]);
+//        NSLog(@"Error writing characteristic value: %@",[error localizedDescription]);
     }else {
-        NSLog(@"Success writing chararcteristic value: %@",characteristic);
+//        NSLog(@"Success writing chararcteristic value: %@",characteristic);
     }
 }
 

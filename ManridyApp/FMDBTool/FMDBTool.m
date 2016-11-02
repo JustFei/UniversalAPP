@@ -7,7 +7,8 @@
 //
 
 #import "FMDBTool.h"
-#import "StepDataModel.h"
+//#import "StepDataModel.h"
+#import "SportModel.h"
 #import "HeartRateModel.h"
 #import "UserInfoModel.h"
 #import "SleepModel.h"
@@ -38,14 +39,17 @@ static FMDatabase *_fmdb;
             NSLog(@"数据库打开成功");
         }
         
+        //UserInfoData
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists UserInfoData(id integer primary key, username text, gender text, age integer, height integer, weight integer, steplength integer, steptarget integer);"]];
 
-        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists MotionData(id integer primary key, date text, step text, kCal text, mileage text);"]];
+        //MotionData
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists MotionData(id integer primary key, date text, step text, kCal text, mileage text, currentDataCount integer, sumDataCount integer);"]];
         
-
+        //HeartRateData
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists HeartRateData(id integer primary key,date text, time text, heartRate text);"]];
         
-        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists SleepData(id integer primary key,date text, startTime text, endTime text, deepSleep text, lowSleep text, currentDataCount text, sumDataCount text);"]];
+        //SleepData
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists SleepData(id integer primary key,date text, startTime text, endTime text, deepSleep text, lowSleep text, sumSleep text, currentDataCount integer, sumDataCount integer);"]];
         
     }
     
@@ -60,9 +64,9 @@ static FMDatabase *_fmdb;
  *
  *  @return 是否成功
  */
-- (BOOL)insertStepModel:(StepDataModel *)model
+- (BOOL)insertStepModel:(SportModel *)model
 {
-    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO MotionData(date, step, kCal, mileage) VALUES ('%@', '%@', '%@', '%@');", model.date, model.step, model.kCal, model.mileage];
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO MotionData(date, step, kCal, mileage, currentDataCount, sumDataCount) VALUES ('%@', '%@', '%@', '%@', '%@', '%@');", model.date, model.stepNumber, model.kCalNumber, model.mileageNumber, [NSNumber numberWithInteger: model.currentDataCount],[NSNumber numberWithInteger:model.sumDataCount]];
     
     BOOL result = [_fmdb executeUpdate:insertSql];
     if (result) {
@@ -105,13 +109,17 @@ static FMDatabase *_fmdb;
         NSString *step = [set stringForColumn:@"step"];
         NSString *kCal = [set stringForColumn:@"kCal"];
         NSString *mileage = [set stringForColumn:@"mileage"];
+        NSInteger currentDataCount = [set stringForColumn:@"currentDataCount"].integerValue;
+        NSInteger sumDataCount = [set stringForColumn:@"sumDataCount"].integerValue;
         
-        StepDataModel *model = [[StepDataModel alloc] init];
+        SportModel *model = [[SportModel alloc] init];
         
         model.date = date;
-        model.step = step;
-        model.kCal = kCal;
-        model.mileage = mileage;
+        model.stepNumber = step;
+        model.kCalNumber = kCal;
+        model.mileageNumber = mileage;
+        model.currentDataCount = currentDataCount;
+        model.sumDataCount = sumDataCount;
         
         NSLog(@"%@的数据：步数=%@，卡路里=%@，里程=%@",date ,step ,kCal ,mileage);
         
@@ -130,7 +138,7 @@ static FMDatabase *_fmdb;
  *
  *  @return 是否修改成功
  */
-- (BOOL)modifyStepWithDate:(NSString *)date model:(StepDataModel *)model
+- (BOOL)modifyStepWithDate:(NSString *)date model:(SportModel *)model
 {
     if (date == nil) {
         NSLog(@"传入的日期为空，不能修改");
@@ -140,7 +148,7 @@ static FMDatabase *_fmdb;
     
     NSString *modifySql = [NSString stringWithFormat:@"update MotionData set step = ?, kCal = ?, mileage = ? where date = ?" ];
     
-    BOOL modifyResult = [_fmdb executeUpdate:modifySql, model.step, model.kCal, model.mileage, date];
+    BOOL modifyResult = [_fmdb executeUpdate:modifySql, model.stepNumber, model.kCalNumber, model.mileageNumber, date];
     
     if (modifyResult) {
         NSLog(@"Motion数据修改成功");
@@ -219,7 +227,7 @@ static FMDatabase *_fmdb;
 - (BOOL)insertSleepModel:(SleepModel *)model
 {
     
-    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO SleepData(date, startTime, endTime, deepSleep, lowSleep, currentDataCount, sumDataCount) VALUES ('%@', '%@', '%@', '%@', '%@', '%@', '%@');", model.date, model.startTime, model.endTime, model.deepSleep, model.lowSleep, model.currentDataCount, model.sumDataCount];
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO SleepData(date, startTime, endTime, deepSleep, lowSleep, sumSleep, currentDataCount, sumDataCount) VALUES ('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@');", model.date, model.startTime, model.endTime, model.deepSleep, model.lowSleep, model.sumSleep, [NSNumber numberWithInteger:model.currentDataCount],[NSNumber numberWithInteger:model.sumDataCount]];
     
     BOOL result = [_fmdb executeUpdate:insertSql];
     if (result) {
@@ -254,8 +262,9 @@ static FMDatabase *_fmdb;
         NSString *endTime = [set stringForColumn:@"endTime"];
         NSString *deepSleep = [set stringForColumn:@"deepSleep"];
         NSString *lowSleep = [set stringForColumn:@"lowSleep"];
-        NSString *currentDataCount = [set stringForColumn:@"currentDataCount"];
-        NSString *sumDataCount = [set stringForColumn:@"sumDataCount"];
+        NSString *sumSleep = [set stringForColumn:@"sumSleep"];
+        NSInteger currentDataCount = [set intForColumn:@"currentDataCount"];
+        NSInteger sumDataCount = [set intForColumn:@"sumDataCount"];
         
         SleepModel *model = [[SleepModel alloc] init];
         
@@ -263,11 +272,12 @@ static FMDatabase *_fmdb;
         model.endTime = endTime;
         model.deepSleep = deepSleep;
         model.lowSleep = lowSleep;
+        model.sumSleep = sumSleep;
         model.currentDataCount = currentDataCount;
         model.sumDataCount = sumDataCount;
         model.date = date;
         
-        NSLog(@"current == %@, sum == %@, lowSleep == %@, deepSleep == %@",currentDataCount ,sumDataCount ,lowSleep , deepSleep);
+        NSLog(@"currentDataCount == %ld, sumDataCount == %ld, lowSleep == %@, deepSleep == %@, sumSleep == %@",currentDataCount ,sumDataCount ,lowSleep , deepSleep ,sumSleep);
         
         [arrM addObject:model];
     }

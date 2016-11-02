@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/BLETool/BLETool.m"
-            timestampString = "499694179.963324"
+            filePath = "ManridyApp/Main/MianViewController.m"
+            timestampString = "499776106.476902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
-            landmarkName = "-centralManager:didDisconnectPeripheral:error:"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
+            landmarkName = "-receiveSleepInfoWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManridyApp/Main/MianViewController.m"
+            timestampString = "499776106.476902"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "481"
+            endingLineNumber = "481"
+            landmarkName = "-receiveSleepInfoWithModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

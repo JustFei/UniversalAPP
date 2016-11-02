@@ -112,10 +112,10 @@
     NSMutableArray *dataArr = [NSMutableArray array];
     
     for (NSString *dateString in self.stepView.dateArr) {
-        NSString *dateStr = [dateString stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
-        NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateStr];
+//        NSString *dateStr = [dateString stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
+        NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateString];
         
-        StepDataModel *model = [[StepDataModel alloc] init];
+        SportModel *model = [[SportModel alloc] init];
         
         if (queryArr.count == 0) {
             [dataArr addObject:model];
@@ -338,17 +338,37 @@
 {
     if (manridyModel.isReciveDataRight) {
         if (manridyModel.receiveDataType == ReturnModelTypeSportModel) {
-            [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
-            [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@公里/%@千卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
-
-                if (_userArr.count != 0) {
+            //保存motion数据到数据库
+            NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+            [dateformatter setDateFormat:@"yyyy/MM/dd"];
+            NSDate *currentDate = [NSDate date];
+            NSString *currentDateString = [dateformatter stringFromDate:currentDate];
+            
+            switch (manridyModel.sportModel.motionType) {
+                case MotionTypeStep:
+                    //对获取的步数信息做操作
+                    break;
+                case MotionTypeStepAndkCal:
+                {
+                    [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
+                    [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@公里/%@千卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
                     
-                    UserInfoModel *model = _userArr.firstObject;
-                    
-                    if (model.stepTarget != 0) {
-                        float progress = (float)manridyModel.sportModel.stepNumber.integerValue / model.stepTarget;
+                    if (_userArr.count != 0) {
                         
-                        NSLog(@"current progress = %f",progress);
+                        UserInfoModel *model = _userArr.firstObject;
+                        
+                        if (model.stepTarget != 0) {
+                            float progress = (float)manridyModel.sportModel.stepNumber.integerValue / model.stepTarget;
+                            
+                            if (progress <= 1) {
+                                [self.stepView drawProgress:progress];
+                            }else if (progress >= 1) {
+                                [self.stepView drawProgress:1];
+                            }
+                        }
+                    }else {
+                        //如果用户没有设置目标步数的话，就默认为10000步
+                        float progress = (float)manridyModel.sportModel.stepNumber.integerValue / 10000;
                         
                         if (progress <= 1) {
                             [self.stepView drawProgress:progress];
@@ -356,28 +376,49 @@
                             [self.stepView drawProgress:1];
                         }
                     }
-                }
-            
-            //保存motion数据到数据库
-            
-            NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-            [dateformatter setDateFormat:@"YYYY-MM-dd"];
-            NSDate *currentDate = [NSDate date];
-            NSString *currentDateString = [dateformatter stringFromDate:currentDate];
-            
-            
-            dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSArray *stepArr = [self.myFmdbTool queryStepWithDate:currentDateString];
-                
-                StepDataModel *model = [StepDataModel modelWith:currentDateString step:manridyModel.sportModel.stepNumber kCal:manridyModel.sportModel.kCalNumber mileage:manridyModel.sportModel.mileageNumber];
-                
-                if (stepArr.count == 0) {
-                    [self.myFmdbTool insertStepModel:model];
                     
-                }else {
-                    [self.myFmdbTool modifyStepWithDate:currentDateString model:model];
+                    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        NSArray *stepArr = [self.myFmdbTool queryStepWithDate:currentDateString];
+                        
+                        if (stepArr.count == 0) {
+                            [self.myFmdbTool insertStepModel:manridyModel.sportModel];
+                            
+                        }else {
+                            [self.myFmdbTool modifyStepWithDate:currentDateString model:manridyModel.sportModel];
+                        }
+                    });
                 }
-            });
+                    break;
+                case MotionTypeCountOfData:
+                    //对历史数据个数进行操作
+                    break;
+                case MotionTypeDataInPeripheral:
+                {
+                    if (manridyModel.sportModel.sumDataCount != 0 && manridyModel.sportModel.sumDataCount) {
+                        //对具体的历史数据进行保存操作
+                        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                            NSArray *stepArr = [self.myFmdbTool queryStepWithDate:currentDateString];
+                            
+                            if (stepArr.count == 0) {
+                                [self.myFmdbTool insertStepModel:manridyModel.sportModel];
+                            }else {
+                                [self.myFmdbTool modifyStepWithDate:currentDateString model:manridyModel.sportModel];
+                            }
+                            
+                            if (manridyModel.sportModel.sumDataCount == manridyModel.sportModel.currentDataCount + 1) {
+                                [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
+                            }
+                            
+                        });
+                    }else {
+                        [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
+                    }
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
             
             
         }
@@ -405,7 +446,7 @@
             NSLog(@"%@",manridyModel.heartRateModel.sumDataCount);
             
             //当总数据为00时说明没有数据，可以不用存储
-            if (![manridyModel.heartRateModel.sumDataCount isEqualToString:@"0"]) {
+            if (![manridyModel.heartRateModel.sumDataCount isEqualToString:@"0"] && manridyModel.heartRateModel.sumDataCount != nil) {
                 
                 //如果当前数据为最后一条数据时，在屏幕上显示，其他的数据全部存储到数据库即可
                 [self.heartRateView.heartRateLabel setText:manridyModel.heartRateModel.heartRate];
@@ -423,22 +464,20 @@
         if (manridyModel.receiveDataType == ReturnModelTypeSleepModel) {
             
             //如果历史数据，插入数据库
-            if (manridyModel.sleepModel.sleepState == SleepDataLastData) {
+            if (manridyModel.sleepModel.sleepState == SleepDataHistoryData) {
+                NSDate *currentDate = [NSDate date];
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                formatter.dateFormat = @"yyyy/MM/dd";
+                NSString *currentDateString = [formatter stringFromDate:currentDate];
                 
                 //如果历史数据总数不为空
-                if (manridyModel.sleepModel.sumDataCount.integerValue) {
-                    NSDate *currentDate = [NSDate date];
-                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-                    formatter.dateFormat = @"yyyy-MM-dd";
-                    NSString *currentDateString = [formatter stringFromDate:currentDate];
-                    
-                    manridyModel.sleepModel.date = currentDateString;
+                if (manridyModel.sleepModel.sumDataCount) {
                     
                     //插入历史睡眠数据，如果sumCount为0的话，就不做保存
                     [self.myFmdbTool insertSleepModel:manridyModel.sleepModel];
                     
                     //如果历史数据全部载入完成，写入当前睡眠数据
-                    if ([manridyModel.sleepModel.currentDataCount isEqualToString:manridyModel.sleepModel.sumDataCount]) {
+                    if (manridyModel.sleepModel.currentDataCount + 1 == manridyModel.sleepModel.sumDataCount) {
                         [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
                         
                         //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
@@ -449,10 +488,42 @@
                             [self.sleepView.deepDataArr addObject:@(model.deepSleep.integerValue)];
                         }
                     }
+                }else {
+                    [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
+                    
+                    //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
+                    NSArray *sleepDataArr = [self.myFmdbTool querySleepWithDate:currentDateString];
+                    
+                    for (SleepModel *model in sleepDataArr) {
+                        [self.sleepView.sumDataArr addObject:@(model.sumSleep.integerValue)];
+                        [self.sleepView.deepDataArr addObject:@(model.deepSleep.integerValue)];
+                    }
                 }
             }else {
+                NSString *deepStr;
+                
+                if (manridyModel.sleepModel.deepSleep.integerValue < 60) {
+                    deepStr = [NSString stringWithFormat:@"深睡%@分钟",manridyModel.sleepModel.deepSleep];
+                }else {
+                    deepStr = [NSString stringWithFormat:@"深睡%.2ld小时",manridyModel.sleepModel.deepSleep.integerValue / 60 + manridyModel.sleepModel.deepSleep.integerValue % 60];
+                }
+                
+                NSString *lowStr;
+                
+#warning need to test the lastSleepData endTime
+                //查询当前睡眠时，会给最近一次的历史数据，而这个历史数据不会在上面的历史数据请求里请求到，所以这里如果endTime有值得话，就需要进行存储。
+                if ([manridyModel.sleepModel.endTime isEqualToString:@"2000/00/00"]) {
+                    [self.myFmdbTool insertSleepModel:manridyModel.sleepModel];
+                }
+                
+                if (manridyModel.sleepModel.lowSleep.integerValue < 60) {
+                    lowStr = [NSString stringWithFormat:@"浅睡%@分钟",manridyModel.sleepModel.lowSleep];
+                }else {
+                    lowStr = [NSString stringWithFormat:@"浅睡%.2ld小时",manridyModel.sleepModel.lowSleep.integerValue / 60 + manridyModel.sleepModel.lowSleep.integerValue % 60];
+                }
+                
                 self.sleepView.sleepSumLabel.text = manridyModel.sleepModel.sumSleep;
-                self.sleepView.deepAndLowSleepLabel.text = [NSString stringWithFormat:@"深睡%@小时/浅睡%@小时",manridyModel.sleepModel.deepSleep ,manridyModel.sleepModel.lowSleep];
+                self.sleepView.deepAndLowSleepLabel.text = [NSString stringWithFormat:@"%@/%@",deepStr,lowStr];
                 
                 [self.hud hideAnimated:YES];
                 

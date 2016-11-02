@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    MotionTypeStep = 0,
+    MotionTypeStepAndkCal,
+    MotionTypeCountOfData,
+    MotionTypeDataInPeripheral,
+} MotionType;
+
 @interface SportModel : NSObject
 
 @property (nonatomic ,copy) NSString *stepNumber;
@@ -16,4 +23,6 @@
 @property (nonatomic ,assign) NSInteger sumDataCount;
 @property (nonatomic ,assign) NSInteger currentDataCount;
 @property (nonatomic ,copy) NSString *date;
+@property (nonatomic ,assign) MotionType motionType;
+
 @end

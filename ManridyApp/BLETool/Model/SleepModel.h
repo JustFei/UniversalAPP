@@ -19,9 +19,9 @@ typedef enum : NSUInteger {
 //判断睡眠数据的状态未历史还是最后一次
 @property (nonatomic ,assign) SleepData sleepState;
 //总的数据条数
-@property (nonatomic ,copy) NSString *sumDataCount;
+@property (nonatomic ,assign) NSInteger sumDataCount;
 //当前的数据条数
-@property (nonatomic ,copy) NSString *currentDataCount;
+@property (nonatomic ,assign) NSInteger currentDataCount;
 //开始睡眠时间值：类型为YYMMDDhhmm
 @property (nonatomic ,copy) NSString *startTime;
 //结束睡眠的时间
