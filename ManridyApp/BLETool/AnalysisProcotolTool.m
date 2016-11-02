@@ -104,7 +104,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
 }
 
 #pragma mark - 解析协议数据
-//解析设置时间数据（00|80）
+#pragma mark 解析设置时间数据（00|80）
 - (manridyModel *)analysisSetTimeData:(NSData *)data WithHeadStr:(NSString *)head
 {
     manridyModel *model = [[manridyModel alloc] init];
@@ -125,7 +125,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
 }
 
 #if 0
-//解析闹钟数据 (01|81)
+#pragma mark 解析闹钟数据 (01|81)
 - (manridyModel *)analysisClockData:(NSData *)data WithHeadStr:(NSString *)head
 {
     manridyModel *model = [[manridyModel alloc] init];
@@ -165,34 +165,67 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
 }
 
 #endif
-//解析获取运动信息的数据（03|83）
+#pragma mark 解析获取运动信息的数据（03|83）
 - (manridyModel *)analysisGetSportData:(NSData *)data WithHeadStr:(NSString *)head
 {
     manridyModel *model = [[manridyModel alloc] init];
     model.receiveDataType = ReturnModelTypeSportModel;
     
+    const unsigned char *hexBytes = [data bytes];
+    NSString *ENStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
+    NSString *historyDataCount = [NSString stringWithFormat:@"%02x", hexBytes[2]];
+    NSString *currentDataCount = [NSString stringWithFormat:@"%02x", hexBytes[3]];
+    
     if ([head isEqualToString:@"03"]) {
-        NSData *stepData = [data subdataWithRange:NSMakeRange(2, 3)];
-        int stepValue = [NSStringTool parseIntFromData:stepData];
-        //        NSLog(@"今日步数 = %d",stepValue);
-        NSString *stepStr = [NSString stringWithFormat:@"%d",stepValue];
         
-        NSData *mileageData = [data subdataWithRange:NSMakeRange(5, 3)];
-        int mileageValue = [NSStringTool parseIntFromData:mileageData];
-        //        NSLog(@"今日里程数 = %d",mileageValue);
-        NSString *mileageStr = [NSString stringWithFormat:@"%d",mileageValue];
-        
-        NSData *kcalData = [data subdataWithRange:NSMakeRange(8, 3)];
-        int kcalValue = [NSStringTool parseIntFromData:kcalData];
-        //        NSLog(@"卡路里 = %d",kcalValue);
-        NSString *kCalStr = [NSString stringWithFormat:@"%d",kcalValue];
-        
-        model.sportModel.stepNumber = stepStr;
-        model.sportModel.mileageNumber = mileageStr;
-        model.sportModel.kCalNumber = kCalStr;
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
         
-        
+        if ([ENStr isEqualToString:@"01"]) {
+            //这里不做单纯获取step的数据的操作
+        }else if ([ENStr isEqualToString:@"07"]) {
+            NSData *stepData = [data subdataWithRange:NSMakeRange(2, 3)];
+            int stepValue = [NSStringTool parseIntFromData:stepData];
+            //        NSLog(@"今日步数 = %d",stepValue);
+            NSString *stepStr = [NSString stringWithFormat:@"%d",stepValue];
+            
+            NSData *mileageData = [data subdataWithRange:NSMakeRange(5, 3)];
+            int mileageValue = [NSStringTool parseIntFromData:mileageData];
+            //        NSLog(@"今日里程数 = %d",mileageValue);
+            NSString *mileageStr = [NSString stringWithFormat:@"%d",mileageValue];
+            
+            NSData *kcalData = [data subdataWithRange:NSMakeRange(8, 3)];
+            int kcalValue = [NSStringTool parseIntFromData:kcalData];
+            //        NSLog(@"卡路里 = %d",kcalValue);
+            NSString *kCalStr = [NSString stringWithFormat:@"%d",kcalValue];
+            
+            model.sportModel.stepNumber = stepStr;
+            model.sportModel.mileageNumber = mileageStr;
+            model.sportModel.kCalNumber = kCalStr;
+            
+        }else if ([ENStr isEqualToString:@"80"]) {
+            model.sportModel.sumDataCount = historyDataCount.integerValue;
+        }else if ([ENStr isEqualToString:@"C0"] || [ENStr isEqualToString:@"c0"]) {
+            model.sportModel.sumDataCount = historyDataCount.integerValue;
+            model.sportModel.currentDataCount = currentDataCount.integerValue;
+            
+            NSData *time = [data subdataWithRange:NSMakeRange(4, 3)];
+            NSString *timeStr = [NSString stringWithFormat:@"%@",time];
+            
+            NSString *yearStr = [timeStr substringWithRange:NSMakeRange(1, 2)];
+            NSString *monthStr = [timeStr substringWithRange:NSMakeRange(3, 2)];
+            NSString *dayStr = [timeStr substringWithRange:NSMakeRange(5, 2)];
+            
+            NSData *stepData = [data subdataWithRange:NSMakeRange(9, 3)];
+            NSString *stepStr = [NSString stringWithFormat:@"%@",stepData];
+            
+            NSString *dateStr = [NSString stringWithFormat:@"%@/%@/%@",yearStr ,monthStr ,dayStr];
+            
+            NSLog(@"yy == %@ , mm == %@ , dd == %@ , date == %@",yearStr ,monthStr ,dayStr ,dateStr );
+            NSLog(@"step = %@",stepStr);
+    
+            model.sportModel.stepNumber = stepStr;
+            model.sportModel.date = dateStr;
+        }
     }else if ([head isEqualToString:@"83"]) {
         model.isReciveDataRight = ResponsEcorrectnessDataFail;
     }
@@ -200,7 +233,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 
-//解析获取运动信息清零的数据（04|84）
+#pragma mark 解析获取运动信息清零的数据（04|84）
 - (manridyModel *)analysisSportZeroData:(NSData *)data WithHeadStr:(NSString *)head
 {
     manridyModel *model = [[manridyModel alloc] init];
@@ -217,7 +250,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 #if 0
-//解析获取GPS历史的数据（05|85）
+#pragma mark 解析获取GPS历史的数据（05|85）
 - (manridyModel *)analysisHistoryGPSData:(NSData *)data WithHeadStr:(NSString *)head
 {
     manridyModel *model = [[manridyModel alloc] init];
@@ -291,7 +324,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 #endif
-//解析用户信息的数据（06|86）
+#pragma mark 解析用户信息的数据（06|86）
 - (manridyModel *)analysisUserInfoData:(NSData *)data WithHeadStr:(NSString *)head
 {
     manridyModel *model = [[manridyModel alloc] init];
@@ -317,7 +350,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 
-//解析运动目标的数据（07|87）
+#pragma mark 解析运动目标的数据（07|87）
 - (manridyModel *)analysisSportTargetData:(NSData *)data WithHeadStr:(NSString *)head
 {
     manridyModel *model = [[manridyModel alloc] init];
@@ -339,7 +372,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 
-//解析心率开关的数据（09|89）
+#pragma mark 解析心率开关的数据（09|89）
 - (manridyModel *)analysisHeartStateData:(NSData *)data WithHeadStr:(NSString *)head
 {
     manridyModel *model = [[manridyModel alloc] init];
@@ -354,7 +387,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 
-//解析心率的数据（0A|8A）
+#pragma mark 解析心率的数据（0A|8A）
 - (manridyModel *)analysisHeartData:(NSData *)data WithHeadStr:(NSString *)head
 {
     manridyModel *model = [[manridyModel alloc] init];
@@ -412,7 +445,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 
-//解析睡眠的数据（0C|8C）
+#pragma mark 解析睡眠的数据（0C|8C）
 - (manridyModel *)analysisSleepData:(NSData *)data WithHeadStr:(NSString *)head
 {
     manridyModel *model = [[manridyModel alloc] init];
@@ -487,7 +520,7 @@ union LAT{
     unsigned int i;
 }lat;
 #if 0
-//解析自动上报GPS的数据（0D|8D）
+#pragma mark 解析自动上报GPS的数据（0D|8D）
 - (manridyModel *)analysisGPSData:(NSData *)data WithHeadStr:(NSString *)head
 {
     manridyModel *model = [[manridyModel alloc] init];

@@ -14,6 +14,7 @@
 #import "AnalysisProcotolTool.h"
 #import "AllBleFmdb.h"
 #import "AppDelegate.h"
+#import <UserNotifications/UserNotifications.h>
 
 #define kServiceUUID              @"F000EFE0-0000-4000-0000-00000000B000"
 #define kWriteCharacteristicUUID  @"F000EFE1-0451-4000-0000-00000000B000"
@@ -22,7 +23,7 @@
 #define kCurrentVersion @"1.0"
 
 
-@interface BLETool () <CBCentralManagerDelegate,CBPeripheralDelegate>
+@interface BLETool () <CBCentralManagerDelegate,CBPeripheralDelegate , UNUserNotificationCenterDelegate>
 
 
 @property (nonatomic ,strong) CBCharacteristic *notifyCharacteristic;
@@ -35,6 +36,8 @@
 @property (nonatomic ,strong) AllBleFmdb *fmTool;
 
 @property (nonatomic ,strong) UIAlertView *disConnectView;
+
+@property (nonatomic, strong) UNMutableNotificationContent *notiContent;
 
 @end
 
@@ -50,6 +53,7 @@ static BLETool *bleTool = nil;
     if (self) {
         _myCentralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil options:nil];
         _fmTool = [[AllBleFmdb alloc] init];
+        self.notiContent = [[UNMutableNotificationContent alloc] init];
     }
     return self;
 }
@@ -204,9 +208,9 @@ static BLETool *bleTool = nil;
 #endif
 
 //get motionInfo
-- (void)writeMotionRequestToPeripheral
+- (void)writeMotionRequestToPeripheralWithMotionType:(MotionType)type
 {
-    NSString *protocolStr = [NSStringTool protocolAddInfo:nil head:@"03"];
+    NSString *protocolStr = [NSStringTool protocolAddInfo:[NSString stringWithFormat:@"%ld",type] head:@"03"];
     
     //写入操作
     if (self.currentDev.peripheral) {
@@ -353,13 +357,40 @@ static BLETool *bleTool = nil;
 //检查设备蓝牙开关的状态
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
-    if (central.state == CBCentralManagerStatePoweredOn) {
-        //            [SVProgressHUD showInfoWithStatus:@"设备打开成功，开始扫描设备"];
-//        NSLog(@"蓝牙已打开");
-        [_myCentralManager scanForPeripheralsWithServices:nil options:nil];
-    }else {
-//        NSLog(@"蓝牙已关闭");
+    NSString *message = nil;
+    switch (central.state) {
+        case 1:
+            message = @"该设备不支持蓝牙功能，请检查系统设置";
+            break;
+        case 2:
+            message = @"该设备蓝牙未授权，请检查系统设置";
+            break;
+        case 3:
+            message = @"该设备蓝牙未授权，请检查系统设置";
+            break;
+        case 4:
+            message = @"该设备尚未打开蓝牙，请在设置中打开";
+            break;
+        case 5:
+
+            break;
+
+        default:
+            break;
     }
+    
+    if (message != nil && message.length != 0) {
+        NSLog(@"message == %@",message);
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+        [vc addAction:[UIAlertAction actionWithTitle:@"去设置" style:UIAlertActionStyleDefault handler:nil]];
+        
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIViewController *currentvc = delegate.window.rootViewController;
+        [currentvc presentViewController:vc  animated:YES completion:nil];
+        
+    }
+    
+        [_myCentralManager scanForPeripheralsWithServices:nil options:nil];
 }
 
 //查找到正在广播的指定外设
@@ -393,7 +424,7 @@ static BLETool *bleTool = nil;
     //传入nil会返回所有服务;一般会传入你想要服务的UUID所组成的数组,就会返回指定的服务
     [peripheral discoverServices:nil];
     
-    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.mainVc showFunctionView];
     
     [self.disConnectView dismissWithClickedButtonIndex:0 animated:NO];
@@ -413,12 +444,11 @@ static BLETool *bleTool = nil;
 //断开连接
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
-
     self.connectState = kBLEstateDisConnected;
     if ([self.connectDelegate respondsToSelector:@selector(manridyBLEDidDisconnectDevice:)]) {
         [self.connectDelegate manridyBLEDidDisconnectDevice:self.currentDev];
     }
-
+    
     if (self.isReconnect) {
         NSLog(@"需要断线重连");
         [self.myCentralManager connectPeripheral:self.currentDev.peripheral options:nil];
@@ -426,8 +456,54 @@ static BLETool *bleTool = nil;
         self.disConnectView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"设备意外断开，等待重连" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
         self.disConnectView.tag = 103;
         [self.disConnectView show];
+        // 1、创建通知内容，注：这里得用可变类型的UNMutableNotificationContent，否则内容的属性是只读的
+        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+        // 标题
+        content.title = @"手环丢失通知";
+        // 次标题
+        content.subtitle = @"注意！您的手环已经处于非连接状态，可能已经丢失！";
+        // 内容
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
+        NSString *dateStr = [formatter stringFromDate:date];
+        content.body = [NSString stringWithFormat:@"注意！您的手环已于%@离开可连接范围，可能丢失！请注意！",dateStr];
         
-        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        //            self.badge++;
+        // app显示通知数量的角标
+        //            content.badge = @(self.badge);
+        
+        // 通知的提示声音，这里用的默认的声音
+        content.sound = [UNNotificationSound defaultSound];
+        
+        NSURL *imageUrl = [[NSBundle mainBundle] URLForResource:@"all_next_icon" withExtension:@"png"];
+        UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:@"imageIndetifier" URL:imageUrl options:nil error:nil];
+        
+        // 附件 可以是音频、图片、视频 这里是一张图片
+        content.attachments = @[attachment];
+        
+        // 标识符
+        content.categoryIdentifier = @"categoryIndentifier";
+        
+        // 2、创建通知触发
+        /* 触发器分三种：
+         UNTimeIntervalNotificationTrigger : 在一定时间后触发，如果设置重复的话，timeInterval不能小于60
+         UNCalendarNotificationTrigger : 在某天某时触发，可重复
+         UNLocationNotificationTrigger : 进入或离开某个地理区域时触发
+         */
+        UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];
+        
+        // 3、创建通知请求
+        UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:@"KFGroupNotification" content:content trigger:trigger];
+        
+        // 4、将请求加入通知中心
+        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notificationRequest withCompletionHandler:^(NSError * _Nullable error) {
+            if (error == nil) {
+                NSLog(@"已成功加推送%@",notificationRequest.identifier);
+            }
+        }];
+        
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [delegate.mainVc hiddenFunctionView];
         
     }else {
@@ -608,7 +684,7 @@ static BLETool *bleTool = nil;
     }
 }
 
-
+#pragma mark - 通知
 
 #pragma mark - 懒加载
 - (NSMutableArray *)deviceArr

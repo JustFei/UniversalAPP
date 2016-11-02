@@ -13,5 +13,7 @@
 @property (nonatomic ,copy) NSString *stepNumber;
 @property (nonatomic ,copy) NSString *mileageNumber;
 @property (nonatomic ,copy) NSString *kCalNumber;
-
+@property (nonatomic ,assign) NSInteger sumDataCount;
+@property (nonatomic ,assign) NSInteger currentDataCount;
+@property (nonatomic ,copy) NSString *date;
 @end

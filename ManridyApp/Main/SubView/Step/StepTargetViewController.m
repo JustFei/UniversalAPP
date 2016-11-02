@@ -71,11 +71,7 @@
 {
     [super viewWillDisappear:YES];
     self.myBleTool.receiveDelegate = nil;
-}
-
-- (void)dealloc
-{
-    [self.myFmdbTool CloseDataBase];
+//    [self.myFmdbTool CloseDataBase];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -123,8 +123,6 @@
 #pragma mark - Action
 - (void)searchPeripheral
 {
-    NSLog(@"search peripheral.");
-    
     index = -1;
     
     [self deletAllRowsAtTableView];

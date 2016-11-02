@@ -180,8 +180,22 @@
     self.stepView.mileageAndkCalLabel.hidden = YES;
     self.stepView.todayLabel.hidden = YES;
     
-    [self.stepView.stepLabel setText:@"设备连接中。。。"];
-    [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:15]];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"]) {
+        BOOL isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
+        
+        if (isBind) {
+            [self.stepView.stepLabel setText:@"设备连接中。。。"];
+            [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:15]];
+        }else {
+            [self.stepView.stepLabel setText:@"未绑定设备，请前往设置绑定设备"];
+            [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:11]];
+        }
+    }else {
+        [self.stepView.stepLabel setText:@"未绑定设备，请前往设置绑定设备"];
+        [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:11]];
+    }
+    
+    
 }
 
 - (void)writeData
@@ -191,7 +205,9 @@
         {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (self.pageControl.currentPage == 0) {
-                    [self.myBleTool writeMotionRequestToPeripheral];
+                    
+                    //刚进来先查询设备的数据条数
+                    [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeDataInPeripheral];
                 }
             });
         }
@@ -357,6 +373,7 @@
                 
                 if (stepArr.count == 0) {
                     [self.myFmdbTool insertStepModel:model];
+                    
                 }else {
                     [self.myFmdbTool modifyStepWithDate:currentDateString model:model];
                 }
@@ -424,6 +441,7 @@
                     if ([manridyModel.sleepModel.currentDataCount isEqualToString:manridyModel.sleepModel.sumDataCount]) {
                         [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
                         
+                        //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
                         NSArray *sleepDataArr = [self.myFmdbTool querySleepWithDate:currentDateString];
                         
                         for (SleepModel *model in sleepDataArr) {
@@ -443,8 +461,6 @@
                 [self.sleepView.deepDataArr addObject:@(manridyModel.sleepModel.deepSleep.integerValue)];
                 
                 [self.sleepView showChartView];
-                
-                
                 
                 NSInteger sleepSum = manridyModel.sleepModel.sumSleep.integerValue;
                 
@@ -485,6 +501,10 @@
                     [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor greenColor]];
                     
                 }
+                
+                [self.hud hideAnimated:YES];
+                [self.sleepView.sumDataArr removeAllObjects];
+                [self.sleepView.deepDataArr removeAllObjects];
             }
         }
     }
@@ -595,8 +615,7 @@
     
 }
 
-#warning 考虑写到subview里面去
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+- (void)touchesScrollViewAction
 {
     if (isShowList) {
         [UIView animateWithDuration:0.5 animations:^{
@@ -631,8 +650,7 @@
                 _currentPage = 0;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     if (self.pageControl.currentPage == 0) {
-                        [self.myBleTool writeMotionRequestToPeripheral];
-                        
+                        [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
                     }
                 });
             }
@@ -784,6 +802,8 @@
     if (!_backGroundView) {
         UIScrollView *view = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -64, WIDTH, HEIGHT + 64)];
         view.showsVerticalScrollIndicator = NO;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesScrollViewAction)];
+        [view addGestureRecognizer:tap];
         
         view.contentSize = CGSizeMake(5 * WIDTH, 0);
         view.pagingEnabled = YES;

@@ -142,7 +142,7 @@
 //重新扫描的点击动作
 - (void)reScanPeripheral
 {
-     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     BOOL isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
     if (isBind) {

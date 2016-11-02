@@ -107,8 +107,11 @@
     if (!self.timePicker.hidden) {
         self.timePicker.hidden = YES;
     }
-    
-    
+}
+
+- (void)findMyPeripheral:(UISwitch *)sender
+{
+    [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:@"isFindMyPeripheral"];
 }
 
 #pragma mark - UIPickerViewDelegate && UIPickerViewDateSource
@@ -189,6 +192,29 @@
             cell.functionName.text = _funcArr[indexPath.row];
             [cell.timeSwitch setOn:NO];
             cell.timeButton.hidden = YES;
+            
+            switch (indexPath.row) {
+                case 0:
+                    
+                    break;
+                case 1:
+                    
+                    break;
+                case 2:
+                {
+                    BOOL isRemind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"];
+                    if (isRemind) {
+                        [cell.timeSwitch setOn:YES];
+                    }else {
+                        [cell.timeSwitch setOn:NO];
+                    }
+                    
+                    [cell.timeSwitch addTarget:self action:@selector(findMyPeripheral:) forControlEvents:UIControlEventValueChanged];
+                }
+                    break;
+                default:
+                    break;
+            }
         }
             break;
         case 1:

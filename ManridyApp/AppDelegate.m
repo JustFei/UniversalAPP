@@ -8,12 +8,12 @@
 
 #import "AppDelegate.h"
 
-
+#import <UserNotifications/UserNotifications.h>
 #import "manridyBleDevice.h"
 #import <CoreTelephony/CTCallCenter.h>
 #import <CoreTelephony/CTCall.h>
 
-@interface AppDelegate () <BleDiscoverDelegate, BleConnectDelegate>
+@interface AppDelegate () <BleDiscoverDelegate, BleConnectDelegate ,UNUserNotificationCenterDelegate>
 {
     CTCallCenter *_callCenter;
 }
@@ -31,21 +31,19 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    
-    
+#if 0
     // 监控通话信息
     CTCallCenter *center = [[CTCallCenter alloc] init];
     _callCenter = center;
     // 获取并输出手机的运营商信息
     [self aboutCall];
+#endif
     
     self.myBleTool = [BLETool shareInstance];
     self.myBleTool.discoverDelegate = self;
     self.myBleTool.connectDelegate = self;
     
     BOOL isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
-    
-    
     
     self.mainVc = [[MainViewController alloc] init];
     
@@ -73,6 +71,17 @@
     
     self.window.rootViewController = nc;
     
+    //注册通知
+    // 申请通知权限
+    [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        
+        // A Boolean value indicating whether authorization was granted. The value of this parameter is YES when authorization for the requested options was granted. The value is NO when authorization for one or more of the options is denied.
+        if (granted) {
+            
+            
+        }
+        
+    }];
     
     return YES;
 }
@@ -114,9 +123,6 @@
         [self.myBleTool writeTimeToPeripheral:[NSDate date]];
         [self.mainVc writeData];
     });
-    
-    
-    
     
 }
 

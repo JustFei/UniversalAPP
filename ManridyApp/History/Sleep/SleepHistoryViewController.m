@@ -57,6 +57,10 @@
         [self.backButton setHidden:YES];
         [self.titleLabel setHidden:YES];
     }
+    
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
+    NSInteger month = [components month];
+    [self.monthButton setTitle:[NSString stringWithFormat:@"%ld月",month] forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated

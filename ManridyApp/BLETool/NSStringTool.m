@@ -131,8 +131,35 @@
         
     }else if ([head isEqualToString:@"03"]) {
         //----------------获取运动信息---------------
-        
-        NSString *motionStr = @"FC0307";
+        NSString *motionStr;
+        switch (info.integerValue) {
+            case 0:
+            {
+                //请求获取步数0000 0001
+                motionStr = @"FC0301";
+            }
+                break;
+            case 1:
+            {
+                //请求获取步数和卡路里
+                motionStr = @"FC0307";
+            }
+                break;
+            case 2:
+            {
+                //查询设备数据条数
+                motionStr = @"FC0380";
+            }
+                break;
+            case 3:
+            {
+                //获取保存的距离数据内容
+                motionStr = @"FC03C0";
+            }
+                
+            default:
+                break;
+        }
         
         while (1) {
             if (motionStr.length < 40) {

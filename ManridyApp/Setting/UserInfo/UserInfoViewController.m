@@ -9,11 +9,12 @@
 #import "UserInfoViewController.h"
 #import "UserInfoCell.h"
 #import "FMDBTool.h"
+#import "BLETool.h"
 #import "UserInfoModel.h"
 #import "MBProgressHUD.h"
 #import "UserListViewController.h"
 
-@interface UserInfoViewController () <UITableViewDelegate ,UITableViewDataSource ,UITextFieldDelegate ,UINavigationControllerDelegate ,UIImagePickerControllerDelegate ,UIAlertViewDelegate ,UIPickerViewDelegate ,UIPickerViewDataSource>
+@interface UserInfoViewController () <UITableViewDelegate ,UITableViewDataSource ,UITextFieldDelegate ,UINavigationControllerDelegate ,UIImagePickerControllerDelegate ,UIAlertViewDelegate ,UIPickerViewDelegate ,UIPickerViewDataSource ,BleReceiveDelegate>
 {
     NSArray *_nameArr;
     NSArray *_fieldPlaceholdeArr;
@@ -43,6 +44,8 @@
 
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
 
+@property (nonatomic ,strong) BLETool *myBleTool;
+
 @property (nonatomic ,strong) MBProgressHUD *hud;
 
 @property (nonatomic ,weak) UIPickerView *genderPickerView;
@@ -51,6 +54,7 @@
 
 @implementation UserInfoViewController
 
+#pragma mark - lyfeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -68,8 +72,6 @@
     
     _userArr = [self.myFmdbTool queryAllUserInfo];
     
-    
-    
     [self.saveButton setBackgroundColor:[UIColor whiteColor]];
     
     if (_userArr.count == 0) {
@@ -81,8 +83,6 @@
     self.userNameTextField.borderStyle = UITextBorderStyleNone;
     self.userNameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
-    
-    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 261, self.view.frame.size.width, 13)];
     view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     [self.view addSubview:view];
@@ -90,8 +90,6 @@
     self.infoTableView.backgroundColor = [UIColor clearColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    
-    
 }
 
 - (void)dealloc
@@ -99,6 +97,7 @@
     //注销掉所有代理和关闭数据库
     self.infoTableView.delegate = nil;
     self.infoTableView.dataSource = nil;
+    self.myBleTool.receiveDelegate = nil;
     [self.myFmdbTool CloseDataBase];
 }
 
@@ -235,7 +234,9 @@
 {
     [self.view endEditing:YES];
     
-    if (self.userNameTextField.text.length != 0 || self.ageTextField.text.length != 0 || self.heightTextField.text.length != 0 || self.weightTextField.text.length != 0 || self.steplengthTextField.text.length != 0) {
+    if (self.userNameTextField.text != nil && self.userNameTextField.text.length != 0 && self.ageTextField.text != nil && self.ageTextField.text.length != 0 && self.heightTextField.text != nil && self.heightTextField.text.length != 0 && self.weightTextField.text != nil && self.weightTextField.text.length != 0 && self.steplengthTextField.text != nil && self.steplengthTextField.text.length != 0) {
+        
+        [self.myBleTool writeUserInfoToPeripheralWeight:self.weightTextField.text andHeight:self.heightTextField.text];
         
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeIndeterminate;
@@ -500,6 +501,16 @@
     return self.view.frame.size.width * 44 / 320;
 }
 
+#pragma mark - BleReceiveDelegate
+- (void)receiveUserInfoWithModel:(manridyModel *)manridyModel
+{
+    if (manridyModel.receiveDataType == ReturnModelTypeUserInfoModel) {
+        if (manridyModel.isReciveDataRight == ResponsEcorrectnessDataRgith) {
+            
+        }
+    }
+}
+
 #pragma mark - 懒加载
 - (UIImageView *)headImageView
 {
@@ -590,6 +601,16 @@
     return _myFmdbTool;
 }
 
+- (BLETool *)myBleTool
+{
+    if (!_myBleTool) {
+        _myBleTool = [BLETool shareInstance];
+        _myBleTool.receiveDelegate = self;
+    }
+    
+    return _myBleTool;
+}
+
 - (UIPickerView *)genderPickerView
 {
     if (!_genderPickerView) {
@@ -603,15 +624,5 @@
     
     return _genderPickerView;
 }
-
-/*
-#pragma mark - Navigationpp
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

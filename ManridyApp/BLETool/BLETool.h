@@ -23,6 +23,13 @@ typedef enum{
 //    kBLEstateBindUnConnected,
 }kBLEstate;
 
+typedef enum : NSUInteger {
+    MotionTypeStep = 0,
+    MotionTypeStepAndkCal,
+    MotionTypeCountOfData,
+    MotionTypeDataInPeripheral,
+} MotionType;
+
 @class manridyBleDevice;
 
 //扫描设备协议
@@ -148,7 +155,7 @@ typedef enum{
 - (void)writeTimeToPeripheral:(NSDate *)currentDate;
 
 //get motionInfo
-- (void)writeMotionRequestToPeripheral;
+- (void)writeMotionRequestToPeripheralWithMotionType:(MotionType)type;
 
 //set motionInfo zero
 - (void)writeMotionZeroToPeripheral;
