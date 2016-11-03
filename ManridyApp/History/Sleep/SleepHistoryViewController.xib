@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SleepHistoryViewController">
             <connections>
                 <outlet property="backButton" destination="2Op-A6-8qQ" id="fhV-xr-A8p"/>
+                <outlet property="deepAndLowSleepLabel" destination="Bam-nN-qik" id="HF8-1h-aG7"/>
                 <outlet property="downView" destination="xks-Mp-TYT" id="Fb4-by-leu"/>
                 <outlet property="monthButton" destination="ebf-8v-7Qu" id="PbS-q6-Tb3"/>
                 <outlet property="sleepLabel" destination="nxK-fg-W9Z" id="rBE-un-OxP"/>
@@ -151,21 +152,32 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xks-Mp-TYT">
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="睡眠6小时：深睡3小时/浅睡2小时" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bam-nN-qik">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="201" id="RKZ-3m-xlf"/>
+                        <constraint firstAttribute="height" constant="21" id="gwB-ET-n0L"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Bam-nN-qik" firstAttribute="centerX" secondItem="B4F-YU-56W" secondAttribute="centerX" id="2bg-84-NRU"/>
                 <constraint firstItem="xks-Mp-TYT" firstAttribute="leading" secondItem="B4F-YU-56W" secondAttribute="leading" id="7I9-a5-XH7"/>
                 <constraint firstAttribute="bottom" secondItem="xks-Mp-TYT" secondAttribute="bottom" id="HNF-mp-0nD"/>
                 <constraint firstAttribute="trailing" secondItem="KaF-1e-dTj" secondAttribute="trailing" constant="8" id="JQ2-Ci-5eH"/>
                 <constraint firstItem="Fbm-sv-xqv" firstAttribute="top" secondItem="B4F-YU-56W" secondAttribute="top" id="Sie-Z7-wDX"/>
-                <constraint firstItem="xks-Mp-TYT" firstAttribute="top" secondItem="KaF-1e-dTj" secondAttribute="bottom" id="ruH-SR-BEH"/>
+                <constraint firstItem="Bam-nN-qik" firstAttribute="top" secondItem="Fbm-sv-xqv" secondAttribute="bottom" constant="8" id="gfA-2L-21t"/>
+                <constraint firstItem="xks-Mp-TYT" firstAttribute="top" secondItem="KaF-1e-dTj" secondAttribute="bottom" constant="10" id="ruH-SR-BEH"/>
                 <constraint firstItem="KaF-1e-dTj" firstAttribute="top" secondItem="Fbm-sv-xqv" secondAttribute="bottom" constant="8" id="tsC-95-VRn"/>
                 <constraint firstAttribute="trailing" secondItem="xks-Mp-TYT" secondAttribute="trailing" id="vD3-rE-Nyr"/>
                 <constraint firstItem="Fbm-sv-xqv" firstAttribute="leading" secondItem="B4F-YU-56W" secondAttribute="leading" id="vUq-6H-zBu"/>
                 <constraint firstAttribute="trailing" secondItem="Fbm-sv-xqv" secondAttribute="trailing" id="vvm-tZ-Bxs"/>
                 <constraint firstItem="KaF-1e-dTj" firstAttribute="leading" secondItem="B4F-YU-56W" secondAttribute="leading" constant="8" id="xa1-x3-QUc"/>
             </constraints>
-            <point key="canvasLocation" x="212" y="286"/>
+            <point key="canvasLocation" x="211.5" y="285.5"/>
         </view>
     </objects>
     <resources>

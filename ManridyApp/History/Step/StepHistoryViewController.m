@@ -11,7 +11,7 @@
 #import "FMDBTool.h"
 #import "DropdownMenuView.h"
 #import "TitleMenuViewController.h"
-#import "StepDataModel.h"
+#import "SportModel.h"
 
 
 
@@ -48,6 +48,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
+    [self.downView layoutIfNeeded];
     
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.titleButton setTitle:@"历史记录" forState:UIControlStateNormal];
@@ -81,6 +83,12 @@
     [self.monthButton setTitle:[NSString stringWithFormat:@"%ld月",month] forState:UIControlStateNormal];
     
     [self.stepBarChart setXLabels:_dateArr];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -129,25 +137,25 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
-            NSString *dateStr = [NSString stringWithFormat:@"%ld-%ld-%02ld",iCurYear ,iCurMonth ,i];
+            NSString *dateStr = [NSString stringWithFormat:@"%ld/%02ld/%02ld",iCurYear ,iCurMonth ,i];
             NSLog(@"%@",dateStr);
             
             NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateStr];
             if (queryArr.count == 0) {
                 [_dataArr addObject:@0];
             }else {
-                StepDataModel *model = queryArr.firstObject;
+                SportModel *model = queryArr.firstObject;
                 
-                sumStep += model.step.integerValue;
-                sumMileage += model.mileage.integerValue;
-                sumkCal += model.kCal.integerValue;
+                sumStep += model.stepNumber.integerValue;
+                sumMileage += model.mileageNumber.integerValue;
+                sumkCal += model.kCalNumber.integerValue;
                 haveDataDays ++;
                 
-                if (self.stepBarChart.yMaxValue < model.step.integerValue) {
-                    self.stepBarChart.yMaxValue = model.step.integerValue + 10;
+                if (self.stepBarChart.yMaxValue < model.stepNumber.integerValue) {
+                    self.stepBarChart.yMaxValue = model.stepNumber.integerValue + 10;
                 }
                 
-                [_dataArr addObject:@(model.step.integerValue)];
+                [_dataArr addObject:@(model.stepNumber.integerValue)];
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -229,8 +237,8 @@
     currentFormatter.dateFormat = @"yyyy";
     NSString *yyyyStr = [currentFormatter stringFromDate:currentDate];
 
-    NSString *string = [NSString stringWithFormat:@"%@-%ld-15", yyyyStr, indexPath.row + 1];
-    currentFormatter.dateFormat = @"yyyy-MM-dd";
+    NSString *string = [NSString stringWithFormat:@"%@/%ld/15", yyyyStr, indexPath.row + 1];
+    currentFormatter.dateFormat = @"yyyy/MM/dd";
     NSDate *date=[currentFormatter dateFromString:string];
     
     //获取这个月的天数
@@ -258,7 +266,7 @@
 - (PNBarChart *)stepBarChart
 {
     if (!_stepBarChart) {
-        PNBarChart *view = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 0, self.downView.frame.size.width, self.downView.frame.size.height)];
+        PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
         
         view.yChartLabelWidth = 20.0;

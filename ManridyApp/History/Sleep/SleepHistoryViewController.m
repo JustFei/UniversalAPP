@@ -11,9 +11,18 @@
 #import "TitleMenuViewController.h"
 #import "PNChart.h"
 #import "FMDBTool.h"
+#import "SleepModel.h"
 
-@interface SleepHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate>
-
+@interface SleepHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate, PNChartDelegate>
+{
+    double deepSleep;
+    double sumSleep;
+    double monthSumSleep;
+    NSInteger haveDataDays;
+    NSMutableArray *_dateArr;
+    NSMutableArray *_sumDataArr;
+    NSMutableArray *_deepDataArr;
+}
 @property (weak, nonatomic) IBOutlet UILabel *sleepLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *state1;
@@ -33,6 +42,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *downView;
+@property (weak, nonatomic) IBOutlet UILabel *deepAndLowSleepLabel;
 
 @property (nonatomic ,strong) PNBarChart *deepSleepChart;
 @property (nonatomic ,strong) PNBarChart *sumSleepChart;
@@ -49,7 +59,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    self.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
+    [self.downView layoutIfNeeded];
+    NSLog(@"sleepHistory == %@",NSStringFromCGRect(self.downView.frame));
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.titleButton setTitle:@"历史记录" forState:UIControlStateNormal];
     [self.titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -63,12 +75,28 @@
         [self.backButton setHidden:YES];
         [self.titleLabel setHidden:YES];
     }
+    self.deepAndLowSleepLabel.hidden = YES;
+    
+    //获取这个月的天数
+    NSDate *today = [NSDate date]; //Get a date object for today's date
+    NSCalendar *c = [NSCalendar currentCalendar];
+    NSRange days = [c rangeOfUnit:NSDayCalendarUnit
+                           inUnit:NSMonthCalendarUnit
+                          forDate:today];
+    _dateArr = [NSMutableArray array];
+    _sumDataArr = [NSMutableArray array];
+    _deepDataArr = [NSMutableArray array];
+    
+    for (int i = 1; i <= days.length; i ++) {
+        [_dateArr addObject:@(i)];
+    }
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
     NSInteger month = [components month];
     [self.monthButton setTitle:[NSString stringWithFormat:@"%ld月",month] forState:UIControlStateNormal];
     
-    [self getDataFromDB];
+    [self.sumSleepChart setXLabels:_dateArr];
+    [self.deepSleepChart setXLabels:_dateArr];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -81,6 +109,14 @@
     [self.view addGestureRecognizer:self.oneFingerSwipedown];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    
+    //绘制图表放在这里不会造成UI卡顿
+    [self getHistoryDataWithIntDays:_dateArr.count withDate:[NSDate date]];
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:YES];
@@ -88,14 +124,65 @@
 }
 
 #pragma mark - DB
-- (void)getDataFromDB
+- (void)getHistoryDataWithIntDays:(NSInteger)days withDate:(NSDate *)date
 {
-    NSDate *currentDate = [NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"yyyy/MM/dd";
-    NSString *currentDateString = [formatter stringFromDate:currentDate];
-    NSArray *_dataArr = [self.myFmdbTool querySleepWithDate:currentDateString];
-    //这里需要循环查询31次。11.2
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+    
+    NSDateComponents *components = [calendar components:unitFlags fromDate:date];
+    
+    NSInteger iCurYear = [components year];  //当前的年份
+    
+    NSInteger iCurMonth = [components month];  //当前的月份
+    
+    [_sumDataArr removeAllObjects];
+    [_deepDataArr removeAllObjects];
+    
+    haveDataDays = 0;
+    monthSumSleep = 0;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (NSInteger i = 1; i <= days; i ++) {
+            NSString *dateStr = [NSString stringWithFormat:@"%ld/%02ld/%02ld",iCurYear ,iCurMonth ,i];
+            NSLog(@"%@",dateStr);
+            deepSleep = 0;
+            sumSleep = 0;
+            NSArray *queryArr = [self.myFmdbTool querySleepWithDate:dateStr];
+            if (queryArr.count == 0) {
+                [_sumDataArr addObject:@0];
+                [_deepDataArr addObject:@0];
+            }else {
+                
+                for (SleepModel *model in queryArr) {
+                    deepSleep += model.deepSleep.integerValue;
+                    sumSleep += model.sumSleep.integerValue;
+                }
+                double deep = deepSleep / 60;
+                double sum = sumSleep / 60;
+                
+                [_deepDataArr addObject:@(deep)];
+                [_sumDataArr addObject:@(sum)];
+                
+                monthSumSleep += sumSleep;
+                haveDataDays ++;
+                
+                if (self.sumSleepChart.yMaxValue < sumSleep / 60) {
+                    self.sumSleepChart.yMaxValue = sumSleep / 60 + 3;
+                    self.deepSleepChart.yMaxValue = sumSleep / 60 + 3;
+                }
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.sleepLabel setText:[NSString stringWithFormat:@"%.2f",monthSumSleep / haveDataDays / 60]];
+            
+            [self.sumSleepChart setYValues:_sumDataArr];
+            [self.deepSleepChart setYValues:_deepDataArr];
+            
+            [self.sumSleepChart strokeChart];
+            [self.deepSleepChart strokeChart];
+        });
+    });
 }
 
 #pragma mark - Action
@@ -149,11 +236,34 @@
 #pragma mark - TitleMenuDelegate
 -(void)selectAtIndexPath:(NSIndexPath *)indexPath title:(NSString *)title
 {
-    NSLog(@"indexPath = %ld", indexPath.row);
     NSLog(@"当前选择了%@", title);
     
     // 修改导航栏的标题
     [self.monthButton setTitle:title forState:UIControlStateNormal];
+    
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *currentFormatter = [[NSDateFormatter alloc] init];
+    currentFormatter.dateFormat = @"yyyy";
+    NSString *yyyyStr = [currentFormatter stringFromDate:currentDate];
+    
+    NSString *string = [NSString stringWithFormat:@"%@/%ld/15", yyyyStr, indexPath.row + 1];
+    currentFormatter.dateFormat = @"yyyy/MM/dd";
+    NSDate *date=[currentFormatter dateFromString:string];
+    
+    //获取这个月的天数
+    NSCalendar *c = [NSCalendar currentCalendar];
+    NSRange days = [c rangeOfUnit:NSDayCalendarUnit
+                           inUnit:NSMonthCalendarUnit
+                          forDate:date];
+    
+    [_dateArr removeAllObjects];
+    for (int i = 1; i <= days.length; i ++) {
+        [_dateArr addObject:[NSString stringWithFormat:@"%d",i]];
+    }
+    
+    [self.sumSleepChart setXLabels:_dateArr];
+    [self.deepSleepChart setXLabels:_dateArr];
+    [self getHistoryDataWithIntDays:days.length withDate:date];
 }
 
 #pragma mark 弹出下拉菜单
@@ -167,27 +277,35 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - PNChartDelegate
+- (void)userClickedOnBarAtIndex:(NSInteger)barIndex
+{
+    NSLog(@"点击了第%ld个bar",barIndex);
+    self.deepAndLowSleepLabel.hidden = NO;
+    [self.deepAndLowSleepLabel setText:@""];
+}
+
 #pragma mark - 懒加载
 - (PNBarChart *)sumSleepChart
 {
     if (!_sumSleepChart) {
-        PNBarChart *view = [[PNBarChart alloc] init];
+        PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
         [view setStrokeColor:[UIColor redColor]];
-        view.barBackgroundColor = [UIColor clearColor];
+//        view.barBackgroundColor = [UIColor clearColor];
         view.yChartLabelWidth = 20.0;
         view.chartMarginLeft = 30.0;
         view.chartMarginRight = 10.0;
         view.chartMarginTop = 5.0;
         view.chartMarginBottom = 10.0;
         view.yMinValue = 0;
-        view.yMaxValue = 15;
+        view.yMaxValue = 4;
         view.showLabel = YES;
-        //        view.showYLabel = YES;
+        view.yLabelSum = 10;
         view.showChartBorder = YES;
         view.isShowNumbers = NO;
         view.isGradientShow = NO;
-        
+        view.delegate = self;
         [self.downView addSubview:view];
         _sumSleepChart = view;
     }
@@ -201,19 +319,20 @@
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
         [view setStrokeColor:[UIColor yellowColor]];
-        view.barBackgroundColor = [UIColor clearColor];
+//        view.barBackgroundColor = [UIColor clearColor];
         view.yChartLabelWidth = 20.0;
         view.chartMarginLeft = 30.0;
         view.chartMarginRight = 10.0;
         view.chartMarginTop = 5.0;
         view.chartMarginBottom = 10.0;
         view.yMinValue = 0;
-        view.yMaxValue = 15;
+        view.yMaxValue = 4;
         view.showLabel = YES;
-        //        view.showYLabel = YES;
+        view.yLabelSum = 10;
         view.showChartBorder = NO;
         view.isShowNumbers = NO;
         view.isGradientShow = NO;
+        view.delegate = self;
         
         [self.downView addSubview:view];
         _deepSleepChart = view;

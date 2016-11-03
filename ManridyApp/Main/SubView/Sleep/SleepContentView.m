@@ -38,31 +38,36 @@
     [super layoutSubviews];
 }
 
-- (void)showChartView
+- (void)showChartViewWithData:(BOOL)haveData
 {
-    [_textArr removeAllObjects];
-    for (NSInteger i = 0; i < self.sumDataArr.count; i ++) {
-        [_textArr addObject:@(i + 1)];
-        NSNumber *hightest = (NSNumber *)self.sumDataArr[i];
-        NSLog(@"%@",hightest);
-        NSInteger hight = hightest.integerValue;
-        if (hight > self.sumSleepChart.yMaxValue) {
-            self.sumSleepChart.yMaxValue = hight + 10;
-            self.deepSleepChart.yMaxValue = hight + 10;
+    if (haveData) {
+        [_textArr removeAllObjects];
+        for (NSInteger i = 0; i < self.sumDataArr.count; i ++) {
+            [_textArr addObject:@(i + 1)];
+            NSNumber *hightest = (NSNumber *)self.sumDataArr[i];
+            NSLog(@"%@",hightest);
+            NSInteger hight = hightest.integerValue;
+            if (hight > self.sumSleepChart.yMaxValue) {
+                self.sumSleepChart.yMaxValue = hight + 10;
+                self.deepSleepChart.yMaxValue = hight + 10;
+            }
         }
+        NSLog(@"hightest == %f",self.sumSleepChart.yMaxValue);
+        
+        [self.deepSleepChart setXLabels:_textArr];
+        [self.deepSleepChart setYValues:self.deepDataArr];
+        [self.deepSleepChart strokeChart];
+        
+        [self.sumSleepChart setXLabels:_textArr];
+        [self.sumSleepChart setYValues:self.sumDataArr];
+        [self.sumSleepChart strokeChart];
+        
+        [self.sumDataArr removeObjectAtIndex:self.sumDataArr.count - 1];
+        [self.deepDataArr removeObjectAtIndex:self.deepDataArr.count - 1];
+    }else {
+        //仅仅展示个坐标系
     }
-    NSLog(@"hightest == %f",self.sumSleepChart.yMaxValue);
     
-    [self.deepSleepChart setXLabels:_textArr];
-    [self.deepSleepChart setYValues:self.deepDataArr];
-    [self.deepSleepChart strokeChart];
-    
-    [self.sumSleepChart setXLabels:_textArr];
-    [self.sumSleepChart setYValues:self.sumDataArr];
-    [self.sumSleepChart strokeChart];
-    
-    [self.sumDataArr removeObjectAtIndex:self.sumDataArr.count - 1];
-    [self.deepDataArr removeObjectAtIndex:self.deepDataArr.count - 1];
 }
 
 - (IBAction)sleepTargetAction:(UIButton *)sender {

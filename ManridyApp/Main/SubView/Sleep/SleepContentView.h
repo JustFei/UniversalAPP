@@ -27,6 +27,6 @@
 @property (nonatomic ,strong) NSMutableArray *sumDataArr;
 @property (nonatomic ,strong) NSMutableArray *deepDataArr;
 
-- (void)showChartView;
+- (void)showChartViewWithData:(BOOL)haveData;
 
 @end

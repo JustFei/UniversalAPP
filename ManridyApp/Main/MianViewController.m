@@ -351,7 +351,7 @@
                 case MotionTypeStepAndkCal:
                 {
                     [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
-                    [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@公里/%@千卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
+                    [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@米/%@卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
                     
                     if (_userArr.count != 0) {
                         
@@ -478,28 +478,16 @@
                     
                     //如果历史数据全部载入完成，写入当前睡眠数据
                     if (manridyModel.sleepModel.currentDataCount + 1 == manridyModel.sleepModel.sumDataCount) {
-                        [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
                         
-                        //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
-                        NSArray *sleepDataArr = [self.myFmdbTool querySleepWithDate:currentDateString];
-                        
-                        for (SleepModel *model in sleepDataArr) {
-                            [self.sleepView.sumDataArr addObject:@(model.sumSleep.integerValue)];
-                            [self.sleepView.deepDataArr addObject:@(model.deepSleep.integerValue)];
-                        }
+                        [self querySleepDataBaseWithDateString:currentDateString];
                     }
                 }else {
-                    [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
-                    
-                    //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
-                    NSArray *sleepDataArr = [self.myFmdbTool querySleepWithDate:currentDateString];
-                    
-                    for (SleepModel *model in sleepDataArr) {
-                        [self.sleepView.sumDataArr addObject:@(model.sumSleep.integerValue)];
-                        [self.sleepView.deepDataArr addObject:@(model.deepSleep.integerValue)];
-                    }
+                    //这里不查询历史，直接查询数据库展示即可
+                    [self querySleepDataBaseWithDateString:currentDateString];
                 }
-            }else {
+            }
+#if 0
+            else {
                 NSString *deepStr;
                 
                 if (manridyModel.sleepModel.deepSleep.integerValue < 60) {
@@ -533,52 +521,83 @@
                 
                 [self.sleepView showChartView];
                 
-                NSInteger sleepSum = manridyModel.sleepModel.sumSleep.integerValue;
                 
-                if (sleepSum <= 6) {
-                    [self.sleepView.sleepStateLabel setText:@"睡眠不足"];
-                    [self.sleepView.sleepStateLabel setTextColor:[UIColor redColor]];
-                    
-                    [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor redColor]];
-                    [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
-                    [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
-                    [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
-                    
-                }else if (sleepSum > 6 && sleepSum < 7) {
-                    [self.sleepView.sleepStateLabel setText:@"睡眠偏少"];
-                    [self.sleepView.sleepStateLabel setTextColor:[UIColor orangeColor]];
-                    
-                    [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
-                    [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor orangeColor]];
-                    [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
-                    [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
-                    
-                }else if (sleepSum >= 7 && sleepSum < 8) {
-                    [self.sleepView.sleepStateLabel setText:@"睡眠正常"];
-                    [self.sleepView.sleepStateLabel setTextColor:[UIColor yellowColor]];
-                    
-                    [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
-                    [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
-                    [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor yellowColor]];
-                    [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
-                    
-                }else if (sleepSum >= 8) {
-                    [self.sleepView.sleepStateLabel setText:@"睡眠充足"];
-                    [self.sleepView.sleepStateLabel setTextColor:[UIColor greenColor]];
-                    
-                    [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
-                    [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
-                    [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
-                    [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor greenColor]];
-                    
-                }
                 
-                [self.hud hideAnimated:YES];
                 [self.sleepView.sumDataArr removeAllObjects];
                 [self.sleepView.deepDataArr removeAllObjects];
             }
+#endif
         }
     }
+}
+
+#pragma mark - DataBase
+- (void)querySleepDataBaseWithDateString:(NSString *)currentDateString
+{
+    //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
+    NSArray *sleepDataArr = [self.myFmdbTool querySleepWithDate:currentDateString];
+    
+    for (SleepModel *model in sleepDataArr) {
+        [self.sleepView.sumDataArr addObject:@(model.sumSleep.integerValue)];
+        [self.sleepView.deepDataArr addObject:@(model.deepSleep.integerValue)];
+    }
+    if (sleepDataArr.count == 0) {
+        [self.sleepView showChartViewWithData:NO];
+    }else {
+        [self.sleepView showChartViewWithData:YES];
+        SleepModel *model = sleepDataArr.lastObject;
+        
+        double deep = model.deepSleep.doubleValue / 60;
+        double low = model.lowSleep.doubleValue / 60;
+        double sum = model.sumSleep.doubleValue / 60;
+        
+        NSLog(@"dep == %0.2f, low == %.2f, sum == %.2f",deep ,low ,sum);
+        
+        NSString * lowStr = [NSString stringWithFormat:@"浅睡%0.2f小时",low];
+        NSString * deepStr = [NSString stringWithFormat:@"深睡%.2f小时",deep];
+        [self.sleepView.sleepSumLabel setText:[NSString stringWithFormat:@"%.2f",sum]];
+        [self.sleepView.deepAndLowSleepLabel setText:[NSString stringWithFormat:@"%@/%@",deepStr ,lowStr]];
+        
+        if (sum <= 6) {
+            [self.sleepView.sleepStateLabel setText:@"睡眠不足"];
+            [self.sleepView.sleepStateLabel setTextColor:[UIColor redColor]];
+            
+            [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor redColor]];
+            [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
+            [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
+            [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
+            
+        }else if (sum > 6 && sum < 7) {
+            [self.sleepView.sleepStateLabel setText:@"睡眠偏少"];
+            [self.sleepView.sleepStateLabel setTextColor:[UIColor orangeColor]];
+            
+            [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
+            [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor orangeColor]];
+            [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
+            [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
+            
+        }else if (sum >= 7 && sum < 8) {
+            [self.sleepView.sleepStateLabel setText:@"睡眠正常"];
+            [self.sleepView.sleepStateLabel setTextColor:[UIColor yellowColor]];
+            
+            [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
+            [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
+            [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor yellowColor]];
+            [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
+            
+        }else if (sum >= 8) {
+            [self.sleepView.sleepStateLabel setText:@"睡眠充足"];
+            [self.sleepView.sleepStateLabel setTextColor:[UIColor greenColor]];
+            
+            [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
+            [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
+            [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
+            [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor greenColor]];
+            
+        }
+    }
+    [self.sleepView.sumDataArr removeAllObjects];
+    [self.sleepView.deepDataArr removeAllObjects];
 }
 
 
@@ -822,17 +841,15 @@
             case 3:
             {
                 _currentPage = 3;
-                
-                self.hud = [MBProgressHUD showHUDAddedTo:self.sleepView.downView animated:YES];
-                self.hud.mode = MBProgressHUDModeIndeterminate;
-                [self.hud.label setText:@"正在同步数据"];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    if (self.pageControl.currentPage == 3) {
-                        [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
-                        
-//                        [self.sleepView showChartView];
-                    }
-                });
+                if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                    [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
+                }else {
+                    NSDate *currentDate = [NSDate date];
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    formatter.dateFormat = @"yyyy/MM/dd";
+                    NSString *currentDateString = [formatter stringFromDate:currentDate];
+                    [self querySleepDataBaseWithDateString:currentDateString];
+                }
             }
                 break;
             case 4:

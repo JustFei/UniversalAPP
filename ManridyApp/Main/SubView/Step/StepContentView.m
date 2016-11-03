@@ -17,8 +17,6 @@
     NSInteger sumMileage;
     NSInteger sumkCal;
 }
-
-
 @end
 
 @implementation StepContentView
@@ -43,7 +41,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reScanPeripheral)];
     self.stepLabel.userInteractionEnabled = YES;
     [self.stepLabel addGestureRecognizer:tap];
@@ -161,7 +158,8 @@
 - (PNLineChart *)stepChart
 {
     if (!_stepChart) {
-        PNLineChart *view = [[PNLineChart alloc] initWithFrame: CGRectMake(5, 5, self.downView.frame.size.width - 10, self.downView.frame.size.height - 10)];
+        [self.downView layoutIfNeeded];
+        PNLineChart *view = [[PNLineChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
         view.showCoordinateAxis = YES;
         
