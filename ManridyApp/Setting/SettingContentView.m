@@ -11,6 +11,8 @@
 #import "BindPeripheralViewController.h"
 #import "PhoneRemindViewController.h"
 
+#define WIDTH self.frame.size.width
+
 @interface SettingContentView () <UITableViewDelegate ,UITableViewDataSource >
 {
     NSArray *_dataArr;
@@ -20,6 +22,8 @@
 @property (nonatomic ,weak) UIImageView *headView;
 
 @property (nonatomic ,weak) UILabel *userNameLabel;
+
+@property (nonatomic ,weak) UILabel *batteryLabel;
 
 @property (nonatomic ,weak) UITableView *functionTableView;
 
@@ -31,8 +35,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _dataArr = @[@"用户信息",@"信息提醒",@"防丢设置",@"查看电量",@"设备锁定",@"关于"];
-        _imageNameArr = @[@"set_user_icon",@"set_alart_icon",@"set_lost_icon",@"set_bty_icon",@"set_ble_icon",@"set_about_icon"];
+//        _dataArr = @[@"用户信息",@"信息提醒",@"防丢设置",@"查看电量",@"设备锁定",@"关于"];
+        _dataArr = @[@"用户信息",@"信息提醒",@"设备锁定",@"关于"];
+        _imageNameArr = @[@"set_user_icon",@"set_alart_icon",@"set_ble_icon",@"set_about_icon"];
     }
     return self;
 }
@@ -40,23 +45,23 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    self.headView.frame = CGRectMake(self.center.x - 62.5, 80, 125, 125);
+    CGFloat headWidth = 125 * 320 / WIDTH;
+    self.headView.frame = CGRectMake(self.center.x - headWidth / 2, 80, headWidth, headWidth);
     self.headView.layer.masksToBounds = YES;
-    self.headView.layer.cornerRadius = self.headView.frame.size.width / 2;
+    self.headView.layer.cornerRadius = headWidth / 2;
     self.headView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.headView.layer.borderWidth = 1;
     
+    self.batteryLabel.frame = CGRectMake(WIDTH - 70 * 320 / WIDTH, 74, 50 * 320 / WIDTH, 30 * 320 / WIDTH);
+    [self.batteryLabel setText:@"80%"];
     
-    self.userNameLabel.frame = CGRectMake(self.center.x - 100, 215, 200, 34);
+    self.userNameLabel.frame = CGRectMake(self.center.x - 100 * 320 / WIDTH, 215 * 320 / WIDTH, 200 * 320 / WIDTH, 34 * 320 / WIDTH);
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.width * 261 / 320, self.frame.size.width, 13)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH * 261 / 320, WIDTH, 13)];
     view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     [self addSubview:view];
     
-    self.functionTableView.frame = CGRectMake(0, self.frame.size.width * 274 / 320, self.frame.size.width, self.frame.size.height - self.frame.size.width * 274 / 320);
-    
-    self.headView.layer.cornerRadius = self.headView.frame.size.width / 2;
+    self.functionTableView.frame = CGRectMake(0, WIDTH * 274 / 320, WIDTH, self.frame.size.height - WIDTH * 274 / 320);
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]) {
         [self.userNameLabel setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]];
@@ -128,7 +133,7 @@
         }
             break;
          
-        case 4:
+        case 2:
         {
             BindPeripheralViewController *vc = [[BindPeripheralViewController alloc] init];
             [[self findViewController:self].navigationController pushViewController:vc animated:YES];
@@ -166,6 +171,21 @@
     }
     
     return _userNameLabel;
+}
+
+- (UILabel *)batteryLabel
+{
+    if (!_batteryLabel) {
+        UILabel *label = [[UILabel alloc] init];
+        label.textColor = [UIColor whiteColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [UIFont systemFontOfSize:14];
+        
+        [self addSubview:label];
+        _batteryLabel = label;
+    }
+    
+    return _batteryLabel;
 }
 
 - (UITableView *)functionTableView

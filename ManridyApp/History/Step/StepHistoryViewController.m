@@ -279,7 +279,6 @@
         view.labelMarginTop = 5.0;
         view.showChartBorder = YES;
         view.showLabel = YES;
-//        view.showYLabel = YES;
         [view setStrokeColor:[UIColor blackColor]];
         view.yMinValue = 0;
         view.yMaxValue = 10;

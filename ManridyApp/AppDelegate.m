@@ -49,17 +49,14 @@
     
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:self.mainVc];
     if (isBind) {
-        [self.myBleTool scanDevice];
-        self.myBleTool.isReconnect = YES;
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.myBleTool stopScan];
-            if (self.myBleTool.connectState == kBLEstateDisConnected) {
-                [self.mainVc.stepView.stepLabel setText:@"未连接上设备，点击重试"];
-            }
-            
-        });
+        //蓝牙是否打开
+        if (self.myBleTool.systemBLEstate == SystemBLEStatePoweredOn) {
+            [self connectBLE];
+        }
     }
+    
+    //监听state变化的状态
+    [self.myBleTool addObserver:self forKeyPath:@"systemBLEstate" options: NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
     
     //设置navigationBar为透明无线
     [nc.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -74,16 +71,45 @@
     //注册通知
     // 申请通知权限
     [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error) {
-        
-        // A Boolean value indicating whether authorization was granted. The value of this parameter is YES when authorization for the requested options was granted. The value is NO when authorization for one or more of the options is denied.
-        if (granted) {
-            
-            
-        }
-        
     }];
     
     return YES;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"监听到%@对象的%@属性发生了改变， %@", object, keyPath, change[@"new"]);
+    NSString *new = change[@"new"];
+    switch (new.integerValue) {
+        case 4:
+            
+            break;
+        case 5:
+            [self connectBLE];
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+- (void)connectBLE
+{
+    [self.myBleTool scanDevice];
+    self.myBleTool.isReconnect = YES;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.myBleTool stopScan];
+        if (self.myBleTool.connectState == kBLEstateDisConnected) {
+            [self.mainVc.stepView.stepLabel setText:@"未连接上设备，点击重试"];
+        }
+    });
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void) aboutCall{
@@ -121,6 +147,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [self.myBleTool writeTimeToPeripheral:[NSDate date]];
+        [self.myBleTool writeToKeepConnect];
         [self.mainVc writeData];
     });
     

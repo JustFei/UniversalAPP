@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Main/MianViewController.m"
-            timestampString = "499838748.537673"
+            filePath = "ManridyApp/BLETool/BLETool.m"
+            timestampString = "499940713.395482"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "480"
-            endingLineNumber = "480"
-            landmarkName = "-receiveSleepInfoWithModel:"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
+            landmarkName = "-centralManagerDidUpdateState:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManridyApp/Main/SubView/Step/StepContentView.m"
+            timestampString = "499941503.986781"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-drawProgress:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -66,6 +66,9 @@
         [self.deepDataArr removeObjectAtIndex:self.deepDataArr.count - 1];
     }else {
         //仅仅展示个坐标系
+        [self.sumSleepChart setYLabels:@[@1,@2,@3,@4,@5,@6,@7,@8]];
+        [self.sumSleepChart showLabel];
+        [self.sumSleepChart strokeChart];
     }
     
 }

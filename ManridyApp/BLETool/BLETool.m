@@ -353,26 +353,51 @@ static BLETool *bleTool = nil;
     }
 }
 
+//临时写入保持连接
+- (void)writeToKeepConnect
+{
+    //写入操作
+    if (self.currentDev.peripheral) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"fc0f00"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
 #pragma mark - CBCentralManagerDelegate
 //检查设备蓝牙开关的状态
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
     NSString *message = nil;
     switch (central.state) {
+        case 0:
+            self.systemBLEstate = 0;
+            break;
         case 1:
-            message = @"该设备不支持蓝牙功能，请检查系统设置";
+//            message = @"该设备不支持蓝牙功能，请检查系统设置";
+            self.systemBLEstate = 1;
             break;
         case 2:
+        {
+            self.systemBLEstate = 2;
             message = @"该设备蓝牙未授权，请检查系统设置";
+        }
             break;
         case 3:
+        {
+            self.systemBLEstate = 3;
             message = @"该设备蓝牙未授权，请检查系统设置";
+        }
             break;
         case 4:
+        {
             message = @"该设备尚未打开蓝牙，请在设置中打开";
+            self.systemBLEstate = 4;
+        }
             break;
         case 5:
-
+        {
+            self.systemBLEstate = 5;
+            message = @"蓝牙已经打开";
+        }
             break;
 
         default:
@@ -456,52 +481,53 @@ static BLETool *bleTool = nil;
         self.disConnectView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"设备意外断开，等待重连" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
         self.disConnectView.tag = 103;
         [self.disConnectView show];
-        // 1、创建通知内容，注：这里得用可变类型的UNMutableNotificationContent，否则内容的属性是只读的
-        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-        // 标题
-        content.title = @"手环丢失通知";
-        // 次标题
-        content.subtitle = @"注意！您的手环已经处于非连接状态，可能已经丢失！";
-        // 内容
-        NSDate *date = [NSDate date];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
-        NSString *dateStr = [formatter stringFromDate:date];
-        content.body = [NSString stringWithFormat:@"注意！您的手环已于%@离开可连接范围，可能丢失！请注意！",dateStr];
         
-        //            self.badge++;
-        // app显示通知数量的角标
-        //            content.badge = @(self.badge);
-        
-        // 通知的提示声音，这里用的默认的声音
-        content.sound = [UNNotificationSound defaultSound];
-        
-        NSURL *imageUrl = [[NSBundle mainBundle] URLForResource:@"all_next_icon" withExtension:@"png"];
-        UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:@"imageIndetifier" URL:imageUrl options:nil error:nil];
-        
-        // 附件 可以是音频、图片、视频 这里是一张图片
-        content.attachments = @[attachment];
-        
-        // 标识符
-        content.categoryIdentifier = @"categoryIndentifier";
-        
-        // 2、创建通知触发
-        /* 触发器分三种：
-         UNTimeIntervalNotificationTrigger : 在一定时间后触发，如果设置重复的话，timeInterval不能小于60
-         UNCalendarNotificationTrigger : 在某天某时触发，可重复
-         UNLocationNotificationTrigger : 进入或离开某个地理区域时触发
-         */
-        UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];
-        
-        // 3、创建通知请求
-        UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:@"KFGroupNotification" content:content trigger:trigger];
-        
-        // 4、将请求加入通知中心
-        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notificationRequest withCompletionHandler:^(NSError * _Nullable error) {
-            if (error == nil) {
-                NSLog(@"已成功加推送%@",notificationRequest.identifier);
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"]) {
+            BOOL isFindMyPeripheral = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"];
+            if (isFindMyPeripheral) {
+                // 1、创建通知内容，注：这里得用可变类型的UNMutableNotificationContent，否则内容的属性是只读的
+                UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+                // 标题
+                content.title = @"手环丢失通知";
+                // 次标题
+                content.subtitle = @"注意！您的手环已经处于非连接状态，可能已经丢失！";
+                // 内容
+                NSDate *date = [NSDate date];
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                formatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
+                NSString *dateStr = [formatter stringFromDate:date];
+                content.body = [NSString stringWithFormat:@"注意！您的手环已于%@离开可连接范围，可能丢失！请注意！",dateStr];
+                // 通知的提示声音，这里用的默认的声音
+                content.sound = [UNNotificationSound defaultSound];
+                
+                //        NSURL *imageUrl = [[NSBundle mainBundle] URLForResource:@"all_next_icon" withExtension:@"png"];
+                //        UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:@"imageIndetifier" URL:imageUrl options:nil error:nil];
+                //
+                //        // 附件 可以是音频、图片、视频 这里是一张图片
+                //        content.attachments = @[attachment];
+                
+                // 标识符
+                content.categoryIdentifier = @"categoryIndentifier";
+                
+                // 2、创建通知触发
+                /* 触发器分三种：
+                 UNTimeIntervalNotificationTrigger : 在一定时间后触发，如果设置重复的话，timeInterval不能小于60
+                 UNCalendarNotificationTrigger : 在某天某时触发，可重复
+                 UNLocationNotificationTrigger : 进入或离开某个地理区域时触发
+                 */
+                UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+                
+                // 3、创建通知请求
+                UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:@"KFGroupNotification" content:content trigger:trigger];
+                
+                // 4、将请求加入通知中心
+                [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notificationRequest withCompletionHandler:^(NSError * _Nullable error) {
+                    if (error == nil) {
+                        NSLog(@"已成功加推送%@",notificationRequest.identifier);
+                    }
+                }];
             }
-        }];
+        }
         
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [delegate.mainVc hiddenFunctionView];

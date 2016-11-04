@@ -23,6 +23,15 @@ typedef enum{
 //    kBLEstateBindUnConnected,
 }kBLEstate;
 
+typedef enum{
+    SystemBLEStateUnknown = 0,
+    SystemBLEStateResetting,
+    SystemBLEStateUnsupported,
+    SystemBLEStateUnauthorized,
+    SystemBLEStatePoweredOff,
+    SystemBLEStatePoweredOn,
+} SystemBLEState;
+
 @class manridyBleDevice;
 
 //扫描设备协议
@@ -121,6 +130,8 @@ typedef enum{
 
 @property (nonatomic ,assign) BOOL isReconnect;
 
+@property(nonatomic, assign,) SystemBLEState systemBLEstate;
+
 #pragma mark - action of connecting layer -连接层操作
 //扫描设备
 - (void)scanDevice;
@@ -171,5 +182,6 @@ typedef enum{
 //get sleepInfo
 - (void)writeSleepRequestToperipheral:(SleepData)sleepData;
 
-
+//临时写入保持连接
+- (void)writeToKeepConnect;
 @end

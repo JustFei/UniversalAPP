@@ -146,10 +146,6 @@
 - (void)showFunctionView
 {
     [self.stepView showChartView];
-    self.backGroundView.scrollEnabled = YES;
-    self.stepView.downView.hidden = NO;
-    self.stepView.stepChart.hidden = NO;
-    self.pageControl.hidden = NO;
     self.stepView.weekStatisticsLabel.hidden = NO;
     self.stepView.mileageAndkCalLabel.hidden = NO;
     self.stepView.todayLabel.hidden = NO;
@@ -172,10 +168,6 @@
     }
     
     //为了方便测试，可以将滚动调为YES
-    self.backGroundView.scrollEnabled = YES;
-    self.stepView.downView.hidden = YES;
-    self.stepView.stepChart.hidden = YES;
-    self.pageControl.hidden = YES;
     self.stepView.weekStatisticsLabel.hidden = YES;
     self.stepView.mileageAndkCalLabel.hidden = YES;
     self.stepView.todayLabel.hidden = YES;
@@ -194,8 +186,6 @@
         [self.stepView.stepLabel setText:@"未绑定设备，请前往设置绑定设备"];
         [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:11]];
     }
-    
-    
 }
 
 - (void)writeData
@@ -443,16 +433,92 @@
     if (manridyModel.isReciveDataRight) {
         if (manridyModel.receiveDataType == ReturnModelTypeHeartRateModel) {
             
-            NSLog(@"%@",manridyModel.heartRateModel.sumDataCount);
-            
-            //当总数据为00时说明没有数据，可以不用存储
-            if (![manridyModel.heartRateModel.sumDataCount isEqualToString:@"0"] && manridyModel.heartRateModel.sumDataCount != nil) {
+            NSMutableString *mutableTime = [NSMutableString stringWithString:manridyModel.heartRateModel.time];
+            [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
+            NSLog(@"数据类型 == %lu",manridyModel.heartRateModel.heartRateState);
+            if (manridyModel.heartRateModel.heartRateState == HeartRateDataHistoryData) {
+                //当总数据为00时说明没有数据，可以不用存储
+                if (![manridyModel.heartRateModel.sumDataCount isEqualToString:@"0"] && manridyModel.heartRateModel.sumDataCount != nil) {
+                    
+                    //如果当前数据为最后一条数据时，在屏幕上显示，其他的数据全部存储到数据库即可
+                    [self.heartRateView.heartRateLabel setText:manridyModel.heartRateModel.heartRate];
+                    
+                    [self.myFmdbTool insertHeartRateModel:manridyModel.heartRateModel];
+                }
+                NSArray *heartRateArr = [self.myFmdbTool queryHeartRateWithDate:nil];
                 
-                //如果当前数据为最后一条数据时，在屏幕上显示，其他的数据全部存储到数据库即可
-                [self.heartRateView.heartRateLabel setText:manridyModel.heartRateModel.heartRate];
-                
-                [self.myFmdbTool insertHeartRateModel:manridyModel.heartRateModel];
+                if (heartRateArr.count >= 7) {
+                    for (NSInteger index = heartRateArr.count - 7; index < heartRateArr.count; index ++) {
+                        HeartRateModel *model = heartRateArr[index];
+                        NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
+                        [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
+                        [self.heartRateView.dateArr addObject:mutableTime];
+                        [self.heartRateView.dataArr addObject:model.heartRate];
+                    }
+                }else if (heartRateArr.count < 7) {
+                    for (NSInteger index = 0; index < heartRateArr.count; index ++) {
+                        HeartRateModel *model = heartRateArr[index];
+                        
+                        NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
+                        [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
+                        [self.heartRateView.dateArr addObject:mutableTime];
+                        [self.heartRateView.dataArr addObject:model.heartRate];
+                    }
+                }else if (heartRateArr.count == 0) {
+                    
+                    for (NSString *dateString in self.stepView.dateArr) {
+                        NSString *monthStr = [dateString substringWithRange:NSMakeRange(5, 2)];
+                        NSString *dayStr = [dateString substringWithRange:NSMakeRange(8, 2)];
+                        
+                        [self.heartRateView.dateArr addObject:[NSString stringWithFormat:@"%@/%@",monthStr ,dayStr]];
+                    }
+                    
+                    for (int i = 0; i < 7; i ++) {
+                        [self.heartRateView.dataArr addObject:@"0"];
+                    }
+                }
+            }else if (manridyModel.heartRateModel.heartRateState == HeartRateDataLastData) {
+                if (self.heartRateView.dataArr.count == 7) {
+                    //先移除掉前面的第一个数据
+                    [self.heartRateView.dataArr removeObjectAtIndex:0];
+                    [self.heartRateView.dateArr removeObjectAtIndex:0];
+                    //再讲推送的数据添加到最后一个
+                    
+                    [self.heartRateView.dateArr addObject:mutableTime];
+                    [self.heartRateView.dataArr addObject:manridyModel.heartRateModel.heartRate];
+                }else if (self.heartRateView.dataArr.count < 7) {
+                    [self.heartRateView.dateArr addObject:mutableTime];
+                    [self.heartRateView.dataArr addObject:manridyModel.heartRateModel.heartRate];
+                }
             }
+            NSString *lastHeartRate = self.heartRateView.dataArr.lastObject;
+                [self.heartRateView.heartRateLabel setText:lastHeartRate];
+                
+                NSInteger heart = lastHeartRate.integerValue;
+                
+                if (heart < 60) {
+                    self.heartRateView.state1.backgroundColor = [UIColor redColor];
+                    self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
+                    self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
+                    self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
+                    
+                    self.heartRateView.heartStateLabel.text = @"偏低";
+                }else if (heart >= 60 && heart <= 100) {
+                    self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
+                    self.heartRateView.state2.backgroundColor = [UIColor greenColor];
+                    self.heartRateView.state3.backgroundColor = [UIColor greenColor];
+                    self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
+                    
+                    self.heartRateView.heartStateLabel.text = @"正常";
+                }else {
+                    self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
+                    self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
+                    self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
+                    self.heartRateView.state4.backgroundColor = [UIColor redColor];
+                    
+                    self.heartRateView.heartStateLabel.text = @"偏高";
+                }
+            [self.heartRateView showChartView];
         }
     }
 }
@@ -748,82 +814,11 @@
             case 1:
             {
                 _currentPage = 1;
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(100 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
                     if (self.pageControl.currentPage == 1) {
                         [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
-                        
-                        NSArray *heartRateArr = [self.myFmdbTool queryHeartRateWithDate:nil];
-                        
                         [self.heartRateView.dateArr removeAllObjects];
                         [self.heartRateView.dataArr removeAllObjects];
-                        
-                        if (heartRateArr.count > 7) {
-                            for (NSInteger index = heartRateArr.count - 7; index < heartRateArr.count; index ++) {
-                                HeartRateModel *model = heartRateArr[index];
-                                NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
-                                [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
-                                [self.heartRateView.dateArr addObject:mutableTime];
-                                [self.heartRateView.dataArr addObject:model.heartRate];
-                                
-                                if (index == heartRateArr.count - 1) {
-                                    [self.heartRateView.heartRateLabel setText:model.heartRate];
-                                    
-                                    NSInteger heart = model.heartRate.integerValue;
-                                    
-                                    if (heart < 60) {
-                                        self.heartRateView.state1.backgroundColor = [UIColor redColor];
-                                        self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
-                                        self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
-                                        self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
-                                        
-                                        self.heartRateView.heartStateLabel.text = @"偏低";
-                                    }else if (heart >= 60 && heart <= 100) {
-                                        self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
-                                        self.heartRateView.state2.backgroundColor = [UIColor greenColor];
-                                        self.heartRateView.state3.backgroundColor = [UIColor greenColor];
-                                        self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
-                                        
-                                        self.heartRateView.heartStateLabel.text = @"正常";
-                                    }else {
-                                        self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
-                                        self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
-                                        self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
-                                        self.heartRateView.state4.backgroundColor = [UIColor redColor];
-                                        
-                                        self.heartRateView.heartStateLabel.text = @"偏高";
-                                    }
-                                }
-                            }
-                            
-                            [self.heartRateView showChartView];
-                        }else if (heartRateArr.count > 0) {
-                            for (NSInteger index = 0; index < heartRateArr.count; index ++) {
-                                HeartRateModel *model = heartRateArr[index];
-                                //                            model.time = 0;
-                                //                            model.heartRate = 0;
-                                
-                                NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
-                                [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
-                                [self.heartRateView.dateArr addObject:mutableTime];
-                                [self.heartRateView.dataArr addObject:model.heartRate];
-                            }
-                            
-                            [self.heartRateView showChartView];
-                        }else if (heartRateArr.count == 0) {
-                            
-                            for (NSString *dateString in self.stepView.dateArr) {
-                                NSString *monthStr = [dateString substringWithRange:NSMakeRange(5, 2)];
-                                NSString *dayStr = [dateString substringWithRange:NSMakeRange(8, 2)];
-                                
-                                [self.heartRateView.dateArr addObject:[NSString stringWithFormat:@"%@/%@",monthStr ,dayStr]];
-                            }
-                            
-                            for (int i = 0; i < 7; i ++) {
-                                [self.heartRateView.dataArr addObject:@"0"];
-                            }
-                            
-                            [self.heartRateView showChartView];
-                        }
                     }
                 });
             }

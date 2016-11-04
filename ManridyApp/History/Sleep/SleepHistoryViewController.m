@@ -17,11 +17,13 @@
 {
     double deepSleep;
     double sumSleep;
+    double lowSleep;
     double monthSumSleep;
     NSInteger haveDataDays;
     NSMutableArray *_dateArr;
     NSMutableArray *_sumDataArr;
     NSMutableArray *_deepDataArr;
+    NSMutableArray *_lowDataArr;
 }
 @property (weak, nonatomic) IBOutlet UILabel *sleepLabel;
 
@@ -86,6 +88,7 @@
     _dateArr = [NSMutableArray array];
     _sumDataArr = [NSMutableArray array];
     _deepDataArr = [NSMutableArray array];
+    _lowDataArr = [NSMutableArray array];
     
     for (int i = 1; i <= days.length; i ++) {
         [_dateArr addObject:@(i)];
@@ -138,6 +141,7 @@
     
     [_sumDataArr removeAllObjects];
     [_deepDataArr removeAllObjects];
+    [_lowDataArr removeAllObjects];
     
     haveDataDays = 0;
     monthSumSleep = 0;
@@ -148,21 +152,26 @@
             NSLog(@"%@",dateStr);
             deepSleep = 0;
             sumSleep = 0;
+            lowSleep = 0;
             NSArray *queryArr = [self.myFmdbTool querySleepWithDate:dateStr];
             if (queryArr.count == 0) {
                 [_sumDataArr addObject:@0];
                 [_deepDataArr addObject:@0];
+                [_lowDataArr addObject:@0];
             }else {
                 
                 for (SleepModel *model in queryArr) {
                     deepSleep += model.deepSleep.integerValue;
                     sumSleep += model.sumSleep.integerValue;
+                    lowSleep += model.lowSleep.integerValue;
                 }
                 double deep = deepSleep / 60;
                 double sum = sumSleep / 60;
+                double low = lowSleep / 60;
                 
-                [_deepDataArr addObject:@(deep)];
-                [_sumDataArr addObject:@(sum)];
+                [_deepDataArr addObject:[NSString stringWithFormat:@"%.2f",deep]];
+                [_sumDataArr addObject:[NSString stringWithFormat:@"%.2f",sum]];
+                [_lowDataArr addObject:[NSString stringWithFormat:@"%.2f",low]];
                 
                 monthSumSleep += sumSleep;
                 haveDataDays ++;
@@ -281,8 +290,16 @@
 - (void)userClickedOnBarAtIndex:(NSInteger)barIndex
 {
     NSLog(@"点击了第%ld个bar",barIndex);
+    NSNumber *sumSleepNumber = _sumDataArr[barIndex];
+    NSNumber *deepSleepNumber = _deepDataArr[barIndex];
+    NSNumber *lowSleepNumber = _lowDataArr[barIndex];
     self.deepAndLowSleepLabel.hidden = NO;
-    [self.deepAndLowSleepLabel setText:@""];
+    if (sumSleepNumber.floatValue != 0) {
+        [self.deepAndLowSleepLabel setText:[NSString stringWithFormat:@"睡眠%@小时：深睡%@小时\n浅睡%@小时",sumSleepNumber ,deepSleepNumber ,lowSleepNumber]];
+    }else {
+        [self.deepAndLowSleepLabel setText:@"当天没有睡眠数据"];
+    }
+    
 }
 
 #pragma mark - 懒加载
@@ -292,7 +309,7 @@
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
         [view setStrokeColor:[UIColor redColor]];
-//        view.barBackgroundColor = [UIColor clearColor];
+        view.barBackgroundColor = [UIColor clearColor];
         view.yChartLabelWidth = 20.0;
         view.chartMarginLeft = 30.0;
         view.chartMarginRight = 10.0;
@@ -301,11 +318,13 @@
         view.yMinValue = 0;
         view.yMaxValue = 4;
         view.showLabel = YES;
-        view.yLabelSum = 10;
+        view.yLabelSum = 5;
         view.showChartBorder = YES;
         view.isShowNumbers = NO;
         view.isGradientShow = NO;
         view.delegate = self;
+        [view setXLabelSkip:5];
+        
         [self.downView addSubview:view];
         _sumSleepChart = view;
     }
@@ -319,7 +338,7 @@
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
         [view setStrokeColor:[UIColor yellowColor]];
-//        view.barBackgroundColor = [UIColor clearColor];
+        view.barBackgroundColor = [UIColor clearColor];
         view.yChartLabelWidth = 20.0;
         view.chartMarginLeft = 30.0;
         view.chartMarginRight = 10.0;
@@ -328,11 +347,12 @@
         view.yMinValue = 0;
         view.yMaxValue = 4;
         view.showLabel = YES;
-        view.yLabelSum = 10;
+        view.yLabelSum = 5;
         view.showChartBorder = NO;
         view.isShowNumbers = NO;
         view.isGradientShow = NO;
         view.delegate = self;
+        [view setXLabelSkip:5];
         
         [self.downView addSubview:view];
         _deepSleepChart = view;

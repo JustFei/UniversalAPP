@@ -324,6 +324,8 @@
     UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"已绑定设备：%@",device.deviceName] delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
     view.tag = 100;
     [view show];
+    
+    [self.myBleTool writeTimeToPeripheral:[NSDate date]];
 }
 
 
