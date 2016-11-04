@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,8 +16,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMG-93-Tfc">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQc-5G-8TM">
+                            <rect key="frame" x="97.5" y="183" width="180" height="38"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="180" id="SBT-X9-myG"/>
                                 <constraint firstAttribute="height" constant="38" id="otv-87-99V"/>
@@ -24,6 +29,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11u-bd-ERy">
+                            <rect key="frame" x="97" y="233" width="181" height="1"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="Ehg-eL-RGz"/>
@@ -33,6 +39,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="深睡0小时/浅睡0小时" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtr-da-WQW">
+                            <rect key="frame" x="97.5" y="251" width="180" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="180" id="PF8-b9-6oV"/>
                                 <constraint firstAttribute="height" constant="22" id="RUF-mb-piI"/>
@@ -42,11 +49,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日睡眠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHK-vw-NFT">
+                            <rect key="frame" x="153" y="144" width="69.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBY-KA-arW" userLabel="4">
+                            <rect key="frame" x="216.5" y="240" width="26" height="2"/>
                             <color key="backgroundColor" red="0.1137254902" green="0.44705882349999998" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="26" id="G0S-cQ-1ix"/>
@@ -54,6 +63,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zyv-r5-4rf" userLabel="3">
+                            <rect key="frame" x="188.5" y="240" width="26" height="2"/>
                             <color key="backgroundColor" red="0.1137254902" green="0.44705882349999998" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="2" id="7il-rJ-wsI"/>
@@ -61,6 +71,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWd-Sd-7Yc" userLabel="2">
+                            <rect key="frame" x="160.5" y="240" width="26" height="2"/>
                             <color key="backgroundColor" red="0.1137254902" green="0.44705882349999998" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="26" id="Etc-zD-kXd"/>
@@ -68,6 +79,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6P-gI-XL0" userLabel="1">
+                            <rect key="frame" x="132.5" y="240" width="26" height="2"/>
                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="26" id="5DB-ff-oQX"/>
@@ -75,9 +87,10 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJH-Lw-7su">
+                            <rect key="frame" x="347" y="345" width="28" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="22" id="gmh-DD-U0V"/>
-                                <constraint firstAttribute="width" constant="20" id="r9t-c9-H4K"/>
+                                <constraint firstAttribute="height" constant="30" id="gmh-DD-U0V"/>
+                                <constraint firstAttribute="width" constant="28" id="r9t-c9-H4K"/>
                             </constraints>
                             <state key="normal" image="walk_target_icon.png"/>
                             <connections>
@@ -85,6 +98,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="缺乏睡眠" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cp-Ww-0rR">
+                            <rect key="frame" x="152.5" y="278" width="70" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="IhC-Wp-dbD"/>
                                 <constraint firstAttribute="height" constant="22" id="ZbX-ie-njQ"/>
@@ -94,6 +108,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sleep_now_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="h2H-0x-LTA">
+                            <rect key="frame" x="58.5" y="61" width="258" height="271"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="258" id="0p8-sE-Vnh"/>
                                 <constraint firstAttribute="height" constant="271" id="w9h-ya-oc0"/>
@@ -123,16 +138,18 @@
                         <constraint firstItem="11u-bd-ERy" firstAttribute="centerX" secondItem="YQc-5G-8TM" secondAttribute="centerX" id="nTP-Zf-doO"/>
                         <constraint firstItem="YQc-5G-8TM" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" id="rA9-VQ-Gfr"/>
                         <constraint firstItem="UWd-Sd-7Yc" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" constant="-14" id="tZa-O9-X57"/>
-                        <constraint firstAttribute="trailing" secondItem="HJH-Lw-7su" secondAttribute="trailing" constant="8" id="xrT-XA-XBW"/>
+                        <constraint firstAttribute="trailing" secondItem="HJH-Lw-7su" secondAttribute="trailing" id="xrT-XA-XBW"/>
                         <constraint firstItem="w6P-gI-XL0" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" constant="-42" id="ygw-1V-PVH"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日睡眠：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5s-3A-N5T">
+                    <rect key="frame" x="8" y="383" width="359" height="13.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qxk-3h-F6a" customClass="SleepContentView">
+                    <rect key="frame" x="0.0" y="396.5" width="375" height="270.5"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
             </subviews>
@@ -152,6 +169,7 @@
             <connections>
                 <outlet property="deepAndLowSleepLabel" destination="gtr-da-WQW" id="jsl-Xy-czD"/>
                 <outlet property="downView" destination="Qxk-3h-F6a" id="pKo-I7-FQH"/>
+                <outlet property="progressImageView" destination="h2H-0x-LTA" id="jb3-Xv-tR2"/>
                 <outlet property="sleepStateLabel" destination="3Cp-Ww-0rR" id="dY3-8E-hst"/>
                 <outlet property="sleepStateView1" destination="w6P-gI-XL0" id="7Jg-hU-otQ"/>
                 <outlet property="sleepStateView2" destination="UWd-Sd-7Yc" id="Ziq-ru-NlA"/>
@@ -159,7 +177,7 @@
                 <outlet property="sleepStateView4" destination="fBY-KA-arW" id="cVP-fH-6sa"/>
                 <outlet property="sleepSumLabel" destination="YQc-5G-8TM" id="MoC-Gr-vcS"/>
             </connections>
-            <point key="canvasLocation" x="116" y="375"/>
+            <point key="canvasLocation" x="115.5" y="374.5"/>
         </view>
     </objects>
     <resources>

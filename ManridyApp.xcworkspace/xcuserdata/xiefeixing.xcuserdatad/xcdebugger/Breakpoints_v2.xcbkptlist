@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Main/SubView/Step/StepContentView.m"
-            timestampString = "499941503.986781"
+            filePath = "ManridyApp/FMDBTool/FMDBTool.m"
+            timestampString = "499947550.211075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "-drawProgress:"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
+            landmarkName = "-deleteUserInfoData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManridyApp/FMDBTool/FMDBTool.m"
+            timestampString = "499947569.739965"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
+            landmarkName = "-deleteUserInfoData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

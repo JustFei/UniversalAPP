@@ -75,7 +75,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     _titleArr = @[@"计步",@"心率",@"体温",@"睡眠",@"血压"];
     
     self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
@@ -355,6 +354,15 @@
                             }else if (progress >= 1) {
                                 [self.stepView drawProgress:1];
                             }
+                        }else {
+                            //如果用户没有设置目标步数的话，就默认为10000步
+                            float progress = (float)manridyModel.sportModel.stepNumber.integerValue / 10000;
+                            
+                            if (progress <= 1) {
+                                [self.stepView drawProgress:progress];
+                            }else if (progress >= 1) {
+                                [self.stepView drawProgress:1];
+                            }
                         }
                     }else {
                         //如果用户没有设置目标步数的话，就默认为10000步
@@ -551,48 +559,9 @@
                     //这里不查询历史，直接查询数据库展示即可
                     [self querySleepDataBaseWithDateString:currentDateString];
                 }
+            }else {
+                [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
             }
-#if 0
-            else {
-                NSString *deepStr;
-                
-                if (manridyModel.sleepModel.deepSleep.integerValue < 60) {
-                    deepStr = [NSString stringWithFormat:@"深睡%@分钟",manridyModel.sleepModel.deepSleep];
-                }else {
-                    deepStr = [NSString stringWithFormat:@"深睡%.2ld小时",manridyModel.sleepModel.deepSleep.integerValue / 60 + manridyModel.sleepModel.deepSleep.integerValue % 60];
-                }
-                
-                NSString *lowStr;
-                
-#warning need to test the lastSleepData endTime
-                //查询当前睡眠时，会给最近一次的历史数据，而这个历史数据不会在上面的历史数据请求里请求到，所以这里如果endTime有值得话，就需要进行存储。
-                if ([manridyModel.sleepModel.endTime isEqualToString:@"2000/00/00"]) {
-                    [self.myFmdbTool insertSleepModel:manridyModel.sleepModel];
-                }
-                
-                if (manridyModel.sleepModel.lowSleep.integerValue < 60) {
-                    lowStr = [NSString stringWithFormat:@"浅睡%@分钟",manridyModel.sleepModel.lowSleep];
-                }else {
-                    lowStr = [NSString stringWithFormat:@"浅睡%.2ld小时",manridyModel.sleepModel.lowSleep.integerValue / 60 + manridyModel.sleepModel.lowSleep.integerValue % 60];
-                }
-                
-                self.sleepView.sleepSumLabel.text = manridyModel.sleepModel.sumSleep;
-                self.sleepView.deepAndLowSleepLabel.text = [NSString stringWithFormat:@"%@/%@",deepStr,lowStr];
-                
-                [self.hud hideAnimated:YES];
-                
-                //当前的数据传过来，就直接进行添加到数据源中进行图表的绘制
-                [self.sleepView.sumDataArr addObject:@(manridyModel.sleepModel.sumSleep.integerValue)];
-                [self.sleepView.deepDataArr addObject:@(manridyModel.sleepModel.deepSleep.integerValue)];
-                
-                [self.sleepView showChartView];
-                
-                
-                
-                [self.sleepView.sumDataArr removeAllObjects];
-                [self.sleepView.deepDataArr removeAllObjects];
-            }
-#endif
         }
     }
 }
@@ -611,11 +580,15 @@
         [self.sleepView showChartViewWithData:NO];
     }else {
         [self.sleepView showChartViewWithData:YES];
-        SleepModel *model = sleepDataArr.lastObject;
+        double deep = 0;
+        double low = 0;
+        double sum = 0;
         
-        double deep = model.deepSleep.doubleValue / 60;
-        double low = model.lowSleep.doubleValue / 60;
-        double sum = model.sumSleep.doubleValue / 60;
+        for (SleepModel *model in sleepDataArr) {
+            deep += model.deepSleep.doubleValue / 60;
+            low += model.lowSleep.doubleValue / 60;
+            sum += model.sumSleep.doubleValue / 60;
+        }
         
         NSLog(@"dep == %0.2f, low == %.2f, sum == %.2f",deep ,low ,sum);
         
@@ -623,6 +596,30 @@
         NSString * deepStr = [NSString stringWithFormat:@"深睡%.2f小时",deep];
         [self.sleepView.sleepSumLabel setText:[NSString stringWithFormat:@"%.2f",sum]];
         [self.sleepView.deepAndLowSleepLabel setText:[NSString stringWithFormat:@"%@/%@",deepStr ,lowStr]];
+        
+        if (_userArr.count != 0) {
+            
+            UserInfoModel *model = _userArr.firstObject;
+            
+            if (model.sleepTarget != 0) {
+                float progress = sum / model.sleepTarget;
+                
+                if (progress <= 1) {
+                    [self.sleepView drawProgress:progress];
+                }else if (progress >= 1) {
+                    [self.sleepView drawProgress:1];
+                }
+            }
+        }else {
+            //如果用户没有设置目标步数的话，就默认为10000步
+            float progress = sum / 8;
+            
+            if (progress <= 1) {
+                [self.sleepView drawProgress:progress];
+            }else if (progress >= 1) {
+                [self.sleepView drawProgress:1];
+            }
+        }
         
         if (sum <= 6) {
             [self.sleepView.sleepStateLabel setText:@"睡眠不足"];
@@ -963,9 +960,7 @@
 - (FMDBTool *)myFmdbTool
 {
     if (!_myFmdbTool) {
-        
         _myFmdbTool = [[FMDBTool alloc] initWithPath:@"UserList"];
-        
     }
     
     return _myFmdbTool;

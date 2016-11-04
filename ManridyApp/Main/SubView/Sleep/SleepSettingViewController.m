@@ -7,15 +7,20 @@
 //
 
 #import "SleepSettingViewController.h"
+#import "FMDBTool.h"
+#import "UserInfoModel.h"
 
 @interface SleepSettingViewController () < UIPickerViewDelegate , UIPickerViewDataSource >
 {
     NSMutableArray *_timeArr;
+    NSArray *_userArr;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *sleepTargetLabel;
 
 @property (nonatomic ,weak) UIPickerView *timePickerView;
+
+@property (nonatomic ,strong) FMDBTool *myFmdbTool;
 
 @end
 
@@ -36,6 +41,16 @@
     [self.sleepTargetLabel addGestureRecognizer:tap];
     
     [self.timePickerView setHidden:YES];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        _userArr = [self.myFmdbTool queryAllUserInfo];
+        //这里由于是单用户，所以取第一个值
+        UserInfoModel *model = _userArr.firstObject;
+        
+        if (model.sleepTarget != 0) {
+            self.sleepTargetLabel.text = [NSString stringWithFormat:@"%ld",model.sleepTarget];
+        }
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,7 +78,17 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    [self.sleepTargetLabel setText:_timeArr[row]];
+    if (_userArr.count != 0) {
+        [self.sleepTargetLabel setText:_timeArr[row]];
+        [self.myFmdbTool modifySleepTargetWithID:1 model:self.sleepTargetLabel.text.integerValue];
+        
+    }else {
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"请先去设置您的个人信息，否则无法设置该功能。" preferredStyle:UIAlertControllerStyleAlert];
+        [vc addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil]];
+        
+        [self presentViewController:vc animated:YES completion:nil];
+    }
+    
 }
 
 #pragma mark - Action
@@ -96,6 +121,15 @@
     }
     
     return _timePickerView;
+}
+
+- (FMDBTool *)myFmdbTool
+{
+    if (!_myFmdbTool) {
+        _myFmdbTool = [[FMDBTool alloc] initWithPath:@"UserList"];
+    }
+    
+    return _myFmdbTool;
 }
 
 @end

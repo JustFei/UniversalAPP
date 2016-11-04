@@ -69,6 +69,9 @@ typedef enum : NSUInteger {
 
 - (BOOL)modifyStepTargetWithID:(NSInteger)ID model:(NSInteger)stepTarget;
 
+- (BOOL)modifySleepTargetWithID:(NSInteger)ID model:(NSInteger)sleepTarget;
+
+- (BOOL)deleteUserInfoData:(NSString *)deleteSql;
 
 #pragma mark - CloseData
 - (void)CloseDataBase;

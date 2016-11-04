@@ -44,36 +44,12 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reScanPeripheral)];
     self.stepLabel.userInteractionEnabled = YES;
     [self.stepLabel addGestureRecognizer:tap];
-    
-    //创建出CAShapeLayer
-    self.shapeLayer = [CAShapeLayer layer];
-    self.shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    
-    //设置线条的宽度和颜色
-    self.shapeLayer.lineWidth = 5.0f;
-    self.shapeLayer.strokeColor = [UIColor yellowColor].CGColor;
-    
-    CGPoint center = CGPointMake(self.progressImageView.center.x, self.progressImageView.center.y + 6.5);
-    CGFloat radius = self.progressImageView.frame.size.width / 2 - 20;
-    CGFloat startA = (M_PI * (- 90) / 180.0);  //圆起点位置
-    CGFloat endA = (M_PI * (270) / 180.0);  //圆终点位置
-    //设置stroke起始点
-    self.shapeLayer.strokeStart = 0;
-    self.shapeLayer.strokeEnd = 0;
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:startA endAngle:endA clockwise:YES];//上面说明过了用来构建圆形
-    
-    //让贝塞尔曲线与CAShapeLayer产生联系
-    self.shapeLayer.path = path.CGPath;
-    
-    //添加并显示
-    [self.layer addSublayer:self.shapeLayer];
 }
-
-
 
 - (void)drawProgress:(CGFloat )progress
 {
-    self.shapeLayer.strokeEnd = progress;
+    [self.stepCircleChart updateChartByCurrent:@(progress * 100)];
+    [self.stepCircleChart strokeChart];
 }
 
 - (void)showChartView
@@ -171,6 +147,21 @@
     }
     
     return _stepChart;
+}
+
+- (PNCircleChart *)stepCircleChart
+{
+    if (!_stepCircleChart) {
+        PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:35.0 / 255.0 green:146.0 / 255.0 blue:192.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
+        view.backgroundColor = [UIColor clearColor];
+        [view setStrokeColor:[UIColor clearColor]];
+        [view setStrokeColorGradientStart:[UIColor yellowColor]];
+        
+        [self addSubview:view];
+        _stepCircleChart = view;
+    }
+    
+    return _stepCircleChart;
 }
 
 - (NSMutableArray *)dateArr

@@ -391,6 +391,13 @@ static BLETool *bleTool = nil;
         {
             message = @"该设备尚未打开蓝牙，请在设置中打开";
             self.systemBLEstate = 4;
+            NSLog(@"message == %@",message);
+            UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+            [vc addAction:[UIAlertAction actionWithTitle:@"去设置" style:UIAlertActionStyleDefault handler:nil]];
+            
+            AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            UIViewController *currentvc = delegate.window.rootViewController;
+            [currentvc presentViewController:vc  animated:YES completion:nil];
         }
             break;
         case 5:
@@ -404,18 +411,7 @@ static BLETool *bleTool = nil;
             break;
     }
     
-    if (message != nil && message.length != 0) {
-        NSLog(@"message == %@",message);
-        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
-        [vc addAction:[UIAlertAction actionWithTitle:@"去设置" style:UIAlertActionStyleDefault handler:nil]];
-        
-        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        UIViewController *currentvc = delegate.window.rootViewController;
-        [currentvc presentViewController:vc  animated:YES completion:nil];
-        
-    }
-    
-        [_myCentralManager scanForPeripheralsWithServices:nil options:nil];
+    [_myCentralManager scanForPeripheralsWithServices:nil options:nil];
 }
 
 //查找到正在广播的指定外设

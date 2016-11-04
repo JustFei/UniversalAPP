@@ -26,6 +26,9 @@
 @property (nonatomic ,strong) NSMutableArray *dateArr;
 @property (nonatomic ,strong) NSMutableArray *sumDataArr;
 @property (nonatomic ,strong) NSMutableArray *deepDataArr;
+@property (weak, nonatomic) IBOutlet UIImageView *progressImageView;
+
+- (void)drawProgress:(CGFloat )progress;
 
 - (void)showChartViewWithData:(BOOL)haveData;
 

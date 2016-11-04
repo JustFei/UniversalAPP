@@ -12,6 +12,7 @@
 #import "DropdownMenuView.h"
 #import "TitleMenuViewController.h"
 #import "SportModel.h"
+#import "UserInfoModel.h"
 
 
 
@@ -35,8 +36,10 @@
 @property (nonatomic ,strong) UIButton *titleButton;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *progressImageView;
 
 @property (nonatomic ,weak) PNBarChart *stepBarChart;
+@property (nonatomic ,weak) PNCircleChart *stepCircleChart;
 
 @property (nonatomic ,strong) UISwipeGestureRecognizer *oneFingerSwipedown;
 
@@ -162,10 +165,42 @@
             [self.sumStepAndMilAndkCal setText:[NSString stringWithFormat:@"本月计步统计：共（%ld步/%ld公里/%ld千卡）",sumStep ,sumMileage ,sumkCal]];
             [self.averageStepLabel setText:[NSString stringWithFormat:@"%ld",(sumStep / haveDataDays)]];
             [self.averagerMileageAndkCalLabel setText:[NSString stringWithFormat:@"%ld公里/%ld千卡",(sumMileage / haveDataDays) ,(sumkCal / haveDataDays)]];
+            NSArray *_userArr = [self.myFmdbTool queryAllUserInfo];
+            if (_userArr.count != 0) {
+                
+                UserInfoModel *model = _userArr.firstObject;
+                
+                if (model.stepTarget != 0) {
+                    float progress = (double)(sumStep / haveDataDays) / model.stepTarget;
+                    
+                    if (progress <= 1) {
+                        [self.stepCircleChart updateChartByCurrent:@(progress * 100)];
+                    }else if (progress >= 1) {
+                        [self.stepCircleChart updateChartByCurrent:@100];
+                    }
+                }else {
+                    //如果用户没有设置目标步数的话，就默认为10000步
+                    float progress = (double)(sumStep / haveDataDays) / 10000;
+                    
+                    if (progress <= 1) {
+                        [self.stepCircleChart updateChartByCurrent:@(progress * 100 )];
+                    }else if (progress >= 1) {
+                        [self.stepCircleChart updateChartByCurrent:@100];
+                    }
+                }
+            }else {
+                //如果用户没有设置目标步数的话，就默认为10000步
+                float progress = (double)(sumStep / haveDataDays) / 10000;
+                
+                if (progress <= 1) {
+                    [self.stepCircleChart updateChartByCurrent:@(progress * 100 )];
+                }else if (progress >= 1) {
+                    [self.stepCircleChart updateChartByCurrent:@100];
+                }
+            }
             
-            
+            [self.stepCircleChart strokeChart];
             [self.stepBarChart setYValues:_dataArr];
-            
             [self.stepBarChart strokeChart];
         });
     });
@@ -290,6 +325,21 @@
     }
     
     return  _stepBarChart;
+}
+
+- (PNCircleChart *)stepCircleChart
+{
+    if (!_stepCircleChart) {
+        PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:12.0 / 255.0 green:97.0 / 255.0 blue:158.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
+        view.backgroundColor = [UIColor clearColor];
+        [view setStrokeColor:[UIColor clearColor]];
+        [view setStrokeColorGradientStart:[UIColor yellowColor]];
+        
+        [self.view addSubview:view];
+        _stepCircleChart = view;
+    }
+    
+    return _stepCircleChart;
 }
 
 - (FMDBTool *)myFmdbTool

@@ -28,6 +28,7 @@
 @property (nonatomic, assign) CGFloat progress;
 
 @property (nonatomic ,weak) PNLineChart *stepChart;
+@property (nonatomic ,weak) PNCircleChart *stepCircleChart;
 
 //创建全局属性
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;

@@ -308,7 +308,7 @@
     if (!_sumSleepChart) {
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor redColor]];
+        [view setStrokeColor:[UIColor grayColor]];
         view.barBackgroundColor = [UIColor clearColor];
         view.yChartLabelWidth = 20.0;
         view.chartMarginLeft = 30.0;
@@ -337,7 +337,7 @@
     if (!_deepSleepChart) {
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor yellowColor]];
+        [view setStrokeColor:[UIColor blackColor]];
         view.barBackgroundColor = [UIColor clearColor];
         view.yChartLabelWidth = 20.0;
         view.chartMarginLeft = 30.0;

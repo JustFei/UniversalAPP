@@ -16,6 +16,7 @@
 }
 @property (nonatomic ,weak) PNBarChart *deepSleepChart;
 @property (nonatomic ,weak) PNBarChart *sumSleepChart;
+@property (nonatomic ,weak) PNCircleChart *sleepCircleChart;
 
 @end
 
@@ -36,6 +37,12 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+}
+
+- (void)drawProgress:(CGFloat )progress
+{
+    [self.sleepCircleChart updateChartByCurrent:@(progress * 100)];
+    [self.sleepCircleChart strokeChart];
 }
 
 - (void)showChartViewWithData:(BOOL)haveData
@@ -84,7 +91,7 @@
     if (!_deepSleepChart) {
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor yellowColor]];
+        [view setStrokeColor:[UIColor blackColor]];
         view.barBackgroundColor = [UIColor clearColor];
         view.yChartLabelWidth = 20.0;
         view.chartMarginLeft = 30.0;
@@ -111,7 +118,7 @@
     if (!_sumSleepChart) {
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor redColor]];
+        [view setStrokeColor:[UIColor grayColor]];
         view.barBackgroundColor = [UIColor clearColor];
         view.yChartLabelWidth = 20.0;
         view.chartMarginLeft = 30.0;
@@ -121,7 +128,6 @@
         view.yMinValue = 0;
         view.yMaxValue = 15;
         view.showLabel = YES;
-//        view.showYLabel = YES;
         view.showChartBorder = YES;
         view.isShowNumbers = NO;
         view.isGradientShow = NO;
@@ -131,6 +137,21 @@
     }
     
     return _sumSleepChart;
+}
+
+- (PNCircleChart *)sleepCircleChart
+{
+    if (!_sleepCircleChart) {
+        PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:35.0 / 255.0 green:146.0 / 255.0 blue:192.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
+        view.backgroundColor = [UIColor clearColor];
+        [view setStrokeColor:[UIColor clearColor]];
+        [view setStrokeColorGradientStart:[UIColor colorWithRed:128.0 / 255.0 green:128.0 / 255.0 blue:128.0 / 255.0 alpha:1]];
+        
+        [self addSubview:view];
+        _sleepCircleChart = view;
+    }
+    
+    return _sleepCircleChart;
 }
 
 - (NSMutableArray *)dateArr

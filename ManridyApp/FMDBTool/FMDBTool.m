@@ -40,7 +40,7 @@ static FMDatabase *_fmdb;
         }
         
         //UserInfoData
-        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists UserInfoData(id integer primary key, username text, gender text, age integer, height integer, weight integer, steplength integer, steptarget integer);"]];
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists UserInfoData(id integer primary key, username text, gender text, age integer, height integer, weight integer, steplength integer, steptarget integer, sleeptarget integer);"]];
 
         //MotionData
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists MotionData(id integer primary key, date text, step text, kCal text, mileage text, currentDataCount integer, sumDataCount integer);"]];
@@ -338,8 +338,9 @@ static FMDatabase *_fmdb;
         NSInteger weight = [set intForColumn:@"weight"];
         NSInteger steplength = [set intForColumn:@"steplength"];
         NSInteger stepTarget = [set intForColumn:@"steptarget"];
+        NSInteger sleepTarget = [set intForColumn:@"sleeptarget"];
         
-        UserInfoModel *model = [UserInfoModel userInfoModelWithUserName:userName andGender:gender andAge:age andHeight:height andWeight:weight andStepLength:steplength andStepTarget:stepTarget];
+        UserInfoModel *model = [UserInfoModel userInfoModelWithUserName:userName andGender:gender andAge:age andHeight:height andWeight:weight andStepLength:steplength andStepTarget:stepTarget andSleepTarget:sleepTarget];
         
         NSLog(@"%@,%@,%ld,%ld,%ld,%ld",model.userName ,model.gender ,model.age ,model.height ,model.weight ,model.stepLength);
         
@@ -379,6 +380,34 @@ static FMDatabase *_fmdb;
     }
     
     return modifyResult;
+}
+
+- (BOOL)modifySleepTargetWithID:(NSInteger)ID model:(NSInteger)sleepTarget
+{
+    NSString *modifySql = [NSString stringWithFormat:@"update UserInfoData set sleeptarget = ? where id = ?"];
+    
+    BOOL modifyResult = [_fmdb executeUpdate:modifySql, @(sleepTarget), @(ID)];
+    
+    if (modifyResult) {
+        NSLog(@"修改睡眠目标成功");
+    }else {
+        NSLog(@"修改睡眠目标失败");
+    }
+    
+    return modifyResult;
+}
+
+- (BOOL)deleteUserInfoData:(NSString *)deleteSql
+{
+    BOOL result = [_fmdb executeUpdate:@"drop table UserInfoData"];
+    
+    if (result) {
+        NSLog(@"UserInfo表删除成功");
+    }else {
+        NSLog(@"UserInfo表删除失败");
+    }
+    
+    return result;
 }
 
 #pragma mark - CloseData
