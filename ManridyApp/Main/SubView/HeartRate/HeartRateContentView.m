@@ -12,7 +12,10 @@
 @interface HeartRateContentView ()
 
 @property (nonatomic ,weak) PNLineChart *heartChart;
+@property (nonatomic ,weak) PNCircleChart *heartCircleChart;
 @property (weak, nonatomic) IBOutlet UIView *downView;
+@property (weak, nonatomic) IBOutlet UIImageView *progressImageView;
+
 
 @end
 
@@ -32,6 +35,12 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+}
+
+- (void)drawProgress:(CGFloat )progress
+{
+    [self.heartCircleChart updateChartByCurrent:@(progress)];
+    [self.heartCircleChart strokeChart];
 }
 
 - (void)showChartView
@@ -75,6 +84,22 @@
     
     return _heartChart;
 }
+
+- (PNCircleChart *)heartCircleChart
+{
+    if (!_heartCircleChart) {
+        PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@200 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:43.0 / 255.0 green:147.0 / 255.0 blue:190.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
+        view.backgroundColor = [UIColor clearColor];
+        [view setStrokeColor:[UIColor clearColor]];
+        [view setStrokeColorGradientStart:[UIColor colorWithRed:127.0 / 255.0 green:71.0 / 255.0 blue:221.0 / 255.0 alpha:1]];
+        
+        [self addSubview:view];
+        _heartCircleChart = view;
+    }
+    
+    return _heartCircleChart;
+}
+
 
 - (NSMutableArray *)dateArr
 {

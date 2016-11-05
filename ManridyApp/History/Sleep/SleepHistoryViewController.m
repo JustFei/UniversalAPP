@@ -12,6 +12,7 @@
 #import "PNChart.h"
 #import "FMDBTool.h"
 #import "SleepModel.h"
+#import "UserInfoModel.h"
 
 @interface SleepHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate, PNChartDelegate>
 {
@@ -39,6 +40,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *monthButton;
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UIImageView *progressImageView;
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -46,8 +48,9 @@
 @property (weak, nonatomic) IBOutlet UIView *downView;
 @property (weak, nonatomic) IBOutlet UILabel *deepAndLowSleepLabel;
 
-@property (nonatomic ,strong) PNBarChart *deepSleepChart;
-@property (nonatomic ,strong) PNBarChart *sumSleepChart;
+@property (nonatomic ,weak) PNBarChart *deepSleepChart;
+@property (nonatomic ,weak) PNBarChart *sumSleepChart;
+@property (nonatomic ,weak) PNCircleChart *sleepCircleChart;
 
 @property (nonatomic ,strong) UIButton *titleButton;
 
@@ -182,8 +185,36 @@
                 }
             }
         }
+        NSArray *userArr = [self.myFmdbTool queryAllUserInfo];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.sleepLabel setText:[NSString stringWithFormat:@"%.2f",monthSumSleep / haveDataDays / 60]];
+            double averageSleep = monthSumSleep / haveDataDays / 60;
+            [self.sleepLabel setText:[NSString stringWithFormat:@"%.2f",averageSleep]];
+            if (userArr.count != 0) {
+                
+                UserInfoModel *model = userArr.firstObject;
+                
+                if (model.sleepTarget != 0) {
+                    double progress = averageSleep / model.sleepTarget;
+                    
+                    if (progress <= 1) {
+                        [self.sleepCircleChart updateChartByCurrent:@(progress * 100)];
+                    }else if (progress >= 1) {
+                        [self.sleepCircleChart updateChartByCurrent:@(100)];
+                    }
+                }
+            }else {
+                //如果用户没有设置目标睡眠的话，就默认为8h
+                float progress = averageSleep / 8;
+                
+                if (progress <= 1) {
+                    [self.sleepCircleChart updateChartByCurrent:@(progress * 100)];
+                }else if (progress >= 1) {
+                    [self.sleepCircleChart updateChartByCurrent:@(100)];
+                }
+            }
+            
+            [self.sleepCircleChart strokeChart];
             
             [self.sumSleepChart setYValues:_sumDataArr];
             [self.deepSleepChart setYValues:_deepDataArr];
@@ -359,6 +390,21 @@
     }
     
     return _deepSleepChart;
+}
+
+- (PNCircleChart *)sleepCircleChart
+{
+    if (!_sleepCircleChart) {
+        PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:12.0 / 255.0 green:97.0 / 255.0 blue:158.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
+        view.backgroundColor = [UIColor clearColor];
+        [view setStrokeColor:[UIColor clearColor]];
+        [view setStrokeColorGradientStart:[UIColor colorWithRed:70.0 / 255.0 green:68.0 / 255.0 blue:86.0 / 255.0 alpha:1]];
+        
+        [self.view addSubview:view];
+        _sleepCircleChart = view;
+    }
+    
+    return _sleepCircleChart;
 }
 
 - (FMDBTool *)myFmdbTool

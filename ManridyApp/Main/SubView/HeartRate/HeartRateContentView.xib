@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,16 +16,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最近几次心率测量：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEB-IB-Z7L">
+                    <rect key="frame" x="8" y="383" width="359" height="13.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybr-MX-XhN">
+                    <rect key="frame" x="0.0" y="396.5" width="375" height="270.5"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xze-WW-jw8">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awu-gB-sWC">
+                            <rect key="frame" x="117.5" y="183" width="140" height="38"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="140" id="BJN-La-aZa"/>
                                 <constraint firstAttribute="height" constant="38" id="zP3-p6-AhD"/>
@@ -32,6 +39,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmH-vT-jbm">
+                            <rect key="frame" x="97" y="233" width="181" height="1"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="181" id="BTr-he-DCe"/>
@@ -41,6 +49,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正常" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQq-V4-Tap">
+                            <rect key="frame" x="97.5" y="251" width="180" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="BAK-4a-XNW"/>
                                 <constraint firstAttribute="width" constant="180" id="vuh-3h-v9z"/>
@@ -50,17 +59,20 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上次心率值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKH-Tj-9ib">
+                            <rect key="frame" x="144" y="144" width="87" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_now_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="aVV-p5-Idx">
+                            <rect key="frame" x="58.5" y="61" width="258" height="271"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="258" id="Vhc-7n-8Gp"/>
                                 <constraint firstAttribute="height" constant="271" id="YvM-fo-vIz"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LR2-tG-6XU" userLabel="4">
+                            <rect key="frame" x="216.5" y="240" width="26" height="2"/>
                             <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="2" id="EQa-MH-PFR"/>
@@ -68,6 +80,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RVl-Vs-wfd" userLabel="3">
+                            <rect key="frame" x="188.5" y="240" width="26" height="2"/>
                             <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="2" id="FrK-YE-tuy"/>
@@ -75,6 +88,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urf-jH-vKJ" userLabel="2">
+                            <rect key="frame" x="160.5" y="240" width="26" height="2"/>
                             <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="2" id="hx8-UP-wfJ"/>
@@ -82,6 +96,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92X-Tg-A0A" userLabel="1">
+                            <rect key="frame" x="132.5" y="240" width="26" height="2"/>
                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="2" id="hqo-ax-bC2"/>
@@ -130,6 +145,7 @@
                 <outlet property="downView" destination="ybr-MX-XhN" id="Gqh-vP-qOL"/>
                 <outlet property="heartRateLabel" destination="Awu-gB-sWC" id="1VU-39-pkH"/>
                 <outlet property="heartStateLabel" destination="mQq-V4-Tap" id="jkw-2i-swl"/>
+                <outlet property="progressImageView" destination="aVV-p5-Idx" id="Lvf-ww-m35"/>
                 <outlet property="state1" destination="92X-Tg-A0A" id="ZAY-Sy-E5T"/>
                 <outlet property="state2" destination="urf-jH-vKJ" id="GQl-tE-bZg"/>
                 <outlet property="state3" destination="RVl-Vs-wfd" id="RJT-8Q-odX"/>

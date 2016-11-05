@@ -67,7 +67,7 @@
 - (UIImageView *)iconImageView
 {
     if (!_iconImageView) {
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(8, 9, 25, 25)];
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(8, 9, 25, 22)];
         [self.contentView addSubview:view];
         _iconImageView = view;
     }
@@ -80,6 +80,7 @@
     if (!_functionLabel) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 11, 55, 21)];
         label.font = [UIFont systemFontOfSize:12];
+        label.textColor = [UIColor whiteColor];
         [self.contentView addSubview:label];
         _functionLabel = label;
     }
@@ -90,7 +91,7 @@
 - (UIImageView *)arrowImageView
 {
     if (!_arrowImageView) {
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH - 20, 15, 11, 15)];
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH - 39, 15, 11, 15)];
         [self.contentView addSubview:view];
         _arrowImageView = view;
         

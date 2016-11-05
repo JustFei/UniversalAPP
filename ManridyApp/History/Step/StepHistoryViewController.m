@@ -162,9 +162,9 @@
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.sumStepAndMilAndkCal setText:[NSString stringWithFormat:@"本月计步统计：共（%ld步/%ld公里/%ld千卡）",sumStep ,sumMileage ,sumkCal]];
+            [self.sumStepAndMilAndkCal setText:[NSString stringWithFormat:@"本月计步统计：共（%ld步/%ld米/%ld卡）",sumStep ,sumMileage ,sumkCal]];
             [self.averageStepLabel setText:[NSString stringWithFormat:@"%ld",(sumStep / haveDataDays)]];
-            [self.averagerMileageAndkCalLabel setText:[NSString stringWithFormat:@"%ld公里/%ld千卡",(sumMileage / haveDataDays) ,(sumkCal / haveDataDays)]];
+            [self.averagerMileageAndkCalLabel setText:[NSString stringWithFormat:@"%ld米/%ld卡",(sumMileage / haveDataDays) ,(sumkCal / haveDataDays)]];
             NSArray *_userArr = [self.myFmdbTool queryAllUserInfo];
             if (_userArr.count != 0) {
                 

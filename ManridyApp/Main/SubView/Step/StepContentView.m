@@ -152,10 +152,10 @@
 - (PNCircleChart *)stepCircleChart
 {
     if (!_stepCircleChart) {
-        PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:35.0 / 255.0 green:146.0 / 255.0 blue:192.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
+        PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:43.0 / 255.0 green:147.0 / 255.0 blue:190.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
         view.backgroundColor = [UIColor clearColor];
         [view setStrokeColor:[UIColor clearColor]];
-        [view setStrokeColorGradientStart:[UIColor yellowColor]];
+        [view setStrokeColorGradientStart:[UIColor colorWithRed:1 green:1 blue:0 alpha:1]];
         
         [self addSubview:view];
         _stepCircleChart = view;

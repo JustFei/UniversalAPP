@@ -18,7 +18,7 @@
 
 @interface HeartRateHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate>
 {
-    NSInteger sumHeartRate;
+    double sumHeartRate;
     NSInteger haveDataDays;
     NSMutableArray *_dateArr;
     NSMutableArray *_maxDataArr;
@@ -42,16 +42,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *downView;
+@property (weak, nonatomic) IBOutlet UIImageView *progressImageView;
 
 @property (nonatomic ,weak) PNLineChart *heartLineChartView;
+@property (nonatomic ,weak) PNCircleChart *heartCircleChart;
 
 @property (nonatomic ,strong) UISwipeGestureRecognizer *oneFingerSwipedown;
 
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
 
 @property (nonatomic ,strong) UIButton *titleButton;
-
-
 
 @end
 
@@ -199,6 +199,10 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             NSInteger averageNumber = sumHeartRate / haveDataDays;
+            double doubleAverageNumber = sumHeartRate / haveDataDays;
+            
+            [self.heartCircleChart updateChartByCurrent:@(doubleAverageNumber)];
+            [self.heartCircleChart strokeChart];
             
             [self.heartRateLabel setText: [NSString stringWithFormat:@"%ld",averageNumber]];
             
@@ -361,6 +365,21 @@
     }
     
     return _heartLineChartView;
+}
+
+- (PNCircleChart *)heartCircleChart
+{
+    if (!_heartCircleChart) {
+        PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@200 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:12.0 / 255.0 green:97.0 / 255.0 blue:158.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
+        view.backgroundColor = [UIColor clearColor];
+        [view setStrokeColor:[UIColor clearColor]];
+        [view setStrokeColorGradientStart:[UIColor colorWithRed:76.0 / 255.0 green:81.0 / 255.0 blue:197.0 / 255.0 alpha:1]];
+        
+        [self.view addSubview:view];
+        _heartCircleChart = view;
+    }
+    
+    return _heartCircleChart;
 }
 
 - (FMDBTool *)myFmdbTool

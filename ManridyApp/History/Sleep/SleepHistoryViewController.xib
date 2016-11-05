@@ -15,6 +15,7 @@
                 <outlet property="deepAndLowSleepLabel" destination="Bam-nN-qik" id="HF8-1h-aG7"/>
                 <outlet property="downView" destination="xks-Mp-TYT" id="Fb4-by-leu"/>
                 <outlet property="monthButton" destination="ebf-8v-7Qu" id="PbS-q6-Tb3"/>
+                <outlet property="progressImageView" destination="W3i-Kn-s18" id="uhA-K1-Ih3"/>
                 <outlet property="sleepLabel" destination="nxK-fg-W9Z" id="rBE-un-OxP"/>
                 <outlet property="state1" destination="nzk-s8-Blt" id="Y7C-XW-A4y"/>
                 <outlet property="state2" destination="jFH-HC-Yn4" id="NeV-FY-gh1"/>
@@ -138,7 +139,7 @@
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" red="0.039215686270000001" green="0.35686274509999999" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.062745098040000002" green="0.45098039220000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="nxK-fg-W9Z" firstAttribute="top" secondItem="Fbm-sv-xqv" secondAttribute="top" constant="183" id="2h4-cb-ovm"/>
                         <constraint firstItem="zdn-l6-e2s" firstAttribute="centerX" secondItem="Fbm-sv-xqv" secondAttribute="centerX" id="34P-Md-fxe"/>

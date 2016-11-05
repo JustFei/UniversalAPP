@@ -46,15 +46,17 @@
     // Do any additional setup after loading the view.
     _sectionArr = [NSMutableArray array];
     
-    _funcArr = @[@"来电提醒",@"短信提醒",@"防丢提醒",@"闹钟设置"];
-    _imageArr = @[@"alert_call",@"alert_sms",@"alert_lose",@"alert_clock"];
+//    _funcArr = @[@"来电提醒",@"短信提醒",@"防丢提醒",@"闹钟设置"];
+//    _imageArr = @[@"alert_call",@"alert_sms",@"alert_lose",@"alert_clock"];
+    _funcArr = @[@"防丢提醒",@"闹钟设置"];
+    _imageArr = @[@"alert_lose",@"alert_clock"];
     _clockArr = @[@"闹钟1",@"闹钟2",@"闹钟3"];
     
     [self getPickerViewDataSource];
     
     SectionModel *sectionModel = [[SectionModel alloc] init];
-    sectionModel.functionName = _funcArr[3];
-    sectionModel.imageName = _imageArr[3];
+    sectionModel.functionName = _funcArr[1];
+    sectionModel.imageName = _imageArr[1];
     sectionModel.arrowImageName = @"all_next_icon";
     sectionModel.isExpanded = NO;
     [_sectionArr addObject:sectionModel];
@@ -74,6 +76,8 @@
     self.remindTableView.tableHeaderView = nil;
     self.remindTableView.tableFooterView = nil;
     _clockTimeArr = [NSMutableArray array];
+    
+    [self.myBleTool addObserver:self forKeyPath:@"connectState" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
     _clockTimeArr = [NSMutableArray arrayWithArray:[self.myFmdbTool queryClockData]];
     if (_clockTimeArr.count == 0) {
@@ -99,9 +103,23 @@
     }
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"监听到%@对象的%@属性发生了改变， %@", object, keyPath, change);
+    NSString *new = change[@"new"];
+    if (new.integerValue == kBLEstateDidConnected) {
+        [self.myBleTool writeClockToPeripheral:ClockDataGetClock withClockArr:nil];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - GetData
@@ -211,7 +229,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 3;
+        return 1;
     }else {
         SectionModel *model = _sectionArr.firstObject;
         return model.isExpanded ? 3 : 0;
@@ -232,12 +250,6 @@
             
             switch (indexPath.row) {
                 case 0:
-                    
-                    break;
-                case 1:
-                    
-                    break;
-                case 2:
                 {
                     BOOL isRemind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"];
                     if (isRemind) {

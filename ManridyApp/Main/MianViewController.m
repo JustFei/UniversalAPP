@@ -75,14 +75,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _titleArr = @[@"计步",@"心率",@"体温",@"睡眠",@"血压"];
+    _titleArr = @[@"计步",@"心率",@"睡眠"];
     
     self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
     [self createUI];
     
     self.stepView.dateArr = [self getWeekBeginAndEnd:[NSDate date]];
     self.temperatureView.dateArr = self.stepView.dateArr;
-    
     
     [self hiddenFunctionView];
     _currentPage = 0;
@@ -92,17 +91,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    
-    self.myBleTool = [BLETool shareInstance];
-    self.myBleTool.receiveDelegate = self;
-    
-    _userArr = [self.myFmdbTool queryAllUserInfo];
-    self.oneFingerSwipeUp =
-    [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerSwipeUp:)];
-    [self.oneFingerSwipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
-    [self.view addGestureRecognizer:self.oneFingerSwipeUp];
-    
-    
+    @autoreleasepool {
+        self.myBleTool = [BLETool shareInstance];
+        self.myBleTool.receiveDelegate = self;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            _userArr = [self.myFmdbTool queryAllUserInfo];
+        });
+        
+        self.oneFingerSwipeUp =
+        [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerSwipeUp:)];
+        [self.oneFingerSwipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
+        [self.view addGestureRecognizer:self.oneFingerSwipeUp];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -110,24 +110,26 @@
     [super viewDidAppear:YES];
     NSMutableArray *dataArr = [NSMutableArray array];
     
-    for (NSString *dateString in self.stepView.dateArr) {
-//        NSString *dateStr = [dateString stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
-        NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateString];
-        
-        SportModel *model = [[SportModel alloc] init];
-        
-        if (queryArr.count == 0) {
-            [dataArr addObject:model];
-        }else {
-            model = queryArr.firstObject;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (NSString *dateString in self.stepView.dateArr) {
+            NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateString];
+            SportModel *model = [[SportModel alloc] init];
             
-            [dataArr addObject:model];
+            if (queryArr.count == 0) {
+                [dataArr addObject:model];
+            }else {
+                model = queryArr.firstObject;
+                
+                [dataArr addObject:model];
+            }
         }
-    }
-    
     self.stepView.dataArr = dataArr;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.stepView showChartView];
+    });
+    });
+
     
-    [self.stepView showChartView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -257,7 +259,7 @@
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.titleButton setTitle:_titleArr[0] forState:UIControlStateNormal];
     [self.titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.titleButton addTarget:self action:@selector(showTheList) forControlEvents:UIControlEventTouchUpInside];
+//    [self.titleButton addTarget:self action:@selector(showTheList) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = self.titleButton;
     
     //right
@@ -323,34 +325,45 @@
 //motion data
 - (void)receiveMotionDataWithModel:(manridyModel *)manridyModel
 {
-    if (manridyModel.isReciveDataRight) {
-        if (manridyModel.receiveDataType == ReturnModelTypeSportModel) {
-            //保存motion数据到数据库
-            NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-            [dateformatter setDateFormat:@"yyyy/MM/dd"];
-            NSDate *currentDate = [NSDate date];
-            NSString *currentDateString = [dateformatter stringFromDate:currentDate];
-            
-            switch (manridyModel.sportModel.motionType) {
-                case MotionTypeStep:
-                    //对获取的步数信息做操作
-                    break;
-                case MotionTypeStepAndkCal:
-                {
-                    [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
-                    [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@米/%@卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
-                    
-                    if (_userArr.count != 0) {
+    @autoreleasepool {
+        if (manridyModel.isReciveDataRight) {
+            if (manridyModel.receiveDataType == ReturnModelTypeSportModel) {
+                //保存motion数据到数据库
+                NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+                [dateformatter setDateFormat:@"yyyy/MM/dd"];
+                NSDate *currentDate = [NSDate date];
+                NSString *currentDateString = [dateformatter stringFromDate:currentDate];
+                
+                switch (manridyModel.sportModel.motionType) {
+                    case MotionTypeStep:
+                        //对获取的步数信息做操作
+                        break;
+                    case MotionTypeStepAndkCal:
+                    {
+                        [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
+                        [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@米/%@卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
                         
-                        UserInfoModel *model = _userArr.firstObject;
-                        
-                        if (model.stepTarget != 0) {
-                            float progress = (float)manridyModel.sportModel.stepNumber.integerValue / model.stepTarget;
+                        if (_userArr.count != 0) {
                             
-                            if (progress <= 1) {
-                                [self.stepView drawProgress:progress];
-                            }else if (progress >= 1) {
-                                [self.stepView drawProgress:1];
+                            UserInfoModel *model = _userArr.firstObject;
+                            
+                            if (model.stepTarget != 0) {
+                                float progress = (float)manridyModel.sportModel.stepNumber.integerValue / model.stepTarget;
+                                
+                                if (progress <= 1) {
+                                    [self.stepView drawProgress:progress];
+                                }else if (progress >= 1) {
+                                    [self.stepView drawProgress:1];
+                                }
+                            }else {
+                                //如果用户没有设置目标步数的话，就默认为10000步
+                                float progress = (float)manridyModel.sportModel.stepNumber.integerValue / 10000;
+                                
+                                if (progress <= 1) {
+                                    [self.stepView drawProgress:progress];
+                                }else if (progress >= 1) {
+                                    [self.stepView drawProgress:1];
+                                }
                             }
                         }else {
                             //如果用户没有设置目标步数的话，就默认为10000步
@@ -362,61 +375,50 @@
                                 [self.stepView drawProgress:1];
                             }
                         }
-                    }else {
-                        //如果用户没有设置目标步数的话，就默认为10000步
-                        float progress = (float)manridyModel.sportModel.stepNumber.integerValue / 10000;
                         
-                        if (progress <= 1) {
-                            [self.stepView drawProgress:progress];
-                        }else if (progress >= 1) {
-                            [self.stepView drawProgress:1];
-                        }
-                    }
-                    
-                    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                        NSArray *stepArr = [self.myFmdbTool queryStepWithDate:currentDateString];
-                        
-                        if (stepArr.count == 0) {
-                            [self.myFmdbTool insertStepModel:manridyModel.sportModel];
-                            
-                        }else {
-                            [self.myFmdbTool modifyStepWithDate:currentDateString model:manridyModel.sportModel];
-                        }
-                    });
-                }
-                    break;
-                case MotionTypeCountOfData:
-                    //对历史数据个数进行操作
-                    break;
-                case MotionTypeDataInPeripheral:
-                {
-                    if (manridyModel.sportModel.sumDataCount != 0 && manridyModel.sportModel.sumDataCount) {
-                        //对具体的历史数据进行保存操作
-                        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                             NSArray *stepArr = [self.myFmdbTool queryStepWithDate:currentDateString];
                             
                             if (stepArr.count == 0) {
                                 [self.myFmdbTool insertStepModel:manridyModel.sportModel];
+                                
                             }else {
                                 [self.myFmdbTool modifyStepWithDate:currentDateString model:manridyModel.sportModel];
                             }
-                            
-                            if (manridyModel.sportModel.sumDataCount == manridyModel.sportModel.currentDataCount + 1) {
-                                [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
-                            }
-                            
                         });
-                    }else {
-                        [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
                     }
+                        break;
+                    case MotionTypeCountOfData:
+                        //对历史数据个数进行操作
+                        break;
+                    case MotionTypeDataInPeripheral:
+                    {
+                        if (manridyModel.sportModel.sumDataCount != 0 && manridyModel.sportModel.sumDataCount) {
+                            //对具体的历史数据进行保存操作
+                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                                NSArray *stepArr = [self.myFmdbTool queryStepWithDate:currentDateString];
+                                
+                                if (stepArr.count == 0) {
+                                    [self.myFmdbTool insertStepModel:manridyModel.sportModel];
+                                }else {
+                                    [self.myFmdbTool modifyStepWithDate:currentDateString model:manridyModel.sportModel];
+                                }
+                                
+                                if (manridyModel.sportModel.sumDataCount == manridyModel.sportModel.currentDataCount + 1) {
+                                    [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
+                                }
+                                
+                            });
+                        }else {
+                            [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
+                        }
+                    }
+                        break;
+                        
+                    default:
+                        break;
                 }
-                    break;
-                    
-                default:
-                    break;
             }
-            
-            
         }
     }
 }
@@ -451,39 +453,10 @@
                     
                     [self.myFmdbTool insertHeartRateModel:manridyModel.heartRateModel];
                 }
-                NSArray *heartRateArr = [self.myFmdbTool queryHeartRateWithDate:nil];
-                
-                if (heartRateArr.count >= 7) {
-                    for (NSInteger index = heartRateArr.count - 7; index < heartRateArr.count; index ++) {
-                        HeartRateModel *model = heartRateArr[index];
-                        NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
-                        [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
-                        [self.heartRateView.dateArr addObject:mutableTime];
-                        [self.heartRateView.dataArr addObject:model.heartRate];
-                    }
-                }else if (heartRateArr.count < 7) {
-                    for (NSInteger index = 0; index < heartRateArr.count; index ++) {
-                        HeartRateModel *model = heartRateArr[index];
-                        
-                        NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
-                        [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
-                        [self.heartRateView.dateArr addObject:mutableTime];
-                        [self.heartRateView.dataArr addObject:model.heartRate];
-                    }
-                }else if (heartRateArr.count == 0) {
-                    
-                    for (NSString *dateString in self.stepView.dateArr) {
-                        NSString *monthStr = [dateString substringWithRange:NSMakeRange(5, 2)];
-                        NSString *dayStr = [dateString substringWithRange:NSMakeRange(8, 2)];
-                        
-                        [self.heartRateView.dateArr addObject:[NSString stringWithFormat:@"%@/%@",monthStr ,dayStr]];
-                    }
-                    
-                    for (int i = 0; i < 7; i ++) {
-                        [self.heartRateView.dataArr addObject:@"0"];
-                    }
-                }
+                [self queryHeartDataAndShow];
             }else if (manridyModel.heartRateModel.heartRateState == HeartRateDataLastData) {
+                [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
+#if 0
                 if (self.heartRateView.dataArr.count == 7) {
                     //先移除掉前面的第一个数据
                     [self.heartRateView.dataArr removeObjectAtIndex:0];
@@ -496,35 +469,8 @@
                     [self.heartRateView.dateArr addObject:mutableTime];
                     [self.heartRateView.dataArr addObject:manridyModel.heartRateModel.heartRate];
                 }
+#endif
             }
-            NSString *lastHeartRate = self.heartRateView.dataArr.lastObject;
-                [self.heartRateView.heartRateLabel setText:lastHeartRate];
-                
-                NSInteger heart = lastHeartRate.integerValue;
-                
-                if (heart < 60) {
-                    self.heartRateView.state1.backgroundColor = [UIColor redColor];
-                    self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
-                    self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
-                    self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
-                    
-                    self.heartRateView.heartStateLabel.text = @"偏低";
-                }else if (heart >= 60 && heart <= 100) {
-                    self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
-                    self.heartRateView.state2.backgroundColor = [UIColor greenColor];
-                    self.heartRateView.state3.backgroundColor = [UIColor greenColor];
-                    self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
-                    
-                    self.heartRateView.heartStateLabel.text = @"正常";
-                }else {
-                    self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
-                    self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
-                    self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
-                    self.heartRateView.state4.backgroundColor = [UIColor redColor];
-                    
-                    self.heartRateView.heartStateLabel.text = @"偏高";
-                }
-            [self.heartRateView showChartView];
         }
     }
 }
@@ -609,7 +555,7 @@
                 }
             }
         }else {
-            //如果用户没有设置目标步数的话，就默认为10000步
+            //如果用户没有设置目标睡眠的话，就默认为8h
             float progress = sum / 8;
             
             if (progress <= 1) {
@@ -661,6 +607,76 @@
     [self.sleepView.deepDataArr removeAllObjects];
 }
 
+- (void)queryHeartDataAndShow
+{
+    NSArray *heartRateArr = [self.myFmdbTool queryHeartRateWithDate:nil];
+    
+    [self.heartRateView.dateArr removeAllObjects];
+    [self.heartRateView.dataArr removeAllObjects];
+    
+    if (heartRateArr.count >= 7) {
+        for (NSInteger index = heartRateArr.count - 7; index < heartRateArr.count; index ++) {
+            HeartRateModel *model = heartRateArr[index];
+            NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
+            [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
+            [self.heartRateView.dateArr addObject:mutableTime];
+            [self.heartRateView.dataArr addObject:model.heartRate];
+        }
+    }else if (heartRateArr.count < 7) {
+        for (NSInteger index = 0; index < heartRateArr.count; index ++) {
+            HeartRateModel *model = heartRateArr[index];
+            
+            NSMutableString *mutableTime = [NSMutableString stringWithString:model.time];
+            [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
+            [self.heartRateView.dateArr addObject:mutableTime];
+            [self.heartRateView.dataArr addObject:model.heartRate];
+        }
+    }else if (heartRateArr.count == 0) {
+        
+        for (NSString *dateString in self.stepView.dateArr) {
+            NSString *monthStr = [dateString substringWithRange:NSMakeRange(5, 2)];
+            NSString *dayStr = [dateString substringWithRange:NSMakeRange(8, 2)];
+            
+            [self.heartRateView.dateArr addObject:[NSString stringWithFormat:@"%@/%@",monthStr ,dayStr]];
+        }
+        
+        for (int i = 0; i < 7; i ++) {
+            [self.heartRateView.dataArr addObject:@"0"];
+        }
+    }
+    NSString *lastHeartRate = self.heartRateView.dataArr.lastObject;
+    [self.heartRateView.heartRateLabel setText:lastHeartRate];
+    
+    NSInteger heart = lastHeartRate.integerValue;
+    double doubleHeart = lastHeartRate.doubleValue;
+    [self.heartRateView drawProgress:doubleHeart];
+    
+    if (heart < 60) {
+        self.heartRateView.state1.backgroundColor = [UIColor redColor];
+        self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
+        self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
+        self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
+        
+        self.heartRateView.heartStateLabel.text = @"偏低";
+    }else if (heart >= 60 && heart <= 100) {
+        self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
+        self.heartRateView.state2.backgroundColor = [UIColor greenColor];
+        self.heartRateView.state3.backgroundColor = [UIColor greenColor];
+        self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
+        
+        self.heartRateView.heartStateLabel.text = @"正常";
+    }else {
+        self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
+        self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
+        self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
+        self.heartRateView.state4.backgroundColor = [UIColor redColor];
+        
+        self.heartRateView.heartStateLabel.text = @"偏高";
+    }
+    
+    [self.heartRateView showChartView];
+}
+
 
 #pragma mark - Action
 - (void)showHistoryView
@@ -679,7 +695,7 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-        case 3:
+        case 2:
         {
             SleepHistoryViewController *vc = [[SleepHistoryViewController alloc] initWithNibName:@"SleepHistoryViewController" bundle:nil];
             [self.navigationController pushViewController:vc animated:YES];
@@ -713,12 +729,12 @@
             [self presentViewController:vc animated:YES completion:nil];
         }
             break;
-        case 2:
+        case 3:
         {
             //体温
         }
             break;
-        case 3:
+        case 2:
         {
             SleepHistoryViewController *vc = [[SleepHistoryViewController alloc] initWithNibName:@"SleepHistoryViewController" bundle:nil];
             [self presentViewController:vc animated:YES completion:nil];
@@ -798,37 +814,35 @@
         switch (self.pageControl.currentPage) {
             case 0:
             {
-                _currentPage = 0;
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    if (self.pageControl.currentPage == 0) {
-                        [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
-                    }
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
                 });
+                
             }
                 break;
             case 1:
             {
                 _currentPage = 1;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(100 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
-                    if (self.pageControl.currentPage == 1) {
-                        [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
-                        [self.heartRateView.dateArr removeAllObjects];
-                        [self.heartRateView.dataArr removeAllObjects];
-                    }
+                        if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                            [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
+                        }else {
+                            [self queryHeartDataAndShow];
+                        }
                 });
             }
                 break;
+//            case 2:
+//            {
+//                _currentPage = 2;
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    if (self.pageControl.currentPage == 2) {
+//                        //读取当前体温
+//                    }
+//                });
+//            }
+//                break;
             case 2:
-            {
-                _currentPage = 2;
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    if (self.pageControl.currentPage == 2) {
-                        //读取当前体温
-                    }
-                });
-            }
-                break;
-            case 3:
             {
                 _currentPage = 3;
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
@@ -842,16 +856,16 @@
                 }
             }
                 break;
-            case 4:
-            {
-                _currentPage = 4;
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    if (self.pageControl.currentPage == 4) {
-                        //读取血压数据
-                    }
-                });
-            }
-                break;
+//            case 4:
+//            {
+//                _currentPage = 4;
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    if (self.pageControl.currentPage == 4) {
+//                        //读取血压数据
+//                    }
+//                });
+//            }
+//                break;
                 
             default:
                 break;
@@ -883,7 +897,7 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesScrollViewAction)];
         [view addGestureRecognizer:tap];
         
-        view.contentSize = CGSizeMake(5 * WIDTH, 0);
+        view.contentSize = CGSizeMake(3 * WIDTH, 0);
         view.pagingEnabled = YES;
         view.delegate = self;
         view.bounces = NO;
@@ -894,14 +908,14 @@
         self.heartRateView = [[HeartRateContentView alloc] initWithFrame:CGRectMake(WIDTH, 0, WIDTH, HEIGHT)];
         [view addSubview:self.heartRateView];
         
-        self.temperatureView = [[TemperatureContentView alloc] initWithFrame:CGRectMake(2 * WIDTH, 0, WIDTH, HEIGHT)];
-        [view addSubview:self.temperatureView];
+//        self.temperatureView = [[TemperatureContentView alloc] initWithFrame:CGRectMake(2 * WIDTH, 0, WIDTH, HEIGHT)];
+//        [view addSubview:self.temperatureView];
         
-        self.sleepView = [[SleepContentView alloc] initWithFrame:CGRectMake(3 * WIDTH, 0, WIDTH, HEIGHT)];
+        self.sleepView = [[SleepContentView alloc] initWithFrame:CGRectMake(2 * WIDTH, 0, WIDTH, HEIGHT)];
         [view addSubview:self.sleepView];
         
-        self.bloodPressureView = [[BloodPressureContentView alloc] initWithFrame:CGRectMake(4 * WIDTH, 0, WIDTH, HEIGHT)];
-        [view addSubview:self.bloodPressureView];
+//        self.bloodPressureView = [[BloodPressureContentView alloc] initWithFrame:CGRectMake(4 * WIDTH, 0, WIDTH, HEIGHT)];
+//        [view addSubview:self.bloodPressureView];
         
         [self.view addSubview:view];
         _backGroundView = view;
@@ -944,7 +958,7 @@
 {
     if (!_pageControl) {
         UIPageControl *view = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 338, self.view.frame.size.width, 37)];
-        view.numberOfPages = 5;
+        view.numberOfPages = 3;
         view.currentPage = 0;
         view.enabled = NO;
         
