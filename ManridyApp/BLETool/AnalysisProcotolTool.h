@@ -25,7 +25,7 @@
 - (manridyModel *)analysisSetTimeData:(NSData *)data WithHeadStr:(NSString *)head;
 
 //解析闹钟数据 (01|81)
-//- (manridyModel *)analysisClockData:(NSData *)data WithHeadStr:(NSString *)head;
+- (manridyModel *)analysisClockData:(NSData *)data WithHeadStr:(NSString *)head;
 
 //解析获取运动信息的数据（03|83）
 - (manridyModel *)analysisGetSportData:(NSData *)data WithHeadStr:(NSString *)head;

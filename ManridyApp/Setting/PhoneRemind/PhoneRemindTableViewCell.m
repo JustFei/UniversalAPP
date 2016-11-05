@@ -21,7 +21,11 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)changeState:(UISwitch *)sender {
+- (IBAction)changeState:(UISwitch *)sender
+{
+    if (self._clockSwitchValueChangeBlock) {
+        self._clockSwitchValueChangeBlock();
+    }
 }
 
 @end

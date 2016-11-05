@@ -206,6 +206,7 @@
 		10FF5CFD1DC35F2E0059FE00 /* all_next_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFA1DC35F2E0059FE00 /* all_next_icon.png */; };
 		10FF5CFE1DC35F2E0059FE00 /* all_next_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFB1DC35F2E0059FE00 /* all_next_icon@2x.png */; };
 		10FF5CFF1DC35F2E0059FE00 /* all_next_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFC1DC35F2E0059FE00 /* all_next_icon@3x.png */; };
+		9C15BB501DCD79A900A049E9 /* ClockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15BB4F1DCD79A900A049E9 /* ClockModel.m */; };
 		EC8F9D09241EC54AC7AD2BEE /* libPods-ManridyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9871DE041C8D7829FF5269 /* libPods-ManridyApp.a */; };
 /* End PBXBuildFile section */
 
@@ -455,6 +456,8 @@
 		10FF5CFC1DC35F2E0059FE00 /* all_next_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_next_icon@3x.png"; sourceTree = "<group>"; };
 		1102E622F505968B236A5DC2 /* Pods-ManridyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManridyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ManridyApp/Pods-ManridyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4E1494B2899EFE9DB4EFAD91 /* Pods-ManridyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManridyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ManridyApp/Pods-ManridyApp.release.xcconfig"; sourceTree = "<group>"; };
+		9C15BB4E1DCD79A900A049E9 /* ClockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockModel.h; sourceTree = "<group>"; };
+		9C15BB4F1DCD79A900A049E9 /* ClockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockModel.m; sourceTree = "<group>"; };
 		FA9871DE041C8D7829FF5269 /* libPods-ManridyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ManridyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -520,6 +523,8 @@
 		102474EA1DAA41D800F70E4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9C15BB4E1DCD79A900A049E9 /* ClockModel.h */,
+				9C15BB4F1DCD79A900A049E9 /* ClockModel.m */,
 				102474EB1DAA41E000F70E4F /* HeartRateModel.h */,
 				102474EC1DAA41E000F70E4F /* HeartRateModel.m */,
 				102474ED1DAA41E000F70E4F /* manridyModel.h */,
@@ -1278,6 +1283,7 @@
 				10FF5CDA1DC33BEA0059FE00 /* PhoneRemindTableViewCell.m in Sources */,
 				104A70641D9B724D00CC73F5 /* SettingContentView.m in Sources */,
 				103E4BFC1DB0C77E0051BF03 /* UserListViewController.m in Sources */,
+				9C15BB501DCD79A900A049E9 /* ClockModel.m in Sources */,
 				102474FD1DAA41E000F70E4F /* SportModel.m in Sources */,
 				10826A531DBA12600031DB83 /* DropdownMenuView.m in Sources */,
 				109FBB9B1DAA18FB008FF0D3 /* FMDBTool.m in Sources */,

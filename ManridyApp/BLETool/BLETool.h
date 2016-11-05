@@ -158,6 +158,9 @@ typedef enum{
 //set time
 - (void)writeTimeToPeripheral:(NSDate *)currentDate;
 
+//set clock
+- (void)writeClockToPeripheral:(ClockData)state withClockArr:(NSMutableArray *)clockArr;
+
 //get motionInfo
 - (void)writeMotionRequestToPeripheralWithMotionType:(MotionType)type;
 

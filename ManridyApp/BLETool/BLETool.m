@@ -14,6 +14,7 @@
 #import "AnalysisProcotolTool.h"
 #import "AllBleFmdb.h"
 #import "AppDelegate.h"
+#import "ClockModel.h"
 #import <UserNotifications/UserNotifications.h>
 
 #define kServiceUUID              @"F000EFE0-0000-4000-0000-00000000B000"
@@ -150,9 +151,8 @@ static BLETool *bleTool = nil;
     }
 }
 
-#if 0
 //set clock
-- (void)writeClockToPeripheral:(ClockData)state withModel:(manridyModel *)model
+- (void)writeClockToPeripheral:(ClockData)state withClockArr:(NSMutableArray *)clockArr
 {
     if (state == ClockDataSetClock) {
         NSLog(@"设置闹钟");
@@ -162,8 +162,8 @@ static BLETool *bleTool = nil;
         
         for (int index = 0; index < 5; index ++) {
             
-            if (index < model.clockModelArr.count) {
-                ClockModel *clockModel = model.clockModelArr[index];
+            if (index < clockArr.count) {
+                ClockModel *clockModel = clockArr[index];
                 NSString *state;
                 if (clockModel.isOpen) {
                     state = @"01";
@@ -205,7 +205,6 @@ static BLETool *bleTool = nil;
         }
     }
 }
-#endif
 
 //get motionInfo
 - (void)writeMotionRequestToPeripheralWithMotionType:(MotionType)type
@@ -480,49 +479,53 @@ static BLETool *bleTool = nil;
         
         if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"]) {
             BOOL isFindMyPeripheral = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"];
-            if (isFindMyPeripheral) {
-                // 1、创建通知内容，注：这里得用可变类型的UNMutableNotificationContent，否则内容的属性是只读的
-                UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-                // 标题
-                content.title = @"手环丢失通知";
-                // 次标题
-                content.subtitle = @"注意！您的手环已经处于非连接状态，可能已经丢失！";
-                // 内容
-                NSDate *date = [NSDate date];
-                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-                formatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
-                NSString *dateStr = [formatter stringFromDate:date];
-                content.body = [NSString stringWithFormat:@"注意！您的手环已于%@离开可连接范围，可能丢失！请注意！",dateStr];
-                // 通知的提示声音，这里用的默认的声音
-                content.sound = [UNNotificationSound defaultSound];
-                
-                //        NSURL *imageUrl = [[NSBundle mainBundle] URLForResource:@"all_next_icon" withExtension:@"png"];
-                //        UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:@"imageIndetifier" URL:imageUrl options:nil error:nil];
-                //
-                //        // 附件 可以是音频、图片、视频 这里是一张图片
-                //        content.attachments = @[attachment];
-                
-                // 标识符
-                content.categoryIdentifier = @"categoryIndentifier";
-                
-                // 2、创建通知触发
-                /* 触发器分三种：
-                 UNTimeIntervalNotificationTrigger : 在一定时间后触发，如果设置重复的话，timeInterval不能小于60
-                 UNCalendarNotificationTrigger : 在某天某时触发，可重复
-                 UNLocationNotificationTrigger : 进入或离开某个地理区域时触发
-                 */
-                UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
-                
-                // 3、创建通知请求
-                UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:@"KFGroupNotification" content:content trigger:trigger];
-                
-                // 4、将请求加入通知中心
-                [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notificationRequest withCompletionHandler:^(NSError * _Nullable error) {
-                    if (error == nil) {
-                        NSLog(@"已成功加推送%@",notificationRequest.identifier);
-                    }
-                }];
-            }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (isFindMyPeripheral && self.connectState == kBLEstateDisConnected) {
+                    // 1、创建通知内容，注：这里得用可变类型的UNMutableNotificationContent，否则内容的属性是只读的
+                    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+                    // 标题
+                    content.title = @"手环丢失通知";
+                    // 次标题
+                    content.subtitle = @"注意！您的手环已经处于非连接状态，可能已经丢失！";
+                    // 内容
+                    NSDate *date = [NSDate date];
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    formatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
+                    NSString *dateStr = [formatter stringFromDate:date];
+                    content.body = [NSString stringWithFormat:@"注意！您的手环已于%@离开可连接范围，可能丢失！请注意！",dateStr];
+                    // 通知的提示声音，这里用的默认的声音
+                    content.sound = [UNNotificationSound defaultSound];
+                    
+                    //        NSURL *imageUrl = [[NSBundle mainBundle] URLForResource:@"all_next_icon" withExtension:@"png"];
+                    //        UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:@"imageIndetifier" URL:imageUrl options:nil error:nil];
+                    //
+                    //        // 附件 可以是音频、图片、视频 这里是一张图片
+                    //        content.attachments = @[attachment];
+                    
+                    // 标识符
+                    content.categoryIdentifier = @"categoryIndentifier";
+                    
+                    // 2、创建通知触发
+                    /* 触发器分三种：
+                     UNTimeIntervalNotificationTrigger : 在一定时间后触发，如果设置重复的话，timeInterval不能小于60
+                     UNCalendarNotificationTrigger : 在某天某时触发，可重复
+                     UNLocationNotificationTrigger : 进入或离开某个地理区域时触发
+                     */
+                    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+                    
+                    // 3、创建通知请求
+                    UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:@"KFGroupNotification" content:content trigger:trigger];
+                    
+                    // 4、将请求加入通知中心
+                    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notificationRequest withCompletionHandler:^(NSError * _Nullable error) {
+                        if (error == nil) {
+                            NSLog(@"已成功加推送%@",notificationRequest.identifier);
+                        }
+                    }];
+                }
+            });
+            
+            
         }
         
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -626,9 +629,9 @@ static BLETool *bleTool = nil;
             
         }else if ([headStr isEqualToString:@"01"] || [headStr isEqualToString:@"81"]) {
             //解析闹钟数据
-//            manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisClockData:value WithHeadStr:headStr];
+            manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisClockData:value WithHeadStr:headStr];
             if ([self.receiveDelegate respondsToSelector:@selector(receiveSetClockDataWithModel:)]) {
-//                [self.receiveDelegate receiveSetClockDataWithModel:model];
+                [self.receiveDelegate receiveSetClockDataWithModel:model];
             }
 
         }else if ([headStr isEqualToString:@"03"] || [headStr isEqualToString:@"83"]) {

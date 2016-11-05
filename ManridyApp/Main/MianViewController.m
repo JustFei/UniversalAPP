@@ -145,7 +145,6 @@
 - (void)showFunctionView
 {
     [self.stepView showChartView];
-    self.stepView.weekStatisticsLabel.hidden = NO;
     self.stepView.mileageAndkCalLabel.hidden = NO;
     self.stepView.todayLabel.hidden = NO;
     
@@ -167,7 +166,6 @@
     }
     
     //为了方便测试，可以将滚动调为YES
-    self.stepView.weekStatisticsLabel.hidden = YES;
     self.stepView.mileageAndkCalLabel.hidden = YES;
     self.stepView.todayLabel.hidden = YES;
     

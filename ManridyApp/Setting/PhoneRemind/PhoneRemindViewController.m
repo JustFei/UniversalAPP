@@ -10,6 +10,9 @@
 #import "PhoneRemindTableViewCell.h"
 #import "SectionModel.h"
 #import "PhoneRemindView.h"
+#import "ClockModel.h"
+#import "FMDBTool.h"
+#import "BLETool.h"
 
 
 @interface PhoneRemindViewController () <UITableViewDelegate ,UITableViewDataSource ,UIPickerViewDelegate ,UIPickerViewDataSource >
@@ -21,6 +24,7 @@
     
     NSMutableArray *_hourArr;
     NSMutableArray *_minArr;
+    NSMutableArray *_clockTimeArr;
 }
 @property (nonatomic ,weak) UITableView *remindTableView;
 
@@ -28,10 +32,15 @@
 
 @property (nonatomic ,weak) UIButton *selectButton;
 
+@property (nonatomic ,strong) BLETool *myBleTool;
+
+@property (nonatomic ,strong) FMDBTool *myFmdbTool;
+
 @end
 
 @implementation PhoneRemindViewController
 
+#pragma mark - lifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -64,6 +73,30 @@
     self.remindTableView.backgroundColor = [UIColor clearColor];
     self.remindTableView.tableHeaderView = nil;
     self.remindTableView.tableFooterView = nil;
+    _clockTimeArr = [NSMutableArray array];
+    
+    _clockTimeArr = [NSMutableArray arrayWithArray:[self.myFmdbTool queryClockData]];
+    if (_clockTimeArr.count == 0) {
+        for (int i = 0; i < 3; i ++) {
+            ClockModel *model = [[ClockModel alloc] init];
+            model.time = @"08:00";
+            model.isOpen = NO;
+            [_clockTimeArr addObject:model];
+        }
+    }
+    if (self.myBleTool.connectState == kBLEstateDidConnected) {
+        [self.myBleTool writeClockToPeripheral:ClockDataGetClock withClockArr:nil];
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    self.myBleTool.receiveDelegate = nil;
+    [self.myFmdbTool deleteClockData:4];
+    
+    for (ClockModel *model in _clockTimeArr) {
+        [self.myFmdbTool insertClockModel:model];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -107,6 +140,7 @@
     if (!self.timePicker.hidden) {
         self.timePicker.hidden = YES;
     }
+    [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:_clockTimeArr];
 }
 
 - (void)findMyPeripheral:(UISwitch *)sender
@@ -163,6 +197,9 @@
     }
     
     [self.selectButton setTitle:[NSString stringWithFormat:@"%@:%@",hour ,min] forState:UIControlStateNormal];
+    ClockModel *model = _clockTimeArr[self.selectButton.tag];
+    model.time = [NSString stringWithFormat:@"%@:%@",hour ,min];
+    [_clockTimeArr replaceObjectAtIndex:self.selectButton.tag withObject:model];
 }
 
 #pragma mark - UITableViewDelegate && UITableViewDataSource
@@ -220,10 +257,37 @@
         case 1:
         {
             cell.functionName.text = _clockArr[indexPath.row];
-            [cell.timeButton setTitle:@"08:00" forState:UIControlStateNormal];
-            [cell.timeSwitch setOn:NO];
+            if (_clockTimeArr.count == 0) {
+                [cell.timeButton setTitle:@"08:00" forState:UIControlStateNormal];
+                [cell.timeSwitch setOn:NO];
+                [cell.timeButton setTitleColor:cell.timeSwitch.on ? [UIColor whiteColor] : [UIColor grayColor] forState:UIControlStateNormal];
+            }else {
+                ClockModel *model = _clockTimeArr[indexPath.row];
+                [cell.timeButton setTitle:model.time forState:UIControlStateNormal];
+                [cell.timeSwitch setOn:model.isOpen];
+                [cell.timeButton setTitleColor:cell.timeSwitch.on ? [UIColor whiteColor] : [UIColor grayColor] forState:UIControlStateNormal];
+            }
             cell.timeButton.tag = indexPath.row;
             [cell.timeButton addTarget:self action:@selector(presentPickerView:) forControlEvents:UIControlEventTouchUpInside];
+            cell.timeButton.enabled = cell.timeSwitch.on;
+            __weak typeof(cell) weakCell = cell;
+            __weak typeof(self) weakSelf = self;
+            
+            cell._clockSwitchValueChangeBlock =^{
+                if (weakSelf.myBleTool.connectState == kBLEstateDidConnected) {
+                    ClockModel *model = _clockTimeArr[indexPath.row];
+                    model.isOpen = weakCell.timeSwitch.on;
+                    [_clockTimeArr replaceObjectAtIndex:indexPath.row withObject:model];
+                    [weakSelf.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:_clockTimeArr];
+                }else {
+                    UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"请连接上设备后再设置" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *ac = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [weakCell.timeSwitch setOn:!weakCell.timeSwitch.on];
+                    }];
+                    [vc addAction:ac];
+                    [weakSelf presentViewController:vc animated:YES completion:nil];
+                }
+            };
         }
             break;
             
@@ -252,7 +316,7 @@
         return nil;
     }else {
         PhoneRemindView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"phoneHead"];
-        view.backgroundColor = [UIColor redColor];
+//        view.backgroundColor = [UIColor redColor];
         
         SectionModel *sectionModel = _sectionArr.firstObject;
         view.model = sectionModel;
@@ -263,6 +327,13 @@
         
         return view;
     }
+}
+
+#pragma mark - receiveDelegate
+- (void)receiveSetClockDataWithModel:(manridyModel *)manridyModel
+{
+    _clockTimeArr = manridyModel.clockModelArr;
+    [self.remindTableView reloadData];
 }
 
 #pragma mark - 懒加载
@@ -302,6 +373,25 @@
     }
     
     return _timePicker;
+}
+
+- (FMDBTool *)myFmdbTool
+{
+    if (!_myFmdbTool) {
+        _myFmdbTool = [[FMDBTool alloc] initWithPath:@"UserList"];
+    }
+    
+    return _myFmdbTool;
+}
+
+- (BLETool *)myBleTool
+{
+    if (!_myBleTool) {
+        _myBleTool = [BLETool shareInstance];
+        _myBleTool.receiveDelegate = self;
+    }
+    
+    return _myBleTool;
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "FMDBTool.h"
-//#import "StepDataModel.h"
+#import "ClockModel.h"
 #import "SportModel.h"
 #import "HeartRateModel.h"
 #import "UserInfoModel.h"
@@ -41,6 +41,9 @@ static FMDatabase *_fmdb;
         
         //UserInfoData
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists UserInfoData(id integer primary key, username text, gender text, age integer, height integer, weight integer, steplength integer, steptarget integer, sleeptarget integer);"]];
+        
+        //ClockData
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists ClockData(id integer primary key, time text, isopen bool);"]];
 
         //MotionData
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists MotionData(id integer primary key, date text, step text, kCal text, mileage text, currentDataCount integer, sumDataCount integer);"]];
@@ -54,6 +57,78 @@ static FMDatabase *_fmdb;
     }
     
     return self;
+}
+
+#pragma mark - ClockData
+- (BOOL)insertClockModel:(ClockModel *)model
+{
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO ClockData(time, isopen) VALUES ('%@', '%d');", model.time, model.isOpen];
+    
+    BOOL result = [_fmdb executeUpdate:insertSql];
+    if (result) {
+        NSLog(@"插入clockData成功");
+    }else {
+        NSLog(@"插入clockData失败");
+    }
+    return result;
+}
+
+- (NSMutableArray *)queryClockData
+{
+    NSString *queryString = [NSString stringWithFormat:@"SELECT * FROM ClockData;"];
+    
+    NSMutableArray *arrM = [NSMutableArray array];
+    FMResultSet *set = [_fmdb executeQuery:queryString];
+    
+    while ([set next]) {
+        
+        ClockModel *model = [[ClockModel alloc] init];
+        
+        model.time = [set stringForColumn:@"time"];
+        model.isOpen = [set boolForColumn:@"isopen"];
+        model.ID = [set intForColumn:@"id"];
+        
+        NSLog(@"闹钟时间 == %@，是否打开 == %d, id == %ld",model.time , model.isOpen , (long)model.ID);
+        
+        [arrM addObject:model];
+    }
+    
+    NSLog(@"查询成功");
+    return arrM;
+}
+
+- (BOOL)deleteClockData:(NSInteger)deleteSql
+{
+    BOOL result;
+    
+    if (deleteSql == 4) {
+        result =  [_fmdb executeUpdate:@"DELETE FROM ClockData"];
+    }else {
+        NSString *deleteSqlStr = [NSString stringWithFormat:@"DELETE FROM ClockData WHERE id = ?"];
+        
+        result = [_fmdb executeUpdate:deleteSqlStr,[NSNumber numberWithInteger:deleteSql]];
+    }
+    if (result) {
+        NSLog(@"删除clockData成功");
+    }else {
+        NSLog(@"删除clockData失败");
+    }
+    
+    return result;
+}
+
+- (BOOL)modifyClockModel:(ClockModel *)model withModifyID:(NSInteger)ID
+{
+    NSString *modifySqlTime = [NSString stringWithFormat:@"update ClockData set time = ? , isopen = ? where id = ?" ];
+    BOOL result = result = [_fmdb executeUpdate:modifySqlTime, model.time, [NSNumber numberWithBool:model.isOpen], [NSNumber numberWithInteger:ID]];
+    
+    if (result) {
+        NSLog(@"修改clockData成功");
+    }else {
+        NSLog(@"修改clockData失败");
+    }
+    
+    return result;
 }
 
 #pragma mark - StepData

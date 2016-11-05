@@ -13,6 +13,7 @@
 @class HeartRateModel;
 @class UserInfoModel;
 @class SleepModel;
+@class ClockModel;
 
 typedef enum : NSUInteger {
     SQLTypeStep = 0,
@@ -26,6 +27,15 @@ typedef enum : NSUInteger {
 @interface FMDBTool : NSObject
 
 - (instancetype)initWithPath:(NSString *)path;
+
+#pragma mark - ClockData
+- (BOOL)insertClockModel:(ClockModel *)model;
+
+- (NSMutableArray *)queryClockData;
+
+- (BOOL)deleteClockData:(NSInteger)deleteSql;
+
+- (BOOL)modifyClockModel:(ClockModel *)model withModifyID:(NSInteger)ID;
 
 #pragma mark - StepData 
 //插入模型数据

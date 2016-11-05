@@ -124,7 +124,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 
-#if 0
+
 #pragma mark 解析闹钟数据 (01|81)
 - (manridyModel *)analysisClockData:(NSData *)data WithHeadStr:(NSString *)head
 {
@@ -155,7 +155,6 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
                 [model.clockModelArr addObject:clockModel];
             }
         }
-        NSLog(@"闹钟的数据为 == %@",model.clockModelArr);
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
     }else if ([head isEqualToString:@"81"]) {
         model.isReciveDataRight = ResponsEcorrectnessDataFail;
@@ -164,7 +163,6 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 
-#endif
 #pragma mark 解析获取运动信息的数据（03|83）
 - (manridyModel *)analysisGetSportData:(NSData *)data WithHeadStr:(NSString *)head
 {

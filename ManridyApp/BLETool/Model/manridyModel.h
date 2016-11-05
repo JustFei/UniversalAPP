@@ -12,6 +12,7 @@
 #import "UserInfoModel.h"
 #import "HeartRateModel.h"
 #import "SleepModel.h"
+#import "ClockModel.h"
 #import "SportTargetModel.h"
 
 typedef enum : NSUInteger {
