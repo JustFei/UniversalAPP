@@ -79,6 +79,10 @@
     
     self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
     [self createUI];
+
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     self.stepView.dateArr = [self getWeekBeginAndEnd:[NSDate date]];
     self.temperatureView.dateArr = self.stepView.dateArr;
@@ -158,6 +162,7 @@
 
 - (void)hiddenFunctionView
 {
+    @autoreleasepool {
     int currentPage = floor((self.backGroundView.contentOffset.x - self.view.frame.size.width / 2) / self.view.frame.size.width) + 1;
     
     if (currentPage != 0) {
@@ -185,10 +190,12 @@
         [self.stepView.stepLabel setText:@"未绑定设备，请前往设置绑定设备"];
         [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:11]];
     }
+    }
 }
 
 - (void)writeData
 {
+    @autoreleasepool {
     switch (self.pageControl.currentPage) {
         case 0:
         {
@@ -241,10 +248,12 @@
         default:
             break;
     }
+    }
 }
 
 - (void)createUI
 {
+    @autoreleasepool {
     //left
     UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(16, 17, 20, 20)];
 //    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -277,10 +286,12 @@
     self.pageControl.tintColor = [UIColor clearColor];
     
     self.menuView.backgroundColor = [UIColor blueColor];
+    }
 }
 
 - (NSMutableArray *)getWeekBeginAndEnd:(NSDate *)newDate
 {
+    @autoreleasepool {
     //获取当前周的开始和结束日期
     int currentWeek = 0;
     NSTimeInterval appendDay = 24 * 60 * 60;
@@ -311,7 +322,7 @@
     NSArray *dateArr = @[[myDateFormatter stringFromDate:beginDate],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+appendDay]],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+ appendDay * 2]],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+ appendDay * 3]],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+ appendDay * 4]],[myDateFormatter stringFromDate:[beginDate dateByAddingTimeInterval:+ appendDay * 5]],[myDateFormatter stringFromDate:endDate]];
     
     return [NSMutableArray arrayWithArray:dateArr];
-    
+    }
 }
 
 #pragma mark - BleReceiveDelegate
@@ -438,6 +449,7 @@
 //get heart rate data
 - (void)receiveHeartRateDataWithModel:(manridyModel *)manridyModel
 {
+    @autoreleasepool {
     if (manridyModel.isReciveDataRight) {
         if (manridyModel.receiveDataType == ReturnModelTypeHeartRateModel) {
             
@@ -473,11 +485,13 @@
             }
         }
     }
+    }
 }
 
 //get sleepInfo
 - (void)receiveSleepInfoWithModel:(manridyModel *)manridyModel
 {
+    @autoreleasepool {
     if (manridyModel.isReciveDataRight) {
         if (manridyModel.receiveDataType == ReturnModelTypeSleepModel) {
             
@@ -508,11 +522,13 @@
             }
         }
     }
+    }
 }
 
 #pragma mark - DataBase
 - (void)querySleepDataBaseWithDateString:(NSString *)currentDateString
 {
+    @autoreleasepool {
     //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
     NSArray *sleepDataArr = [self.myFmdbTool querySleepWithDate:currentDateString];
     
@@ -547,6 +563,15 @@
             
             if (model.sleepTarget != 0) {
                 float progress = sum / model.sleepTarget;
+                
+                if (progress <= 1) {
+                    [self.sleepView drawProgress:progress];
+                }else if (progress >= 1) {
+                    [self.sleepView drawProgress:1];
+                }
+            }else {
+                //如果用户没有设置目标睡眠的话，就默认为8h
+                float progress = sum / 8;
                 
                 if (progress <= 1) {
                     [self.sleepView drawProgress:progress];
@@ -605,10 +630,12 @@
     }
     [self.sleepView.sumDataArr removeAllObjects];
     [self.sleepView.deepDataArr removeAllObjects];
+    }
 }
 
 - (void)queryHeartDataAndShow
 {
+    @autoreleasepool {
     NSArray *heartRateArr = [self.myFmdbTool queryHeartRateWithDate:nil];
     
     [self.heartRateView.dateArr removeAllObjects];
@@ -645,7 +672,12 @@
         }
     }
     NSString *lastHeartRate = self.heartRateView.dataArr.lastObject;
-    [self.heartRateView.heartRateLabel setText:lastHeartRate];
+        if (lastHeartRate) {
+            [self.heartRateView.heartRateLabel setText:lastHeartRate];
+        }else {
+            [self.heartRateView.heartRateLabel setText:@"0"];
+        }
+    
     
     NSInteger heart = lastHeartRate.integerValue;
     double doubleHeart = lastHeartRate.doubleValue;
@@ -654,33 +686,32 @@
     if (heart < 60) {
         self.heartRateView.state1.backgroundColor = [UIColor redColor];
         self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
-        self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
         self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
         
         self.heartRateView.heartStateLabel.text = @"偏低";
     }else if (heart >= 60 && heart <= 100) {
         self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
         self.heartRateView.state2.backgroundColor = [UIColor greenColor];
-        self.heartRateView.state3.backgroundColor = [UIColor greenColor];
         self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
         
         self.heartRateView.heartStateLabel.text = @"正常";
     }else {
         self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
         self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
-        self.heartRateView.state3.backgroundColor = kCurrentStateOFF;
         self.heartRateView.state4.backgroundColor = [UIColor redColor];
         
         self.heartRateView.heartStateLabel.text = @"偏高";
     }
     
     [self.heartRateView showChartView];
+    }
 }
 
 
 #pragma mark - Action
 - (void)showHistoryView
 {
+    @autoreleasepool {
     int currentPage = floor((self.backGroundView.contentOffset.x - self.view.frame.size.width / 2) / self.view.frame.size.width) + 1;
     switch (currentPage) {
         case 0:
@@ -710,10 +741,12 @@
         default:
             break;
     }
+    }
 }
 
 - (void)oneFingerSwipeUp:(UISwipeGestureRecognizer *)recognizer
 {
+    @autoreleasepool {
     int currentPage = floor((self.backGroundView.contentOffset.x - self.view.frame.size.width / 2) / self.view.frame.size.width) + 1;
     switch (currentPage) {
         case 0:
@@ -749,8 +782,7 @@
         default:
             break;
     }
-    
-    
+    }
 }
 
 - (void)showSettingView
@@ -799,6 +831,7 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    @autoreleasepool {
     self.didEndDecelerating = YES;
     // 调用方法A，传scrollView.contentOffset
     
@@ -810,7 +843,7 @@
     [self.titleButton setTitle:_titleArr[i] forState:UIControlStateNormal];
     self.pageControl.currentPage = i;
     
-    if (_currentPage != self.pageControl.currentPage) {
+//    if (_currentPage != self.pageControl.currentPage) {
         switch (self.pageControl.currentPage) {
             case 0:
             {
@@ -822,7 +855,7 @@
                 break;
             case 1:
             {
-                _currentPage = 1;
+//                _currentPage = 1;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(100 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
                         if (self.myBleTool.connectState == kBLEstateDidConnected) {
                             [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
@@ -844,7 +877,7 @@
 //                break;
             case 2:
             {
-                _currentPage = 3;
+//                _currentPage = 3;
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
                     [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
                 }else {
@@ -870,6 +903,7 @@
             default:
                 break;
         }
+//    }
     }
 }
 

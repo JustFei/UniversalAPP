@@ -45,19 +45,19 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    CGFloat headWidth = 125 * 320 / WIDTH;
+    CGFloat headWidth = 125 * WIDTH / 320;
     self.headView.frame = CGRectMake(self.center.x - headWidth / 2, 80, headWidth, headWidth);
     self.headView.layer.masksToBounds = YES;
     self.headView.layer.cornerRadius = headWidth / 2;
     self.headView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.headView.layer.borderWidth = 1;
     
-    self.batteryLabel.frame = CGRectMake(WIDTH - 70 * 320 / WIDTH, 74, 50 * 320 / WIDTH, 30 * 320 / WIDTH);
+    self.batteryLabel.frame = CGRectMake(WIDTH - 70 * WIDTH / 320, 74, 50 * WIDTH / 320, 30 * WIDTH / 320);
     [self.batteryLabel setText:@"80%"];
     
-    self.userNameLabel.frame = CGRectMake(self.center.x - 100 * 320 / WIDTH, 215 * 320 / WIDTH, 200 * 320 / WIDTH, 34 * 320 / WIDTH);
+    self.userNameLabel.frame = CGRectMake(self.center.x - 100 * WIDTH / 320, 215 * WIDTH / 320, 200 * WIDTH / 320, 34 * WIDTH / 320);
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH * 261 / 320, WIDTH, 13)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH * 261 / 320, WIDTH, 13 * WIDTH / 320)];
     view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     [self addSubview:view];
     

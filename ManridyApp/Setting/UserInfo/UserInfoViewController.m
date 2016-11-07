@@ -85,7 +85,7 @@
     self.userNameTextField.borderStyle = UITextBorderStyleNone;
     self.userNameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 261, self.view.frame.size.width, 13)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 261 * WIDTH / 320, self.view.frame.size.width, 13 * WIDTH / 320)];
     view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     [self.view addSubview:view];
     
@@ -517,7 +517,7 @@
 - (UIImageView *)headImageView
 {
     if (!_headImageView) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 63.5 * 320 / WIDTH, 80, 127 * 320 / WIDTH, 127 * 320 / WIDTH)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 63.5 * WIDTH / 320, 80, 127 * WIDTH / 320, 127 * WIDTH / 320)];
         imageView.backgroundColor = [UIColor redColor];
         imageView.image = [UIImage imageNamed:@"set_userphoto"];
         
@@ -540,7 +540,7 @@
 - (UITextField *)userNameTextField
 {
     if (!_userNameTextField) {
-        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(self.view.center.x - 100 * 320 / WIDTH, 215 * 320 / WIDTH, 200 * 320 / WIDTH, 34)];
+        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(self.view.center.x - 100 * WIDTH / 320, 215 * WIDTH / 320, 200 * WIDTH / 320, 34)];
         textField.placeholder = @"请输入用户名";
 //        textField.delegate = self;
         
@@ -559,7 +559,7 @@
 - (UITableView *)infoTableView
 {
     if (!_infoTableView) {
-        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 274 * 320 / WIDTH, WIDTH, WIDTH * 220 / 320) style:UITableViewStylePlain];
+        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 274 * WIDTH / 320, WIDTH, WIDTH * 220 / 320) style:UITableViewStylePlain];
         view.scrollEnabled = NO;
         view.allowsSelection = NO;
         
@@ -579,7 +579,7 @@
 - (UIButton *)saveButton
 {
     if (!_saveButton) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.view.center.x - 85 * 320 / WIDTH, self.view.frame.size.height - 64 * 320 / WIDTH, 170 * 320 / WIDTH, 44)];
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.view.center.x - 85 * WIDTH / 320, self.view.frame.size.height - 64 * WIDTH / 320, 170 * WIDTH / 320, 44)];
         [button addTarget:self action:@selector(saveUserInfo) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:@"保存" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

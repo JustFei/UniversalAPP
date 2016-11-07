@@ -97,7 +97,7 @@
         }
     }
     
-    [self.weekStatisticsLabel setText:[NSString stringWithFormat:@"本周计步统计：%ld步（%ld公里/%ld千卡）",sumStep ,sumMileage ,sumkCal]];
+    [self.weekStatisticsLabel setText:[NSString stringWithFormat:@"本周计步统计：%ld步（%ld米/%ld卡）",sumStep ,sumMileage ,sumkCal]];
     sumStep = sumMileage = sumkCal = 0;
 }
 
@@ -154,7 +154,7 @@
     if (!_stepCircleChart) {
         PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:43.0 / 255.0 green:147.0 / 255.0 blue:190.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
         view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor clearColor]];
+        [view setStrokeColor:[UIColor colorWithRed:1 green:1 blue:0 alpha:1]];
         [view setStrokeColorGradientStart:[UIColor colorWithRed:1 green:1 blue:0 alpha:1]];
         
         [self addSubview:view];

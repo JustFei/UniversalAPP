@@ -11,6 +11,8 @@
 #import "manridyBleDevice.h"
 #import "MBProgressHUD.h"
 
+#define WIDTH self.view.frame.size.width
+
 @interface BindPeripheralViewController () <UITableViewDelegate ,UITableViewDataSource ,BleDiscoverDelegate ,BleConnectDelegate ,UIAlertViewDelegate>
 {
     NSMutableArray *_dataArr;
@@ -47,6 +49,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.view layoutIfNeeded];
+    
     _dataArr = [NSMutableArray array];
     
     index = -1;
@@ -69,15 +73,15 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
     
-    UIImageView *bluetoothImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 80, self.view.frame.size.width * 120 / 320, 30, 46)];
+    UIImageView *bluetoothImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 80, WIDTH * 120 / 320, 30, 46)];
     [self.view addSubview:bluetoothImageView];
     [bluetoothImageView setImage:[UIImage imageNamed:@"ble_icon"]];
     
-    self.lockImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x + 50, self.view.frame.size.width * 120 / 320, 30, 46)];
+    self.lockImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x + 50, WIDTH * 120 / 320, 30, 46)];
     [self.view addSubview:self.lockImageView];
     [self.lockImageView setImage:[UIImage imageNamed:@"ble_lock_oper"]];
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width * 261 / 320, self.view.frame.size.width, 13)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH * 261 / 320, WIDTH, 13 * WIDTH / 320)];
     view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     [self.view addSubview:view];
 }
@@ -353,7 +357,7 @@
 - (UIImageView *)connectImageView
 {
     if (!_connectImageView) {
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 25, self.view.frame.size.width * 136.5 / 320, 50, 13)];
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 25, WIDTH * 136.5 / 320, 50, 13)];
         [self.view addSubview:view];
         _connectImageView = view;
     }
@@ -380,7 +384,7 @@
 - (UILabel *)bindStateLabel
 {
     if (!_bindStateLabel) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, self.view.frame.size.width * 190 / 320, 200, 19)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, WIDTH * 190 / 320, 200, 19)];
         [label setTextColor:[UIColor colorWithWhite:1 alpha:0.4]];
         label.textAlignment = NSTextAlignmentCenter;
         
@@ -394,7 +398,7 @@
 - (UILabel *)perNameLabel
 {
     if (!_perNameLabel) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, self.view.frame.size.width * 220 / 320, 200, 19)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, WIDTH * 220 / 320, 200, 19)];
         label.alpha = 0;
         
         [label setTextColor:[UIColor colorWithWhite:1 alpha:0.4]];
@@ -411,7 +415,7 @@
 - (UIView *)downView
 {
     if (!_downView) {
-        UIView *downView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width * 274 / 320, self.view.frame.size.width, self.view.frame.size.height - (self.view.frame.size.width * 274 / 320))];
+        UIView *downView = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH * 274 / 320, WIDTH, self.view.frame.size.height - (WIDTH * 274 / 320))];
         downView.backgroundColor = [UIColor whiteColor];
         
         [self.view addSubview:downView];
@@ -424,7 +428,7 @@
 - (UITableView *)peripheralList
 {
     if (!_peripheralList) {
-        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.downView.frame.size.height - 21 - 50) style:UITableViewStylePlain];
+        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, self.downView.frame.size.height - 21 - 50) style:UITableViewStylePlain];
         view.backgroundColor = [UIColor whiteColor];
         view.separatorStyle = UITableViewCellSeparatorStyleNone;
         
@@ -462,7 +466,7 @@
 - (UIButton *)disbindButton
 {
     if (!_disbindButton) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.downView.center.x - 90, self.downView.frame.size.width * 18 / 320, self.view.frame.size.width * 180 / 320, self.view.frame.size.width * 47 / 320)];
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.downView.center.x - 90, self.downView.frame.size.width * 18 / 320, WIDTH * 180 / 320, WIDTH * 47 / 320)];
         [button setTitle:@"解除绑定" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(disbindPeripheral) forControlEvents:UIControlEventTouchUpInside];

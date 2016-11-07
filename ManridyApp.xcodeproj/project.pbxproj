@@ -95,7 +95,6 @@
 		10F5F7091D98C6280045FA4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7081D98C6280045FA4C /* main.m */; };
 		10F5F70C1D98C6280045FA4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F70B1D98C6280045FA4C /* AppDelegate.m */; };
 		10F5F7141D98C6280045FA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7131D98C6280045FA4C /* Assets.xcassets */; };
-		10F5F7171D98C6280045FA4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7151D98C6280045FA4C /* LaunchScreen.storyboard */; };
 		10F5F73B1D98F31B0045FA4C /* set_about_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7261D98F31B0045FA4C /* set_about_icon.png */; };
 		10F5F73C1D98F31B0045FA4C /* set_about_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7271D98F31B0045FA4C /* set_about_icon@2x.png */; };
 		10F5F73D1D98F31B0045FA4C /* set_about_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7281D98F31B0045FA4C /* set_about_icon@3x.png */; };
@@ -333,7 +332,6 @@
 		10F5F70A1D98C6280045FA4C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		10F5F70B1D98C6280045FA4C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		10F5F7131D98C6280045FA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		10F5F7161D98C6280045FA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10F5F7181D98C6280045FA4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10F5F7261D98F31B0045FA4C /* set_about_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set_about_icon.png; sourceTree = "<group>"; };
 		10F5F7271D98F31B0045FA4C /* set_about_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set_about_icon@2x.png"; sourceTree = "<group>"; };
@@ -724,7 +722,6 @@
 				10F5F70B1D98C6280045FA4C /* AppDelegate.m */,
 				10F5F7251D98F31B0045FA4C /* image */,
 				10F5F7131D98C6280045FA4C /* Assets.xcassets */,
-				10F5F7151D98C6280045FA4C /* LaunchScreen.storyboard */,
 				10F5F7181D98C6280045FA4C /* Info.plist */,
 				10F5F7081D98C6280045FA4C /* main.m */,
 			);
@@ -1088,7 +1085,6 @@
 				10F5F7D01D9923D90045FA4C /* temper_set_alert_high@3x.png in Resources */,
 				10C47EB61DA8A55F00D949CA /* ble_lock_close.png in Resources */,
 				10F5F7F01D9927C60045FA4C /* sleep_target@2x.png in Resources */,
-				10F5F7171D98C6280045FA4C /* LaunchScreen.storyboard in Resources */,
 				10F5F7C61D9923D90045FA4C /* temper_notice_low@2x.png in Resources */,
 				104A70551D9B639C00CC73F5 /* all_data_icon.png in Resources */,
 				10C47EB31DA8A55F00D949CA /* ble_icon.png in Resources */,
@@ -1300,17 +1296,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		10F5F7151D98C6280045FA4C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				10F5F7161D98C6280045FA4C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		10F5F7191D98C6280045FA4C /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1399,6 +1384,7 @@
 			baseConfigurationReference = 1102E622F505968B236A5DC2 /* Pods-ManridyApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CZG37T4ZQ8;
@@ -1416,6 +1402,7 @@
 			baseConfigurationReference = 4E1494B2899EFE9DB4EFAD91 /* Pods-ManridyApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CZG37T4ZQ8;

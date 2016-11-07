@@ -118,6 +118,12 @@
     [self.view removeGestureRecognizer:self.oneFingerSwipedown];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - DB
 - (void)getHistoryDataWithIntDays:(NSInteger)days withDate:(NSDate *)date
 {
     sumStep = 0;
@@ -135,7 +141,7 @@
     
     NSInteger iCurMonth = [components month];  //当前的月份
     
-//    _dataArr = [NSMutableArray array];
+    //    _dataArr = [NSMutableArray array];
     [_dataArr removeAllObjects];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -204,11 +210,6 @@
             [self.stepBarChart strokeChart];
         });
     });
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Action
@@ -332,7 +333,7 @@
     if (!_stepCircleChart) {
         PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:12.0 / 255.0 green:97.0 / 255.0 blue:158.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
         view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor clearColor]];
+        [view setStrokeColor:[UIColor yellowColor]];
         [view setStrokeColorGradientStart:[UIColor yellowColor]];
         
         [self.view addSubview:view];

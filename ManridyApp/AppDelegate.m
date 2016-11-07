@@ -16,6 +16,7 @@
 @interface AppDelegate () <BleDiscoverDelegate, BleConnectDelegate ,UNUserNotificationCenterDelegate>
 {
     CTCallCenter *_callCenter;
+    BOOL _isBind;
 }
 
 
@@ -43,12 +44,12 @@
     self.myBleTool.discoverDelegate = self;
     self.myBleTool.connectDelegate = self;
     
-    BOOL isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
+    _isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
     
     self.mainVc = [[MainViewController alloc] init];
     
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:self.mainVc];
-    if (isBind) {
+    if (_isBind) {
         //蓝牙是否打开
         if (self.myBleTool.systemBLEstate == SystemBLEStatePoweredOn) {
             [self connectBLE];
@@ -85,7 +86,12 @@
             
             break;
         case 5:
-            [self connectBLE];
+        {
+            if (_isBind) {
+                [self connectBLE];
+            }
+        }
+            
             break;
             
         default:
@@ -101,6 +107,7 @@
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.myBleTool stopScan];
+        
         if (self.myBleTool.connectState == kBLEstateDisConnected) {
             [self.mainVc.stepView.stepLabel setText:@"未连接上设备，点击重试"];
         }

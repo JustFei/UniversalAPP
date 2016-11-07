@@ -28,7 +28,7 @@
     
     self.navigationItem.titleView = titleLabel;
     
-    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated

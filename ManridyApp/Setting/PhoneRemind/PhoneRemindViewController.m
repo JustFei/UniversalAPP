@@ -15,7 +15,7 @@
 #import "BLETool.h"
 
 
-@interface PhoneRemindViewController () <UITableViewDelegate ,UITableViewDataSource ,UIPickerViewDelegate ,UIPickerViewDataSource >
+@interface PhoneRemindViewController () <UITableViewDelegate ,UITableViewDataSource ,UIPickerViewDelegate ,UIPickerViewDataSource ,BleReceiveDelegate>
 {
     NSArray *_funcArr;
     NSArray *_clockArr;
@@ -101,6 +101,7 @@
     for (ClockModel *model in _clockTimeArr) {
         [self.myFmdbTool insertClockModel:model];
     }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

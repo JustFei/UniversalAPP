@@ -202,6 +202,15 @@
                     }else if (progress >= 1) {
                         [self.sleepCircleChart updateChartByCurrent:@(100)];
                     }
+                }else {
+                    //如果用户没有设置目标睡眠的话，就默认为8h
+                    float progress = averageSleep / 8;
+                    
+                    if (progress <= 1) {
+                        [self.sleepCircleChart updateChartByCurrent:@(progress * 100)];
+                    }else if (progress >= 1) {
+                        [self.sleepCircleChart updateChartByCurrent:@(100)];
+                    }
                 }
             }else {
                 //如果用户没有设置目标睡眠的话，就默认为8h
@@ -397,7 +406,7 @@
     if (!_sleepCircleChart) {
         PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:12.0 / 255.0 green:97.0 / 255.0 blue:158.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
         view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor clearColor]];
+        [view setStrokeColor:[UIColor colorWithRed:70.0 / 255.0 green:68.0 / 255.0 blue:86.0 / 255.0 alpha:1]];
         [view setStrokeColorGradientStart:[UIColor colorWithRed:70.0 / 255.0 green:68.0 / 255.0 blue:86.0 / 255.0 alpha:1]];
         
         [self.view addSubview:view];

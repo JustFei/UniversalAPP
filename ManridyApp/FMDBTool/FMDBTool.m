@@ -280,6 +280,7 @@ static FMDatabase *_fmdb;
         
         [arrM addObject:model];
     }
+    NSLog(@"heartRate查询成功");
     return arrM;
 }
 

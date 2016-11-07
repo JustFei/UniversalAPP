@@ -479,7 +479,7 @@ static BLETool *bleTool = nil;
         
         if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"]) {
             BOOL isFindMyPeripheral = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (isFindMyPeripheral && self.connectState == kBLEstateDisConnected) {
                     // 1、创建通知内容，注：这里得用可变类型的UNMutableNotificationContent，否则内容的属性是只读的
                     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
@@ -551,13 +551,9 @@ static BLETool *bleTool = nil;
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
     
 //    NSLog(@"Discovered characteristic %@", service.characteristics);
-    
+    NSLog(@"服务 %@,", service.UUID);
     for (CBCharacteristic *characteristic in service.characteristics) {
-        
-//        [peripheral readValueForCharacteristic:characteristic];
-//        
-//        [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-
+        NSLog(@"特征值： %@",characteristic.UUID);
         
         //保存写入特征
         if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:kWriteCharacteristicUUID]]) {
