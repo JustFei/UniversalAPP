@@ -101,7 +101,7 @@
     for (ClockModel *model in _clockTimeArr) {
         [self.myFmdbTool insertClockModel:model];
     }
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -121,6 +121,7 @@
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.myBleTool removeObserver:self forKeyPath:@"connectState"];
 }
 
 #pragma mark - GetData

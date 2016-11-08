@@ -175,7 +175,8 @@
 
 - (UILabel *)batteryLabel
 {
-    if (!_batteryLabel) {
+    //还没有获取到电量，先不显示吧
+    if (_batteryLabel) {
         UILabel *label = [[UILabel alloc] init];
         label.textColor = [UIColor whiteColor];
         label.textAlignment = NSTextAlignmentCenter;

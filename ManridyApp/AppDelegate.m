@@ -80,23 +80,26 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     NSLog(@"监听到%@对象的%@属性发生了改变， %@", object, keyPath, change[@"new"]);
-    NSString *new = change[@"new"];
-    switch (new.integerValue) {
-        case 4:
-            
-            break;
-        case 5:
-        {
-            if (_isBind) {
-                [self connectBLE];
+    if ([keyPath isEqualToString:@"systemBLEstate"]) {
+        NSString *new = change[@"new"];
+        switch (new.integerValue) {
+            case 4:
+                
+                break;
+            case 5:
+            {
+                if (_isBind) {
+                    [self connectBLE];
+                }
             }
+                
+                break;
+                
+            default:
+                break;
         }
-            
-            break;
-            
-        default:
-            break;
     }
+    
     
 }
 
@@ -117,6 +120,7 @@
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [self.myBleTool removeObserver:self forKeyPath:@"systemBLEstate"];
 }
 
 - (void) aboutCall{
@@ -154,7 +158,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [self.myBleTool writeTimeToPeripheral:[NSDate date]];
-        [self.myBleTool writeToKeepConnect];
+//        [self.myBleTool writeToKeepConnect];
         [self.mainVc writeData];
     });
     
