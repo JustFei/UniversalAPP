@@ -206,6 +206,7 @@
 		10FF5CFE1DC35F2E0059FE00 /* all_next_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFB1DC35F2E0059FE00 /* all_next_icon@2x.png */; };
 		10FF5CFF1DC35F2E0059FE00 /* all_next_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFC1DC35F2E0059FE00 /* all_next_icon@3x.png */; };
 		9C15BB501DCD79A900A049E9 /* ClockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15BB4F1DCD79A900A049E9 /* ClockModel.m */; };
+		9CF2F6C41DD458010091ECB5 /* Remind.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2F6C31DD458010091ECB5 /* Remind.m */; };
 		EC8F9D09241EC54AC7AD2BEE /* libPods-ManridyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9871DE041C8D7829FF5269 /* libPods-ManridyApp.a */; };
 /* End PBXBuildFile section */
 
@@ -456,6 +457,8 @@
 		4E1494B2899EFE9DB4EFAD91 /* Pods-ManridyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManridyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ManridyApp/Pods-ManridyApp.release.xcconfig"; sourceTree = "<group>"; };
 		9C15BB4E1DCD79A900A049E9 /* ClockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockModel.h; sourceTree = "<group>"; };
 		9C15BB4F1DCD79A900A049E9 /* ClockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockModel.m; sourceTree = "<group>"; };
+		9CF2F6C21DD458010091ECB5 /* Remind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Remind.h; path = BLETool/Model/Remind.h; sourceTree = "<group>"; };
+		9CF2F6C31DD458010091ECB5 /* Remind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Remind.m; path = BLETool/Model/Remind.m; sourceTree = "<group>"; };
 		FA9871DE041C8D7829FF5269 /* libPods-ManridyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ManridyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -521,12 +524,12 @@
 		102474EA1DAA41D800F70E4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				102474ED1DAA41E000F70E4F /* manridyModel.h */,
+				102474EE1DAA41E000F70E4F /* manridyModel.m */,
 				9C15BB4E1DCD79A900A049E9 /* ClockModel.h */,
 				9C15BB4F1DCD79A900A049E9 /* ClockModel.m */,
 				102474EB1DAA41E000F70E4F /* HeartRateModel.h */,
 				102474EC1DAA41E000F70E4F /* HeartRateModel.m */,
-				102474ED1DAA41E000F70E4F /* manridyModel.h */,
-				102474EE1DAA41E000F70E4F /* manridyModel.m */,
 				102474EF1DAA41E000F70E4F /* SetTimeModel.h */,
 				102474F01DAA41E000F70E4F /* SetTimeModel.m */,
 				102474F11DAA41E000F70E4F /* SleepModel.h */,
@@ -535,6 +538,8 @@
 				102474F41DAA41E000F70E4F /* SportModel.m */,
 				102474F51DAA41E000F70E4F /* SportTargetModel.h */,
 				102474F61DAA41E000F70E4F /* SportTargetModel.m */,
+				9CF2F6C21DD458010091ECB5 /* Remind.h */,
+				9CF2F6C31DD458010091ECB5 /* Remind.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1274,6 +1279,7 @@
 				10F5F7D71D99251B0045FA4C /* SleepContentView.m in Sources */,
 				10F5F78D1D98F8E10045FA4C /* StepContentView.m in Sources */,
 				1012C7211DBEFE470013E99B /* SleepHistoryViewController.m in Sources */,
+				9CF2F6C41DD458010091ECB5 /* Remind.m in Sources */,
 				10C47EC71DA8DE0D00D949CA /* TemperatureWarningViewController.m in Sources */,
 				104A706D1D9BAD2B00CC73F5 /* UserInfoCell.m in Sources */,
 				10FF5CDA1DC33BEA0059FE00 /* PhoneRemindTableViewCell.m in Sources */,

@@ -352,6 +352,13 @@ static BLETool *bleTool = nil;
     }
 }
 
+//photo and message remind
+- (void)writePhoneAndMessageRemindToPeripheral:(Remind *)remindModel
+{
+    NSString *remindStr;
+    remindStr = [NSStringTool protocolForRemind:remindModel];
+}
+
 //临时写入保持连接
 - (void)writeToKeepConnect
 {

@@ -73,4 +73,13 @@
     return _clockModelArr;
 }
 
+- (Remind *)remindModel
+{
+    if (!_remindModel) {
+        _remindModel = [[Remind alloc] init];
+    }
+    
+    return _remindModel;
+}
+
 @end

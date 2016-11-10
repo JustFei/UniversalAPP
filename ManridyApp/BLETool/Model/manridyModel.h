@@ -14,6 +14,7 @@
 #import "SleepModel.h"
 #import "ClockModel.h"
 #import "SportTargetModel.h"
+#import "Remind.h"
 
 typedef enum : NSUInteger {
     ResponsEcorrectnessDataFail = 0,
@@ -69,6 +70,9 @@ typedef enum : NSUInteger {
 
 //闹钟数据模型
 @property (nonatomic ,strong) NSMutableArray *clockModelArr;
+
+//电话短信提醒模型
+@property (nonatomic ,strong) Remind *remindModel;
 
 @end
 

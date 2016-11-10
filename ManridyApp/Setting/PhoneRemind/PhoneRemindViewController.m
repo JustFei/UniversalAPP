@@ -46,10 +46,8 @@
     // Do any additional setup after loading the view.
     _sectionArr = [NSMutableArray array];
     
-//    _funcArr = @[@"来电提醒",@"短信提醒",@"防丢提醒",@"闹钟设置"];
-//    _imageArr = @[@"alert_call",@"alert_sms",@"alert_lose",@"alert_clock"];
-    _funcArr = @[@"防丢提醒",@"闹钟设置"];
-    _imageArr = @[@"alert_lose",@"alert_clock"];
+    _funcArr = @[@"来电提醒",@"短信提醒",@"防丢提醒",@"查找设备",@"闹钟设置"];
+    _imageArr = @[@"alert_call",@"alert_sms",@"alert_lose",@"alert_clock"];
     _clockArr = @[@"闹钟1",@"闹钟2",@"闹钟3"];
     
     [self getPickerViewDataSource];

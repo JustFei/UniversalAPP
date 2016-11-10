@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class Remind;
+
 @interface NSStringTool : NSObject
 
 //int转换16进制
@@ -21,6 +23,9 @@
 
 //协议加工厂
 + (NSString *)protocolAddInfo:(NSString *)info head:(NSString *)head;
+
+//专为提醒制作协议
++ (NSString *)protocolForRemind:(Remind *)model;
 
 //将data转换为不带<>的字符串
 + (NSString *)convertToNSStringWithNSData:(NSData *)data;

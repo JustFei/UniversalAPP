@@ -210,10 +210,27 @@ displayCountingLabel:(BOOL)displayCountingLabel
 
 -(void)updateChartByCurrent:(NSNumber *)current byTotal:(NSNumber *)total {
     double totalPercentageValue = [current floatValue]/([total floatValue]/100.0);
+
+    // add this section ===========
+    float previousStrokeEnd = [_current floatValue] / [_total floatValue];
+    float currentStrokeEnd = [current floatValue] / [total floatValue];
+    
+    // when currentValue is less than or equal to previousValue
+    if ((fabs(currentStrokeEnd) < fabs(previousStrokeEnd) + FLT_EPSILON) ||
+        (fabs((currentStrokeEnd) - (previousStrokeEnd)) < FLT_EPSILON))
+    {
+        _circle.strokeEnd = currentStrokeEnd;
+    }
+    // when currentValue is larger than previousValue
+    else {
+        _circle.strokeEnd = previousStrokeEnd;
+    }
+    // add this section ===========
     
     if (_strokeColorGradientStart) {
         self.gradientMask.strokeEnd = _circle.strokeEnd;
     }
+    
     
     // Add animation
     if (self.displayAnimated) {
@@ -237,7 +254,7 @@ displayCountingLabel:(BOOL)displayCountingLabel
         [self.countingLabel countFrom:totalPercentageValue to:totalPercentageValue withDuration:self.duration];
     }
     
-    _circle.strokeEnd   = [current floatValue] / [total floatValue];
+//    _circle.strokeEnd   = [current floatValue] / [total floatValue];
     _current = current;
     _total = total;
 }

@@ -19,6 +19,8 @@
 #import "HeartRateHistoryViewController.h"
 #import "SleepHistoryViewController.h"
 #import "MBProgressHUD.h"
+#import "Remind.h"
+#import "NSStringTool.h"
 
 #import "SettingViewController.h"
 
@@ -30,10 +32,13 @@
 @interface MainViewController () <UIScrollViewDelegate ,BleReceiveDelegate>
 {
     NSArray *_titleArr;
-    
     BOOL isShowList;
     NSArray *_userArr;
     NSInteger _currentPage;
+    
+    BOOL haveNewStep;
+    BOOL haveNewHeartRate;
+    BOOL haveNewSleep;
 }
 @property (nonatomic ,weak) UIScrollView *backGroundView;
 
@@ -76,6 +81,9 @@
 {
     [super viewDidLoad];
     _titleArr = @[@"计步",@"心率",@"睡眠"];
+    haveNewStep = YES;
+    haveNewHeartRate = YES;
+    haveNewSleep = YES;
     
     self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
     [self createUI];
@@ -89,6 +97,10 @@
     
     [self hiddenFunctionView];
     _currentPage = 0;
+    
+    Remind *model = [[Remind alloc] init];
+    model.phone = 1;
+    model.message = 1;
     
 }
 
@@ -353,7 +365,7 @@
                     {
                         [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
                         [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@米/%@卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
-                        
+
                         if (_userArr.count != 0) {
                             
                             UserInfoModel *model = _userArr.firstObject;
@@ -386,8 +398,7 @@
                                 [self.stepView drawProgress:1];
                             }
                         }
-                        
-                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                             NSArray *stepArr = [self.myFmdbTool queryStepWithDate:currentDateString];
                             
                             if (stepArr.count == 0) {
@@ -847,10 +858,7 @@
         switch (self.pageControl.currentPage) {
             case 0:
             {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
-                });
-                
+                [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
             }
                 break;
             case 1:

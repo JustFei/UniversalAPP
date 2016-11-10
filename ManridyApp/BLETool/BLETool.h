@@ -185,6 +185,9 @@ typedef enum{
 //get sleepInfo
 - (void)writeSleepRequestToperipheral:(SleepData)sleepData;
 
+//photo and message remind
+- (void)writePhoneAndMessageRemindToPeripheral:(Remind *)remindModel;
+
 //临时写入保持连接
 - (void)writeToKeepConnect;
 @end

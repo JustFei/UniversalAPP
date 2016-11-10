@@ -7,6 +7,7 @@
 //
 
 #import "NSStringTool.h"
+#import "Remind.h"
 
 @implementation NSStringTool
 
@@ -304,6 +305,19 @@
     return nil;
 }
 
++ (NSString *)protocolForRemind:(Remind *)model
+{
+    NSString *protocolStr;
+    unsigned char val = 0;
+    val |= (model.phone<<0);
+    val |= (model.message<<2);
+    protocolStr = [NSString stringWithFormat:@"%c",val];
+    NSLog(@"%@",protocolStr);
+    
+    
+    return protocolStr;
+}
+
 //将data转换为不带<>的字符串
 + (NSString *)convertToNSStringWithNSData:(NSData *)data
 {
@@ -311,9 +325,7 @@
     
     NSMutableString *strTemp = [NSMutableString stringWithCapacity:[data length]*2];
     
-    
     const unsigned char *szBuffer = [data bytes];
-    
     
     for (NSInteger i=0; i < [data length]; ++i) {
         
