@@ -111,6 +111,16 @@ typedef enum{
 //get sleepInfo
 - (void)receiveSleepInfoWithModel:(manridyModel *)manridyModel;
 
+//get search feedback
+- (void)receiveSearchFeedback;
+
+@end
+
+@protocol BleReceiveSearchResquset <NSObject>
+
+@optional
+- (void)receivePeripheralRequestToRemindPhoneWithState:(BOOL)OnorOFF;
+
 @end
 
 @interface BLETool : NSObject
@@ -127,6 +137,8 @@ typedef enum{
 @property (nonatomic ,weak) id <BleConnectDelegate>connectDelegate;
 
 @property (nonatomic ,weak) id <BleReceiveDelegate>receiveDelegate;
+
+@property (nonatomic ,weak) id <BleReceiveSearchResquset>searchDelegate;
 
 @property (nonatomic ,assign) BOOL isReconnect;
 
@@ -187,6 +199,12 @@ typedef enum{
 
 //photo and message remind
 - (void)writePhoneAndMessageRemindToPeripheral:(Remind *)remindModel;
+
+//search my peripheral
+- (void)writeSearchPeripheralWithONorOFF:(BOOL)state;
+
+//stop peripheral
+- (void)writeStopPeripheralRemind;
 
 //临时写入保持连接
 - (void)writeToKeepConnect;

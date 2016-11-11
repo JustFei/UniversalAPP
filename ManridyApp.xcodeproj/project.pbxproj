@@ -206,7 +206,13 @@
 		10FF5CFE1DC35F2E0059FE00 /* all_next_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFB1DC35F2E0059FE00 /* all_next_icon@2x.png */; };
 		10FF5CFF1DC35F2E0059FE00 /* all_next_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFC1DC35F2E0059FE00 /* all_next_icon@3x.png */; };
 		9C15BB501DCD79A900A049E9 /* ClockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15BB4F1DCD79A900A049E9 /* ClockModel.m */; };
+		9C728F681DD5DB2800BEF69E /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C728F671DD5DB2800BEF69E /* PopupView.m */; };
+		9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F691DD5DB4B00BEF69E /* PopupView.xib */; };
+		9C728F6C1DD5ECB300BEF69E /* alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F6B1DD5ECB300BEF69E /* alert.wav */; };
 		9CF2F6C41DD458010091ECB5 /* Remind.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2F6C31DD458010091ECB5 /* Remind.m */; };
+		9CF2F6D01DD593390091ECB5 /* alert_find.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF2F6CD1DD593390091ECB5 /* alert_find.png */; };
+		9CF2F6D11DD593390091ECB5 /* alert_find@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF2F6CE1DD593390091ECB5 /* alert_find@2x.png */; };
+		9CF2F6D21DD593390091ECB5 /* alert_find@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF2F6CF1DD593390091ECB5 /* alert_find@3x.png */; };
 		EC8F9D09241EC54AC7AD2BEE /* libPods-ManridyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9871DE041C8D7829FF5269 /* libPods-ManridyApp.a */; };
 /* End PBXBuildFile section */
 
@@ -457,8 +463,15 @@
 		4E1494B2899EFE9DB4EFAD91 /* Pods-ManridyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManridyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ManridyApp/Pods-ManridyApp.release.xcconfig"; sourceTree = "<group>"; };
 		9C15BB4E1DCD79A900A049E9 /* ClockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockModel.h; sourceTree = "<group>"; };
 		9C15BB4F1DCD79A900A049E9 /* ClockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockModel.m; sourceTree = "<group>"; };
+		9C728F661DD5DB2800BEF69E /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupView.h; path = PopupView/PopupView.h; sourceTree = "<group>"; };
+		9C728F671DD5DB2800BEF69E /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupView.m; path = PopupView/PopupView.m; sourceTree = "<group>"; };
+		9C728F691DD5DB4B00BEF69E /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupView.xib; path = PopupView/PopupView.xib; sourceTree = "<group>"; };
+		9C728F6B1DD5ECB300BEF69E /* alert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alert.wav; sourceTree = "<group>"; };
 		9CF2F6C21DD458010091ECB5 /* Remind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Remind.h; path = BLETool/Model/Remind.h; sourceTree = "<group>"; };
 		9CF2F6C31DD458010091ECB5 /* Remind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Remind.m; path = BLETool/Model/Remind.m; sourceTree = "<group>"; };
+		9CF2F6CD1DD593390091ECB5 /* alert_find.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert_find.png; sourceTree = "<group>"; };
+		9CF2F6CE1DD593390091ECB5 /* alert_find@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_find@2x.png"; sourceTree = "<group>"; };
+		9CF2F6CF1DD593390091ECB5 /* alert_find@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_find@3x.png"; sourceTree = "<group>"; };
 		FA9871DE041C8D7829FF5269 /* libPods-ManridyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ManridyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -710,6 +723,7 @@
 		10F5F7061D98C6280045FA4C /* ManridyApp */ = {
 			isa = PBXGroup;
 			children = (
+				9C728F651DD5DAE400BEF69E /* PopupView */,
 				102474D91DAA2F0A00F70E4F /* BLETool */,
 				109FBB981DAA18A8008FF0D3 /* FMDBTool */,
 				10F5F7211D98ED950045FA4C /* Main */,
@@ -747,6 +761,10 @@
 		10F5F7251D98F31B0045FA4C /* image */ = {
 			isa = PBXGroup;
 			children = (
+				9C728F6B1DD5ECB300BEF69E /* alert.wav */,
+				9CF2F6CD1DD593390091ECB5 /* alert_find.png */,
+				9CF2F6CE1DD593390091ECB5 /* alert_find@2x.png */,
+				9CF2F6CF1DD593390091ECB5 /* alert_find@3x.png */,
 				10FF5CFA1DC35F2E0059FE00 /* all_next_icon.png */,
 				10FF5CFB1DC35F2E0059FE00 /* all_next_icon@2x.png */,
 				10FF5CFC1DC35F2E0059FE00 /* all_next_icon@3x.png */,
@@ -969,6 +987,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9C728F651DD5DAE400BEF69E /* PopupView */ = {
+			isa = PBXGroup;
+			children = (
+				9C728F661DD5DB2800BEF69E /* PopupView.h */,
+				9C728F671DD5DB2800BEF69E /* PopupView.m */,
+				9C728F691DD5DB4B00BEF69E /* PopupView.xib */,
+			);
+			name = PopupView;
+			sourceTree = "<group>";
+		};
 		AC2AC006B33A3099561DC0AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1044,12 +1072,14 @@
 				10F5F7A21D991C700045FA4C /* heart_old_icon@2x.png in Resources */,
 				10F5F7451D98F31B0045FA4C /* set_bty_icon@2x.png in Resources */,
 				10F5F7EA1D9927C60045FA4C /* sleep_now_icon@2x.png in Resources */,
+				9CF2F6D01DD593390091ECB5 /* alert_find.png in Resources */,
 				10FF5CE81DC341150059FE00 /* alert_call.png in Resources */,
 				10F5F7F61D9928050045FA4C /* temper_alart_icon@2x.png in Resources */,
 				10FF5CF11DC341150059FE00 /* alert_sms.png in Resources */,
 				10F5F73C1D98F31B0045FA4C /* set_about_icon@2x.png in Resources */,
 				10CB0F081D9A25130063AD0C /* FunctionCell.xib in Resources */,
 				10F5F7EB1D9927C60045FA4C /* sleep_now_icon@3x.png in Resources */,
+				9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */,
 				10CB0F201D9A8A190063AD0C /* list_sleep_icon@3x.png in Resources */,
 				10F5F73F1D98F31B0045FA4C /* set_alart_icon@2x.png in Resources */,
 				10F5F7701D98F3560045FA4C /* walk_circle2@3x.png in Resources */,
@@ -1071,6 +1101,7 @@
 				10F5F7D91D99253B0045FA4C /* SleepContentView.xib in Resources */,
 				10F5F7741D98F3560045FA4C /* walk_mileage_icon.png in Resources */,
 				10DE11A71DBAFBB000B824C5 /* all_back_icon@2x.png in Resources */,
+				9CF2F6D21DD593390091ECB5 /* alert_find@3x.png in Resources */,
 				10C47EB41DA8A55F00D949CA /* ble_icon@2x.png in Resources */,
 				10F5F7721D98F3560045FA4C /* walk_foot_icon@2x.png in Resources */,
 				10F5F76C1D98F3560045FA4C /* walk_circle1@2x.png in Resources */,
@@ -1081,6 +1112,7 @@
 				10F5F74D1D98F31B0045FA4C /* set_userphoto.png in Resources */,
 				10F5F7EC1D9927C60045FA4C /* sleep_old_icon.png in Resources */,
 				10F5F7F11D9927C60045FA4C /* sleep_target@3x.png in Resources */,
+				9CF2F6D11DD593390091ECB5 /* alert_find@2x.png in Resources */,
 				10F5F7E91D9927C60045FA4C /* sleep_now_icon.png in Resources */,
 				10C47EAE1DA8A55F00D949CA /* ble_break_icon@2x.png in Resources */,
 				10F5F79F1D991C700045FA4C /* heart_now_icon@2x.png in Resources */,
@@ -1185,6 +1217,7 @@
 				10C47EB01DA8A55F00D949CA /* ble_connect.png in Resources */,
 				10F5F74F1D98F31B0045FA4C /* set_userphoto@3x.png in Resources */,
 				10F5F7CC1D9923D90045FA4C /* temper_ole_icon@2x.png in Resources */,
+				9C728F6C1DD5ECB300BEF69E /* alert.wav in Resources */,
 				10C47EBA1DA8A55F00D949CA /* ble_lock_oper@2x.png in Resources */,
 				10F5F7DF1D9927390045FA4C /* BloodPressureContentView.xib in Resources */,
 				10F5F7761D98F3560045FA4C /* walk_mileage_icon@3x.png in Resources */,
@@ -1265,6 +1298,7 @@
 				102474FA1DAA41E000F70E4F /* manridyModel.m in Sources */,
 				102474FC1DAA41E000F70E4F /* SleepModel.m in Sources */,
 				102474F91DAA41E000F70E4F /* HeartRateModel.m in Sources */,
+				9C728F681DD5DB2800BEF69E /* PopupView.m in Sources */,
 				10F5F7DD1D9927270045FA4C /* BloodPressureContentView.m in Sources */,
 				102474E51DAA412F00F70E4F /* AllBleFmdb.m in Sources */,
 				102474FE1DAA41E000F70E4F /* SportTargetModel.m in Sources */,

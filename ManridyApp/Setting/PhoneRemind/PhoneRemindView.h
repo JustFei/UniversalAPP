@@ -13,6 +13,7 @@ typedef void(^HeaderViewExpandCallback)(BOOL isExpanded);
 
 @interface PhoneRemindView : UITableViewHeaderFooterView
 
+@property (nonatomic ,weak) UIView *cutView;
 @property (nonatomic ,weak) UIImageView *iconImageView;
 @property (nonatomic ,weak) UILabel *functionLabel;
 @property (nonatomic ,weak) UIImageView *arrowImageView;

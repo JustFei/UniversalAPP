@@ -314,15 +314,12 @@
     protocolStr = [NSString stringWithFormat:@"%c",val];
     NSLog(@"%@",protocolStr);
     
-    
     return protocolStr;
 }
 
 //将data转换为不带<>的字符串
 + (NSString *)convertToNSStringWithNSData:(NSData *)data
 {
-    
-    
     NSMutableString *strTemp = [NSMutableString stringWithCapacity:[data length]*2];
     
     const unsigned char *szBuffer = [data bytes];
@@ -332,7 +329,6 @@
         [strTemp appendFormat:@"%02lx",(unsigned long)szBuffer[i]];
         
     }
-    
     
     return strTemp;
     

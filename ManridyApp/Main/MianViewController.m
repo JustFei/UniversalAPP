@@ -364,7 +364,8 @@
                     case MotionTypeStepAndkCal:
                     {
                         [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
-                        [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%@米/%@卡",manridyModel.sportModel.mileageNumber ,manridyModel.sportModel.kCalNumber]];
+                        double mileage = manridyModel.sportModel.mileageNumber.integerValue / 1000;
+                        [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%.1f公里/%@卡",mileage ,manridyModel.sportModel.kCalNumber]];
 
                         if (_userArr.count != 0) {
                             

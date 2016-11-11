@@ -35,6 +35,7 @@
 @property (nonatomic ,strong) BLETool *myBleTool;
 
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
+@property (nonatomic ,strong) UIAlertController *searchVC;
 
 @end
 
@@ -46,18 +47,23 @@
     // Do any additional setup after loading the view.
     _sectionArr = [NSMutableArray array];
     
-    _funcArr = @[@"来电提醒",@"短信提醒",@"防丢提醒",@"查找设备",@"闹钟设置"];
-    _imageArr = @[@"alert_call",@"alert_sms",@"alert_lose",@"alert_clock"];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    _funcArr = @[@[@"来电提醒",@"短信提醒"],@[@"防丢提醒",@"查找设备"],@[@"闹钟设置"]];
+    _imageArr = @[@[@"alert_call",@"alert_sms"],@[@"alert_lose",@"alert_find"],@[@"alert_clock"]];
     _clockArr = @[@"闹钟1",@"闹钟2",@"闹钟3"];
     
     [self getPickerViewDataSource];
-    
-    SectionModel *sectionModel = [[SectionModel alloc] init];
-    sectionModel.functionName = _funcArr[1];
-    sectionModel.imageName = _imageArr[1];
-    sectionModel.arrowImageName = @"all_next_icon";
-    sectionModel.isExpanded = NO;
-    [_sectionArr addObject:sectionModel];
+    for (int i = 0; i < _funcArr.count; i ++) {
+        SectionModel *sectionModel = [[SectionModel alloc] init];
+        sectionModel.functionNameArr = (NSArray *)_funcArr[i];
+        sectionModel.imageNameArr = (NSArray *)_imageArr[i];
+        if (i == 2) {
+            sectionModel.arrowImageName = @"all_next_icon";
+            sectionModel.isExpanded = NO;
+        }
+        [_sectionArr addObject:sectionModel];
+    }
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
     [titleLabel setText:@"提醒设置"];
@@ -66,13 +72,10 @@
     self.navigationItem.titleView = titleLabel;
     
     self.view.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 16)];
-    view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
-    [self.view addSubview:view];
     
     self.remindTableView.backgroundColor = [UIColor clearColor];
-    self.remindTableView.tableHeaderView = nil;
-    self.remindTableView.tableFooterView = nil;
+//    self.remindTableView.tableHeaderView = nil;
+//    self.remindTableView.tableFooterView = nil;
     _clockTimeArr = [NSMutableArray array];
     
     [self.myBleTool addObserver:self forKeyPath:@"connectState" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
@@ -166,6 +169,12 @@
     [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:@"isFindMyPeripheral"];
 }
 
+- (void)searchPeripheral:(UIButton *)sender
+{
+    [self.myBleTool writeSearchPeripheralWithONorOFF:YES];
+    [self presentViewController:self.searchVC animated:YES completion:nil];
+}
+
 #pragma mark - UIPickerViewDelegate && UIPickerViewDateSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -223,31 +232,44 @@
 #pragma mark - UITableViewDelegate && UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return _sectionArr.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 1;
-    }else {
-        SectionModel *model = _sectionArr.firstObject;
+        SectionModel *model = _sectionArr[section];
+        return model.functionNameArr.count;
+    }else if (section == 1) {
+        SectionModel *model = _sectionArr[section];
+        return model.functionNameArr.count;
+    }else if (section == 2) {
+        SectionModel *model = _sectionArr[section];
         return model.isExpanded ? 3 : 0;
     }
+    return  0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PhoneRemindTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"phoneRemindCell"];
+    NSArray *imgArr = _imageArr[indexPath.section];
+    NSArray *funArr = _funcArr[indexPath.section];
     
     switch (indexPath.section) {
         case 0:
         {
-            cell.iconImageView.image = [UIImage imageNamed:_imageArr[indexPath.row]];
-            cell.functionName.text = _funcArr[indexPath.row];
+            cell.iconImageView.image = [UIImage imageNamed:imgArr[indexPath.row]];
+            cell.functionName.text = funArr[indexPath.row];
             [cell.timeSwitch setOn:NO];
             cell.timeButton.hidden = YES;
             
+        }
+            break;
+        case 1:
+        {
+            cell.functionName.text = funArr[indexPath.row];
+            cell.iconImageView.image = [UIImage imageNamed:imgArr[indexPath.row]];
             switch (indexPath.row) {
                 case 0:
                 {
@@ -259,6 +281,21 @@
                     }
                     
                     [cell.timeSwitch addTarget:self action:@selector(findMyPeripheral:) forControlEvents:UIControlEventValueChanged];
+                    cell.timeButton.hidden = YES;
+                }
+                    break;
+                case 1:
+                {
+                    cell.timeButton.hidden = YES;
+                    cell.timeSwitch.hidden = YES;
+                    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                    searchButton.frame = CGRectMake(self.view.frame.size.width - 85, 12, 70, 20);
+                    searchButton.backgroundColor = [UIColor clearColor];
+                    [searchButton setTitle:@"开始查找" forState:UIControlStateNormal];
+                    [searchButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                    searchButton.titleLabel.font = [UIFont systemFontOfSize:15];
+                    [searchButton addTarget:self action:@selector(searchPeripheral:) forControlEvents:UIControlEventTouchUpInside];
+                    [cell addSubview:searchButton];
                 }
                     break;
                 default:
@@ -266,7 +303,7 @@
             }
         }
             break;
-        case 1:
+        case 2:
         {
             cell.functionName.text = _clockArr[indexPath.row];
             if (_clockTimeArr.count == 0) {
@@ -313,24 +350,41 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44 * self.view.frame.size.width / 320;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 0;
+        return 16;
+    }else if (section == 1) {
+        return 16;
     }else {
-        return 44;
+        return 60;
     }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return nil;
-    }else {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , 16)];
+        view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+        return view;
+    }
+    
+    if (section == 1) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , 16)];
+        view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+        return view;
+    }
+    
+    if (section == 2) {
         PhoneRemindView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"phoneHead"];
-//        view.backgroundColor = [UIColor redColor];
+        view.backgroundColor = [UIColor redColor];
         
-        SectionModel *sectionModel = _sectionArr.firstObject;
+        SectionModel *sectionModel = _sectionArr.lastObject;
         view.model = sectionModel;
         view.expandCallback = ^(BOOL isExpanded) {
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:section]
@@ -339,6 +393,8 @@
         
         return view;
     }
+    
+    return nil;
 }
 
 #pragma mark - receiveDelegate
@@ -348,11 +404,16 @@
     [self.remindTableView reloadData];
 }
 
+- (void)receiveSearchFeedback
+{
+    [self.searchVC dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - 懒加载
 - (UITableView *)remindTableView
 {
     if (!_remindTableView) {
-        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height - 16)];
+        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 16)];
         view.allowsSelection = NO;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesBegan)];
         [view addGestureRecognizer:tap];
@@ -404,6 +465,19 @@
     }
     
     return _myBleTool;
+}
+
+- (UIAlertController *)searchVC
+{
+    if (!_searchVC) {
+        _searchVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"正在查找设备" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ac = [UIAlertAction actionWithTitle:@"停止查找" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.myBleTool writeSearchPeripheralWithONorOFF:NO];
+        }];
+        [_searchVC addAction:ac];
+    }
+    
+    return _searchVC;
 }
 
 @end

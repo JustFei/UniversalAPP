@@ -96,8 +96,8 @@
             sumkCal += model.kCalNumber.integerValue;
         }
     }
-    
-    [self.weekStatisticsLabel setText:[NSString stringWithFormat:@"本周计步统计：%ld步（%ld米/%ld卡）",sumStep ,sumMileage ,sumkCal]];
+    double mileage = sumMileage;
+    [self.weekStatisticsLabel setText:[NSString stringWithFormat:@"本周计步统计：%ld步（%.1f公里/%ld卡）",sumStep ,mileage / 1000 ,sumkCal]];
     sumStep = sumMileage = sumkCal = 0;
 }
 

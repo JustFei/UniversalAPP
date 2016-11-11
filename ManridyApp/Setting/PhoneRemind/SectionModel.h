@@ -10,9 +10,9 @@
 
 @interface SectionModel : NSObject
 
-@property (nonatomic ,copy) NSString *functionName;
+@property (nonatomic ,strong) NSArray *functionNameArr;
 
-@property (nonatomic ,copy) NSString *imageName;
+@property (nonatomic ,strong) NSArray *imageNameArr;
 
 @property (nonatomic ,copy) NSString *arrowImageName;
 // 是否是展开的

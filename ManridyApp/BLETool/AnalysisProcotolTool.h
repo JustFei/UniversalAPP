@@ -45,6 +45,9 @@
 //解析心率开关的数据（09|89）
 - (manridyModel *)analysisHeartStateData:(NSData *)data WithHeadStr:(NSString *)head;
 
+//解析查找设备的数据 (10|90)
+- (BOOL)analysisSearchRequest:(NSData *)data withHeadStr:(NSString *)head;
+
 //解析心率的数据（0A|8A）
 - (manridyModel *)analysisHeartData:(NSData *)data WithHeadStr:(NSString *)head;
 

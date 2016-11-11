@@ -12,17 +12,26 @@
 #import "manridyBleDevice.h"
 #import <CoreTelephony/CTCallCenter.h>
 #import <CoreTelephony/CTCall.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
-@interface AppDelegate () <BleDiscoverDelegate, BleConnectDelegate ,UNUserNotificationCenterDelegate>
+@interface AppDelegate () <BleDiscoverDelegate, BleConnectDelegate ,BleReceiveSearchResquset , UNUserNotificationCenterDelegate>
 {
+    SystemSoundID soundID;
     CTCallCenter *_callCenter;
     BOOL _isBind;
 }
-
+@property (nonatomic ,strong) UIAlertController *searchVC;
 
 @end
 
 @implementation AppDelegate
+
+static void completionCallback(SystemSoundID mySSID)
+{
+    // 播放完毕之后，再次播放
+    AudioServicesPlayAlertSound(mySSID);
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -43,6 +52,7 @@
     self.myBleTool = [BLETool shareInstance];
     self.myBleTool.discoverDelegate = self;
     self.myBleTool.connectDelegate = self;
+    self.myBleTool.searchDelegate = self;
     
     _isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
     
@@ -144,6 +154,7 @@
     };
 }
 
+#pragma mark - BleDiscoverDelegate
 - (void)manridyBLEDidDiscoverDeviceWithMAC:(manridyBleDevice *)device
 {
     NSString *bindUUIDString = [[NSUserDefaults standardUserDefaults] objectForKey:@"bindPeripheralID"];
@@ -152,13 +163,60 @@
     }
 }
 
+#pragma mark - BleReceiveSearchResquset
+- (void)receivePeripheralRequestToRemindPhoneWithState:(BOOL)OnorOFF
+{
+    if (OnorOFF) {
+        if (self.searchVC != nil) {
+            [self.searchVC dismissViewControllerAnimated:YES completion:nil];
+        }
+        [self.window.rootViewController presentViewController:self.searchVC animated:YES completion:nil];
+        [self requestNotify];
+        
+        NSString *soundFile = [[NSBundle mainBundle] pathForResource:@"alert" ofType:@"wav"];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:soundFile], &soundID);
+        //提示音 带震动
+        AudioServicesPlayAlertSound(soundID);
+        AudioServicesAddSystemSoundCompletion(soundID, NULL, NULL,(void*)completionCallback ,NULL);
+    }else {
+        [self.searchVC dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+}
+
+- (void)requestNotify
+{
+    // 1、创建通知内容，注：这里得用可变类型的UNMutableNotificationContent，否则内容的属性是只读的
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    // 标题
+    content.title = @"手环查找中。。。";
+    // 次标题
+    content.subtitle = @"您的手环正在查找您。。。";
+    content.sound = [UNNotificationSound defaultSound];
+    
+    // 标识符
+    content.categoryIdentifier = @"categoryIndentifier";
+    
+    // 2、创建通知触发
+    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+    
+    // 3、创建通知请求
+    UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:@"KFGroupNotification" content:content trigger:trigger];
+    
+    // 4、将请求加入通知中心
+    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notificationRequest withCompletionHandler:^(NSError * _Nullable error) {
+        if (error == nil) {
+            NSLog(@"已成功加推送%@",notificationRequest.identifier);
+        }
+    }];
+}
+
 - (void)manridyBLEDidConnectDevice:(manridyBleDevice *)device
 {
 //    [self.mainVc showFunctionView];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [self.myBleTool writeTimeToPeripheral:[NSDate date]];
-//        [self.myBleTool writeToKeepConnect];
         [self.mainVc writeData];
     });
     
@@ -184,6 +242,21 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - 懒加载
+- (UIAlertController *)searchVC
+{
+    if (!_searchVC) {
+        _searchVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"正在查找设备" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ac = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.myBleTool writeStopPeripheralRemind];
+            AudioServicesDisposeSystemSoundID(soundID);
+        }];
+        [_searchVC addAction:ac];
+    }
+    
+    return _searchVC;
 }
 
 @end

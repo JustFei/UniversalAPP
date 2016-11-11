@@ -86,17 +86,6 @@
                                 <constraint firstAttribute="height" constant="2" id="cRh-Oq-eDu"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJH-Lw-7su">
-                            <rect key="frame" x="347" y="345" width="28" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="gmh-DD-U0V"/>
-                                <constraint firstAttribute="width" constant="28" id="r9t-c9-H4K"/>
-                            </constraints>
-                            <state key="normal" image="walk_target_icon.png"/>
-                            <connections>
-                                <action selector="sleepTargetAction:" destination="glG-8L-ndL" eventType="touchUpInside" id="qCx-Pc-Wt1"/>
-                            </connections>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="缺乏睡眠" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cp-Ww-0rR">
                             <rect key="frame" x="152.5" y="278" width="70" height="22"/>
                             <constraints>
@@ -114,6 +103,17 @@
                                 <constraint firstAttribute="height" constant="271" id="w9h-ya-oc0"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJH-Lw-7su">
+                            <rect key="frame" x="335" y="335" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="gmh-DD-U0V"/>
+                                <constraint firstAttribute="width" constant="40" id="r9t-c9-H4K"/>
+                            </constraints>
+                            <state key="normal" image="sleep_target.png"/>
+                            <connections>
+                                <action selector="sleepTargetAction:" destination="glG-8L-ndL" eventType="touchUpInside" id="qCx-Pc-Wt1"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.1450980392" green="0.60392156860000001" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -130,7 +130,7 @@
                         <constraint firstItem="3Cp-Ww-0rR" firstAttribute="top" secondItem="gtr-da-WQW" secondAttribute="bottom" constant="5" id="YFh-jO-Ohr"/>
                         <constraint firstItem="gtr-da-WQW" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" id="aJm-R6-rWl"/>
                         <constraint firstItem="h2H-0x-LTA" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" id="bEg-6w-qF1"/>
-                        <constraint firstItem="HJH-Lw-7su" firstAttribute="top" secondItem="YMG-93-Tfc" secondAttribute="top" constant="345" id="egh-QN-Cc6"/>
+                        <constraint firstItem="HJH-Lw-7su" firstAttribute="top" secondItem="YMG-93-Tfc" secondAttribute="top" constant="335" id="egh-QN-Cc6"/>
                         <constraint firstItem="lHK-vw-NFT" firstAttribute="top" secondItem="YMG-93-Tfc" secondAttribute="top" constant="144" id="f7d-z1-hJy"/>
                         <constraint firstItem="3Cp-Ww-0rR" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" id="hGj-VV-vbV"/>
                         <constraint firstItem="fBY-KA-arW" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" constant="42" id="kZR-H9-Jcq"/>
@@ -182,6 +182,6 @@
     </objects>
     <resources>
         <image name="sleep_now_icon.png" width="258" height="271"/>
-        <image name="walk_target_icon.png" width="19" height="19"/>
+        <image name="sleep_target.png" width="22" height="22"/>
     </resources>
 </document>

@@ -10,7 +10,7 @@
 #import "AnalysisProcotolTool.h"
 #import "manridyModel.h"
 #import "NSStringTool.h"
-//#import "ClockModel.h"
+#import "AppDelegate.h"
 
 @interface AnalysisProcotolTool ()<CLLocationManagerDelegate>
 
@@ -397,6 +397,19 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 
+#pragma mark 解析查找设备的数据 (10|90)
+- (BOOL)analysisSearchRequest:(NSData *)data withHeadStr:(NSString *)head
+{
+    const unsigned char *hexBytes = [data bytes];
+    NSString *TyStr = [NSString stringWithFormat:@"%02x", hexBytes[2]];
+        //接受到停止寻找的协议
+    if ([TyStr isEqualToString:@"00"]) {
+        return YES;
+    }else {
+        return NO;
+    }
+}
+
 #pragma mark 解析心率的数据（0A|8A）
 - (manridyModel *)analysisHeartData:(NSData *)data WithHeadStr:(NSString *)head
 {
@@ -608,4 +621,5 @@ union LAT{
     return model;
 }
 #endif
+
 @end

@@ -359,6 +359,48 @@ static BLETool *bleTool = nil;
     remindStr = [NSStringTool protocolForRemind:remindModel];
 }
 
+//search my peripheral
+- (void)writeSearchPeripheralWithONorOFF:(BOOL)state
+{
+    NSString *searchStr;
+    if (state) {
+        //开始查找
+        searchStr = @"FC100003";
+    }else {
+        searchStr = @"FC100000";
+    }
+    
+    while (1) {
+        if (searchStr.length < 40) {
+            searchStr = [searchStr stringByAppendingString:@"00"];
+        }else {
+            break;
+        }
+    }
+    NSLog(@"search == %@",searchStr);
+    //写入操作
+    if (self.currentDev.peripheral) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:searchStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
+//stop peripheral
+- (void)writeStopPeripheralRemind
+{
+    NSString *stopStr = @"1001";
+    
+    while (1) {
+        if (stopStr.length < 40) {
+            stopStr = [stopStr stringByAppendingString:@"00"];
+        }else {
+            break;
+        }
+    }
+    if (self.currentDev.peripheral) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:stopStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
 //临时写入保持连接
 - (void)writeToKeepConnect
 {
@@ -424,10 +466,11 @@ static BLETool *bleTool = nil;
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
 //    NSLog(@"Discovered %@", peripheral.name);
-    //...
+    NSLog(@"name = %@, id = %@",peripheral.name ,peripheral.identifier);
     //当你发现你感兴趣的连接外围设备，停止扫描其他设备，以节省电能。
-    if (![peripheral.name isEqualToString:@""]) {
+    if (peripheral.name != nil ) {
         
+//        NSLog(@"name = %@, id = %@",peripheral.name ,peripheral.identifier);
         if (![self.deviceArr containsObject:peripheral]) {
             [self.deviceArr addObject:peripheral];
             
@@ -684,7 +727,11 @@ static BLETool *bleTool = nil;
                 [self.receiveDelegate receiveHeartRateTestWithModel:model];
             }
             
-        }else if ([headStr isEqualToString:@"0a"] || [headStr isEqualToString:@"0A"] || [headStr isEqualToString:@"8a"] || [headStr isEqualToString:@"8A"]) {
+        }else if ([headStr isEqualToString:@"10"]) {
+            if ([self.receiveDelegate respondsToSelector:@selector(receiveSearchFeedback)]) {
+                [self.receiveDelegate receiveSearchFeedback];
+            }
+        }else if([headStr isEqualToString:@"0a"] || [headStr isEqualToString:@"0A"] || [headStr isEqualToString:@"8a"] || [headStr isEqualToString:@"8A"]) {
             //获取心率数据
             manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisHeartData:value WithHeadStr:headStr];
             if ([self.receiveDelegate respondsToSelector:@selector(receiveHeartRateDataWithModel:)]) {
@@ -707,6 +754,19 @@ static BLETool *bleTool = nil;
 //                [_fmTool saveGPSToDataBase:model];
             }else {
 //                [_fmTool saveGPSToDataBase:model];
+            }
+        }else if ([headStr isEqualToString:@"fc"] || [headStr isEqualToString:@"FC"]) {
+            NSString *secondStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
+            NSString *TTStr = [NSString stringWithFormat:@"%02x", hexBytes[3]];
+            if ([secondStr isEqualToString:@"10"]) {
+                if ([self.searchDelegate respondsToSelector:@selector(receivePeripheralRequestToRemindPhoneWithState:)]) {
+                    if ([TTStr isEqualToString:@"00"]) {
+                        [self.searchDelegate receivePeripheralRequestToRemindPhoneWithState:NO];
+                    }else {
+                        [self.searchDelegate receivePeripheralRequestToRemindPhoneWithState:YES];
+                    }
+                    
+                }
             }
         }
     }

@@ -32,6 +32,7 @@
 	<string>是否允许此App访问你的媒体资料库？</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>audio</string>
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
 	</array>

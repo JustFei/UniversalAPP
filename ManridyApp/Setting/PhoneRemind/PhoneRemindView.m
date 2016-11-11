@@ -16,14 +16,12 @@
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
     }
-    
+    [self layoutIfNeeded];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.backgroundColor = [UIColor clearColor];
     [button addTarget:self action:@selector(onExpand:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:button];
     button.frame = CGRectMake(0, 0, WIDTH, 44);
-    
-    NSLog(@"button.frame == %@",NSStringFromCGRect(button.frame));
     
     self.contentView.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
     
@@ -34,16 +32,19 @@
     if (_model != model) {
         _model = model;
     }
+    [self.contentView addSubview:self.cutView];
     
+    NSString *imageStr = model.imageNameArr.firstObject;
+    NSString *funStr = model.functionNameArr.firstObject;
     self.arrowImageView.image = [UIImage imageNamed:model.arrowImageName];
-    self.iconImageView.image = [UIImage imageNamed:model.imageName];
+    self.iconImageView.image = [UIImage imageNamed:imageStr];
     if (!model.isExpanded) {
         self.arrowImageView.transform = CGAffineTransformIdentity;
     } else {
         self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI / 2);
     }
     
-    self.functionLabel.text = model.functionName;
+    self.functionLabel.text = funStr;
 }
 
 #pragma mark - Action
@@ -64,10 +65,24 @@
 }
 
 #pragma mark - 懒加载
+- (UIView *)cutView
+{
+    if (!_cutView) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 16)];
+        view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+        
+        [self.contentView addSubview:view];
+        _cutView = view;
+    }
+    
+    return _cutView;
+}
+
 - (UIImageView *)iconImageView
 {
     if (!_iconImageView) {
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(8, 9, 25, 22)];
+//        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(8, 9, 25, 22)];
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(8, 23, 20, 20)];
         [self.contentView addSubview:view];
         _iconImageView = view;
     }
@@ -78,8 +93,9 @@
 - (UILabel *)functionLabel
 {
     if (!_functionLabel) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 11, 55, 21)];
-        label.font = [UIFont systemFontOfSize:12];
+//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 11, 80, 21)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 25, 80, 21)];
+        label.font = [UIFont systemFontOfSize:15];
         label.textColor = [UIColor whiteColor];
         [self.contentView addSubview:label];
         _functionLabel = label;
@@ -91,7 +107,8 @@
 - (UIImageView *)arrowImageView
 {
     if (!_arrowImageView) {
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH - 39, 15, 11, 15)];
+//        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH - 39, 15, 11, 15)];
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH - 39, 30, 11, 15)];
         [self.contentView addSubview:view];
         _arrowImageView = view;
         
