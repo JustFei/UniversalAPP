@@ -13,6 +13,7 @@
 #import "ClockModel.h"
 #import "FMDBTool.h"
 #import "BLETool.h"
+#import "Remind.h"
 
 
 @interface PhoneRemindViewController () <UITableViewDelegate ,UITableViewDataSource ,UIPickerViewDelegate ,UIPickerViewDataSource ,BleReceiveDelegate>
@@ -160,19 +161,71 @@
 {
     if (!self.timePicker.hidden) {
         self.timePicker.hidden = YES;
+        [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:_clockTimeArr];
     }
-    [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:_clockTimeArr];
+    
 }
 
 - (void)findMyPeripheral:(UISwitch *)sender
 {
-    [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:@"isFindMyPeripheral"];
+    if (self.myBleTool.connectState == kBLEstateDidConnected) {
+        [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:@"isFindMyPeripheral"];
+    }else {
+        [self presentAlertController];
+        [sender setOn:!sender.on];
+    }
+    
 }
 
 - (void)searchPeripheral:(UIButton *)sender
 {
-    [self.myBleTool writeSearchPeripheralWithONorOFF:YES];
-    [self presentViewController:self.searchVC animated:YES completion:nil];
+    if (self.myBleTool.connectState == kBLEstateDidConnected) {
+        [self.myBleTool writeSearchPeripheralWithONorOFF:YES];
+        [self presentViewController:self.searchVC animated:YES completion:nil];
+    }else {
+        [self presentAlertController];
+    }
+}
+
+- (void)SmsAndPhoneRemind:(UISwitch *)sender
+{
+    if (self.myBleTool.connectState == kBLEstateDidConnected) {
+        Remind *model = [[Remind alloc] init];
+        for (int tag = 0; tag < 2; tag ++) {
+            UISwitch *sth = (UISwitch *)[self.view viewWithTag:tag + 100];
+            switch (tag) {
+                case 0:
+                {
+                    model.phone = sth.on;
+                    [[NSUserDefaults standardUserDefaults] setBool:sth.on forKey:@"isRemindPhone"];
+                }
+                    break;
+                case 1:
+                {
+                    model.message = sth.on;
+                    [[NSUserDefaults standardUserDefaults] setBool:sth.on forKey:@"isRemindMessage"];
+                }
+                    
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        [self.myBleTool writePhoneAndMessageRemindToPeripheral:model];
+    }else {
+        [self presentAlertController];
+        [sender setOn:!sender.on];
+    }
+    
+}
+
+- (void)presentAlertController
+{
+    UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"请连接上设备后再设置" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ac = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
+    [vc addAction:ac];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - UIPickerViewDelegate && UIPickerViewDateSource
@@ -261,9 +314,17 @@
         {
             cell.iconImageView.image = [UIImage imageNamed:imgArr[indexPath.row]];
             cell.functionName.text = funArr[indexPath.row];
-            [cell.timeSwitch setOn:NO];
             cell.timeButton.hidden = YES;
-            
+            cell.timeSwitch.tag = indexPath.row + 100;
+            BOOL isMessage = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindMessage"];
+            BOOL isPhone = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindPhone"];
+            if (indexPath.row == 0) {
+                [cell.timeSwitch setOn:isPhone];
+            }
+            if (indexPath.row == 1) {
+                [cell.timeSwitch setOn:isMessage];
+            }
+            [cell.timeSwitch addTarget:self action:@selector(SmsAndPhoneRemind:) forControlEvents:UIControlEventValueChanged];
         }
             break;
         case 1:
@@ -319,22 +380,19 @@
             cell.timeButton.tag = indexPath.row;
             [cell.timeButton addTarget:self action:@selector(presentPickerView:) forControlEvents:UIControlEventTouchUpInside];
             cell.timeButton.enabled = cell.timeSwitch.on;
+            
             __weak typeof(cell) weakCell = cell;
             __weak typeof(self) weakSelf = self;
             
             cell._clockSwitchValueChangeBlock =^{
-                if (weakSelf.myBleTool.connectState == kBLEstateDidConnected) {
+                if (self.myBleTool.connectState == kBLEstateDidConnected) {
                     ClockModel *model = _clockTimeArr[indexPath.row];
                     model.isOpen = weakCell.timeSwitch.on;
                     [_clockTimeArr replaceObjectAtIndex:indexPath.row withObject:model];
-                    [weakSelf.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:_clockTimeArr];
+                    [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:_clockTimeArr];
                 }else {
-                    UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"请连接上设备后再设置" preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *ac = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                        [weakCell.timeSwitch setOn:!weakCell.timeSwitch.on];
-                    }];
-                    [vc addAction:ac];
-                    [weakSelf presentViewController:vc animated:YES completion:nil];
+                    [weakCell.timeSwitch setOn:!weakCell.timeSwitch.on];
+                    [weakSelf presentAlertController];
                 }
             };
         }
@@ -343,6 +401,8 @@
         default:
             break;
     }
+    
+    
     
     cell.backgroundColor = [UIColor clearColor];
     cell.timeSwitch.transform = CGAffineTransformMakeScale(0.85, 0.75);

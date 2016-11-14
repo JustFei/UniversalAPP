@@ -96,6 +96,28 @@ static BLETool *bleTool = nil;
 }
 
 #pragma mark - action of connecting layer -连接层操作
+- (BOOL)retrievePeripherals
+{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"peripheralUUID"]) {
+        NSString *uuidStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"peripheralUUID"];
+        NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:uuidStr];
+        NSArray *arr = [_myCentralManager retrievePeripheralsWithIdentifiers: @[uuid]];
+        NSLog(@"当前已连接的设备%@,有几个%ld",arr ,arr.count);
+        if (arr.count != 0) {
+            CBPeripheral *per = (CBPeripheral *)arr.firstObject;
+            per.delegate = self;
+            manridyBleDevice *device = [[manridyBleDevice alloc] initWith:per andAdvertisementData:nil andRSSI:nil];
+            
+            [self connectDevice:device];
+            return YES;
+        }else {
+            return NO;
+        }
+    }else {
+        return NO;
+    }
+}
+
 - (void)scanDevice
 {
     [self.deviceArr removeAllObjects];
@@ -110,6 +132,7 @@ static BLETool *bleTool = nil;
 
 - (void)connectDevice:(manridyBleDevice *)device
 {
+    self.isReconnect = YES;
     self.currentDev = device;
     //请求连接到此外设
     [_myCentralManager connectPeripheral:device.peripheral options:nil];
@@ -357,6 +380,9 @@ static BLETool *bleTool = nil;
 {
     NSString *remindStr;
     remindStr = [NSStringTool protocolForRemind:remindModel];
+    if (self.currentDev.peripheral) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:remindStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
 }
 
 //search my peripheral
@@ -546,21 +572,10 @@ static BLETool *bleTool = nil;
                     // 通知的提示声音，这里用的默认的声音
                     content.sound = [UNNotificationSound defaultSound];
                     
-                    //        NSURL *imageUrl = [[NSBundle mainBundle] URLForResource:@"all_next_icon" withExtension:@"png"];
-                    //        UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:@"imageIndetifier" URL:imageUrl options:nil error:nil];
-                    //
-                    //        // 附件 可以是音频、图片、视频 这里是一张图片
-                    //        content.attachments = @[attachment];
-                    
                     // 标识符
                     content.categoryIdentifier = @"categoryIndentifier";
                     
                     // 2、创建通知触发
-                    /* 触发器分三种：
-                     UNTimeIntervalNotificationTrigger : 在一定时间后触发，如果设置重复的话，timeInterval不能小于60
-                     UNCalendarNotificationTrigger : 在某天某时触发，可重复
-                     UNLocationNotificationTrigger : 进入或离开某个地理区域时触发
-                     */
                     UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
                     
                     // 3、创建通知请求
@@ -617,6 +632,7 @@ static BLETool *bleTool = nil;
             
             if ([self.connectDelegate respondsToSelector:@selector(manridyBLEDidConnectDevice:)]) {
                 if (self.currentDev.peripheral == peripheral) {
+                    [[NSUserDefaults standardUserDefaults] setObject:peripheral.identifier.UUIDString forKey:@"peripheralUUID"];
                     self.connectState = kBLEstateDidConnected;
                     [self.connectDelegate manridyBLEDidConnectDevice:self.currentDev];
                 }

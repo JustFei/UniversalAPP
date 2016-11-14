@@ -307,12 +307,19 @@
 
 + (NSString *)protocolForRemind:(Remind *)model
 {
-    NSString *protocolStr;
+    NSString *protocolStr = @"FC08F0";
     unsigned char val = 0;
     val |= (model.phone<<0);
     val |= (model.message<<2);
-    protocolStr = [NSString stringWithFormat:@"%c",val];
-    NSLog(@"%@",protocolStr);
+    protocolStr = [protocolStr stringByAppendingString: [NSString stringWithFormat:@"%02x",val]];
+    while (1) {
+        if (protocolStr.length < 40) {
+            protocolStr = [protocolStr stringByAppendingString:@"00"];
+        }else {
+            break;
+        }
+    }
+    NSLog(@"协议为 == %@",protocolStr);
     
     return protocolStr;
 }

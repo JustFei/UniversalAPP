@@ -864,14 +864,11 @@
                 break;
             case 1:
             {
-//                _currentPage = 1;
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(100 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
-                        if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                            [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
-                        }else {
-                            [self queryHeartDataAndShow];
-                        }
-                });
+                if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                    [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
+                }else {
+                    [self queryHeartDataAndShow];
+                }
             }
                 break;
 //            case 2:

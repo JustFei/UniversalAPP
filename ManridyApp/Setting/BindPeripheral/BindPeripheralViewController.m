@@ -174,6 +174,7 @@
     
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"bindPeripheralID"];
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"bindPeripheralName"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"peripheralUUID"];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isBind"];
     
     self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -466,7 +467,7 @@
 - (UIButton *)disbindButton
 {
     if (!_disbindButton) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.downView.center.x - 90, self.downView.frame.size.width * 18 / 320, WIDTH * 180 / 320, WIDTH * 47 / 320)];
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.downView.center.x - 90 * WIDTH / 320, self.downView.frame.size.width * 18 / 320, WIDTH * 180 / 320, WIDTH * 47 / 320)];
         [button setTitle:@"解除绑定" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(disbindPeripheral) forControlEvents:UIControlEventTouchUpInside];

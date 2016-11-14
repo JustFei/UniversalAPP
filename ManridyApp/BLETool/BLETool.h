@@ -145,6 +145,9 @@ typedef enum{
 @property(nonatomic, assign,) SystemBLEState systemBLEstate;
 
 #pragma mark - action of connecting layer -连接层操作
+//判断有没有当前设备有没有连接的
+- (BOOL)retrievePeripherals;
+
 //扫描设备
 - (void)scanDevice;
 

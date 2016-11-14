@@ -41,14 +41,6 @@ static void completionCallback(SystemSoundID mySSID)
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-#if 0
-    // 监控通话信息
-    CTCallCenter *center = [[CTCallCenter alloc] init];
-    _callCenter = center;
-    // 获取并输出手机的运营商信息
-    [self aboutCall];
-#endif
-    
     self.myBleTool = [BLETool shareInstance];
     self.myBleTool.discoverDelegate = self;
     self.myBleTool.connectDelegate = self;
@@ -99,7 +91,9 @@ static void completionCallback(SystemSoundID mySSID)
             case 5:
             {
                 if (_isBind) {
-                    [self connectBLE];
+                    if (self.myBleTool.connectState == kBLEstateDisConnected) {
+                        [self connectBLE];
+                    }
                 }
             }
                 
@@ -109,49 +103,28 @@ static void completionCallback(SystemSoundID mySSID)
                 break;
         }
     }
-    
-    
 }
 
 - (void)connectBLE
 {
-    [self.myBleTool scanDevice];
-    self.myBleTool.isReconnect = YES;
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.myBleTool stopScan];
+    BOOL systemConnect = [self.myBleTool retrievePeripherals];
+    if (!systemConnect) {
+        [self.myBleTool scanDevice];
         
-        if (self.myBleTool.connectState == kBLEstateDisConnected) {
-            [self.mainVc.stepView.stepLabel setText:@"未连接上设备，点击重试"];
-        }
-    });
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.myBleTool stopScan];
+            
+            if (self.myBleTool.connectState == kBLEstateDisConnected) {
+                [self.mainVc.stepView.stepLabel setText:@"未连接上设备，点击重试"];
+            }
+        });
+    }
 }
 
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 //    [self.myBleTool removeObserver:self forKeyPath:@"systemBLEstate"];
-}
-
-- (void) aboutCall{
-    //获取电话接入信息
-    _callCenter.callEventHandler = ^(CTCall *call){
-        if ([call.callState isEqualToString:CTCallStateDisconnected]){
-            NSLog(@"Call has been disconnected");
-            
-        }else if ([call.callState isEqualToString:CTCallStateConnected]){
-            NSLog(@"Call has just been connected");
-            
-        }else if([call.callState isEqualToString:CTCallStateIncoming]){
-            NSLog(@"Call is incoming");
-            
-        }else if ([call.callState isEqualToString:CTCallStateDialing]){
-            NSLog(@"call is dialing");
-            
-        }else{
-            NSLog(@"Nothing is done");
-        }
-    };
 }
 
 #pragma mark - BleDiscoverDelegate
@@ -180,8 +153,8 @@ static void completionCallback(SystemSoundID mySSID)
         AudioServicesAddSystemSoundCompletion(soundID, NULL, NULL,(void*)completionCallback ,NULL);
     }else {
         [self.searchVC dismissViewControllerAnimated:YES completion:nil];
+        AudioServicesDisposeSystemSoundID(soundID);
     }
-    
 }
 
 - (void)requestNotify
