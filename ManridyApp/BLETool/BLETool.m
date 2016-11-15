@@ -514,7 +514,6 @@ static BLETool *bleTool = nil;
 //连接成功
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
-//    NSLog(@"Peripheral connected");
     
     peripheral.delegate = self;
     //传入nil会返回所有服务;一般会传入你想要服务的UUID所组成的数组,就会返回指定的服务
@@ -629,11 +628,10 @@ static BLETool *bleTool = nil;
         //保存订阅特征
         if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:kNotifyCharacteristicUUID]]) {
             self.notifyCharacteristic = characteristic;
-            
+            self.connectState = kBLEstateDidConnected;
             if ([self.connectDelegate respondsToSelector:@selector(manridyBLEDidConnectDevice:)]) {
                 if (self.currentDev.peripheral == peripheral) {
                     [[NSUserDefaults standardUserDefaults] setObject:peripheral.identifier.UUIDString forKey:@"peripheralUUID"];
-                    self.connectState = kBLEstateDidConnected;
                     [self.connectDelegate manridyBLEDidConnectDevice:self.currentDev];
                 }
             }

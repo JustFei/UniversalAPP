@@ -10,6 +10,7 @@
 #import "UserInfoViewController.h"
 #import "BindPeripheralViewController.h"
 #import "PhoneRemindViewController.h"
+#import "AboutViewController.h"
 
 #define WIDTH self.frame.size.width
 
@@ -36,8 +37,8 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        _dataArr = @[@"用户信息",@"信息提醒",@"防丢设置",@"查看电量",@"设备锁定",@"关于"];
-        _dataArr = @[@"用户信息",@"信息提醒",@"设备锁定"];
-        _imageNameArr = @[@"set_user_icon",@"set_alart_icon",@"set_ble_icon"];
+        _dataArr = @[@"用户信息",@"信息提醒",@"设备锁定",@"关于"];
+        _imageNameArr = @[@"set_user_icon",@"set_alart_icon",@"set_ble_icon",@"set_about_icon"];
     }
     return self;
 }
@@ -138,6 +139,13 @@
             BindPeripheralViewController *vc = [[BindPeripheralViewController alloc] init];
             [[self findViewController:self].navigationController pushViewController:vc animated:YES];
         }
+            break;
+        case 3:
+        {
+            AboutViewController *vc = [[AboutViewController alloc] init];
+            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
+        }
+            break;
         default:
             break;
     }

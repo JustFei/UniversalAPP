@@ -51,12 +51,12 @@ static void completionCallback(SystemSoundID mySSID)
     self.mainVc = [[MainViewController alloc] init];
     
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:self.mainVc];
-    if (_isBind) {
-        //蓝牙是否打开
-        if (self.myBleTool.systemBLEstate == SystemBLEStatePoweredOn) {
-            [self connectBLE];
-        }
-    }
+//    if (_isBind) {
+//        //蓝牙是否打开
+//        if (self.myBleTool.systemBLEstate == SystemBLEStatePoweredOn) {
+//            [self connectBLE];
+//        }
+//    }
     
     //监听state变化的状态
     [self.myBleTool addObserver:self forKeyPath:@"systemBLEstate" options: NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];

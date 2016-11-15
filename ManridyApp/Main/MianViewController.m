@@ -859,7 +859,9 @@
         switch (self.pageControl.currentPage) {
             case 0:
             {
-                [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
+                if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                    [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
+                }
             }
                 break;
             case 1:
