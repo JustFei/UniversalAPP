@@ -41,6 +41,7 @@
 @property (nonatomic) CGFloat yValueMin;
 @property (nonatomic) NSInteger yLabelNum;
 @property (nonatomic) CGFloat yLabelHeight;
+@property (nonatomic) CGFloat yLabelWidth;
 @property (nonatomic) UIFont *yLabelFont;
 @property (nonatomic) UIColor *yLabelColor;
 @property (nonatomic) CGFloat chartCavanHeight;

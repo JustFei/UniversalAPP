@@ -16,7 +16,7 @@
 
 #define kStateOFF [UIColor colorWithRed:77.0 / 255.0 green:132.0 / 255.0 blue:195.0 / 255.0 alpha:1]
 
-@interface HeartRateHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate>
+@interface HeartRateHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate ,PNChartDelegate>
 {
     double sumHeartRate;
     NSInteger haveDataDays;
@@ -24,14 +24,13 @@
     NSMutableArray *_maxDataArr;
     NSMutableArray *_minDataArr;
 }
+@property (weak, nonatomic) IBOutlet UILabel *monthAverageLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *heartRateLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *state1;
 
 @property (weak, nonatomic) IBOutlet UIView *state2;
-
-@property (weak, nonatomic) IBOutlet UIView *state3;
 
 @property (weak, nonatomic) IBOutlet UIView *state4;
 
@@ -75,9 +74,6 @@
         [self.backButton setHidden:YES];
         [self.titleLabel setHidden:YES];
     }
-    
-    
-    
     
     //获取这个月的天数
     NSDate *today = [NSDate date]; //Get a date object for today's date
@@ -144,10 +140,10 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
-            NSString *dateStr = [NSString stringWithFormat:@"20<%ld%ld%02ld>",iCurYear ,iCurMonth ,i];
+            NSString *dateStr = [NSString stringWithFormat:@"20<%02ld%02ld%02ld>",iCurYear ,iCurMonth ,i];
             
-            NSInteger max = 40;
-            NSInteger min = 40;
+            NSInteger max = 0;
+            NSInteger min = 0;
             
             NSArray *queryArr = [self.myFmdbTool queryHeartRateWithDate:dateStr];
             if (queryArr.count == 0) {
@@ -205,23 +201,21 @@
             [self.heartCircleChart strokeChart];
             
             [self.heartRateLabel setText: [NSString stringWithFormat:@"%ld",averageNumber]];
+            self.monthAverageLabel.text = @"当月平均心率";
             
             if (averageNumber < 60) {
                 self.state1.backgroundColor = [UIColor redColor];
                 self.state2.backgroundColor = kStateOFF;
-                self.state3.backgroundColor = kStateOFF;
                 self.state4.backgroundColor = kStateOFF;
                 self.stateLabel.text = @"偏低";
             }else if (averageNumber >= 60 && averageNumber <= 100) {
                 self.state1.backgroundColor = kStateOFF;
                 self.state2.backgroundColor = [UIColor greenColor];
-                self.state3.backgroundColor = [UIColor greenColor];
                 self.state4.backgroundColor = kStateOFF;
                 self.stateLabel.text = @"正常";
             }else {
                 self.state1.backgroundColor = kStateOFF;
                 self.state2.backgroundColor = kStateOFF;
-                self.state3.backgroundColor = kStateOFF;
                 self.state4.backgroundColor = [UIColor redColor];
                 self.stateLabel.text = @"偏高";
             }
@@ -232,6 +226,9 @@
             data01.color = PNBlue;
             data01.itemCount = data01Array.count;
             data01.lineWidth = 1;
+            data01.inflexionPointColor = PNBlue;
+            data01.inflexionPointStyle = PNLineChartPointStyleCircle;
+            data01.inflexionPointWidth = 3;
             data01.getData = ^(NSUInteger index) {
                 CGFloat yValue = [data01Array[index] floatValue];
                 return [PNLineChartDataItem dataItemWithY:yValue];
@@ -243,6 +240,9 @@
             data02.color = PNRed;
             data02.itemCount = data02Array.count;
             data02.lineWidth = 1;
+            data02.inflexionPointColor = PNRed;
+            data02.inflexionPointStyle = PNLineChartPointStyleCircle;
+            data02.inflexionPointWidth = 3;
             data02.getData = ^(NSUInteger index) {
                 CGFloat yValue = [data02Array[index] floatValue];
                 return [PNLineChartDataItem dataItemWithY:yValue];
@@ -346,19 +346,40 @@
     [dropdownMenuView showFrom:sender];
 }
 
+#pragma mark - PNChartDelegate
+- (void)userClickedOnLinePoint:(CGPoint)point lineIndex:(NSInteger)lineIndex
+{
+    NSLog(@"点击了%ld根线",lineIndex);
+}
+
+- (void)userClickedOnLineKeyPoint:(CGPoint)point
+                        lineIndex:(NSInteger)lineIndex
+                       pointIndex:(NSInteger)pointIndex
+{
+    NSLog(@"当天最高 == %@，最低 == %@",_maxDataArr[pointIndex] ,_minDataArr[pointIndex]);
+    NSInteger max = ((NSNumber *)_maxDataArr[pointIndex]).integerValue;
+    NSInteger min = ((NSNumber *)_minDataArr[pointIndex]).integerValue;
+    NSInteger average = (max + min) / 2;
+    self.heartRateLabel.text = [NSString stringWithFormat:@"%ld",average];
+    self.monthAverageLabel.text = @"当天平均心率";
+}
+
 #pragma mark - 懒加载
 - (PNLineChart *)heartLineChartView
 {
     if (!_heartLineChartView) {
         PNLineChart *view = [[PNLineChart alloc] initWithFrame:self.downView.bounds];
+        view.delegate = self;
         view.showCoordinateAxis = YES;
-        view.yValueMin = 40;
-        view.yValueMax = 110;
-        view.xLabelFont = [UIFont systemFontOfSize:10];
-        
+        view.yValueMin = 0;
+        view.yValueMax = 200;
+        view.xLabelFont = [UIFont systemFontOfSize:8];
+        view.xLabelWidth = 10;
+        view.chartMarginLeft = 30;
+        view.chartMarginRight = 0;
+
         view.yGridLinesColor = [UIColor clearColor];
         view.showYGridLines = YES;
-        
         
         [self.downView addSubview:view];
         _heartLineChartView = view;

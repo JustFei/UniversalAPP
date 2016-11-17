@@ -146,8 +146,6 @@ displayCountingLabel:(BOOL)displayCountingLabel
         self.countingLabel.format = format;
         [self addSubview:self.countingLabel];
     }
-
-
     // Add circle params
 
     _circle.lineWidth   = [_lineWidth floatValue];
