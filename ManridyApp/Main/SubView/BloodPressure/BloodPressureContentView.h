@@ -10,8 +10,15 @@
 
 @interface BloodPressureContentView : UIView
 @property (weak, nonatomic) IBOutlet UILabel *bloodPressureLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *bloodPressureHighState;
-@property (weak, nonatomic) IBOutlet UILabel *bloodPressureLowState;
 @property (weak, nonatomic) IBOutlet UILabel *heartRateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *progressImageView;
+@property (strong, nonatomic) IBOutlet UIView *downView;
+
+@property (nonatomic ,strong) NSMutableArray *dateArr;
+@property (nonatomic ,strong) NSMutableArray *hbArr;
+@property (nonatomic ,strong) NSMutableArray *lbArr;
+
+//- (void)queryBloodWithBloodArr:(NSArray *)bloodDataArr;
+- (void)showChartViewWithData:(BOOL)haveData;
+- (void)drawProgress:(CGFloat )progress;
 @end

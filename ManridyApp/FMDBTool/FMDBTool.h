@@ -14,6 +14,8 @@
 @class UserInfoModel;
 @class SleepModel;
 @class ClockModel;
+@class BloodModel;
+@class BloodO2Model;
 
 typedef enum : NSUInteger {
     SQLTypeStep = 0,
@@ -69,6 +71,18 @@ typedef enum : NSUInteger {
 - (BOOL)deleteSleepData:(NSString *)deleteSql;
 
 #pragma mark - BloodPressureData
+- (BOOL)insertBloodModel:(BloodModel *)model;
+
+- (NSArray *)queryBloodWithDate:(NSString *)date;
+
+//- (BOOL)modifySleepWithID:(NSInteger)ID model:(SleepModel *)model;
+
+//- (BOOL)deleteSleepData:(NSString *)deleteSql;
+
+#pragma mark - BloodO2Data
+- (BOOL)insertBloodO2Model:(BloodO2Model *)model;
+
+- (NSArray *)queryBloodO2WithDate:(NSString *)date;
 
 #pragma mark - UserInfoData
 - (BOOL)insertUserInfoModel:(UserInfoModel *)model;

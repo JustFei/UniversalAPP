@@ -57,4 +57,10 @@
 //解析GPS的数据（0D|8D）
 //- (manridyModel *)analysisGPSData:(NSData *)data WithHeadStr:(NSString *)head;
 
+//解析血压数据（11|91）
+- (manridyModel *)analysisBloodData:(NSData *)data WithHeadStr:(NSString *)head;
+
+//解析血氧数据（12|92）
+- (manridyModel *)analysisBloodO2Data:(NSData *)data WithHeadStr:(NSString *)head;
+
 @end

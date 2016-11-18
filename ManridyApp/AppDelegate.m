@@ -47,6 +47,7 @@ static void completionCallback(SystemSoundID mySSID)
     self.myBleTool.searchDelegate = self;
     
     _isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
+    NSLog(@"有没有绑定设备 == %d",_isBind);
     
     self.mainVc = [[MainViewController alloc] init];
     

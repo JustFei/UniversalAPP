@@ -427,6 +427,60 @@ static BLETool *bleTool = nil;
     }
 }
 
+//get blood data
+- (void)writeBloodToPeripheral:(BloodData)bloodData
+{
+    NSString *bloodStr;
+    switch (bloodData) {
+        case BloodDataLastData:
+            //last data of sleep
+            bloodStr = [NSStringTool protocolAddInfo:@"00" head:@"11"];
+            NSLog(@"sleep success");
+            
+            break;
+        case BloodDataHistoryData:
+            //history data of sleep
+            bloodStr = [NSStringTool protocolAddInfo:@"01" head:@"11"];
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+    //写入操作
+    if (self.currentDev.peripheral) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:bloodStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
+//get blood O2 data
+- (void)writeBloodO2ToPeripheral:(BloodO2Data)bloodO2Data
+{
+    NSString *bloodStr;
+    switch (bloodO2Data) {
+        case BloodO2DataLastData:
+            //last data of sleep
+            bloodStr = [NSStringTool protocolAddInfo:@"00" head:@"12"];
+            NSLog(@"sleep success");
+            
+            break;
+        case BloodO2DataHistoryData:
+            //history data of sleep
+            bloodStr = [NSStringTool protocolAddInfo:@"01" head:@"12"];
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+    //写入操作
+    if (self.currentDev.peripheral) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:bloodStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
 //临时写入保持连接
 - (void)writeToKeepConnect
 {
@@ -491,12 +545,8 @@ static BLETool *bleTool = nil;
 //查找到正在广播的指定外设
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-//    NSLog(@"Discovered %@", peripheral.name);
-    NSLog(@"name = %@, id = %@",peripheral.name ,peripheral.identifier);
     //当你发现你感兴趣的连接外围设备，停止扫描其他设备，以节省电能。
     if (peripheral.name != nil ) {
-        
-//        NSLog(@"name = %@, id = %@",peripheral.name ,peripheral.identifier);
         if (![self.deviceArr containsObject:peripheral]) {
             [self.deviceArr addObject:peripheral];
             
@@ -741,10 +791,6 @@ static BLETool *bleTool = nil;
                 [self.receiveDelegate receiveHeartRateTestWithModel:model];
             }
             
-        }else if ([headStr isEqualToString:@"10"]) {
-            if ([self.receiveDelegate respondsToSelector:@selector(receiveSearchFeedback)]) {
-                [self.receiveDelegate receiveSearchFeedback];
-            }
         }else if([headStr isEqualToString:@"0a"] || [headStr isEqualToString:@"0A"] || [headStr isEqualToString:@"8a"] || [headStr isEqualToString:@"8A"]) {
             //获取心率数据
             manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisHeartData:value WithHeadStr:headStr];
@@ -781,6 +827,22 @@ static BLETool *bleTool = nil;
                     }
                     
                 }
+            }
+        }else if ([headStr isEqualToString:@"10"]) {
+            if ([self.receiveDelegate respondsToSelector:@selector(receiveSearchFeedback)]) {
+                [self.receiveDelegate receiveSearchFeedback];
+            }
+        }else if ([headStr isEqualToString:@"11"]) {
+            //获取血压
+            manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisBloodData:value WithHeadStr:headStr];
+            if ([self.receiveDelegate respondsToSelector:@selector(receiveBloodDataWithModel:)]) {
+                [self.receiveDelegate receiveBloodDataWithModel:model];
+            }
+        }else if ([headStr isEqualToString:@"11"]) {
+            //获取血氧
+            manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisBloodO2Data:value WithHeadStr:headStr];
+            if ([self.receiveDelegate respondsToSelector:@selector(receiveBloodO2DataWithModel:)]) {
+                [self.receiveDelegate receiveBloodO2DataWithModel:model];
             }
         }
     }

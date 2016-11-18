@@ -80,7 +80,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _titleArr = @[@"计步",@"心率",@"睡眠"];
+    _titleArr = @[@"计步",@"心率",@"睡眠",@"血压"];
     haveNewStep = YES;
     haveNewHeartRate = YES;
     haveNewSleep = YES;
@@ -467,10 +467,10 @@
             
             NSMutableString *mutableTime = [NSMutableString stringWithString:manridyModel.heartRateModel.time];
             [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
-            NSLog(@"数据类型 == %lu",manridyModel.heartRateModel.heartRateState);
+            
             if (manridyModel.heartRateModel.heartRateState == HeartRateDataHistoryData) {
                 //当总数据为00时说明没有数据，可以不用存储
-                if (![manridyModel.heartRateModel.sumDataCount isEqualToString:@"0"] && manridyModel.heartRateModel.sumDataCount != nil) {
+                if (manridyModel.heartRateModel.sumDataCount.integerValue) {
                     
                     //如果当前数据为最后一条数据时，在屏幕上显示，其他的数据全部存储到数据库即可
                     [self.heartRateView.heartRateLabel setText:manridyModel.heartRateModel.heartRate];
@@ -534,6 +534,46 @@
             }
         }
     }
+    }
+}
+
+- (void)receiveBloodDataWithModel:(manridyModel *)manridyModel
+{
+    @autoreleasepool {
+        NSDate *currentDate = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy/MM/dd";
+        NSString *currentDateString = [formatter stringFromDate:currentDate];
+        
+        if (manridyModel.isReciveDataRight) {
+            if (manridyModel.receiveDataType == ReturnModelTypeBloodModel) {
+                
+                //如果历史数据，插入数据库
+                if (manridyModel.bloodModel.bloodState == BloodDataHistoryData) {
+                    
+                    //如果历史数据总数不为空
+                    if (manridyModel.bloodModel.sumCount.integerValue) {
+                        
+                        //插入历史睡眠数据，如果sumCount为0的话，就不做保存
+                        [self.myFmdbTool insertBloodModel:manridyModel.bloodModel];
+                        
+                        //如果历史数据全部载入完成，写入当前睡眠数据
+                        if (manridyModel.bloodModel.currentCount.integerValue + 1 == manridyModel.bloodModel.sumCount.integerValue) {
+                            NSArray *bloodDataArr = [self.myFmdbTool queryBloodWithDate:currentDateString];
+                            
+                            [self queryBloodWithBloodArr:bloodDataArr];
+                        }
+                    }else {
+                        //这里不查询历史，直接查询数据库展示即可
+                        NSArray *bloodDataArr = [self.myFmdbTool queryBloodWithDate:currentDateString];
+                        
+                        [self queryBloodWithBloodArr:bloodDataArr];
+                    }
+                }else {
+                    [self.myBleTool writeBloodToPeripheral:BloodDataHistoryData];
+                }
+            }
+        }
     }
 }
 
@@ -642,6 +682,36 @@
     }
     [self.sleepView.sumDataArr removeAllObjects];
     [self.sleepView.deepDataArr removeAllObjects];
+    }
+}
+
+- (void)queryBloodWithBloodArr:(NSArray *)bloodDataArr
+{
+    @autoreleasepool {
+        //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
+        
+        for (BloodModel *model in bloodDataArr) {
+            [self.bloodPressureView.hbArr addObject:@(model.highBloodString.integerValue)];
+            [self.bloodPressureView.lbArr addObject:@(model.lowBloodString.integerValue)];
+        }
+        if (bloodDataArr.count == 0) {
+            [self.bloodPressureView showChartViewWithData:NO];
+        }else {
+            [self.bloodPressureView showChartViewWithData:YES];
+            
+            BloodModel *model = bloodDataArr.lastObject;
+            [self.bloodPressureView.bloodPressureLabel setText:[NSString stringWithFormat:@"%@/%@",model.highBloodString ,model.lowBloodString]];
+            
+            float highProgress = model.highBloodString.floatValue / 200;
+            
+            if (highProgress <= 1) {
+                [self.bloodPressureView drawProgress:highProgress];
+            }else if (highProgress >= 1) {
+                [self.bloodPressureView drawProgress:1];
+            }
+        }
+        [self.bloodPressureView.hbArr removeAllObjects];
+        [self.bloodPressureView.lbArr removeAllObjects];
     }
 }
 
@@ -828,12 +898,14 @@
 
 - (void)touchesScrollViewAction
 {
+#if 0
     if (isShowList) {
         [UIView animateWithDuration:0.5 animations:^{
             self.menuView.frame = CGRectMake(30, - (self.view.frame.size.width - 60) - 50, self.view.frame.size.width - 60, self.view.frame.size.width - 60);
             isShowList = NO;
         }];
     }
+#endif
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -885,7 +957,6 @@
 //                break;
             case 2:
             {
-//                _currentPage = 3;
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
                     [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
                 }else {
@@ -897,16 +968,20 @@
                 }
             }
                 break;
-//            case 4:
-//            {
-//                _currentPage = 4;
-//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                    if (self.pageControl.currentPage == 4) {
-//                        //读取血压数据
-//                    }
-//                });
-//            }
-//                break;
+            case 3:
+            {
+                if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                    [self.myBleTool writeBloodToPeripheral:BloodDataHistoryData];
+                }else {
+                    NSDate *currentDate = [NSDate date];
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    formatter.dateFormat = @"yyyy/MM/dd";
+                    NSString *currentDateString = [formatter stringFromDate:currentDate];
+                    NSArray *bloodArr = [self.myFmdbTool queryBloodWithDate:currentDateString];
+                    [self queryBloodWithBloodArr:bloodArr];
+                }
+            }
+                break;
                 
             default:
                 break;
@@ -939,7 +1014,7 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesScrollViewAction)];
         [view addGestureRecognizer:tap];
         
-        view.contentSize = CGSizeMake(3 * WIDTH, 0);
+        view.contentSize = CGSizeMake(4 * WIDTH, 0);
         view.pagingEnabled = YES;
         view.delegate = self;
         view.bounces = NO;
@@ -956,8 +1031,8 @@
         self.sleepView = [[SleepContentView alloc] initWithFrame:CGRectMake(2 * WIDTH, 0, WIDTH, HEIGHT)];
         [view addSubview:self.sleepView];
         
-//        self.bloodPressureView = [[BloodPressureContentView alloc] initWithFrame:CGRectMake(4 * WIDTH, 0, WIDTH, HEIGHT)];
-//        [view addSubview:self.bloodPressureView];
+        self.bloodPressureView = [[BloodPressureContentView alloc] initWithFrame:CGRectMake(3 * WIDTH, 0, WIDTH, HEIGHT)];
+        [view addSubview:self.bloodPressureView];
         
         [self.view addSubview:view];
         _backGroundView = view;
@@ -1000,7 +1075,7 @@
 {
     if (!_pageControl) {
         UIPageControl *view = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 338, self.view.frame.size.width, 37)];
-        view.numberOfPages = 3;
+        view.numberOfPages = 4;
         view.currentPage = 0;
         view.enabled = NO;
         

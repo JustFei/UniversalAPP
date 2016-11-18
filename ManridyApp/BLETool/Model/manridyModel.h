@@ -15,6 +15,8 @@
 #import "ClockModel.h"
 #import "SportTargetModel.h"
 #import "Remind.h"
+#import "BloodModel.h"
+#import "BloodO2Model.h"
 
 typedef enum : NSUInteger {
     ResponsEcorrectnessDataFail = 0,
@@ -31,6 +33,8 @@ typedef enum : NSUInteger {
     ReturnModelTypeSleepModel,
     ReturnModelTypeSportZeroModel,
     ReturnModelTypeHeartRateStateModel,
+    ReturnModelTypeBloodModel,
+    ReturnModelTypeBloodO2Model
 } ReturnModelType;
 
 typedef enum : NSUInteger {
@@ -73,6 +77,12 @@ typedef enum : NSUInteger {
 
 //电话短信提醒模型
 @property (nonatomic ,strong) Remind *remindModel;
+
+//血压模型
+@property (nonatomic ,strong) BloodModel *bloodModel;
+
+//血氧模型
+@property (nonatomic ,strong) BloodO2Model *bloodO2Model;
 
 @end
 

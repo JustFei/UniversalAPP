@@ -82,4 +82,20 @@
     return _remindModel;
 }
 
+- (BloodModel *)bloodModel
+{
+    if (!_bloodModel) {
+        _bloodModel = [[BloodModel alloc] init];
+    }
+    return _bloodModel;
+}
+
+- (BloodO2Model *)bloodO2Model
+{
+    if (!_bloodO2Model) {
+        _bloodO2Model = [[BloodO2Model alloc] init];
+    }
+    return _bloodO2Model;
+}
+
 @end

@@ -622,4 +622,128 @@ union LAT{
 }
 #endif
 
+//解析血压数据（11|91）
+- (manridyModel *)analysisBloodData:(NSData *)data WithHeadStr:(NSString *)head
+{
+    manridyModel *model = [[manridyModel alloc] init];
+    model.receiveDataType = ReturnModelTypeBloodModel;
+    
+    if ([head isEqualToString:@"11"]) {
+        const unsigned char *hexBytes = [data bytes];
+        
+        NSString *TyStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
+        
+        if ([TyStr isEqualToString:@"00"]) {
+            model.bloodModel.bloodState = BloodDataLastData;
+            
+        }else if ([TyStr isEqualToString:@"01"]) {
+            NSData *sum = [data subdataWithRange:NSMakeRange(2, 2)];
+            int sumVale = [NSStringTool parseIntFromData:sum];
+            NSString *sumStr = [NSString stringWithFormat:@"%d",sumVale];
+            
+            NSData *current = [data subdataWithRange:NSMakeRange(4, 2)];
+            int currentVale = [NSStringTool parseIntFromData:current];
+            NSString *currentStr = [NSString stringWithFormat:@"%d",currentVale];
+            model.bloodModel.sumCount = sumStr;
+            model.bloodModel.currentCount = currentStr;
+            model.bloodModel.bloodState = BloodDataHistoryData;
+        }
+        NSData *year = [data subdataWithRange:NSMakeRange(6, 1)];
+        NSString *yearStr = [NSStringTool convertToNSStringWithNSData:year];
+        NSData *month = [data subdataWithRange:NSMakeRange(7, 1)];
+        NSString *monthStr = [NSStringTool convertToNSStringWithNSData:month];
+        NSData *day = [data subdataWithRange:NSMakeRange(8, 1)];
+        NSString *dayStr = [NSStringTool convertToNSStringWithNSData:day];
+        NSData *hour = [data subdataWithRange:NSMakeRange(9, 1)];
+        NSString *hourStr = [NSStringTool convertToNSStringWithNSData:hour];
+        NSData *min = [data subdataWithRange:NSMakeRange(10, 1)];
+        NSString *minStr = [NSStringTool convertToNSStringWithNSData:min];
+        NSData *sencond = [data subdataWithRange:NSMakeRange(11, 1)];
+        NSString *sencondStr = [NSStringTool convertToNSStringWithNSData:sencond];
+        
+        NSData *highBlood = [data subdataWithRange:NSMakeRange(12, 1)];
+        int highBloodinteger = [NSStringTool parseIntFromData:highBlood];
+        NSString *hbStr = [NSString stringWithFormat:@"%d",highBloodinteger];
+        
+        NSData *lowBlood = [data subdataWithRange:NSMakeRange(13, 1)];
+        int lowBloodinteger = [NSStringTool parseIntFromData:lowBlood];
+        NSString *lbStr = [NSString stringWithFormat:@"%d",lowBloodinteger];
+        
+        NSString *dayString = [NSString stringWithFormat:@"20%@/%@/%@", yearStr,monthStr ,dayStr];
+        NSString *timeString = [NSString stringWithFormat:@"%@:%@:%@",hourStr ,minStr ,sencondStr];
+        
+        model.bloodModel.dayString = dayString;
+        model.bloodModel.timeString = timeString;
+        model.bloodModel.highBloodString = hbStr;
+        model.bloodModel.lowBloodString = lbStr;
+        model.isReciveDataRight = ResponsEcorrectnessDataRgith;
+    }else if ([head isEqualToString:@"91"]) {
+        model.isReciveDataRight = ResponsEcorrectnessDataFail;
+    }
+    
+    return model;
+}
+
+//解析血氧数据（12|92）
+- (manridyModel *)analysisBloodO2Data:(NSData *)data WithHeadStr:(NSString *)head
+{
+    manridyModel *model = [[manridyModel alloc] init];
+    model.receiveDataType = ReturnModelTypeBloodO2Model;
+    
+    if ([head isEqualToString:@"12"]) {
+        const unsigned char *hexBytes = [data bytes];
+        
+        NSString *TyStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
+        
+        if ([TyStr isEqualToString:@"00"]) {
+            model.bloodO2Model.bloodO2State = BloodO2DataLastData;
+            
+        }else if ([TyStr isEqualToString:@"01"]) {
+            NSData *sum = [data subdataWithRange:NSMakeRange(2, 2)];
+            int sumVale = [NSStringTool parseIntFromData:sum];
+            NSString *sumStr = [NSString stringWithFormat:@"%d",sumVale];
+            
+            NSData *current = [data subdataWithRange:NSMakeRange(4, 2)];
+            int currentVale = [NSStringTool parseIntFromData:current];
+            NSString *currentStr = [NSString stringWithFormat:@"%d",currentVale];
+            model.bloodO2Model.sumCount = sumStr;
+            model.bloodO2Model.currentCount = currentStr;
+            model.bloodO2Model.bloodO2State = BloodO2DataHistoryData;
+        }
+        NSData *year = [data subdataWithRange:NSMakeRange(6, 1)];
+        NSString *yearStr = [NSStringTool convertToNSStringWithNSData:year];
+        NSData *month = [data subdataWithRange:NSMakeRange(7, 1)];
+        NSString *monthStr = [NSStringTool convertToNSStringWithNSData:month];
+        NSData *day = [data subdataWithRange:NSMakeRange(8, 1)];
+        NSString *dayStr = [NSStringTool convertToNSStringWithNSData:day];
+        NSData *hour = [data subdataWithRange:NSMakeRange(9, 1)];
+        NSString *hourStr = [NSStringTool convertToNSStringWithNSData:hour];
+        NSData *min = [data subdataWithRange:NSMakeRange(10, 1)];
+        NSString *minStr = [NSStringTool convertToNSStringWithNSData:min];
+        NSData *sencond = [data subdataWithRange:NSMakeRange(11, 1)];
+        NSString *sencondStr = [NSStringTool convertToNSStringWithNSData:sencond];
+        
+        NSData *inte = [data subdataWithRange:NSMakeRange(12, 1)];
+        int inteinteger = [NSStringTool parseIntFromData:inte];
+        NSString *integerStr = [NSString stringWithFormat:@"%d",inteinteger];
+        
+        NSData *flo = [data subdataWithRange:NSMakeRange(13, 1)];
+        int flofloat = [NSStringTool parseIntFromData:flo];
+        NSString *floatStr = [NSString stringWithFormat:@"%d",flofloat];
+        
+        NSString *dayString = [NSString stringWithFormat:@"20%@/%@/%@", yearStr,monthStr ,dayStr];
+        NSString *timeString = [NSString stringWithFormat:@"%@:%@:%@",hourStr ,minStr ,sencondStr];
+        
+        model.bloodO2Model.dayString = dayString;
+        model.bloodO2Model.timeString = timeString;
+        model.bloodO2Model.integerString = integerStr;
+        model.bloodO2Model.floatString = floatStr;
+        model.isReciveDataRight = ResponsEcorrectnessDataRgith;
+    }else if ([head isEqualToString:@"92"]) {
+        model.isReciveDataRight = ResponsEcorrectnessDataFail;
+    }
+    
+    return model;
+}
+
 @end

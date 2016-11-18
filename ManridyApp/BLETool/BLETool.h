@@ -114,6 +114,12 @@ typedef enum{
 //get search feedback
 - (void)receiveSearchFeedback;
 
+//get blood
+- (void)receiveBloodDataWithModel:(manridyModel *)manridyModel;
+
+//get bloodO2
+- (void)receiveBloodO2DataWithModel:(manridyModel *)manridyModel;
+
 @end
 
 @protocol BleReceiveSearchResquset <NSObject>
@@ -208,6 +214,12 @@ typedef enum{
 
 //stop peripheral
 - (void)writeStopPeripheralRemind;
+
+//get blood data
+- (void)writeBloodToPeripheral:(BloodData)bloodData;
+
+//get blood O2 data
+- (void)writeBloodO2ToPeripheral:(BloodO2Data)bloodO2Data;
 
 //临时写入保持连接
 - (void)writeToKeepConnect;

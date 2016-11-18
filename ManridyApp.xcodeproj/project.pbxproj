@@ -206,6 +206,10 @@
 		10FF5CFE1DC35F2E0059FE00 /* all_next_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFB1DC35F2E0059FE00 /* all_next_icon@2x.png */; };
 		10FF5CFF1DC35F2E0059FE00 /* all_next_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFC1DC35F2E0059FE00 /* all_next_icon@3x.png */; };
 		9C15BB501DCD79A900A049E9 /* ClockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15BB4F1DCD79A900A049E9 /* ClockModel.m */; };
+		9C1B27711DDE8E2C009663F0 /* BloodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27701DDE8E2C009663F0 /* BloodModel.m */; };
+		9C1B27741DDE9EBE009663F0 /* BloodO2Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */; };
+		9C1B27791DDEFCE0009663F0 /* BooldHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */; };
+		9C1B277A1DDEFCE0009663F0 /* BooldHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1B27781DDEFCE0009663F0 /* BooldHistoryViewController.xib */; };
 		9C728F681DD5DB2800BEF69E /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C728F671DD5DB2800BEF69E /* PopupView.m */; };
 		9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F691DD5DB4B00BEF69E /* PopupView.xib */; };
 		9C728F6C1DD5ECB300BEF69E /* alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F6B1DD5ECB300BEF69E /* alert.wav */; };
@@ -467,6 +471,13 @@
 		4E1494B2899EFE9DB4EFAD91 /* Pods-ManridyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManridyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ManridyApp/Pods-ManridyApp.release.xcconfig"; sourceTree = "<group>"; };
 		9C15BB4E1DCD79A900A049E9 /* ClockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockModel.h; sourceTree = "<group>"; };
 		9C15BB4F1DCD79A900A049E9 /* ClockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockModel.m; sourceTree = "<group>"; };
+		9C1B276F1DDE8E2C009663F0 /* BloodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodModel.h; path = BLETool/Model/BloodModel.h; sourceTree = "<group>"; };
+		9C1B27701DDE8E2C009663F0 /* BloodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BloodModel.m; path = BLETool/Model/BloodModel.m; sourceTree = "<group>"; };
+		9C1B27721DDE9EBE009663F0 /* BloodO2Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodO2Model.h; path = BLETool/Model/BloodO2Model.h; sourceTree = "<group>"; };
+		9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BloodO2Model.m; path = BLETool/Model/BloodO2Model.m; sourceTree = "<group>"; };
+		9C1B27761DDEFCE0009663F0 /* BooldHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BooldHistoryViewController.h; path = History/Blood/BooldHistoryViewController.h; sourceTree = "<group>"; };
+		9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BooldHistoryViewController.m; path = History/Blood/BooldHistoryViewController.m; sourceTree = "<group>"; };
+		9C1B27781DDEFCE0009663F0 /* BooldHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BooldHistoryViewController.xib; path = History/Blood/BooldHistoryViewController.xib; sourceTree = "<group>"; };
 		9C728F661DD5DB2800BEF69E /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupView.h; path = PopupView/PopupView.h; sourceTree = "<group>"; };
 		9C728F671DD5DB2800BEF69E /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupView.m; path = PopupView/PopupView.m; sourceTree = "<group>"; };
 		9C728F691DD5DB4B00BEF69E /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupView.xib; path = PopupView/PopupView.xib; sourceTree = "<group>"; };
@@ -562,6 +573,10 @@
 				102474F61DAA41E000F70E4F /* SportTargetModel.m */,
 				9CF2F6C21DD458010091ECB5 /* Remind.h */,
 				9CF2F6C31DD458010091ECB5 /* Remind.m */,
+				9C1B276F1DDE8E2C009663F0 /* BloodModel.h */,
+				9C1B27701DDE8E2C009663F0 /* BloodModel.m */,
+				9C1B27721DDE9EBE009663F0 /* BloodO2Model.h */,
+				9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -584,6 +599,7 @@
 				10826A551DBA126A0031DB83 /* HeartRate */,
 				103314571DC062160089B4EB /* Temp */,
 				1012C71D1DBEFE280013E99B /* Sleep */,
+				9C1B27751DDEFCBB009663F0 /* Blood */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -1000,6 +1016,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9C1B27751DDEFCBB009663F0 /* Blood */ = {
+			isa = PBXGroup;
+			children = (
+				9C1B27761DDEFCE0009663F0 /* BooldHistoryViewController.h */,
+				9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */,
+				9C1B27781DDEFCE0009663F0 /* BooldHistoryViewController.xib */,
+			);
+			name = Blood;
+			sourceTree = "<group>";
+		};
 		9C728F651DD5DAE400BEF69E /* PopupView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1228,6 +1254,7 @@
 				10F5F7411D98F31B0045FA4C /* set_ble_icon.png in Resources */,
 				10FF5CEF1DC341150059FE00 /* alert_lose@2x.png in Resources */,
 				10FF5CF31DC341150059FE00 /* alert_sms@3x.png in Resources */,
+				9C1B277A1DDEFCE0009663F0 /* BooldHistoryViewController.xib in Resources */,
 				10CB0F241D9A8A190063AD0C /* list_walk_icon.png in Resources */,
 				10F5F76B1D98F3560045FA4C /* walk_circle1.png in Resources */,
 				10F5F7771D98F3560045FA4C /* walk_run_now.png in Resources */,
@@ -1328,12 +1355,15 @@
 				102474E51DAA412F00F70E4F /* AllBleFmdb.m in Sources */,
 				102474FE1DAA41E000F70E4F /* SportTargetModel.m in Sources */,
 				10EE961D1DB4BFC70048D594 /* PhoneRemindViewController.m in Sources */,
+				9C1B27791DDEFCE0009663F0 /* BooldHistoryViewController.m in Sources */,
 				10C47E9A1DA88F9900D949CA /* BindPeripheralViewController.m in Sources */,
 				102474FB1DAA41E000F70E4F /* SetTimeModel.m in Sources */,
 				109D4E771DAF7B7300E11890 /* UserInfoModel.m in Sources */,
 				104A70681D9BA46A00CC73F5 /* UserInfoViewController.m in Sources */,
 				102474E61DAA412F00F70E4F /* AnalysisProcotolTool.m in Sources */,
 				9CCFE1B31DD9CCA200FD5B6F /* AboutViewController.m in Sources */,
+				9C1B27711DDE8E2C009663F0 /* BloodModel.m in Sources */,
+				9C1B27741DDE9EBE009663F0 /* BloodO2Model.m in Sources */,
 				10C47EC11DA8C4FA00D949CA /* StepTargetViewController.m in Sources */,
 				102474D81DAA277B00F70E4F /* StepDataModel.m in Sources */,
 				10F5F7D71D99251B0045FA4C /* SleepContentView.m in Sources */,

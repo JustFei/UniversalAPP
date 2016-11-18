@@ -12,6 +12,8 @@
 #import "HeartRateModel.h"
 #import "UserInfoModel.h"
 #import "SleepModel.h"
+#import "BloodModel.h"
+#import "BloodO2Model.h"
 
 
 @implementation FMDBTool
@@ -50,6 +52,12 @@ static FMDatabase *_fmdb;
         
         //HeartRateData
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists HeartRateData(id integer primary key,date text, time text, heartRate text);"]];
+        
+        //BloodData
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists BloodData(id integer primary key, day text, time text, highBlood text, lowBlood text, currentCount text, sumCount text);"]];
+        
+        //BloodO2Data
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists BloodO2Data(id integer primary key, day text, time text, bloodO2integer text, bloodO2float text, currentCount text, sumCount text);"]];
         
         //SleepData
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists SleepData(id integer primary key,date text, startTime text, endTime text, deepSleep text, lowSleep text, sumSleep text, currentDataCount integer, sumDataCount integer);"]];
@@ -381,6 +389,116 @@ static FMDatabase *_fmdb;
 }
 
 #pragma mark - BloodPressureData
+- (BOOL)insertBloodModel:(BloodModel *)model
+{
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO BloodData(day, time, highBlood, lowBlood, currentCount, sumCount) VALUES ('%@', '%@', '%@', '%@', '%@', '%@');", model.dayString, model.timeString, model.highBloodString, model.lowBloodString, model.currentCount, model.sumCount];
+    
+    BOOL result = [_fmdb executeUpdate:insertSql];
+    if (result) {
+        NSLog(@"插入BloodData数据成功");
+    }else {
+        NSLog(@"插入BloodData数据失败");
+    }
+    return result;
+}
+
+- (NSArray *)queryBloodWithDate:(NSString *)date
+{
+    NSString *queryString;
+    
+    FMResultSet *set;
+    
+    if (date == nil) {
+        queryString = [NSString stringWithFormat:@"SELECT * FROM BloodData;"];
+        
+        set = [_fmdb executeQuery:queryString];
+    }else {
+        queryString = [NSString stringWithFormat:@"SELECT * FROM BloodData where day = ?;"];
+        
+        set = [_fmdb executeQuery:queryString ,date];
+    }
+    
+    NSMutableArray *arrM = [NSMutableArray array];
+    
+    while ([set next]) {
+        
+        NSString *day = [set stringForColumn:@"day"];
+        NSString *time = [set stringForColumn:@"time"];
+        NSString *highBlood = [set stringForColumn:@"highBlood"];
+        NSString *lowBlood = [set stringForColumn:@"lowBlood"];
+        NSString *currentCount = [set stringForColumn:@"currentCount"];
+        NSString *sumCount = [set stringForColumn:@"sumCount"];
+        
+        BloodModel *model = [[BloodModel alloc] init];
+        
+        model.dayString = day;
+        model.timeString = time;
+        model.highBloodString = highBlood;
+        model.lowBloodString = lowBlood;
+        model.currentCount = currentCount;
+        model.sumCount = sumCount;
+        
+        [arrM addObject:model];
+    }
+    NSLog(@"Blood查询成功");
+    return arrM;
+}
+
+#pragma mark - BloodO2Data
+- (BOOL)insertBloodO2Model:(BloodO2Model *)model
+{
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO BloodO2Data(day, time, bloodO2integer, bloodO2float, currentCount, sumCount) VALUES ('%@', '%@', '%@', '%@', '%@', '%@');", model.dayString, model.timeString, model.integerString, model.floatString, model.currentCount, model.sumCount];
+    
+    BOOL result = [_fmdb executeUpdate:insertSql];
+    if (result) {
+        NSLog(@"插入BloodO2Data数据成功");
+    }else {
+        NSLog(@"插入BloodO2Data数据失败");
+    }
+    return result;
+}
+
+- (NSArray *)queryBloodO2WithDate:(NSString *)date
+{
+    NSString *queryString;
+    
+    FMResultSet *set;
+    
+    if (date == nil) {
+        queryString = [NSString stringWithFormat:@"SELECT * FROM BloodO2Data;"];
+        
+        set = [_fmdb executeQuery:queryString];
+    }else {
+        queryString = [NSString stringWithFormat:@"SELECT * FROM BloodO2Data where day = ?;"];
+        
+        set = [_fmdb executeQuery:queryString ,date];
+    }
+    
+    NSMutableArray *arrM = [NSMutableArray array];
+    
+    while ([set next]) {
+        
+        NSString *day = [set stringForColumn:@"day"];
+        NSString *time = [set stringForColumn:@"time"];
+        NSString *bloodO2integer = [set stringForColumn:@"bloodO2integer"];
+        NSString *bloodO2float = [set stringForColumn:@"bloodO2float"];
+        NSString *currentCount = [set stringForColumn:@"currentCount"];
+        NSString *sumCount = [set stringForColumn:@"sumCount"];
+        
+        BloodO2Model *model = [[BloodO2Model alloc] init];
+        
+        model.dayString = day;
+        model.timeString = time;
+        model.integerString = bloodO2integer;
+        model.floatString = bloodO2float;
+        model.currentCount = currentCount;
+        model.sumCount = sumCount;
+        
+        [arrM addObject:model];
+    }
+    NSLog(@"Blood查询成功");
+    return arrM;
+}
 
 #pragma mark - UserInfoData
 - (BOOL)insertUserInfoModel:(UserInfoModel *)model
