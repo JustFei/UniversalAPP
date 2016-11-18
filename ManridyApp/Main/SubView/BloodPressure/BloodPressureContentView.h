@@ -18,7 +18,7 @@
 @property (nonatomic ,strong) NSMutableArray *hbArr;
 @property (nonatomic ,strong) NSMutableArray *lbArr;
 
-//- (void)queryBloodWithBloodArr:(NSArray *)bloodDataArr;
+- (void)queryBloodWithBloodArr:(NSArray *)bloodDataArr;
 - (void)showChartViewWithData:(BOOL)haveData;
 - (void)drawProgress:(CGFloat )progress;
 @end

@@ -561,13 +561,13 @@
                         if (manridyModel.bloodModel.currentCount.integerValue + 1 == manridyModel.bloodModel.sumCount.integerValue) {
                             NSArray *bloodDataArr = [self.myFmdbTool queryBloodWithDate:currentDateString];
                             
-                            [self queryBloodWithBloodArr:bloodDataArr];
+                            [self.bloodPressureView queryBloodWithBloodArr:bloodDataArr];
                         }
                     }else {
                         //这里不查询历史，直接查询数据库展示即可
                         NSArray *bloodDataArr = [self.myFmdbTool queryBloodWithDate:currentDateString];
                         
-                        [self queryBloodWithBloodArr:bloodDataArr];
+                        [self.bloodPressureView queryBloodWithBloodArr:bloodDataArr];
                     }
                 }else {
                     [self.myBleTool writeBloodToPeripheral:BloodDataHistoryData];
@@ -685,35 +685,35 @@
     }
 }
 
-- (void)queryBloodWithBloodArr:(NSArray *)bloodDataArr
-{
-    @autoreleasepool {
-        //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
-        
-        for (BloodModel *model in bloodDataArr) {
-            [self.bloodPressureView.hbArr addObject:@(model.highBloodString.integerValue)];
-            [self.bloodPressureView.lbArr addObject:@(model.lowBloodString.integerValue)];
-        }
-        if (bloodDataArr.count == 0) {
-            [self.bloodPressureView showChartViewWithData:NO];
-        }else {
-            [self.bloodPressureView showChartViewWithData:YES];
-            
-            BloodModel *model = bloodDataArr.lastObject;
-            [self.bloodPressureView.bloodPressureLabel setText:[NSString stringWithFormat:@"%@/%@",model.highBloodString ,model.lowBloodString]];
-            
-            float highProgress = model.highBloodString.floatValue / 200;
-            
-            if (highProgress <= 1) {
-                [self.bloodPressureView drawProgress:highProgress];
-            }else if (highProgress >= 1) {
-                [self.bloodPressureView drawProgress:1];
-            }
-        }
-        [self.bloodPressureView.hbArr removeAllObjects];
-        [self.bloodPressureView.lbArr removeAllObjects];
-    }
-}
+//- (void)queryBloodWithBloodArr:(NSArray *)bloodDataArr
+//{
+//    @autoreleasepool {
+//        //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
+//        
+//        for (BloodModel *model in bloodDataArr) {
+//            [self.bloodPressureView.hbArr addObject:@(model.highBloodString.integerValue)];
+//            [self.bloodPressureView.lbArr addObject:@(model.lowBloodString.integerValue)];
+//        }
+//        if (bloodDataArr.count == 0) {
+//            [self.bloodPressureView showChartViewWithData:NO];
+//        }else {
+//            [self.bloodPressureView showChartViewWithData:YES];
+//            
+//            BloodModel *model = bloodDataArr.lastObject;
+//            [self.bloodPressureView.bloodPressureLabel setText:[NSString stringWithFormat:@"%@/%@",model.highBloodString ,model.lowBloodString]];
+//            
+//            float highProgress = model.highBloodString.floatValue / 200;
+//            
+//            if (highProgress <= 1) {
+//                [self.bloodPressureView drawProgress:highProgress];
+//            }else if (highProgress >= 1) {
+//                [self.bloodPressureView drawProgress:1];
+//            }
+//        }
+//        [self.bloodPressureView.hbArr removeAllObjects];
+//        [self.bloodPressureView.lbArr removeAllObjects];
+//    }
+//}
 
 - (void)queryHeartDataAndShow
 {
@@ -978,7 +978,7 @@
                     formatter.dateFormat = @"yyyy/MM/dd";
                     NSString *currentDateString = [formatter stringFromDate:currentDate];
                     NSArray *bloodArr = [self.myFmdbTool queryBloodWithDate:currentDateString];
-                    [self queryBloodWithBloodArr:bloodArr];
+                    [self.bloodPressureView queryBloodWithBloodArr:bloodArr];
                 }
             }
                 break;

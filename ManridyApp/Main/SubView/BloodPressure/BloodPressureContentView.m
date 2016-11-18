@@ -81,6 +81,42 @@
     
 }
 
+- (void)queryBloodWithBloodArr:(NSArray *)bloodDataArr
+{
+    @autoreleasepool {
+        //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
+        
+        
+        if (bloodDataArr.count == 0) {
+            [self showChartViewWithData:NO];
+        }else {
+            
+            if (bloodDataArr.count > 5) {
+                
+                for (NSInteger index = bloodDataArr.count - 5; index < bloodDataArr.count; index ++) {
+                    BloodModel *model = bloodDataArr[index];
+                    [self.hbArr addObject:@(model.highBloodString.integerValue)];
+                    [self.lbArr addObject:@(model.lowBloodString.integerValue)];
+                }
+            }
+            
+            BloodModel *model = bloodDataArr.lastObject;
+            [self.bloodPressureLabel setText:[NSString stringWithFormat:@"%@/%@",model.highBloodString ,model.lowBloodString]];
+            
+            float highProgress = model.highBloodString.floatValue / 200;
+            
+            if (highProgress <= 1) {
+                [self drawProgress:highProgress];
+            }else if (highProgress >= 1) {
+                [self drawProgress:1];
+            }
+            [self showChartViewWithData:YES];
+        }
+        [self.hbArr removeAllObjects];
+        [self.lbArr removeAllObjects];
+    }
+}
+
 #pragma mark - 懒加载
 - (PNBarChart *)lowBloodChart
 {

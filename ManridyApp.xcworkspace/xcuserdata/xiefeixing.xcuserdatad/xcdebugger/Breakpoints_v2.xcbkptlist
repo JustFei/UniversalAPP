@@ -41,44 +41,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Main/SubView/BloodPressure/BloodPressureContentView.m"
-            timestampString = "501161072.703483"
+            filePath = "ManridyApp/Main/SubView/Sleep/SleepContentView.m"
+            timestampString = "501162014.21946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "-initWithFrame:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Main/SubView/BloodPressure/BloodPressureContentView.m"
-            timestampString = "501161818.842903"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-layoutSubviews"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Main/SubView/BloodPressure/BloodPressureContentView.m"
-            timestampString = "501161948.874449"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-showChartViewWithData:"
             landmarkType = "7">
          </BreakpointContent>
@@ -89,12 +57,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Main/SubView/Sleep/SleepContentView.m"
-            timestampString = "501162014.21946"
+            filePath = "ManridyApp/Main/SubView/BloodPressure/BloodPressureContentView.m"
+            timestampString = "501165645.63921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-showChartViewWithData:"
             landmarkType = "7">
          </BreakpointContent>
