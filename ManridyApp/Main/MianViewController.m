@@ -21,6 +21,9 @@
 #import "MBProgressHUD.h"
 #import "Remind.h"
 #import "NSStringTool.h"
+#import "BloodO2ContentView.h"
+#import "BooldHistoryViewController.h"
+#import "BOHistoryViewController.h"
 
 #import "SettingViewController.h"
 
@@ -39,6 +42,8 @@
     BOOL haveNewStep;
     BOOL haveNewHeartRate;
     BOOL haveNewSleep;
+    BOOL haveNewBP;
+    BOOL haveNewBO;
 }
 @property (nonatomic ,weak) UIScrollView *backGroundView;
 
@@ -64,6 +69,8 @@
 
 @property (nonatomic ,strong) BloodPressureContentView  *bloodPressureView;
 
+@property (nonatomic ,strong) BloodO2ContentView *boView;
+
 @property (nonatomic ,strong) BLETool *myBleTool;
 
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
@@ -80,10 +87,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _titleArr = @[@"计步",@"心率",@"睡眠",@"血压"];
+    _titleArr = @[@"计步",@"心率",@"睡眠",@"血压",@"血氧"];
     haveNewStep = YES;
     haveNewHeartRate = YES;
     haveNewSleep = YES;
+    haveNewBP = YES;
+    haveNewBO = YES;
     
     self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
     [self createUI];
@@ -162,7 +171,7 @@
 
 - (void)showFunctionView
 {
-    [self.stepView showChartView];
+//    [self.stepView showChartView];
     self.stepView.mileageAndkCalLabel.hidden = NO;
     self.stepView.todayLabel.hidden = NO;
     
@@ -478,8 +487,10 @@
                     [self.myFmdbTool insertHeartRateModel:manridyModel.heartRateModel];
                 }
                 [self queryHeartDataAndShow];
+                haveNewHeartRate = NO;
             }else if (manridyModel.heartRateModel.heartRateState == HeartRateDataLastData) {
                 [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
+                haveNewHeartRate = YES;
 #if 0
                 if (self.heartRateView.dataArr.count == 7) {
                     //先移除掉前面的第一个数据
@@ -529,8 +540,10 @@
                     //这里不查询历史，直接查询数据库展示即可
                     [self querySleepDataBaseWithDateString:currentDateString];
                 }
+                haveNewSleep = NO;
             }else {
                 [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
+                haveNewSleep = YES;
             }
         }
     }
@@ -569,8 +582,52 @@
                         
                         [self.bloodPressureView queryBloodWithBloodArr:bloodDataArr];
                     }
+                    haveNewBP = NO;
                 }else {
                     [self.myBleTool writeBloodToPeripheral:BloodDataHistoryData];
+                    haveNewBP = YES;
+                }
+            }
+        }
+    }
+}
+
+- (void)receiveBloodO2DataWithModel:(manridyModel *)manridyModel
+{
+    @autoreleasepool {
+        NSDate *currentDate = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy/MM/dd";
+        NSString *currentDateString = [formatter stringFromDate:currentDate];
+        
+        if (manridyModel.isReciveDataRight) {
+            if (manridyModel.receiveDataType == ReturnModelTypeBloodO2Model) {
+                
+                //如果历史数据，插入数据库
+                if (manridyModel.bloodO2Model.bloodO2State == BloodO2DataHistoryData) {
+                    
+                    //如果历史数据总数不为空
+                    if (manridyModel.bloodO2Model.sumCount.integerValue) {
+                        
+                        //插入历史睡眠数据，如果sumCount为0的话，就不做保存
+                        [self.myFmdbTool insertBloodO2Model:manridyModel.bloodO2Model];
+                        
+                        //如果历史数据全部载入完成，写入当前睡眠数据
+                        if (manridyModel.bloodO2Model.currentCount.integerValue + 1 == manridyModel.bloodO2Model.sumCount.integerValue) {
+                            NSArray *bloodDataArr = [self.myFmdbTool queryBloodO2WithDate:currentDateString];
+                            
+                            [self.boView queryBOWithBloodArr:bloodDataArr];
+                        }
+                    }else {
+                        //这里不查询历史，直接查询数据库展示即可
+                        NSArray *bloodDataArr = [self.myFmdbTool queryBloodO2WithDate:currentDateString];
+                        
+                        [self.boView queryBOWithBloodArr:bloodDataArr];
+                    }
+                    haveNewBO = NO;
+                }else {
+                    [self.myBleTool writeBloodO2ToPeripheral:BloodO2DataHistoryData];
+                    haveNewBO = YES;
                 }
             }
         }
@@ -731,6 +788,7 @@
             [self.heartRateView.dateArr addObject:mutableTime];
             [self.heartRateView.dataArr addObject:model.heartRate];
         }
+        [self.heartRateView showChartViewWithData:YES];
     }else if (heartRateArr.count < 7) {
         for (NSInteger index = 0; index < heartRateArr.count; index ++) {
             HeartRateModel *model = heartRateArr[index];
@@ -740,18 +798,19 @@
             [self.heartRateView.dateArr addObject:mutableTime];
             [self.heartRateView.dataArr addObject:model.heartRate];
         }
+        [self.heartRateView showChartViewWithData:YES];
     }else if (heartRateArr.count == 0) {
-        
-        for (NSString *dateString in self.stepView.dateArr) {
-            NSString *monthStr = [dateString substringWithRange:NSMakeRange(5, 2)];
-            NSString *dayStr = [dateString substringWithRange:NSMakeRange(8, 2)];
-            
-            [self.heartRateView.dateArr addObject:[NSString stringWithFormat:@"%@/%@",monthStr ,dayStr]];
-        }
-        
-        for (int i = 0; i < 7; i ++) {
-            [self.heartRateView.dataArr addObject:@"0"];
-        }
+        [self.heartRateView showChartViewWithData:NO];
+//        for (NSString *dateString in self.stepView.dateArr) {
+//            NSString *monthStr = [dateString substringWithRange:NSMakeRange(5, 2)];
+//            NSString *dayStr = [dateString substringWithRange:NSMakeRange(8, 2)];
+//            
+//            [self.heartRateView.dateArr addObject:[NSString stringWithFormat:@"%@/%@",monthStr ,dayStr]];
+//        }
+//        
+//        for (int i = 0; i < 7; i ++) {
+//            [self.heartRateView.dataArr addObject:@"0"];
+//        }
     }
     NSString *lastHeartRate = self.heartRateView.dataArr.lastObject;
         if (lastHeartRate) {
@@ -784,8 +843,6 @@
         
         self.heartRateView.heartStateLabel.text = @"偏高";
     }
-    
-    [self.heartRateView showChartView];
     }
 }
 
@@ -844,20 +901,23 @@
             [self presentViewController:vc animated:YES completion:nil];
         }
             break;
-        case 3:
-        {
-            //体温
-        }
-            break;
         case 2:
         {
             SleepHistoryViewController *vc = [[SleepHistoryViewController alloc] initWithNibName:@"SleepHistoryViewController" bundle:nil];
             [self presentViewController:vc animated:YES completion:nil];
         }
             break;
+        case 3:
+        {
+            BooldHistoryViewController *vc = [[BooldHistoryViewController alloc] initWithNibName:@"BooldHistoryViewController" bundle:nil];
+            [self presentViewController:vc animated:YES completion:nil];
+        }
+            break;
         case 4:
         {
-            //血压
+            //血氧
+            BOHistoryViewController *vc = [[BOHistoryViewController alloc] initWithNibName:@"BOHistoryViewController" bundle:nil];
+            [self presentViewController:vc animated:YES completion:nil];
         }
             break;
             
@@ -917,8 +977,6 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     @autoreleasepool {
     self.didEndDecelerating = YES;
-    // 调用方法A，传scrollView.contentOffset
-    
     CGFloat index = scrollView.contentOffset.x/WIDTH;
     //再四舍五入推算本该减速时的scrollView的contentOffset。即：roundf(index)*self.screenWidth]
     
@@ -927,19 +985,23 @@
     [self.titleButton setTitle:_titleArr[i] forState:UIControlStateNormal];
     self.pageControl.currentPage = i;
     
-//    if (_currentPage != self.pageControl.currentPage) {
         switch (self.pageControl.currentPage) {
             case 0:
             {
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                    [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
+                    if (haveNewStep) {
+                        [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
+                        haveNewStep = NO;
+                    }
                 }
             }
                 break;
             case 1:
             {
-                if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                    [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
+                if (self.myBleTool.connectState == kBLEstateDidConnected ) {
+                    if (haveNewHeartRate) {
+                        [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
+                    }
                 }else {
                     [self queryHeartDataAndShow];
                 }
@@ -958,7 +1020,9 @@
             case 2:
             {
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                    [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
+                    if (haveNewSleep) {
+                        [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
+                    }
                 }else {
                     NSDate *currentDate = [NSDate date];
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -971,7 +1035,9 @@
             case 3:
             {
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                    [self.myBleTool writeBloodToPeripheral:BloodDataHistoryData];
+                    if (haveNewBP) {
+                        [self.myBleTool writeBloodToPeripheral:BloodDataHistoryData];
+                    }
                 }else {
                     NSDate *currentDate = [NSDate date];
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -979,6 +1045,22 @@
                     NSString *currentDateString = [formatter stringFromDate:currentDate];
                     NSArray *bloodArr = [self.myFmdbTool queryBloodWithDate:currentDateString];
                     [self.bloodPressureView queryBloodWithBloodArr:bloodArr];
+                }
+            }
+                break;
+            case 4:
+            {
+                if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                    if (haveNewBO) {
+                        [self.myBleTool writeBloodO2ToPeripheral:BloodO2DataHistoryData];
+                    }
+                }else {
+                    NSDate *currentDate = [NSDate date];
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    formatter.dateFormat = @"yyyy/MM/dd";
+                    NSString *currentDateString = [formatter stringFromDate:currentDate];
+                    NSArray *bloodArr = [self.myFmdbTool queryBloodO2WithDate:currentDateString];
+                    [self.boView queryBOWithBloodArr:bloodArr];
                 }
             }
                 break;
@@ -1014,7 +1096,7 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesScrollViewAction)];
         [view addGestureRecognizer:tap];
         
-        view.contentSize = CGSizeMake(4 * WIDTH, 0);
+        view.contentSize = CGSizeMake(5 * WIDTH, 0);
         view.pagingEnabled = YES;
         view.delegate = self;
         view.bounces = NO;
@@ -1033,6 +1115,9 @@
         
         self.bloodPressureView = [[BloodPressureContentView alloc] initWithFrame:CGRectMake(3 * WIDTH, 0, WIDTH, HEIGHT)];
         [view addSubview:self.bloodPressureView];
+        
+        self.boView = [[BloodO2ContentView alloc] initWithFrame:CGRectMake(4 * WIDTH, 0, WIDTH, HEIGHT)];
+        [view addSubview:self.boView];
         
         [self.view addSubview:view];
         _backGroundView = view;
@@ -1075,7 +1160,7 @@
 {
     if (!_pageControl) {
         UIPageControl *view = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 338, self.view.frame.size.width, 37)];
-        view.numberOfPages = 4;
+        view.numberOfPages = 5;
         view.currentPage = 0;
         view.enabled = NO;
         

@@ -1,64 +1,49 @@
 //
-//  BooldHistoryViewController.m
+//  BOHistoryViewController.m
 //  ManridyApp
 //
-//  Created by JustFei on 2016/11/18.
+//  Created by JustFei on 2016/11/19.
 //  Copyright © 2016年 Manridy.Bobo.com. All rights reserved.
 //
 
-#import "BooldHistoryViewController.h"
+#import "BOHistoryViewController.h"
 #import "PNChart.h"
-#import "BloodModel.h"
+#import "BloodO2Model.h"
 #import "FMDBTool.h"
 #import "DropdownMenuView.h"
 #import "TitleMenuViewController.h"
 
-@interface BooldHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate, PNChartDelegate>
+@interface BOHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate, PNChartDelegate>
 {
-    NSInteger highBlood;
-    NSInteger lowBlood;
-    NSInteger hr;
-    NSInteger sumHb;
-    NSInteger sumLb;
-    NSInteger sumHr;
+    NSInteger bo;
+    NSInteger sumBo;
     
     NSInteger haveDataDays;
     NSMutableArray *_dateArr;
-    NSMutableArray *_hbDataArr;
-    NSMutableArray *_lbDataArr;
-    NSMutableArray *_hrDataArr;
-    NSMutableArray *_averageDataArr;
+    NSMutableArray *_boArr;
 }
-@property (nonatomic ,strong) UIScrollView *downScrollView;
-@property (nonatomic ,weak) PNBarChart *lowBloodChart;
-@property (nonatomic ,weak) PNBarChart *highBloodChart;
-@property (nonatomic ,weak) PNCircleChart *hBloodCircleChart;
-@property (weak, nonatomic) IBOutlet UIImageView *progressImageView;
-@property (weak, nonatomic) IBOutlet UILabel *hrLabel;
-@property (weak, nonatomic) IBOutlet UILabel *bpLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *boLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIView *downView;
-@property (weak, nonatomic) IBOutlet UILabel *averageBPLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *progressImageView;
 @property (weak, nonatomic) IBOutlet UIButton *monthButton;
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (nonatomic ,strong) UIButton *titleButton;
+@property (nonatomic ,weak) PNBarChart *boBarChart;
+@property (nonatomic ,weak) PNCircleChart *boCircleChart;
 @property (nonatomic ,strong) UISwipeGestureRecognizer *oneFingerSwipedown;
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
-
 @end
 
-@implementation BooldHistoryViewController
+@implementation BOHistoryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    
     self.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
     [self.downView layoutIfNeeded];
-    self.downScrollView = [[UIScrollView alloc] initWithFrame:self.downView.bounds];
-    self.downScrollView.contentSize = CGSizeMake(2 * self.downView.bounds.size.width, 0);
-    self.downScrollView.bounces = NO;
-    self.downScrollView.showsHorizontalScrollIndicator = NO;
-    [self.downView addSubview:self.downScrollView];
     
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.titleButton setTitle:@"历史记录" forState:UIControlStateNormal];
@@ -81,10 +66,8 @@
                            inUnit:NSMonthCalendarUnit
                           forDate:today];
     _dateArr = [NSMutableArray array];
-    _lbDataArr = [NSMutableArray array];
-    _hbDataArr = [NSMutableArray array];
-    _hrDataArr = [NSMutableArray array];
-    _averageDataArr = [NSMutableArray array];
+    _boArr = [NSMutableArray array];
+    _dateArr = [NSMutableArray array];
     
     for (int i = 1; i <= days.length; i ++) {
         [_dateArr addObject:@(i)];
@@ -94,8 +77,7 @@
     NSInteger month = [components month];
     [self.monthButton setTitle:[NSString stringWithFormat:@"%ld月",month] forState:UIControlStateNormal];
     
-    [self.lowBloodChart setXLabels:_dateArr];
-    [self.highBloodChart setXLabels:_dateArr];
+    [self.boBarChart setXLabels:_dateArr];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -122,11 +104,6 @@
     [self.view removeGestureRecognizer:self.oneFingerSwipedown];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - DB
 - (void)getHistoryDataWithIntDays:(NSInteger)days withDate:(NSDate *)date
 {
@@ -140,69 +117,47 @@
     
     NSInteger iCurMonth = [components month];  //当前的月份
     
-    [_hbDataArr removeAllObjects];
-    [_lbDataArr removeAllObjects];
-    [_hrDataArr removeAllObjects];
-    [_averageDataArr removeAllObjects];
+    [_boArr removeAllObjects];
     
     haveDataDays = 0;
-    sumHb = 0;
-    sumLb = 0;
-    sumHr = 0;
+    sumBo = 0;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
             NSString *dateStr = [NSString stringWithFormat:@"%02ld/%02ld/%02ld",iCurYear ,iCurMonth ,i];
             NSLog(@"%@",dateStr);
-            highBlood = 0;
-            lowBlood = 0;
-            hr = 0;
+            bo = 0;
             
-            NSArray *queryArr = [self.myFmdbTool queryBloodWithDate:dateStr];
+            NSArray *queryArr = [self.myFmdbTool queryBloodO2WithDate:dateStr];
             if (queryArr.count == 0) {
-                [_hbDataArr addObject:@0];
-                [_lbDataArr addObject:@0];
-                [_hrDataArr addObject:@0];
+                [_boArr addObject:@0];
             }else {
                 
-                for (BloodModel *model in queryArr) {
-                    highBlood += model.highBloodString.integerValue;
-                    lowBlood += model.lowBloodString.integerValue;
-                    hr += model.bpmString.integerValue;
+                for (BloodO2Model *model in queryArr) {
+                    bo += model.integerString.integerValue;
                 }
-                sumHb += highBlood / queryArr.count;
-                sumLb += lowBlood / queryArr.count;
-                sumHr += hr / queryArr.count;
+                sumBo += bo / queryArr.count;
                 //当天的平均高，低压
-                [_hbDataArr addObject:[NSString stringWithFormat:@"%ld",highBlood / queryArr.count]];
-                [_lbDataArr addObject:[NSString stringWithFormat:@"%ld",lowBlood / queryArr.count]];
-                [_hrDataArr addObject:[NSString stringWithFormat:@"%ld",hr / queryArr.count]];
+                [_boArr addObject:[NSString stringWithFormat:@"%ld",bo / queryArr.count]];
                 haveDataDays ++;
             }
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSInteger averageHb = sumHb / haveDataDays;
-            NSInteger averageLb = sumLb / haveDataDays;
-            NSInteger averageHr = sumHr / haveDataDays;
-            [self.bpLabel setText:[NSString stringWithFormat:@"%ld/%ld",averageHb , averageLb]];
-            [self.hrLabel setText:[NSString stringWithFormat:@"心率:%ld",averageHr]];
-            [self.averageBPLabel setText:[NSString stringWithFormat:@"本月平均血压值:  高压:%ld  低压:%ld  心率:%ld",averageHb ,averageLb ,averageHr]];
-            double progress = averageHb / 200.000;
+            NSInteger averageBo = sumBo / haveDataDays;
+            [self.boLabel setText:[NSString stringWithFormat:@"%ld",averageBo]];
+            double progress = averageBo / 200.000;
             
             if (progress <= 1) {
-                [self.hBloodCircleChart updateChartByCurrent:@(progress * 100)];
+                [self.boCircleChart updateChartByCurrent:@(progress * 100)];
             }else if (progress >= 1) {
-                [self.hBloodCircleChart updateChartByCurrent:@(100)];
+                [self.boCircleChart updateChartByCurrent:@(100)];
             }
             
-            [self.hBloodCircleChart strokeChart];
+            [self.boCircleChart strokeChart];
             
-            [self.highBloodChart setYValues:_hbDataArr];
-            [self.lowBloodChart setYValues:_lbDataArr];
-            
-            [self.highBloodChart strokeChart];
-            [self.lowBloodChart strokeChart];
+            [self.boBarChart setYValues:_boArr];
+            [self.boBarChart strokeChart];
         });
     });
 }
@@ -283,8 +238,7 @@
         [_dateArr addObject:[NSString stringWithFormat:@"%d",i]];
     }
     
-    [self.highBloodChart setXLabels:_dateArr];
-    [self.lowBloodChart setXLabels:_dateArr];
+    [self.boBarChart setXLabels:_dateArr];
     [self getHistoryDataWithIntDays:days.length withDate:date];
 }
 
@@ -297,97 +251,71 @@
 #pragma mark - PNChartDelegate
 - (void)userClickedOnBarAtIndex:(NSInteger)barIndex
 {
-    NSLog(@"点击了第%ld个bar",barIndex);
-    NSNumber *hbNumber = _hbDataArr[barIndex];
-    NSNumber *lbNumber = _lbDataArr[barIndex];
-    NSNumber *hrNumber = _hrDataArr[barIndex];
-    [self.bpLabel setText:[NSString stringWithFormat:@"%@/%@",hbNumber , lbNumber]];
-    [self.hrLabel setText:[NSString stringWithFormat:@"心率:%@",hrNumber]];
-    [self.dayLabel setText:[NSString stringWithFormat:@"%@号血压值",_dateArr[barIndex]]];
-    double progress = hbNumber.integerValue / 200.000;
+    NSLog(@"点击了第%ld个bar",barIndex + 1);
+    NSNumber *boNumber = _boArr[barIndex];
+    [self.boLabel setText:[NSString stringWithFormat:@"%@",boNumber]];
+    [self.dateLabel setText:[NSString stringWithFormat:@"%@号血氧值",_dateArr[barIndex]]];
+    self.dateLabel.hidden = NO;
+    double progress = boNumber.integerValue / 200.000;
     
     if (progress <= 1) {
-        [self.hBloodCircleChart updateChartByCurrent:@(progress * 100)];
+        [self.boCircleChart updateChartByCurrent:@(progress * 100)];
     }else if (progress >= 1) {
-        [self.hBloodCircleChart updateChartByCurrent:@(100)];
+        [self.boCircleChart updateChartByCurrent:@(100)];
     }
     
-    [self.hBloodCircleChart strokeChart];
+    [self.boCircleChart strokeChart];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - 懒加载
-- (PNBarChart *)lowBloodChart
+- (PNBarChart *)boBarChart
 {
-    if (!_lowBloodChart) {
-        PNBarChart *view = [[PNBarChart alloc] initWithFrame:CGRectMake(self.downScrollView.bounds.origin.x - 9, self.downScrollView.bounds.origin.y, self.downScrollView.contentSize.width, self.downScrollView.bounds.size.height)];
+    if (!_boBarChart) {
+        PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor blackColor]];
-        view.barBackgroundColor = [UIColor clearColor];
-        view.yChartLabelWidth = 20.0;
-        view.chartMarginLeft = 30.0;
-        view.chartMarginRight = 10.0;
-        view.chartMarginTop = 5.0;
-        view.chartMarginBottom = 10.0;
-        view.yMinValue = 0;
-        view.yMaxValue = 200;
-        view.yLabelSum = 5;
-        view.showLabel = NO;
-        view.barWidth = 10;
-        view.showChartBorder = NO;
-        view.isShowNumbers = NO;
-        view.isGradientShow = NO;
-        view.delegate = self;
         
-        [self.downScrollView addSubview:view];
-        _lowBloodChart = view;
-    }
-    
-    return _lowBloodChart;
-}
-
-- (PNBarChart *)highBloodChart
-{
-    if (!_highBloodChart) {
-        PNBarChart *view = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 0, self.downScrollView.contentSize.width, self.downScrollView.bounds.size.height)];
-        view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor grayColor]];
-        view.barBackgroundColor = [UIColor clearColor];
         view.yChartLabelWidth = 20.0;
         view.chartMarginLeft = 30.0;
         view.chartMarginRight = 10.0;
         view.chartMarginTop = 5.0;
         view.chartMarginBottom = 10.0;
-        view.yMinValue = 0;
-        view.yMaxValue = 200;
-        view.barWidth = 10;
-        view.yLabelSum = 5;
-        view.showLabel = YES;
+        view.isGradientShow = NO;
+        view.isShowNumbers = NO;
+        view.labelMarginTop = 5.0;
         view.showChartBorder = YES;
-        view.isShowNumbers = NO;
-        view.isGradientShow = NO;
+        view.showLabel = YES;
+        [view setStrokeColor:[UIColor blackColor]];
+        view.yMinValue = 0;
+        view.yMaxValue = 100;
+        view.yLabelSum = 10;
+        [view setXLabelSkip:5];
         view.delegate = self;
         
-        [self.downScrollView addSubview:view];
-        _highBloodChart = view;
+        [self.downView addSubview:view];
+        _boBarChart = view;
     }
     
-    return _highBloodChart;
+    return  _boBarChart;
 }
 
-- (PNCircleChart *)hBloodCircleChart
+- (PNCircleChart *)boCircleChart
 {
-    if (!_hBloodCircleChart) {
-        [self.view layoutIfNeeded];
-        PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:43.0 / 255.0 green:147.0 / 255.0 blue:190.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
+    if (!_boCircleChart) {
+        PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:12.0 / 255.0 green:97.0 / 255.0 blue:158.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
         view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor blackColor]];
-        [view setStrokeColorGradientStart:[UIColor blackColor]];
+        [view setStrokeColor:[UIColor yellowColor]];
+        [view setStrokeColorGradientStart:[UIColor yellowColor]];
         
         [self.view addSubview:view];
-        _hBloodCircleChart = view;
+        _boCircleChart = view;
     }
     
-    return _hBloodCircleChart;
+    return _boCircleChart;
 }
 
 - (FMDBTool *)myFmdbTool

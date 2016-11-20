@@ -24,5 +24,6 @@ typedef enum : NSUInteger {
 @property (nonatomic ,copy) NSString *lowBloodString;
 @property (nonatomic ,copy) NSString *currentCount;
 @property (nonatomic ,copy) NSString *sumCount;
+@property (nonatomic ,copy) NSString *bpmString;
 
 @end

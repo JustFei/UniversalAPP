@@ -98,10 +98,10 @@
         view.chartMarginRight = 10.0;
         view.chartMarginTop = 5.0;
         view.chartMarginBottom = 10.0;
+        view.barWidth = 20;
         view.yMinValue = 0;
         view.yMaxValue = 15;
         view.showLabel = YES;
-//        view.showYLabel = YES;
         view.showChartBorder = NO;
         view.isShowNumbers = NO;
         view.isGradientShow = NO;
@@ -125,6 +125,7 @@
         view.chartMarginRight = 10.0;
         view.chartMarginTop = 5.0;
         view.chartMarginBottom = 10.0;
+        view.barWidth = 20;
         view.yMinValue = 0;
         view.yMaxValue = 15;
         view.showLabel = YES;

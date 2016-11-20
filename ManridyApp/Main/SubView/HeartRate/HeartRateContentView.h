@@ -21,6 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIView *state4;
 
 - (void)drawProgress:(CGFloat )progress;
-- (void)showChartView;
+- (void)showChartViewWithData:(BOOL)haveData;
 
 @end

@@ -838,7 +838,7 @@ static BLETool *bleTool = nil;
             if ([self.receiveDelegate respondsToSelector:@selector(receiveBloodDataWithModel:)]) {
                 [self.receiveDelegate receiveBloodDataWithModel:model];
             }
-        }else if ([headStr isEqualToString:@"11"]) {
+        }else if ([headStr isEqualToString:@"12"]) {
             //获取血氧
             manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisBloodO2Data:value WithHeadStr:headStr];
             if ([self.receiveDelegate respondsToSelector:@selector(receiveBloodO2DataWithModel:)]) {

@@ -205,6 +205,22 @@
 		10FF5CFD1DC35F2E0059FE00 /* all_next_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFA1DC35F2E0059FE00 /* all_next_icon.png */; };
 		10FF5CFE1DC35F2E0059FE00 /* all_next_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFB1DC35F2E0059FE00 /* all_next_icon@2x.png */; };
 		10FF5CFF1DC35F2E0059FE00 /* all_next_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFC1DC35F2E0059FE00 /* all_next_icon@3x.png */; };
+		9C06C19C1DDFE2FC00418C7C /* BloodO2ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C06C19B1DDFE2FC00418C7C /* BloodO2ContentView.m */; };
+		9C06C1A01DDFE34400418C7C /* BloodO2ContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C19F1DDFE34400418C7C /* BloodO2ContentView.xib */; };
+		9C06C1A71DE01D3600418C7C /* bp_now_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1A11DE01D3600418C7C /* bp_now_icon.png */; };
+		9C06C1A81DE01D3600418C7C /* bp_now_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1A21DE01D3600418C7C /* bp_now_icon@2x.png */; };
+		9C06C1A91DE01D3600418C7C /* bp_now_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1A31DE01D3600418C7C /* bp_now_icon@3x.png */; };
+		9C06C1AA1DE01D3600418C7C /* bp_old_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1A41DE01D3600418C7C /* bp_old_icon.png */; };
+		9C06C1AB1DE01D3600418C7C /* bp_old_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1A51DE01D3600418C7C /* bp_old_icon@2x.png */; };
+		9C06C1AC1DE01D3600418C7C /* bp_old_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1A61DE01D3600418C7C /* bp_old_icon@3x.png */; };
+		9C06C1B31DE04A6500418C7C /* SPO2_now_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1AD1DE04A6500418C7C /* SPO2_now_icon.png */; };
+		9C06C1B41DE04A6500418C7C /* SPO2_now_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1AE1DE04A6500418C7C /* SPO2_now_icon@2x.png */; };
+		9C06C1B51DE04A6500418C7C /* SPO2_now_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1AF1DE04A6500418C7C /* SPO2_now_icon@3x.png */; };
+		9C06C1B61DE04A6500418C7C /* SPO2_old_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1B01DE04A6500418C7C /* SPO2_old_icon.png */; };
+		9C06C1B71DE04A6500418C7C /* SPO2_old_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1B11DE04A6500418C7C /* SPO2_old_icon@2x.png */; };
+		9C06C1B81DE04A6500418C7C /* SPO2_old_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1B21DE04A6500418C7C /* SPO2_old_icon@3x.png */; };
+		9C06C1BD1DE05C7A00418C7C /* BOHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C06C1BB1DE05C7A00418C7C /* BOHistoryViewController.m */; };
+		9C06C1BE1DE05C7A00418C7C /* BOHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1BC1DE05C7A00418C7C /* BOHistoryViewController.xib */; };
 		9C15BB501DCD79A900A049E9 /* ClockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15BB4F1DCD79A900A049E9 /* ClockModel.m */; };
 		9C1B27711DDE8E2C009663F0 /* BloodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27701DDE8E2C009663F0 /* BloodModel.m */; };
 		9C1B27741DDE9EBE009663F0 /* BloodO2Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */; };
@@ -469,6 +485,24 @@
 		10FF5CFC1DC35F2E0059FE00 /* all_next_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_next_icon@3x.png"; sourceTree = "<group>"; };
 		1102E622F505968B236A5DC2 /* Pods-ManridyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManridyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ManridyApp/Pods-ManridyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4E1494B2899EFE9DB4EFAD91 /* Pods-ManridyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManridyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ManridyApp/Pods-ManridyApp.release.xcconfig"; sourceTree = "<group>"; };
+		9C06C19A1DDFE2FC00418C7C /* BloodO2ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodO2ContentView.h; path = Main/SubView/BloodO2/BloodO2ContentView.h; sourceTree = "<group>"; };
+		9C06C19B1DDFE2FC00418C7C /* BloodO2ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BloodO2ContentView.m; path = Main/SubView/BloodO2/BloodO2ContentView.m; sourceTree = "<group>"; };
+		9C06C19F1DDFE34400418C7C /* BloodO2ContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BloodO2ContentView.xib; path = Main/SubView/BloodO2/BloodO2ContentView.xib; sourceTree = "<group>"; };
+		9C06C1A11DE01D3600418C7C /* bp_now_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bp_now_icon.png; sourceTree = "<group>"; };
+		9C06C1A21DE01D3600418C7C /* bp_now_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bp_now_icon@2x.png"; sourceTree = "<group>"; };
+		9C06C1A31DE01D3600418C7C /* bp_now_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bp_now_icon@3x.png"; sourceTree = "<group>"; };
+		9C06C1A41DE01D3600418C7C /* bp_old_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bp_old_icon.png; sourceTree = "<group>"; };
+		9C06C1A51DE01D3600418C7C /* bp_old_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bp_old_icon@2x.png"; sourceTree = "<group>"; };
+		9C06C1A61DE01D3600418C7C /* bp_old_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bp_old_icon@3x.png"; sourceTree = "<group>"; };
+		9C06C1AD1DE04A6500418C7C /* SPO2_now_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SPO2_now_icon.png; sourceTree = "<group>"; };
+		9C06C1AE1DE04A6500418C7C /* SPO2_now_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SPO2_now_icon@2x.png"; sourceTree = "<group>"; };
+		9C06C1AF1DE04A6500418C7C /* SPO2_now_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SPO2_now_icon@3x.png"; sourceTree = "<group>"; };
+		9C06C1B01DE04A6500418C7C /* SPO2_old_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SPO2_old_icon.png; sourceTree = "<group>"; };
+		9C06C1B11DE04A6500418C7C /* SPO2_old_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SPO2_old_icon@2x.png"; sourceTree = "<group>"; };
+		9C06C1B21DE04A6500418C7C /* SPO2_old_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SPO2_old_icon@3x.png"; sourceTree = "<group>"; };
+		9C06C1BA1DE05C7A00418C7C /* BOHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOHistoryViewController.h; path = History/BloodO2/BOHistoryViewController.h; sourceTree = "<group>"; };
+		9C06C1BB1DE05C7A00418C7C /* BOHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOHistoryViewController.m; path = History/BloodO2/BOHistoryViewController.m; sourceTree = "<group>"; };
+		9C06C1BC1DE05C7A00418C7C /* BOHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOHistoryViewController.xib; path = History/BloodO2/BOHistoryViewController.xib; sourceTree = "<group>"; };
 		9C15BB4E1DCD79A900A049E9 /* ClockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockModel.h; sourceTree = "<group>"; };
 		9C15BB4F1DCD79A900A049E9 /* ClockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockModel.m; sourceTree = "<group>"; };
 		9C1B276F1DDE8E2C009663F0 /* BloodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodModel.h; path = BLETool/Model/BloodModel.h; sourceTree = "<group>"; };
@@ -600,6 +634,7 @@
 				103314571DC062160089B4EB /* Temp */,
 				1012C71D1DBEFE280013E99B /* Sleep */,
 				9C1B27751DDEFCBB009663F0 /* Blood */,
+				9C06C1B91DE05C5000418C7C /* BloodO2 */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -787,6 +822,18 @@
 		10F5F7251D98F31B0045FA4C /* image */ = {
 			isa = PBXGroup;
 			children = (
+				9C06C1AD1DE04A6500418C7C /* SPO2_now_icon.png */,
+				9C06C1AE1DE04A6500418C7C /* SPO2_now_icon@2x.png */,
+				9C06C1AF1DE04A6500418C7C /* SPO2_now_icon@3x.png */,
+				9C06C1B01DE04A6500418C7C /* SPO2_old_icon.png */,
+				9C06C1B11DE04A6500418C7C /* SPO2_old_icon@2x.png */,
+				9C06C1B21DE04A6500418C7C /* SPO2_old_icon@3x.png */,
+				9C06C1A11DE01D3600418C7C /* bp_now_icon.png */,
+				9C06C1A21DE01D3600418C7C /* bp_now_icon@2x.png */,
+				9C06C1A31DE01D3600418C7C /* bp_now_icon@3x.png */,
+				9C06C1A41DE01D3600418C7C /* bp_old_icon.png */,
+				9C06C1A51DE01D3600418C7C /* bp_old_icon@2x.png */,
+				9C06C1A61DE01D3600418C7C /* bp_old_icon@3x.png */,
 				9CFE008B1DDAA07A00D38904 /* about_icon.png */,
 				9CFE008C1DDAA07A00D38904 /* about_icon@2x.png */,
 				9CFE008D1DDAA07A00D38904 /* about_icon@3x.png */,
@@ -944,6 +991,7 @@
 				10F5F7A41D991E470045FA4C /* Temperature */,
 				10F5F7D41D9924EF0045FA4C /* Sleep */,
 				10F5F7DA1D9926E80045FA4C /* BloodPressure */,
+				9C06C1991DDFE2BF00418C7C /* BloodO2 */,
 			);
 			name = SubView;
 			sourceTree = "<group>";
@@ -1014,6 +1062,26 @@
 				4E1494B2899EFE9DB4EFAD91 /* Pods-ManridyApp.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9C06C1991DDFE2BF00418C7C /* BloodO2 */ = {
+			isa = PBXGroup;
+			children = (
+				9C06C19A1DDFE2FC00418C7C /* BloodO2ContentView.h */,
+				9C06C19B1DDFE2FC00418C7C /* BloodO2ContentView.m */,
+				9C06C19F1DDFE34400418C7C /* BloodO2ContentView.xib */,
+			);
+			name = BloodO2;
+			sourceTree = "<group>";
+		};
+		9C06C1B91DE05C5000418C7C /* BloodO2 */ = {
+			isa = PBXGroup;
+			children = (
+				9C06C1BA1DE05C7A00418C7C /* BOHistoryViewController.h */,
+				9C06C1BB1DE05C7A00418C7C /* BOHistoryViewController.m */,
+				9C06C1BC1DE05C7A00418C7C /* BOHistoryViewController.xib */,
+			);
+			name = BloodO2;
 			sourceTree = "<group>";
 		};
 		9C1B27751DDEFCBB009663F0 /* Blood */ = {
@@ -1128,12 +1196,15 @@
 				10F5F73C1D98F31B0045FA4C /* set_about_icon@2x.png in Resources */,
 				10CB0F081D9A25130063AD0C /* FunctionCell.xib in Resources */,
 				10F5F7EB1D9927C60045FA4C /* sleep_now_icon@3x.png in Resources */,
+				9C06C1AB1DE01D3600418C7C /* bp_old_icon@2x.png in Resources */,
 				9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */,
+				9C06C1B51DE04A6500418C7C /* SPO2_now_icon@3x.png in Resources */,
 				10CB0F201D9A8A190063AD0C /* list_sleep_icon@3x.png in Resources */,
 				10F5F73F1D98F31B0045FA4C /* set_alart_icon@2x.png in Resources */,
 				10F5F7701D98F3560045FA4C /* walk_circle2@3x.png in Resources */,
 				10F5F7491D98F31B0045FA4C /* set_lost_icon@3x.png in Resources */,
 				10CB0F1C1D9A8A190063AD0C /* list_heart_icon@2x.png in Resources */,
+				9C06C1A91DE01D3600418C7C /* bp_now_icon@3x.png in Resources */,
 				10F5F77E1D98F3560045FA4C /* walk_target_icon@2x.png in Resources */,
 				10C47EBC1DA8A55F00D949CA /* ble_refresh.png in Resources */,
 				10C47EB71DA8A55F00D949CA /* ble_lock_close@2x.png in Resources */,
@@ -1142,7 +1213,9 @@
 				10C47EB21DA8A55F00D949CA /* ble_connect@3x.png in Resources */,
 				109FBB9D1DAA1934008FF0D3 /* StepContentView.xib in Resources */,
 				10F5F7461D98F31B0045FA4C /* set_bty_icon@3x.png in Resources */,
+				9C06C1A71DE01D3600418C7C /* bp_now_icon.png in Resources */,
 				10F5F7781D98F3560045FA4C /* walk_run_now@2x.png in Resources */,
+				9C06C1B31DE04A6500418C7C /* SPO2_now_icon.png in Resources */,
 				10FF5CDB1DC33BEA0059FE00 /* PhoneRemindTableViewCell.xib in Resources */,
 				10C47EBB1DA8A55F00D949CA /* ble_lock_oper@3x.png in Resources */,
 				10C47EC81DA8DE0D00D949CA /* TemperatureWarningViewController.xib in Resources */,
@@ -1164,11 +1237,14 @@
 				9CF2F6D11DD593390091ECB5 /* alert_find@2x.png in Resources */,
 				10F5F7E91D9927C60045FA4C /* sleep_now_icon.png in Resources */,
 				10C47EAE1DA8A55F00D949CA /* ble_break_icon@2x.png in Resources */,
+				9C06C1AA1DE01D3600418C7C /* bp_old_icon.png in Resources */,
 				10F5F79F1D991C700045FA4C /* heart_now_icon@2x.png in Resources */,
 				10F5F7EF1D9927C60045FA4C /* sleep_target.png in Resources */,
 				10F5F7401D98F31B0045FA4C /* set_alart_icon@3x.png in Resources */,
+				9C06C1A81DE01D3600418C7C /* bp_now_icon@2x.png in Resources */,
 				10F5F7D31D9923D90045FA4C /* temper_set_alert_low@3x.png in Resources */,
 				10F5F7D01D9923D90045FA4C /* temper_set_alert_high@3x.png in Resources */,
+				9C06C1B81DE04A6500418C7C /* SPO2_old_icon@3x.png in Resources */,
 				10C47EB61DA8A55F00D949CA /* ble_lock_close.png in Resources */,
 				10F5F7F01D9927C60045FA4C /* sleep_target@2x.png in Resources */,
 				10F5F7C61D9923D90045FA4C /* temper_notice_low@2x.png in Resources */,
@@ -1181,6 +1257,7 @@
 				10F5F7C81D9923D90045FA4C /* temper_now_icon.png in Resources */,
 				10CB0F221D9A8A190063AD0C /* list_temper_icon@2x.png in Resources */,
 				10F5F74E1D98F31B0045FA4C /* set_userphoto@2x.png in Resources */,
+				9C06C1B61DE04A6500418C7C /* SPO2_old_icon.png in Resources */,
 				10F5F7CA1D9923D90045FA4C /* temper_now_icon@3x.png in Resources */,
 				10F5F74B1D98F31B0045FA4C /* set_user_icon@2x.png in Resources */,
 				10CB0F211D9A8A190063AD0C /* list_temper_icon.png in Resources */,
@@ -1193,6 +1270,7 @@
 				10F5F7421D98F31B0045FA4C /* set_ble_icon@2x.png in Resources */,
 				104A70571D9B639C00CC73F5 /* all_data_icon@3x.png in Resources */,
 				10F5F7C21D9923D90045FA4C /* temper_notice_high.png in Resources */,
+				9C06C1AC1DE01D3600418C7C /* bp_old_icon@3x.png in Resources */,
 				10F5F7441D98F31B0045FA4C /* set_bty_icon.png in Resources */,
 				10DE11A81DBAFBB000B824C5 /* all_back_icon@3x.png in Resources */,
 				10CB0F1D1D9A8A190063AD0C /* list_heart_icon@3x.png in Resources */,
@@ -1217,15 +1295,18 @@
 				10FF5CEA1DC341150059FE00 /* alert_call@3x.png in Resources */,
 				10F5F73D1D98F31B0045FA4C /* set_about_icon@3x.png in Resources */,
 				10F5F7D11D9923D90045FA4C /* temper_set_alert_low.png in Resources */,
+				9C06C1B41DE04A6500418C7C /* SPO2_now_icon@2x.png in Resources */,
 				10FF5CFF1DC35F2E0059FE00 /* all_next_icon@3x.png in Resources */,
 				10F5F7CB1D9923D90045FA4C /* temper_ole_icon.png in Resources */,
 				10F5F73B1D98F31B0045FA4C /* set_about_icon.png in Resources */,
 				10F5F7CF1D9923D90045FA4C /* temper_set_alert_high@2x.png in Resources */,
 				10FF5CFD1DC35F2E0059FE00 /* all_next_icon.png in Resources */,
+				9C06C1BE1DE05C7A00418C7C /* BOHistoryViewController.xib in Resources */,
 				10F5F77F1D98F3560045FA4C /* walk_target_icon@3x.png in Resources */,
 				103820F61DB8704200E92410 /* StepHistoryViewController.xib in Resources */,
 				10F5F77A1D98F3560045FA4C /* walk_run_old.png in Resources */,
 				10CB0F261D9A8A190063AD0C /* list_walk_icon@3x.png in Resources */,
+				9C06C1A01DDFE34400418C7C /* BloodO2ContentView.xib in Resources */,
 				9CFE008F1DDAA07A00D38904 /* about_icon@2x.png in Resources */,
 				10FF5CEC1DC341150059FE00 /* alert_clock@2x.png in Resources */,
 				10F5F7C51D9923D90045FA4C /* temper_notice_low.png in Resources */,
@@ -1250,6 +1331,7 @@
 				10C47EB81DA8A55F00D949CA /* ble_lock_close@3x.png in Resources */,
 				10FF5CEE1DC341150059FE00 /* alert_lose.png in Resources */,
 				10F5F7EE1D9927C60045FA4C /* sleep_old_icon@3x.png in Resources */,
+				9C06C1B71DE04A6500418C7C /* SPO2_old_icon@2x.png in Resources */,
 				10F5F74C1D98F31B0045FA4C /* set_user_icon@3x.png in Resources */,
 				10F5F7411D98F31B0045FA4C /* set_ble_icon.png in Resources */,
 				10FF5CEF1DC341150059FE00 /* alert_lose@2x.png in Resources */,
@@ -1351,6 +1433,8 @@
 				102474FC1DAA41E000F70E4F /* SleepModel.m in Sources */,
 				102474F91DAA41E000F70E4F /* HeartRateModel.m in Sources */,
 				9C728F681DD5DB2800BEF69E /* PopupView.m in Sources */,
+				9C06C1BD1DE05C7A00418C7C /* BOHistoryViewController.m in Sources */,
+				9C06C19C1DDFE2FC00418C7C /* BloodO2ContentView.m in Sources */,
 				10F5F7DD1D9927270045FA4C /* BloodPressureContentView.m in Sources */,
 				102474E51DAA412F00F70E4F /* AllBleFmdb.m in Sources */,
 				102474FE1DAA41E000F70E4F /* SportTargetModel.m in Sources */,

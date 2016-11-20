@@ -43,24 +43,33 @@
     [self.heartCircleChart strokeChart];
 }
 
-- (void)showChartView
+- (void)showChartViewWithData:(BOOL)haveData
 {
-    [self.heartChart setXLabels:self.dateArr];
+    if (haveData) {
+        [self.heartChart setXLabels:self.dateArr];
+        
+        PNLineChartData *data02 = [PNLineChartData new];
+        data02.color = PNTwitterColor;
+        data02.itemCount = self.heartChart.xLabels.count;
+        data02.inflexionPointColor = PNLightBlue;
+        data02.inflexionPointStyle = PNLineChartPointStyleCircle;
+//        data02.showPointLabel = YES;
+//        data02.pointLabelColor = [UIColor redColor];
+//        data02.pointLabelFont = [UIFont systemFontOfSize:15];
+        data02.getData = ^(NSUInteger index) {
+            CGFloat yValue = [self.dataArr[index] floatValue];
+            NSLog(@"%f",yValue);
+            return [PNLineChartDataItem dataItemWithY:yValue];
+        };
+        
+        self.heartChart.chartData = @[data02];
+        
+        [self.heartChart strokeChart];
+    }else {
+        //仅仅展示个坐标系
+        [self.heartChart strokeChart];
+    }
     
-    PNLineChartData *data02 = [PNLineChartData new];
-    data02.color = PNTwitterColor;
-    data02.itemCount = self.heartChart.xLabels.count;
-    data02.inflexionPointColor = PNLightBlue;
-    data02.inflexionPointStyle = PNLineChartPointStyleCircle;
-    data02.getData = ^(NSUInteger index) {
-        CGFloat yValue = [self.dataArr[index] floatValue];
-        NSLog(@"%f",yValue);
-        return [PNLineChartDataItem dataItemWithY:yValue];
-    };
-    
-    self.heartChart.chartData = @[data02];
-    
-    [self.heartChart strokeChart];
     
 }
 
@@ -72,7 +81,7 @@
         view.backgroundColor = [UIColor clearColor];
         view.showCoordinateAxis = YES;
         view.yValueMin = 0;
-        view.yValueMax = 10;
+        view.yValueMax = 200;
         
         view.yGridLinesColor = [UIColor clearColor];
         view.showYGridLines = YES;

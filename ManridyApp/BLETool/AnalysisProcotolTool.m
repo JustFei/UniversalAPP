@@ -622,6 +622,7 @@ union LAT{
 }
 #endif
 
+#pragma mark 解析血压的数据（11|91）
 //解析血压数据（11|91）
 - (manridyModel *)analysisBloodData:(NSData *)data WithHeadStr:(NSString *)head
 {
@@ -669,6 +670,10 @@ union LAT{
         int lowBloodinteger = [NSStringTool parseIntFromData:lowBlood];
         NSString *lbStr = [NSString stringWithFormat:@"%d",lowBloodinteger];
         
+        NSData *bpm = [data subdataWithRange:NSMakeRange(14, 1)];
+        int bpminteger = [NSStringTool parseIntFromData:bpm];
+        NSString *bpmStr = [NSString stringWithFormat:@"%d",bpminteger];
+        
         NSString *dayString = [NSString stringWithFormat:@"20%@/%@/%@", yearStr,monthStr ,dayStr];
         NSString *timeString = [NSString stringWithFormat:@"%@:%@:%@",hourStr ,minStr ,sencondStr];
         
@@ -676,6 +681,7 @@ union LAT{
         model.bloodModel.timeString = timeString;
         model.bloodModel.highBloodString = hbStr;
         model.bloodModel.lowBloodString = lbStr;
+        model.bloodModel.bpmString = bpmStr;
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
     }else if ([head isEqualToString:@"91"]) {
         model.isReciveDataRight = ResponsEcorrectnessDataFail;

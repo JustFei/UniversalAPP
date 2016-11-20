@@ -41,29 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Main/SubView/Sleep/SleepContentView.m"
-            timestampString = "501162014.21946"
+            filePath = "ManridyApp/History/Sleep/SleepHistoryViewController.m"
+            timestampString = "501236678.641869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-showChartViewWithData:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Main/SubView/BloodPressure/BloodPressureContentView.m"
-            timestampString = "501165645.63921"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-showChartViewWithData:"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "-drawCircle:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

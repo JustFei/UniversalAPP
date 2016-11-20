@@ -84,6 +84,8 @@ typedef enum : NSUInteger {
 
 - (NSArray *)queryBloodO2WithDate:(NSString *)date;
 
+- (BOOL)deleteBloodData:(NSString *)deleteSql;
+
 #pragma mark - UserInfoData
 - (BOOL)insertUserInfoModel:(UserInfoModel *)model;
 

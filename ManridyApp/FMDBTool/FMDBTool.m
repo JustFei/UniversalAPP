@@ -54,7 +54,7 @@ static FMDatabase *_fmdb;
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists HeartRateData(id integer primary key,date text, time text, heartRate text);"]];
         
         //BloodData
-        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists BloodData(id integer primary key, day text, time text, highBlood text, lowBlood text, currentCount text, sumCount text);"]];
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists BloodData(id integer primary key, day text, time text, highBlood text, lowBlood text, currentCount text, sumCount text, bpm text);"]];
         
         //BloodO2Data
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists BloodO2Data(id integer primary key, day text, time text, bloodO2integer text, bloodO2float text, currentCount text, sumCount text);"]];
@@ -391,7 +391,7 @@ static FMDatabase *_fmdb;
 #pragma mark - BloodPressureData
 - (BOOL)insertBloodModel:(BloodModel *)model
 {
-    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO BloodData(day, time, highBlood, lowBlood, currentCount, sumCount) VALUES ('%@', '%@', '%@', '%@', '%@', '%@');", model.dayString, model.timeString, model.highBloodString, model.lowBloodString, model.currentCount, model.sumCount];
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO BloodData(day, time, highBlood, lowBlood, currentCount, sumCount, bpm) VALUES ('%@', '%@', '%@', '%@', '%@', '%@', '%@');", model.dayString, model.timeString, model.highBloodString, model.lowBloodString, model.currentCount, model.sumCount, model.bpmString];
     
     BOOL result = [_fmdb executeUpdate:insertSql];
     if (result) {
@@ -428,6 +428,7 @@ static FMDatabase *_fmdb;
         NSString *lowBlood = [set stringForColumn:@"lowBlood"];
         NSString *currentCount = [set stringForColumn:@"currentCount"];
         NSString *sumCount = [set stringForColumn:@"sumCount"];
+        NSString *bpmString = [set stringForColumn:@"bpm"];
         
         BloodModel *model = [[BloodModel alloc] init];
         
@@ -437,12 +438,27 @@ static FMDatabase *_fmdb;
         model.lowBloodString = lowBlood;
         model.currentCount = currentCount;
         model.sumCount = sumCount;
+        model.bpmString = bpmString;
         
         [arrM addObject:model];
     }
     NSLog(@"Blood查询成功");
     return arrM;
 }
+
+- (BOOL)deleteBloodData:(NSString *)deleteSql
+{
+    BOOL result = [_fmdb executeUpdate:@"drop table BloodData"];
+    
+    if (result) {
+        NSLog(@"Blood表删除成功");
+    }else {
+        NSLog(@"Blood表删除失败");
+    }
+    
+    return result;
+}
+
 
 #pragma mark - BloodO2Data
 - (BOOL)insertBloodO2Model:(BloodO2Model *)model
@@ -496,7 +512,7 @@ static FMDatabase *_fmdb;
         
         [arrM addObject:model];
     }
-    NSLog(@"Blood查询成功");
+    NSLog(@"BloodO2查询成功");
     return arrM;
 }
 

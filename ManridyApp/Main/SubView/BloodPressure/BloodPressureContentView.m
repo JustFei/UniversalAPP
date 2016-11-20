@@ -98,10 +98,16 @@
                     [self.hbArr addObject:@(model.highBloodString.integerValue)];
                     [self.lbArr addObject:@(model.lowBloodString.integerValue)];
                 }
+            }else {
+                for (BloodModel *model in bloodDataArr) {
+                    [self.hbArr addObject:@(model.highBloodString.integerValue)];
+                    [self.lbArr addObject:@(model.lowBloodString.integerValue)];
+                }
             }
             
             BloodModel *model = bloodDataArr.lastObject;
             [self.bloodPressureLabel setText:[NSString stringWithFormat:@"%@/%@",model.highBloodString ,model.lowBloodString]];
+            [self.heartRateLabel setText:[NSString stringWithFormat:@"心率:%@",model.bpmString]];
             
             float highProgress = model.highBloodString.floatValue / 200;
             

@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIView *state3;
 
 @property (weak, nonatomic) IBOutlet UIView *state4;
+@property (nonatomic ,strong) NSArray *userArr;
 
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *monthButton;
@@ -66,7 +67,9 @@
     // Do any additional setup after loading the view from its nib.
     self.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
     [self.downView layoutIfNeeded];
-    NSLog(@"sleepHistory == %@",NSStringFromCGRect(self.downView.frame));
+    
+    self.userArr = [self.myFmdbTool queryAllUserInfo];
+    
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.titleButton setTitle:@"历史记录" forState:UIControlStateNormal];
     [self.titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -185,45 +188,16 @@
                 }
             }
         }
-        NSArray *userArr = [self.myFmdbTool queryAllUserInfo];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            double averageSleep = monthSumSleep / haveDataDays / 60;
-            [self.sleepLabel setText:[NSString stringWithFormat:@"%.2f",averageSleep]];
-            if (userArr.count != 0) {
-                
-                UserInfoModel *model = userArr.firstObject;
-                
-                if (model.sleepTarget != 0) {
-                    double progress = averageSleep / model.sleepTarget;
-                    
-                    if (progress <= 1) {
-                        [self.sleepCircleChart updateChartByCurrent:@(progress * 100)];
-                    }else if (progress >= 1) {
-                        [self.sleepCircleChart updateChartByCurrent:@(100)];
-                    }
-                }else {
-                    //如果用户没有设置目标睡眠的话，就默认为8h
-                    float progress = averageSleep / 8;
-                    
-                    if (progress <= 1) {
-                        [self.sleepCircleChart updateChartByCurrent:@(progress * 100)];
-                    }else if (progress >= 1) {
-                        [self.sleepCircleChart updateChartByCurrent:@(100)];
-                    }
-                }
+            if (monthSumSleep == 0) {
+                [self.sleepLabel setText:@"0"];
+                [self.sleepCircleChart updateChartByCurrent:@(0)];
             }else {
-                //如果用户没有设置目标睡眠的话，就默认为8h
-                float progress = averageSleep / 8;
-                
-                if (progress <= 1) {
-                    [self.sleepCircleChart updateChartByCurrent:@(progress * 100)];
-                }else if (progress >= 1) {
-                    [self.sleepCircleChart updateChartByCurrent:@(100)];
-                }
+                double averageSleep = monthSumSleep / haveDataDays / 60;
+                [self.sleepLabel setText:[NSString stringWithFormat:@"%.2f",averageSleep]];
+                [self drawCircle:averageSleep];
             }
-            
-            [self.sleepCircleChart strokeChart];
             
             [self.sumSleepChart setYValues:_sumDataArr];
             [self.deepSleepChart setYValues:_deepDataArr];
@@ -263,6 +237,43 @@
 - (void)oneFingerSwipeDown:(UISwipeGestureRecognizer *)recognizer
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)drawCircle:(double)averageSleep
+{
+    if (self.userArr.count != 0) {
+        
+        UserInfoModel *model = self.userArr.firstObject;
+        
+        if (model.sleepTarget != 0) {
+            double progress = averageSleep / model.sleepTarget;
+            
+            if (progress <= 1) {
+                [self.sleepCircleChart updateChartByCurrent:@(progress * 100)];
+            }else if (progress >= 1) {
+                [self.sleepCircleChart updateChartByCurrent:@(100)];
+            }
+        }else {
+            //如果用户没有设置目标睡眠的话，就默认为8h
+            float progress = averageSleep / 8;
+            
+            if (progress <= 1) {
+                [self.sleepCircleChart updateChartByCurrent:@(progress * 100)];
+            }else if (progress >= 1) {
+                [self.sleepCircleChart updateChartByCurrent:@(100)];
+            }
+        }
+    }else {
+        //如果用户没有设置目标睡眠的话，就默认为8h
+        float progress = averageSleep / 8;
+        
+        if (progress <= 1) {
+            [self.sleepCircleChart updateChartByCurrent:@(progress * 100)];
+        }else if (progress >= 1) {
+            [self.sleepCircleChart updateChartByCurrent:@(100)];
+        }
+    }
+    [self.sleepCircleChart strokeChart];
 }
 
 #pragma mark - DropdownMenuDelegate
@@ -329,7 +340,6 @@
 #pragma mark - PNChartDelegate
 - (void)userClickedOnBarAtIndex:(NSInteger)barIndex
 {
-    NSLog(@"点击了第%ld个bar",barIndex);
     NSNumber *sumSleepNumber = _sumDataArr[barIndex];
     NSNumber *deepSleepNumber = _deepDataArr[barIndex];
     NSNumber *lowSleepNumber = _lowDataArr[barIndex];
@@ -339,7 +349,7 @@
     }else {
         [self.deepAndLowSleepLabel setText:@"当天没有睡眠数据"];
     }
-    
+    [self drawCircle:sumSleepNumber.doubleValue];
 }
 
 #pragma mark - 懒加载

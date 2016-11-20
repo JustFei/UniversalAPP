@@ -70,6 +70,9 @@
     data02.itemCount = self.stepChart.xLabels.count;
     data02.inflexionPointColor = PNLightBlue;
     data02.inflexionPointStyle = PNLineChartPointStyleCircle;
+//    data02.showPointLabel = YES;
+//    data02.pointLabelColor = [UIColor redColor];
+//    data02.pointLabelFont = [UIFont systemFontOfSize:15];
     data02.getData = ^(NSUInteger index) {
         
         SportModel *model = self.dataArr[index];
