@@ -33,7 +33,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-   self.setView.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
+   self.setView.backgroundColor = [UIColor colorWithRed:37.0 / 255.0 green:154.0 / 255.0 blue:219.0 / 255.0 alpha:1];
 //    [self.view addSubview:self.setView];
 }
 

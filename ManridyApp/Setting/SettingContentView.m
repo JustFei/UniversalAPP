@@ -37,7 +37,7 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        _dataArr = @[@"用户信息",@"信息提醒",@"防丢设置",@"查看电量",@"设备锁定",@"关于"];
-        _dataArr = @[@"用户信息",@"信息提醒",@"设备锁定",@"关于"];
+        _dataArr = @[@"用户信息",@"信息提醒",@"设备绑定",@"关于"];
         _imageNameArr = @[@"set_user_icon",@"set_alart_icon",@"set_ble_icon",@"set_about_icon"];
     }
     return self;

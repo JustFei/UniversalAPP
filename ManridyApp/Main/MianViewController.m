@@ -374,7 +374,7 @@
                     {
                         [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
                         double mileage = manridyModel.sportModel.mileageNumber.integerValue / 1000;
-                        [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%.1f公里/%@卡",mileage ,manridyModel.sportModel.kCalNumber]];
+                        [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%.1f公里/%@千卡",mileage ,manridyModel.sportModel.kCalNumber]];
 
                         if (_userArr.count != 0) {
                             

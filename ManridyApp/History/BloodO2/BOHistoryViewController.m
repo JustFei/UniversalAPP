@@ -146,7 +146,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             NSInteger averageBo = sumBo / haveDataDays;
             [self.boLabel setText:[NSString stringWithFormat:@"%ld",averageBo]];
-            double progress = averageBo / 200.000;
+            double progress = averageBo / 100.000;
             
             if (progress <= 1) {
                 [self.boCircleChart updateChartByCurrent:@(progress * 100)];
@@ -256,7 +256,7 @@
     [self.boLabel setText:[NSString stringWithFormat:@"%@",boNumber]];
     [self.dateLabel setText:[NSString stringWithFormat:@"%@号血氧值",_dateArr[barIndex]]];
     self.dateLabel.hidden = NO;
-    double progress = boNumber.integerValue / 200.000;
+    double progress = boNumber.integerValue / 100.000;
     
     if (progress <= 1) {
         [self.boCircleChart updateChartByCurrent:@(progress * 100)];

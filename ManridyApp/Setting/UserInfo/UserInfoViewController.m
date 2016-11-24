@@ -61,9 +61,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _nameArr = @[@"性别",@"年龄",@"身高",@"体重",@"步长"];
-    _fieldPlaceholdeArr = @[@"",@"请输入年龄",@"请输入身高",@"请输入体重",@"请输入步长"];
-    _unitArr = @[@"",@"(岁)",@"(cm)",@"(kg)",@"(cm)"];
+    _nameArr = @[@"性别",@"年龄",@"身高",@"体重"];
+    _fieldPlaceholdeArr = @[@"",@"请输入年龄",@"请输入身高",@"请输入体重"];
+    _unitArr = @[@"",@"(岁)",@"(cm)",@"(kg)"];
     _genderArr = @[@"男",@"女"];
     
     self.navigationItem.title = @"用户信息";
@@ -235,8 +235,8 @@
 - (void)saveUserInfo
 {
     [self.view endEditing:YES];
-    
-    if (self.userNameTextField.text != nil && self.userNameTextField.text.length != 0 && self.ageTextField.text != nil && self.ageTextField.text.length != 0 && self.heightTextField.text != nil && self.heightTextField.text.length != 0 && self.weightTextField.text != nil && self.weightTextField.text.length != 0 && self.steplengthTextField.text != nil && self.steplengthTextField.text.length != 0) {
+//     && self.steplengthTextField.text != nil && self.steplengthTextField.text.length != 0
+    if (self.userNameTextField.text != nil && self.userNameTextField.text.length != 0 && self.ageTextField.text != nil && self.ageTextField.text.length != 0 && self.heightTextField.text != nil && self.heightTextField.text.length != 0 && self.weightTextField.text != nil && self.weightTextField.text.length != 0) {
         
         [self.myBleTool writeUserInfoToPeripheralWeight:self.weightTextField.text andHeight:self.heightTextField.text];
         
@@ -470,17 +470,17 @@
             }
                 
                 break;
-            case 4:
-            {
-                cell.textField.tag = 104;
-                self.steplengthTextField = cell.textField;
-                if (_userArr.count != 0) {
-                    UserInfoModel *model = _userArr.firstObject;
-                    [self.steplengthTextField setText:[NSString stringWithFormat:@"%ld",model.stepLength]];
-                }
-                
-            }
-                break;
+//            case 4:
+//            {
+//                cell.textField.tag = 104;
+//                self.steplengthTextField = cell.textField;
+//                if (_userArr.count != 0) {
+//                    UserInfoModel *model = _userArr.firstObject;
+//                    [self.steplengthTextField setText:[NSString stringWithFormat:@"%ld",model.stepLength]];
+//                }
+//                
+//            }
+//                break;
                 
             default:
                 break;
@@ -560,6 +560,7 @@
 {
     if (!_infoTableView) {
         UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 274 * WIDTH / 320, WIDTH, WIDTH * 220 / 320) style:UITableViewStylePlain];
+        view.tableFooterView = [[UIView alloc] init];
         view.scrollEnabled = NO;
         view.allowsSelection = NO;
         

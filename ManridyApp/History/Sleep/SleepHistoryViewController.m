@@ -14,6 +14,8 @@
 #import "SleepModel.h"
 #import "UserInfoModel.h"
 
+#define kCurrentStateOFF [UIColor colorWithRed:53.0 / 255.0 green:113.0 / 225.0 blue:161.0 / 255.0 alpha:1]
+
 @interface SleepHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate, PNChartDelegate>
 {
     double deepSleep;
@@ -188,15 +190,52 @@
                 }
             }
         }
-        
+        double averageSleep = monthSumSleep / haveDataDays / 60;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (monthSumSleep == 0) {
                 [self.sleepLabel setText:@"0"];
                 [self.sleepCircleChart updateChartByCurrent:@(0)];
             }else {
-                double averageSleep = monthSumSleep / haveDataDays / 60;
                 [self.sleepLabel setText:[NSString stringWithFormat:@"%.2f",averageSleep]];
                 [self drawCircle:averageSleep];
+            }
+            
+            if (averageSleep <= 6) {
+                [self.stateLabel setText:@"睡眠不足"];
+                [self.stateLabel setTextColor:[UIColor redColor]];
+                
+                [self.state1 setBackgroundColor:[UIColor redColor]];
+                [self.state2 setBackgroundColor:kCurrentStateOFF];
+                [self.state3 setBackgroundColor:kCurrentStateOFF];
+                [self.state4 setBackgroundColor:kCurrentStateOFF];
+                
+            }else if (averageSleep > 6 && averageSleep < 7) {
+                [self.stateLabel setText:@"睡眠偏少"];
+                [self.stateLabel setTextColor:[UIColor orangeColor]];
+                
+                [self.state1 setBackgroundColor:kCurrentStateOFF];
+                [self.state2 setBackgroundColor:[UIColor orangeColor]];
+                [self.state3 setBackgroundColor:kCurrentStateOFF];
+                [self.state4 setBackgroundColor:kCurrentStateOFF];
+                
+            }else if (averageSleep >= 7 && averageSleep < 8) {
+                [self.stateLabel setText:@"睡眠正常"];
+                [self.stateLabel setTextColor:[UIColor yellowColor]];
+                
+                [self.state1 setBackgroundColor:kCurrentStateOFF];
+                [self.state2 setBackgroundColor:kCurrentStateOFF];
+                [self.state3 setBackgroundColor:[UIColor yellowColor]];
+                [self.state4 setBackgroundColor:kCurrentStateOFF];
+                
+            }else if (averageSleep >= 8) {
+                [self.stateLabel setText:@"睡眠充足"];
+                [self.stateLabel setTextColor:[UIColor greenColor]];
+                
+                [self.state1 setBackgroundColor:kCurrentStateOFF];
+                [self.state2 setBackgroundColor:kCurrentStateOFF];
+                [self.state3 setBackgroundColor:kCurrentStateOFF];
+                [self.state4 setBackgroundColor:[UIColor greenColor]];
+                
             }
             
             [self.sumSleepChart setYValues:_sumDataArr];

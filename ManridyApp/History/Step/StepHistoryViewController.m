@@ -170,9 +170,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             double avergaeMileage = (sumMileage / haveDataDays);
             
-            [self.sumStepAndMilAndkCal setText:[NSString stringWithFormat:@"本月计步统计：共（%ld步/%.1f公里/%ld卡）",sumStep ,(double)sumMileage / 1000 ,sumkCal]];
+            [self.sumStepAndMilAndkCal setText:[NSString stringWithFormat:@"本月计步统计：共（%ld步/%.1f公里/%ld千卡）",sumStep ,(double)sumMileage / 1000 ,sumkCal]];
             [self.averageStepLabel setText:[NSString stringWithFormat:@"%ld",(sumStep / haveDataDays)]];
-            [self.averagerMileageAndkCalLabel setText:[NSString stringWithFormat:@"%.1f公里/%ld卡",avergaeMileage / 1000 ,(sumkCal / haveDataDays)]];
+            [self.averagerMileageAndkCalLabel setText:[NSString stringWithFormat:@"%.1f公里/%ld千卡",avergaeMileage / 1000 ,(sumkCal / haveDataDays)]];
             NSArray *_userArr = [self.myFmdbTool queryAllUserInfo];
             if (_userArr.count != 0) {
                 

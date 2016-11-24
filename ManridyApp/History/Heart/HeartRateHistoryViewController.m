@@ -373,7 +373,11 @@
         view.showCoordinateAxis = YES;
         view.yValueMin = 0;
         view.yValueMax = 200;
-        view.xLabelFont = [UIFont systemFontOfSize:8];
+        if (self.view.frame.size.width == 320) {
+            view.xLabelFont = [UIFont systemFontOfSize:6];
+        }else {
+            view.xLabelFont = [UIFont systemFontOfSize:8];
+        }
         view.xLabelWidth = 10;
         view.chartMarginLeft = 30;
         view.chartMarginRight = 0;

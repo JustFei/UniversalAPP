@@ -176,6 +176,9 @@
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"bindPeripheralName"];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"peripheralUUID"];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isBind"];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isFindMyPeripheral"];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isRemindPhone"];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isRemindMessage"];
     
     self.navigationItem.rightBarButtonItem.enabled = YES;
     

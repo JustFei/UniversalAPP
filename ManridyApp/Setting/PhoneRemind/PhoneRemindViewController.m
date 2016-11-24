@@ -25,10 +25,9 @@
     
     NSMutableArray *_hourArr;
     NSMutableArray *_minArr;
-    NSMutableArray *_clockTimeArr;
 }
 @property (nonatomic ,weak) UITableView *remindTableView;
-
+@property (nonatomic ,strong) NSMutableArray *clockTimeArr;
 @property (nonatomic ,weak) UIPickerView *timePicker;
 
 @property (nonatomic ,weak) UIButton *selectButton;
@@ -77,17 +76,16 @@
     self.remindTableView.backgroundColor = [UIColor clearColor];
 //    self.remindTableView.tableHeaderView = nil;
 //    self.remindTableView.tableFooterView = nil;
-    _clockTimeArr = [NSMutableArray array];
     
     [self.myBleTool addObserver:self forKeyPath:@"connectState" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
-    _clockTimeArr = [NSMutableArray arrayWithArray:[self.myFmdbTool queryClockData]];
-    if (_clockTimeArr.count == 0) {
+    self.clockTimeArr = [NSMutableArray arrayWithArray:[self.myFmdbTool queryClockData]];
+    if (self.clockTimeArr.count == 0) {
         for (int i = 0; i < 3; i ++) {
             ClockModel *model = [[ClockModel alloc] init];
             model.time = @"08:00";
             model.isOpen = NO;
-            [_clockTimeArr addObject:model];
+            [self.clockTimeArr addObject:model];
         }
     }
     if (self.myBleTool.connectState == kBLEstateDidConnected) {
@@ -100,7 +98,7 @@
     self.myBleTool.receiveDelegate = nil;
     [self.myFmdbTool deleteClockData:4];
     
-    for (ClockModel *model in _clockTimeArr) {
+    for (ClockModel *model in self.clockTimeArr) {
         [self.myFmdbTool insertClockModel:model];
     }
 //    [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -161,7 +159,7 @@
 {
     if (!self.timePicker.hidden) {
         self.timePicker.hidden = YES;
-        [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:_clockTimeArr];
+        [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:self.clockTimeArr];
     }
     
 }
@@ -277,9 +275,9 @@
     }
     
     [self.selectButton setTitle:[NSString stringWithFormat:@"%@:%@",hour ,min] forState:UIControlStateNormal];
-    ClockModel *model = _clockTimeArr[self.selectButton.tag];
+    ClockModel *model = self.clockTimeArr[self.selectButton.tag];
     model.time = [NSString stringWithFormat:@"%@:%@",hour ,min];
-    [_clockTimeArr replaceObjectAtIndex:self.selectButton.tag withObject:model];
+    [self.clockTimeArr replaceObjectAtIndex:self.selectButton.tag withObject:model];
 }
 
 #pragma mark - UITableViewDelegate && UITableViewDataSource
@@ -367,12 +365,12 @@
         case 2:
         {
             cell.functionName.text = _clockArr[indexPath.row];
-            if (_clockTimeArr.count == 0) {
+            if (self.clockTimeArr.count == 0) {
                 [cell.timeButton setTitle:@"08:00" forState:UIControlStateNormal];
                 [cell.timeSwitch setOn:NO];
                 [cell.timeButton setTitleColor:cell.timeSwitch.on ? [UIColor whiteColor] : [UIColor grayColor] forState:UIControlStateNormal];
             }else {
-                ClockModel *model = _clockTimeArr[indexPath.row];
+                ClockModel *model = self.clockTimeArr[indexPath.row];
                 [cell.timeButton setTitle:model.time forState:UIControlStateNormal];
                 [cell.timeSwitch setOn:model.isOpen];
                 [cell.timeButton setTitleColor:cell.timeSwitch.on ? [UIColor whiteColor] : [UIColor grayColor] forState:UIControlStateNormal];
@@ -386,10 +384,11 @@
             
             cell._clockSwitchValueChangeBlock =^{
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                    ClockModel *model = _clockTimeArr[indexPath.row];
+                    ClockModel *model = self.clockTimeArr[indexPath.row];
                     model.isOpen = weakCell.timeSwitch.on;
-                    [_clockTimeArr replaceObjectAtIndex:indexPath.row withObject:model];
-                    [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:_clockTimeArr];
+                    [self.clockTimeArr replaceObjectAtIndex:indexPath.row withObject:model];
+                    [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:self.clockTimeArr];
+                    [self.remindTableView reloadData];
                 }else {
                     [weakCell.timeSwitch setOn:!weakCell.timeSwitch.on];
                     [weakSelf presentAlertController];
@@ -460,8 +459,8 @@
 #pragma mark - receiveDelegate
 - (void)receiveSetClockDataWithModel:(manridyModel *)manridyModel
 {
-    _clockTimeArr = manridyModel.clockModelArr;
-    [self.remindTableView reloadData];
+//    self.clockTimeArr = manridyModel.clockModelArr;
+//    [self.remindTableView reloadData];
 }
 
 - (void)receiveSearchFeedback
@@ -538,6 +537,15 @@
     }
     
     return _searchVC;
+}
+
+- (NSMutableArray *)clockTimeArr
+{
+    if (!_clockTimeArr) {
+        _clockTimeArr = [NSMutableArray array];
+    }
+    
+    return _clockTimeArr;
 }
 
 @end
