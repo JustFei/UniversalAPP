@@ -369,4 +369,14 @@
     
 }
 
++ (float)getMileage:(NSInteger)step withHeight:(float)height
+{
+    return (70 + (170 - (height ? height : 170))) * step / 100.0;
+}
+
++ (float)getKcal:(NSInteger)step withHeight:(float)height andWeitght:(float)weight
+{
+    return ([self getMileage:step withHeight:height] / 100.0) * 0.0766666666667 * (weight ? weight : 60);
+}
+
 @end

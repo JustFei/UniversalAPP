@@ -53,13 +53,13 @@
         [_textArr removeAllObjects];
         for (NSInteger i = 0; i < self.hbArr.count; i ++) {
             [_textArr addObject:@(i + 1)];
-            NSNumber *hightest = (NSNumber *)self.hbArr[i];
-            NSLog(@"%@",hightest);
-            NSInteger hight = hightest.integerValue;
-            if (hight > self.highBloodChart.yMaxValue) {
-                self.highBloodChart.yMaxValue = hight + 10;
-                self.lowBloodChart.yMaxValue = hight + 10;
-            }
+//            NSNumber *hightest = (NSNumber *)self.hbArr[i];
+//            NSLog(@"%@",hightest);
+//            NSInteger hight = hightest.integerValue;
+//            if (hight > self.highBloodChart.yValueMax) {
+//                self.highBloodChart.yValueMax = hight + 10;
+//                self.lowBloodChart.yValueMax = hight + 10;
+//            }
         }
         
         [self.lowBloodChart setXLabels:_textArr];
@@ -137,7 +137,7 @@
         view.chartMarginTop = 5.0;
         view.chartMarginBottom = 10.0;
         view.yMinValue = 0;
-        view.yMaxValue = 15;
+        view.yMaxValue = 200;
         view.showLabel = NO;
         view.barWidth = 20;
         view.showChartBorder = NO;
@@ -164,7 +164,7 @@
         view.chartMarginTop = 5.0;
         view.chartMarginBottom = 10.0;
         view.yMinValue = 0;
-        view.yMaxValue = 15;
+        view.yMaxValue = 200;
         view.barWidth = 20;
         view.showLabel = YES;
         view.showChartBorder = YES;

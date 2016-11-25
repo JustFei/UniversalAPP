@@ -11,6 +11,7 @@
 #import "MBProgressHUD.h"
 #import "FMDBTool.h"
 #import "UserInfoModel.h"
+#import "NSStringTool.h"
 
 @interface StepTargetViewController () < BleReceiveDelegate>
 {
@@ -60,8 +61,8 @@
             
             if (model.stepTarget != 0) {
                 self.stepTargetTextField.text = [NSString stringWithFormat:@"%ld",model.stepTarget];
-                [self.mileageTargetLabel setText:[NSString stringWithFormat:@"%0.1f",[self getMileage:model.stepTarget]]];
-                [self.kcalTargetLabel setText:[NSString stringWithFormat:@"%0.1f",[self getKcal:model.stepTarget]]];
+                [self.mileageTargetLabel setText:[NSString stringWithFormat:@"%ld",(NSInteger)[NSStringTool getMileage:model.stepTarget withHeight:_height]]];
+                [self.kcalTargetLabel setText:[NSString stringWithFormat:@"%ld",(NSInteger)[NSStringTool getKcal:model.stepTarget withHeight:_height andWeitght:_weight]]];
             }
         }
     });
@@ -153,22 +154,14 @@
 
 - (IBAction)textFieldDidChange:(UITextField *)sender {
     if (sender.text.length <= 5) {
-        [self.mileageTargetLabel setText:[NSString stringWithFormat:@"%0.1f",[self getMileage:sender.text.integerValue]]];
-        [self.kcalTargetLabel setText:[NSString stringWithFormat:@"%0.1f",[self getKcal:sender.text.integerValue]]];
+        [self.mileageTargetLabel setText:[NSString stringWithFormat:@"%0.1f",[NSStringTool getMileage:sender.text.integerValue withHeight:_height]]];
+        [self.kcalTargetLabel setText:[NSString stringWithFormat:@"%0.1f",[NSStringTool getKcal:sender.text.integerValue withHeight:_height andWeitght:_weight]]];
     }else {
         self.stepTargetTextField.text = [self.stepTargetTextField.text substringToIndex:5];
     }
 }
 
-- (float)getMileage:(NSInteger)step
-{
-    return (70 + (170 - (_height ? _height : 170))) * step / 100.0;
-}
 
-- (float)getKcal:(NSInteger)step
-{
-    return ([self getMileage:step] / 100.0) * 0.0766666666667 * (_weight ? _weight : 60);
-}
 
 #pragma mark - 懒加载
 - (FMDBTool *)myFmdbTool

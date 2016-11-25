@@ -154,38 +154,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManridyApp/Setting/PhoneRemind/PhoneRemindViewController.m"
-            timestampString = "501470952.507116"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
-            landmarkName = "-pickerView:didSelectRow:inComponent:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Setting/PhoneRemind/PhoneRemindViewController.m"
-            timestampString = "501470955.611207"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "-pickerView:didSelectRow:inComponent:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Setting/PhoneRemind/PhoneRemindViewController.m"
             timestampString = "501470959.187054"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -218,7 +186,7 @@
                   moduleName = "ManridyApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xiefeixing/Desktop/%E6%A1%8C%E9%9D%A2%20-%20%E8%B0%A2%E9%A3%9E%E7%9A%84MacBook%20Pro/Desktop/%E5%85%AC%E5%8F%B8%E8%B5%84%E6%96%99/ProjectList/%E7%91%9E%E5%8A%A8%E5%8A%9B/ManridyApp/ManridyApp/Setting/PhoneRemind/PhoneRemindViewController.m"
-                  timestampString = "501471705.135778"
+                  timestampString = "501665429.841699"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
@@ -233,7 +201,7 @@
                   moduleName = "ManridyApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xiefeixing/Desktop/%E6%A1%8C%E9%9D%A2%20-%20%E8%B0%A2%E9%A3%9E%E7%9A%84MacBook%20Pro/Desktop/%E5%85%AC%E5%8F%B8%E8%B5%84%E6%96%99/ProjectList/%E7%91%9E%E5%8A%A8%E5%8A%9B/ManridyApp/ManridyApp/Setting/PhoneRemind/PhoneRemindViewController.m"
-                  timestampString = "501471705.137016"
+                  timestampString = "501665429.842893"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
@@ -352,6 +320,70 @@
             startingLineNumber = "139"
             endingLineNumber = "139"
             landmarkName = "-analysisClockData:WithHeadStr:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManridyApp/Main/SubView/BloodO2/BloodO2ContentView.m"
+            timestampString = "501665417.19395"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "-queryBOWithBloodArr:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManridyApp/Main/SubView/BloodO2/BloodO2ContentView.m"
+            timestampString = "501665507.11571"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "-showChartViewWithData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManridyApp/Main/SubView/BloodO2/BloodO2ContentView.m"
+            timestampString = "501665508.299512"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-showChartViewWithData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManridyApp/Main/SubView/BloodO2/BloodO2ContentView.m"
+            timestampString = "501665508.755599"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-showChartViewWithData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

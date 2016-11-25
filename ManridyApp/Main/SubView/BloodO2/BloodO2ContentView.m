@@ -135,8 +135,10 @@
         PNLineChart *view = [[PNLineChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
         view.showCoordinateAxis = YES;
-        view.yValueMin = 0;
-        view.yValueMax = 100;
+//        view.yValueMin = 0;
+//        view.yValueMax = 100;
+        view.yFixedValueMin = 0;
+        view.yFixedValueMax = 100;
         
         view.yGridLinesColor = [UIColor clearColor];
         view.showYGridLines = YES;

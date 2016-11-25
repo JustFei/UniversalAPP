@@ -24,6 +24,7 @@
 #import "BloodO2ContentView.h"
 #import "BooldHistoryViewController.h"
 #import "BOHistoryViewController.h"
+#import "NSStringTool.h"
 
 #import "SettingViewController.h"
 
@@ -428,7 +429,20 @@
                         if (manridyModel.sportModel.sumDataCount != 0 && manridyModel.sportModel.sumDataCount) {
                             //对具体的历史数据进行保存操作
                             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                                NSArray *stepArr = [self.myFmdbTool queryStepWithDate:currentDateString];
+                                NSArray *stepArr = [self.myFmdbTool queryStepWithDate:manridyModel.sportModel.date];
+                                float height;float weight;
+                                _userArr = [self.myFmdbTool queryAllUserInfo];
+                                if (_userArr.count == 0) {
+                                    weight = 75.0;
+                                    height = 180.0;
+                                }else {
+                                    //这里由于是单用户，所以取第一个值
+                                    UserInfoModel *model = _userArr.firstObject;
+                                    weight = model.weight;
+                                    height = model.height;
+                                }
+                                manridyModel.sportModel.kCalNumber = [NSString stringWithFormat:@"%f",[NSStringTool getKcal:manridyModel.sportModel.stepNumber.integerValue withHeight:height andWeitght:weight]];
+                                manridyModel.sportModel.mileageNumber = [NSString stringWithFormat:@"%f",[NSStringTool getMileage:manridyModel.sportModel.stepNumber.integerValue withHeight:height]];
                                 
                                 if (stepArr.count == 0) {
                                     [self.myFmdbTool insertStepModel:manridyModel.sportModel];
@@ -873,9 +887,15 @@
             break;
         case 4:
         {
-            
+            BooldHistoryViewController *vc = [[BooldHistoryViewController alloc] initWithNibName:@"BooldHistoryViewController" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
+        case 5:
+        {
+            BOHistoryViewController *vc = [[BOHistoryViewController alloc] initWithNibName:@"BOHistoryViewController" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
             
         default:
             break;

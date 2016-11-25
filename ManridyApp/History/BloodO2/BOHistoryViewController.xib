@@ -110,7 +110,7 @@
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="历史记录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewV-TL-M0P">
-                    <rect key="frame" x="138" y="29" width="100" height="25"/>
+                    <rect key="frame" x="138" y="28.5" width="100" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="1eV-U7-Ef6"/>
                         <constraint firstAttribute="width" constant="100" id="nzm-3e-Qrv"/>
@@ -119,13 +119,13 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XK-YA-M5u">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XK-YA-M5u">
                     <rect key="frame" x="8" y="23" width="55" height="36"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="RDG-L6-841"/>
                         <constraint firstAttribute="height" constant="36" id="i3l-3R-sWX"/>
                     </constraints>
-                    <state key="normal" title="返回">
+                    <state key="normal" title="    " image="all_back_icon.png">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
@@ -164,5 +164,6 @@
     </objects>
     <resources>
         <image name="SPO2_old_icon.png" width="258" height="273"/>
+        <image name="all_back_icon.png" width="13" height="23"/>
     </resources>
 </document>

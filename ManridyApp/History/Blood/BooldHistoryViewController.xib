@@ -106,18 +106,18 @@
                         <action selector="chooseMouthAction:" destination="-1" eventType="touchUpInside" id="PQ3-Kf-aTY"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDE-im-9gh">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDE-im-9gh">
                     <rect key="frame" x="8" y="23" width="55" height="36"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="i77-oo-3eX"/>
                         <constraint firstAttribute="height" constant="36" id="tzK-yN-gt4"/>
                     </constraints>
-                    <state key="normal" title="返回">
+                    <state key="normal" title="    " image="all_back_icon.png">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="历史记录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQ9-Si-Bzr">
-                    <rect key="frame" x="138" y="29" width="100" height="25"/>
+                    <rect key="frame" x="138" y="28.5" width="100" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="JMr-p0-FQV"/>
                         <constraint firstAttribute="height" constant="25" id="VyK-5Y-LEQ"/>
@@ -160,6 +160,7 @@
         </view>
     </objects>
     <resources>
+        <image name="all_back_icon.png" width="13" height="23"/>
         <image name="bp_old_icon.png" width="258" height="270"/>
     </resources>
 </document>

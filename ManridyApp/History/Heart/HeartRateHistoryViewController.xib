@@ -78,13 +78,13 @@
                                 <action selector="chooseMouthAction:" destination="-1" eventType="touchUpInside" id="nZs-tT-PvV"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-lW-GlY">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-lW-GlY">
                             <rect key="frame" x="8" y="23" width="55" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="FoE-5Z-KlJ"/>
                                 <constraint firstAttribute="width" constant="55" id="dc9-sl-1ay"/>
                             </constraints>
-                            <state key="normal" title="返回">
+                            <state key="normal" title="      " image="all_back_icon.png">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
@@ -113,7 +113,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="历史记录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiG-Bf-0J2">
-                            <rect key="frame" x="137.5" y="28.5" width="100" height="25"/>
+                            <rect key="frame" x="137.5" y="28" width="100" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="wOb-mZ-2Zg"/>
                                 <constraint firstAttribute="width" constant="100" id="xX8-X1-d0b"/>
@@ -177,6 +177,7 @@
         </view>
     </objects>
     <resources>
+        <image name="all_back_icon.png" width="13" height="23"/>
         <image name="heart_old_icon.png" width="258" height="266"/>
     </resources>
 </document>

@@ -29,4 +29,9 @@
 
 //将data转换为不带<>的字符串
 + (NSString *)convertToNSStringWithNSData:(NSData *)data;
+
++ (float)getMileage:(NSInteger)step withHeight:(float)height;
+
++ (float)getKcal:(NSInteger)step withHeight:(float)height andWeitght:(float)weight;
+
 @end

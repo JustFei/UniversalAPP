@@ -222,12 +222,9 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
             NSString *dayStr = [timeStr substringWithRange:NSMakeRange(5, 2)];
             
             NSData *stepData = [data subdataWithRange:NSMakeRange(9, 3)];
-            NSString *stepStr = [NSString stringWithFormat:@"%@",stepData];
-            
+            int stepValue = [NSStringTool parseIntFromData:stepData];
+            NSString *stepStr = [NSString stringWithFormat:@"%d",stepValue];
             NSString *dateStr = [NSString stringWithFormat:@"20%@/%@/%@",yearStr ,monthStr ,dayStr];
-//            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//            [formatter setDateFormat:@"yyyy/MM/dd"];
-//            NSDate *date = [formatter dateFromString:dateStr];
             
             NSLog(@"yy == %@ , mm == %@ , dd == %@ , date == %@",yearStr ,monthStr ,dayStr ,dateStr );
             NSLog(@"step = %@",stepStr);
