@@ -201,10 +201,10 @@
 {
     if (!_functionTableView) {
         UITableView *view = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        view.tableFooterView = [[UIView alloc] init];
         
         view.delegate = self;
         view.dataSource = self;
-        
         view.backgroundColor = [UIColor clearColor];
         
         [self addSubview:view];

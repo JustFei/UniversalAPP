@@ -312,7 +312,10 @@
             [self.sleepCircleChart updateChartByCurrent:@(100)];
         }
     }
-    [self.sleepCircleChart strokeChart];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.sleepCircleChart strokeChart];
+    });
 }
 
 #pragma mark - DropdownMenuDelegate

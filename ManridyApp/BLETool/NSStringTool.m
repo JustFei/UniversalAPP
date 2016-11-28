@@ -300,6 +300,18 @@
         }
         
         return protocolStr;
+    }else if ([head isEqualToString:@"0f"] || [head isEqualToString:@"0F"]){
+        NSString *protocolStr = [NSString stringWithFormat:@"FC0f05%@",info];
+        
+        while (1) {
+            if (protocolStr.length < 40) {
+                protocolStr = [protocolStr stringByAppendingString:@"00"];
+            }else {
+                break;
+            }
+        }
+        
+        return protocolStr;
     }else if ([head isEqualToString:@"11"]) {
         //--------------获取血压数据-----------
         

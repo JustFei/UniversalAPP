@@ -45,8 +45,11 @@
 
 - (void)drawProgress:(CGFloat )progress
 {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.BOCircleChart strokeChart];
+    });
     [self.BOCircleChart updateChartByCurrent:@(progress * 100)];
-    [self.BOCircleChart strokeChart];
 }
 
 - (void)showChartViewWithData:(BOOL)haveData

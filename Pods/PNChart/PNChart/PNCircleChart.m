@@ -121,6 +121,7 @@ displayCountingLabel:(BOOL)displayCountingLabel
 
 - (void)strokeChart
 {
+    @autoreleasepool {
     // Add counting label
 
     if (_displayCountingLabel) {
@@ -186,6 +187,7 @@ displayCountingLabel:(BOOL)displayCountingLabel
     }
     
     [self addAnimationIfNeeded];
+    }
 }
 
 
@@ -207,75 +209,82 @@ displayCountingLabel:(BOOL)displayCountingLabel
 }
 
 -(void)updateChartByCurrent:(NSNumber *)current byTotal:(NSNumber *)total {
-    double totalPercentageValue = [current floatValue]/([total floatValue]/100.0);
+    @autoreleasepool {
+        double totalPercentageValue = [current floatValue]/([total floatValue]/100.0);
+        
+        // add this section ===========
+        float previousStrokeEnd = [_current floatValue] / [_total floatValue];
+        float currentStrokeEnd = [current floatValue] / [total floatValue];
+        
+        // when currentValue is less than or equal to previousValue
+        if ((fabs(currentStrokeEnd) < fabs(previousStrokeEnd) + FLT_EPSILON) ||
+            (fabs((currentStrokeEnd) - (previousStrokeEnd)) < FLT_EPSILON))
+        {
+            _circle.strokeEnd = currentStrokeEnd;
+        }
+        // when currentValue is larger than previousValue
+        else {
+            _circle.strokeEnd = previousStrokeEnd;
+        }
+        // add this section ===========
 
-    // add this section ===========
-    float previousStrokeEnd = [_current floatValue] / [_total floatValue];
-    float currentStrokeEnd = [current floatValue] / [total floatValue];
-    
-    // when currentValue is less than or equal to previousValue
-    if ((fabs(currentStrokeEnd) < fabs(previousStrokeEnd) + FLT_EPSILON) ||
-        (fabs((currentStrokeEnd) - (previousStrokeEnd)) < FLT_EPSILON))
-    {
-        _circle.strokeEnd = currentStrokeEnd;
-    }
-    // when currentValue is larger than previousValue
-    else {
-        _circle.strokeEnd = previousStrokeEnd;
-    }
-    // add this section ===========
-    
-    if (_strokeColorGradientStart) {
-        self.gradientMask.strokeEnd = _circle.strokeEnd;
-    }
-    
-    
-    // Add animation
-    if (self.displayAnimated) {
-        CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-        pathAnimation.duration = self.duration;
-        pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        pathAnimation.fromValue = @([_current floatValue] / [_total floatValue]);
-        pathAnimation.toValue = @([current floatValue] / [total floatValue]);
+        
+        
+        
         
         if (_strokeColorGradientStart) {
-            [self.gradientMask addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
+            self.gradientMask.strokeEnd = currentStrokeEnd; // change to current stroke end
         }
-        [_circle addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
+//        _circle.strokeEnd   = [current floatValue] / [total floatValue];
         
-        if (_displayCountingLabel) {
-            [self.countingLabel countFrom:fmin([_current floatValue], [_total floatValue]) to:totalPercentageValue withDuration:self.duration];
+        // Add animation
+        if (self.displayAnimated) {
+            CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+            pathAnimation.duration = self.duration;
+            pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            pathAnimation.fromValue = @([_current floatValue] / [_total floatValue]);
+            pathAnimation.toValue = @([current floatValue] / [total floatValue]);
+            
+            if (_strokeColorGradientStart) {
+                [self.gradientMask addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
+            }
+            [_circle addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
+            
+            if (_displayCountingLabel) {
+                [self.countingLabel countFrom:fmin([_current floatValue], [_total floatValue]) to:totalPercentageValue withDuration:self.duration];
+            }
+            
+        }
+        else if (_displayCountingLabel) {
+            [self.countingLabel countFrom:totalPercentageValue to:totalPercentageValue withDuration:self.duration];
         }
         
+        _current = current;
+        _total = total;
     }
-    else if (_displayCountingLabel) {
-        [self.countingLabel countFrom:totalPercentageValue to:totalPercentageValue withDuration:self.duration];
-    }
-    
-//    _circle.strokeEnd   = [current floatValue] / [total floatValue];
-    _current = current;
-    _total = total;
 }
 
 - (void)addAnimationIfNeeded
 {
-    double percentageValue = [_current floatValue]/([_total floatValue]/100.0);
-    
-    if (self.displayAnimated) {
-        CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-        pathAnimation.duration = self.duration;
-        pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        pathAnimation.fromValue = @(0.0f);
-        pathAnimation.toValue = @([_current floatValue] / [_total floatValue]);
-        [_circle addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
-        [_countingLabel countFrom:0 to:percentageValue withDuration:self.duration];
+    @autoreleasepool {
+        double percentageValue = [_current floatValue]/([_total floatValue]/100.0);
         
-        if (self.gradientMask && _strokeColorGradientStart) {
-            [self.gradientMask addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
+        if (self.displayAnimated) {
+            CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+            pathAnimation.duration = self.duration;
+            pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            pathAnimation.fromValue = @(0.0f);
+            pathAnimation.toValue = @([_current floatValue] / [_total floatValue]);
+            [_circle addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
+            [_countingLabel countFrom:0 to:percentageValue withDuration:self.duration];
+            
+            if (self.gradientMask && _strokeColorGradientStart) {
+                [self.gradientMask addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
+            }
         }
-    }
-    else {
-        [_countingLabel countFrom:percentageValue to:percentageValue withDuration:self.duration];
+        else {
+            [_countingLabel countFrom:percentageValue to:percentageValue withDuration:self.duration];
+        }
     }
 }
 

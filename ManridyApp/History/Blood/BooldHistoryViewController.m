@@ -196,7 +196,10 @@
                 [self.hBloodCircleChart updateChartByCurrent:@(100)];
             }
             
-            [self.hBloodCircleChart strokeChart];
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                [self.hBloodCircleChart strokeChart];
+            });
             
             [self.highBloodChart setYValues:_hbDataArr];
             [self.lowBloodChart setYValues:_lbDataArr];

@@ -196,9 +196,12 @@
             
             NSInteger averageNumber = sumHeartRate / haveDataDays;
             double doubleAverageNumber = sumHeartRate / haveDataDays;
-            
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                [self.heartCircleChart strokeChart];
+            });
             [self.heartCircleChart updateChartByCurrent:@(doubleAverageNumber)];
-            [self.heartCircleChart strokeChart];
+            
             
             [self.heartRateLabel setText: [NSString stringWithFormat:@"%ld",averageNumber]];
             self.monthAverageLabel.text = @"当月平均心率";

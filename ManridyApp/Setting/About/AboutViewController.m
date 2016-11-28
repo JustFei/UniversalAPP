@@ -18,6 +18,7 @@
 @property (nonatomic ,strong) UILabel *nameLabel;
 @property (nonatomic ,strong) UIView *cutView;
 @property (nonatomic ,strong) UILabel *softwareLabel;
+@property (nonatomic ,strong) UILabel *hardwareLabel;
 
 @end
 
@@ -56,6 +57,12 @@
     [self.softwareLabel setText:[NSString stringWithFormat:@"软件版本号：V%@",app_Version]];
     [self.view addSubview:self.softwareLabel];
     
+    self.hardwareLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.softwareLabel.frame.origin.y + 45 * WIDTH / 320, 150 * WIDTH / 320,30)];
+    self.hardwareLabel.backgroundColor = [UIColor clearColor];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"version"]) {
+        [self.hardwareLabel setText:[NSString stringWithFormat:@"固件版本号：V%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"version"]]];
+    }
+    [self.view addSubview:self.hardwareLabel];
 }
 
 #pragma mark - Action

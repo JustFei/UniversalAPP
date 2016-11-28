@@ -39,8 +39,11 @@
 
 - (void)drawProgress:(CGFloat )progress
 {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.heartCircleChart strokeChart];
+    });
     [self.heartCircleChart updateChartByCurrent:@(progress)];
-    [self.heartCircleChart strokeChart];
 }
 
 - (void)showChartViewWithData:(BOOL)haveData

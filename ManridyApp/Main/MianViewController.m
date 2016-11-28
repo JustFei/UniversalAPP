@@ -218,58 +218,59 @@
 - (void)writeData
 {
     @autoreleasepool {
-    switch (self.pageControl.currentPage) {
-        case 0:
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if (self.pageControl.currentPage == 0) {
-                    
-                    //刚进来先查询设备的数据条数
-                    [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeDataInPeripheral];
-                }
-            });
+        [self.myBleTool writeRequestVersion];
+        switch (self.pageControl.currentPage) {
+            case 0:
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 0) {
+                        
+                        //刚进来先查询设备的数据条数
+                        [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeDataInPeripheral];
+                    }
+                });
+            }
+                break;
+            case 1:
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 1) {
+                        [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
+                    }
+                });
+            }
+                break;
+            case 2:
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 2) {
+                        //读取当前体温
+                    }
+                });
+            }
+                break;
+            case 3:
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 3) {
+                        [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
+                    }
+                });
+            }
+                break;
+            case 4:
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (self.pageControl.currentPage == 4) {
+                        //读取血压数据
+                    }
+                });
+            }
+                break;
+                
+            default:
+                break;
         }
-            break;
-        case 1:
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if (self.pageControl.currentPage == 1) {
-                    [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
-                }
-            });
-        }
-            break;
-        case 2:
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if (self.pageControl.currentPage == 2) {
-                    //读取当前体温
-                }
-            });
-        }
-            break;
-        case 3:
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if (self.pageControl.currentPage == 3) {
-                    [self.myBleTool writeSleepRequestToperipheral:SleepDataLastData];
-                }
-            });
-        }
-            break;
-        case 4:
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if (self.pageControl.currentPage == 4) {
-                    //读取血压数据
-                }
-            });
-        }
-            break;
-            
-        default:
-            break;
-    }
     }
 }
 
@@ -646,6 +647,11 @@
             }
         }
     }
+}
+
+- (void)receiveVersionWithVersionStr:(NSString *)versionStr
+{
+    [[NSUserDefaults standardUserDefaults] setObject:versionStr forKey:@"version"];
 }
 
 #pragma mark - DataBase

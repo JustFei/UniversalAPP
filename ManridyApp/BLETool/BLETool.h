@@ -120,6 +120,9 @@ typedef enum{
 //get bloodO2
 - (void)receiveBloodO2DataWithModel:(manridyModel *)manridyModel;
 
+//get version
+- (void)receiveVersionWithVersionStr:(NSString *)versionStr;
+
 @end
 
 @protocol BleReceiveSearchResquset <NSObject>
@@ -220,6 +223,9 @@ typedef enum{
 
 //get blood O2 data
 - (void)writeBloodO2ToPeripheral:(BloodO2Data)bloodO2Data;
+
+//get version from peripheral
+- (void)writeRequestVersion;
 
 //临时写入保持连接
 - (void)writeToKeepConnect;

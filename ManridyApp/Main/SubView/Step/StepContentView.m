@@ -44,12 +44,16 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reScanPeripheral)];
     self.stepLabel.userInteractionEnabled = YES;
     [self.stepLabel addGestureRecognizer:tap];
+    
 }
 
 - (void)drawProgress:(CGFloat )progress
 {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.stepCircleChart strokeChart];
+    });
     [self.stepCircleChart updateChartByCurrent:@(progress)];
-    [self.stepCircleChart strokeChart];
 }
 
 - (void)showChartView
@@ -70,9 +74,6 @@
     data02.itemCount = self.stepChart.xLabels.count;
     data02.inflexionPointColor = PNLightBlue;
     data02.inflexionPointStyle = PNLineChartPointStyleCircle;
-//    data02.showPointLabel = YES;
-//    data02.pointLabelColor = [UIColor redColor];
-//    data02.pointLabelFont = [UIFont systemFontOfSize:15];
     data02.getData = ^(NSUInteger index) {
         
         SportModel *model = self.dataArr[index];

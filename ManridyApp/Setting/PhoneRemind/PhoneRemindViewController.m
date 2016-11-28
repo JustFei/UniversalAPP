@@ -473,6 +473,7 @@
 {
     if (!_remindTableView) {
         UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 16)];
+        view.tableFooterView = [[UIView alloc] init];
         view.allowsSelection = NO;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesBegan)];
         [view addGestureRecognizer:tap];

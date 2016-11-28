@@ -43,8 +43,11 @@
 
 - (void)drawProgress:(CGFloat )progress
 {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.hBloodCircleChart strokeChart];
+    });
     [self.hBloodCircleChart updateChartByCurrent:@(progress * 100)];
-    [self.hBloodCircleChart strokeChart];
 }
 
 - (void)showChartViewWithData:(BOOL)haveData

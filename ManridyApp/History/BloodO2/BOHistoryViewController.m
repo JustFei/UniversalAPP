@@ -264,7 +264,10 @@
         [self.boCircleChart updateChartByCurrent:@(100)];
     }
     
-    [self.boCircleChart strokeChart];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.boCircleChart strokeChart];
+    });
 }
 
 - (void)didReceiveMemoryWarning {

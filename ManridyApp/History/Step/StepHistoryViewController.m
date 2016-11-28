@@ -91,7 +91,6 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -206,8 +205,10 @@
                     [self.stepCircleChart updateChartByCurrent:@100];
                 }
             }
-            
-            [self.stepCircleChart strokeChart];
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                [self.stepCircleChart strokeChart];
+            });
             [self.stepBarChart setYValues:_dataArr];
             [self.stepBarChart strokeChart];
         });
