@@ -59,8 +59,10 @@
     
     self.hardwareLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.softwareLabel.frame.origin.y + 45 * WIDTH / 320, 150 * WIDTH / 320,30)];
     self.hardwareLabel.backgroundColor = [UIColor clearColor];
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"version"]) {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"version"] && [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"]) {
         [self.hardwareLabel setText:[NSString stringWithFormat:@"固件版本号：V%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"version"]]];
+    }else {
+        self.hardwareLabel.hidden = YES;
     }
     [self.view addSubview:self.hardwareLabel];
 }
