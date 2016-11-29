@@ -132,7 +132,7 @@
     if (!_lowBloodChart) {
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:CGRectMake(self.downView.bounds.origin.x - 19, self.downView.bounds.origin.y, self.downView.bounds.size.width, self.downView.bounds.size.height)];
         view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor blackColor]];
+        [view setStrokeColor:[UIColor grayColor]];
         view.barBackgroundColor = [UIColor clearColor];
         view.yChartLabelWidth = 20.0;
         view.chartMarginLeft = 30.0;
@@ -159,7 +159,7 @@
     if (!_highBloodChart) {
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor grayColor]];
+        [view setStrokeColor:[UIColor blackColor]];
         view.barBackgroundColor = [UIColor clearColor];
         view.yChartLabelWidth = 20.0;
         view.chartMarginLeft = 30.0;

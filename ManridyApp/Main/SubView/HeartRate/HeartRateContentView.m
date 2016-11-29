@@ -9,7 +9,7 @@
 #import "HeartRateContentView.h"
 #import "PNChart.h"
 
-@interface HeartRateContentView ()
+@interface HeartRateContentView () < PNChartDelegate >
 
 @property (nonatomic ,weak) PNLineChart *heartChart;
 @property (nonatomic ,weak) PNCircleChart *heartCircleChart;
@@ -76,12 +76,30 @@
     
 }
 
+#pragma mark - PNChartDelegate
+- (void)userClickedOnLinePoint:(CGPoint)point lineIndex:(NSInteger)lineIndex
+{
+    NSLog(@"点击了%ld根线",lineIndex);
+}
+
+- (void)userClickedOnLineKeyPoint:(CGPoint)point
+                        lineIndex:(NSInteger)lineIndex
+                       pointIndex:(NSInteger)pointIndex
+{
+//    NSInteger max = ((NSNumber *)_maxDataArr[pointIndex]).integerValue;
+//    NSInteger min = ((NSNumber *)_minDataArr[pointIndex]).integerValue;
+//    NSInteger average = (max + min) / 2;
+//    self.heartRateLabel.text = [NSString stringWithFormat:@"%ld",average];
+//    self.monthAverageLabel.text = @"当天平均心率";
+}
+
 #pragma mark - 懒加载
 - (PNLineChart *)heartChart
 {
     if (!_heartChart) {
         PNLineChart *view = [[PNLineChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
+        view.delegate = self;
         view.showCoordinateAxis = YES;
         view.yValueMin = 0;
         view.yValueMax = 200;

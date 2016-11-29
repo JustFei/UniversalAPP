@@ -171,13 +171,13 @@ static void completionCallback(SystemSoundID mySSID)
     content.sound = [UNNotificationSound defaultSound];
     
     // 标识符
-    content.categoryIdentifier = @"categoryIndentifier";
+    content.categoryIdentifier = @"categoryIndentifier1";
     
     // 2、创建通知触发
     UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
     
     // 3、创建通知请求
-    UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:@"KFGroupNotification" content:content trigger:trigger];
+    UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:@"KFGroupNotification1" content:content trigger:trigger];
     
     // 4、将请求加入通知中心
     [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notificationRequest withCompletionHandler:^(NSError * _Nullable error) {

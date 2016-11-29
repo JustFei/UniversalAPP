@@ -90,8 +90,8 @@
     //获取这个月的天数
     NSDate *today = [NSDate date]; //Get a date object for today's date
     NSCalendar *c = [NSCalendar currentCalendar];
-    NSRange days = [c rangeOfUnit:NSDayCalendarUnit
-                           inUnit:NSMonthCalendarUnit
+    NSRange days = [c rangeOfUnit:NSCalendarUnitDay
+                           inUnit:NSCalendarUnitMonth
                           forDate:today];
     _dateArr = [NSMutableArray array];
     _sumDataArr = [NSMutableArray array];
@@ -102,7 +102,7 @@
         [_dateArr addObject:@(i)];
     }
     
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     NSInteger month = [components month];
     [self.monthButton setTitle:[NSString stringWithFormat:@"%ld月",month] forState:UIControlStateNormal];
     
@@ -139,7 +139,7 @@
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
-    unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
     
     NSDateComponents *components = [calendar components:unitFlags fromDate:date];
     
@@ -354,8 +354,8 @@
     
     //获取这个月的天数
     NSCalendar *c = [NSCalendar currentCalendar];
-    NSRange days = [c rangeOfUnit:NSDayCalendarUnit
-                           inUnit:NSMonthCalendarUnit
+    NSRange days = [c rangeOfUnit:NSCalendarUnitDay
+                           inUnit:NSCalendarUnitMonth
                           forDate:date];
     
     [_dateArr removeAllObjects];

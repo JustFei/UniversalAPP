@@ -98,7 +98,7 @@
     self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
     [self createUI];
 
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = backItem;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
@@ -332,7 +332,8 @@
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     [calendar setFirstWeekday:2];//设定周一为周首日
-    BOOL ok = [calendar rangeOfUnit:NSWeekCalendarUnit startDate:&beginDate interval:&interval forDate:newDate];
+// MARK: 这里修改了NSCalendarUnitWeekday
+    BOOL ok = [calendar rangeOfUnit:NSCalendarUnitWeekOfMonth startDate:&beginDate interval:&interval forDate:newDate];
     if (ok) {
         endDate = [beginDate dateByAddingTimeInterval:interval - 1];
     }else {
