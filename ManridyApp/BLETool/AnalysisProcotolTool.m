@@ -499,14 +499,19 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         NSString *yy = [startTimeStr substringWithRange:NSMakeRange(1, 2)];
         NSString *MM = [startTimeStr substringWithRange:NSMakeRange(3, 2)];
         NSString *dd = [startTimeStr substringWithRange:NSMakeRange(5, 2)];
-        startTimeStr = [NSString stringWithFormat:@"20%@/%@/%@",yy ,MM ,dd];
+        NSString *hh = [startTimeStr substringWithRange:NSMakeRange(7, 2)];
+        NSString *mm = [startTimeStr substringWithRange:NSMakeRange(9, 2)];
+        startTimeStr = [NSString stringWithFormat:@"20%@/%@/%@ %02ld:%02ld",yy ,MM ,dd ,hh.integerValue ,mm.integerValue];
         
         NSData *endTime = [data subdataWithRange:NSMakeRange(9, 5)];
         NSString *endTimeStr = [NSString stringWithFormat:@"%@",endTime];
         NSString *endyy = [endTimeStr substringWithRange:NSMakeRange(1, 2)];
         NSString *endMM = [endTimeStr substringWithRange:NSMakeRange(3, 2)];
         NSString *enddd = [endTimeStr substringWithRange:NSMakeRange(5, 2)];
-        endTimeStr = [NSString stringWithFormat:@"20%@/%@/%@",endyy ,endMM ,enddd];
+        NSString *endhh = [endTimeStr substringWithRange:NSMakeRange(7, 2)];
+        NSString *endmm = [endTimeStr substringWithRange:NSMakeRange(9, 2)];
+        endTimeStr = [NSString stringWithFormat:@"20%@/%@/%@ %02ld:%02ld",endyy ,endMM ,enddd ,endhh.integerValue ,endmm.integerValue];
+        NSString *endDateStr = [NSString stringWithFormat:@"20%@/%@/%@",endyy ,endMM ,enddd];
         
         NSData *deepSleep = [data subdataWithRange:NSMakeRange(14, 2)];
         int deepSleepVale = [NSStringTool parseIntFromData:deepSleep];
@@ -524,7 +529,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         model.sleepModel.deepSleep = deepSleepStr;
         model.sleepModel.lowSleep = lowSleepStr;
         model.sleepModel.sumSleep = sumSleepStr;
-        model.sleepModel.date = endTimeStr;
+        model.sleepModel.date = endDateStr;
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
         
     }else if ([head isEqualToString:@"8c"] || [head isEqualToString:@"8C"]) {
