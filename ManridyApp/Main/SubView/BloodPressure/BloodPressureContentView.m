@@ -7,15 +7,14 @@
 //
 
 #import "BloodPressureContentView.h"
-#import "PNChart.h"
+
 #import "BloodModel.h"
 
 @interface BloodPressureContentView ()
 {
     NSMutableArray *_textArr;
 }
-@property (nonatomic ,weak) PNBarChart *lowBloodChart;
-@property (nonatomic ,weak) PNBarChart *highBloodChart;
+
 @property (nonatomic ,weak) PNCircleChart *hBloodCircleChart;
 
 @end
@@ -56,13 +55,6 @@
         [_textArr removeAllObjects];
         for (NSInteger i = 0; i < self.hbArr.count; i ++) {
             [_textArr addObject:@(i + 1)];
-//            NSNumber *hightest = (NSNumber *)self.hbArr[i];
-//            NSLog(@"%@",hightest);
-//            NSInteger hight = hightest.integerValue;
-//            if (hight > self.highBloodChart.yValueMax) {
-//                self.highBloodChart.yValueMax = hight + 10;
-//                self.lowBloodChart.yValueMax = hight + 10;
-//            }
         }
         
         [self.lowBloodChart setXLabels:_textArr];
@@ -93,18 +85,25 @@
         if (bloodDataArr.count == 0) {
             [self showChartViewWithData:NO];
         }else {
-            
+            [self.hbArr removeAllObjects];
+            [self.lbArr removeAllObjects];
+            [self.timeArr removeAllObjects];
+            [self.bpmArr removeAllObjects];
             if (bloodDataArr.count > 5) {
                 
                 for (NSInteger index = bloodDataArr.count - 5; index < bloodDataArr.count; index ++) {
                     BloodModel *model = bloodDataArr[index];
                     [self.hbArr addObject:@(model.highBloodString.integerValue)];
                     [self.lbArr addObject:@(model.lowBloodString.integerValue)];
+                    [self.timeArr addObject:model.timeString];
+                    [self.bpmArr addObject:model.bpmString];
                 }
             }else {
                 for (BloodModel *model in bloodDataArr) {
                     [self.hbArr addObject:@(model.highBloodString.integerValue)];
                     [self.lbArr addObject:@(model.lowBloodString.integerValue)];
+                    [self.timeArr addObject:model.timeString];
+                    [self.bpmArr addObject:model.bpmString];
                 }
             }
             
@@ -121,9 +120,17 @@
             }
             [self showChartViewWithData:YES];
         }
-        [self.hbArr removeAllObjects];
-        [self.lbArr removeAllObjects];
     }
+}
+
+#pragma mark - PNChartDelegate
+- (void)userClickedOnBarAtIndex:(NSInteger)barIndex
+{
+    NSNumber *highBP = self.hbArr[barIndex];
+    NSNumber *lowBP = self.lbArr[barIndex];
+    NSString *time = self.timeArr[barIndex];
+    NSString *bpm = self.bpmArr[barIndex];
+    self.currentBPLabel.text = [NSString stringWithFormat:@"%@: 高压：%@ 低压：%@ 心率：%@",time ,highBP ,lowBP ,bpm];
 }
 
 #pragma mark - 懒加载
@@ -158,6 +165,7 @@
 {
     if (!_highBloodChart) {
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
+        view.delegate = self;
         view.backgroundColor = [UIColor clearColor];
         [view setStrokeColor:[UIColor blackColor]];
         view.barBackgroundColor = [UIColor clearColor];
@@ -222,6 +230,24 @@
     }
     
     return _lbArr;
+}
+
+- (NSMutableArray *)bpmArr
+{
+    if (!_bpmArr) {
+        _bpmArr = [NSMutableArray array];
+    }
+    
+    return _bpmArr;
+}
+
+- (NSMutableArray *)timeArr
+{
+    if (!_timeArr) {
+        _timeArr = [NSMutableArray array];
+    }
+    
+    return _timeArr;
 }
 
 @end

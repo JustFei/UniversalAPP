@@ -106,6 +106,7 @@
             </constraints>
             <connections>
                 <outlet property="bloodPressureLabel" destination="3tT-Ww-UQj" id="Phi-mE-JMG"/>
+                <outlet property="currentBPLabel" destination="cDp-tt-7N5" id="oPP-GL-gF6"/>
                 <outlet property="downView" destination="hKc-CF-hhm" id="jh3-WQ-1ty"/>
                 <outlet property="heartRateLabel" destination="fyy-sv-sZa" id="fzs-lC-iCb"/>
                 <outlet property="progressImageView" destination="bfU-7N-yYW" id="Tiq-tG-qR9"/>

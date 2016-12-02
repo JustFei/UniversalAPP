@@ -114,6 +114,7 @@
             </constraints>
             <connections>
                 <outlet property="BOLabel" destination="qZ9-kp-vkK" id="oD8-gA-Xiw"/>
+                <outlet property="currentBOLabel" destination="fxI-fw-iZi" id="CML-DC-eWB"/>
                 <outlet property="dateLabel" destination="Dh2-ei-SUo" id="wQr-8x-iD6"/>
                 <outlet property="downView" destination="WeS-T7-ebO" id="6dw-Gn-vti"/>
                 <outlet property="progressImageView" destination="Ulc-G6-KEI" id="g4M-br-dHt"/>

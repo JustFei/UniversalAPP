@@ -9,10 +9,25 @@
 //#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "StepContentView.h"
+#import "HeartRateContentView.h"
+#import "TemperatureContentView.h"
+#import "SleepContentView.h"
+#import "BloodPressureContentView.h"
+#import "BloodO2ContentView.h"
 
 @interface MainViewController :UIViewController
 
 @property (nonatomic ,strong) StepContentView *stepView;
+
+@property (nonatomic ,strong) HeartRateContentView *heartRateView;
+
+@property (nonatomic ,strong) TemperatureContentView *temperatureView;
+
+@property (nonatomic ,strong) SleepContentView *sleepView;
+
+@property (nonatomic ,strong) BloodPressureContentView  *bloodPressureView;
+
+@property (nonatomic ,strong) BloodO2ContentView *boView;
 
 - (void)writeData;
 

@@ -8,14 +8,13 @@
 
 #import "SleepContentView.h"
 #import "SleepSettingViewController.h"
-#import "PNChart.h"
+
 
 @interface SleepContentView ()
 {
     NSMutableArray *_textArr;
 }
-@property (nonatomic ,weak) PNBarChart *deepSleepChart;
-@property (nonatomic ,weak) PNBarChart *sumSleepChart;
+
 @property (nonatomic ,weak) PNCircleChart *sleepCircleChart;
 
 @end
@@ -80,7 +79,6 @@
         [self.sumSleepChart showLabel];
         [self.sumSleepChart strokeChart];
     }
-    
 }
 
 - (IBAction)sleepTargetAction:(UIButton *)sender {
@@ -88,12 +86,25 @@
     
     [[self findViewController:self].navigationController pushViewController:vc animated:YES];
 }
+
+#pragma mark - PNChartDelegate
+- (void)userClickedOnBarAtIndex:(NSInteger)barIndex
+{
+    NSNumber *sumNum = self.sumDataArr[barIndex];
+    NSNumber *deepNum = self.deepDataArr[barIndex];
+    NSInteger low = sumNum.integerValue - deepNum.integerValue;
+    NSString *start = [self.startDataArr[barIndex] substringFromIndex:11];
+    NSString *end = [self.endDataArr[barIndex] substringFromIndex:11];
+    self.currentSleepStateLabel.text = [NSString stringWithFormat:@"此次睡眠：%@-%@ 浅睡：%.1f时 深睡：%.1f时",start ,end ,low / 60.f ,deepNum.integerValue / 60.f];
+}
+
 #pragma mark - 懒加载
 - (PNBarChart *)deepSleepChart
 {
     if (!_deepSleepChart) {
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:self.downView.bounds];
         view.backgroundColor = [UIColor clearColor];
+        view.delegate = self;
         [view setStrokeColor:[UIColor blackColor]];
         view.barBackgroundColor = [UIColor clearColor];
         view.yChartLabelWidth = 20.0;
@@ -183,6 +194,24 @@
     }
     
     return _deepDataArr;
+}
+
+- (NSMutableArray *)startDataArr
+{
+    if (!_startDataArr) {
+        _startDataArr = [NSMutableArray array];
+    }
+    
+    return _startDataArr;
+}
+
+- (NSMutableArray *)endDataArr
+{
+    if (!_endDataArr) {
+        _endDataArr = [NSMutableArray array];
+    }
+    
+    return _endDataArr;
 }
 
 #pragma mark - 获取当前View的控制器的方法

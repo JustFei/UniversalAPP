@@ -226,6 +226,7 @@
 		9C1B27741DDE9EBE009663F0 /* BloodO2Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */; };
 		9C1B27791DDEFCE0009663F0 /* BooldHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */; };
 		9C1B277A1DDEFCE0009663F0 /* BooldHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1B27781DDEFCE0009663F0 /* BooldHistoryViewController.xib */; };
+		9C2130C11DF1738C00C7E72D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C2130C01DF1738C00C7E72D /* InfoPlist.strings */; };
 		9C728F681DD5DB2800BEF69E /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C728F671DD5DB2800BEF69E /* PopupView.m */; };
 		9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F691DD5DB4B00BEF69E /* PopupView.xib */; };
 		9C728F6C1DD5ECB300BEF69E /* alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F6B1DD5ECB300BEF69E /* alert.wav */; };
@@ -512,6 +513,7 @@
 		9C1B27761DDEFCE0009663F0 /* BooldHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BooldHistoryViewController.h; path = History/Blood/BooldHistoryViewController.h; sourceTree = "<group>"; };
 		9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BooldHistoryViewController.m; path = History/Blood/BooldHistoryViewController.m; sourceTree = "<group>"; };
 		9C1B27781DDEFCE0009663F0 /* BooldHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BooldHistoryViewController.xib; path = History/Blood/BooldHistoryViewController.xib; sourceTree = "<group>"; };
+		9C2130C01DF1738C00C7E72D /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		9C728F661DD5DB2800BEF69E /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupView.h; path = PopupView/PopupView.h; sourceTree = "<group>"; };
 		9C728F671DD5DB2800BEF69E /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupView.m; path = PopupView/PopupView.m; sourceTree = "<group>"; };
 		9C728F691DD5DB4B00BEF69E /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupView.xib; path = PopupView/PopupView.xib; sourceTree = "<group>"; };
@@ -804,6 +806,7 @@
 				10F5F7131D98C6280045FA4C /* Assets.xcassets */,
 				10F5F7181D98C6280045FA4C /* Info.plist */,
 				10F5F7081D98C6280045FA4C /* main.m */,
+				9C2130C01DF1738C00C7E72D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1223,6 +1226,7 @@
 				10F5F7D91D99253B0045FA4C /* SleepContentView.xib in Resources */,
 				10F5F7741D98F3560045FA4C /* walk_mileage_icon.png in Resources */,
 				10DE11A71DBAFBB000B824C5 /* all_back_icon@2x.png in Resources */,
+				9C2130C11DF1738C00C7E72D /* InfoPlist.strings in Resources */,
 				9CF2F6D21DD593390091ECB5 /* alert_find@3x.png in Resources */,
 				10C47EB41DA8A55F00D949CA /* ble_icon@2x.png in Resources */,
 				10F5F7721D98F3560045FA4C /* walk_foot_icon@2x.png in Resources */,

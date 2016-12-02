@@ -90,7 +90,10 @@
     
     self.stepChart.chartData = @[data02];
     [self.stepChart strokeChart];
-    
+}
+
+- (void)showStepStateLabel
+{
     for (int i = 0; i < self.dataArr.count; i ++) {
         SportModel *model = self.dataArr[i];
         
@@ -100,9 +103,30 @@
             sumkCal += model.kCalNumber.integerValue;
         }
     }
-    double mileage = sumMileage;
-    [self.weekStatisticsLabel setText:[NSString stringWithFormat:@"本周计步统计：%ld步（%.1f公里/%ld千卡）",sumStep ,mileage / 1000 ,sumkCal]];
+    //    double mileage = sumMileage;
+    [self.weekStatisticsLabel setText:[NSString stringWithFormat:@"本周计步统计：%ld步（%.1f公里/%ld千卡）",sumStep ,sumMileage / 1000.f ,sumkCal]];
     sumStep = sumMileage = sumkCal = 0;
+}
+
+#pragma mark - PNChartDelegate
+//- (void)userClickedOnLinePoint:(CGPoint)point lineIndex:(NSInteger)lineIndex
+//{
+//    NSLog(@"点击了%ld根线",lineIndex);
+//}
+
+
+- (void)userClickedOnLineKeyPoint:(CGPoint)point
+                        lineIndex:(NSInteger)lineIndex
+                       pointIndex:(NSInteger)pointIndex
+{
+    SportModel *model = self.dataArr[pointIndex];
+    NSString *date = self.dateArr[pointIndex];
+    if (model.stepNumber) {
+        [self.weekStatisticsLabel setText:[NSString stringWithFormat:@"%@：%@步",date ,model.stepNumber]];
+    }else {
+        [self.weekStatisticsLabel setText:[NSString stringWithFormat:@"%@：0步",date  ]];
+    }
+    
 }
 
 
@@ -140,6 +164,7 @@
     if (!_stepChart) {
         [self.downView layoutIfNeeded];
         PNLineChart *view = [[PNLineChart alloc] initWithFrame:self.downView.bounds];
+        view.delegate = self;
         view.backgroundColor = [UIColor clearColor];
         view.showCoordinateAxis = YES;
         

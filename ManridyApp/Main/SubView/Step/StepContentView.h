@@ -13,7 +13,7 @@
 //#import "FMDBTool.h"
 #import "StepDataModel.h"
 
-@interface StepContentView : UIView
+@interface StepContentView : UIView < PNChartDelegate >
 
 @property (weak, nonatomic) IBOutlet UILabel *stepLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mileageAndkCalLabel;
@@ -44,5 +44,6 @@
 
 - (void)drawProgress:(CGFloat )progress;
 - (void)showChartView;
+- (void)showStepStateLabel;
 
 @end

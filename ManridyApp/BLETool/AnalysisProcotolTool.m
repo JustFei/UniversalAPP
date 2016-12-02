@@ -493,14 +493,14 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
             model.sleepModel.sleepState = SleepDataHistoryData;
             NSLog(@"analysis : sumCount == %d,currentCount == %d",sumVale ,currentVale);
         }
-        
+//        0c010100 16113020 30161201 090602a4 00500000
         NSData *startTime = [data subdataWithRange:NSMakeRange(4, 5)];
         NSString *startTimeStr = [NSString stringWithFormat:@"%@",startTime];
         NSString *yy = [startTimeStr substringWithRange:NSMakeRange(1, 2)];
         NSString *MM = [startTimeStr substringWithRange:NSMakeRange(3, 2)];
         NSString *dd = [startTimeStr substringWithRange:NSMakeRange(5, 2)];
         NSString *hh = [startTimeStr substringWithRange:NSMakeRange(7, 2)];
-        NSString *mm = [startTimeStr substringWithRange:NSMakeRange(9, 2)];
+        NSString *mm = [startTimeStr substringWithRange:NSMakeRange(10, 2)];
         startTimeStr = [NSString stringWithFormat:@"20%@/%@/%@ %02ld:%02ld",yy ,MM ,dd ,hh.integerValue ,mm.integerValue];
         
         NSData *endTime = [data subdataWithRange:NSMakeRange(9, 5)];
@@ -509,7 +509,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         NSString *endMM = [endTimeStr substringWithRange:NSMakeRange(3, 2)];
         NSString *enddd = [endTimeStr substringWithRange:NSMakeRange(5, 2)];
         NSString *endhh = [endTimeStr substringWithRange:NSMakeRange(7, 2)];
-        NSString *endmm = [endTimeStr substringWithRange:NSMakeRange(9, 2)];
+        NSString *endmm = [endTimeStr substringWithRange:NSMakeRange(10, 2)];
         endTimeStr = [NSString stringWithFormat:@"20%@/%@/%@ %02ld:%02ld",endyy ,endMM ,enddd ,endhh.integerValue ,endmm.integerValue];
         NSString *endDateStr = [NSString stringWithFormat:@"20%@/%@/%@",endyy ,endMM ,enddd];
         

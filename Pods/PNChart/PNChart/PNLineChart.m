@@ -261,7 +261,9 @@
                     BOOL pointContainsPath = CGPathContainsPoint(path.CGPath, NULL, p1, NO);
 
                     if (pointContainsPath) {
-                        [_delegate userClickedOnLinePoint:touchPoint lineIndex:[_chartPath indexOfObject:path]];
+                        if ([_delegate respondsToSelector:@selector(userClickedOnLinePoint:lineIndex:)]) {
+                            [_delegate userClickedOnLinePoint:touchPoint lineIndex:[_chartPath indexOfObject:path]];
+                        }
 
                         return;
                     }
@@ -289,9 +291,12 @@
             float distance = MIN(distanceToP1, distanceToP2);
 
             if (distance <= 10.0) {
-                [_delegate userClickedOnLineKeyPoint:touchPoint
-                                           lineIndex:p
-                                          pointIndex:(distance == distanceToP2 ? i + 1 : i)];
+                if ([_delegate respondsToSelector:@selector(userClickedOnLineKeyPoint:lineIndex:pointIndex:)]) {
+                    [_delegate userClickedOnLineKeyPoint:touchPoint
+                                               lineIndex:p
+                                              pointIndex:(distance == distanceToP2 ? i + 1 : i)];
+                }
+                
 
                 return;
             }

@@ -7,10 +7,6 @@
 //
 
 #import "MainViewController.h"
-#import "HeartRateContentView.h"
-#import "TemperatureContentView.h"
-#import "SleepContentView.h"
-#import "BloodPressureContentView.h"
 #import "MenuContentView.h"
 #import "BLETool.h"
 #import "FMDBTool.h"
@@ -21,7 +17,6 @@
 #import "MBProgressHUD.h"
 #import "Remind.h"
 #import "NSStringTool.h"
-#import "BloodO2ContentView.h"
 #import "BooldHistoryViewController.h"
 #import "BOHistoryViewController.h"
 #import "NSStringTool.h"
@@ -62,15 +57,7 @@
 
 //@property (nonatomic ,strong) StepContentView *stepView;
 
-@property (nonatomic ,strong) HeartRateContentView *heartRateView;
 
-@property (nonatomic ,strong) TemperatureContentView *temperatureView;
-
-@property (nonatomic ,strong) SleepContentView *sleepView;
-
-@property (nonatomic ,strong) BloodPressureContentView  *bloodPressureView;
-
-@property (nonatomic ,strong) BloodO2ContentView *boView;
 
 @property (nonatomic ,strong) BLETool *myBleTool;
 
@@ -152,6 +139,8 @@
     self.stepView.dataArr = dataArr;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.stepView showChartView];
+        [self.stepView showStepStateLabel];
+        [self.heartRateView showHRStateLabel];
     });
     });
 
@@ -172,7 +161,6 @@
 
 - (void)showFunctionView
 {
-//    [self.stepView showChartView];
     self.stepView.mileageAndkCalLabel.hidden = NO;
     self.stepView.todayLabel.hidden = NO;
     
@@ -368,7 +356,7 @@
                 [dateformatter setDateFormat:@"yyyy/MM/dd"];
                 NSDate *currentDate = [NSDate date];
                 NSString *currentDateString = [dateformatter stringFromDate:currentDate];
-                
+                haveNewStep = YES;
                 switch (manridyModel.sportModel.motionType) {
                     case MotionTypeStep:
                         //对获取的步数信息做操作
@@ -661,10 +649,13 @@
     @autoreleasepool {
     //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
     NSArray *sleepDataArr = [self.myFmdbTool querySleepWithDate:currentDateString];
-    
+        [self.sleepView.sumDataArr removeAllObjects];
+        [self.sleepView.deepDataArr removeAllObjects];
     for (SleepModel *model in sleepDataArr) {
         [self.sleepView.sumDataArr addObject:@(model.sumSleep.integerValue)];
         [self.sleepView.deepDataArr addObject:@(model.deepSleep.integerValue)];
+        [self.sleepView.startDataArr addObject:model.startTime];
+        [self.sleepView.endDataArr addObject:model.endTime];
     }
     if (sleepDataArr.count == 0) {
         [self.sleepView showChartViewWithData:NO];
@@ -758,40 +749,9 @@
             
         }
     }
-    [self.sleepView.sumDataArr removeAllObjects];
-    [self.sleepView.deepDataArr removeAllObjects];
+    
     }
 }
-
-//- (void)queryBloodWithBloodArr:(NSArray *)bloodDataArr
-//{
-//    @autoreleasepool {
-//        //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
-//        
-//        for (BloodModel *model in bloodDataArr) {
-//            [self.bloodPressureView.hbArr addObject:@(model.highBloodString.integerValue)];
-//            [self.bloodPressureView.lbArr addObject:@(model.lowBloodString.integerValue)];
-//        }
-//        if (bloodDataArr.count == 0) {
-//            [self.bloodPressureView showChartViewWithData:NO];
-//        }else {
-//            [self.bloodPressureView showChartViewWithData:YES];
-//            
-//            BloodModel *model = bloodDataArr.lastObject;
-//            [self.bloodPressureView.bloodPressureLabel setText:[NSString stringWithFormat:@"%@/%@",model.highBloodString ,model.lowBloodString]];
-//            
-//            float highProgress = model.highBloodString.floatValue / 200;
-//            
-//            if (highProgress <= 1) {
-//                [self.bloodPressureView drawProgress:highProgress];
-//            }else if (highProgress >= 1) {
-//                [self.bloodPressureView drawProgress:1];
-//            }
-//        }
-//        [self.bloodPressureView.hbArr removeAllObjects];
-//        [self.bloodPressureView.lbArr removeAllObjects];
-//    }
-//}
 
 - (void)queryHeartDataAndShow
 {
@@ -822,16 +782,6 @@
         [self.heartRateView showChartViewWithData:YES];
     }else if (heartRateArr.count == 0) {
         [self.heartRateView showChartViewWithData:NO];
-//        for (NSString *dateString in self.stepView.dateArr) {
-//            NSString *monthStr = [dateString substringWithRange:NSMakeRange(5, 2)];
-//            NSString *dayStr = [dateString substringWithRange:NSMakeRange(8, 2)];
-//            
-//            [self.heartRateView.dateArr addObject:[NSString stringWithFormat:@"%@/%@",monthStr ,dayStr]];
-//        }
-//        
-//        for (int i = 0; i < 7; i ++) {
-//            [self.heartRateView.dataArr addObject:@"0"];
-//        }
     }
     NSString *lastHeartRate = self.heartRateView.dataArr.lastObject;
         if (lastHeartRate) {
@@ -1015,11 +965,9 @@
         switch (self.pageControl.currentPage) {
             case 0:
             {
-                if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                    if (haveNewStep) {
-                        [self.myBleTool writeMotionRequestToPeripheralWithMotionType:MotionTypeStepAndkCal];
-                        haveNewStep = NO;
-                    }
+                if (haveNewStep) {
+                    haveNewStep = NO;
+                    [self.stepView showStepStateLabel];
                 }
             }
                 break;
@@ -1028,34 +976,34 @@
                 if (self.myBleTool.connectState == kBLEstateDidConnected ) {
                     if (haveNewHeartRate) {
                         [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
+                        [self.heartRateView showHRStateLabel];
                     }
                 }else {
-                    [self queryHeartDataAndShow];
+                    if (haveNewHeartRate) {
+                        [self queryHeartDataAndShow];
+                        haveNewHeartRate = NO;
+                        [self.heartRateView showHRStateLabel];
+                    }
                 }
             }
                 break;
-//            case 2:
-//            {
-//                _currentPage = 2;
-//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                    if (self.pageControl.currentPage == 2) {
-//                        //读取当前体温
-//                    }
-//                });
-//            }
-//                break;
             case 2:
             {
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
                     if (haveNewSleep) {
                         [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
+                        self.sleepView.currentSleepStateLabel.text = @"最近几次睡眠";
                     }
                 }else {
                     NSDate *currentDate = [NSDate date];
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     formatter.dateFormat = @"yyyy/MM/dd";
                     NSString *currentDateString = [formatter stringFromDate:currentDate];
-                    [self querySleepDataBaseWithDateString:currentDateString];
+                    if (haveNewSleep) {
+                        [self querySleepDataBaseWithDateString:currentDateString];
+                        haveNewSleep = NO;
+                        self.sleepView.currentSleepStateLabel.text = @"最近几次睡眠";
+                    }
                 }
             }
                 break;
@@ -1064,14 +1012,20 @@
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
                     if (haveNewBP) {
                         [self.myBleTool writeBloodToPeripheral:BloodDataHistoryData];
+                        self.bloodPressureView.currentBPLabel.text = @"今日血压";
                     }
                 }else {
                     NSDate *currentDate = [NSDate date];
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     formatter.dateFormat = @"yyyy/MM/dd";
                     NSString *currentDateString = [formatter stringFromDate:currentDate];
-                    NSArray *bloodArr = [self.myFmdbTool queryBloodWithDate:currentDateString];
-                    [self.bloodPressureView queryBloodWithBloodArr:bloodArr];
+                    
+                    if (haveNewBP) {
+                        NSArray *bloodArr = [self.myFmdbTool queryBloodWithDate:currentDateString];
+                        [self.bloodPressureView queryBloodWithBloodArr:bloodArr];
+                        haveNewBP = NO;
+                        self.bloodPressureView.currentBPLabel.text = @"今日血压";
+                    }
                 }
             }
                 break;
@@ -1080,14 +1034,19 @@
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
                     if (haveNewBO) {
                         [self.myBleTool writeBloodO2ToPeripheral:BloodO2DataHistoryData];
+                        self.boView.currentBOLabel.text = @"今日血氧";
                     }
                 }else {
                     NSDate *currentDate = [NSDate date];
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     formatter.dateFormat = @"yyyy/MM/dd";
                     NSString *currentDateString = [formatter stringFromDate:currentDate];
-                    NSArray *bloodArr = [self.myFmdbTool queryBloodO2WithDate:currentDateString];
-                    [self.boView queryBOWithBloodArr:bloodArr];
+                    if (haveNewBO) {
+                        NSArray *bloodArr = [self.myFmdbTool queryBloodO2WithDate:currentDateString];
+                        [self.boView queryBOWithBloodArr:bloodArr];
+                        haveNewBO = NO;
+                        self.boView.currentBOLabel.text = @"今日血氧";
+                    }
                 }
             }
                 break;
@@ -1095,7 +1054,6 @@
             default:
                 break;
         }
-//    }
     }
 }
 

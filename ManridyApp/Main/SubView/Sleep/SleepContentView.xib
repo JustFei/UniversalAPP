@@ -167,6 +167,7 @@
                 <constraint firstAttribute="trailing" secondItem="YMG-93-Tfc" secondAttribute="trailing" id="r2v-MB-GIF"/>
             </constraints>
             <connections>
+                <outlet property="currentSleepStateLabel" destination="D5s-3A-N5T" id="ayx-7L-Q54"/>
                 <outlet property="deepAndLowSleepLabel" destination="gtr-da-WQW" id="jsl-Xy-czD"/>
                 <outlet property="downView" destination="Qxk-3h-F6a" id="pKo-I7-FQH"/>
                 <outlet property="progressImageView" destination="h2H-0x-LTA" id="jb3-Xv-tR2"/>

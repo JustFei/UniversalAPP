@@ -7,7 +7,6 @@
 //
 
 #import "BloodO2ContentView.h"
-#import "PNChart.h"
 #import "BloodO2Model.h"
 
 @interface BloodO2ContentView ()
@@ -15,7 +14,7 @@
     NSMutableArray *_textArr;
 }
 //@property (nonatomic ,weak) PNBarChart *BOChart;
-@property (nonatomic ,weak) PNLineChart *BOChart;
+
 @property (nonatomic ,weak) PNCircleChart *BOCircleChart;
 @property (nonatomic ,strong) NSMutableArray *boArr;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -131,16 +130,24 @@
     }
 }
 
+- (void)userClickedOnLineKeyPoint:(CGPoint)point
+                        lineIndex:(NSInteger)lineIndex
+                       pointIndex:(NSInteger)pointIndex
+{
+    NSString *date = self.dateArr[pointIndex];
+    NSString *bo = self.boArr[pointIndex];
+    [self.currentBOLabel setText:[NSString stringWithFormat:@"%@：%@%%",[date substringFromIndex:6] ,bo]];
+}
+
 #pragma mark - 懒加载
 - (PNLineChart *)BOChart
 {
     if (!_BOChart) {
         PNLineChart *view = [[PNLineChart alloc] initWithFrame:self.downView.bounds];
+        view.delegate = self;
         view.backgroundColor = [UIColor clearColor];
         view.showCoordinateAxis = YES;
-//        view.yValueMin = 0;
-//        view.yValueMax = 100;
-        view.yFixedValueMin = 0;
+        view.yFixedValueMin = 70;
         view.yFixedValueMax = 100;
         
         view.yGridLinesColor = [UIColor clearColor];

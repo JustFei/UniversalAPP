@@ -132,6 +132,7 @@
                 <constraint firstItem="xze-WW-jw8" firstAttribute="top" secondItem="92I-Ty-4z5" secondAttribute="top" id="pfD-c7-ZVG"/>
             </constraints>
             <connections>
+                <outlet property="currentHRStateLabel" destination="bEB-IB-Z7L" id="ORp-uz-9B7"/>
                 <outlet property="downView" destination="ybr-MX-XhN" id="Gqh-vP-qOL"/>
                 <outlet property="heartRateLabel" destination="Awu-gB-sWC" id="1VU-39-pkH"/>
                 <outlet property="heartStateLabel" destination="mQq-V4-Tap" id="jkw-2i-swl"/>

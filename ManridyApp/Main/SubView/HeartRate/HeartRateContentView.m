@@ -7,11 +7,11 @@
 //
 
 #import "HeartRateContentView.h"
-#import "PNChart.h"
 
-@interface HeartRateContentView () < PNChartDelegate >
 
-@property (nonatomic ,weak) PNLineChart *heartChart;
+@interface HeartRateContentView ()
+
+
 @property (nonatomic ,weak) PNCircleChart *heartCircleChart;
 @property (weak, nonatomic) IBOutlet UIView *downView;
 @property (weak, nonatomic) IBOutlet UIImageView *progressImageView;
@@ -56,9 +56,6 @@
         data02.itemCount = self.heartChart.xLabels.count;
         data02.inflexionPointColor = PNLightBlue;
         data02.inflexionPointStyle = PNLineChartPointStyleCircle;
-//        data02.showPointLabel = YES;
-//        data02.pointLabelColor = [UIColor redColor];
-//        data02.pointLabelFont = [UIFont systemFontOfSize:15];
         data02.getData = ^(NSUInteger index) {
             CGFloat yValue = [self.dataArr[index] floatValue];
             NSLog(@"%f",yValue);
@@ -77,20 +74,18 @@
 }
 
 #pragma mark - PNChartDelegate
-- (void)userClickedOnLinePoint:(CGPoint)point lineIndex:(NSInteger)lineIndex
-{
-    NSLog(@"点击了%ld根线",lineIndex);
-}
-
 - (void)userClickedOnLineKeyPoint:(CGPoint)point
                         lineIndex:(NSInteger)lineIndex
                        pointIndex:(NSInteger)pointIndex
 {
-//    NSInteger max = ((NSNumber *)_maxDataArr[pointIndex]).integerValue;
-//    NSInteger min = ((NSNumber *)_minDataArr[pointIndex]).integerValue;
-//    NSInteger average = (max + min) / 2;
-//    self.heartRateLabel.text = [NSString stringWithFormat:@"%ld",average];
-//    self.monthAverageLabel.text = @"当天平均心率";
+    NSString *date = self.dateArr[pointIndex];
+    NSString *hr = self.dataArr[pointIndex];
+    [self.currentHRStateLabel setText:[NSString stringWithFormat:@"%@：%@次/分钟",[date substringFromIndex:6] ,hr]];
+}
+
+- (void)showHRStateLabel
+{
+    self.currentHRStateLabel.text = @"最近几次心率";
 }
 
 #pragma mark - 懒加载
