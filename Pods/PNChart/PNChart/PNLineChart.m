@@ -290,7 +290,7 @@
 
             float distance = MIN(distanceToP1, distanceToP2);
 
-            if (distance <= 10.0) {
+            if (distance <= 30.0) {
                 if ([_delegate respondsToSelector:@selector(userClickedOnLineKeyPoint:lineIndex:pointIndex:)]) {
                     [_delegate userClickedOnLineKeyPoint:touchPoint
                                                lineIndex:p

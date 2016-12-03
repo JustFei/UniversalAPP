@@ -48,7 +48,7 @@ static void completionCallback(SystemSoundID mySSID)
 
 //    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"]) {
         _isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
-        NSLog(@"有没有绑定设备 == %d",_isBind);
+        DLog(@"有没有绑定设备 == %d",_isBind);
 //    }
     
     self.mainVc = [[MainViewController alloc] init];
@@ -84,7 +84,7 @@ static void completionCallback(SystemSoundID mySSID)
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"监听到%@对象的%@属性发生了改变， %@", object, keyPath, change[@"new"]);
+    DLog(@"监听到%@对象的%@属性发生了改变， %@", object, keyPath, change[@"new"]);
     if ([keyPath isEqualToString:@"systemBLEstate"]) {
         NSString *new = change[@"new"];
         switch (new.integerValue) {
@@ -182,7 +182,7 @@ static void completionCallback(SystemSoundID mySSID)
     // 4、将请求加入通知中心
     [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notificationRequest withCompletionHandler:^(NSError * _Nullable error) {
         if (error == nil) {
-            NSLog(@"已成功加推送%@",notificationRequest.identifier);
+            DLog(@"已成功加推送%@",notificationRequest.identifier);
         }
     }];
 }

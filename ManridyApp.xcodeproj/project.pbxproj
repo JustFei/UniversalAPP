@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1012C7211DBEFE470013E99B /* SleepHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1012C71F1DBEFE470013E99B /* SleepHistoryViewController.m */; };
-		1012C7221DBEFE470013E99B /* SleepHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1012C7201DBEFE470013E99B /* SleepHistoryViewController.xib */; };
 		102474D81DAA277B00F70E4F /* StepDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474D71DAA277B00F70E4F /* StepDataModel.m */; };
 		102474E51DAA412F00F70E4F /* AllBleFmdb.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474DC1DAA412F00F70E4F /* AllBleFmdb.m */; };
 		102474E61DAA412F00F70E4F /* AnalysisProcotolTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474DE1DAA412F00F70E4F /* AnalysisProcotolTool.m */; };
@@ -24,10 +23,8 @@
 		1033145B1DC0622D0089B4EB /* TempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103314591DC0622D0089B4EB /* TempViewController.m */; };
 		1033145C1DC0622D0089B4EB /* TempViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1033145A1DC0622D0089B4EB /* TempViewController.xib */; };
 		103820F21DB86F1300E92410 /* StepHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103820F11DB86F1300E92410 /* StepHistoryViewController.m */; };
-		103820F61DB8704200E92410 /* StepHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 103820F51DB8704200E92410 /* StepHistoryViewController.xib */; };
 		103E4BFC1DB0C77E0051BF03 /* UserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103E4BFB1DB0C77E0051BF03 /* UserListViewController.m */; };
 		1042FC7A1DA9F20400467F01 /* SleepSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1042FC781DA9F20400467F01 /* SleepSettingViewController.m */; };
-		1042FC7B1DA9F20400467F01 /* SleepSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1042FC791DA9F20400467F01 /* SleepSettingViewController.xib */; };
 		104A70551D9B639C00CC73F5 /* all_data_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 104A70521D9B639C00CC73F5 /* all_data_icon.png */; };
 		104A70561D9B639C00CC73F5 /* all_data_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 104A70531D9B639C00CC73F5 /* all_data_icon@2x.png */; };
 		104A70571D9B639C00CC73F5 /* all_data_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 104A70541D9B639C00CC73F5 /* all_data_icon@3x.png */; };
@@ -38,14 +35,11 @@
 		104A70641D9B724D00CC73F5 /* SettingContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A70631D9B724D00CC73F5 /* SettingContentView.m */; };
 		104A70681D9BA46A00CC73F5 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A70671D9BA46A00CC73F5 /* UserInfoViewController.m */; };
 		104A706D1D9BAD2B00CC73F5 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A706B1D9BAD2B00CC73F5 /* UserInfoCell.m */; };
-		104A706E1D9BAD2B00CC73F5 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 104A706C1D9BAD2B00CC73F5 /* UserInfoCell.xib */; };
 		10826A531DBA12600031DB83 /* DropdownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10826A501DBA12600031DB83 /* DropdownMenuView.m */; };
 		10826A541DBA12600031DB83 /* TitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10826A521DBA12600031DB83 /* TitleMenuViewController.m */; };
 		10826A581DBA17540031DB83 /* HeartRateHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10826A571DBA17540031DB83 /* HeartRateHistoryViewController.m */; };
-		10826A5A1DBA17840031DB83 /* HeartRateHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10826A591DBA17840031DB83 /* HeartRateHistoryViewController.xib */; };
 		109D4E771DAF7B7300E11890 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 109D4E761DAF7B7300E11890 /* UserInfoModel.m */; };
 		109FBB9B1DAA18FB008FF0D3 /* FMDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 109FBB9A1DAA18FB008FF0D3 /* FMDBTool.m */; };
-		109FBB9D1DAA1934008FF0D3 /* StepContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 109FBB9C1DAA1934008FF0D3 /* StepContentView.xib */; };
 		10C47E9A1DA88F9900D949CA /* BindPeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C47E991DA88F9900D949CA /* BindPeripheralViewController.m */; };
 		10C47EAD1DA8A55F00D949CA /* ble_break_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47E9B1DA8A55F00D949CA /* ble_break_icon.png */; };
 		10C47EAE1DA8A55F00D949CA /* ble_break_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47E9C1DA8A55F00D949CA /* ble_break_icon@2x.png */; };
@@ -66,7 +60,6 @@
 		10C47EBD1DA8A55F00D949CA /* ble_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EAB1DA8A55F00D949CA /* ble_refresh@2x.png */; };
 		10C47EBE1DA8A55F00D949CA /* ble_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EAC1DA8A55F00D949CA /* ble_refresh@3x.png */; };
 		10C47EC11DA8C4FA00D949CA /* StepTargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C47EC01DA8C4FA00D949CA /* StepTargetViewController.m */; };
-		10C47EC31DA8C83C00D949CA /* StepTargetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EC21DA8C83C00D949CA /* StepTargetViewController.xib */; };
 		10C47EC71DA8DE0D00D949CA /* TemperatureWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C47EC51DA8DE0D00D949CA /* TemperatureWarningViewController.m */; };
 		10C47EC81DA8DE0D00D949CA /* TemperatureWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EC61DA8DE0D00D949CA /* TemperatureWarningViewController.xib */; };
 		10CB0F031D9A13960063AD0C /* MenuContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CB0F021D9A13960063AD0C /* MenuContentView.m */; };
@@ -143,7 +136,6 @@
 		10F5F7841D98F8640045FA4C /* MianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7811D98F8640045FA4C /* MianViewController.m */; };
 		10F5F78D1D98F8E10045FA4C /* StepContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F78C1D98F8E10045FA4C /* StepContentView.m */; };
 		10F5F7931D991BF40045FA4C /* HeartRateContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7921D991BF40045FA4C /* HeartRateContentView.m */; };
-		10F5F7971D991C210045FA4C /* HeartRateContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7961D991C210045FA4C /* HeartRateContentView.xib */; };
 		10F5F79E1D991C700045FA4C /* heart_now_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7981D991C700045FA4C /* heart_now_icon.png */; };
 		10F5F79F1D991C700045FA4C /* heart_now_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7991D991C700045FA4C /* heart_now_icon@2x.png */; };
 		10F5F7A01D991C700045FA4C /* heart_now_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F79A1D991C700045FA4C /* heart_now_icon@3x.png */; };
@@ -171,9 +163,7 @@
 		10F5F7D21D9923D90045FA4C /* temper_set_alert_low@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7BD1D9923D90045FA4C /* temper_set_alert_low@2x.png */; };
 		10F5F7D31D9923D90045FA4C /* temper_set_alert_low@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7BE1D9923D90045FA4C /* temper_set_alert_low@3x.png */; };
 		10F5F7D71D99251B0045FA4C /* SleepContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7D61D99251B0045FA4C /* SleepContentView.m */; };
-		10F5F7D91D99253B0045FA4C /* SleepContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7D81D99253B0045FA4C /* SleepContentView.xib */; };
 		10F5F7DD1D9927270045FA4C /* BloodPressureContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7DC1D9927270045FA4C /* BloodPressureContentView.m */; };
-		10F5F7DF1D9927390045FA4C /* BloodPressureContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7DE1D9927390045FA4C /* BloodPressureContentView.xib */; };
 		10F5F7E91D9927C60045FA4C /* sleep_now_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7E01D9927C60045FA4C /* sleep_now_icon.png */; };
 		10F5F7EA1D9927C60045FA4C /* sleep_now_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7E11D9927C60045FA4C /* sleep_now_icon@2x.png */; };
 		10F5F7EB1D9927C60045FA4C /* sleep_now_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7E21D9927C60045FA4C /* sleep_now_icon@3x.png */; };
@@ -206,7 +196,6 @@
 		10FF5CFE1DC35F2E0059FE00 /* all_next_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFB1DC35F2E0059FE00 /* all_next_icon@2x.png */; };
 		10FF5CFF1DC35F2E0059FE00 /* all_next_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CFC1DC35F2E0059FE00 /* all_next_icon@3x.png */; };
 		9C06C19C1DDFE2FC00418C7C /* BloodO2ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C06C19B1DDFE2FC00418C7C /* BloodO2ContentView.m */; };
-		9C06C1A01DDFE34400418C7C /* BloodO2ContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C19F1DDFE34400418C7C /* BloodO2ContentView.xib */; };
 		9C06C1A71DE01D3600418C7C /* bp_now_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1A11DE01D3600418C7C /* bp_now_icon.png */; };
 		9C06C1A81DE01D3600418C7C /* bp_now_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1A21DE01D3600418C7C /* bp_now_icon@2x.png */; };
 		9C06C1A91DE01D3600418C7C /* bp_now_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1A31DE01D3600418C7C /* bp_now_icon@3x.png */; };
@@ -220,13 +209,26 @@
 		9C06C1B71DE04A6500418C7C /* SPO2_old_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1B11DE04A6500418C7C /* SPO2_old_icon@2x.png */; };
 		9C06C1B81DE04A6500418C7C /* SPO2_old_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1B21DE04A6500418C7C /* SPO2_old_icon@3x.png */; };
 		9C06C1BD1DE05C7A00418C7C /* BOHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C06C1BB1DE05C7A00418C7C /* BOHistoryViewController.m */; };
-		9C06C1BE1DE05C7A00418C7C /* BOHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1BC1DE05C7A00418C7C /* BOHistoryViewController.xib */; };
 		9C15BB501DCD79A900A049E9 /* ClockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15BB4F1DCD79A900A049E9 /* ClockModel.m */; };
 		9C1B27711DDE8E2C009663F0 /* BloodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27701DDE8E2C009663F0 /* BloodModel.m */; };
 		9C1B27741DDE9EBE009663F0 /* BloodO2Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */; };
 		9C1B27791DDEFCE0009663F0 /* BooldHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */; };
-		9C1B277A1DDEFCE0009663F0 /* BooldHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1B27781DDEFCE0009663F0 /* BooldHistoryViewController.xib */; };
-		9C2130C11DF1738C00C7E72D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C2130C01DF1738C00C7E72D /* InfoPlist.strings */; };
+		9C57F1C91DF279300090C2EF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F1CB1DF279300090C2EF /* Launch Screen.storyboard */; };
+		9C57F1D11DF2882F0090C2EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F1D31DF2882F0090C2EF /* InfoPlist.strings */; };
+		9C57F1D71DF288D50090C2EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F1D91DF288D50090C2EF /* Localizable.strings */; };
+		9C57F1E51DF2C07F0090C2EF /* StepContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F1E71DF2C07F0090C2EF /* StepContentView.xib */; };
+		9C57F1F21DF2C1F10090C2EF /* StepTargetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F1F41DF2C1F10090C2EF /* StepTargetViewController.xib */; };
+		9C57F1F81DF2C2100090C2EF /* HeartRateContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F1FA1DF2C2100090C2EF /* HeartRateContentView.xib */; };
+		9C57F1FE1DF2C2260090C2EF /* SleepContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F2001DF2C2260090C2EF /* SleepContentView.xib */; };
+		9C57F2041DF2C24A0090C2EF /* SleepSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F2061DF2C24A0090C2EF /* SleepSettingViewController.xib */; };
+		9C57F20A1DF2C2620090C2EF /* BloodPressureContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F20C1DF2C2620090C2EF /* BloodPressureContentView.xib */; };
+		9C57F2101DF2C2760090C2EF /* BloodO2ContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F2121DF2C2760090C2EF /* BloodO2ContentView.xib */; };
+		9C57F2161DF2C2990090C2EF /* StepHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F2181DF2C2990090C2EF /* StepHistoryViewController.xib */; };
+		9C57F21C1DF2C2A40090C2EF /* HeartRateHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F21E1DF2C2A40090C2EF /* HeartRateHistoryViewController.xib */; };
+		9C57F2251DF2C2C70090C2EF /* SleepHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F2271DF2C2C70090C2EF /* SleepHistoryViewController.xib */; };
+		9C57F22B1DF2C2D30090C2EF /* BooldHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F22D1DF2C2D30090C2EF /* BooldHistoryViewController.xib */; };
+		9C57F2311DF2C2E10090C2EF /* BOHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F2331DF2C2E10090C2EF /* BOHistoryViewController.xib */; };
+		9C57F2371DF2C2F50090C2EF /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F2391DF2C2F50090C2EF /* UserInfoCell.xib */; };
 		9C728F681DD5DB2800BEF69E /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C728F671DD5DB2800BEF69E /* PopupView.m */; };
 		9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F691DD5DB4B00BEF69E /* PopupView.xib */; };
 		9C728F6C1DD5ECB300BEF69E /* alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F6B1DD5ECB300BEF69E /* alert.wav */; };
@@ -244,7 +246,6 @@
 /* Begin PBXFileReference section */
 		1012C71E1DBEFE470013E99B /* SleepHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepHistoryViewController.h; path = History/Sleep/SleepHistoryViewController.h; sourceTree = "<group>"; };
 		1012C71F1DBEFE470013E99B /* SleepHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SleepHistoryViewController.m; path = History/Sleep/SleepHistoryViewController.m; sourceTree = "<group>"; };
-		1012C7201DBEFE470013E99B /* SleepHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SleepHistoryViewController.xib; path = History/Sleep/SleepHistoryViewController.xib; sourceTree = "<group>"; };
 		102474D61DAA277B00F70E4F /* StepDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepDataModel.h; path = FMDBTool/Model/StepModel/StepDataModel.h; sourceTree = "<group>"; };
 		102474D71DAA277B00F70E4F /* StepDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepDataModel.m; path = FMDBTool/Model/StepModel/StepDataModel.m; sourceTree = "<group>"; };
 		102474DB1DAA412F00F70E4F /* AllBleFmdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllBleFmdb.h; path = BLETool/AllBleFmdb.h; sourceTree = "<group>"; };
@@ -274,12 +275,10 @@
 		1033145A1DC0622D0089B4EB /* TempViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TempViewController.xib; path = History/Temp/TempViewController.xib; sourceTree = "<group>"; };
 		103820F01DB86F1300E92410 /* StepHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepHistoryViewController.h; path = History/Step/StepHistoryViewController.h; sourceTree = "<group>"; };
 		103820F11DB86F1300E92410 /* StepHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepHistoryViewController.m; path = History/Step/StepHistoryViewController.m; sourceTree = "<group>"; };
-		103820F51DB8704200E92410 /* StepHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StepHistoryViewController.xib; path = History/Step/StepHistoryViewController.xib; sourceTree = "<group>"; };
 		103E4BFA1DB0C77E0051BF03 /* UserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserListViewController.h; path = Setting/UserInfo/UserListViewController.h; sourceTree = "<group>"; };
 		103E4BFB1DB0C77E0051BF03 /* UserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserListViewController.m; path = Setting/UserInfo/UserListViewController.m; sourceTree = "<group>"; };
 		1042FC771DA9F20400467F01 /* SleepSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepSettingViewController.h; path = Main/SubView/Sleep/SleepSettingViewController.h; sourceTree = "<group>"; };
 		1042FC781DA9F20400467F01 /* SleepSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SleepSettingViewController.m; path = Main/SubView/Sleep/SleepSettingViewController.m; sourceTree = "<group>"; };
-		1042FC791DA9F20400467F01 /* SleepSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SleepSettingViewController.xib; path = Main/SubView/Sleep/SleepSettingViewController.xib; sourceTree = "<group>"; };
 		104A70521D9B639C00CC73F5 /* all_data_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = all_data_icon.png; sourceTree = "<group>"; };
 		104A70531D9B639C00CC73F5 /* all_data_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_data_icon@2x.png"; sourceTree = "<group>"; };
 		104A70541D9B639C00CC73F5 /* all_data_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_data_icon@3x.png"; sourceTree = "<group>"; };
@@ -294,19 +293,16 @@
 		104A70671D9BA46A00CC73F5 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoViewController.m; path = Setting/UserInfo/UserInfoViewController.m; sourceTree = "<group>"; };
 		104A706A1D9BAD2B00CC73F5 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoCell.h; path = Setting/UserInfo/UserInfoCell.h; sourceTree = "<group>"; };
 		104A706B1D9BAD2B00CC73F5 /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoCell.m; path = Setting/UserInfo/UserInfoCell.m; sourceTree = "<group>"; };
-		104A706C1D9BAD2B00CC73F5 /* UserInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserInfoCell.xib; path = Setting/UserInfo/UserInfoCell.xib; sourceTree = "<group>"; };
 		10826A4F1DBA12600031DB83 /* DropdownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropdownMenuView.h; path = History/MonthDropDownMenuView/DropdownMenuView.h; sourceTree = "<group>"; };
 		10826A501DBA12600031DB83 /* DropdownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropdownMenuView.m; path = History/MonthDropDownMenuView/DropdownMenuView.m; sourceTree = "<group>"; };
 		10826A511DBA12600031DB83 /* TitleMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleMenuViewController.h; path = History/MonthDropDownMenuView/TitleMenuViewController.h; sourceTree = "<group>"; };
 		10826A521DBA12600031DB83 /* TitleMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleMenuViewController.m; path = History/MonthDropDownMenuView/TitleMenuViewController.m; sourceTree = "<group>"; };
 		10826A561DBA17540031DB83 /* HeartRateHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateHistoryViewController.h; path = History/Heart/HeartRateHistoryViewController.h; sourceTree = "<group>"; };
 		10826A571DBA17540031DB83 /* HeartRateHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateHistoryViewController.m; path = History/Heart/HeartRateHistoryViewController.m; sourceTree = "<group>"; };
-		10826A591DBA17840031DB83 /* HeartRateHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeartRateHistoryViewController.xib; path = History/Heart/HeartRateHistoryViewController.xib; sourceTree = "<group>"; };
 		109D4E751DAF7B7300E11890 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoModel.h; path = FMDBTool/Model/UserInfoModel/UserInfoModel.h; sourceTree = "<group>"; };
 		109D4E761DAF7B7300E11890 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoModel.m; path = FMDBTool/Model/UserInfoModel/UserInfoModel.m; sourceTree = "<group>"; };
 		109FBB991DAA18FB008FF0D3 /* FMDBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDBTool.h; path = FMDBTool/FMDBTool.h; sourceTree = "<group>"; };
 		109FBB9A1DAA18FB008FF0D3 /* FMDBTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDBTool.m; path = FMDBTool/FMDBTool.m; sourceTree = "<group>"; };
-		109FBB9C1DAA1934008FF0D3 /* StepContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StepContentView.xib; path = Main/SubView/Step/StepContentView.xib; sourceTree = "<group>"; };
 		10C47E981DA88F9900D949CA /* BindPeripheralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BindPeripheralViewController.h; path = Setting/BindPeripheral/BindPeripheralViewController.h; sourceTree = "<group>"; };
 		10C47E991DA88F9900D949CA /* BindPeripheralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BindPeripheralViewController.m; path = Setting/BindPeripheral/BindPeripheralViewController.m; sourceTree = "<group>"; };
 		10C47E9B1DA8A55F00D949CA /* ble_break_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ble_break_icon.png; sourceTree = "<group>"; };
@@ -329,7 +325,6 @@
 		10C47EAC1DA8A55F00D949CA /* ble_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ble_refresh@3x.png"; sourceTree = "<group>"; };
 		10C47EBF1DA8C4FA00D949CA /* StepTargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepTargetViewController.h; path = Main/SubView/Step/StepTargetViewController.h; sourceTree = "<group>"; };
 		10C47EC01DA8C4FA00D949CA /* StepTargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepTargetViewController.m; path = Main/SubView/Step/StepTargetViewController.m; sourceTree = "<group>"; };
-		10C47EC21DA8C83C00D949CA /* StepTargetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StepTargetViewController.xib; path = Main/SubView/Step/StepTargetViewController.xib; sourceTree = "<group>"; };
 		10C47EC41DA8DE0D00D949CA /* TemperatureWarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemperatureWarningViewController.h; path = Main/SubView/Temperature/TemperatureWarningViewController.h; sourceTree = "<group>"; };
 		10C47EC51DA8DE0D00D949CA /* TemperatureWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemperatureWarningViewController.m; path = Main/SubView/Temperature/TemperatureWarningViewController.m; sourceTree = "<group>"; };
 		10C47EC61DA8DE0D00D949CA /* TemperatureWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TemperatureWarningViewController.xib; path = Main/SubView/Temperature/TemperatureWarningViewController.xib; sourceTree = "<group>"; };
@@ -416,7 +411,6 @@
 		10F5F78C1D98F8E10045FA4C /* StepContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepContentView.m; path = Main/SubView/Step/StepContentView.m; sourceTree = "<group>"; };
 		10F5F7911D991BF40045FA4C /* HeartRateContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateContentView.h; path = Main/SubView/HeartRate/HeartRateContentView.h; sourceTree = "<group>"; };
 		10F5F7921D991BF40045FA4C /* HeartRateContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateContentView.m; path = Main/SubView/HeartRate/HeartRateContentView.m; sourceTree = "<group>"; };
-		10F5F7961D991C210045FA4C /* HeartRateContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeartRateContentView.xib; path = Main/SubView/HeartRate/HeartRateContentView.xib; sourceTree = "<group>"; };
 		10F5F7981D991C700045FA4C /* heart_now_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_now_icon.png; sourceTree = "<group>"; };
 		10F5F7991D991C700045FA4C /* heart_now_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart_now_icon@2x.png"; sourceTree = "<group>"; };
 		10F5F79A1D991C700045FA4C /* heart_now_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart_now_icon@3x.png"; sourceTree = "<group>"; };
@@ -446,10 +440,8 @@
 		10F5F7BE1D9923D90045FA4C /* temper_set_alert_low@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temper_set_alert_low@3x.png"; sourceTree = "<group>"; };
 		10F5F7D51D99251B0045FA4C /* SleepContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepContentView.h; path = Main/SubView/Sleep/SleepContentView.h; sourceTree = "<group>"; };
 		10F5F7D61D99251B0045FA4C /* SleepContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SleepContentView.m; path = Main/SubView/Sleep/SleepContentView.m; sourceTree = "<group>"; };
-		10F5F7D81D99253B0045FA4C /* SleepContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SleepContentView.xib; path = Main/SubView/Sleep/SleepContentView.xib; sourceTree = "<group>"; };
 		10F5F7DB1D9927270045FA4C /* BloodPressureContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodPressureContentView.h; path = Main/SubView/BloodPressure/BloodPressureContentView.h; sourceTree = "<group>"; };
 		10F5F7DC1D9927270045FA4C /* BloodPressureContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BloodPressureContentView.m; path = Main/SubView/BloodPressure/BloodPressureContentView.m; sourceTree = "<group>"; };
-		10F5F7DE1D9927390045FA4C /* BloodPressureContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BloodPressureContentView.xib; path = Main/SubView/BloodPressure/BloodPressureContentView.xib; sourceTree = "<group>"; };
 		10F5F7E01D9927C60045FA4C /* sleep_now_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleep_now_icon.png; sourceTree = "<group>"; };
 		10F5F7E11D9927C60045FA4C /* sleep_now_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sleep_now_icon@2x.png"; sourceTree = "<group>"; };
 		10F5F7E21D9927C60045FA4C /* sleep_now_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sleep_now_icon@3x.png"; sourceTree = "<group>"; };
@@ -488,7 +480,6 @@
 		4E1494B2899EFE9DB4EFAD91 /* Pods-ManridyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManridyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ManridyApp/Pods-ManridyApp.release.xcconfig"; sourceTree = "<group>"; };
 		9C06C19A1DDFE2FC00418C7C /* BloodO2ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodO2ContentView.h; path = Main/SubView/BloodO2/BloodO2ContentView.h; sourceTree = "<group>"; };
 		9C06C19B1DDFE2FC00418C7C /* BloodO2ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BloodO2ContentView.m; path = Main/SubView/BloodO2/BloodO2ContentView.m; sourceTree = "<group>"; };
-		9C06C19F1DDFE34400418C7C /* BloodO2ContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BloodO2ContentView.xib; path = Main/SubView/BloodO2/BloodO2ContentView.xib; sourceTree = "<group>"; };
 		9C06C1A11DE01D3600418C7C /* bp_now_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bp_now_icon.png; sourceTree = "<group>"; };
 		9C06C1A21DE01D3600418C7C /* bp_now_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bp_now_icon@2x.png"; sourceTree = "<group>"; };
 		9C06C1A31DE01D3600418C7C /* bp_now_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bp_now_icon@3x.png"; sourceTree = "<group>"; };
@@ -503,7 +494,6 @@
 		9C06C1B21DE04A6500418C7C /* SPO2_old_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SPO2_old_icon@3x.png"; sourceTree = "<group>"; };
 		9C06C1BA1DE05C7A00418C7C /* BOHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOHistoryViewController.h; path = History/BloodO2/BOHistoryViewController.h; sourceTree = "<group>"; };
 		9C06C1BB1DE05C7A00418C7C /* BOHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOHistoryViewController.m; path = History/BloodO2/BOHistoryViewController.m; sourceTree = "<group>"; };
-		9C06C1BC1DE05C7A00418C7C /* BOHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOHistoryViewController.xib; path = History/BloodO2/BOHistoryViewController.xib; sourceTree = "<group>"; };
 		9C15BB4E1DCD79A900A049E9 /* ClockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockModel.h; sourceTree = "<group>"; };
 		9C15BB4F1DCD79A900A049E9 /* ClockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockModel.m; sourceTree = "<group>"; };
 		9C1B276F1DDE8E2C009663F0 /* BloodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodModel.h; path = BLETool/Model/BloodModel.h; sourceTree = "<group>"; };
@@ -512,8 +502,40 @@
 		9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BloodO2Model.m; path = BLETool/Model/BloodO2Model.m; sourceTree = "<group>"; };
 		9C1B27761DDEFCE0009663F0 /* BooldHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BooldHistoryViewController.h; path = History/Blood/BooldHistoryViewController.h; sourceTree = "<group>"; };
 		9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BooldHistoryViewController.m; path = History/Blood/BooldHistoryViewController.m; sourceTree = "<group>"; };
-		9C1B27781DDEFCE0009663F0 /* BooldHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BooldHistoryViewController.xib; path = History/Blood/BooldHistoryViewController.xib; sourceTree = "<group>"; };
-		9C2130C01DF1738C00C7E72D /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		9C57F1CA1DF279300090C2EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		9C57F1CD1DF279310090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		9C57F1CE1DF279620090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		9C57F1D21DF2882F0090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C57F1D41DF288310090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		9C57F1D81DF288D50090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C57F1DA1DF288D60090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9C57F1DB1DF28A0E0090C2EF /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		9C57F1E61DF2C07F0090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/StepContentView.xib; sourceTree = "<group>"; };
+		9C57F1EA1DF2C0E00090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/StepContentView.xib"; sourceTree = "<group>"; };
+		9C57F1F31DF2C1F10090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/StepTargetViewController.xib; sourceTree = "<group>"; };
+		9C57F1F71DF2C2020090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/StepTargetViewController.xib"; sourceTree = "<group>"; };
+		9C57F1F91DF2C2100090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/HeartRateContentView.xib; sourceTree = "<group>"; };
+		9C57F1FD1DF2C2150090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/HeartRateContentView.xib"; sourceTree = "<group>"; };
+		9C57F1FF1DF2C2260090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SleepContentView.xib; sourceTree = "<group>"; };
+		9C57F2031DF2C22E0090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/SleepContentView.xib"; sourceTree = "<group>"; };
+		9C57F2051DF2C24A0090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SleepSettingViewController.xib; sourceTree = "<group>"; };
+		9C57F2091DF2C2570090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/SleepSettingViewController.xib"; sourceTree = "<group>"; };
+		9C57F20B1DF2C2620090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BloodPressureContentView.xib; sourceTree = "<group>"; };
+		9C57F20F1DF2C26C0090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/BloodPressureContentView.xib"; sourceTree = "<group>"; };
+		9C57F2111DF2C2760090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BloodO2ContentView.xib; sourceTree = "<group>"; };
+		9C57F2151DF2C27B0090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/BloodO2ContentView.xib"; sourceTree = "<group>"; };
+		9C57F2171DF2C2990090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/StepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C57F21B1DF2C29E0090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/StepHistoryViewController.xib"; sourceTree = "<group>"; };
+		9C57F2211DF2C2AD0090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/HeartRateHistoryViewController.xib; sourceTree = "<group>"; };
+		9C57F2241DF2C2B10090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/HeartRateHistoryViewController.xib"; sourceTree = "<group>"; };
+		9C57F2261DF2C2C70090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SleepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C57F22A1DF2C2CD0090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/SleepHistoryViewController.xib"; sourceTree = "<group>"; };
+		9C57F22C1DF2C2D30090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BooldHistoryViewController.xib; sourceTree = "<group>"; };
+		9C57F2301DF2C2D80090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/BooldHistoryViewController.xib"; sourceTree = "<group>"; };
+		9C57F2321DF2C2E10090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BOHistoryViewController.xib; sourceTree = "<group>"; };
+		9C57F2361DF2C2E60090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/BOHistoryViewController.xib"; sourceTree = "<group>"; };
+		9C57F2381DF2C2F50090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/UserInfoCell.xib; sourceTree = "<group>"; };
+		9C57F23C1DF2C2FA0090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/UserInfoCell.xib"; sourceTree = "<group>"; };
 		9C728F661DD5DB2800BEF69E /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupView.h; path = PopupView/PopupView.h; sourceTree = "<group>"; };
 		9C728F671DD5DB2800BEF69E /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupView.m; path = PopupView/PopupView.m; sourceTree = "<group>"; };
 		9C728F691DD5DB4B00BEF69E /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupView.xib; path = PopupView/PopupView.xib; sourceTree = "<group>"; };
@@ -549,7 +571,7 @@
 			children = (
 				1012C71E1DBEFE470013E99B /* SleepHistoryViewController.h */,
 				1012C71F1DBEFE470013E99B /* SleepHistoryViewController.m */,
-				1012C7201DBEFE470013E99B /* SleepHistoryViewController.xib */,
+				9C57F2271DF2C2C70090C2EF /* SleepHistoryViewController.xib */,
 			);
 			name = Sleep;
 			sourceTree = "<group>";
@@ -646,7 +668,7 @@
 			children = (
 				103820F01DB86F1300E92410 /* StepHistoryViewController.h */,
 				103820F11DB86F1300E92410 /* StepHistoryViewController.m */,
-				103820F51DB8704200E92410 /* StepHistoryViewController.xib */,
+				9C57F2181DF2C2990090C2EF /* StepHistoryViewController.xib */,
 			);
 			name = Step;
 			sourceTree = "<group>";
@@ -670,7 +692,7 @@
 				104A70671D9BA46A00CC73F5 /* UserInfoViewController.m */,
 				104A706A1D9BAD2B00CC73F5 /* UserInfoCell.h */,
 				104A706B1D9BAD2B00CC73F5 /* UserInfoCell.m */,
-				104A706C1D9BAD2B00CC73F5 /* UserInfoCell.xib */,
+				9C57F2391DF2C2F50090C2EF /* UserInfoCell.xib */,
 				103E4BFA1DB0C77E0051BF03 /* UserListViewController.h */,
 				103E4BFB1DB0C77E0051BF03 /* UserListViewController.m */,
 			);
@@ -704,7 +726,7 @@
 			children = (
 				10826A561DBA17540031DB83 /* HeartRateHistoryViewController.h */,
 				10826A571DBA17540031DB83 /* HeartRateHistoryViewController.m */,
-				10826A591DBA17840031DB83 /* HeartRateHistoryViewController.xib */,
+				9C57F21E1DF2C2A40090C2EF /* HeartRateHistoryViewController.xib */,
 			);
 			name = HeartRate;
 			sourceTree = "<group>";
@@ -806,7 +828,10 @@
 				10F5F7131D98C6280045FA4C /* Assets.xcassets */,
 				10F5F7181D98C6280045FA4C /* Info.plist */,
 				10F5F7081D98C6280045FA4C /* main.m */,
-				9C2130C01DF1738C00C7E72D /* InfoPlist.strings */,
+				9C57F1CB1DF279300090C2EF /* Launch Screen.storyboard */,
+				9C57F1D31DF2882F0090C2EF /* InfoPlist.strings */,
+				9C57F1D91DF288D50090C2EF /* Localizable.strings */,
+				9C57F1DB1DF28A0E0090C2EF /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1004,10 +1029,10 @@
 			children = (
 				10F5F78B1D98F8E10045FA4C /* StepContentView.h */,
 				10F5F78C1D98F8E10045FA4C /* StepContentView.m */,
-				109FBB9C1DAA1934008FF0D3 /* StepContentView.xib */,
+				9C57F1E71DF2C07F0090C2EF /* StepContentView.xib */,
 				10C47EBF1DA8C4FA00D949CA /* StepTargetViewController.h */,
 				10C47EC01DA8C4FA00D949CA /* StepTargetViewController.m */,
-				10C47EC21DA8C83C00D949CA /* StepTargetViewController.xib */,
+				9C57F1F41DF2C1F10090C2EF /* StepTargetViewController.xib */,
 			);
 			name = Step;
 			sourceTree = "<group>";
@@ -1017,7 +1042,7 @@
 			children = (
 				10F5F7911D991BF40045FA4C /* HeartRateContentView.h */,
 				10F5F7921D991BF40045FA4C /* HeartRateContentView.m */,
-				10F5F7961D991C210045FA4C /* HeartRateContentView.xib */,
+				9C57F1FA1DF2C2100090C2EF /* HeartRateContentView.xib */,
 			);
 			name = HeartRate;
 			sourceTree = "<group>";
@@ -1040,10 +1065,10 @@
 			children = (
 				10F5F7D51D99251B0045FA4C /* SleepContentView.h */,
 				10F5F7D61D99251B0045FA4C /* SleepContentView.m */,
-				10F5F7D81D99253B0045FA4C /* SleepContentView.xib */,
+				9C57F2001DF2C2260090C2EF /* SleepContentView.xib */,
 				1042FC771DA9F20400467F01 /* SleepSettingViewController.h */,
 				1042FC781DA9F20400467F01 /* SleepSettingViewController.m */,
-				1042FC791DA9F20400467F01 /* SleepSettingViewController.xib */,
+				9C57F2061DF2C24A0090C2EF /* SleepSettingViewController.xib */,
 			);
 			name = Sleep;
 			sourceTree = "<group>";
@@ -1053,7 +1078,7 @@
 			children = (
 				10F5F7DB1D9927270045FA4C /* BloodPressureContentView.h */,
 				10F5F7DC1D9927270045FA4C /* BloodPressureContentView.m */,
-				10F5F7DE1D9927390045FA4C /* BloodPressureContentView.xib */,
+				9C57F20C1DF2C2620090C2EF /* BloodPressureContentView.xib */,
 			);
 			name = BloodPressure;
 			sourceTree = "<group>";
@@ -1072,7 +1097,7 @@
 			children = (
 				9C06C19A1DDFE2FC00418C7C /* BloodO2ContentView.h */,
 				9C06C19B1DDFE2FC00418C7C /* BloodO2ContentView.m */,
-				9C06C19F1DDFE34400418C7C /* BloodO2ContentView.xib */,
+				9C57F2121DF2C2760090C2EF /* BloodO2ContentView.xib */,
 			);
 			name = BloodO2;
 			sourceTree = "<group>";
@@ -1082,7 +1107,7 @@
 			children = (
 				9C06C1BA1DE05C7A00418C7C /* BOHistoryViewController.h */,
 				9C06C1BB1DE05C7A00418C7C /* BOHistoryViewController.m */,
-				9C06C1BC1DE05C7A00418C7C /* BOHistoryViewController.xib */,
+				9C57F2331DF2C2E10090C2EF /* BOHistoryViewController.xib */,
 			);
 			name = BloodO2;
 			sourceTree = "<group>";
@@ -1092,7 +1117,7 @@
 			children = (
 				9C1B27761DDEFCE0009663F0 /* BooldHistoryViewController.h */,
 				9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */,
-				9C1B27781DDEFCE0009663F0 /* BooldHistoryViewController.xib */,
+				9C57F22D1DF2C2D30090C2EF /* BooldHistoryViewController.xib */,
 			);
 			name = Blood;
 			sourceTree = "<group>";
@@ -1171,6 +1196,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 10F5F6FB1D98C6270045FA4C;
 			productRefGroup = 10F5F7051D98C6270045FA4C /* Products */;
@@ -1194,6 +1220,7 @@
 				9CFE008E1DDAA07A00D38904 /* about_icon.png in Resources */,
 				9CF2F6D01DD593390091ECB5 /* alert_find.png in Resources */,
 				10FF5CE81DC341150059FE00 /* alert_call.png in Resources */,
+				9C57F1E51DF2C07F0090C2EF /* StepContentView.xib in Resources */,
 				10F5F7F61D9928050045FA4C /* temper_alart_icon@2x.png in Resources */,
 				10FF5CF11DC341150059FE00 /* alert_sms.png in Resources */,
 				10F5F73C1D98F31B0045FA4C /* set_about_icon@2x.png in Resources */,
@@ -1214,7 +1241,6 @@
 				104A705D1D9B63B100CC73F5 /* all_set_icon@3x.png in Resources */,
 				10FF5CF21DC341150059FE00 /* alert_sms@2x.png in Resources */,
 				10C47EB21DA8A55F00D949CA /* ble_connect@3x.png in Resources */,
-				109FBB9D1DAA1934008FF0D3 /* StepContentView.xib in Resources */,
 				10F5F7461D98F31B0045FA4C /* set_bty_icon@3x.png in Resources */,
 				9C06C1A71DE01D3600418C7C /* bp_now_icon.png in Resources */,
 				10F5F7781D98F3560045FA4C /* walk_run_now@2x.png in Resources */,
@@ -1223,10 +1249,9 @@
 				10C47EBB1DA8A55F00D949CA /* ble_lock_oper@3x.png in Resources */,
 				10C47EC81DA8DE0D00D949CA /* TemperatureWarningViewController.xib in Resources */,
 				10C47EB91DA8A55F00D949CA /* ble_lock_oper.png in Resources */,
-				10F5F7D91D99253B0045FA4C /* SleepContentView.xib in Resources */,
+				9C57F1FE1DF2C2260090C2EF /* SleepContentView.xib in Resources */,
 				10F5F7741D98F3560045FA4C /* walk_mileage_icon.png in Resources */,
 				10DE11A71DBAFBB000B824C5 /* all_back_icon@2x.png in Resources */,
-				9C2130C11DF1738C00C7E72D /* InfoPlist.strings in Resources */,
 				9CF2F6D21DD593390091ECB5 /* alert_find@3x.png in Resources */,
 				10C47EB41DA8A55F00D949CA /* ble_icon@2x.png in Resources */,
 				10F5F7721D98F3560045FA4C /* walk_foot_icon@2x.png in Resources */,
@@ -1273,20 +1298,21 @@
 				104A705C1D9B63B100CC73F5 /* all_set_icon@2x.png in Resources */,
 				10F5F7421D98F31B0045FA4C /* set_ble_icon@2x.png in Resources */,
 				104A70571D9B639C00CC73F5 /* all_data_icon@3x.png in Resources */,
+				9C57F1D71DF288D50090C2EF /* Localizable.strings in Resources */,
 				10F5F7C21D9923D90045FA4C /* temper_notice_high.png in Resources */,
 				9C06C1AC1DE01D3600418C7C /* bp_old_icon@3x.png in Resources */,
 				10F5F7441D98F31B0045FA4C /* set_bty_icon.png in Resources */,
 				10DE11A81DBAFBB000B824C5 /* all_back_icon@3x.png in Resources */,
 				10CB0F1D1D9A8A190063AD0C /* list_heart_icon@3x.png in Resources */,
 				10CB0F251D9A8A190063AD0C /* list_walk_icon@2x.png in Resources */,
-				10C47EC31DA8C83C00D949CA /* StepTargetViewController.xib in Resources */,
 				10FF5CF01DC341150059FE00 /* alert_lose@3x.png in Resources */,
 				10F5F7691D98F3560045FA4C /* walk_Calorie_icon@2x.png in Resources */,
+				9C57F1C91DF279300090C2EF /* Launch Screen.storyboard in Resources */,
 				10FF5CFE1DC35F2E0059FE00 /* all_next_icon@2x.png in Resources */,
 				10CB0F231D9A8A190063AD0C /* list_temper_icon@3x.png in Resources */,
 				10F5F7CE1D9923D90045FA4C /* temper_set_alert_high.png in Resources */,
 				10CB0F1A1D9A8A190063AD0C /* list_blood_icon@3x.png in Resources */,
-				1042FC7B1DA9F20400467F01 /* SleepSettingViewController.xib in Resources */,
+				9C57F2041DF2C24A0090C2EF /* SleepSettingViewController.xib in Resources */,
 				104A705B1D9B63B100CC73F5 /* all_set_icon.png in Resources */,
 				10F5F7F71D9928050045FA4C /* temper_alart_icon@3x.png in Resources */,
 				104A70561D9B639C00CC73F5 /* all_data_icon@2x.png in Resources */,
@@ -1294,6 +1320,7 @@
 				10F5F7D21D9923D90045FA4C /* temper_set_alert_low@2x.png in Resources */,
 				10C47EAF1DA8A55F00D949CA /* ble_break_icon@3x.png in Resources */,
 				10F5F7471D98F31B0045FA4C /* set_lost_icon.png in Resources */,
+				9C57F1F21DF2C1F10090C2EF /* StepTargetViewController.xib in Resources */,
 				10F5F7A01D991C700045FA4C /* heart_now_icon@3x.png in Resources */,
 				10F5F77C1D98F3560045FA4C /* walk_run_old@3x.png in Resources */,
 				10FF5CEA1DC341150059FE00 /* alert_call@3x.png in Resources */,
@@ -1305,12 +1332,12 @@
 				10F5F73B1D98F31B0045FA4C /* set_about_icon.png in Resources */,
 				10F5F7CF1D9923D90045FA4C /* temper_set_alert_high@2x.png in Resources */,
 				10FF5CFD1DC35F2E0059FE00 /* all_next_icon.png in Resources */,
-				9C06C1BE1DE05C7A00418C7C /* BOHistoryViewController.xib in Resources */,
+				9C57F2311DF2C2E10090C2EF /* BOHistoryViewController.xib in Resources */,
 				10F5F77F1D98F3560045FA4C /* walk_target_icon@3x.png in Resources */,
-				103820F61DB8704200E92410 /* StepHistoryViewController.xib in Resources */,
+				9C57F2161DF2C2990090C2EF /* StepHistoryViewController.xib in Resources */,
 				10F5F77A1D98F3560045FA4C /* walk_run_old.png in Resources */,
 				10CB0F261D9A8A190063AD0C /* list_walk_icon@3x.png in Resources */,
-				9C06C1A01DDFE34400418C7C /* BloodO2ContentView.xib in Resources */,
+				9C57F2101DF2C2760090C2EF /* BloodO2ContentView.xib in Resources */,
 				9CFE008F1DDAA07A00D38904 /* about_icon@2x.png in Resources */,
 				10FF5CEC1DC341150059FE00 /* alert_clock@2x.png in Resources */,
 				10F5F7C51D9923D90045FA4C /* temper_notice_low.png in Resources */,
@@ -1320,6 +1347,7 @@
 				10F5F73E1D98F31B0045FA4C /* set_alart_icon.png in Resources */,
 				10F5F7141D98C6280045FA4C /* Assets.xcassets in Resources */,
 				10CB0F191D9A8A190063AD0C /* list_blood_icon@2x.png in Resources */,
+				9C57F1D11DF2882F0090C2EF /* InfoPlist.strings in Resources */,
 				10F5F77B1D98F3560045FA4C /* walk_run_old@2x.png in Resources */,
 				10C47EBE1DA8A55F00D949CA /* ble_refresh@3x.png in Resources */,
 				10F5F7C91D9923D90045FA4C /* temper_now_icon@2x.png in Resources */,
@@ -1328,10 +1356,10 @@
 				10F5F76D1D98F3560045FA4C /* walk_circle1@3x.png in Resources */,
 				10F5F7A31D991C700045FA4C /* heart_old_icon@3x.png in Resources */,
 				10F5F7791D98F3560045FA4C /* walk_run_now@3x.png in Resources */,
-				104A706E1D9BAD2B00CC73F5 /* UserInfoCell.xib in Resources */,
+				9C57F2371DF2C2F50090C2EF /* UserInfoCell.xib in Resources */,
 				10C47EB51DA8A55F00D949CA /* ble_icon@3x.png in Resources */,
 				10F5F7C41D9923D90045FA4C /* temper_notice_high@3x.png in Resources */,
-				10826A5A1DBA17840031DB83 /* HeartRateHistoryViewController.xib in Resources */,
+				9C57F21C1DF2C2A40090C2EF /* HeartRateHistoryViewController.xib in Resources */,
 				10C47EB81DA8A55F00D949CA /* ble_lock_close@3x.png in Resources */,
 				10FF5CEE1DC341150059FE00 /* alert_lose.png in Resources */,
 				10F5F7EE1D9927C60045FA4C /* sleep_old_icon@3x.png in Resources */,
@@ -1340,14 +1368,14 @@
 				10F5F7411D98F31B0045FA4C /* set_ble_icon.png in Resources */,
 				10FF5CEF1DC341150059FE00 /* alert_lose@2x.png in Resources */,
 				10FF5CF31DC341150059FE00 /* alert_sms@3x.png in Resources */,
-				9C1B277A1DDEFCE0009663F0 /* BooldHistoryViewController.xib in Resources */,
+				9C57F22B1DF2C2D30090C2EF /* BooldHistoryViewController.xib in Resources */,
 				10CB0F241D9A8A190063AD0C /* list_walk_icon.png in Resources */,
 				10F5F76B1D98F3560045FA4C /* walk_circle1.png in Resources */,
 				10F5F7771D98F3560045FA4C /* walk_run_now.png in Resources */,
 				10F5F7C71D9923D90045FA4C /* temper_notice_low@3x.png in Resources */,
 				10F5F74A1D98F31B0045FA4C /* set_user_icon.png in Resources */,
 				10C47EBD1DA8A55F00D949CA /* ble_refresh@2x.png in Resources */,
-				1012C7221DBEFE470013E99B /* SleepHistoryViewController.xib in Resources */,
+				9C57F2251DF2C2C70090C2EF /* SleepHistoryViewController.xib in Resources */,
 				10F5F7731D98F3560045FA4C /* walk_foot_icon@3x.png in Resources */,
 				10C47EAD1DA8A55F00D949CA /* ble_break_icon.png in Resources */,
 				10F5F76A1D98F3560045FA4C /* walk_Calorie_icon@3x.png in Resources */,
@@ -1357,14 +1385,14 @@
 				10F5F7CC1D9923D90045FA4C /* temper_ole_icon@2x.png in Resources */,
 				9C728F6C1DD5ECB300BEF69E /* alert.wav in Resources */,
 				10C47EBA1DA8A55F00D949CA /* ble_lock_oper@2x.png in Resources */,
-				10F5F7DF1D9927390045FA4C /* BloodPressureContentView.xib in Resources */,
+				9C57F20A1DF2C2620090C2EF /* BloodPressureContentView.xib in Resources */,
 				10F5F7761D98F3560045FA4C /* walk_mileage_icon@3x.png in Resources */,
 				10F5F7711D98F3560045FA4C /* walk_foot_icon.png in Resources */,
 				10F5F76F1D98F3560045FA4C /* walk_circle2@2x.png in Resources */,
 				10F5F7431D98F31B0045FA4C /* set_ble_icon@3x.png in Resources */,
 				10F5F7A11D991C700045FA4C /* heart_old_icon.png in Resources */,
 				10DE11A61DBAFBB000B824C5 /* all_back_icon.png in Resources */,
-				10F5F7971D991C210045FA4C /* HeartRateContentView.xib in Resources */,
+				9C57F1F81DF2C2100090C2EF /* HeartRateContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1480,11 +1508,173 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		9C57F1CB1DF279300090C2EF /* Launch Screen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F1CA1DF279300090C2EF /* Base */,
+				9C57F1CD1DF279310090C2EF /* en */,
+				9C57F1CE1DF279620090C2EF /* zh-Hans */,
+			);
+			name = "Launch Screen.storyboard";
+			sourceTree = "<group>";
+		};
+		9C57F1D31DF2882F0090C2EF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F1D21DF2882F0090C2EF /* en */,
+				9C57F1D41DF288310090C2EF /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9C57F1D91DF288D50090C2EF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F1D81DF288D50090C2EF /* en */,
+				9C57F1DA1DF288D60090C2EF /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		9C57F1E71DF2C07F0090C2EF /* StepContentView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F1E61DF2C07F0090C2EF /* en */,
+				9C57F1EA1DF2C0E00090C2EF /* zh-Hans */,
+			);
+			name = StepContentView.xib;
+			path = Main/SubView/Step;
+			sourceTree = "<group>";
+		};
+		9C57F1F41DF2C1F10090C2EF /* StepTargetViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F1F31DF2C1F10090C2EF /* en */,
+				9C57F1F71DF2C2020090C2EF /* zh-Hans */,
+			);
+			name = StepTargetViewController.xib;
+			path = Main/SubView/Step;
+			sourceTree = "<group>";
+		};
+		9C57F1FA1DF2C2100090C2EF /* HeartRateContentView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F1F91DF2C2100090C2EF /* en */,
+				9C57F1FD1DF2C2150090C2EF /* zh-Hans */,
+			);
+			name = HeartRateContentView.xib;
+			path = Main/SubView/HeartRate;
+			sourceTree = "<group>";
+		};
+		9C57F2001DF2C2260090C2EF /* SleepContentView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F1FF1DF2C2260090C2EF /* en */,
+				9C57F2031DF2C22E0090C2EF /* zh-Hans */,
+			);
+			name = SleepContentView.xib;
+			path = Main/SubView/Sleep;
+			sourceTree = "<group>";
+		};
+		9C57F2061DF2C24A0090C2EF /* SleepSettingViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F2051DF2C24A0090C2EF /* en */,
+				9C57F2091DF2C2570090C2EF /* zh-Hans */,
+			);
+			name = SleepSettingViewController.xib;
+			path = Main/SubView/Sleep;
+			sourceTree = "<group>";
+		};
+		9C57F20C1DF2C2620090C2EF /* BloodPressureContentView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F20B1DF2C2620090C2EF /* en */,
+				9C57F20F1DF2C26C0090C2EF /* zh-Hans */,
+			);
+			name = BloodPressureContentView.xib;
+			path = Main/SubView/BloodPressure;
+			sourceTree = "<group>";
+		};
+		9C57F2121DF2C2760090C2EF /* BloodO2ContentView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F2111DF2C2760090C2EF /* en */,
+				9C57F2151DF2C27B0090C2EF /* zh-Hans */,
+			);
+			name = BloodO2ContentView.xib;
+			path = Main/SubView/BloodO2;
+			sourceTree = "<group>";
+		};
+		9C57F2181DF2C2990090C2EF /* StepHistoryViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F2171DF2C2990090C2EF /* en */,
+				9C57F21B1DF2C29E0090C2EF /* zh-Hans */,
+			);
+			name = StepHistoryViewController.xib;
+			path = History/Step;
+			sourceTree = "<group>";
+		};
+		9C57F21E1DF2C2A40090C2EF /* HeartRateHistoryViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F2211DF2C2AD0090C2EF /* en */,
+				9C57F2241DF2C2B10090C2EF /* zh-Hans */,
+			);
+			name = HeartRateHistoryViewController.xib;
+			path = History/Heart;
+			sourceTree = "<group>";
+		};
+		9C57F2271DF2C2C70090C2EF /* SleepHistoryViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F2261DF2C2C70090C2EF /* en */,
+				9C57F22A1DF2C2CD0090C2EF /* zh-Hans */,
+			);
+			name = SleepHistoryViewController.xib;
+			path = History/Sleep;
+			sourceTree = "<group>";
+		};
+		9C57F22D1DF2C2D30090C2EF /* BooldHistoryViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F22C1DF2C2D30090C2EF /* en */,
+				9C57F2301DF2C2D80090C2EF /* zh-Hans */,
+			);
+			name = BooldHistoryViewController.xib;
+			path = History/Blood;
+			sourceTree = "<group>";
+		};
+		9C57F2331DF2C2E10090C2EF /* BOHistoryViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F2321DF2C2E10090C2EF /* en */,
+				9C57F2361DF2C2E60090C2EF /* zh-Hans */,
+			);
+			name = BOHistoryViewController.xib;
+			path = History/BloodO2;
+			sourceTree = "<group>";
+		};
+		9C57F2391DF2C2F50090C2EF /* UserInfoCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57F2381DF2C2F50090C2EF /* en */,
+				9C57F23C1DF2C2FA0090C2EF /* zh-Hans */,
+			);
+			name = UserInfoCell.xib;
+			path = Setting/UserInfo;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		10F5F7191D98C6280045FA4C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1531,6 +1721,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1576,6 +1767,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CZG37T4ZQ8;
+				GCC_PREFIX_HEADER = ManridyApp/PrefixHeader.pch;
 				INFOPLIST_FILE = ManridyApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.manridy.universal;
@@ -1594,6 +1786,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CZG37T4ZQ8;
+				GCC_PREFIX_HEADER = ManridyApp/PrefixHeader.pch;
 				INFOPLIST_FILE = ManridyApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.manridy.universal;

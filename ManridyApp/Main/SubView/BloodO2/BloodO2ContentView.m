@@ -67,7 +67,7 @@
 //        data02.pointLabelFont = [UIFont systemFontOfSize:15];
         data02.getData = ^(NSUInteger index) {
             CGFloat yValue = [self.boArr[index] floatValue];
-            NSLog(@"%f",yValue);
+            DLog(@"%f",yValue);
             return [PNLineChartDataItem dataItemWithY:yValue];
         };
         

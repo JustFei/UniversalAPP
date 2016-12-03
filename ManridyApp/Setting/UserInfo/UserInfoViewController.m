@@ -61,12 +61,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _nameArr = @[@"性别",@"年龄",@"身高",@"体重"];
-    _fieldPlaceholdeArr = @[@"",@"请输入年龄",@"请输入身高",@"请输入体重"];
-    _unitArr = @[@"",@"(岁)",@"(cm)",@"(kg)"];
-    _genderArr = @[@"男",@"女"];
+    _nameArr = @[NSLocalizedString(@"gender", nil),NSLocalizedString(@"age", nil),NSLocalizedString(@"height", nil),NSLocalizedString(@"weight", nil)];
+    _fieldPlaceholdeArr = @[@"",NSLocalizedString(@"inputAge", nil),NSLocalizedString(@"inputHeight", nil),NSLocalizedString(@"inputWeight", nil)];
+    _unitArr = @[@"",NSLocalizedString(@"year", nil),@"(cm)",@"(kg)"];
+    _genderArr = @[NSLocalizedString(@"male", nil),NSLocalizedString(@"female", nil)];
     
-    self.navigationItem.title = @"用户信息";
+    self.navigationItem.title = NSLocalizedString(@"userInfo", nil);
     
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换用户" style:UIBarButtonItemStylePlain target:self action:@selector(changeUser)];
     
@@ -112,7 +112,7 @@
 - (void)setSaveUI:(NSArray *)userArr
 {
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]) {
-        NSLog(@"hello == %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]);
+        DLog(@"hello == %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]);
         [self.userNameTextField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]];
     }
     
@@ -169,7 +169,7 @@
     //初始化提示框
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     //按钮：从相册选择，类型：UIAlertActionStyleDefault
-    [alert addAction:[UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"choosePhotoFromPhotoAlbum", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         UIImagePickerController *PickerImage = [[UIImagePickerController alloc]init];
         //获取方式1：通过相册（呈现全部相册），UIImagePickerControllerSourceTypePhotoLibrary
         //获取方式2，通过相机，UIImagePickerControllerSourceTypeCamera
@@ -183,7 +183,7 @@
         [self presentViewController:PickerImage animated:YES completion:nil];
     }]];
     //按钮：拍照，类型：UIAlertActionStyleDefault
-    [alert addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"takeAPhoto", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         UIImagePickerController *PickerImage = [[UIImagePickerController alloc]init];
         //获取方式1：通过相册（呈现全部相册），UIImagePickerControllerSourceTypePhotoLibrary
         //获取方式2，通过相机，UIImagePickerControllerSourceTypeCamera
@@ -197,7 +197,7 @@
         [self presentViewController:PickerImage animated:YES completion:nil];
     }]];
     //按钮：取消，类型：UIAlertActionStyleCancel
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -223,7 +223,7 @@
     self.genderPickerView.backgroundColor = [UIColor colorWithRed:48.0 / 255.0 green:110.0 / 255.0 blue:187.0 / 255.0 alpha:1];
     if (_userArr.count != 0) {
         UserInfoModel *model = _userArr.firstObject;
-        if ([model.gender isEqualToString:@"男"]) {
+        if ([model.gender isEqualToString:NSLocalizedString(@"male", nil)]) {
             [self.genderPickerView selectRow:0 inComponent:0 animated:NO];
         }else {
             [self.genderPickerView selectRow:1 inComponent:0 animated:NO];
@@ -250,38 +250,38 @@
         if (userArr.count == 0) {
            BOOL isSuccess = [self.myFmdbTool insertUserInfoModel:model];
             if (isSuccess) {
-                self.hud.label.text = @"保存成功！";
+                self.hud.label.text = NSLocalizedString(@"saveSuccess", nil);
                 
                 NSData *imageData = UIImagePNGRepresentation(self.headImageView.image);
                 [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:@"userheadimage"];
                 
                 [self.hud hideAnimated:YES afterDelay:1];
             }else {
-                self.hud.label.text = @"保存失败，请重新尝试！";
+                self.hud.label.text = NSLocalizedString(@"saveFailAndTryAgain", nil);
                 [self.hud hideAnimated:YES afterDelay:1];
             }
         }else {
             BOOL isSuccess = [self.myFmdbTool modifyUserInfoWithID:1 model:model];
             if (isSuccess) {
-                self.hud.label.text = @"修改成功！";
+                self.hud.label.text = NSLocalizedString(@"changeSuccess", nil);
                 
                 NSData *imageData = UIImagePNGRepresentation(self.headImageView.image);
                 [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:@"userheadimage"];
                 
                 [self.hud hideAnimated:YES afterDelay:1];
             }else {
-                self.hud.label.text = @"修改失败，请重新尝试！";
+                self.hud.label.text = NSLocalizedString(@"changeFailAndTryAgain", nil);
                 [self.hud hideAnimated:YES afterDelay:1];
             }
         }
         
         [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text forKey:@"currentusername"];
         
-        NSLog(@"gang gang set == %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]);
+        DLog(@"gang gang set == %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]);
         
     }else {
-        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"信息输入不完整，可能会对数据测量产生影响，请输入完整！" preferredStyle:UIAlertControllerStyleAlert];
-        [vc addAction:[UIAlertAction actionWithTitle:@"提示" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"infoNotComplete", nil) preferredStyle:UIAlertControllerStyleAlert];
+        [vc addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }]];
         
@@ -442,7 +442,7 @@
                 self.ageTextField = cell.textField;
                 if (_userArr.count != 0) {
                     UserInfoModel *model = _userArr.firstObject;
-                    [self.ageTextField setText:[NSString stringWithFormat:@"%ld",model.age]];
+                    [self.ageTextField setText:[NSString stringWithFormat:@"%ld",(long)model.age]];
                 }
             }
                 break;
@@ -452,7 +452,7 @@
                 self.heightTextField = cell.textField;
                 if (_userArr.count != 0) {
                     UserInfoModel *model = _userArr.firstObject;
-                    [self.heightTextField setText:[NSString stringWithFormat:@"%ld",model.height]];
+                    [self.heightTextField setText:[NSString stringWithFormat:@"%ld",(long)model.height]];
                 }
                 
             }
@@ -464,7 +464,7 @@
                 self.weightTextField = cell.textField;
                 if (_userArr.count != 0) {
                     UserInfoModel *model = _userArr.firstObject;
-                    [self.weightTextField setText:[NSString stringWithFormat:@"%ld",model.weight]];
+                    [self.weightTextField setText:[NSString stringWithFormat:@"%ld",(long)model.weight]];
                 }
                 
             }
@@ -541,7 +541,7 @@
 {
     if (!_userNameTextField) {
         UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(self.view.center.x - 100 * WIDTH / 320, 215 * WIDTH / 320, 200 * WIDTH / 320, 34)];
-        textField.placeholder = @"请输入用户名";
+        textField.placeholder = NSLocalizedString(@"inputUserName", nil);
 //        textField.delegate = self;
         
         [textField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -582,7 +582,7 @@
     if (!_saveButton) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.view.center.x - 85 * WIDTH / 320, self.view.frame.size.height - 64 * WIDTH / 320, 170 * WIDTH / 320, 44)];
         [button addTarget:self action:@selector(saveUserInfo) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:@"保存" forState:UIControlStateNormal];
+        [button setTitle:NSLocalizedString(@"save", nil) forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         button.clipsToBounds = YES;
         button.layer.cornerRadius = 5;

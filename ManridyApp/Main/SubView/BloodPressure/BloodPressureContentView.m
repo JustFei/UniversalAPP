@@ -65,8 +65,9 @@
         [self.highBloodChart setYValues:self.hbArr];
         [self.highBloodChart strokeChart];
         
-        [self.hbArr removeObjectAtIndex:self.hbArr.count - 1];
-        [self.lbArr removeObjectAtIndex:self.lbArr.count - 1];
+        //为什么当时要移除最后一个数据呢？？
+//        [self.hbArr removeObjectAtIndex:self.hbArr.count - 1];
+//        [self.lbArr removeObjectAtIndex:self.lbArr.count - 1];
     }else {
         //仅仅展示个坐标系
         [self.highBloodChart setYLabels:@[@1,@2,@3,@4,@5,@6,@7,@8]];
@@ -109,7 +110,7 @@
             
             BloodModel *model = bloodDataArr.lastObject;
             [self.bloodPressureLabel setText:[NSString stringWithFormat:@"%@/%@",model.highBloodString ,model.lowBloodString]];
-            [self.heartRateLabel setText:[NSString stringWithFormat:@"心率:%@",model.bpmString]];
+            [self.heartRateLabel setText:[NSString stringWithFormat:NSLocalizedString(@"currentDayHRData", nil),model.bpmString]];
             
             float highProgress = model.highBloodString.floatValue / 200;
             
@@ -130,7 +131,7 @@
     NSNumber *lowBP = self.lbArr[barIndex];
     NSString *time = self.timeArr[barIndex];
     NSString *bpm = self.bpmArr[barIndex];
-    self.currentBPLabel.text = [NSString stringWithFormat:@"%@: 高压：%@ 低压：%@ 心率：%@",time ,highBP ,lowBP ,bpm];
+    self.currentBPLabel.text = [NSString stringWithFormat:NSLocalizedString(@"currenBPData", nil),time ,highBP ,lowBP ,bpm];
 }
 
 #pragma mark - 懒加载
@@ -138,6 +139,7 @@
 {
     if (!_lowBloodChart) {
         PNBarChart *view = [[PNBarChart alloc] initWithFrame:CGRectMake(self.downView.bounds.origin.x - 19, self.downView.bounds.origin.y, self.downView.bounds.size.width, self.downView.bounds.size.height)];
+        view.delegate = self;
         view.backgroundColor = [UIColor clearColor];
         [view setStrokeColor:[UIColor grayColor]];
         view.barBackgroundColor = [UIColor clearColor];

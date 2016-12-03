@@ -46,7 +46,7 @@
     [self.downView layoutIfNeeded];
     
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.titleButton setTitle:@"历史记录" forState:UIControlStateNormal];
+    [self.titleButton setTitle:NSLocalizedString(@"history", nil) forState:UIControlStateNormal];
     [self.titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.navigationItem.titleView = self.titleButton;
     
@@ -75,7 +75,7 @@
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     NSInteger month = [components month];
-    [self.monthButton setTitle:[NSString stringWithFormat:@"%ld月",month] forState:UIControlStateNormal];
+    [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),month] forState:UIControlStateNormal];
     
     [self.boBarChart setXLabels:_dateArr];
 }
@@ -125,7 +125,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
             NSString *dateStr = [NSString stringWithFormat:@"%02ld/%02ld/%02ld",iCurYear ,iCurMonth ,i];
-            NSLog(@"%@",dateStr);
+            DLog(@"%@",dateStr);
             bo = 0;
             
             NSArray *queryArr = [self.myFmdbTool queryBloodO2WithDate:dateStr];
@@ -213,7 +213,7 @@
 #pragma mark - TitleMenuDelegate
 -(void)selectAtIndexPath:(NSIndexPath *)indexPath title:(NSString *)title
 {
-    NSLog(@"当前选择了%@", title);
+    DLog(@"当前选择了%@", title);
     
     // 修改导航栏的标题
     [self.monthButton setTitle:title forState:UIControlStateNormal];
@@ -245,16 +245,16 @@
 #pragma mark 弹出下拉菜单
 -(void)pop
 {
-    NSLog(@"用户点击了右侧弹出下拉菜单按钮");
+    DLog(@"用户点击了右侧弹出下拉菜单按钮");
 }
 
 #pragma mark - PNChartDelegate
 - (void)userClickedOnBarAtIndex:(NSInteger)barIndex
 {
-    NSLog(@"点击了第%ld个bar",barIndex + 1);
+    DLog(@"点击了第%ld个bar",barIndex + 1);
     NSNumber *boNumber = _boArr[barIndex];
     [self.boLabel setText:[NSString stringWithFormat:@"%@",boNumber]];
-    [self.dateLabel setText:[NSString stringWithFormat:@"%@号血氧值",_dateArr[barIndex]]];
+    [self.dateLabel setText:[NSString stringWithFormat:NSLocalizedString(@"currentDayBOData", nil),_dateArr[barIndex]]];
     self.dateLabel.hidden = NO;
     double progress = boNumber.integerValue / 100.000;
     
@@ -312,7 +312,7 @@
         PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:12.0 / 255.0 green:97.0 / 255.0 blue:158.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
         view.backgroundColor = [UIColor clearColor];
         [view setStrokeColor:[UIColor colorWithRed:191.0 / 255.0 green:41.0 / 255.0 blue:50.0 / 255.0 alpha:1]];
-        [view setStrokeColorGradientStart:[UIColor yellowColor]];
+        [view setStrokeColorGradientStart:[UIColor colorWithRed:191.0 / 255.0 green:41.0 / 255.0 blue:50.0 / 255.0 alpha:1]];
         
         [self.view addSubview:view];
         _boCircleChart = view;

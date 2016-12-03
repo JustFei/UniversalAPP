@@ -58,7 +58,7 @@
         data02.inflexionPointStyle = PNLineChartPointStyleCircle;
         data02.getData = ^(NSUInteger index) {
             CGFloat yValue = [self.dataArr[index] floatValue];
-            NSLog(@"%f",yValue);
+            DLog(@"%f",yValue);
             return [PNLineChartDataItem dataItemWithY:yValue];
         };
         
@@ -80,12 +80,12 @@
 {
     NSString *date = self.dateArr[pointIndex];
     NSString *hr = self.dataArr[pointIndex];
-    [self.currentHRStateLabel setText:[NSString stringWithFormat:@"%@：%@次/分钟",[date substringFromIndex:6] ,hr]];
+    [self.currentHRStateLabel setText:[NSString stringWithFormat:NSLocalizedString(@"currentHRData", nil),[date substringFromIndex:6] ,hr]];
 }
 
 - (void)showHRStateLabel
 {
-    self.currentHRStateLabel.text = @"最近几次心率";
+    self.currentHRStateLabel.text = NSLocalizedString(@"lastTimesHRData", nil);
 }
 
 #pragma mark - 懒加载

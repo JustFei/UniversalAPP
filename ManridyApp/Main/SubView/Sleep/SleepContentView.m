@@ -54,14 +54,14 @@
         for (NSInteger i = 0; i < self.sumDataArr.count; i ++) {
             [_textArr addObject:@(i + 1)];
             NSNumber *hightest = (NSNumber *)self.sumDataArr[i];
-            NSLog(@"%@",hightest);
+            DLog(@"%@",hightest);
             NSInteger hight = hightest.integerValue;
             if (hight > self.sumSleepChart.yMaxValue) {
                 self.sumSleepChart.yMaxValue = hight + 10;
                 self.deepSleepChart.yMaxValue = hight + 10;
             }
         }
-        NSLog(@"hightest == %f",self.sumSleepChart.yMaxValue);
+        DLog(@"hightest == %f",self.sumSleepChart.yMaxValue);
         
         [self.deepSleepChart setXLabels:_textArr];
         [self.deepSleepChart setYValues:self.deepDataArr];
@@ -71,8 +71,9 @@
         [self.sumSleepChart setYValues:self.sumDataArr];
         [self.sumSleepChart strokeChart];
         
-        [self.sumDataArr removeObjectAtIndex:self.sumDataArr.count - 1];
-        [self.deepDataArr removeObjectAtIndex:self.deepDataArr.count - 1];
+        //TODO: 为什么当初要移除掉数组的最后一个呢？
+//        [self.sumDataArr removeObjectAtIndex:self.sumDataArr.count - 1];
+//        [self.deepDataArr removeObjectAtIndex:self.deepDataArr.count - 1];
     }else {
         //仅仅展示个坐标系
         [self.sumSleepChart setYLabels:@[@1,@2,@3,@4,@5,@6,@7,@8]];
@@ -95,7 +96,7 @@
     NSInteger low = sumNum.integerValue - deepNum.integerValue;
     NSString *start = [self.startDataArr[barIndex] substringFromIndex:11];
     NSString *end = [self.endDataArr[barIndex] substringFromIndex:11];
-    self.currentSleepStateLabel.text = [NSString stringWithFormat:@"此次睡眠：%@-%@ 浅睡：%.1f时 深睡：%.1f时",start ,end ,low / 60.f ,deepNum.integerValue / 60.f];
+    self.currentSleepStateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"currentSleepData", nil),start ,end ,low / 60.f ,deepNum.integerValue / 60.f];
 }
 
 #pragma mark - 懒加载

@@ -62,7 +62,7 @@
     
     for (__strong NSString *dateStr in self.dateArr) {
         dateStr = [dateStr substringFromIndex:5];
-        NSLog(@"querystring == %@",dateStr);
+        DLog(@"querystring == %@",dateStr);
         
         [xLabelArr addObject:dateStr];
     }
@@ -104,14 +104,14 @@
         }
     }
     //    double mileage = sumMileage;
-    [self.weekStatisticsLabel setText:[NSString stringWithFormat:@"本周计步统计：%ld步（%.1f公里/%ld千卡）",sumStep ,sumMileage / 1000.f ,sumkCal]];
+    [self.weekStatisticsLabel setText:[NSString stringWithFormat:NSLocalizedString(@"currentWeekStepData", nil),sumStep ,sumMileage / 1000.f ,sumkCal]];
     sumStep = sumMileage = sumkCal = 0;
 }
 
 #pragma mark - PNChartDelegate
 //- (void)userClickedOnLinePoint:(CGPoint)point lineIndex:(NSInteger)lineIndex
 //{
-//    NSLog(@"点击了%ld根线",lineIndex);
+//    DLog(@"点击了%ld根线",lineIndex);
 //}
 
 
@@ -122,9 +122,9 @@
     SportModel *model = self.dataArr[pointIndex];
     NSString *date = self.dateArr[pointIndex];
     if (model.stepNumber) {
-        [self.weekStatisticsLabel setText:[NSString stringWithFormat:@"%@：%@步",date ,model.stepNumber]];
+        [self.weekStatisticsLabel setText:[NSString stringWithFormat:NSLocalizedString(@"step", nil),date ,model.stepNumber]];
     }else {
-        [self.weekStatisticsLabel setText:[NSString stringWithFormat:@"%@：0步",date  ]];
+        [self.weekStatisticsLabel setText:[NSString stringWithFormat:NSLocalizedString(@"step", nil),date ,@(0) ]];
     }
     
 }
@@ -146,13 +146,13 @@
     BOOL isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
     if (isBind) {
         [delegate.myBleTool scanDevice];
-        [delegate.mainVc.stepView.stepLabel setText:@"设备连接中。。。"];
+        [delegate.mainVc.stepView.stepLabel setText:NSLocalizedString(@"perConnecting", nil)];
         delegate.myBleTool.isReconnect = YES;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [delegate.myBleTool stopScan];
             if (delegate.myBleTool.connectState == kBLEstateDisConnected) {
-                [delegate.mainVc.stepView.stepLabel setText:@"未连接上设备，点击重试"];
+                [delegate.mainVc.stepView.stepLabel setText:NSLocalizedString(@"canNotConnectPer", nil)];
             }
         });
     }

@@ -61,7 +61,7 @@
     [self.downView addSubview:self.downScrollView];
     
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.titleButton setTitle:@"历史记录" forState:UIControlStateNormal];
+    [self.titleButton setTitle:NSLocalizedString(@"history", nil) forState:UIControlStateNormal];
     [self.titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.navigationItem.titleView = self.titleButton;
     
@@ -92,7 +92,7 @@
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     NSInteger month = [components month];
-    [self.monthButton setTitle:[NSString stringWithFormat:@"%ld月",month] forState:UIControlStateNormal];
+    [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),month] forState:UIControlStateNormal];
     
     [self.lowBloodChart setXLabels:_dateArr];
     [self.highBloodChart setXLabels:_dateArr];
@@ -153,7 +153,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
             NSString *dateStr = [NSString stringWithFormat:@"%02ld/%02ld/%02ld",iCurYear ,iCurMonth ,i];
-            NSLog(@"%@",dateStr);
+            DLog(@"%@",dateStr);
             highBlood = 0;
             lowBlood = 0;
             hr = 0;
@@ -186,8 +186,8 @@
             NSInteger averageLb = sumLb / haveDataDays;
             NSInteger averageHr = sumHr / haveDataDays;
             [self.bpLabel setText:[NSString stringWithFormat:@"%ld/%ld",averageHb , averageLb]];
-            [self.hrLabel setText:[NSString stringWithFormat:@"心率:%ld",averageHr]];
-            [self.averageBPLabel setText:[NSString stringWithFormat:@"本月平均血压值:  高压:%ld  低压:%ld  心率:%ld",averageHb ,averageLb ,averageHr]];
+            [self.hrLabel setText:[NSString stringWithFormat:NSLocalizedString(@"HRData", nil),averageHr]];
+            [self.averageBPLabel setText:[NSString stringWithFormat:NSLocalizedString(@"currentMonthBPData", nil),averageHb ,averageLb ,averageHr]];
             double progress = averageHb / 200.000;
             
             if (progress <= 1) {
@@ -261,7 +261,7 @@
 #pragma mark - TitleMenuDelegate
 -(void)selectAtIndexPath:(NSIndexPath *)indexPath title:(NSString *)title
 {
-    NSLog(@"当前选择了%@", title);
+    DLog(@"当前选择了%@", title);
     
     // 修改导航栏的标题
     [self.monthButton setTitle:title forState:UIControlStateNormal];
@@ -294,19 +294,19 @@
 #pragma mark 弹出下拉菜单
 -(void)pop
 {
-    NSLog(@"用户点击了右侧弹出下拉菜单按钮");
+    DLog(@"用户点击了右侧弹出下拉菜单按钮");
 }
 
 #pragma mark - PNChartDelegate
 - (void)userClickedOnBarAtIndex:(NSInteger)barIndex
 {
-    NSLog(@"点击了第%ld个bar",barIndex);
+    DLog(@"点击了第%ld个bar",barIndex);
     NSNumber *hbNumber = _hbDataArr[barIndex];
     NSNumber *lbNumber = _lbDataArr[barIndex];
     NSNumber *hrNumber = _hrDataArr[barIndex];
     [self.bpLabel setText:[NSString stringWithFormat:@"%@/%@",hbNumber , lbNumber]];
-    [self.hrLabel setText:[NSString stringWithFormat:@"心率:%@",hrNumber]];
-    [self.dayLabel setText:[NSString stringWithFormat:@"%@号血压值",_dateArr[barIndex]]];
+    [self.hrLabel setText:[NSString stringWithFormat:NSLocalizedString(@"currentDayHRData", nil),hrNumber]];
+    [self.dayLabel setText:[NSString stringWithFormat:NSLocalizedString(@"currentDayBPData", nil),_dateArr[barIndex]]];
     double progress = hbNumber.integerValue / 200.000;
     
     if (progress <= 1) {

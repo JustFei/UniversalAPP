@@ -75,7 +75,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _titleArr = @[@"计步",@"心率",@"睡眠",@"血压",@"血氧"];
+    _titleArr = @[NSLocalizedString(@"Step", nil),NSLocalizedString(@"HeartHeart", nil),NSLocalizedString(@"Sleep", nil),NSLocalizedString(@"BloodPressure", nil),NSLocalizedString(@"BloodO2", nil)];
     haveNewStep = YES;
     haveNewHeartRate = YES;
     haveNewSleep = YES;
@@ -150,7 +150,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:YES];
-    NSLog(@"会走这方法");
+    DLog(@"会走这方法");
     [self.view removeGestureRecognizer:self.oneFingerSwipeUp];
 }
 
@@ -190,14 +190,14 @@
         BOOL isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
         
         if (isBind) {
-            [self.stepView.stepLabel setText:@"设备连接中。。。"];
+            [self.stepView.stepLabel setText:NSLocalizedString(@"perConnecting", nil)];
             [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:15]];
         }else {
-            [self.stepView.stepLabel setText:@"未绑定设备，请前往设置绑定设备"];
+            [self.stepView.stepLabel setText:NSLocalizedString(@"haveNOBindPer", nil)];
             [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:11]];
         }
     }else {
-        [self.stepView.stepLabel setText:@"未绑定设备，请前往设置绑定设备"];
+        [self.stepView.stepLabel setText:NSLocalizedString(@"haveNOBindPer", nil)];
         [self.stepView.stepLabel setFont:[UIFont systemFontOfSize:11]];
     }
     }
@@ -277,6 +277,7 @@
     
     //title
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.titleButton.frame = CGRectMake(0, 0, 250, 44);
     [self.titleButton setTitle:_titleArr[0] forState:UIControlStateNormal];
     [self.titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 //    [self.titleButton addTarget:self action:@selector(showTheList) forControlEvents:UIControlEventTouchUpInside];
@@ -365,7 +366,7 @@
                     {
                         [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
                         double mileage = manridyModel.sportModel.mileageNumber.integerValue / 1000;
-                        [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:@"%.1f公里/%@千卡",mileage ,manridyModel.sportModel.kCalNumber]];
+                        [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:NSLocalizedString(@"currentStepAndKCal", nil),mileage ,manridyModel.sportModel.kCalNumber]];
 
                         if (_userArr.count != 0) {
                             
@@ -671,10 +672,10 @@
             sum += model.sumSleep.doubleValue / 60;
         }
         
-        NSLog(@"dep == %0.2f, low == %.2f, sum == %.2f",deep ,low ,sum);
+        DLog(@"dep == %0.2f, low == %.2f, sum == %.2f",deep ,low ,sum);
         
-        NSString * lowStr = [NSString stringWithFormat:@"浅睡%0.2f小时",low];
-        NSString * deepStr = [NSString stringWithFormat:@"深睡%.2f小时",deep];
+        NSString * lowStr = [NSString stringWithFormat:NSLocalizedString(@"lowSleepData", nil),low];
+        NSString * deepStr = [NSString stringWithFormat:NSLocalizedString(@"deepSleepData", nil),deep];
         [self.sleepView.sleepSumLabel setText:[NSString stringWithFormat:@"%.2f",sum]];
         [self.sleepView.deepAndLowSleepLabel setText:[NSString stringWithFormat:@"%@/%@",deepStr ,lowStr]];
         
@@ -712,7 +713,7 @@
         }
         
         if (sum <= 6) {
-            [self.sleepView.sleepStateLabel setText:@"睡眠不足"];
+            [self.sleepView.sleepStateLabel setText:NSLocalizedString(@"lackofSleep", nil)];
             [self.sleepView.sleepStateLabel setTextColor:[UIColor redColor]];
             
             [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor redColor]];
@@ -721,7 +722,7 @@
             [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
             
         }else if (sum > 6 && sum < 7) {
-            [self.sleepView.sleepStateLabel setText:@"睡眠偏少"];
+            [self.sleepView.sleepStateLabel setText:NSLocalizedString(@"lessofSleep", nil)];
             [self.sleepView.sleepStateLabel setTextColor:[UIColor orangeColor]];
             
             [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
@@ -730,7 +731,7 @@
             [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
             
         }else if (sum >= 7 && sum < 8) {
-            [self.sleepView.sleepStateLabel setText:@"睡眠正常"];
+            [self.sleepView.sleepStateLabel setText:NSLocalizedString(@"normalofSleep", nil)];
             [self.sleepView.sleepStateLabel setTextColor:[UIColor yellowColor]];
             
             [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
@@ -739,7 +740,7 @@
             [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
             
         }else if (sum >= 8) {
-            [self.sleepView.sleepStateLabel setText:@"睡眠充足"];
+            [self.sleepView.sleepStateLabel setText:NSLocalizedString(@"moreofSleep", nil)];
             [self.sleepView.sleepStateLabel setTextColor:[UIColor greenColor]];
             
             [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
@@ -800,19 +801,19 @@
         self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
         self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
         
-        self.heartRateView.heartStateLabel.text = @"偏低";
+        self.heartRateView.heartStateLabel.text = NSLocalizedString(@"low", nil);
     }else if (heart >= 60 && heart <= 100) {
         self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
         self.heartRateView.state2.backgroundColor = [UIColor greenColor];
         self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
         
-        self.heartRateView.heartStateLabel.text = @"正常";
+        self.heartRateView.heartStateLabel.text = NSLocalizedString(@"normal", nil);
     }else {
         self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
         self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
         self.heartRateView.state4.backgroundColor = [UIColor redColor];
         
-        self.heartRateView.heartStateLabel.text = @"偏高";
+        self.heartRateView.heartStateLabel.text = NSLocalizedString(@"high", nil);
     }
     }
 }
@@ -842,13 +843,14 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-        case 4:
+        case 3:
         {
             BooldHistoryViewController *vc = [[BooldHistoryViewController alloc] initWithNibName:@"BooldHistoryViewController" bundle:nil];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-        case 5:
+        case 4
+        :
         {
             BOHistoryViewController *vc = [[BOHistoryViewController alloc] initWithNibName:@"BOHistoryViewController" bundle:nil];
             [self.navigationController pushViewController:vc animated:YES];
@@ -992,7 +994,7 @@
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
                     if (haveNewSleep) {
                         [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
-                        self.sleepView.currentSleepStateLabel.text = @"最近几次睡眠";
+                        self.sleepView.currentSleepStateLabel.text = NSLocalizedString(@"lastTimeSleep", nil);
                     }
                 }else {
                     NSDate *currentDate = [NSDate date];
@@ -1002,7 +1004,7 @@
                     if (haveNewSleep) {
                         [self querySleepDataBaseWithDateString:currentDateString];
                         haveNewSleep = NO;
-                        self.sleepView.currentSleepStateLabel.text = @"最近几次睡眠";
+                        self.sleepView.currentSleepStateLabel.text = NSLocalizedString(@"lastTimeSleep", nil);
                     }
                 }
             }
@@ -1012,7 +1014,7 @@
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
                     if (haveNewBP) {
                         [self.myBleTool writeBloodToPeripheral:BloodDataHistoryData];
-                        self.bloodPressureView.currentBPLabel.text = @"今日血压";
+                        self.bloodPressureView.currentBPLabel.text = NSLocalizedString(@"todayBP", nil);
                     }
                 }else {
                     NSDate *currentDate = [NSDate date];
@@ -1024,7 +1026,7 @@
                         NSArray *bloodArr = [self.myFmdbTool queryBloodWithDate:currentDateString];
                         [self.bloodPressureView queryBloodWithBloodArr:bloodArr];
                         haveNewBP = NO;
-                        self.bloodPressureView.currentBPLabel.text = @"今日血压";
+                        self.bloodPressureView.currentBPLabel.text = NSLocalizedString(@"todayBP", nil);
                     }
                 }
             }
@@ -1034,7 +1036,7 @@
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
                     if (haveNewBO) {
                         [self.myBleTool writeBloodO2ToPeripheral:BloodO2DataHistoryData];
-                        self.boView.currentBOLabel.text = @"今日血氧";
+                        self.boView.currentBOLabel.text = NSLocalizedString(@"todayBO", nil);
                     }
                 }else {
                     NSDate *currentDate = [NSDate date];
@@ -1045,7 +1047,7 @@
                         NSArray *bloodArr = [self.myFmdbTool queryBloodO2WithDate:currentDateString];
                         [self.boView queryBOWithBloodArr:bloodArr];
                         haveNewBO = NO;
-                        self.boView.currentBOLabel.text = @"今日血氧";
+                        self.boView.currentBOLabel.text = NSLocalizedString(@"todayBO", nil);
                     }
                 }
             }

@@ -36,7 +36,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.title = @"目标设置";
+    self.navigationItem.title = NSLocalizedString(@"targetSet", nil);
     
     self.myBleTool = [BLETool shareInstance];
     self.myBleTool.receiveDelegate = self;
@@ -89,9 +89,9 @@
             BOOL result = [self.myFmdbTool modifyStepTargetWithID:1 model:self.stepTargetTextField.text.integerValue];
             
             if (result) {
-                self.hud.label.text = @"保存成功";
+                self.hud.label.text = NSLocalizedString(@"saveSuccess", nil);
             }else {
-                self.hud.label.text = @"保存失败，请重新尝试";
+                self.hud.label.text = NSLocalizedString(@"saveFail", nil);
             }
             
             [self.hud hideAnimated:YES afterDelay:1];
@@ -103,7 +103,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *targetString = [textField.text stringByAppendingString:string];
-//    NSLog(@"now == %@",targetString);
+//    DLog(@"now == %@",targetString);
     if (targetString.length >= 6) {
         targetString = textField.text;
         NSInteger targetInteger = targetString.integerValue;
@@ -130,16 +130,16 @@
             [self.myBleTool writeMotionTargetToPeripheral:self.stepTargetTextField.text];
             self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             self.hud.mode = MBProgressHUDModeIndeterminate;
-            [self.hud.label setText:@"正在设置运动目标"];
+            [self.hud.label setText:NSLocalizedString(@"settingTarget", nil)];
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                self.hud.label.text = @"设置超时，请连接或靠近设备并重试。";
+                self.hud.label.text = NSLocalizedString(@"setOverTime", nil);
                 [self.hud hideAnimated:YES afterDelay:1];
             });
         }
     }else {
-        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"请先去设置您的个人信息，否则无法设置该功能。" preferredStyle:UIAlertControllerStyleAlert];
-        [vc addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil]];
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"plzSetUserInfoFirst", nil) preferredStyle:UIAlertControllerStyleAlert];
+        [vc addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:UIAlertActionStyleDefault handler:nil]];
         
         [self presentViewController:vc animated:YES completion:nil];
     }

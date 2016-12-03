@@ -59,7 +59,7 @@
     self.myBleTool.discoverDelegate = self;
     self.myBleTool.connectDelegate = self;
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStylePlain target:self action:@selector(searchPeripheral)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"search", nil) style:UIBarButtonItemStylePlain target:self action:@selector(searchPeripheral)];
     self.navigationItem.rightBarButtonItem = rightItem;
     
     BOOL isBinded = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
@@ -69,7 +69,7 @@
        [self creatUnBindView];
     }
     
-    self.navigationItem.title = @"设备绑定";
+    self.navigationItem.title = NSLocalizedString(@"perBind", nil);
     
     self.view.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
     
@@ -101,7 +101,7 @@
     
     [self.refreshImageView setHidden:YES];
     
-    [self.bindStateLabel setText:@"已绑定设备"];
+    [self.bindStateLabel setText:NSLocalizedString(@"haveBindPer", nil)];
     
     [self.perNameLabel setHidden:NO];
     [self.perNameLabel setAlpha:0.5];
@@ -121,7 +121,7 @@
     
     [self.refreshImageView setHidden:NO];
     
-    [self.bindStateLabel setText:@"未绑定设备"];
+    [self.bindStateLabel setText:NSLocalizedString(@"haveNoBindPer", nil)];
 }
 
 #pragma mark - Action
@@ -157,10 +157,10 @@
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //        self.hud.mode = MBProgressHUDModeAnnularDeterminate;
         self.hud.mode = MBProgressHUDModeIndeterminate;
-        [self.hud.label setText:@"正在连接设备..."];
+        [self.hud.label setText:NSLocalizedString(@"bindingPer", nil)];
     }else {
-        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"请选择设备以绑定。" preferredStyle:UIAlertControllerStyleAlert];
-        [vc addAction:[UIAlertAction actionWithTitle:@"去选择" style:UIAlertActionStyleDefault handler:nil]];
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"choosePerToBind", nil) preferredStyle:UIAlertControllerStyleAlert];
+        [vc addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"goToChoose", nil) style:UIAlertActionStyleDefault handler:nil]];
         [self presentViewController:vc animated:YES completion:nil];
     }
 }
@@ -182,7 +182,7 @@
     
     self.navigationItem.rightBarButtonItem.enabled = YES;
     
-    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:@"已成功解除绑定" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+    UIAlertView *view = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"disbindPerSuccess", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"IKnow", nil) otherButtonTitles:nil, nil];
     view.tag = 102;
     [view show];
 }
@@ -251,7 +251,7 @@
                 [self.perNameLabel setText:self.myBleTool.currentDev.deviceName];
                 [self.perNameLabel setAlpha:1];
                 
-                [self.bindStateLabel setText:@"已绑定设备"];
+                [self.bindStateLabel setText:NSLocalizedString(@"haveBindPer", nil)];
                 
                 [self.connectImageView setImage:[UIImage imageNamed:@"ble_connect"]];
             }];
@@ -291,7 +291,7 @@
                     self.perNameLabel.alpha = 0;
                     [self.perNameLabel setHidden:YES];
                     
-                    [self.bindStateLabel setText:@"未绑定设备"];
+                    [self.bindStateLabel setText:NSLocalizedString(@"haveNoBindPer", nil)];
                     
                     [self.connectImageView setImage:[UIImage imageNamed:@"ble_break_icon"]];
                 }];
@@ -329,7 +329,7 @@
     [[NSUserDefaults standardUserDefaults] setValue:device.deviceName forKey:@"bindPeripheralName"];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isBind"];
     
-    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"已绑定设备：%@",device.deviceName] delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+    UIAlertView *view = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"tips", nil) message:[NSString stringWithFormat:NSLocalizedString(@"haveBindPerName", nil),device.deviceName] delegate:self cancelButtonTitle:NSLocalizedString(@"IKnow", nil) otherButtonTitles:nil, nil];
     view.tag = 100;
     [view show];
     
@@ -341,7 +341,7 @@
 {
     self.navigationItem.rightBarButtonItem.enabled = YES;
     _isConnected = NO;
-    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:@"连接异常，请靠近设备并尝试再次连接" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    UIAlertView *view = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"bindErrorAndTryAgain", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"sure", nil) otherButtonTitles:nil, nil];
     view.tag = 101;
     [view show];
     
@@ -450,7 +450,7 @@
 {
     if (!_bindButton) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.downView.center.x - 90, self.downView.frame.size.height - 21 - 47, 180, 47)];
-        [button setTitle:@"绑定设备" forState:UIControlStateNormal];
+        [button setTitle:NSLocalizedString(@"bindPer", nil) forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(bindPeripheral) forControlEvents:UIControlEventTouchUpInside];
         button.alpha = 0;
@@ -471,7 +471,7 @@
 {
     if (!_disbindButton) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.downView.center.x - 90 * WIDTH / 320, self.downView.frame.size.width * 18 / 320, WIDTH * 180 / 320, WIDTH * 47 / 320)];
-        [button setTitle:@"解除绑定" forState:UIControlStateNormal];
+        [button setTitle:NSLocalizedString(@"disbindPer", nil) forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(disbindPeripheral) forControlEvents:UIControlEventTouchUpInside];
         button.alpha = 0;
@@ -487,15 +487,5 @@
     
     return _disbindButton;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

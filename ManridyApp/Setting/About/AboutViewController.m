@@ -42,7 +42,7 @@
     [self.upView addSubview:self.headImageView];
     
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 50, self.headImageView.frame.origin.y + self.headImageView.frame.size.height + 10, 100, 30)];
-    self.nameLabel.text = @"瑞动力";
+    self.nameLabel.text = NSLocalizedString(@"appName", nil);
     self.nameLabel.backgroundColor = [UIColor clearColor];
     [self.nameLabel setTextColor:[UIColor whiteColor]];
     self.nameLabel.textAlignment = NSTextAlignmentCenter;
@@ -52,15 +52,15 @@
     self.cutView.backgroundColor = [UIColor colorWithRed:199.0 / 255.0 green:199.0 / 255.0 blue:199.0 / 255.0 alpha:1];
     [self.view addSubview:self.cutView];
     
-    self.softwareLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.cutView.frame.origin.y + 30 * WIDTH / 320, 150 * WIDTH / 320, 30)];
+    self.softwareLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.cutView.frame.origin.y + 30 * WIDTH / 320, (WIDTH - 30) * WIDTH / 320, 30)];
     self.softwareLabel.backgroundColor = [UIColor clearColor];
-    [self.softwareLabel setText:[NSString stringWithFormat:@"软件版本号：V%@",app_Version]];
+    [self.softwareLabel setText:[NSString stringWithFormat:NSLocalizedString(@"softWare", nil),app_Version]];
     [self.view addSubview:self.softwareLabel];
     
-    self.hardwareLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.softwareLabel.frame.origin.y + 45 * WIDTH / 320, 150 * WIDTH / 320,30)];
+    self.hardwareLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.softwareLabel.frame.origin.y + 45 * WIDTH / 320, (WIDTH - 30) * WIDTH / 320,30)];
     self.hardwareLabel.backgroundColor = [UIColor clearColor];
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"version"] && [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"]) {
-        [self.hardwareLabel setText:[NSString stringWithFormat:@"固件版本号：V%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"version"]]];
+        [self.hardwareLabel setText:[NSString stringWithFormat:NSLocalizedString(@"hardWare", nil),[[NSUserDefaults standardUserDefaults] objectForKey:@"version"]]];
     }else {
         self.hardwareLabel.hidden = YES;
     }

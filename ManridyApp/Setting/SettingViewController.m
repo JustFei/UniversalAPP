@@ -22,7 +22,7 @@
     // Do any additional setup after loading the view.
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
-    [titleLabel setText:@"设置"];
+    [titleLabel setText:NSLocalizedString(@"set", nil)];
     [titleLabel setTextColor:[UIColor whiteColor]];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     

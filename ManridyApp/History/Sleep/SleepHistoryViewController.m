@@ -73,7 +73,7 @@
     self.userArr = [self.myFmdbTool queryAllUserInfo];
     
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.titleButton setTitle:@"历史记录" forState:UIControlStateNormal];
+    [self.titleButton setTitle:NSLocalizedString(@"history", nil) forState:UIControlStateNormal];
     [self.titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.navigationItem.titleView = self.titleButton;
     
@@ -104,7 +104,7 @@
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     NSInteger month = [components month];
-    [self.monthButton setTitle:[NSString stringWithFormat:@"%ld月",month] forState:UIControlStateNormal];
+    [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),month] forState:UIControlStateNormal];
     
     [self.sumSleepChart setXLabels:_dateArr];
     [self.deepSleepChart setXLabels:_dateArr];
@@ -156,8 +156,8 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
-            NSString *dateStr = [NSString stringWithFormat:@"%02ld/%02ld/%02ld",iCurYear ,iCurMonth ,i];
-            NSLog(@"%@",dateStr);
+            NSString *dateStr = [NSString stringWithFormat:@"%02ld/%02ld/%02ld",(long)iCurYear ,iCurMonth ,i];
+            DLog(@"%@",dateStr);
             deepSleep = 0;
             sumSleep = 0;
             lowSleep = 0;
@@ -201,7 +201,7 @@
             }
             
             if (averageSleep <= 6) {
-                [self.stateLabel setText:@"睡眠不足"];
+                [self.stateLabel setText:NSLocalizedString(@"lackofSleep", nil)];
                 [self.stateLabel setTextColor:[UIColor redColor]];
                 
                 [self.state1 setBackgroundColor:[UIColor redColor]];
@@ -210,7 +210,7 @@
                 [self.state4 setBackgroundColor:kCurrentStateOFF];
                 
             }else if (averageSleep > 6 && averageSleep < 7) {
-                [self.stateLabel setText:@"睡眠偏少"];
+                [self.stateLabel setText:NSLocalizedString(@"lessofSleep", nil)];
                 [self.stateLabel setTextColor:[UIColor orangeColor]];
                 
                 [self.state1 setBackgroundColor:kCurrentStateOFF];
@@ -219,7 +219,7 @@
                 [self.state4 setBackgroundColor:kCurrentStateOFF];
                 
             }else if (averageSleep >= 7 && averageSleep < 8) {
-                [self.stateLabel setText:@"睡眠正常"];
+                [self.stateLabel setText:NSLocalizedString(@"normalofSleep", nil)];
                 [self.stateLabel setTextColor:[UIColor yellowColor]];
                 
                 [self.state1 setBackgroundColor:kCurrentStateOFF];
@@ -228,7 +228,7 @@
                 [self.state4 setBackgroundColor:kCurrentStateOFF];
                 
             }else if (averageSleep >= 8) {
-                [self.stateLabel setText:@"睡眠充足"];
+                [self.stateLabel setText:NSLocalizedString(@"moreofSleep", nil)];
                 [self.stateLabel setTextColor:[UIColor greenColor]];
                 
                 [self.state1 setBackgroundColor:kCurrentStateOFF];
@@ -338,7 +338,7 @@
 #pragma mark - TitleMenuDelegate
 -(void)selectAtIndexPath:(NSIndexPath *)indexPath title:(NSString *)title
 {
-    NSLog(@"当前选择了%@", title);
+    DLog(@"当前选择了%@", title);
     
     // 修改导航栏的标题
     [self.monthButton setTitle:title forState:UIControlStateNormal];
@@ -371,7 +371,7 @@
 #pragma mark 弹出下拉菜单
 -(void)pop
 {
-    NSLog(@"用户点击了右侧弹出下拉菜单按钮");
+    DLog(@"用户点击了右侧弹出下拉菜单按钮");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -387,9 +387,9 @@
     NSNumber *lowSleepNumber = _lowDataArr[barIndex];
     self.deepAndLowSleepLabel.hidden = NO;
     if (sumSleepNumber.floatValue != 0) {
-        [self.deepAndLowSleepLabel setText:[NSString stringWithFormat:@"睡眠%@小时：深睡%@小时\n浅睡%@小时",sumSleepNumber ,deepSleepNumber ,lowSleepNumber]];
+        [self.deepAndLowSleepLabel setText:[NSString stringWithFormat:NSLocalizedString(@"currentDaySleepData", nil),sumSleepNumber ,deepSleepNumber ,lowSleepNumber]];
     }else {
-        [self.deepAndLowSleepLabel setText:@"当天没有睡眠数据"];
+        [self.deepAndLowSleepLabel setText:NSLocalizedString(@"currentDayNOSleepData", nil)];
     }
     [self drawCircle:sumSleepNumber.doubleValue];
 }

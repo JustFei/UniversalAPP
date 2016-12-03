@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSArray *mouthArr = @[@"1月",@"2月",@"3月",@"4月",@"5月",@"6月",@"7月",@"8月",@"9月",@"10月",@"11月",@"12月"];
+    NSArray *mouthArr = @[NSLocalizedString(@"January", nil),NSLocalizedString(@"February", nil),NSLocalizedString(@"March", nil),NSLocalizedString(@"April", nil),NSLocalizedString(@"May", nil),NSLocalizedString(@"June", nil),NSLocalizedString(@"July", nil),NSLocalizedString(@"August", nil),NSLocalizedString(@"September", nil),NSLocalizedString(@"October", nil),NSLocalizedString(@"November", nil),NSLocalizedString(@"December", nil)];
     
     _data = [NSMutableArray arrayWithArray:mouthArr];
     self.tableView.showsVerticalScrollIndicator = NO;

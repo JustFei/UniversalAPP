@@ -83,8 +83,8 @@
         [self.myFmdbTool modifySleepTargetWithID:1 model:self.sleepTargetLabel.text.integerValue];
         
     }else {
-        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"请先去设置您的个人信息，否则无法设置该功能。" preferredStyle:UIAlertControllerStyleAlert];
-        [vc addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil]];
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"plzSetUserInfoFirst", nil) preferredStyle:UIAlertControllerStyleAlert];
+        [vc addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:UIAlertActionStyleDefault handler:nil]];
         
         [self presentViewController:vc animated:YES completion:nil];
     }

@@ -55,7 +55,7 @@
     [self.downView layoutIfNeeded];
     
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.titleButton setTitle:@"历史记录" forState:UIControlStateNormal];
+    [self.titleButton setTitle:NSLocalizedString(@"history", nil) forState:UIControlStateNormal];
     [self.titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.navigationItem.titleView = self.titleButton;
     
@@ -83,7 +83,7 @@
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     NSInteger month = [components month];
-    [self.monthButton setTitle:[NSString stringWithFormat:@"%ld月",month] forState:UIControlStateNormal];
+    [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),(long)month] forState:UIControlStateNormal];
     
     [self.stepBarChart setXLabels:_dateArr];
 }
@@ -145,8 +145,8 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
-            NSString *dateStr = [NSString stringWithFormat:@"%ld/%02ld/%02ld",iCurYear ,iCurMonth ,i];
-            NSLog(@"%@",dateStr);
+            NSString *dateStr = [NSString stringWithFormat:@"%ld/%02ld/%02ld",(long)iCurYear ,iCurMonth ,i];
+            DLog(@"%@",dateStr);
             
             NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateStr];
             if (queryArr.count == 0) {
@@ -169,9 +169,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             double avergaeMileage = (sumMileage / haveDataDays);
             
-            [self.sumStepAndMilAndkCal setText:[NSString stringWithFormat:@"本月计步统计：共（%ld步/%.1f公里/%ld千卡）",sumStep ,(double)sumMileage / 1000 ,sumkCal]];
+            [self.sumStepAndMilAndkCal setText:[NSString stringWithFormat:NSLocalizedString(@"currentMonthData", nil),(long)sumStep ,(double)sumMileage / 1000 ,sumkCal]];
             [self.averageStepLabel setText:[NSString stringWithFormat:@"%ld",(sumStep / haveDataDays)]];
-            [self.averagerMileageAndkCalLabel setText:[NSString stringWithFormat:@"%.1f公里/%ld千卡",avergaeMileage / 1000 ,(sumkCal / haveDataDays)]];
+            [self.averagerMileageAndkCalLabel setText:[NSString stringWithFormat:NSLocalizedString(@"averagerMandK", nil),avergaeMileage / 1000 ,(sumkCal / haveDataDays)]];
             NSArray *_userArr = [self.myFmdbTool queryAllUserInfo];
             if (_userArr.count != 0) {
                 
@@ -266,7 +266,7 @@
 #pragma mark - TitleMenuDelegate
 -(void)selectAtIndexPath:(NSIndexPath *)indexPath title:(NSString *)title
 {
-    NSLog(@"当前选择了%@", title);
+    DLog(@"当前选择了%@", title);
     
     // 修改导航栏的标题
     [self.monthButton setTitle:title forState:UIControlStateNormal];
@@ -298,7 +298,7 @@
 #pragma mark 弹出下拉菜单
 -(void)pop
 {
-    NSLog(@"用户点击了右侧弹出下拉菜单按钮");
+    DLog(@"用户点击了右侧弹出下拉菜单按钮");
 }
 
 #pragma mark - 懒加载

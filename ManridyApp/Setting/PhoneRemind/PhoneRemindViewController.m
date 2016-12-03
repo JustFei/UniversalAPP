@@ -49,9 +49,9 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    _funcArr = @[@[@"来电提醒",@"短信提醒"],@[@"防丢提醒",@"查找设备"],@[@"闹钟设置"]];
+    _funcArr = @[@[NSLocalizedString(@"phoneRemind", nil),NSLocalizedString(@"messageRemind", nil)],@[NSLocalizedString(@"lossRemind", nil),NSLocalizedString(@"findPer", nil)],@[NSLocalizedString(@"clockSet", nil)]];
     _imageArr = @[@[@"alert_call",@"alert_sms"],@[@"alert_lose",@"alert_find"],@[@"alert_clock"]];
-    _clockArr = @[@"闹钟1",@"闹钟2",@"闹钟3"];
+    _clockArr = @[NSLocalizedString(@"clock1", nil),NSLocalizedString(@"clock2", nil),NSLocalizedString(@"clock3", nil)];
     
     [self getPickerViewDataSource];
     for (int i = 0; i < _funcArr.count; i ++) {
@@ -66,7 +66,7 @@
     }
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
-    [titleLabel setText:@"提醒设置"];
+    [titleLabel setText:NSLocalizedString(@"remindSet", nil)];
     [titleLabel setTextColor:[UIColor whiteColor]];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     self.navigationItem.titleView = titleLabel;
@@ -106,7 +106,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"监听到%@对象的%@属性发生了改变， %@", object, keyPath, change);
+    DLog(@"监听到%@对象的%@属性发生了改变， %@", object, keyPath, change);
     NSString *new = change[@"new"];
     if (new.integerValue == kBLEstateDidConnected) {
         [self.myBleTool writeClockToPeripheral:ClockDataGetClock withClockArr:nil];
@@ -220,8 +220,8 @@
 
 - (void)presentAlertController
 {
-    UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"请连接上设备后再设置" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *ac = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"connectPerAndSet", nil) preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ac = [UIAlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:UIAlertActionStyleDefault handler:nil];
     [vc addAction:ac];
     [self presentViewController:vc animated:YES completion:nil];
 }
@@ -348,9 +348,9 @@
                     cell.timeButton.hidden = YES;
                     cell.timeSwitch.hidden = YES;
                     UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                    searchButton.frame = CGRectMake(self.view.frame.size.width - 85, 12, 70, 20);
+                    searchButton.frame = CGRectMake(self.view.frame.size.width - 95, 12, 85, 20);
                     searchButton.backgroundColor = [UIColor clearColor];
-                    [searchButton setTitle:@"开始查找" forState:UIControlStateNormal];
+                    [searchButton setTitle:NSLocalizedString(@"startSearch", nil) forState:UIControlStateNormal];
                     [searchButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                     searchButton.titleLabel.font = [UIFont systemFontOfSize:15];
                     [searchButton addTarget:self action:@selector(searchPeripheral:) forControlEvents:UIControlEventTouchUpInside];
@@ -530,8 +530,8 @@
 - (UIAlertController *)searchVC
 {
     if (!_searchVC) {
-        _searchVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"正在查找设备" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ac = [UIAlertAction actionWithTitle:@"停止查找" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        _searchVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"searchingPer", nil) preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ac = [UIAlertAction actionWithTitle:NSLocalizedString(@"stopSearch", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self.myBleTool writeSearchPeripheralWithONorOFF:NO];
         }];
         [_searchVC addAction:ac];

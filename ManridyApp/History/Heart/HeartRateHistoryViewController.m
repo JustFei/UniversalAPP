@@ -62,7 +62,7 @@
     // Do any additional setup after loading the view.
     
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.titleButton setTitle:@"历史记录" forState:UIControlStateNormal];
+    [self.titleButton setTitle:NSLocalizedString(@"history", nil) forState:UIControlStateNormal];
     [self.titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.navigationItem.titleView = self.titleButton;
     
@@ -92,7 +92,7 @@
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     NSInteger month = [components month];
-    [self.monthButton setTitle:[NSString stringWithFormat:@"%ld月",month] forState:UIControlStateNormal];
+    [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),(long)month] forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -140,7 +140,7 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
-            NSString *dateStr = [NSString stringWithFormat:@"20<%02ld%02ld%02ld>",iCurYear ,iCurMonth ,i];
+            NSString *dateStr = [NSString stringWithFormat:@"20<%02ld%02ld%02ld>",(long)iCurYear ,iCurMonth ,i];
             
             NSInteger max = 0;
             NSInteger min = 0;
@@ -181,8 +181,8 @@
                     }
                 }
 
-                NSLog(@"max == %ld",max);
-                NSLog(@"min == %ld",min);
+                DLog(@"max == %ld",(long)max);
+                DLog(@"min == %ld",(long)min);
                 
 //                if (self.heartLineChartView.yValueMax < max + 30) {
 //                    self.heartLineChartView.yValueMax = max + 30;
@@ -203,24 +203,24 @@
             [self.heartCircleChart updateChartByCurrent:@(doubleAverageNumber)];
             
             
-            [self.heartRateLabel setText: [NSString stringWithFormat:@"%ld",averageNumber]];
-            self.monthAverageLabel.text = @"当月平均心率";
+            [self.heartRateLabel setText: [NSString stringWithFormat:@"%ld",(long)averageNumber]];
+            self.monthAverageLabel.text = NSLocalizedString(@"averagerHR", nil);
             
             if (averageNumber < 60) {
                 self.state1.backgroundColor = [UIColor redColor];
                 self.state2.backgroundColor = kStateOFF;
                 self.state4.backgroundColor = kStateOFF;
-                self.stateLabel.text = @"偏低";
+                self.stateLabel.text = NSLocalizedString(@"low", nil);
             }else if (averageNumber >= 60 && averageNumber <= 100) {
                 self.state1.backgroundColor = kStateOFF;
                 self.state2.backgroundColor = [UIColor greenColor];
                 self.state4.backgroundColor = kStateOFF;
-                self.stateLabel.text = @"正常";
+                self.stateLabel.text = NSLocalizedString(@"normal", nil);
             }else {
                 self.state1.backgroundColor = kStateOFF;
                 self.state2.backgroundColor = kStateOFF;
                 self.state4.backgroundColor = [UIColor redColor];
-                self.stateLabel.text = @"偏高";
+                self.stateLabel.text = NSLocalizedString(@"high", nil);
             }
             
             // Line Chart #1
@@ -283,7 +283,7 @@
 #pragma mark - TitleMenuDelegate
 -(void)selectAtIndexPath:(NSIndexPath *)indexPath title:(NSString *)title
 {
-    NSLog(@"选择了%ld月",indexPath.row + 1);
+    DLog(@"选择了%ld月",indexPath.row + 1);
     // 修改导航栏的标题
     [self.monthButton setTitle:title forState:UIControlStateNormal];
     
@@ -316,7 +316,7 @@
 #pragma mark -弹出下拉菜单
 -(void)pop
 {
-//    NSLog(@"用户点击了右侧弹出下拉菜单按钮");
+//    DLog(@"用户点击了右侧弹出下拉菜单按钮");
 }
 
 #pragma mark - Action
@@ -352,19 +352,19 @@
 #pragma mark - PNChartDelegate
 - (void)userClickedOnLinePoint:(CGPoint)point lineIndex:(NSInteger)lineIndex
 {
-    NSLog(@"点击了%ld根线",lineIndex);
+    DLog(@"点击了%ld根线",(long)lineIndex);
 }
 
 - (void)userClickedOnLineKeyPoint:(CGPoint)point
                         lineIndex:(NSInteger)lineIndex
                        pointIndex:(NSInteger)pointIndex
 {
-    NSLog(@"当天最高 == %@，最低 == %@",_maxDataArr[pointIndex] ,_minDataArr[pointIndex]);
+    DLog(@"当天最高 == %@，最低 == %@",_maxDataArr[pointIndex] ,_minDataArr[pointIndex]);
     NSInteger max = ((NSNumber *)_maxDataArr[pointIndex]).integerValue;
     NSInteger min = ((NSNumber *)_minDataArr[pointIndex]).integerValue;
     NSInteger average = (max + min) / 2;
-    self.heartRateLabel.text = [NSString stringWithFormat:@"%ld",average];
-    self.monthAverageLabel.text = @"当天平均心率";
+    self.heartRateLabel.text = [NSString stringWithFormat:@"%ld",(long)average];
+    self.monthAverageLabel.text = NSLocalizedString(@"currentDayAveragerHR", nil);
 }
 
 #pragma mark - 懒加载

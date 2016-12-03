@@ -1,0 +1,383 @@
+/* 
+  Localizable.strings
+  ManridyApp
+
+  Created by JustFei on 2016/12/3.
+  Copyright © 2016年 Manridy.Bobo.com. All rights reserved.
+*/
+
+//MARK: 关于界面
+
+//app Name
+"appName" = "瑞动力";
+
+//软件版本号
+"softWare" = "软件版本号：V%@";
+
+//硬件版本号
+"hardWare" = "硬件版本号：V%@";
+
+//MARK: 设备绑定界面
+//搜索
+"search" = "搜索";
+
+//设备绑定
+"perBind" = "设备绑定";
+
+//已绑定的设备
+"haveBindPer" = "已绑定设备";
+
+//未绑定设备
+"haveNoBindPer" = "未绑定设备";
+
+//正在连接设备...
+"bindingPer" = "正在连接设备...";
+
+//提示
+"tips" = "提示";
+
+//请选择设备以绑定
+"choosePerToBind" = "请选择设备以绑定";
+
+//去选择
+"goToChoose" = "去选择";
+
+//已成功解除绑定
+"disbindPerSuccess" = "已成功解除绑定";
+
+//我知道了
+"IKnow" = "我知道了";
+
+//已绑定设备：设备名
+"haveBindPerName" = "已绑定设备：%@";
+
+//连接异常，请重新尝试绑定
+"bindErrorAndTryAgain" = "连接异常，请靠近设备并尝试再次连接";
+
+//确定
+"sure" = "确定";
+
+//绑定设备
+"bindPer" = "绑定设备";
+
+//解除绑定
+"disbindPer" = "解除绑定";
+
+//MARK: 提醒界面
+//来电提醒
+"phoneRemind" = "来电提醒";
+
+//短信提醒
+"messageRemind" = "短信提醒";
+
+//防丢提醒
+"lossRemind" = "防丢提醒";
+
+//查找设备
+"findPer" = "查找设备";
+
+//闹钟设置
+"clockSet" = "闹钟设置";
+
+//闹钟1
+"clock1" = "闹钟1";
+
+//闹钟2
+"clock2" = "闹钟2";
+
+//闹钟3
+"clock3" = "闹钟3";
+
+//提醒设置
+"remindSet" = "提醒设置";
+
+//请连接上设备后在设置
+"connectPerAndSet" = "请连接上设备后在设置";
+
+//开始查找
+"startSearch" = "开始查找";
+
+//正在查找设备
+"searchingPer" = "正在查找设备";
+
+//停止查找
+"stopSearch" = "停止查找";
+
+//MARK: 用户信息界面
+//性别
+"gender" = "性别";
+
+//年龄
+"age" = "年龄";
+
+//身高
+"height" = "身高";
+
+//体重
+"weight" = "体重";
+
+//请输入年龄
+"inputAge" = "请输入年龄";
+
+//请输入身高
+"inputHeight" = "请输入身高";
+
+//请输入体重
+"inputWeight" = "请输入体重";
+
+//岁
+"year" = "(岁)";
+
+//男
+"male" = "男";
+
+//女
+"Female" = "女";
+
+//用户信息
+"userInfo" = "用户信息";
+
+//从相册选择
+"choosePhotoFromPhotoAlbum" = "从相册选择";
+
+//拍照
+"takeAPhoto" = "拍照";
+
+//取消
+"cancel" = "取消";
+
+//保存成功
+"saveSuccess" = "保存成功！";
+
+//保存失败,请重新尝试
+"saveFailAndTryAgain" = "保存失败，请重新尝试！";
+
+//修改成功
+"changeSuccess" = "修改成功！";
+
+//修改失败，请重新尝试
+"changeFailAndTryAgain" = "修改失败，请重新尝试！";
+
+//信息输入不完整
+"infoNotComplete" = "信息输入不完整，可能会对数据测量产生影响，请输入完整！";
+
+//请输入用户名
+"inputUserName" = "请输入用户名";
+
+//保存
+"save" = "保存";
+
+//MARK: 设置界面
+//设置
+"set" = "设置";
+
+//信息提醒
+"infoRemind" = "信息提醒";
+
+//关于
+"about" = "关于";
+
+//用户名
+"userName" = "用户名";
+
+//MARK: 月份选择界面
+//1月
+"January" = "1月";
+
+//2月
+"February" = "2月";
+
+//3月
+"March" = "3月";
+
+//4月
+"April" = "4月";
+
+//5月
+"May" = "5月";
+
+//6月
+"June" = "6月";
+
+//7月
+"July" = "7月";
+
+//8月
+"August" = "8月";
+
+//9月
+"September" = "9月";
+
+//10月
+"October" = "10月";
+
+//11月
+"November" = "11月";
+
+//12月
+"December" = "12月";
+
+//MARK：计步历史
+//历史记录
+"history" = "历史记录";
+
+//当前月份
+"currentMonth" = "%ld月";
+
+//本月计步统计:
+"currentMonthData" = "本月计步统计：共（%ld步/%.1f公里/%ld千卡）";
+
+//平均公里和卡路里
+"averagerMandK" = "%.1f公里/%ld千卡";
+
+//MARK: 心率历史
+//当月平均心率
+"averagerHR" = "当月平均心率";
+
+//偏低
+"low" = "偏低";
+
+//正常
+"normal" = "正常";
+
+//偏高
+"high" = "偏高";
+
+//当天平均心率
+"currentDayAveragerHR" = "当天平均心率";
+
+//睡眠历史界面
+//睡眠不足
+"lackofSleep" = "睡眠不足";
+
+//睡眠偏少
+"lessofSleep" = "睡眠偏少";
+
+//睡眠正常
+"normalofSleep" = "睡眠正常";
+
+//睡眠充足
+"moreofSleep" = "睡眠充足";
+
+//当天睡眠数据
+"currentDaySleepData" = "睡眠%@小时：深睡%@小时\n浅睡%@小时";
+
+//当天没有睡眠数据
+"currentDayNOSleepData" = "当天没有睡眠数据";
+
+//MARK: 血压历史界面
+//心率
+"HRData" = "心率:%ld";
+
+//本月平均血压值
+"currentMonthBPData" = "本月平均血压值：高压：%ld 低压：%ld 心率：%ld";
+
+//当天的心率
+"currentDayHRData" = "心率:%@";
+
+//当天的血压值
+"currentDayBPData" = "%@号血压值";
+
+//MARK: 血氧历史界面
+//当天的血氧值
+"currentDayBOData" = "%@号血氧值";
+
+//MARK:计步当前
+//本周计步统计
+"currentWeekStepData" = "本周计步统计：%ld步（%.1f公里/%ld千卡）";
+
+//步
+"step" = "%@：%@步";
+
+//设备连接中。。。
+"perConnecting" = "设备连接中。。。";
+
+//未连接上设备，点击重试
+"canNotConnectPer" = "未连接上设备，点击重试";
+
+//MARK: 运动目标设置界面
+//目标设置
+"targetSet" = "目标设置";
+
+//保存成功
+"saveSuccess" = "保存成功";
+
+//保存失败，重试
+"saveFail" = "保存失败，请重新尝试";
+
+//正在设置目标
+"settingTarget" = "正在设置运动目标";
+
+//设置超时，请重试
+"setOverTime" = "设置超时，请连接或靠近设备并重试。";
+
+//请先去设置个人信息
+"plzSetUserInfoFirst" = "请先去设置您的个人信息，否则无法设置该功能。";
+
+//Mark :心率当前
+//心率次/分
+"currentHRData" = "%@：%@次/分钟";
+
+//最近几次心率
+"lastTimesHRData" = "最近几次心率";
+
+//MARK: 睡眠当前
+//此次睡眠
+"currentSleepData" = "此次睡眠：%@-%@ 浅睡：%.1f时 深睡：%.1f时";
+
+//MARK: 血压当前
+//点击血压的值
+"currenBPData" = "%@: 高压：%@ 低压：%@ 心率：%@";
+
+//MARK: Main界面
+//计步
+"Step" = "计步";
+//心率
+"HeartHeart" = "心率";
+//睡眠
+"Sleep" = "睡眠";
+//血压
+"BloodPressure" = "血压";
+//血氧
+"BloodO2" = "血氧";
+
+//未绑定设备，前去绑定
+"haveNOBindPer" = "未绑定设备，请前往设置绑定设备";
+
+//公里/千卡
+"currentStepAndKCal" = "%.1f公里/%@千卡";
+
+//浅睡
+"lowSleepData" = "浅睡%0.2f小时";
+//深睡
+"deepSleepData" = "深睡%.2f小时";
+
+//最近几次睡眠
+"lastTimeSleep" = "最近几次睡眠";
+
+//今日血压
+"todayBP" = "今日血压";
+
+//今日血氧
+"todayBO" = "今日血氧";
+
+//MARK: BLETool
+//该设备尚未打开蓝牙
+"phoneNotOpenBLE" = "该设备尚未打开蓝牙，请在设置中打开";
+
+//蓝牙已打开
+"bleHaveOpen" = "蓝牙已经打开";
+
+//设备意外断开，等待重连
+"bleReConnect" = "设备意外断开，等待重连";
+
+//手环丢失通知
+"perDismissNodify" = "手环丢失通知";
+
+//通知副标题
+"PerDismissNodifySubtitle" = "注意！您的手环已经处于非连接状态，可能已经丢失！";
+
+//通知正文
+"PerDismissNodifyContent" = "注意！您的手环已于%@离开可连接范围，可能丢失！请注意！";
+
+

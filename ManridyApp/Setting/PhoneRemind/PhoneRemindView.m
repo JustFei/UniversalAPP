@@ -112,7 +112,7 @@
         [self.contentView addSubview:view];
         _arrowImageView = view;
         
-        NSLog(@"headerViewRect == %@",NSStringFromCGRect(_arrowImageView.frame));
+        DLog(@"headerViewRect == %@",NSStringFromCGRect(_arrowImageView.frame));
     }
     
     return _arrowImageView;
