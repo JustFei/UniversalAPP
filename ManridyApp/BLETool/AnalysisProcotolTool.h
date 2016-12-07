@@ -42,6 +42,9 @@
 //解析运动目标的数据（07|87）
 - (manridyModel *)analysisSportTargetData:(NSData *)data WithHeadStr:(NSString *)head;
 
+//解析配对成功失败的数据（08|88）
+- (manridyModel *)analysisPairData:(NSData *)data WithHeadStr:(NSString *)head;
+
 //解析心率开关的数据（09|89）
 - (manridyModel *)analysisHeartStateData:(NSData *)data WithHeadStr:(NSString *)head;
 

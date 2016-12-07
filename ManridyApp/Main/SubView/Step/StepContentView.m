@@ -9,6 +9,7 @@
 #import "StepContentView.h"
 #import "AppDelegate.h"
 #import "StepHistoryViewController.h"
+#import "BindPeripheralViewController.h"
 
 
 @interface StepContentView () 
@@ -155,6 +156,9 @@
                 [delegate.mainVc.stepView.stepLabel setText:NSLocalizedString(@"canNotConnectPer", nil)];
             }
         });
+    }else {
+        BindPeripheralViewController *vc = [[BindPeripheralViewController alloc] init];
+        [[self findViewController:self].navigationController pushViewController:vc animated:YES];
     }
 }
 

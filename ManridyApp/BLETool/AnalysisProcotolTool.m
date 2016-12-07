@@ -379,6 +379,28 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
     return model;
 }
 
+#pragma mark 解析配对成功失败的数据（08|88）
+- (manridyModel *)analysisPairData:(NSData *)data WithHeadStr:(NSString *)head
+{
+    manridyModel *model = [[manridyModel alloc] init];
+    model.receiveDataType = ReturnModelTypePairSuccess;
+    const unsigned char *hexBytes = [data bytes];
+    if ([head isEqualToString:@"08"]) {
+        model.isReciveDataRight = ResponsEcorrectnessDataRgith;
+    }else if ([head isEqualToString:@"88"]) {
+        model.isReciveDataRight = ResponsEcorrectnessDataFail;
+        NSString *TT = [NSString stringWithFormat:@"%02x", hexBytes[1]];
+        NSString *SS = [NSString stringWithFormat:@"%02x", hexBytes[2]];
+        if ([TT isEqualToString:@"f0"] || [TT isEqualToString:@"F0"]) {
+            if (![SS isEqualToString:@"00"]) {
+                model.pairSuccess = NO;
+            }
+        }
+    }
+    
+    return model;
+}
+
 #pragma mark 解析心率开关的数据（09|89）
 - (manridyModel *)analysisHeartStateData:(NSData *)data WithHeadStr:(NSString *)head
 {

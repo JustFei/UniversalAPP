@@ -32,6 +32,7 @@ typedef enum : NSUInteger {
     ReturnModelTypeHeartRateModel,
     ReturnModelTypeSleepModel,
     ReturnModelTypeSportZeroModel,
+    ReturnModelTypePairSuccess,
     ReturnModelTypeHeartRateStateModel,
     ReturnModelTypeBloodModel,
     ReturnModelTypeBloodO2Model
@@ -83,6 +84,9 @@ typedef enum : NSUInteger {
 
 //血氧模型
 @property (nonatomic ,strong) BloodO2Model *bloodO2Model;
+
+//配对是否成功
+@property (nonatomic ,assign) BOOL pairSuccess;
 
 @end
 

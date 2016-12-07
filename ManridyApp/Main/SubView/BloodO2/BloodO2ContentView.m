@@ -85,6 +85,7 @@
         //当历史数据查完并存储到数据库后，查询数据库当天的睡眠数据，并加入数据源
         [self.boArr removeAllObjects];
         [self.dateArr removeAllObjects];
+        [self.timeArr removeAllObjects];
         
         if (BODataArr.count == 0) {
             [self showChartViewWithData:NO];
@@ -99,6 +100,7 @@
                     NSString *day = [model.dayString substringFromIndex:5];
                     NSString *time = [model.timeString substringToIndex:5];
                     [self.dateArr addObject:[NSString stringWithFormat:@"%@\n%@",day , time]];
+                    [self.timeArr addObject:model.timeString];
                 }
             }else {
                 for (BloodO2Model *model in BODataArr) {
@@ -107,6 +109,7 @@
                     NSString *day = [model.dayString substringFromIndex:5];
                     NSString *time = [model.timeString substringToIndex:5];
                     [self.dateArr addObject:[NSString stringWithFormat:@"%@\n%@",day , time]];
+                    [self.timeArr addObject:model.timeString];
                 }
             }
             
@@ -134,9 +137,10 @@
                         lineIndex:(NSInteger)lineIndex
                        pointIndex:(NSInteger)pointIndex
 {
-    NSString *date = self.dateArr[pointIndex];
+    NSString *time = self.timeArr[pointIndex];
     NSString *bo = self.boArr[pointIndex];
-    [self.currentBOLabel setText:[NSString stringWithFormat:@"%@：%@%%",[date substringFromIndex:6] ,bo]];
+    
+    [self.currentBOLabel setText:[NSString stringWithFormat:@"%@：%ld%%",time ,bo.integerValue]];
 }
 
 #pragma mark - 懒加载
@@ -192,6 +196,15 @@
     }
     
     return _dateArr;
+}
+
+- (NSMutableArray *)timeArr
+{
+    if (!_timeArr) {
+        _timeArr = [NSMutableArray array];
+    }
+    
+    return _timeArr;
 }
 
 @end

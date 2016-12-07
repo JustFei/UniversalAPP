@@ -123,6 +123,9 @@ typedef enum{
 //get version
 - (void)receiveVersionWithVersionStr:(NSString *)versionStr;
 
+//get pair success?
+- (void)receivePairWitheModel:(manridyModel *)manridyModel;
+
 @end
 
 @protocol BleReceiveSearchResquset <NSObject>

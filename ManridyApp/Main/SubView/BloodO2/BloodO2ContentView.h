@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *progressImageView;
 @property (weak, nonatomic) IBOutlet UIView *downView;
 @property (nonatomic ,copy) NSMutableArray *dateArr;
+@property (nonatomic ,strong) NSMutableArray *timeArr;
 @property (nonatomic ,weak) PNLineChart *BOChart;
 @property (weak, nonatomic) IBOutlet UILabel *currentBOLabel;
 

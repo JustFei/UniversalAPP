@@ -36,6 +36,9 @@
 
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
 @property (nonatomic ,strong) UIAlertController *searchVC;
+@property (nonatomic ,strong) Remind *remindModel;
+@property (nonatomic ,strong) UISwitch *phoneSwitch;
+@property (nonatomic ,strong) UISwitch *messageSwitch;
 
 @end
 
@@ -188,29 +191,17 @@
 - (void)SmsAndPhoneRemind:(UISwitch *)sender
 {
     if (self.myBleTool.connectState == kBLEstateDidConnected) {
-        Remind *model = [[Remind alloc] init];
-        for (int tag = 0; tag < 2; tag ++) {
-            UISwitch *sth = (UISwitch *)[self.view viewWithTag:tag + 100];
-            switch (tag) {
-                case 0:
-                {
-                    model.phone = sth.on;
-                    [[NSUserDefaults standardUserDefaults] setBool:sth.on forKey:@"isRemindPhone"];
-                }
-                    break;
-                case 1:
-                {
-                    model.message = sth.on;
-                    [[NSUserDefaults standardUserDefaults] setBool:sth.on forKey:@"isRemindMessage"];
-                }
-                    
-                    break;
-                    
-                default:
-                    break;
-            }
+        self.remindModel = [[Remind alloc] init];
+        if (sender == self.phoneSwitch) {
+            self.remindModel.phone = self.phoneSwitch.on;
+            [[NSUserDefaults standardUserDefaults] setBool:self.phoneSwitch.on forKey:@"isRemindPhone"];
         }
-        [self.myBleTool writePhoneAndMessageRemindToPeripheral:model];
+        if (sender == self.messageSwitch) {
+            self.remindModel.message = self.messageSwitch.on;
+            [[NSUserDefaults standardUserDefaults] setBool:self.messageSwitch.on forKey:@"isRemindMessage"];
+        }
+        
+        [self.myBleTool writePhoneAndMessageRemindToPeripheral:self.remindModel];
     }else {
         [self presentAlertController];
         [sender setOn:!sender.on];
@@ -313,14 +304,16 @@
             cell.iconImageView.image = [UIImage imageNamed:imgArr[indexPath.row]];
             cell.functionName.text = funArr[indexPath.row];
             cell.timeButton.hidden = YES;
-            cell.timeSwitch.tag = indexPath.row + 100;
+//            cell.timeSwitch.tag = indexPath.row + 100;
             BOOL isMessage = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindMessage"];
             BOOL isPhone = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindPhone"];
             if (indexPath.row == 0) {
                 [cell.timeSwitch setOn:isPhone];
+                self.phoneSwitch = cell.timeSwitch;
             }
             if (indexPath.row == 1) {
                 [cell.timeSwitch setOn:isMessage];
+                self.messageSwitch = cell.timeSwitch;
             }
             [cell.timeSwitch addTarget:self action:@selector(SmsAndPhoneRemind:) forControlEvents:UIControlEventValueChanged];
         }
@@ -457,6 +450,25 @@
 }
 
 #pragma mark - receiveDelegate
+- (void)receivePairWitheModel:(manridyModel *)manridyModel
+{
+    if (manridyModel.receiveDataType == ReturnModelTypePairSuccess) {
+        if (manridyModel.isReciveDataRight == ResponsEcorrectnessDataFail) {
+            if (manridyModel.pairSuccess == NO) {
+                UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"配对失败，请重试。" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAC = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self.phoneSwitch setOn:NO];
+                    [self.messageSwitch setOn:NO];
+                    [[NSUserDefaults standardUserDefaults] setBool:self.phoneSwitch.on forKey:@"isRemindPhone"];
+                    [[NSUserDefaults standardUserDefaults] setBool:self.messageSwitch.on forKey:@"isRemindMessage"];
+                }];
+                [vc addAction:okAC];
+                [self presentViewController:vc animated:YES completion:nil];
+            }
+        }
+    }
+}
+
 - (void)receiveSetClockDataWithModel:(manridyModel *)manridyModel
 {
 //    self.clockTimeArr = manridyModel.clockModelArr;

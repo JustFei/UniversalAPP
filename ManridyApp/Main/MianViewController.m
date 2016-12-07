@@ -34,12 +34,6 @@
     BOOL isShowList;
     NSArray *_userArr;
     NSInteger _currentPage;
-    
-    BOOL haveNewStep;
-    BOOL haveNewHeartRate;
-    BOOL haveNewSleep;
-    BOOL haveNewBP;
-    BOOL haveNewBO;
 }
 @property (nonatomic ,weak) UIScrollView *backGroundView;
 
@@ -76,11 +70,11 @@
 {
     [super viewDidLoad];
     _titleArr = @[NSLocalizedString(@"Step", nil),NSLocalizedString(@"HeartHeart", nil),NSLocalizedString(@"Sleep", nil),NSLocalizedString(@"BloodPressure", nil),NSLocalizedString(@"BloodO2", nil)];
-    haveNewStep = YES;
-    haveNewHeartRate = YES;
-    haveNewSleep = YES;
-    haveNewBP = YES;
-    haveNewBO = YES;
+    self.haveNewStep = YES;
+    self.haveNewHeartRate = YES;
+    self.haveNewSleep = YES;
+    self.haveNewBP = YES;
+    self.haveNewBO = YES;
     
     self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
     [self createUI];
@@ -357,7 +351,7 @@
                 [dateformatter setDateFormat:@"yyyy/MM/dd"];
                 NSDate *currentDate = [NSDate date];
                 NSString *currentDateString = [dateformatter stringFromDate:currentDate];
-                haveNewStep = YES;
+                self.haveNewStep = YES;
                 switch (manridyModel.sportModel.motionType) {
                     case MotionTypeStep:
                         //对获取的步数信息做操作
@@ -365,7 +359,7 @@
                     case MotionTypeStepAndkCal:
                     {
                         [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
-                        double mileage = manridyModel.sportModel.mileageNumber.integerValue / 1000;
+                        double mileage = manridyModel.sportModel.mileageNumber.integerValue / 1000.f;
                         [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:NSLocalizedString(@"currentStepAndKCal", nil),mileage ,manridyModel.sportModel.kCalNumber]];
 
                         if (_userArr.count != 0) {
@@ -492,10 +486,10 @@
                     [self.myFmdbTool insertHeartRateModel:manridyModel.heartRateModel];
                 }
                 [self queryHeartDataAndShow];
-                haveNewHeartRate = NO;
+                self.haveNewHeartRate = NO;
             }else if (manridyModel.heartRateModel.heartRateState == HeartRateDataLastData) {
                 [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
-                haveNewHeartRate = YES;
+                self.haveNewHeartRate = YES;
 #if 0
                 if (self.heartRateView.dataArr.count == 7) {
                     //先移除掉前面的第一个数据
@@ -545,10 +539,10 @@
                     //这里不查询历史，直接查询数据库展示即可
                     [self querySleepDataBaseWithDateString:currentDateString];
                 }
-                haveNewSleep = NO;
+                self.haveNewSleep = NO;
             }else {
                 [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
-                haveNewSleep = YES;
+                self.haveNewSleep = YES;
             }
         }
     }
@@ -587,10 +581,10 @@
                         
                         [self.bloodPressureView queryBloodWithBloodArr:bloodDataArr];
                     }
-                    haveNewBP = NO;
+                    self.haveNewBP = NO;
                 }else {
                     [self.myBleTool writeBloodToPeripheral:BloodDataHistoryData];
-                    haveNewBP = YES;
+                    self.haveNewBP = YES;
                 }
             }
         }
@@ -629,10 +623,10 @@
                         
                         [self.boView queryBOWithBloodArr:bloodDataArr];
                     }
-                    haveNewBO = NO;
+                    self.haveNewBO = NO;
                 }else {
                     [self.myBleTool writeBloodO2ToPeripheral:BloodO2DataHistoryData];
-                    haveNewBO = YES;
+                    self.haveNewBO = YES;
                 }
             }
         }
@@ -910,7 +904,7 @@
 {
     SettingViewController *vc = [[SettingViewController alloc] init];
     
-//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"all_back_icon"] style:UIBarButtonItemStylePlain target:nil action:nil];
+
     
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -967,8 +961,8 @@
         switch (self.pageControl.currentPage) {
             case 0:
             {
-                if (haveNewStep) {
-                    haveNewStep = NO;
+                if (self.haveNewStep) {
+                    self.haveNewStep = NO;
                     [self.stepView showStepStateLabel];
                 }
             }
@@ -976,14 +970,14 @@
             case 1:
             {
                 if (self.myBleTool.connectState == kBLEstateDidConnected ) {
-                    if (haveNewHeartRate) {
+                    if (self.haveNewHeartRate) {
                         [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
                         [self.heartRateView showHRStateLabel];
                     }
                 }else {
-                    if (haveNewHeartRate) {
+                    if (self.haveNewHeartRate) {
                         [self queryHeartDataAndShow];
-                        haveNewHeartRate = NO;
+                        self.haveNewHeartRate = NO;
                         [self.heartRateView showHRStateLabel];
                     }
                 }
@@ -992,7 +986,7 @@
             case 2:
             {
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                    if (haveNewSleep) {
+                    if (self.haveNewSleep) {
                         [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
                         self.sleepView.currentSleepStateLabel.text = NSLocalizedString(@"lastTimeSleep", nil);
                     }
@@ -1001,9 +995,9 @@
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     formatter.dateFormat = @"yyyy/MM/dd";
                     NSString *currentDateString = [formatter stringFromDate:currentDate];
-                    if (haveNewSleep) {
+                    if (self.haveNewSleep) {
                         [self querySleepDataBaseWithDateString:currentDateString];
-                        haveNewSleep = NO;
+                        self.haveNewSleep = NO;
                         self.sleepView.currentSleepStateLabel.text = NSLocalizedString(@"lastTimeSleep", nil);
                     }
                 }
@@ -1012,7 +1006,7 @@
             case 3:
             {
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                    if (haveNewBP) {
+                    if (self.haveNewBP) {
                         [self.myBleTool writeBloodToPeripheral:BloodDataHistoryData];
                         self.bloodPressureView.currentBPLabel.text = NSLocalizedString(@"todayBP", nil);
                     }
@@ -1022,10 +1016,10 @@
                     formatter.dateFormat = @"yyyy/MM/dd";
                     NSString *currentDateString = [formatter stringFromDate:currentDate];
                     
-                    if (haveNewBP) {
+                    if (self.haveNewBP) {
                         NSArray *bloodArr = [self.myFmdbTool queryBloodWithDate:currentDateString];
                         [self.bloodPressureView queryBloodWithBloodArr:bloodArr];
-                        haveNewBP = NO;
+                        self.haveNewBP = NO;
                         self.bloodPressureView.currentBPLabel.text = NSLocalizedString(@"todayBP", nil);
                     }
                 }
@@ -1034,7 +1028,7 @@
             case 4:
             {
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                    if (haveNewBO) {
+                    if (self.haveNewBO) {
                         [self.myBleTool writeBloodO2ToPeripheral:BloodO2DataHistoryData];
                         self.boView.currentBOLabel.text = NSLocalizedString(@"todayBO", nil);
                     }
@@ -1043,10 +1037,10 @@
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     formatter.dateFormat = @"yyyy/MM/dd";
                     NSString *currentDateString = [formatter stringFromDate:currentDate];
-                    if (haveNewBO) {
+                    if (self.haveNewBO) {
                         NSArray *bloodArr = [self.myFmdbTool queryBloodO2WithDate:currentDateString];
                         [self.boView queryBOWithBloodArr:bloodArr];
-                        haveNewBO = NO;
+                        self.haveNewBO = NO;
                         self.boView.currentBOLabel.text = NSLocalizedString(@"todayBO", nil);
                     }
                 }

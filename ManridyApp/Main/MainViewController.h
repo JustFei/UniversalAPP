@@ -28,6 +28,12 @@
 @property (nonatomic ,strong) BloodPressureContentView  *bloodPressureView;
 
 @property (nonatomic ,strong) BloodO2ContentView *boView;
+@property (nonatomic ,assign) BOOL haveNewStep;
+@property (nonatomic ,assign) BOOL haveNewHeartRate;
+@property (nonatomic ,assign) BOOL haveNewSleep;
+@property (nonatomic ,assign) BOOL haveNewBP;
+@property (nonatomic ,assign) BOOL haveNewBO;
+
 
 - (void)writeData;
 

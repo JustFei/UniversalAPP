@@ -654,6 +654,11 @@ static BLETool *bleTool = nil;
         }
         
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        delegate.mainVc.haveNewStep = YES;
+        delegate.mainVc.haveNewHeartRate = YES;
+        delegate.mainVc.haveNewSleep = YES;
+        delegate.mainVc.haveNewBP = YES;
+        delegate.mainVc.haveNewBO = YES;
         [delegate.mainVc hiddenFunctionView];
         
     }else {
@@ -793,6 +798,12 @@ static BLETool *bleTool = nil;
             manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisSportTargetData:value WithHeadStr:headStr];
             if ([self.receiveDelegate respondsToSelector:@selector(receiveMotionTargetWithModel:)]) {
                 [self.receiveDelegate receiveMotionTargetWithModel:model];
+            }
+            
+        }else if ([headStr isEqualToString:@"08"] || [headStr isEqualToString:@"88"]) {
+            manridyModel *model = [[AnalysisProcotolTool shareInstance]analysisPairData:value WithHeadStr:headStr];
+            if ([self.receiveDelegate respondsToSelector:@selector(receivePairWitheModel:)]) {
+                [self.receiveDelegate receivePairWitheModel:model];
             }
             
         }else if ([headStr isEqualToString:@"09"] || [headStr isEqualToString:@"89"]) {
