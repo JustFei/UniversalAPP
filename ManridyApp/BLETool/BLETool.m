@@ -838,13 +838,20 @@ static BLETool *bleTool = nil;
 //                [_fmTool saveGPSToDataBase:model];
             }
         }else if ([headStr isEqualToString:@"0f"] || [headStr isEqualToString:@"0F"]) {
-            NSString *MAStr = [NSString stringWithFormat:@"%x", hexBytes[7]];
-            NSString *MIStr = [NSString stringWithFormat:@"%x", hexBytes[8]];
-            NSString *REStr = [NSString stringWithFormat:@"%x", hexBytes[9]];
-            
-            NSString *versionStr = [[MAStr stringByAppendingString:[NSString stringWithFormat:@".%@",MIStr]] stringByAppendingString:[NSString stringWithFormat:@".%@",REStr]];
-            if ([self.receiveDelegate respondsToSelector:@selector(receiveVersionWithVersionStr:)]) {
-                [self.receiveDelegate receiveVersionWithVersionStr:versionStr];
+            //判断是版本号还是电量
+            NSString *typeStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
+            if ([typeStr isEqualToString:@"06"]) {
+                NSString *batteryStr = [NSString stringWithFormat:@"%x", hexBytes[8]];
+                DLog(@"电量：%@",batteryStr);
+            }else {
+                NSString *MAStr = [NSString stringWithFormat:@"%x", hexBytes[7]];
+                NSString *MIStr = [NSString stringWithFormat:@"%x", hexBytes[8]];
+                NSString *REStr = [NSString stringWithFormat:@"%x", hexBytes[9]];
+                
+                NSString *versionStr = [[MAStr stringByAppendingString:[NSString stringWithFormat:@".%@",MIStr]] stringByAppendingString:[NSString stringWithFormat:@".%@",REStr]];
+                if ([self.receiveDelegate respondsToSelector:@selector(receiveVersionWithVersionStr:)]) {
+                    [self.receiveDelegate receiveVersionWithVersionStr:versionStr];
+                }
             }
         }else if ([headStr isEqualToString:@"fc"] || [headStr isEqualToString:@"FC"]) {
             NSString *secondStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];

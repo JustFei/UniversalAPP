@@ -10,15 +10,15 @@
 
 #import <UserNotifications/UserNotifications.h>
 #import "manridyBleDevice.h"
-#import <CoreTelephony/CTCallCenter.h>
-#import <CoreTelephony/CTCall.h>
+//#import <CoreTelephony/CTCallCenter.h>
+//#import <CoreTelephony/CTCall.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 
 @interface AppDelegate () <BleDiscoverDelegate, BleConnectDelegate ,BleReceiveSearchResquset , UNUserNotificationCenterDelegate>
 {
     SystemSoundID soundID;
-    CTCallCenter *_callCenter;
+//    CTCallCenter *_callCenter;
     BOOL _isBind;
 }
 @property (nonatomic ,strong) UIAlertController *searchVC;
@@ -54,12 +54,6 @@ static void completionCallback(SystemSoundID mySSID)
     self.mainVc = [[MainViewController alloc] init];
     
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:self.mainVc];
-//    if (_isBind) {
-//        //蓝牙是否打开
-//        if (self.myBleTool.systemBLEstate == SystemBLEStatePoweredOn) {
-//            [self connectBLE];
-//        }
-//    }
     
     //监听state变化的状态
     [self.myBleTool addObserver:self forKeyPath:@"systemBLEstate" options: NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
@@ -201,6 +195,7 @@ static void completionCallback(SystemSoundID mySSID)
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

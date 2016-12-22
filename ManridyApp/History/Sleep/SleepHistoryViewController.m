@@ -13,6 +13,7 @@
 #import "FMDBTool.h"
 #import "SleepModel.h"
 #import "UserInfoModel.h"
+#import "NSStringTool.h"
 
 #define kCurrentStateOFF [UIColor colorWithRed:53.0 / 255.0 green:113.0 / 225.0 blue:161.0 / 255.0 alpha:1]
 
@@ -59,6 +60,7 @@
 
 @property (nonatomic ,strong) UISwipeGestureRecognizer *oneFingerSwipedown;
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
+@property (nonatomic ,strong) NSArray *monthArr;
 @end
 
 @implementation SleepHistoryViewController
@@ -104,7 +106,14 @@
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     NSInteger month = [components month];
-    [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),month] forState:UIControlStateNormal];
+    
+    //TODO:判断中英文
+    NSString *language = [NSStringTool getPreferredLanguage];
+    if ([language isEqualToString:@"zh-Hans"] || [language isEqualToString:@"zh-Hant"]) {
+        [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),(long)month] forState:UIControlStateNormal];
+    }else {
+        [self.monthButton setTitle:NSLocalizedString(self.monthArr[month - 1], nil) forState:UIControlStateNormal];
+    }
     
     [self.sumSleepChart setXLabels:_dateArr];
     [self.deepSleepChart setXLabels:_dateArr];
@@ -474,6 +483,15 @@
         _myFmdbTool = [[FMDBTool alloc] initWithPath:@"UserList"];
     }
     return _myFmdbTool;
+}
+
+- (NSArray *)monthArr
+{
+    if (!_monthArr) {
+        _monthArr = @[@"January",@"February",@"March",@"April",@"May",@"June",@"July",@"August",@"September",@"October",@"November",@"December"];
+    }
+    
+    return _monthArr;
 }
 
 @end

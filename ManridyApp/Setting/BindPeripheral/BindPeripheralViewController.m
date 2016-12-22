@@ -70,6 +70,7 @@
     }
     
     self.navigationItem.title = NSLocalizedString(@"perBind", nil);
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     self.view.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
     

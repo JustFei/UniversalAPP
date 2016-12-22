@@ -12,6 +12,7 @@
 #import "HeartRateModel.h"
 #import "DropdownMenuView.h"
 #import "TitleMenuViewController.h"
+#import "NSStringTool.h"
 
 
 #define kStateOFF [UIColor colorWithRed:77.0 / 255.0 green:132.0 / 255.0 blue:195.0 / 255.0 alpha:1]
@@ -51,6 +52,7 @@
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
 
 @property (nonatomic ,strong) UIButton *titleButton;
+@property (nonatomic ,strong) NSArray *monthArr;
 
 @end
 
@@ -92,7 +94,14 @@
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     NSInteger month = [components month];
-    [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),(long)month] forState:UIControlStateNormal];
+    
+    //TODO:判断中英文
+    NSString *language = [NSStringTool getPreferredLanguage];
+    if ([language isEqualToString:@"zh-Hans"] || [language isEqualToString:@"zh-Hant"]) {
+        [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),(long)month] forState:UIControlStateNormal];
+    }else {
+        [self.monthButton setTitle:NSLocalizedString(self.monthArr[month - 1], nil) forState:UIControlStateNormal];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -377,11 +386,11 @@
         view.yValueMin = 0;
         view.yValueMax = 200;
         if (self.view.frame.size.width == 320) {
-            view.xLabelFont = [UIFont systemFontOfSize:6];
+            view.xLabelFont = [UIFont systemFontOfSize:5.5];
         }else {
             view.xLabelFont = [UIFont systemFontOfSize:8];
         }
-        view.xLabelWidth = 10;
+        view.xLabelWidth = 15;
         view.chartMarginLeft = 30;
         view.chartMarginRight = 0;
 
@@ -417,6 +426,15 @@
     }
     
     return _myFmdbTool;
+}
+
+- (NSArray *)monthArr
+{
+    if (!_monthArr) {
+        _monthArr = @[@"January",@"February",@"March",@"April",@"May",@"June",@"July",@"August",@"September",@"October",@"November",@"December"];
+    }
+    
+    return _monthArr;
 }
 
 @end

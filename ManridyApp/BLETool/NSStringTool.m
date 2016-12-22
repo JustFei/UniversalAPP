@@ -91,11 +91,11 @@
             timeStr = [timeStr stringByAppendingString:@"00"];
         }else if ([weStr isEqualToString:@"Mon"] || [weStr isEqualToString:@"周一"]) {
             timeStr = [timeStr stringByAppendingString:@"01"];
-        }else if ([weStr isEqualToString:@"Tues"] || [weStr isEqualToString:@"周二"]) {
+        }else if ([weStr isEqualToString:@"Tue"] || [weStr isEqualToString:@"周二"]) {
             timeStr = [timeStr stringByAppendingString:@"02"];
         }else if ([weStr isEqualToString:@"Wed"] || [weStr isEqualToString:@"周三"]) {
             timeStr = [timeStr stringByAppendingString:@"03"];
-        }else if ([weStr isEqualToString:@"Thur"] || [weStr isEqualToString:@"周四"]) {
+        }else if ([weStr isEqualToString:@"Thu"] || [weStr isEqualToString:@"周四"]) {
             timeStr = [timeStr stringByAppendingString:@"04"];
         }else if ([weStr isEqualToString:@"Fri"] || [weStr isEqualToString:@"周五"]) {
             timeStr = [timeStr stringByAppendingString:@"05"];
@@ -389,6 +389,14 @@
 + (float)getKcal:(NSInteger)step withHeight:(float)height andWeitght:(float)weight
 {
     return ([self getMileage:step withHeight:height] / 100.0) * 0.0766666666667 * (weight ? weight : 60);
+}
+
++ (NSString*)getPreferredLanguage {
+    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+    NSArray* languages = [defs objectForKey:@"AppleLanguages"];
+    NSString* preferredLang = [languages objectAtIndex:0];
+    NSLog(@"Preferred Language:%@", preferredLang);
+    return preferredLang;
 }
 
 @end

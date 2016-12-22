@@ -34,4 +34,7 @@
 
 + (float)getKcal:(NSInteger)step withHeight:(float)height andWeitght:(float)weight;
 
+//判断当前语言环境
++ (NSString*)getPreferredLanguage;
+
 @end

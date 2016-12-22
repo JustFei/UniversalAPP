@@ -13,8 +13,7 @@
 #import "TitleMenuViewController.h"
 #import "SportModel.h"
 #import "UserInfoModel.h"
-
-
+#import "NSStringTool.h"
 
 @interface StepHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate>
 {
@@ -42,6 +41,7 @@
 @property (nonatomic ,weak) PNCircleChart *stepCircleChart;
 
 @property (nonatomic ,strong) UISwipeGestureRecognizer *oneFingerSwipedown;
+@property (nonatomic ,strong) NSArray *monthArr;
 
 @end
 
@@ -83,7 +83,16 @@
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     NSInteger month = [components month];
-    [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),(long)month] forState:UIControlStateNormal];
+    
+    //TODO:判断中英文
+    NSString *language = [NSStringTool getPreferredLanguage];
+    if ([language isEqualToString:@"zh-Hans"] || [language isEqualToString:@"zh-Hant"]) {
+        [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),(long)month] forState:UIControlStateNormal];
+    }else {
+        [self.monthButton setTitle:NSLocalizedString(self.monthArr[month - 1], nil) forState:UIControlStateNormal];
+    }
+    
+    
     
     [self.stepBarChart setXLabels:_dateArr];
 }
@@ -353,5 +362,14 @@
     }
     
     return _myFmdbTool;
+}
+
+- (NSArray *)monthArr
+{
+    if (!_monthArr) {
+        _monthArr = @[@"January",@"February",@"March",@"April",@"May",@"June",@"July",@"August",@"September",@"October",@"November",@"December"];
+    }
+    
+    return _monthArr;
 }
 @end

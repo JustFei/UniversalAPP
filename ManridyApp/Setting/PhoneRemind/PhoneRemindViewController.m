@@ -25,6 +25,9 @@
     
     NSMutableArray *_hourArr;
     NSMutableArray *_minArr;
+    NSTimer *searchPer;
+    int secondsCountDown; //倒计时总时长
+    NSTimer *countDownTimer;
 }
 @property (nonatomic ,weak) UITableView *remindTableView;
 @property (nonatomic ,strong) NSMutableArray *clockTimeArr;
@@ -172,19 +175,35 @@
     if (self.myBleTool.connectState == kBLEstateDidConnected) {
         [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:@"isFindMyPeripheral"];
     }else {
-        [self presentAlertController];
-        [sender setOn:!sender.on];
+        [self presentAlertController:sender];
+//        [sender setOn:!sender.on];
     }
     
 }
 
 - (void)searchPeripheral:(UIButton *)sender
 {
-    if (self.myBleTool.connectState == kBLEstateDidConnected) {
-        [self.myBleTool writeSearchPeripheralWithONorOFF:YES];
-        [self presentViewController:self.searchVC animated:YES completion:nil];
-    }else {
-        [self presentAlertController];
+    [self.myBleTool writeSearchPeripheralWithONorOFF:YES];
+    [self presentViewController:self.searchVC animated:YES completion:nil];
+    
+    //设置倒计时总时长
+    secondsCountDown = 10;//60秒倒计时
+    //开始倒计时
+    countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES]; //启动倒计时后会每秒钟调用一次方法 timeFireMethod
+}
+
+-(void)timeFireMethod{
+    //倒计时-1
+    secondsCountDown--;
+    //修改倒计时标签现实内容
+    
+    if (self.searchVC) {
+        self.searchVC.message = [NSString stringWithFormat:NSLocalizedString(@"searchingPer", nil),secondsCountDown];
+        //当倒计时到0时，做需要的操作，比如验证码过期不能提交
+        if(secondsCountDown==0){
+            [countDownTimer invalidate];
+            [self.searchVC dismissViewControllerAnimated:YES completion:nil];
+        }
     }
 }
 
@@ -203,16 +222,17 @@
         
         [self.myBleTool writePhoneAndMessageRemindToPeripheral:self.remindModel];
     }else {
-        [self presentAlertController];
-        [sender setOn:!sender.on];
+        
+        [self presentAlertController:sender];
     }
-    
 }
 
-- (void)presentAlertController
+- (void)presentAlertController:(UISwitch *)sender
 {
     UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"connectPerAndSet", nil) preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *ac = [UIAlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *ac = [UIAlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [sender setOn:!sender.on];
+    }];
     [vc addAction:ac];
     [self presentViewController:vc animated:YES completion:nil];
 }
@@ -341,7 +361,7 @@
                     cell.timeButton.hidden = YES;
                     cell.timeSwitch.hidden = YES;
                     UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                    searchButton.frame = CGRectMake(self.view.frame.size.width - 95, 12, 85, 20);
+                    searchButton.frame = CGRectMake(self.view.frame.size.width - 150, 12, 140, 20);
                     searchButton.backgroundColor = [UIColor clearColor];
                     [searchButton setTitle:NSLocalizedString(@"startSearch", nil) forState:UIControlStateNormal];
                     [searchButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -383,8 +403,8 @@
                     [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:self.clockTimeArr];
                     [self.remindTableView reloadData];
                 }else {
-                    [weakCell.timeSwitch setOn:!weakCell.timeSwitch.on];
-                    [weakSelf presentAlertController];
+//                    [weakCell.timeSwitch setOn:!weakCell.timeSwitch.on];
+                    [weakSelf presentAlertController:weakCell.timeSwitch];
                 }
             };
         }
@@ -542,7 +562,7 @@
 - (UIAlertController *)searchVC
 {
     if (!_searchVC) {
-        _searchVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"searchingPer", nil) preferredStyle:UIAlertControllerStyleAlert];
+        _searchVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:[NSString stringWithFormat:NSLocalizedString(@"searchingPer", nil),10] preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ac = [UIAlertAction actionWithTitle:NSLocalizedString(@"stopSearch", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self.myBleTool writeSearchPeripheralWithONorOFF:NO];
         }];

@@ -94,7 +94,7 @@
 {
     if (!_functionLabel) {
 //        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 11, 80, 21)];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 25, 80, 21)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 25, 150, 21)];
         label.font = [UIFont systemFontOfSize:15];
         label.textColor = [UIColor whiteColor];
         [self.contentView addSubview:label];

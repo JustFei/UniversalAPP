@@ -137,7 +137,7 @@
                         lineIndex:(NSInteger)lineIndex
                        pointIndex:(NSInteger)pointIndex
 {
-    NSString *time = self.timeArr[pointIndex];
+    NSString *time = [self.timeArr[pointIndex] substringToIndex:5];
     NSString *bo = self.boArr[pointIndex];
     
     [self.currentBOLabel setText:[NSString stringWithFormat:@"%@：%ld%%",time ,bo.integerValue]];

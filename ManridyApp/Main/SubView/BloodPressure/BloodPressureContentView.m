@@ -129,7 +129,7 @@
 {
     NSNumber *highBP = self.hbArr[barIndex];
     NSNumber *lowBP = self.lbArr[barIndex];
-    NSString *time = self.timeArr[barIndex];
+    NSString *time = [self.timeArr[barIndex] substringToIndex:5];
     NSString *bpm = self.bpmArr[barIndex];
     self.currentBPLabel.text = [NSString stringWithFormat:NSLocalizedString(@"currenBPData", nil),time ,highBP ,lowBP ,bpm];
 }

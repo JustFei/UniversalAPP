@@ -23,16 +23,16 @@
 "search" = "Search";
 
 //设备绑定
-"perBind" = "Device pairing";
+"perBind" = "Paired devices";
 
 //已绑定的设备
 "haveBindPer" = "Device has been paired";
 
 //未绑定设备
-"haveNoBindPer" = "Device not matched";
+"haveNoBindPer" = "No paired devices";
 
 //正在连接设备...
-"bindingPer" = "Connecting device...";
+"bindingPer" = "connecting...";
 
 //提示
 "tips" = "Remind";
@@ -44,7 +44,7 @@
 "goToChoose" = "To choose";
 
 //已成功解除绑定
-"disbindPerSuccess" = "Device pairing has been lifted";
+"disbindPerSuccess" = "Device has been lifted";
 
 //我知道了
 "IKnow" = "OK";
@@ -53,7 +53,7 @@
 "haveBindPerName" = "The paired device：%@";
 
 //连接异常，请重新尝试绑定
-"bindErrorAndTryAgain" = "Connection failed, please close the device and try to connect again";
+"bindErrorAndTryAgain" = "Failed, please try again.";
 
 //确定
 "sure" = "OK";
@@ -99,7 +99,7 @@
 "startSearch" = "Start searching";
 
 //正在查找设备
-"searchingPer" = "Searching device";
+"searchingPer" = "Searching device (%d...)";
 
 //停止查找
 "stopSearch" = "Stop";
@@ -118,13 +118,13 @@
 "weight" = "Weight";
 
 //请输入年龄
-"inputAge" = "Please enter the age";
+"inputAge" = "Enter the age";
 
 //请输入身高
-"inputHeight" = "Please enter height";
+"inputHeight" = "Enter height";
 
 //请输入体重
-"inputWeight" = "Please enter weight";
+"inputWeight" = "Enter weight";
 
 //岁
 "year" = "(age)";
@@ -136,7 +136,7 @@
 "Female" = "female";
 
 //用户信息
-"userInfo" = "UserInfo";
+"userInfo" = "User profile";
 
 //从相册选择
 "choosePhotoFromPhotoAlbum" = "Select from the album";
@@ -151,10 +151,10 @@
 "saveSuccess" = "Save success！";
 
 //保存失败,请重新尝试
-"saveFailAndTryAgain" = "Save failed, please try again！";
+"saveFailAndTryAgain" = "Failed, please try again！";
 
 //修改成功
-"changeSuccess" = "Successful modification！";
+"changeSuccess" = "Successful！";
 
 //修改失败，请重新尝试
 "changeFailAndTryAgain" = "Modify failed, please try again！";
@@ -163,7 +163,7 @@
 "infoNotComplete" = "Information is not complete, it will affect the accuracy, please add！";
 
 //请输入用户名
-"inputUserName" = "Enter one user name";
+"inputUserName" = "Enter nickname";
 
 //保存
 "save" = "Save";
@@ -173,7 +173,7 @@
 "set" = "Setting";
 
 //信息提醒
-"infoRemind" = "In coming SMS";
+"infoRemind" = "Remind settings";
 
 //关于
 "about" = "About";
@@ -183,40 +183,40 @@
 
 //MARK: 月份选择界面
 //1月
-"January" = "Jan";
+"January" = "Jan.";
 
 //2月
-"February" = "Feb";
+"February" = "Feb.";
 
 //3月
-"March" = "Mar";
+"March" = "Mar.";
 
 //4月
-"April" = "Apr";
+"April" = "Apr.";
 
 //5月
-"May" = "May";
+"May" = "May.";
 
 //6月
-"June" = "Jun";
+"June" = "Jun.";
 
 //7月
-"July" = "Jul";
+"July" = "Jul.";
 
 //8月
-"August" = "Aug";
+"August" = "Aug.";
 
 //9月
-"September" = "Sep";
+"September" = "Sep.";
 
 //10月
-"October" = "Oct";
+"October" = "Oct.";
 
 //11月
-"November" = "Nov";
+"November" = "Nov.";
 
 //12月
-"December" = "Dec";
+"December" = "Dec.";
 
 //MARK：计步历史
 //历史记录
@@ -271,7 +271,7 @@
 "HRData" = "Hr:%ld";
 
 //本月平均血压值
-"currentMonthBPData" = "Avg monthly：HP：%ld LP：%ld Hr：%ld";
+"currentMonthBPData" = "Avg  HP:%ld  LP:%ld  Hr:%ld";
 
 //当天的心率
 "currentDayHRData" = "Hr:%@";
@@ -281,7 +281,7 @@
 
 //MARK: 血氧历史界面
 //当天的血氧值
-"currentDayBOData" = "%@ BO";
+"currentDayBOData" = "%@ SpO2";
 
 //MARK:计步当前
 //本周计步统计
@@ -310,10 +310,10 @@
 "settingTarget" = "Target setting";
 
 //设置超时，请重试
-"setOverTime" = "Timeout, please close to the device and try again。";
+"setOverTime" = "Timeout, please try again。";
 
 //请先去设置个人信息
-"plzSetUserInfoFirst" = "Please set the user information, otherwise you can not use the function。";
+"plzSetUserInfoFirst" = "Before use, please set the user information。";
 
 //Mark :心率当前
 //心率次/分
@@ -343,7 +343,7 @@
 "BloodO2" = "SpO2";
 
 //未绑定设备，前去绑定
-"haveNOBindPer" = "Device is not paired, please go to 'device pairing' for pairing";
+"haveNOBindPer" = "No paired devices, click... ";
 
 //公里/千卡
 "currentStepAndKCal" = "%.1fKM/%@Kcal";
@@ -354,7 +354,7 @@
 "deepSleepData" = "D-sleep%.2fH";
 
 //最近几次睡眠
-"lastTimeSleep" = "Recent sleep";
+"lastTimeSleep" = "Today-Sleeps";
 
 //今日血压
 "todayBP" = "Today-BP";
@@ -364,7 +364,7 @@
 
 //MARK: BLETool
 //该设备尚未打开蓝牙
-"phoneNotOpenBLE" = "The Bluetooth device is not open, please open the system Bluetooth";
+"phoneNotOpenBLE" = "Please open the system Bluetooth";
 
 //蓝牙已打开
 "bleHaveOpen" = "Bluetooth has been turned on";
@@ -376,7 +376,7 @@
 "perDismissNodify" = "Loss notification";
 
 //通知副标题
-"PerDismissNodifySubtitle" = "Warning! Your device has been disconnected and may have been lost!！";
+"PerDismissNodifySubtitle" = "Warning! Device disconnect, please confirm!！";
 
 //通知正文
 "PerDismissNodifyContent" = "Warning! Your bracelet in%@leave the connection range, may be lost!";

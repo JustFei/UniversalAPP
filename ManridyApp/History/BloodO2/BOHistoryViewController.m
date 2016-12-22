@@ -12,6 +12,7 @@
 #import "FMDBTool.h"
 #import "DropdownMenuView.h"
 #import "TitleMenuViewController.h"
+#import "NSStringTool.h"
 
 @interface BOHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate, PNChartDelegate>
 {
@@ -34,6 +35,7 @@
 @property (nonatomic ,weak) PNCircleChart *boCircleChart;
 @property (nonatomic ,strong) UISwipeGestureRecognizer *oneFingerSwipedown;
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
+@property (nonatomic ,strong) NSArray *monthArr;
 @end
 
 @implementation BOHistoryViewController
@@ -75,7 +77,14 @@
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     NSInteger month = [components month];
-    [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),month] forState:UIControlStateNormal];
+    
+    //TODO:判断中英文
+    NSString *language = [NSStringTool getPreferredLanguage];
+    if ([language isEqualToString:@"zh-Hans"] || [language isEqualToString:@"zh-Hant"]) {
+        [self.monthButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"currentMonth", nil),(long)month] forState:UIControlStateNormal];
+    }else {
+        [self.monthButton setTitle:NSLocalizedString(self.monthArr[month - 1], nil) forState:UIControlStateNormal];
+    }
     
     [self.boBarChart setXLabels:_dateArr];
 }
@@ -327,6 +336,15 @@
         _myFmdbTool = [[FMDBTool alloc] initWithPath:@"UserList"];
     }
     return _myFmdbTool;
+}
+
+- (NSArray *)monthArr
+{
+    if (!_monthArr) {
+        _monthArr = @[@"January",@"February",@"March",@"April",@"May",@"June",@"July",@"August",@"September",@"October",@"November",@"December"];
+    }
+    
+    return _monthArr;
 }
 
 @end
