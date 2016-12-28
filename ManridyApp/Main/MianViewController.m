@@ -765,7 +765,7 @@
             [self.heartRateView.dataArr addObject:model.heartRate];
         }
         [self.heartRateView showChartViewWithData:YES];
-    }else if (heartRateArr.count < 7) {
+    }else if (heartRateArr.count < 7 && heartRateArr.count > 0) {
         for (NSInteger index = 0; index < heartRateArr.count; index ++) {
             HeartRateModel *model = heartRateArr[index];
             
