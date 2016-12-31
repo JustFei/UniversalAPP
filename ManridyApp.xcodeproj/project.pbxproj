@@ -502,6 +502,22 @@
 		9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BloodO2Model.m; path = BLETool/Model/BloodO2Model.m; sourceTree = "<group>"; };
 		9C1B27761DDEFCE0009663F0 /* BooldHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BooldHistoryViewController.h; path = History/Blood/BooldHistoryViewController.h; sourceTree = "<group>"; };
 		9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BooldHistoryViewController.m; path = History/Blood/BooldHistoryViewController.m; sourceTree = "<group>"; };
+		9C2CB4821E17A71F005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		9C2CB4831E17A71F005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/StepContentView.xib; sourceTree = "<group>"; };
+		9C2CB4841E17A720005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/StepTargetViewController.xib; sourceTree = "<group>"; };
+		9C2CB4851E17A720005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HeartRateContentView.xib; sourceTree = "<group>"; };
+		9C2CB4861E17A720005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/SleepContentView.xib; sourceTree = "<group>"; };
+		9C2CB4871E17A720005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/SleepSettingViewController.xib; sourceTree = "<group>"; };
+		9C2CB4881E17A720005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/BloodPressureContentView.xib; sourceTree = "<group>"; };
+		9C2CB4891E17A720005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/BloodO2ContentView.xib; sourceTree = "<group>"; };
+		9C2CB48A1E17A720005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/StepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C2CB48B1E17A720005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HeartRateHistoryViewController.xib; sourceTree = "<group>"; };
+		9C2CB48C1E17A720005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/SleepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C2CB48D1E17A720005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/BooldHistoryViewController.xib; sourceTree = "<group>"; };
+		9C2CB48E1E17A721005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/BOHistoryViewController.xib; sourceTree = "<group>"; };
+		9C2CB48F1E17A721005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/UserInfoCell.xib; sourceTree = "<group>"; };
+		9C2CB4901E17A721005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C2CB4911E17A721005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C57F1CA1DF279300090C2EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		9C57F1CD1DF279310090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
 		9C57F1CE1DF279620090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
@@ -1197,6 +1213,7 @@
 				en,
 				Base,
 				"zh-Hans",
+				ja,
 			);
 			mainGroup = 10F5F6FB1D98C6270045FA4C;
 			productRefGroup = 10F5F7051D98C6270045FA4C /* Products */;
@@ -1515,6 +1532,7 @@
 				9C57F1CA1DF279300090C2EF /* Base */,
 				9C57F1CD1DF279310090C2EF /* en */,
 				9C57F1CE1DF279620090C2EF /* zh-Hans */,
+				9C2CB4821E17A71F005BEDA7 /* ja */,
 			);
 			name = "Launch Screen.storyboard";
 			sourceTree = "<group>";
@@ -1524,6 +1542,7 @@
 			children = (
 				9C57F1D21DF2882F0090C2EF /* en */,
 				9C57F1D41DF288310090C2EF /* zh-Hans */,
+				9C2CB4901E17A721005BEDA7 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1533,6 +1552,7 @@
 			children = (
 				9C57F1D81DF288D50090C2EF /* en */,
 				9C57F1DA1DF288D60090C2EF /* zh-Hans */,
+				9C2CB4911E17A721005BEDA7 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1542,6 +1562,7 @@
 			children = (
 				9C57F1E61DF2C07F0090C2EF /* en */,
 				9C57F1EA1DF2C0E00090C2EF /* zh-Hans */,
+				9C2CB4831E17A71F005BEDA7 /* ja */,
 			);
 			name = StepContentView.xib;
 			path = Main/SubView/Step;
@@ -1552,6 +1573,7 @@
 			children = (
 				9C57F1F31DF2C1F10090C2EF /* en */,
 				9C57F1F71DF2C2020090C2EF /* zh-Hans */,
+				9C2CB4841E17A720005BEDA7 /* ja */,
 			);
 			name = StepTargetViewController.xib;
 			path = Main/SubView/Step;
@@ -1562,6 +1584,7 @@
 			children = (
 				9C57F1F91DF2C2100090C2EF /* en */,
 				9C57F1FD1DF2C2150090C2EF /* zh-Hans */,
+				9C2CB4851E17A720005BEDA7 /* ja */,
 			);
 			name = HeartRateContentView.xib;
 			path = Main/SubView/HeartRate;
@@ -1572,6 +1595,7 @@
 			children = (
 				9C57F1FF1DF2C2260090C2EF /* en */,
 				9C57F2031DF2C22E0090C2EF /* zh-Hans */,
+				9C2CB4861E17A720005BEDA7 /* ja */,
 			);
 			name = SleepContentView.xib;
 			path = Main/SubView/Sleep;
@@ -1582,6 +1606,7 @@
 			children = (
 				9C57F2051DF2C24A0090C2EF /* en */,
 				9C57F2091DF2C2570090C2EF /* zh-Hans */,
+				9C2CB4871E17A720005BEDA7 /* ja */,
 			);
 			name = SleepSettingViewController.xib;
 			path = Main/SubView/Sleep;
@@ -1592,6 +1617,7 @@
 			children = (
 				9C57F20B1DF2C2620090C2EF /* en */,
 				9C57F20F1DF2C26C0090C2EF /* zh-Hans */,
+				9C2CB4881E17A720005BEDA7 /* ja */,
 			);
 			name = BloodPressureContentView.xib;
 			path = Main/SubView/BloodPressure;
@@ -1602,6 +1628,7 @@
 			children = (
 				9C57F2111DF2C2760090C2EF /* en */,
 				9C57F2151DF2C27B0090C2EF /* zh-Hans */,
+				9C2CB4891E17A720005BEDA7 /* ja */,
 			);
 			name = BloodO2ContentView.xib;
 			path = Main/SubView/BloodO2;
@@ -1612,6 +1639,7 @@
 			children = (
 				9C57F2171DF2C2990090C2EF /* en */,
 				9C57F21B1DF2C29E0090C2EF /* zh-Hans */,
+				9C2CB48A1E17A720005BEDA7 /* ja */,
 			);
 			name = StepHistoryViewController.xib;
 			path = History/Step;
@@ -1622,6 +1650,7 @@
 			children = (
 				9C57F2211DF2C2AD0090C2EF /* en */,
 				9C57F2241DF2C2B10090C2EF /* zh-Hans */,
+				9C2CB48B1E17A720005BEDA7 /* ja */,
 			);
 			name = HeartRateHistoryViewController.xib;
 			path = History/Heart;
@@ -1632,6 +1661,7 @@
 			children = (
 				9C57F2261DF2C2C70090C2EF /* en */,
 				9C57F22A1DF2C2CD0090C2EF /* zh-Hans */,
+				9C2CB48C1E17A720005BEDA7 /* ja */,
 			);
 			name = SleepHistoryViewController.xib;
 			path = History/Sleep;
@@ -1642,6 +1672,7 @@
 			children = (
 				9C57F22C1DF2C2D30090C2EF /* en */,
 				9C57F2301DF2C2D80090C2EF /* zh-Hans */,
+				9C2CB48D1E17A720005BEDA7 /* ja */,
 			);
 			name = BooldHistoryViewController.xib;
 			path = History/Blood;
@@ -1652,6 +1683,7 @@
 			children = (
 				9C57F2321DF2C2E10090C2EF /* en */,
 				9C57F2361DF2C2E60090C2EF /* zh-Hans */,
+				9C2CB48E1E17A721005BEDA7 /* ja */,
 			);
 			name = BOHistoryViewController.xib;
 			path = History/BloodO2;
@@ -1662,6 +1694,7 @@
 			children = (
 				9C57F2381DF2C2F50090C2EF /* en */,
 				9C57F23C1DF2C2FA0090C2EF /* zh-Hans */,
+				9C2CB48F1E17A721005BEDA7 /* ja */,
 			);
 			name = UserInfoCell.xib;
 			path = Setting/UserInfo;

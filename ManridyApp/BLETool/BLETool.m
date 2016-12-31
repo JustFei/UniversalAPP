@@ -160,9 +160,23 @@ static BLETool *bleTool = nil;
 //set time
 - (void)writeTimeToPeripheral:(NSDate *)currentDate
 {
-    NSDateFormatter *currentFormatter = [[NSDateFormatter alloc] init];
-    [currentFormatter setDateFormat:@"yyMMddhhmmssEEE"];
-    NSString *currentStr = [currentFormatter stringFromDate:currentDate];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *now;
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday |
+    NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    now=[NSDate date];
+    comps = [calendar components:unitFlags fromDate:now];
+    
+    NSString *currentStr = [NSString stringWithFormat:@"%02ld%02ld%02ld%02ld%02ld%02ld%02ld",[comps year] % 100 ,[comps month] ,[comps day] ,[comps hour] ,[comps minute] ,[comps second] ,[comps weekday] - 1];
+//    NSLog(@"-----------weekday is %ld",(long)[comps weekday]);//在这里需要注意的是：星期日是数字1，星期一时数字2，以此类推。。。
+//    NSLog(@"-----------month is %d",[comps month]);
+//    NSLog(@"-----------day is %d",[comps day]);
+//    
+//    
+//    NSDateFormatter *currentFormatter = [[NSDateFormatter alloc] init];
+//    [currentFormatter setDateFormat:@"yyMMddhhmmssEEE"];
+//    NSString *currentStr = [currentFormatter stringFromDate:currentDate];
     
     //传入时间和头，返回协议字符串
     NSString *protocolStr = [NSStringTool protocolAddInfo:currentStr head:@"00"];

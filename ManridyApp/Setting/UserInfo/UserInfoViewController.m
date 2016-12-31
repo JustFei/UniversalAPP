@@ -64,7 +64,7 @@
     _nameArr = @[NSLocalizedString(@"gender", nil),NSLocalizedString(@"age", nil),NSLocalizedString(@"height", nil),NSLocalizedString(@"weight", nil)];
     _fieldPlaceholdeArr = @[@"",NSLocalizedString(@"inputAge", nil),NSLocalizedString(@"inputHeight", nil),NSLocalizedString(@"inputWeight", nil)];
     _unitArr = @[@"",NSLocalizedString(@"year", nil),@"(cm)",@"(kg)"];
-    _genderArr = @[NSLocalizedString(@"male", nil),NSLocalizedString(@"female", nil)];
+    _genderArr = @[NSLocalizedString(@"male", nil),NSLocalizedString(@"Female", nil)];
     
     self.navigationItem.title = NSLocalizedString(@"userInfo", nil);
     

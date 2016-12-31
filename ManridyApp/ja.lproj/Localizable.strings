@@ -1,0 +1,388 @@
+/* 
+  Localizable.strings
+  ManridyApp
+
+  Created by JustFei on 2016/12/3.
+  Copyright © 2016年 Manridy.Bobo.com. All rights reserved.
+*/
+
+//MARK: 关于界面
+
+//app Name
+"appName" = "iwear";
+
+//软件版本号
+"softWare" = "ソフトウェアの番号：V%@";
+
+//硬件版本号
+"hardWare" = "ハンドウェアの番号：V%@";
+
+//MARK: 设备绑定界面
+//搜索
+"search" = "検索";
+
+//设备绑定
+"perBind" = "デバイスとのペアリング";
+
+//已绑定的设备
+"haveBindPer" = "ペアリングしたデバイス";
+
+//未绑定设备
+"haveNoBindPer" = "デバイスとペアリングしていません";
+
+//正在连接设备...
+"bindingPer" = "デバイスにつながっています。";
+
+//提示
+"tips" = "ヒント";
+
+//请选择设备以绑定
+"choosePerToBind" = "ペアリングするデバイスを選択";
+
+//去选择
+"goToChoose" = "選択します";
+
+//已成功解除绑定
+"disbindPerSuccess" = "ペアリング解除済み";
+
+//我知道了
+"IKnow" = "了解";
+
+//已绑定设备：设备名
+"haveBindPerName" = "ペアリングしたデバイスの名前：%@";
+
+//连接异常，请重新尝试绑定
+"bindErrorAndTryAgain" = "ペアリングできません。やり直してください";
+
+//确定
+"sure" = "オーケー";
+
+//绑定设备
+"bindPer" = "デバイスとペアリングしています";
+
+//解除绑定
+"disbindPer" = "ペアリング解除済み";
+
+//MARK: 提醒界面
+//来电提醒
+"phoneRemind" = "着信注意";
+
+//短信提醒
+
+"messageRemind" = "SMS注意";
+
+//防丢提醒
+"lossRemind" = "紛失防止リマインダー";
+
+//查找设备
+"findPer" = "検索装置";
+
+//闹钟设置
+"clockSet" = "アラーム設定";
+
+//闹钟1
+"clock1" = "アラーム1";
+
+//闹钟2
+"clock2" = "アラーム2";
+
+//闹钟3
+"clock3" = "アラーム3";
+
+//提醒设置
+"remindSet" = "リマインダー設定";
+
+//请连接上设备后再设置
+"connectPerAndSet" = "デバイスにつながって設定してください。";
+
+//开始查找
+"startSearch" = "検索を開始";
+
+//正在查找设备
+"searchingPer" = "デバイスを検索しています";
+
+//停止查找
+"stopSearch" = "検索停止";
+
+//MARK: 用户信息界面
+//性别
+"gender" = "性別";
+
+//年龄
+"age" = "年齢";
+
+//身高
+"height" = "身長";
+
+//体重
+"weight" = "体重";
+
+//请输入年龄
+"inputAge" = "年齢を入力";
+
+//请输入身高
+"inputHeight" = "身長を入力t";
+
+//请输入体重
+"inputWeight" = "体重を入力";
+
+//岁
+"year" = "(歳)";
+
+//男
+"male" = "男性";
+
+//女
+"Female" = "女性";
+
+//用户信息
+"userInfo" = "ユーザ情報";
+
+//从相册选择
+"choosePhotoFromPhotoAlbum" = "写真から選択";
+
+//拍照
+"takeAPhoto" = "カメラで撮影";
+
+//取消
+"cancel" = "取り消し";
+
+//保存成功
+"saveSuccess" = "保存済み";
+
+//保存失败,请重新尝试   。
+"saveFailAndTryAgain" = "保存できません,やり直してください";
+
+//修改成功
+"changeSuccess" = "直し済み";
+
+//修改失败，请重新尝试
+"changeFailAndTryAgain" = "直しはできません。やり直してください。";
+
+//信息输入不完整
+"infoNotComplete" = "情報入力は完全ではありません。";
+
+//请输入用户名
+"inputUserName" = "ユーザーの名前を入力";
+
+//保存
+"save" = "保存";
+
+//MARK: 设置界面
+//设置
+"set" = "設定";
+
+//信息提醒
+"infoRemind" = "情報注意";
+
+//关于
+"about" = "関連";
+
+//用户名
+"userName" = "ユーザーの名前";
+
+//MARK: 月份选择界面
+//1月
+"January" = " 1月";
+
+//2月
+"February" = "2月";
+
+//3月
+"March" = "3月";
+
+//4月
+"April" = "4月";
+
+//5月
+"May" = "５月";
+
+//6月
+"June" = "6月";
+
+//7月
+"July" = "7月";
+
+//8月
+"August" = "8月";
+
+//9月
+
+"September" = "9月";
+
+//10月
+"October" = "10月";
+
+//11月
+"November" = "11月";
+
+//12月
+"December" = "12月";
+
+//MARK：计步历史
+
+
+//历史记录
+"history" = "履歴記録";
+
+//当前月份
+"currentMonth" = "%ld月";
+
+//本月计步统计:
+"currentMonthData" = "今月歩数統計：（%ld步/%.1fKM/%ldKcal）";
+
+//平均公里和卡路里  平均キロ及びカロリー
+"averagerMandK" = "%.1fKM/%ldKcar";
+
+//MARK: 心率历史
+//当月平均心率
+"averagerHR" = "平均心拍数";
+
+//偏低
+"low" = "低すぎ";
+
+//正常
+"normal" = "正常";
+
+//偏高
+"high" = "高すぎ";
+
+//当天平均心率
+"currentDayAveragerHR" = " 平均心拍数";
+
+//睡眠历史界面
+//睡眠不足
+"lackofSleep" = "睡眠不足";
+
+//睡眠偏少
+"lessofSleep" = "睡眠が少なすぎる";
+
+//睡眠正常
+"normalofSleep" = "睡眠正常";
+
+//睡眠充足
+"moreofSleep" = "睡眠充分";
+
+//当天睡眠数据
+"currentDaySleepData" = "睡眠:%@H ,deep%@H\nlight %@H";
+
+//当天没有睡眠数据
+"currentDayNOSleepData" = "は睡眠データなし";
+
+//MARK:
+//心率
+"HRData" = "心拍数:%ld";
+
+//本月平均血压值
+"currentMonthBPData" = "今月平均  HP:%ld  LP:%ld  Hr:%ld";
+
+//当天的心率
+"currentDayHRData" = "Hr:%@";
+
+//当天的血压值
+"currentDayBPData" = "%@BP";
+
+//MARK: 血氧历史界面
+//当天的血氧值
+"currentDayBOData" = "%@SpO2";
+
+//MARK:计步当前
+//本周计步统计
+"currentWeekStepData" = "今週歩数計：%ld steps（%.1f KM/%ld Kcal）";
+
+//步
+"step" = "%@：%@Setps";
+
+//设备连接中。。。
+"perConnecting" = "デバイスにつながっています";
+
+//未连接上设备，点击重试
+"canNotConnectPer" = "未接続に設備、リトライ";
+
+//MARK: 运动目标设置界面
+//目标设置
+"targetSet" = "目標設定";
+
+//保存成功
+"saveSuccess" = "保存済み";
+
+//保存失败，重试
+"saveFail" = "保存、再保存ください";
+
+//正在设置目标
+"settingTarget" = "目標を設定中";
+
+//设置超时，请重试
+"setOverTime" = "設定時間を超えましたので、やり直してください。";
+
+//请先去设置个人信息
+"plzSetUserInfoFirst" = "まず自分の情報を設定してください。";
+
+//Mark :心率当前
+//心率次/分
+"currentHRData" = "%@：%@BPM";
+
+//最近几次心率
+
+"lastTimesHRData" = "Hr";
+
+//MARK: 睡眠当前
+//此次睡眠
+"currentSleepData" = "今回の睡眠：%@-%@ deep：%.1fH light：%.1fH";
+
+//MARK: 血压当前
+//点击血压的值
+"currenBPData" = "%@: HP：%@ Lp：%@ Hr：%@";
+
+//MARK: Main界面
+//计步
+"Step" = "Steps";
+//心率
+"HeartHeart" = "心拍数";
+//睡眠
+"Sleep" = "睡眠";
+//血压
+"BloodPressure" = "血圧";
+//血氧
+"BloodO2" = "SpO2";
+
+//未绑定设备，前去绑定
+"haveNOBindPer" = "まずペアリングにして下さい";
+
+//公里/千卡
+"currentStepAndKCal" = "%.1f KM/%@ Kcal";
+
+//浅睡
+"lowSleepData" = "浅い睡眠 %0.2fH";
+//深睡
+"deepSleepData" = "deep %.2fH";
+
+//最近几次睡眠
+"lastTimeSleep" = "今日の睡眠";
+
+//今日血压
+"todayBP" = "今日の血圧";
+
+//今日血氧
+"todayBO" = "今日の血中酸素";
+
+//MARK: BLETool
+//该设备尚未打开蓝牙
+"phoneNotOpenBLE" = "ブルーツースをオンにしていません。";
+
+//蓝牙已打开
+"bleHaveOpen" = "ブルーツースをオンにしています。";
+
+//设备意外断开，等待重连
+"bleReConnect" = "異常、再接続を待つ";
+
+//手环丢失通知
+"perDismissNodify" = "紛失通知";
+
+//通知副标题
+"PerDismissNodifySubtitle" = "警告！設備が切れて、確認して下さい！";
+
+//通知正文
+"PerDismissNodifyContent" = "警告！設備が切れ、失われているかどうか確認して下さい！";
+
+

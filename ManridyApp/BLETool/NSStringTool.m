@@ -84,26 +84,26 @@
     if ([head isEqualToString:@"00"]) {
         //---------------设置时间----------------------
         
-        NSString *weStr = [info substringFromIndex:12];
-        NSString *timeStr = [info substringToIndex:12];
+//        NSString *weStr = [info substringFromIndex:12];
+//        NSString *timeStr = [info substringToIndex:12];
         
-        if ([weStr isEqualToString:@"Sun"] || [weStr isEqualToString:@"周日"]) {
-            timeStr = [timeStr stringByAppendingString:@"00"];
-        }else if ([weStr isEqualToString:@"Mon"] || [weStr isEqualToString:@"周一"]) {
-            timeStr = [timeStr stringByAppendingString:@"01"];
-        }else if ([weStr isEqualToString:@"Tue"] || [weStr isEqualToString:@"周二"]) {
-            timeStr = [timeStr stringByAppendingString:@"02"];
-        }else if ([weStr isEqualToString:@"Wed"] || [weStr isEqualToString:@"周三"]) {
-            timeStr = [timeStr stringByAppendingString:@"03"];
-        }else if ([weStr isEqualToString:@"Thu"] || [weStr isEqualToString:@"周四"]) {
-            timeStr = [timeStr stringByAppendingString:@"04"];
-        }else if ([weStr isEqualToString:@"Fri"] || [weStr isEqualToString:@"周五"]) {
-            timeStr = [timeStr stringByAppendingString:@"05"];
-        }else if ([weStr isEqualToString:@"Sat"] || [weStr isEqualToString:@"周六"]) {
-            timeStr = [timeStr stringByAppendingString:@"06"];
-        }
+//        if ([weStr isEqualToString:@"Sun"] || [weStr isEqualToString:@"周日"]) {
+//            timeStr = [timeStr stringByAppendingString:@"00"];
+//        }else if ([weStr isEqualToString:@"Mon"] || [weStr isEqualToString:@"周一"]) {
+//            timeStr = [timeStr stringByAppendingString:@"01"];
+//        }else if ([weStr isEqualToString:@"Tue"] || [weStr isEqualToString:@"周二"]) {
+//            timeStr = [timeStr stringByAppendingString:@"02"];
+//        }else if ([weStr isEqualToString:@"Wed"] || [weStr isEqualToString:@"周三"]) {
+//            timeStr = [timeStr stringByAppendingString:@"03"];
+//        }else if ([weStr isEqualToString:@"Thu"] || [weStr isEqualToString:@"周四"]) {
+//            timeStr = [timeStr stringByAppendingString:@"04"];
+//        }else if ([weStr isEqualToString:@"Fri"] || [weStr isEqualToString:@"周五"]) {
+//            timeStr = [timeStr stringByAppendingString:@"05"];
+//        }else if ([weStr isEqualToString:@"Sat"] || [weStr isEqualToString:@"周六"]) {
+//            timeStr = [timeStr stringByAppendingString:@"06"];
+//        }
         
-        timeStr = [NSString stringWithFormat:@"FC00%@",timeStr];
+        NSString *timeStr = [NSString stringWithFormat:@"FC00%@",info];
         
         while (1) {
             if (timeStr.length < 40) {
