@@ -291,7 +291,7 @@
 "currentWeekStepData" = "今週歩数計：%ld steps（%.1f KM/%ld Kcal）";
 
 //步
-"step" = "%@：%@Setps";
+"step" = "%@：%@歩";
 
 //设备连接中。。。
 "perConnecting" = "デバイスにつながっています";
@@ -336,7 +336,7 @@
 
 //MARK: Main界面
 //计步
-"Step" = "Steps";
+"Step" = "歩数";
 //心率
 "HeartHeart" = "心拍数";
 //睡眠
