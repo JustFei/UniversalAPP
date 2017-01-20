@@ -17,7 +17,7 @@
 #import "ClockModel.h"
 #import <UserNotifications/UserNotifications.h>
 
-#define kServiceUUID              @"F000EFE0-0000-4000-0000-00000000B000"
+#define kServiceUUID              @"F000EFE0-0451-4000-0000-00000000B000"
 #define kWriteCharacteristicUUID  @"F000EFE1-0451-4000-0000-00000000B000"
 #define kNotifyCharacteristicUUID @"F000EFE3-0451-4000-0000-00000000B000"
 
@@ -506,6 +506,46 @@ static BLETool *bleTool = nil;
     }
 }
 
+//set sedentary alert
+- (void)writeSedentaryAlertWithSedentaryModel:(SedentaryModel *)sedentaryModel
+{
+    NSString *ss;
+    NSString *T2T1 = @"0000";
+    NSString *SHSM = @"0000";   //免打扰时段开始时间
+    NSString *EHEM = @"0000";   //免打扰时段结束时间
+    NSString *IHIM = @"0000";   //设定开始提醒时间
+    NSString *IhIm = @"0000";   //设定提醒结束时间
+    
+    if (!sedentaryModel.sedentaryAlert) {
+        if (!sedentaryModel.unDisturb) {
+            ss = @"00";     //久坐和勿扰都没开启
+        }else {
+            ss = @"02";     //久坐关闭，勿扰开启
+        }
+    }else {
+        //001e
+        T2T1 = @"0005" ;
+        IHIM = [sedentaryModel.sedentaryStartTime stringByReplacingOccurrencesOfString:@":" withString:@""];
+        IhIm = [sedentaryModel.sedentaryEndTime stringByReplacingOccurrencesOfString:@":" withString:@""];
+        SHSM = [sedentaryModel.disturbStartTime stringByReplacingOccurrencesOfString:@":" withString:@""];
+        EHEM = [sedentaryModel.disturbEndTime stringByReplacingOccurrencesOfString:@":" withString:@""];
+        if (!sedentaryModel.unDisturb) {
+            ss = @"01";     //久坐开启，勿扰关闭 SS BIT[0]=1
+        }else {
+            ss = @"03";     //久坐和勿扰都开启  SS BIT[0]=1 ;SS BIT[1]=1
+        }
+    }
+    NSString *info = [[[[[[ss stringByAppendingString:T2T1] stringByAppendingString:SHSM] stringByAppendingString:EHEM] stringByAppendingString:IHIM] stringByAppendingString:IhIm] stringByAppendingString:[NSStringTool ToHex:sedentaryModel.stepInterval]];
+    
+    
+    NSString *protocolStr = [NSStringTool protocolAddInfo:info head:@"16"];
+    
+    //写入操作
+    if (self.currentDev.peripheral) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
 //临时写入保持连接
 - (void)writeToKeepConnect
 {
@@ -564,23 +604,36 @@ static BLETool *bleTool = nil;
             break;
     }
     
-    [_myCentralManager scanForPeripheralsWithServices:nil options:nil];
+    //[_myCentralManager scanForPeripheralsWithServices:nil options:nil];
 }
 
 //查找到正在广播的指定外设
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
+    manridyBleDevice *device = [[manridyBleDevice alloc] initWith:peripheral andAdvertisementData:advertisementData andRSSI:RSSI];
     //当你发现你感兴趣的连接外围设备，停止扫描其他设备，以节省电能。
-    if (peripheral.name != nil ) {
+    if (device.deviceName != nil ) {
         if (![self.deviceArr containsObject:peripheral]) {
             [self.deviceArr addObject:peripheral];
-            
-            manridyBleDevice *device = [[manridyBleDevice alloc] initWith:peripheral andAdvertisementData:advertisementData andRSSI:RSSI];
             
             //返回扫描到的设备实例
             if ([self.discoverDelegate respondsToSelector:@selector(manridyBLEDidDiscoverDeviceWithMAC:)]) {
                 
                 [self.discoverDelegate manridyBLEDidDiscoverDeviceWithMAC:device];
+            }
+        }
+    }else {
+        if ([device.uuidString isEqualToString:kServiceUUID]) {
+            device.deviceName = @"X9Plus";
+            if (![self.deviceArr containsObject:peripheral]) {
+                DLog(@"+1");
+                [self.deviceArr addObject:peripheral];
+                
+                //返回扫描到的设备实例
+                if ([self.discoverDelegate respondsToSelector:@selector(manridyBLEDidDiscoverDeviceWithMAC:)]) {
+                    
+                    [self.discoverDelegate manridyBLEDidDiscoverDeviceWithMAC:device];
+                }
             }
         }
     }

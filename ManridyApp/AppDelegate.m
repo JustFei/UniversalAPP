@@ -40,6 +40,7 @@ static void completionCallback(SystemSoundID mySSID)
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    [NSThread sleepForTimeInterval:2];
     
     self.myBleTool = [BLETool shareInstance];
     self.myBleTool.discoverDelegate = self;

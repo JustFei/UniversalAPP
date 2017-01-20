@@ -13,10 +13,12 @@
 - (instancetype)initWith:(CBPeripheral *)cbPeripheral andAdvertisementData:(NSDictionary *)advertisementData andRSSI:(NSNumber *)RSSI
 {
     manridyBleDevice *per = [[manridyBleDevice alloc] init];
-    
+    NSString *advName = [advertisementData objectForKey:@"kCBAdvDataLocalName"];
+    DLog(@"perName == %@    advName == %@",cbPeripheral.name ,advName);
     per.peripheral = cbPeripheral;
     per.deviceName = cbPeripheral.name;
-    per.uuidString = [advertisementData objectForKey:@"kCBAdvDataServiceUUIDs"];
+    CBUUID *serverUUID = ((NSArray *)[advertisementData objectForKey:@"kCBAdvDataServiceUUIDs"]).firstObject;
+    per.uuidString = serverUUID.UUIDString;
     per.RSSI = RSSI;
     
     return per;

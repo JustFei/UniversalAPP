@@ -9,7 +9,7 @@
 //MARK: 关于界面
 
 //app Name
-"appName" = "瑞动力";
+"appName" = "iwear";
 
 //软件版本号
 "softWare" = "软件版本号：V%@";
@@ -76,6 +76,18 @@
 //查找设备
 "findPer" = "查找设备";
 
+//久坐提醒
+"sedentaryRemind" = "久坐提醒";
+
+//开始时间
+"beginTime" = "开始时间";
+
+//结束时间
+"endTime" = "结束时间";
+
+//午休免打扰
+"unDisturb" = "午休免打扰";
+
 //闹钟设置
 "clockSet" = "闹钟设置";
 
@@ -98,7 +110,7 @@
 "startSearch" = "开始查找";
 
 //正在查找设备
-"searchingPer" = "正在查找设备";
+"searchingPer" = "正在查找设备(%d...)";
 
 //停止查找
 "stopSearch" = "停止查找";
@@ -146,9 +158,6 @@
 //取消
 "cancel" = "取消";
 
-//保存成功
-"saveSuccess" = "保存成功！";
-
 //保存失败,请重新尝试
 "saveFailAndTryAgain" = "保存失败，请重新尝试！";
 
@@ -172,7 +181,7 @@
 "set" = "设置";
 
 //信息提醒
-"infoRemind" = "信息提醒";
+"infoRemind" = "提醒设置";
 
 //关于
 "about" = "关于";

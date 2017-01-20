@@ -232,6 +232,10 @@
 		9C728F681DD5DB2800BEF69E /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C728F671DD5DB2800BEF69E /* PopupView.m */; };
 		9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F691DD5DB4B00BEF69E /* PopupView.xib */; };
 		9C728F6C1DD5ECB300BEF69E /* alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F6B1DD5ECB300BEF69E /* alert.wav */; };
+		9CC559771E2F58E30074AE54 /* alert_sedentary.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC559741E2F58E30074AE54 /* alert_sedentary.png */; };
+		9CC559781E2F58E30074AE54 /* alert_sedentary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC559751E2F58E30074AE54 /* alert_sedentary@2x.png */; };
+		9CC559791E2F58E30074AE54 /* alert_sedentary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC559761E2F58E30074AE54 /* alert_sedentary@3x.png */; };
+		9CC5597C1E2F72170074AE54 /* SedentaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5597B1E2F72170074AE54 /* SedentaryModel.m */; };
 		9CCFE1B31DD9CCA200FD5B6F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFE1B21DD9CCA200FD5B6F /* AboutViewController.m */; };
 		9CF2F6C41DD458010091ECB5 /* Remind.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2F6C31DD458010091ECB5 /* Remind.m */; };
 		9CF2F6D01DD593390091ECB5 /* alert_find.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF2F6CD1DD593390091ECB5 /* alert_find.png */; };
@@ -556,6 +560,11 @@
 		9C728F671DD5DB2800BEF69E /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupView.m; path = PopupView/PopupView.m; sourceTree = "<group>"; };
 		9C728F691DD5DB4B00BEF69E /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupView.xib; path = PopupView/PopupView.xib; sourceTree = "<group>"; };
 		9C728F6B1DD5ECB300BEF69E /* alert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alert.wav; sourceTree = "<group>"; };
+		9CC559741E2F58E30074AE54 /* alert_sedentary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert_sedentary.png; sourceTree = "<group>"; };
+		9CC559751E2F58E30074AE54 /* alert_sedentary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_sedentary@2x.png"; sourceTree = "<group>"; };
+		9CC559761E2F58E30074AE54 /* alert_sedentary@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_sedentary@3x.png"; sourceTree = "<group>"; };
+		9CC5597A1E2F72170074AE54 /* SedentaryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SedentaryModel.h; path = BLETool/Model/SedentaryModel.h; sourceTree = "<group>"; };
+		9CC5597B1E2F72170074AE54 /* SedentaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SedentaryModel.m; path = BLETool/Model/SedentaryModel.m; sourceTree = "<group>"; };
 		9CCFE1B11DD9CCA200FD5B6F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Setting/About/AboutViewController.h; sourceTree = "<group>"; };
 		9CCFE1B21DD9CCA200FD5B6F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = Setting/About/AboutViewController.m; sourceTree = "<group>"; };
 		9CF2F6C21DD458010091ECB5 /* Remind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Remind.h; path = BLETool/Model/Remind.h; sourceTree = "<group>"; };
@@ -651,6 +660,8 @@
 				9C1B27701DDE8E2C009663F0 /* BloodModel.m */,
 				9C1B27721DDE9EBE009663F0 /* BloodO2Model.h */,
 				9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */,
+				9CC5597A1E2F72170074AE54 /* SedentaryModel.h */,
+				9CC5597B1E2F72170074AE54 /* SedentaryModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -866,6 +877,9 @@
 		10F5F7251D98F31B0045FA4C /* image */ = {
 			isa = PBXGroup;
 			children = (
+				9CC559741E2F58E30074AE54 /* alert_sedentary.png */,
+				9CC559751E2F58E30074AE54 /* alert_sedentary@2x.png */,
+				9CC559761E2F58E30074AE54 /* alert_sedentary@3x.png */,
 				9C06C1AD1DE04A6500418C7C /* SPO2_now_icon.png */,
 				9C06C1AE1DE04A6500418C7C /* SPO2_now_icon@2x.png */,
 				9C06C1AF1DE04A6500418C7C /* SPO2_now_icon@3x.png */,
@@ -1261,6 +1275,7 @@
 				10F5F7461D98F31B0045FA4C /* set_bty_icon@3x.png in Resources */,
 				9C06C1A71DE01D3600418C7C /* bp_now_icon.png in Resources */,
 				10F5F7781D98F3560045FA4C /* walk_run_now@2x.png in Resources */,
+				9CC559791E2F58E30074AE54 /* alert_sedentary@3x.png in Resources */,
 				9C06C1B31DE04A6500418C7C /* SPO2_now_icon.png in Resources */,
 				10FF5CDB1DC33BEA0059FE00 /* PhoneRemindTableViewCell.xib in Resources */,
 				10C47EBB1DA8A55F00D949CA /* ble_lock_oper@3x.png in Resources */,
@@ -1313,6 +1328,7 @@
 				10F5F7A91D991EAB0045FA4C /* TemperatureContentView.xib in Resources */,
 				10C47EB11DA8A55F00D949CA /* ble_connect@2x.png in Resources */,
 				104A705C1D9B63B100CC73F5 /* all_set_icon@2x.png in Resources */,
+				9CC559771E2F58E30074AE54 /* alert_sedentary.png in Resources */,
 				10F5F7421D98F31B0045FA4C /* set_ble_icon@2x.png in Resources */,
 				104A70571D9B639C00CC73F5 /* all_data_icon@3x.png in Resources */,
 				9C57F1D71DF288D50090C2EF /* Localizable.strings in Resources */,
@@ -1338,6 +1354,7 @@
 				10C47EAF1DA8A55F00D949CA /* ble_break_icon@3x.png in Resources */,
 				10F5F7471D98F31B0045FA4C /* set_lost_icon.png in Resources */,
 				9C57F1F21DF2C1F10090C2EF /* StepTargetViewController.xib in Resources */,
+				9CC559781E2F58E30074AE54 /* alert_sedentary@2x.png in Resources */,
 				10F5F7A01D991C700045FA4C /* heart_now_icon@3x.png in Resources */,
 				10F5F77C1D98F3560045FA4C /* walk_run_old@3x.png in Resources */,
 				10FF5CEA1DC341150059FE00 /* alert_call@3x.png in Resources */,
@@ -1510,6 +1527,7 @@
 				103E4BFC1DB0C77E0051BF03 /* UserListViewController.m in Sources */,
 				9C15BB501DCD79A900A049E9 /* ClockModel.m in Sources */,
 				102474FD1DAA41E000F70E4F /* SportModel.m in Sources */,
+				9CC5597C1E2F72170074AE54 /* SedentaryModel.m in Sources */,
 				10826A531DBA12600031DB83 /* DropdownMenuView.m in Sources */,
 				109FBB9B1DAA18FB008FF0D3 /* FMDBTool.m in Sources */,
 				10CB0F031D9A13960063AD0C /* MenuContentView.m in Sources */,
@@ -1743,7 +1761,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1784,7 +1802,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1802,6 +1820,7 @@
 				DEVELOPMENT_TEAM = CZG37T4ZQ8;
 				GCC_PREFIX_HEADER = ManridyApp/PrefixHeader.pch;
 				INFOPLIST_FILE = ManridyApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.manridy.universal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1821,6 +1840,7 @@
 				DEVELOPMENT_TEAM = CZG37T4ZQ8;
 				GCC_PREFIX_HEADER = ManridyApp/PrefixHeader.pch;
 				INFOPLIST_FILE = ManridyApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.manridy.universal;
 				PRODUCT_NAME = "$(TARGET_NAME)";

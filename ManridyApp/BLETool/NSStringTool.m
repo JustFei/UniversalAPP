@@ -42,7 +42,6 @@
         if (tmpid == 0) {
             break;
         }
-        
     }
     return str;
 }
@@ -331,6 +330,18 @@
         
         NSString *protocolStr = [NSString stringWithFormat:@"FC12%@",info];
         
+        while (1) {
+            if (protocolStr.length < 40) {
+                protocolStr = [protocolStr stringByAppendingString:@"00"];
+            }else {
+                break;
+            }
+        }
+        
+        return protocolStr;
+    }else if ([head isEqualToString:@"16"]) {
+        //久坐提醒
+        NSString *protocolStr = [NSString stringWithFormat:@"FC16%@",info];
         while (1) {
             if (protocolStr.length < 40) {
                 protocolStr = [protocolStr stringByAppendingString:@"00"];

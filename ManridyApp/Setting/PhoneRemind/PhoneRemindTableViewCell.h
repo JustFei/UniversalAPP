@@ -15,6 +15,13 @@ typedef void(^ClockSwitchValueChangeBlock)(void);
 @property (weak, nonatomic) IBOutlet UILabel *functionName;
 @property (weak, nonatomic) IBOutlet UIButton *timeButton;
 @property (weak, nonatomic) IBOutlet UISwitch *timeSwitch;
+@property (weak, nonatomic) IBOutlet UIView *halvingLine;
+@property (weak, nonatomic) IBOutlet UILabel *startLabel;
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UILabel *endLabel;
+@property (weak, nonatomic) IBOutlet UIButton *endButton;
+@property (weak, nonatomic) IBOutlet UILabel *bolanghaolabel;
+
 
 @property (nonatomic ,copy) ClockSwitchValueChangeBlock _clockSwitchValueChangeBlock;
 

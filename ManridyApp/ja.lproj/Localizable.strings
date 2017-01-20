@@ -77,6 +77,18 @@
 //查找设备
 "findPer" = "検索装置";
 
+//久坐提醒
+"sedentaryRemind" = "久坐提醒";
+
+//开始时间
+"beginTime" = "开始时间";
+
+//结束时间
+"endTime" = "结束时间";
+
+//午休免打扰
+"unDisturb" = "午休免打扰";
+
 //闹钟设置
 "clockSet" = "アラーム設定";
 
@@ -99,7 +111,7 @@
 "startSearch" = "検索を開始";
 
 //正在查找设备
-"searchingPer" = "デバイスを検索しています";
+"searchingPer" = "デバイスを検索しています(%d...)";
 
 //停止查找
 "stopSearch" = "検索停止";

@@ -32,16 +32,15 @@
 @property (nonatomic ,weak) UITableView *remindTableView;
 @property (nonatomic ,strong) NSMutableArray *clockTimeArr;
 @property (nonatomic ,weak) UIPickerView *timePicker;
-
 @property (nonatomic ,weak) UIButton *selectButton;
-
 @property (nonatomic ,strong) BLETool *myBleTool;
-
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
 @property (nonatomic ,strong) UIAlertController *searchVC;
 @property (nonatomic ,strong) Remind *remindModel;
 @property (nonatomic ,strong) UISwitch *phoneSwitch;
 @property (nonatomic ,strong) UISwitch *messageSwitch;
+@property (nonatomic ,strong) SectionModel *sedentaryModel;//用于修改开启久坐的model
+@property (nonatomic ,strong) NSString *pickerString;
 
 @end
 
@@ -55,8 +54,8 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    _funcArr = @[@[NSLocalizedString(@"phoneRemind", nil),NSLocalizedString(@"messageRemind", nil)],@[NSLocalizedString(@"lossRemind", nil),NSLocalizedString(@"findPer", nil)],@[NSLocalizedString(@"clockSet", nil)]];
-    _imageArr = @[@[@"alert_call",@"alert_sms"],@[@"alert_lose",@"alert_find"],@[@"alert_clock"]];
+    _funcArr = @[@[NSLocalizedString(@"phoneRemind", nil),NSLocalizedString(@"messageRemind", nil),NSLocalizedString(@"lossRemind", nil),NSLocalizedString(@"findPer", nil)],@[NSLocalizedString(@"sedentaryRemind", nil),NSLocalizedString(@"beginTime", nil),NSLocalizedString(@"endTime", nil),NSLocalizedString(@"unDisturb", nil)],@[NSLocalizedString(@"clockSet", nil)]];
+    _imageArr = @[@[@"alert_call",@"alert_sms",@"alert_lose",@"alert_find"],@[@"alert_sedentary"],@[@"alert_clock"]];
     _clockArr = @[NSLocalizedString(@"clock1", nil),NSLocalizedString(@"clock2", nil),NSLocalizedString(@"clock3", nil)];
     
     [self getPickerViewDataSource];
@@ -64,6 +63,10 @@
         SectionModel *sectionModel = [[SectionModel alloc] init];
         sectionModel.functionNameArr = (NSArray *)_funcArr[i];
         sectionModel.imageNameArr = (NSArray *)_imageArr[i];
+        if (i == 1) {
+            sectionModel.isExpanded = NO;
+            self.sedentaryModel = sectionModel;
+        }
         if (i == 2) {
             sectionModel.arrowImageName = @"all_next_icon";
             sectionModel.isExpanded = NO;
@@ -192,6 +195,87 @@
     countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES]; //启动倒计时后会每秒钟调用一次方法 timeFireMethod
 }
 
+//打开久坐提醒
+- (void)openSedentary:(UISwitch *)sender
+{
+    if (sender.tag == 1000) {
+        if (!sender.on) {
+            if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                [sender setOn:NO];
+                self.sedentaryModel.isExpanded = NO;
+                SedentaryModel *model = [[SedentaryModel alloc] init];
+                model.sedentaryAlert = NO;
+                model.unDisturb = NO;
+                [self.myBleTool writeSedentaryAlertWithSedentaryModel:model];
+                [self.remindTableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+                                    withRowAnimation:UITableViewRowAnimationFade];
+            }else {
+                [self presentAlertController:sender];
+            }
+        }else {
+            if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                [sender setOn:YES];
+                self.sedentaryModel.isExpanded = YES;
+                SedentaryModel *model = [[SedentaryModel alloc] init];
+                model.sedentaryAlert = YES;
+                model.unDisturb = NO;
+                model.timeInterval = 1;
+                model.sedentaryStartTime = @"09:00";
+                model.sedentaryEndTime = @"18:00";
+                model.disturbStartTime = @"12:00";
+                model.disturbEndTime = @"14:00";
+                model.stepInterval = 50;
+                [self.myBleTool writeSedentaryAlertWithSedentaryModel:model];
+                [self.remindTableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+                                    withRowAnimation:UITableViewRowAnimationFade];
+            }else {
+                [self presentAlertController:sender];
+            }
+        }
+    }
+}
+
+- (void)openUnDisturb:(UISwitch *)sender
+{
+    if (sender.tag == 1001) {
+        if (!sender.on) {
+            if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                [sender setOn:NO];
+                //关闭勿扰模式
+                SedentaryModel *model = [[SedentaryModel alloc] init];
+                model.sedentaryAlert = YES;
+                model.unDisturb = NO;
+                model.timeInterval = 1;
+                model.sedentaryStartTime = @"09:00";
+                model.sedentaryEndTime = @"18:00";
+                model.disturbStartTime = @"12:00";
+                model.disturbEndTime = @"14:00";
+                model.stepInterval = 50;
+                [self.myBleTool writeSedentaryAlertWithSedentaryModel:model];
+            }else {
+                [self presentAlertController:sender];
+            }
+        }else {
+            if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                [sender setOn:YES];
+                //打开勿扰模式
+                SedentaryModel *model = [[SedentaryModel alloc] init];
+                model.sedentaryAlert = YES;
+                model.unDisturb = YES;
+                model.timeInterval = 1;
+                model.sedentaryStartTime = @"09:00";
+                model.sedentaryEndTime = @"18:00";
+                model.disturbStartTime = @"12:00";
+                model.disturbEndTime = @"14:00";
+                model.stepInterval = 50;
+                [self.myBleTool writeSedentaryAlertWithSedentaryModel:model];
+            }else {
+                [self presentAlertController:sender];
+            }
+        }
+    }
+}
+
 -(void)timeFireMethod{
     //倒计时-1
     secondsCountDown--;
@@ -235,6 +319,40 @@
     }];
     [vc addAction:ac];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)startTimeChoose:(UIButton *)sender
+{
+    self.pickerString = sender.titleLabel.text;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [sender setTitle:self.pickerString forState:UIControlStateNormal];
+    }];
+    [alert addAction:cancelAction];
+    [alert addAction:okAction];
+    UIDatePicker *startTimePickerView = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, alert.view.frame.size.width - 30, 216)];
+    startTimePickerView.tag = 10000;
+    startTimePickerView.datePickerMode = UIDatePickerModeDate;
+    [startTimePickerView setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"]];
+    // 设置时区
+    [startTimePickerView setTimeZone:[NSTimeZone localTimeZone]];
+    // 设置当前显示时间
+//    [startTimePickerView setDate:[NSDate date] animated:YES];
+    // 设置显示最大时间（此处为当前时间）
+//    [startTimePickerView setMaximumDate:[NSDate date]];
+    // 设置UIDatePicker的显示模式
+    [startTimePickerView setDatePickerMode:UIDatePickerModeTime];
+    // 当值发生改变的时候调用的方法
+    [startTimePickerView addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [alert.view addSubview:startTimePickerView];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)endTimeChoose:(UIButton *)sender
+{
+    
 }
 
 #pragma mark - UIPickerViewDelegate && UIPickerViewDateSource
@@ -303,9 +421,8 @@
         SectionModel *model = _sectionArr[section];
         return model.functionNameArr.count;
     }else if (section == 1) {
-        SectionModel *model = _sectionArr[section];
-        return model.functionNameArr.count;
-    }else if (section == 2) {
+        return self.sedentaryModel.isExpanded ? 3 : 1;
+    }else {
         SectionModel *model = _sectionArr[section];
         return model.isExpanded ? 3 : 0;
     }
@@ -321,29 +438,36 @@
     switch (indexPath.section) {
         case 0:
         {
+            cell.timeSwitch.hidden = NO;
+            cell.iconImageView.hidden = NO;
             cell.iconImageView.image = [UIImage imageNamed:imgArr[indexPath.row]];
             cell.functionName.text = funArr[indexPath.row];
             cell.timeButton.hidden = YES;
+            cell.startLabel.hidden = YES;
+            cell.startButton.hidden = YES;
+            cell.endLabel.hidden = YES;
+            cell.endButton.hidden = YES;
+            cell.bolanghaolabel.hidden = YES;
 //            cell.timeSwitch.tag = indexPath.row + 100;
             BOOL isMessage = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindMessage"];
             BOOL isPhone = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindPhone"];
-            if (indexPath.row == 0) {
-                [cell.timeSwitch setOn:isPhone];
-                self.phoneSwitch = cell.timeSwitch;
-            }
-            if (indexPath.row == 1) {
-                [cell.timeSwitch setOn:isMessage];
-                self.messageSwitch = cell.timeSwitch;
-            }
-            [cell.timeSwitch addTarget:self action:@selector(SmsAndPhoneRemind:) forControlEvents:UIControlEventValueChanged];
-        }
-            break;
-        case 1:
-        {
-            cell.functionName.text = funArr[indexPath.row];
-            cell.iconImageView.image = [UIImage imageNamed:imgArr[indexPath.row]];
+            
             switch (indexPath.row) {
-                case 0:
+                case 0:     //来电提醒
+                {
+                    [cell.timeSwitch setOn:isPhone];
+                    self.phoneSwitch = cell.timeSwitch;
+                    [cell.timeSwitch addTarget:self action:@selector(SmsAndPhoneRemind:) forControlEvents:UIControlEventValueChanged];
+                }
+                    break;
+                case 1:     //短信提醒
+                {
+                    [cell.timeSwitch setOn:isMessage];
+                    self.messageSwitch = cell.timeSwitch;
+                    [cell.timeSwitch addTarget:self action:@selector(SmsAndPhoneRemind:) forControlEvents:UIControlEventValueChanged];
+                }
+                    break;
+                case 2:     //防丢提醒
                 {
                     BOOL isRemind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"];
                     if (isRemind) {
@@ -353,31 +477,87 @@
                     }
                     
                     [cell.timeSwitch addTarget:self action:@selector(findMyPeripheral:) forControlEvents:UIControlEventValueChanged];
-                    cell.timeButton.hidden = YES;
                 }
                     break;
-                case 1:
+                case 3:     //查找设备
                 {
-                    cell.timeButton.hidden = YES;
                     cell.timeSwitch.hidden = YES;
-                    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                    searchButton.frame = CGRectMake(self.view.frame.size.width - 150, 12, 140, 20);
-                    searchButton.backgroundColor = [UIColor clearColor];
-                    [searchButton setTitle:NSLocalizedString(@"startSearch", nil) forState:UIControlStateNormal];
-                    [searchButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                    searchButton.titleLabel.font = [UIFont systemFontOfSize:15];
-                    [searchButton addTarget:self action:@selector(searchPeripheral:) forControlEvents:UIControlEventTouchUpInside];
-                    [cell addSubview:searchButton];
+                    cell.endButton.hidden = NO;
+                    [cell.endButton addTarget:self action:@selector(searchPeripheral:) forControlEvents:UIControlEventTouchUpInside];
+                    [cell.endButton setTitle:NSLocalizedString(@"startSearch", nil) forState:UIControlStateNormal];
                 }
-                    break;
+                    
                 default:
                     break;
             }
         }
             break;
-        case 2:
+        case 1:
         {
+            cell.timeButton.hidden = YES;
+            cell.halvingLine.hidden = YES;
+            cell.startLabel.hidden = YES;
+            cell.startButton.hidden = YES;
+            cell.endLabel.hidden = YES;
+            cell.endButton.hidden = YES;
+            cell.bolanghaolabel.hidden = YES;
+            switch (indexPath.row) {
+                case 0:
+                {
+                    cell.functionName.text = funArr[indexPath.row];
+                    NSLog(@"1-0 == %@",cell.functionName.text);
+                    cell.iconImageView.image = [UIImage imageNamed:imgArr[indexPath.row]];
+                    cell.timeSwitch.hidden = NO;
+                    [cell.timeSwitch setOn:self.sedentaryModel.isExpanded];
+                    [cell.timeSwitch addTarget:self action:@selector(openSedentary:) forControlEvents:UIControlEventValueChanged];
+                    cell.timeSwitch.tag = 1000;
+                    
+                }
+                    break;
+                case 1:
+                {
+                    cell.timeSwitch.hidden = YES;
+                    cell.functionName.text = @"";
+                    cell.startLabel.hidden = NO;
+                    cell.startButton.hidden = NO;
+                    cell.endLabel.hidden = NO;
+                    cell.endButton.hidden = NO;
+                    cell.bolanghaolabel.hidden = NO;
+                    [cell.startButton addTarget:self action:@selector(startTimeChoose:) forControlEvents:UIControlEventTouchUpInside];
+                    [cell.endButton addTarget:self action:@selector(endTimeChoose:) forControlEvents:UIControlEventTouchUpInside];
+                }
+                    break;
+                case 2:
+                {
+                    cell.bolanghaolabel.hidden = NO;
+                    cell.bolanghaolabel.text = @"12:00~14:00";
+                    cell.iconImageView.hidden = YES;
+                    cell.functionName.text = funArr[indexPath.row + 1];
+                    NSLog(@"1-2 == %@",cell.functionName.text);
+                    cell.timeSwitch.hidden = NO;
+                    [cell.timeSwitch addTarget:self action:@selector(openUnDisturb:) forControlEvents:UIControlEventValueChanged];
+                    cell.timeSwitch.tag = 1001;
+                    [cell.timeSwitch setOn:NO];
+                }
+                    break;
+                    
+                default:
+                    break;
+                }
+        }
+            break;
+        case 2:     //闹钟
+        {
+            cell.startLabel.hidden = YES;
+            cell.startButton.hidden = YES;
+            cell.endLabel.hidden = YES;
+            cell.endButton.hidden = YES;
+            cell.bolanghaolabel.hidden = YES;
+            cell.iconImageView.hidden = YES;
             cell.functionName.text = _clockArr[indexPath.row];
+            cell.halvingLine.hidden = YES;
+            cell.timeButton.hidden = NO;
+            cell.timeSwitch.hidden = NO;
             if (self.clockTimeArr.count == 0) {
                 [cell.timeButton setTitle:@"08:00" forState:UIControlStateNormal];
                 [cell.timeSwitch setOn:NO];
@@ -414,8 +594,6 @@
             break;
     }
     
-    
-    
     cell.backgroundColor = [UIColor clearColor];
     cell.timeSwitch.transform = CGAffineTransformMakeScale(0.85, 0.75);
     
@@ -432,7 +610,7 @@
     if (section == 0) {
         return 16;
     }else if (section == 1) {
-        return 16;
+        return 0;
     }else {
         return 60;
     }
@@ -447,7 +625,7 @@
     }
     
     if (section == 1) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , 16)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , 1)];
         view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
         return view;
     }
@@ -467,6 +645,16 @@
     }
     
     return nil;
+}
+
+
+#pragma mark - datePickerDelegate
+- (void)datePickerValueChanged:(UIDatePicker *)sender
+{
+    DLog(@"%@",sender.date);
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"hh:mm"];
+    self.pickerString = [formatter stringFromDate:sender.date];
 }
 
 #pragma mark - receiveDelegate
@@ -500,6 +688,19 @@
     [self.searchVC dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - 获取当前View的控制器的方法
+- (UIViewController *)findViewController:(UIView *)sourceView
+{
+    id target=sourceView;
+    while (target) {
+        target = ((UIResponder *)target).nextResponder;
+        if ([target isKindOfClass:[UIViewController class]]) {
+            break;
+        }
+    }
+    return target;
+}
+
 #pragma mark - 懒加载
 - (UITableView *)remindTableView
 {
@@ -509,6 +710,7 @@
         view.allowsSelection = NO;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesBegan)];
         [view addGestureRecognizer:tap];
+        view.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         view.backgroundColor = [UIColor clearColor];
         

@@ -230,6 +230,9 @@ typedef enum{
 //get version from peripheral
 - (void)writeRequestVersion;
 
+//set sedentary alert
+- (void)writeSedentaryAlertWithSedentaryModel:(SedentaryModel *)sedentaryModel;
+
 //临时写入保持连接
 - (void)writeToKeepConnect;
 @end

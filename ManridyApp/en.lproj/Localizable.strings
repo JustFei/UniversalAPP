@@ -9,7 +9,7 @@
 //MARK: 关于界面
 
 //app Name
-"appName" = "R_power";
+"appName" = "iwear";
 
 //软件版本号
 "softWare" = "Software version NO.：V%@";
@@ -75,6 +75,18 @@
 
 //查找设备
 "findPer" = "Find device";
+
+//久坐提醒
+"sedentaryRemind" = "久坐提醒";
+
+//开始时间
+"beginTime" = "开始时间";
+
+//结束时间
+"endTime" = "结束时间";
+
+//午休免打扰
+"unDisturb" = "午休免打扰";
 
 //闹钟设置
 "clockSet" = "Clock setting";
@@ -379,5 +391,6 @@
 
 //通知正文
 "PerDismissNodifyContent" = "Warning! Your bracelet in%@leave the connection range, may be lost!";
+
 
 

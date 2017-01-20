@@ -17,6 +17,7 @@
 #import "Remind.h"
 #import "BloodModel.h"
 #import "BloodO2Model.h"
+#import "SedentaryModel.h"
 
 typedef enum : NSUInteger {
     ResponsEcorrectnessDataFail = 0,
@@ -87,6 +88,9 @@ typedef enum : NSUInteger {
 
 //配对是否成功
 @property (nonatomic ,assign) BOOL pairSuccess;
+
+//久坐模型
+@property (nonatomic ,strong) SedentaryModel *sedentaryModel;
 
 @end
 

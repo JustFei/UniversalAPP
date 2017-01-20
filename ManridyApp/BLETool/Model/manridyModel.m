@@ -98,4 +98,13 @@
     return _bloodO2Model;
 }
 
+- (SedentaryModel *)sedentaryModel
+{
+    if (!_sedentaryModel){
+        _sedentaryModel = [[SedentaryModel alloc] init];
+    }
+    
+    return _sedentaryModel;
+}
+
 @end
