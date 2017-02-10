@@ -14,6 +14,7 @@
 #import "SleepModel.h"
 #import "BloodModel.h"
 #import "BloodO2Model.h"
+#import "SedentaryModel.h"
 
 
 @implementation FMDBTool
@@ -62,6 +63,8 @@ static FMDatabase *_fmdb;
         //SleepData
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists SleepData(id integer primary key,date text, startTime text, endTime text, deepSleep text, lowSleep text, sumSleep text, currentDataCount integer, sumDataCount integer);"]];
         
+        //SedentaryData
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists SedentaryData(id integer primary key,sedentary bool, unDisturb bool, macAddress text, startSedentaryTime text, endSedentaryTime text, startDisturbTime text, endDisturbTime text);"]];
     }
     
     return self;
@@ -624,6 +627,77 @@ static FMDatabase *_fmdb;
 - (void)CloseDataBase
 {
     [_fmdb close];
+}
+
+#pragma mark - SedentaryData
+- (BOOL)insertSedentaryData:(SedentaryModel *)model withMacAddress:(NSString *)macAddress
+{
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO SedentaryData(sedentary, unDisturb, macAddress, startSedentaryTime, endSedentaryTime, startDisturbTime, endDisturbTime) VALUES ('%d', '%d', '%@', '%@', '%@', '%@', '%@');", model.sedentaryAlert, model.unDisturb, macAddress, model.sedentaryStartTime, model.sedentaryEndTime, model.disturbStartTime, model.disturbEndTime];
+    
+    BOOL result = [_fmdb executeUpdate:insertSql];
+    if (result) {
+        DLog(@"插入sedentaryData成功");
+    }else {
+        DLog(@"插入sedentaryData失败");
+    }
+    return result;
+}
+
+- (BOOL)modifySedentaryData:(SedentaryModel *)model withMacAddress:(NSString *)macAddress
+{
+    NSString *modifySql = [NSString stringWithFormat:@"update SedentaryData set sedentary = ?, unDisturb = ?, startSedentaryTime = ?, endSedentaryTime = ?, startDisturbTime = ?, endDisturbTime = ? where macAddress = ?"];
+    
+    BOOL modifyResult = [_fmdb executeUpdate:modifySql, model.sedentaryAlert, model.unDisturb, model.sedentaryStartTime, model.sedentaryEndTime, model.disturbStartTime, model.disturbStartTime, macAddress];
+    
+    if (modifyResult) {
+        DLog(@"修改sedentaryData成功");
+    }else {
+        DLog(@"修改sedentaryData失败");
+    }
+    
+    return modifyResult;
+}
+
+- (NSArray *)querySedentaryWithMac:(NSString *)macAddress
+{
+    NSString *queryString;
+    
+    FMResultSet *set;
+    
+    if (macAddress == nil) {
+        queryString = [NSString stringWithFormat:@"SELECT * FROM SedentaryData;"];
+        
+        set = [_fmdb executeQuery:queryString];
+    }else {
+        queryString = [NSString stringWithFormat:@"SELECT * FROM SedentaryData where macAddress = ?;"];
+        
+        set = [_fmdb executeQuery:queryString ,macAddress];
+    }
+    
+    NSMutableArray *arrM = [NSMutableArray array];
+    
+    while ([set next]) {
+        //sedentary bool, unDisturb bool, macAddress text, startSedentaryTime text, endSedentaryTime text, startDisturbTime text, endDisturbTime text
+        BOOL sedentary = [set boolForColumn:@"sedentary"];
+        BOOL unDisturb = [set boolForColumn:@"unDisturb"];
+        NSString *startSedentaryTime = [set stringForColumn:@"startSedentaryTime"];
+        NSString *endSedentaryTime = [set stringForColumn:@"endSedentaryTime"];
+        NSString *startDisturbTime = [set stringForColumn:@"startDisturbTime"];
+        NSString *endDisturbTime = [set stringForColumn:@"endDisturbTime"];
+        
+        SedentaryModel *model = [[SedentaryModel alloc] init];
+        
+        model.sedentaryAlert = sedentary;
+        model.unDisturb = unDisturb;
+        model.sedentaryStartTime = startSedentaryTime;
+        model.sedentaryEndTime = endSedentaryTime;
+        model.disturbStartTime = startDisturbTime;
+        model.disturbEndTime = endDisturbTime;
+        
+        [arrM addObject:model];
+    }
+    DLog(@"sedentary查询成功");
+    return arrM;
 }
 
 @end

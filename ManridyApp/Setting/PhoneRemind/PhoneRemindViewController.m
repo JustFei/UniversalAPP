@@ -14,6 +14,7 @@
 #import "FMDBTool.h"
 #import "BLETool.h"
 #import "Remind.h"
+#import "manridyBleDevice.h"
 
 
 @interface PhoneRemindViewController () <UITableViewDelegate ,UITableViewDataSource ,UIPickerViewDelegate ,UIPickerViewDataSource ,BleReceiveDelegate>
@@ -41,6 +42,7 @@
 @property (nonatomic ,strong) UISwitch *messageSwitch;
 @property (nonatomic ,strong) SectionModel *sedentaryModel;//用于修改开启久坐的model
 @property (nonatomic ,strong) NSString *pickerString;
+@property (nonatomic ,strong) SedentaryModel *sedModel; //用于查找本地保存的记录信息
 
 @end
 
@@ -58,14 +60,22 @@
     _imageArr = @[@[@"alert_call",@"alert_sms",@"alert_lose",@"alert_find"],@[@"alert_sedentary"],@[@"alert_clock"]];
     _clockArr = @[NSLocalizedString(@"clock1", nil),NSLocalizedString(@"clock2", nil),NSLocalizedString(@"clock3", nil)];
     
+    //久坐提醒的本地存储
+    NSArray *sedArr = [self.myFmdbTool querySedentaryWithMac:self.myBleTool.currentDev.deviceName];
+    self.sedModel = sedArr.firstObject;
+    
     [self getPickerViewDataSource];
     for (int i = 0; i < _funcArr.count; i ++) {
         SectionModel *sectionModel = [[SectionModel alloc] init];
         sectionModel.functionNameArr = (NSArray *)_funcArr[i];
         sectionModel.imageNameArr = (NSArray *)_imageArr[i];
         if (i == 1) {
-            sectionModel.isExpanded = NO;
-            self.sedentaryModel = sectionModel;
+            if (self.sedModel.sedentaryAlert) {
+                sectionModel.isExpanded = YES;
+            }else {
+                sectionModel.isExpanded = NO;
+                self.sedentaryModel = sectionModel;
+            }
         }
         if (i == 2) {
             sectionModel.arrowImageName = @"all_next_icon";
@@ -110,7 +120,7 @@
     for (ClockModel *model in self.clockTimeArr) {
         [self.myFmdbTool insertClockModel:model];
     }
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -326,23 +336,28 @@
     self.pickerString = sender.titleLabel.text;
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [sender setTitle:self.pickerString forState:UIControlStateNormal];
+        
     }];
     [alert addAction:cancelAction];
     [alert addAction:okAction];
     UIDatePicker *startTimePickerView = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, alert.view.frame.size.width - 30, 216)];
     startTimePickerView.tag = 10000;
-    startTimePickerView.datePickerMode = UIDatePickerModeDate;
-    [startTimePickerView setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"]];
+    startTimePickerView.datePickerMode = UIDatePickerModeTime;
+    //[startTimePickerView setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"]];
     // 设置时区
     [startTimePickerView setTimeZone:[NSTimeZone localTimeZone]];
     // 设置当前显示时间
-//    [startTimePickerView setDate:[NSDate date] animated:YES];
-    // 设置显示最大时间（此处为当前时间）
-//    [startTimePickerView setMaximumDate:[NSDate date]];
-    // 设置UIDatePicker的显示模式
-    [startTimePickerView setDatePickerMode:UIDatePickerModeTime];
+    NSDate *currentDate;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm"];
+    if (self.pickerString) {
+        currentDate = [formatter dateFromString:self.pickerString];
+    }else {
+        currentDate = [formatter dateFromString:@"09:00"];
+    }
+    [startTimePickerView setDate:currentDate];
     // 当值发生改变的时候调用的方法
     [startTimePickerView addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
     [alert.view addSubview:startTimePickerView];
@@ -352,7 +367,36 @@
 
 - (void)endTimeChoose:(UIButton *)sender
 {
+    self.pickerString = sender.titleLabel.text;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [sender setTitle:self.pickerString forState:UIControlStateNormal];
+        
+    }];
+    [alert addAction:cancelAction];
+    [alert addAction:okAction];
+    UIDatePicker *startTimePickerView = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, alert.view.frame.size.width - 30, 216)];
+    startTimePickerView.tag = 10000;
+    startTimePickerView.datePickerMode = UIDatePickerModeTime;
+    //[startTimePickerView setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"]];
+    // 设置时区
+    [startTimePickerView setTimeZone:[NSTimeZone localTimeZone]];
+    // 设置当前显示时间
+    NSDate *currentDate;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm"];
+    if (self.pickerString) {
+        currentDate = [formatter dateFromString:self.pickerString];
+    }else {
+        currentDate = [formatter dateFromString:@"18:00"];
+    }
+    [startTimePickerView setDate:currentDate];
+    // 当值发生改变的时候调用的方法
+    [startTimePickerView addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [alert.view addSubview:startTimePickerView];
     
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - UIPickerViewDelegate && UIPickerViewDateSource
@@ -464,6 +508,7 @@
                 {
                     [cell.timeSwitch setOn:isMessage];
                     self.messageSwitch = cell.timeSwitch;
+            
                     [cell.timeSwitch addTarget:self action:@selector(SmsAndPhoneRemind:) forControlEvents:UIControlEventValueChanged];
                 }
                     break;
@@ -511,7 +556,6 @@
                     [cell.timeSwitch setOn:self.sedentaryModel.isExpanded];
                     [cell.timeSwitch addTarget:self action:@selector(openSedentary:) forControlEvents:UIControlEventValueChanged];
                     cell.timeSwitch.tag = 1000;
-                    
                 }
                     break;
                 case 1:
@@ -523,6 +567,7 @@
                     cell.endLabel.hidden = NO;
                     cell.endButton.hidden = NO;
                     cell.bolanghaolabel.hidden = NO;
+                    cell.bolanghaolabel.text = @"~";
                     [cell.startButton addTarget:self action:@selector(startTimeChoose:) forControlEvents:UIControlEventTouchUpInside];
                     [cell.endButton addTarget:self action:@selector(endTimeChoose:) forControlEvents:UIControlEventTouchUpInside];
                 }
@@ -531,6 +576,8 @@
                 {
                     cell.bolanghaolabel.hidden = NO;
                     cell.bolanghaolabel.text = @"12:00~14:00";
+                    [cell.bolanghaolabel setFont:[UIFont systemFontOfSize:13]];
+                    [cell.bolanghaolabel setTextColor:[UIColor grayColor]];
                     cell.iconImageView.hidden = YES;
                     cell.functionName.text = funArr[indexPath.row + 1];
                     NSLog(@"1-2 == %@",cell.functionName.text);
@@ -663,8 +710,8 @@
     if (manridyModel.receiveDataType == ReturnModelTypePairSuccess) {
         if (manridyModel.isReciveDataRight == ResponsEcorrectnessDataFail) {
             if (manridyModel.pairSuccess == NO) {
-                UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"提示" message:@"配对失败，请重试。" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *okAC = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:@"配对失败，请重试。" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAC = [UIAlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     [self.phoneSwitch setOn:NO];
                     [self.messageSwitch setOn:NO];
                     [[NSUserDefaults standardUserDefaults] setBool:self.phoneSwitch.on forKey:@"isRemindPhone"];

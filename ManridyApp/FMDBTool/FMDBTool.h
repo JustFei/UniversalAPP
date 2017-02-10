@@ -16,6 +16,7 @@
 @class ClockModel;
 @class BloodModel;
 @class BloodO2Model;
+@class SedentaryModel;
 
 typedef enum : NSUInteger {
     SQLTypeStep = 0,
@@ -101,5 +102,14 @@ typedef enum : NSUInteger {
 
 #pragma mark - CloseData
 - (void)CloseDataBase;
+
+#pragma mark - SedentaryData
+- (BOOL)insertSedentaryData:(SedentaryModel *)model withMacAddress:(NSString *)macAddress;
+
+- (BOOL)modifySedentaryData:(SedentaryModel *)model withMacAddress:(NSString *)macAddress;
+
+- (NSArray *)querySedentaryWithMac:(NSString *)macAddress;
+
+- (void)deleteSendentaryData:(SedentaryModel *)model;
 
 @end
