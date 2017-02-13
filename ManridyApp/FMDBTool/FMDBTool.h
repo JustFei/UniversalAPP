@@ -110,6 +110,6 @@ typedef enum : NSUInteger {
 
 - (NSArray *)querySedentaryWithMac:(NSString *)macAddress;
 
-- (void)deleteSendentaryData:(SedentaryModel *)model;
+- (BOOL)deleteSendentaryData:(SedentaryModel *)model;
 
 @end

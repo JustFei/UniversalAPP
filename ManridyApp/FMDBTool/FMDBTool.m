@@ -64,7 +64,7 @@ static FMDatabase *_fmdb;
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists SleepData(id integer primary key,date text, startTime text, endTime text, deepSleep text, lowSleep text, sumSleep text, currentDataCount integer, sumDataCount integer);"]];
         
         //SedentaryData
-        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists SedentaryData(id integer primary key,sedentary bool, unDisturb bool, macAddress text, startSedentaryTime text, endSedentaryTime text, startDisturbTime text, endDisturbTime text);"]];
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists SedentaryData(id integer primary key,sedentary bool, unDisturb bool, macAddress text, startSedentaryTime text, endSedentaryTime text, startDisturbTime text, endDisturbTime text, timeInterval integer, stepInterval integer);"]];
     }
     
     return self;
@@ -632,7 +632,7 @@ static FMDatabase *_fmdb;
 #pragma mark - SedentaryData
 - (BOOL)insertSedentaryData:(SedentaryModel *)model withMacAddress:(NSString *)macAddress
 {
-    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO SedentaryData(sedentary, unDisturb, macAddress, startSedentaryTime, endSedentaryTime, startDisturbTime, endDisturbTime) VALUES ('%d', '%d', '%@', '%@', '%@', '%@', '%@');", model.sedentaryAlert, model.unDisturb, macAddress, model.sedentaryStartTime, model.sedentaryEndTime, model.disturbStartTime, model.disturbEndTime];
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO SedentaryData(sedentary, unDisturb, macAddress, startSedentaryTime, endSedentaryTime, startDisturbTime, endDisturbTime, timeInterval, stepInterval) VALUES ('%d', '%d', '%@', '%@', '%@', '%@', '%@', '%d', '%d');", model.sedentaryAlert, model.unDisturb, macAddress, model.sedentaryStartTime, model.sedentaryEndTime, model.disturbStartTime, model.disturbEndTime, model.timeInterval, model.stepInterval];
     
     BOOL result = [_fmdb executeUpdate:insertSql];
     if (result) {
@@ -647,7 +647,7 @@ static FMDatabase *_fmdb;
 {
     NSString *modifySql = [NSString stringWithFormat:@"update SedentaryData set sedentary = ?, unDisturb = ?, startSedentaryTime = ?, endSedentaryTime = ?, startDisturbTime = ?, endDisturbTime = ? where macAddress = ?"];
     
-    BOOL modifyResult = [_fmdb executeUpdate:modifySql, model.sedentaryAlert, model.unDisturb, model.sedentaryStartTime, model.sedentaryEndTime, model.disturbStartTime, model.disturbStartTime, macAddress];
+    BOOL modifyResult = [_fmdb executeUpdate:modifySql, @(model.sedentaryAlert), @(model.unDisturb), model.sedentaryStartTime, model.sedentaryEndTime, model.disturbStartTime, model.disturbEndTime, macAddress];
     
     if (modifyResult) {
         DLog(@"修改sedentaryData成功");
@@ -677,13 +677,14 @@ static FMDatabase *_fmdb;
     NSMutableArray *arrM = [NSMutableArray array];
     
     while ([set next]) {
-        //sedentary bool, unDisturb bool, macAddress text, startSedentaryTime text, endSedentaryTime text, startDisturbTime text, endDisturbTime text
         BOOL sedentary = [set boolForColumn:@"sedentary"];
         BOOL unDisturb = [set boolForColumn:@"unDisturb"];
         NSString *startSedentaryTime = [set stringForColumn:@"startSedentaryTime"];
         NSString *endSedentaryTime = [set stringForColumn:@"endSedentaryTime"];
         NSString *startDisturbTime = [set stringForColumn:@"startDisturbTime"];
         NSString *endDisturbTime = [set stringForColumn:@"endDisturbTime"];
+        int timeInterval = [set intForColumn:@"timeInterval"];
+        int stepInterval = [set intForColumn:@"stepInterval"];
         
         SedentaryModel *model = [[SedentaryModel alloc] init];
         
@@ -693,11 +694,26 @@ static FMDatabase *_fmdb;
         model.sedentaryEndTime = endSedentaryTime;
         model.disturbStartTime = startDisturbTime;
         model.disturbEndTime = endDisturbTime;
+        model.timeInterval = timeInterval;
+        model.stepInterval = stepInterval;
         
         [arrM addObject:model];
     }
     DLog(@"sedentary查询成功");
     return arrM;
+}
+
+- (BOOL)deleteSendentaryData:(SedentaryModel *)model
+{
+    BOOL result = [_fmdb executeUpdate:@"drop table SedentaryData"];
+    
+    if (result) {
+        DLog(@"SedentaryData表删除成功");
+    }else {
+        DLog(@"SedentaryData表删除失败");
+    }
+    
+    return result;
 }
 
 @end

@@ -524,7 +524,7 @@ static BLETool *bleTool = nil;
         }
     }else {
         //001e
-        T2T1 = @"0005" ;
+        T2T1 = @"0005" ;    //5分钟提醒间隔
         IHIM = [sedentaryModel.sedentaryStartTime stringByReplacingOccurrencesOfString:@":" withString:@""];
         IhIm = [sedentaryModel.sedentaryEndTime stringByReplacingOccurrencesOfString:@":" withString:@""];
         SHSM = [sedentaryModel.disturbStartTime stringByReplacingOccurrencesOfString:@":" withString:@""];
@@ -535,11 +535,20 @@ static BLETool *bleTool = nil;
             ss = @"03";     //久坐和勿扰都开启  SS BIT[0]=1 ;SS BIT[1]=1
         }
     }
-    NSString *info = [[[[[[ss stringByAppendingString:T2T1] stringByAppendingString:SHSM] stringByAppendingString:EHEM] stringByAppendingString:IHIM] stringByAppendingString:IhIm] stringByAppendingString:[NSStringTool ToHex:sedentaryModel.stepInterval]];
+    NSString *stepInterval = [NSStringTool ToHex:sedentaryModel.stepInterval];
+    if (stepInterval.length < 4) {
+        while (1) {
+            stepInterval = [@"0" stringByAppendingString:stepInterval];
+            if (stepInterval.length >= 4) {
+                break;
+            }
+        }
+    }
+    NSString *info = [[[[[[ss stringByAppendingString:T2T1] stringByAppendingString:SHSM] stringByAppendingString:EHEM] stringByAppendingString:IHIM] stringByAppendingString:IhIm] stringByAppendingString:stepInterval];
     
     
     NSString *protocolStr = [NSStringTool protocolAddInfo:info head:@"16"];
-    
+    DLog(@"protocolStr = %@",protocolStr);
     //写入操作
     if (self.currentDev.peripheral) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
@@ -911,11 +920,11 @@ static BLETool *bleTool = nil;
                 NSString *batteryStr = [NSString stringWithFormat:@"%x", hexBytes[8]];
                 DLog(@"电量：%@",batteryStr);
             }else {
-                NSString *MAStr = [NSString stringWithFormat:@"%x", hexBytes[7]];
-                NSString *MIStr = [NSString stringWithFormat:@"%x", hexBytes[8]];
-                NSString *REStr = [NSString stringWithFormat:@"%x", hexBytes[9]];
+                int maint = hexBytes[7];
+                int miint = hexBytes[8];
+                int reint = hexBytes[9];
                 
-                NSString *versionStr = [[MAStr stringByAppendingString:[NSString stringWithFormat:@".%@",MIStr]] stringByAppendingString:[NSString stringWithFormat:@".%@",REStr]];
+                NSString *versionStr = [[[NSString stringWithFormat:@"%d", maint] stringByAppendingString:[NSString stringWithFormat:@".%d",miint]] stringByAppendingString:[NSString stringWithFormat:@".%d",reint]];
                 if ([self.receiveDelegate respondsToSelector:@selector(receiveVersionWithVersionStr:)]) {
                     [self.receiveDelegate receiveVersionWithVersionStr:versionStr];
                 }

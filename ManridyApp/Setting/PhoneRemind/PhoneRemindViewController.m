@@ -60,9 +60,14 @@
     _imageArr = @[@[@"alert_call",@"alert_sms",@"alert_lose",@"alert_find"],@[@"alert_sedentary"],@[@"alert_clock"]];
     _clockArr = @[NSLocalizedString(@"clock1", nil),NSLocalizedString(@"clock2", nil),NSLocalizedString(@"clock3", nil)];
     
-    //久坐提醒的本地存储
+    //查找久坐提醒的本地存储
     NSArray *sedArr = [self.myFmdbTool querySedentaryWithMac:self.myBleTool.currentDev.deviceName];
-    self.sedModel = sedArr.firstObject;
+    if (sedArr.count == 0 && self.myBleTool.connectState == kBLEstateDidConnected) {
+        //保存一个初始的状态
+        [self.myFmdbTool insertSedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
+    }else {
+        self.sedModel = sedArr.firstObject;
+    }
     
     [self getPickerViewDataSource];
     for (int i = 0; i < _funcArr.count; i ++) {
@@ -74,8 +79,8 @@
                 sectionModel.isExpanded = YES;
             }else {
                 sectionModel.isExpanded = NO;
-                self.sedentaryModel = sectionModel;
             }
+            self.sedentaryModel = sectionModel;
         }
         if (i == 2) {
             sectionModel.arrowImageName = @"all_next_icon";
@@ -213,12 +218,11 @@
             if (self.myBleTool.connectState == kBLEstateDidConnected) {
                 [sender setOn:NO];
                 self.sedentaryModel.isExpanded = NO;
-                SedentaryModel *model = [[SedentaryModel alloc] init];
-                model.sedentaryAlert = NO;
-                model.unDisturb = NO;
-                [self.myBleTool writeSedentaryAlertWithSedentaryModel:model];
-                [self.remindTableView reloadSections:[NSIndexSet indexSetWithIndex:1]
-                                    withRowAnimation:UITableViewRowAnimationFade];
+                self.sedModel.sedentaryAlert = NO;
+                [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
+                [self.remindTableView reloadSections:[NSIndexSet indexSetWithIndex:1]withRowAnimation:UITableViewRowAnimationFade];
+                //写入数据库
+                [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
             }else {
                 [self presentAlertController:sender];
             }
@@ -226,18 +230,12 @@
             if (self.myBleTool.connectState == kBLEstateDidConnected) {
                 [sender setOn:YES];
                 self.sedentaryModel.isExpanded = YES;
-                SedentaryModel *model = [[SedentaryModel alloc] init];
-                model.sedentaryAlert = YES;
-                model.unDisturb = NO;
-                model.timeInterval = 1;
-                model.sedentaryStartTime = @"09:00";
-                model.sedentaryEndTime = @"18:00";
-                model.disturbStartTime = @"12:00";
-                model.disturbEndTime = @"14:00";
-                model.stepInterval = 50;
-                [self.myBleTool writeSedentaryAlertWithSedentaryModel:model];
+                self.sedModel.sedentaryAlert = YES;
+                [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
                 [self.remindTableView reloadSections:[NSIndexSet indexSetWithIndex:1]
                                     withRowAnimation:UITableViewRowAnimationFade];
+                //写入数据库
+                [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
             }else {
                 [self presentAlertController:sender];
             }
@@ -252,16 +250,10 @@
             if (self.myBleTool.connectState == kBLEstateDidConnected) {
                 [sender setOn:NO];
                 //关闭勿扰模式
-                SedentaryModel *model = [[SedentaryModel alloc] init];
-                model.sedentaryAlert = YES;
-                model.unDisturb = NO;
-                model.timeInterval = 1;
-                model.sedentaryStartTime = @"09:00";
-                model.sedentaryEndTime = @"18:00";
-                model.disturbStartTime = @"12:00";
-                model.disturbEndTime = @"14:00";
-                model.stepInterval = 50;
-                [self.myBleTool writeSedentaryAlertWithSedentaryModel:model];
+                self.sedModel.unDisturb = NO;
+                [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
+                //写入数据库
+                [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
             }else {
                 [self presentAlertController:sender];
             }
@@ -269,16 +261,10 @@
             if (self.myBleTool.connectState == kBLEstateDidConnected) {
                 [sender setOn:YES];
                 //打开勿扰模式
-                SedentaryModel *model = [[SedentaryModel alloc] init];
-                model.sedentaryAlert = YES;
-                model.unDisturb = YES;
-                model.timeInterval = 1;
-                model.sedentaryStartTime = @"09:00";
-                model.sedentaryEndTime = @"18:00";
-                model.disturbStartTime = @"12:00";
-                model.disturbEndTime = @"14:00";
-                model.stepInterval = 50;
-                [self.myBleTool writeSedentaryAlertWithSedentaryModel:model];
+                self.sedModel.unDisturb = YES;
+                [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
+                //写入数据库
+                [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
             }else {
                 [self presentAlertController:sender];
             }
@@ -306,10 +292,16 @@
     if (self.myBleTool.connectState == kBLEstateDidConnected) {
         self.remindModel = [[Remind alloc] init];
         if (sender == self.phoneSwitch) {
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindMessage"]) {
+                self.remindModel.message = YES;
+            }
             self.remindModel.phone = self.phoneSwitch.on;
             [[NSUserDefaults standardUserDefaults] setBool:self.phoneSwitch.on forKey:@"isRemindPhone"];
         }
         if (sender == self.messageSwitch) {
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindPhone"]) {
+                self.remindModel.phone = YES;
+            }
             self.remindModel.message = self.messageSwitch.on;
             [[NSUserDefaults standardUserDefaults] setBool:self.messageSwitch.on forKey:@"isRemindMessage"];
         }
@@ -338,7 +330,11 @@
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [sender setTitle:self.pickerString forState:UIControlStateNormal];
-        
+        //写入久坐提醒的开始时间
+        self.sedModel.sedentaryStartTime = self.pickerString;
+        [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
+        //写入数据库
+        [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
     }];
     [alert addAction:cancelAction];
     [alert addAction:okAction];
@@ -372,7 +368,11 @@
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [sender setTitle:self.pickerString forState:UIControlStateNormal];
-        
+        //写入久坐提醒的结束时间
+        self.sedModel.sedentaryEndTime = self.pickerString;
+        [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
+        //写入数据库
+        [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
     }];
     [alert addAction:cancelAction];
     [alert addAction:okAction];
@@ -550,10 +550,10 @@
                 case 0:
                 {
                     cell.functionName.text = funArr[indexPath.row];
-                    NSLog(@"1-0 == %@",cell.functionName.text);
+                    DLog(@"1-0 == %@",cell.functionName.text);
                     cell.iconImageView.image = [UIImage imageNamed:imgArr[indexPath.row]];
                     cell.timeSwitch.hidden = NO;
-                    [cell.timeSwitch setOn:self.sedentaryModel.isExpanded];
+                    [cell.timeSwitch setOn:self.sedModel.sedentaryAlert];
                     [cell.timeSwitch addTarget:self action:@selector(openSedentary:) forControlEvents:UIControlEventValueChanged];
                     cell.timeSwitch.tag = 1000;
                 }
@@ -564,8 +564,10 @@
                     cell.functionName.text = @"";
                     cell.startLabel.hidden = NO;
                     cell.startButton.hidden = NO;
+                    [cell.startButton setTitle:self.sedModel.sedentaryStartTime forState:UIControlStateNormal];
                     cell.endLabel.hidden = NO;
                     cell.endButton.hidden = NO;
+                    [cell.endButton setTitle:self.sedModel.sedentaryEndTime forState:UIControlStateNormal];
                     cell.bolanghaolabel.hidden = NO;
                     cell.bolanghaolabel.text = @"~";
                     [cell.startButton addTarget:self action:@selector(startTimeChoose:) forControlEvents:UIControlEventTouchUpInside];
@@ -575,16 +577,16 @@
                 case 2:
                 {
                     cell.bolanghaolabel.hidden = NO;
-                    cell.bolanghaolabel.text = @"12:00~14:00";
+                    cell.bolanghaolabel.text = [NSString stringWithFormat:@"%@~%@",self.sedModel.disturbStartTime,self.sedModel.disturbEndTime];
                     [cell.bolanghaolabel setFont:[UIFont systemFontOfSize:13]];
                     [cell.bolanghaolabel setTextColor:[UIColor grayColor]];
                     cell.iconImageView.hidden = YES;
                     cell.functionName.text = funArr[indexPath.row + 1];
                     NSLog(@"1-2 == %@",cell.functionName.text);
                     cell.timeSwitch.hidden = NO;
+                    [cell.timeSwitch setOn:self.sedModel.unDisturb];
                     [cell.timeSwitch addTarget:self action:@selector(openUnDisturb:) forControlEvents:UIControlEventValueChanged];
                     cell.timeSwitch.tag = 1001;
-                    [cell.timeSwitch setOn:NO];
                 }
                     break;
                     
@@ -828,6 +830,32 @@
     }
     
     return _clockTimeArr;
+}
+
+- (SedentaryModel *)sedModel
+{
+    if (!_sedModel) {
+        _sedModel = [[SedentaryModel alloc] init];
+        _sedModel.sedentaryAlert = NO;
+        _sedModel.unDisturb = NO;
+        _sedModel.timeInterval = 5;
+        _sedModel.sedentaryStartTime = @"09:00";
+        _sedModel.sedentaryEndTime = @"18:00";
+        _sedModel.disturbStartTime = @"12:00";
+        _sedModel.disturbEndTime = @"14:00";
+        _sedModel.stepInterval = 50;
+    }
+    
+    return _sedModel;
+}
+
+- (SectionModel *)sedentaryModel
+{
+    if (!_sedentaryModel) {
+        _sedentaryModel = [[SectionModel alloc] init];
+    }
+    
+    return _sedentaryModel;
 }
 
 @end
