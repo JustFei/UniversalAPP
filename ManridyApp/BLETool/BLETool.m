@@ -619,7 +619,9 @@ static BLETool *bleTool = nil;
 //查找到正在广播的指定外设
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
+    
     manridyBleDevice *device = [[manridyBleDevice alloc] initWith:peripheral andAdvertisementData:advertisementData andRSSI:RSSI];
+    DLog(@"%@",device);
     //当你发现你感兴趣的连接外围设备，停止扫描其他设备，以节省电能。
     if (device.deviceName != nil ) {
         if (![self.deviceArr containsObject:peripheral]) {
@@ -691,42 +693,14 @@ static BLETool *bleTool = nil;
         
         if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"]) {
             BOOL isFindMyPeripheral = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if (isFindMyPeripheral && self.connectState == kBLEstateDisConnected) {
-                    // 1、创建通知内容，注：这里得用可变类型的UNMutableNotificationContent，否则内容的属性是只读的
-                    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-                    // 标题
-                    content.title = NSLocalizedString(@"perDismissNodify", nil);
-                    // 次标题
-                    content.subtitle = NSLocalizedString(@"PerDismissNodifySubtitle", nil);
-                    // 内容
-                    NSDate *date = [NSDate date];
-                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-                    formatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
-                    NSString *dateStr = [formatter stringFromDate:date];
-                    content.body = [NSString stringWithFormat:NSLocalizedString(@"PerDismissNodifyContent", nil),dateStr];
-                    // 通知的提示声音，这里用的默认的声音
-                    content.sound = [UNNotificationSound defaultSound];
-                    
-                    // 标识符
-                    content.categoryIdentifier = @"categoryIndentifier";
-                    
-                    // 2、创建通知触发
-                    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
-                    
-                    // 3、创建通知请求
-                    UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:@"KFGroupNotification" content:content trigger:trigger];
-                    
-                    // 4、将请求加入通知中心
-                    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notificationRequest withCompletionHandler:^(NSError * _Nullable error) {
-                        if (error == nil) {
-                            DLog(@"已成功加推送%@",notificationRequest.identifier);
-                        }
-                    }];
-                }
-            });
             
-            
+            /**TODO:这里的延迟操作会因为在后台的原因停止执行，目前测试在8秒钟左右可以实现稳定延迟。*/
+            if (isFindMyPeripheral) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self delayMethod];
+                });
+                
+            }
         }
         
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -741,6 +715,43 @@ static BLETool *bleTool = nil;
         self.currentDev = nil;
     }
 
+}
+
+- (void)delayMethod
+{
+    if (self.connectState == kBLEstateDisConnected) {
+        [self stopScan];
+        // 1、创建通知内容，注：这里得用可变类型的UNMutableNotificationContent，否则内容的属性是只读的
+        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+        // 标题
+        content.title = NSLocalizedString(@"perDismissNodify", nil);
+        // 次标题
+        content.subtitle = NSLocalizedString(@"PerDismissNodifySubtitle", nil);
+        // 内容
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
+        NSString *dateStr = [formatter stringFromDate:date];
+        content.body = [NSString stringWithFormat:NSLocalizedString(@"PerDismissNodifyContent", nil),dateStr];
+        // 通知的提示声音，这里用的默认的声音
+        content.sound = [UNNotificationSound defaultSound];
+        
+        // 标识符
+        content.categoryIdentifier = @"categoryIndentifier";
+        
+        // 2、创建通知触发
+        UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+        
+        // 3、创建通知请求
+        UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:@"KFGroupNotification" content:content trigger:trigger];
+        
+        // 4、将请求加入通知中心
+        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notificationRequest withCompletionHandler:^(NSError * _Nullable error) {
+            if (error == nil) {
+                DLog(@"已成功加推送%@",notificationRequest.identifier);
+            }
+        }];
+    }
 }
 
 #pragma mark - CBPeripheralDelegate
