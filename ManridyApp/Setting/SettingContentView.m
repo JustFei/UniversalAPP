@@ -130,6 +130,15 @@
         case 1:
         {
             PhoneRemindViewController *vc = [[PhoneRemindViewController alloc] init];
+            NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
+            version = [version stringByReplacingOccurrencesOfString:@"." withString:@""];
+            if (version.integerValue >= 128) {
+                vc.haveSedentary = YES;
+            }else {
+                vc.haveSedentary = NO;
+            }
+            //测试
+//            vc.haveSedentary = NO;
             [[self findViewController:self].navigationController pushViewController:vc animated:YES];
         }
             break;

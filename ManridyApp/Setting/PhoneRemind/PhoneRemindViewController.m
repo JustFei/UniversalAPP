@@ -55,9 +55,9 @@
     _sectionArr = [NSMutableArray array];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
+        _funcArr = @[@[NSLocalizedString(@"phoneRemind", nil),NSLocalizedString(@"messageRemind", nil),NSLocalizedString(@"lossRemind", nil),NSLocalizedString(@"findPer", nil)],@[NSLocalizedString(@"sedentaryRemind", nil),NSLocalizedString(@"beginTime", nil),NSLocalizedString(@"endTime", nil),NSLocalizedString(@"unDisturb", nil)],@[NSLocalizedString(@"clockSet", nil)]];
+        _imageArr = @[@[@"alert_call",@"alert_sms",@"alert_lose",@"alert_find"],@[@"alert_sedentary"],@[@"alert_clock"]];
     
-    _funcArr = @[@[NSLocalizedString(@"phoneRemind", nil),NSLocalizedString(@"messageRemind", nil),NSLocalizedString(@"lossRemind", nil),NSLocalizedString(@"findPer", nil)],@[NSLocalizedString(@"sedentaryRemind", nil),NSLocalizedString(@"beginTime", nil),NSLocalizedString(@"endTime", nil),NSLocalizedString(@"unDisturb", nil)],@[NSLocalizedString(@"clockSet", nil)]];
-    _imageArr = @[@[@"alert_call",@"alert_sms",@"alert_lose",@"alert_find"],@[@"alert_sedentary"],@[@"alert_clock"]];
     _clockArr = @[NSLocalizedString(@"clock1", nil),NSLocalizedString(@"clock2", nil),NSLocalizedString(@"clock3", nil)];
     
     //查找久坐提醒的本地存储
@@ -465,7 +465,12 @@
         SectionModel *model = _sectionArr[section];
         return model.functionNameArr.count;
     }else if (section == 1) {
-        return self.sedentaryModel.isExpanded ? 3 : 1;
+        if (self.haveSedentary) {
+            return self.sedentaryModel.isExpanded ? 3 : 1;
+        }else {
+            return 0;
+        }
+        
     }else {
         SectionModel *model = _sectionArr[section];
         return model.isExpanded ? 3 : 0;
@@ -838,12 +843,12 @@
         _sedModel = [[SedentaryModel alloc] init];
         _sedModel.sedentaryAlert = NO;
         _sedModel.unDisturb = NO;
-        _sedModel.timeInterval = 5;
+        _sedModel.timeInterval = 60;
         _sedModel.sedentaryStartTime = @"09:00";
         _sedModel.sedentaryEndTime = @"18:00";
         _sedModel.disturbStartTime = @"12:00";
         _sedModel.disturbEndTime = @"14:00";
-        _sedModel.stepInterval = 50;
+        _sedModel.stepInterval = 100;
     }
     
     return _sedModel;

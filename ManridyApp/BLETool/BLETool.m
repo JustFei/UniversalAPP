@@ -495,7 +495,7 @@ static BLETool *bleTool = nil;
     }
 }
 
-//get version from peripheral
+/** get version from peripheral */
 - (void)writeRequestVersion
 {
     NSString *protocolStr = [NSStringTool protocolAddInfo:@"" head:@"0f"];

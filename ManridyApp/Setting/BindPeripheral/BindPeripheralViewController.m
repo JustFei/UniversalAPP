@@ -13,7 +13,7 @@
 
 #define WIDTH self.view.frame.size.width
 
-@interface BindPeripheralViewController () <UITableViewDelegate ,UITableViewDataSource ,BleDiscoverDelegate ,BleConnectDelegate ,UIAlertViewDelegate>
+@interface BindPeripheralViewController () <UITableViewDelegate ,UITableViewDataSource ,BleDiscoverDelegate ,BleConnectDelegate ,BleReceiveDelegate ,UIAlertViewDelegate>
 {
     NSMutableArray *_dataArr;
     NSInteger index;
@@ -58,6 +58,7 @@
     self.myBleTool = [BLETool shareInstance];
     self.myBleTool.discoverDelegate = self;
     self.myBleTool.connectDelegate = self;
+    self.myBleTool.receiveDelegate = self;
     
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"search", nil) style:UIBarButtonItemStylePlain target:self action:@selector(searchPeripheral)];
     self.navigationItem.rightBarButtonItem = rightItem;
@@ -335,6 +336,7 @@
     [view show];
     
     [self.myBleTool writeTimeToPeripheral:[NSDate date]];
+    [self.myBleTool writeRequestVersion];
 }
 
 
@@ -356,7 +358,11 @@
     index = 0;
 }
 
-
+#pragma mark - BleReceiveDelegate
+- (void)receiveVersionWithVersionStr:(NSString *)versionStr
+{
+    [[NSUserDefaults standardUserDefaults] setObject:versionStr forKey:@"version"];
+}
 
 #pragma mark - 懒加载
 - (UIImageView *)connectImageView
