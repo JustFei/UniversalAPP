@@ -205,7 +205,7 @@
     [self presentViewController:self.searchVC animated:YES completion:nil];
     
     //设置倒计时总时长
-    secondsCountDown = 10;//60秒倒计时
+    secondsCountDown = 10;//10秒倒计时
     //开始倒计时
     countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES]; //启动倒计时后会每秒钟调用一次方法 timeFireMethod
 }
@@ -276,13 +276,15 @@
     //倒计时-1
     secondsCountDown--;
     //修改倒计时标签现实内容
-    
+    DLog(@"%d",secondsCountDown);
     if (self.searchVC) {
         self.searchVC.message = [NSString stringWithFormat:NSLocalizedString(@"searchingPer", nil),secondsCountDown];
-        //当倒计时到0时，做需要的操作，比如验证码过期不能提交
+        //当倒计时到0时，做需要的操作
         if(secondsCountDown==0){
             [countDownTimer invalidate];
+            secondsCountDown = 10;
             [self.searchVC dismissViewControllerAnimated:YES completion:nil];
+            self.searchVC = nil;
         }
     }
 }
@@ -739,7 +741,10 @@
 
 - (void)receiveSearchFeedback
 {
+    [countDownTimer invalidate];
+    secondsCountDown = 10;
     [self.searchVC dismissViewControllerAnimated:YES completion:nil];
+    self.searchVC = nil;
 }
 
 #pragma mark - 获取当前View的控制器的方法
@@ -820,7 +825,10 @@
     if (!_searchVC) {
         _searchVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:[NSString stringWithFormat:NSLocalizedString(@"searchingPer", nil),10] preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ac = [UIAlertAction actionWithTitle:NSLocalizedString(@"stopSearch", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [countDownTimer invalidate];
+            secondsCountDown = 10;
             [self.myBleTool writeSearchPeripheralWithONorOFF:NO];
+            _searchVC = nil;
         }];
         [_searchVC addAction:ac];
     }
