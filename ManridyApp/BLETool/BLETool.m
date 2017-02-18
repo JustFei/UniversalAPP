@@ -524,7 +524,7 @@ static BLETool *bleTool = nil;
         }
     }else {
         //001e
-        T2T1 = @"0005" ;    //5分钟提醒间隔
+        T2T1 = @"003c" ;    //60分钟提醒间隔
         IHIM = [sedentaryModel.sedentaryStartTime stringByReplacingOccurrencesOfString:@":" withString:@""];
         IhIm = [sedentaryModel.sedentaryEndTime stringByReplacingOccurrencesOfString:@":" withString:@""];
         SHSM = [sedentaryModel.disturbStartTime stringByReplacingOccurrencesOfString:@":" withString:@""];
@@ -720,7 +720,6 @@ static BLETool *bleTool = nil;
 - (void)delayMethod
 {
     if (self.connectState == kBLEstateDisConnected) {
-        [self stopScan];
         // 1、创建通知内容，注：这里得用可变类型的UNMutableNotificationContent，否则内容的属性是只读的
         UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
         // 标题

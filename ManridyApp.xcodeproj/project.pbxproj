@@ -229,9 +229,9 @@
 		9C57F22B1DF2C2D30090C2EF /* BooldHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F22D1DF2C2D30090C2EF /* BooldHistoryViewController.xib */; };
 		9C57F2311DF2C2E10090C2EF /* BOHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F2331DF2C2E10090C2EF /* BOHistoryViewController.xib */; };
 		9C57F2371DF2C2F50090C2EF /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F2391DF2C2F50090C2EF /* UserInfoCell.xib */; };
+		9C5F32581E57E38000C6C947 /* alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C5F32571E57E38000C6C947 /* alert.wav */; };
 		9C728F681DD5DB2800BEF69E /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C728F671DD5DB2800BEF69E /* PopupView.m */; };
 		9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F691DD5DB4B00BEF69E /* PopupView.xib */; };
-		9C728F6C1DD5ECB300BEF69E /* alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F6B1DD5ECB300BEF69E /* alert.wav */; };
 		9CC559771E2F58E30074AE54 /* alert_sedentary.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC559741E2F58E30074AE54 /* alert_sedentary.png */; };
 		9CC559781E2F58E30074AE54 /* alert_sedentary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC559751E2F58E30074AE54 /* alert_sedentary@2x.png */; };
 		9CC559791E2F58E30074AE54 /* alert_sedentary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC559761E2F58E30074AE54 /* alert_sedentary@3x.png */; };
@@ -556,10 +556,10 @@
 		9C57F2361DF2C2E60090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/BOHistoryViewController.xib"; sourceTree = "<group>"; };
 		9C57F2381DF2C2F50090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/UserInfoCell.xib; sourceTree = "<group>"; };
 		9C57F23C1DF2C2FA0090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/UserInfoCell.xib"; sourceTree = "<group>"; };
+		9C5F32571E57E38000C6C947 /* alert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alert.wav; sourceTree = "<group>"; };
 		9C728F661DD5DB2800BEF69E /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupView.h; path = PopupView/PopupView.h; sourceTree = "<group>"; };
 		9C728F671DD5DB2800BEF69E /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupView.m; path = PopupView/PopupView.m; sourceTree = "<group>"; };
 		9C728F691DD5DB4B00BEF69E /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupView.xib; path = PopupView/PopupView.xib; sourceTree = "<group>"; };
-		9C728F6B1DD5ECB300BEF69E /* alert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alert.wav; sourceTree = "<group>"; };
 		9CC559741E2F58E30074AE54 /* alert_sedentary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert_sedentary.png; sourceTree = "<group>"; };
 		9CC559751E2F58E30074AE54 /* alert_sedentary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_sedentary@2x.png"; sourceTree = "<group>"; };
 		9CC559761E2F58E30074AE54 /* alert_sedentary@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_sedentary@3x.png"; sourceTree = "<group>"; };
@@ -859,6 +859,7 @@
 				9C57F1D31DF2882F0090C2EF /* InfoPlist.strings */,
 				9C57F1D91DF288D50090C2EF /* Localizable.strings */,
 				9C57F1DB1DF28A0E0090C2EF /* PrefixHeader.pch */,
+				9C5F32571E57E38000C6C947 /* alert.wav */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -895,7 +896,6 @@
 				9CFE008B1DDAA07A00D38904 /* about_icon.png */,
 				9CFE008C1DDAA07A00D38904 /* about_icon@2x.png */,
 				9CFE008D1DDAA07A00D38904 /* about_icon@3x.png */,
-				9C728F6B1DD5ECB300BEF69E /* alert.wav */,
 				9CF2F6CD1DD593390091ECB5 /* alert_find.png */,
 				9CF2F6CE1DD593390091ECB5 /* alert_find@2x.png */,
 				9CF2F6CF1DD593390091ECB5 /* alert_find@3x.png */,
@@ -1246,6 +1246,7 @@
 			files = (
 				10CB0F1F1D9A8A190063AD0C /* list_sleep_icon@2x.png in Resources */,
 				10F5F7A21D991C700045FA4C /* heart_old_icon@2x.png in Resources */,
+				9C5F32581E57E38000C6C947 /* alert.wav in Resources */,
 				10F5F7451D98F31B0045FA4C /* set_bty_icon@2x.png in Resources */,
 				10F5F7EA1D9927C60045FA4C /* sleep_now_icon@2x.png in Resources */,
 				9CFE008E1DDAA07A00D38904 /* about_icon.png in Resources */,
@@ -1417,7 +1418,6 @@
 				10C47EB01DA8A55F00D949CA /* ble_connect.png in Resources */,
 				10F5F74F1D98F31B0045FA4C /* set_userphoto@3x.png in Resources */,
 				10F5F7CC1D9923D90045FA4C /* temper_ole_icon@2x.png in Resources */,
-				9C728F6C1DD5ECB300BEF69E /* alert.wav in Resources */,
 				10C47EBA1DA8A55F00D949CA /* ble_lock_oper@2x.png in Resources */,
 				9C57F20A1DF2C2620090C2EF /* BloodPressureContentView.xib in Resources */,
 				10F5F7761D98F3560045FA4C /* walk_mileage_icon@3x.png in Resources */,

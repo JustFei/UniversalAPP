@@ -11,9 +11,7 @@
 @class manridyModel;
 
 @interface AnalysisProcotolTool : NSObject
-{
-    
-}
+
 
 @property (nonatomic ,assign) float staticLon;
 

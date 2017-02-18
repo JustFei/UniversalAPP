@@ -161,10 +161,9 @@ static void completionCallback(SystemSoundID mySSID)
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     // 标题
     content.title = @"手环查找中。。。";
-    // 次标题
-    content.subtitle = @"您的手环正在查找您。。。";
-    content.sound = [UNNotificationSound defaultSound];
-    
+    // body     Tips:之前忘记设置body，导致通知只有声音而没有通知内容 ╥﹏╥...
+    content.body = [NSString stringWithFormat:@"您的手环正在查找您。。。"];
+    content.sound = [UNNotificationSound soundNamed:@"alert.wav"];
     // 标识符
     content.categoryIdentifier = @"categoryIndentifier1";
     
@@ -172,7 +171,7 @@ static void completionCallback(SystemSoundID mySSID)
     UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
     
     // 3、创建通知请求
-    UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:@"KFGroupNotification1" content:content trigger:trigger];
+    UNNotificationRequest *notificationRequest = [UNNotificationRequest requestWithIdentifier:@"categoryIndentifier1" content:content trigger:trigger];
     
     // 4、将请求加入通知中心
     [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notificationRequest withCompletionHandler:^(NSError * _Nullable error) {
