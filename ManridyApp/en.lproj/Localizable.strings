@@ -12,29 +12,29 @@
 "appName" = "iwear";
 
 //软件版本号
-"softWare" = "Software version NO.：V%@";
+"softWare" = "Versão de software NO.：V%@";
 
 //硬件版本号
-"hardWare" = "Hardware version NO.：V%@";
+"hardWare" = "Versão do firmware NO.：V%@";
 
 //MARK: 设备绑定界面
 //搜索
-"search" = "Search";
+"search" = "Procura";
 
 //设备绑定
-"perBind" = "Paired devices";
+"perBind" = "Dispositivo estiver acoplado";
 
 //已绑定的设备
-"haveBindPer" = "Device has been paired";
+"haveBindPer" = "Dispositivo não acoplado";
 
 //未绑定设备
-"haveNoBindPer" = "No paired devices";
+"haveNoBindPer" = "Dispositivo não acoplado";
 
 //正在连接设备...
-"bindingPer" = "connecting...";
+"bindingPer" = "Conexão de dispositivo ...";
 
 //提示
-"tips" = "Remind";
+"tips" = "Dicas";
 
 //请选择设备以绑定
 "choosePerToBind" = "Please select the device for pair";

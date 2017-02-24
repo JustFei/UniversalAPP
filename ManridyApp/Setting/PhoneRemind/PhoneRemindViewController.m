@@ -185,16 +185,16 @@
         self.timePicker.hidden = YES;
         [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:self.clockTimeArr];
     }
-    
 }
 
 - (void)findMyPeripheral:(UISwitch *)sender
 {
     if (self.myBleTool.connectState == kBLEstateDidConnected) {
         [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:@"isFindMyPeripheral"];
+        [self.myBleTool writePeripheralShakeWhenUnconnectWithOforOff:sender.on];
     }else {
         [self presentAlertController:sender];
-//        [sender setOn:!sender.on];
+        [self.myBleTool writePeripheralShakeWhenUnconnectWithOforOff:!sender.on];
     }
     
 }

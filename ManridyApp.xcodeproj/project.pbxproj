@@ -556,6 +556,134 @@
 		9C57F2361DF2C2E60090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/BOHistoryViewController.xib"; sourceTree = "<group>"; };
 		9C57F2381DF2C2F50090C2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/UserInfoCell.xib; sourceTree = "<group>"; };
 		9C57F23C1DF2C2FA0090C2EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/UserInfoCell.xib"; sourceTree = "<group>"; };
+		9C5AE1EB1E5BE8650006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = "ko.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		9C5AE1EC1E5BE8650006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/StepContentView.xib; sourceTree = "<group>"; };
+		9C5AE1ED1E5BE8650006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/StepTargetViewController.xib; sourceTree = "<group>"; };
+		9C5AE1EE1E5BE8650006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/HeartRateContentView.xib; sourceTree = "<group>"; };
+		9C5AE1EF1E5BE8650006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/SleepContentView.xib; sourceTree = "<group>"; };
+		9C5AE1F01E5BE8650006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/SleepSettingViewController.xib; sourceTree = "<group>"; };
+		9C5AE1F11E5BE8650006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/BloodPressureContentView.xib; sourceTree = "<group>"; };
+		9C5AE1F21E5BE8650006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/BloodO2ContentView.xib; sourceTree = "<group>"; };
+		9C5AE1F31E5BE8650006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/StepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE1F41E5BE8660006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/HeartRateHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE1F51E5BE8660006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/SleepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE1F61E5BE8660006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/BooldHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE1F71E5BE8660006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/BOHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE1F81E5BE8660006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/UserInfoCell.xib; sourceTree = "<group>"; };
+		9C5AE1F91E5BE8660006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C5AE1FA1E5BE8660006D791 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C5AE1FB1E5BECD00006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = "fr.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		9C5AE1FC1E5BECD10006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/StepContentView.xib; sourceTree = "<group>"; };
+		9C5AE1FD1E5BECD10006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/StepTargetViewController.xib; sourceTree = "<group>"; };
+		9C5AE1FE1E5BECD10006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/HeartRateContentView.xib; sourceTree = "<group>"; };
+		9C5AE1FF1E5BECD10006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/SleepContentView.xib; sourceTree = "<group>"; };
+		9C5AE2001E5BECD10006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/SleepSettingViewController.xib; sourceTree = "<group>"; };
+		9C5AE2011E5BECD10006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/BloodPressureContentView.xib; sourceTree = "<group>"; };
+		9C5AE2021E5BECD10006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/BloodO2ContentView.xib; sourceTree = "<group>"; };
+		9C5AE2031E5BECD10006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/StepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2041E5BECD10006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/HeartRateHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2051E5BECD10006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/SleepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2061E5BECD10006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/BooldHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2071E5BECD10006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/BOHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2081E5BECD20006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/UserInfoCell.xib; sourceTree = "<group>"; };
+		9C5AE2091E5BECD20006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C5AE20A1E5BECD20006D791 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C5AE20B1E5BECF50006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "de.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		9C5AE20C1E5BECF50006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/StepContentView.xib; sourceTree = "<group>"; };
+		9C5AE20D1E5BECF50006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/StepTargetViewController.xib; sourceTree = "<group>"; };
+		9C5AE20E1E5BECF50006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/HeartRateContentView.xib; sourceTree = "<group>"; };
+		9C5AE20F1E5BECF50006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/SleepContentView.xib; sourceTree = "<group>"; };
+		9C5AE2101E5BECF50006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/SleepSettingViewController.xib; sourceTree = "<group>"; };
+		9C5AE2111E5BECF50006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/BloodPressureContentView.xib; sourceTree = "<group>"; };
+		9C5AE2121E5BECF50006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/BloodO2ContentView.xib; sourceTree = "<group>"; };
+		9C5AE2131E5BECF60006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/StepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2141E5BECF60006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/HeartRateHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2151E5BECF60006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/SleepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2161E5BECF60006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/BooldHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2171E5BECF60006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/BOHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2181E5BECF60006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/UserInfoCell.xib; sourceTree = "<group>"; };
+		9C5AE2191E5BECF60006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C5AE21A1E5BECF60006D791 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C5AE21B1E5BED1F0006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = "it.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		9C5AE21C1E5BED1F0006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/StepContentView.xib; sourceTree = "<group>"; };
+		9C5AE21D1E5BED1F0006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/StepTargetViewController.xib; sourceTree = "<group>"; };
+		9C5AE21E1E5BED1F0006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/HeartRateContentView.xib; sourceTree = "<group>"; };
+		9C5AE21F1E5BED1F0006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/SleepContentView.xib; sourceTree = "<group>"; };
+		9C5AE2201E5BED1F0006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/SleepSettingViewController.xib; sourceTree = "<group>"; };
+		9C5AE2211E5BED1F0006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/BloodPressureContentView.xib; sourceTree = "<group>"; };
+		9C5AE2221E5BED1F0006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/BloodO2ContentView.xib; sourceTree = "<group>"; };
+		9C5AE2231E5BED1F0006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/StepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2241E5BED200006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/HeartRateHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2251E5BED200006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/SleepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2261E5BED200006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/BooldHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2271E5BED200006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/BOHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2281E5BED200006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/UserInfoCell.xib; sourceTree = "<group>"; };
+		9C5AE2291E5BED200006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C5AE22A1E5BED200006D791 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C5AE22B1E5BED8B0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		9C5AE22C1E5BED8B0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/StepContentView.xib"; sourceTree = "<group>"; };
+		9C5AE22D1E5BED8B0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/StepTargetViewController.xib"; sourceTree = "<group>"; };
+		9C5AE22E1E5BED8B0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/HeartRateContentView.xib"; sourceTree = "<group>"; };
+		9C5AE22F1E5BED8C0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/SleepContentView.xib"; sourceTree = "<group>"; };
+		9C5AE2301E5BED8C0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/SleepSettingViewController.xib"; sourceTree = "<group>"; };
+		9C5AE2311E5BED8C0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/BloodPressureContentView.xib"; sourceTree = "<group>"; };
+		9C5AE2321E5BED8C0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/BloodO2ContentView.xib"; sourceTree = "<group>"; };
+		9C5AE2331E5BED8C0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/StepHistoryViewController.xib"; sourceTree = "<group>"; };
+		9C5AE2341E5BED8C0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/HeartRateHistoryViewController.xib"; sourceTree = "<group>"; };
+		9C5AE2351E5BED8C0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/SleepHistoryViewController.xib"; sourceTree = "<group>"; };
+		9C5AE2361E5BED8C0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/BooldHistoryViewController.xib"; sourceTree = "<group>"; };
+		9C5AE2371E5BED8C0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/BOHistoryViewController.xib"; sourceTree = "<group>"; };
+		9C5AE2381E5BED8D0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/UserInfoCell.xib"; sourceTree = "<group>"; };
+		9C5AE2391E5BED8D0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		9C5AE23A1E5BED8D0006D791 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9C5AE23B1E5BEE260006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		9C5AE23C1E5BEE260006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/StepContentView.xib; sourceTree = "<group>"; };
+		9C5AE23D1E5BEE270006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/StepTargetViewController.xib; sourceTree = "<group>"; };
+		9C5AE23E1E5BEE270006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/HeartRateContentView.xib; sourceTree = "<group>"; };
+		9C5AE23F1E5BEE270006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/SleepContentView.xib; sourceTree = "<group>"; };
+		9C5AE2401E5BEE270006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/SleepSettingViewController.xib; sourceTree = "<group>"; };
+		9C5AE2411E5BEE270006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/BloodPressureContentView.xib; sourceTree = "<group>"; };
+		9C5AE2421E5BEE270006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/BloodO2ContentView.xib; sourceTree = "<group>"; };
+		9C5AE2431E5BEE270006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/StepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2441E5BEE280006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/HeartRateHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2451E5BEE280006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/SleepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2461E5BEE280006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/BooldHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2471E5BEE280006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/BOHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2481E5BEE280006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/UserInfoCell.xib; sourceTree = "<group>"; };
+		9C5AE2491E5BEE280006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C5AE24A1E5BEE280006D791 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C5AE24B1E5BEE470006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = "ar.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		9C5AE24C1E5BEE470006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/StepContentView.xib; sourceTree = "<group>"; };
+		9C5AE24D1E5BEE470006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/StepTargetViewController.xib; sourceTree = "<group>"; };
+		9C5AE24E1E5BEE470006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/HeartRateContentView.xib; sourceTree = "<group>"; };
+		9C5AE24F1E5BEE470006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/SleepContentView.xib; sourceTree = "<group>"; };
+		9C5AE2501E5BEE470006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/SleepSettingViewController.xib; sourceTree = "<group>"; };
+		9C5AE2511E5BEE480006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/BloodPressureContentView.xib; sourceTree = "<group>"; };
+		9C5AE2521E5BEE480006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/BloodO2ContentView.xib; sourceTree = "<group>"; };
+		9C5AE2531E5BEE480006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/StepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2541E5BEE480006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/HeartRateHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2551E5BEE480006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/SleepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2561E5BEE480006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/BooldHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2571E5BEE480006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/BOHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2581E5BEE490006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/UserInfoCell.xib; sourceTree = "<group>"; };
+		9C5AE2591E5BEE490006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C5AE25A1E5BEE490006D791 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C5AE25B1E5BEE5C0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "ru.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		9C5AE25C1E5BEE5C0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/StepContentView.xib; sourceTree = "<group>"; };
+		9C5AE25D1E5BEE5C0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/StepTargetViewController.xib; sourceTree = "<group>"; };
+		9C5AE25E1E5BEE5C0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/HeartRateContentView.xib; sourceTree = "<group>"; };
+		9C5AE25F1E5BEE5C0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/SleepContentView.xib; sourceTree = "<group>"; };
+		9C5AE2601E5BEE5C0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/SleepSettingViewController.xib; sourceTree = "<group>"; };
+		9C5AE2611E5BEE5D0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/BloodPressureContentView.xib; sourceTree = "<group>"; };
+		9C5AE2621E5BEE5D0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/BloodO2ContentView.xib; sourceTree = "<group>"; };
+		9C5AE2631E5BEE5D0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/StepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2641E5BEE5D0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/HeartRateHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2651E5BEE5D0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/SleepHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2661E5BEE5D0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/BooldHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2671E5BEE5D0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/BOHistoryViewController.xib; sourceTree = "<group>"; };
+		9C5AE2681E5BEE5E0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/UserInfoCell.xib; sourceTree = "<group>"; };
+		9C5AE2691E5BEE5E0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C5AE26A1E5BEE5E0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C5F32571E57E38000C6C947 /* alert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alert.wav; sourceTree = "<group>"; };
 		9C728F661DD5DB2800BEF69E /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupView.h; path = PopupView/PopupView.h; sourceTree = "<group>"; };
 		9C728F671DD5DB2800BEF69E /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupView.m; path = PopupView/PopupView.m; sourceTree = "<group>"; };
@@ -1228,6 +1356,14 @@
 				Base,
 				"zh-Hans",
 				ja,
+				ko,
+				fr,
+				de,
+				it,
+				"pt-PT",
+				es,
+				ar,
+				ru,
 			);
 			mainGroup = 10F5F6FB1D98C6270045FA4C;
 			productRefGroup = 10F5F7051D98C6270045FA4C /* Products */;
@@ -1551,6 +1687,14 @@
 				9C57F1CD1DF279310090C2EF /* en */,
 				9C57F1CE1DF279620090C2EF /* zh-Hans */,
 				9C2CB4821E17A71F005BEDA7 /* ja */,
+				9C5AE1EB1E5BE8650006D791 /* ko */,
+				9C5AE1FB1E5BECD00006D791 /* fr */,
+				9C5AE20B1E5BECF50006D791 /* de */,
+				9C5AE21B1E5BED1F0006D791 /* it */,
+				9C5AE22B1E5BED8B0006D791 /* pt-PT */,
+				9C5AE23B1E5BEE260006D791 /* es */,
+				9C5AE24B1E5BEE470006D791 /* ar */,
+				9C5AE25B1E5BEE5C0006D791 /* ru */,
 			);
 			name = "Launch Screen.storyboard";
 			sourceTree = "<group>";
@@ -1561,6 +1705,14 @@
 				9C57F1D21DF2882F0090C2EF /* en */,
 				9C57F1D41DF288310090C2EF /* zh-Hans */,
 				9C2CB4901E17A721005BEDA7 /* ja */,
+				9C5AE1F91E5BE8660006D791 /* ko */,
+				9C5AE2091E5BECD20006D791 /* fr */,
+				9C5AE2191E5BECF60006D791 /* de */,
+				9C5AE2291E5BED200006D791 /* it */,
+				9C5AE2391E5BED8D0006D791 /* pt-PT */,
+				9C5AE2491E5BEE280006D791 /* es */,
+				9C5AE2591E5BEE490006D791 /* ar */,
+				9C5AE2691E5BEE5E0006D791 /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1571,6 +1723,14 @@
 				9C57F1D81DF288D50090C2EF /* en */,
 				9C57F1DA1DF288D60090C2EF /* zh-Hans */,
 				9C2CB4911E17A721005BEDA7 /* ja */,
+				9C5AE1FA1E5BE8660006D791 /* ko */,
+				9C5AE20A1E5BECD20006D791 /* fr */,
+				9C5AE21A1E5BECF60006D791 /* de */,
+				9C5AE22A1E5BED200006D791 /* it */,
+				9C5AE23A1E5BED8D0006D791 /* pt-PT */,
+				9C5AE24A1E5BEE280006D791 /* es */,
+				9C5AE25A1E5BEE490006D791 /* ar */,
+				9C5AE26A1E5BEE5E0006D791 /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1581,6 +1741,14 @@
 				9C57F1E61DF2C07F0090C2EF /* en */,
 				9C57F1EA1DF2C0E00090C2EF /* zh-Hans */,
 				9C2CB4831E17A71F005BEDA7 /* ja */,
+				9C5AE1EC1E5BE8650006D791 /* ko */,
+				9C5AE1FC1E5BECD10006D791 /* fr */,
+				9C5AE20C1E5BECF50006D791 /* de */,
+				9C5AE21C1E5BED1F0006D791 /* it */,
+				9C5AE22C1E5BED8B0006D791 /* pt-PT */,
+				9C5AE23C1E5BEE260006D791 /* es */,
+				9C5AE24C1E5BEE470006D791 /* ar */,
+				9C5AE25C1E5BEE5C0006D791 /* ru */,
 			);
 			name = StepContentView.xib;
 			path = Main/SubView/Step;
@@ -1592,6 +1760,14 @@
 				9C57F1F31DF2C1F10090C2EF /* en */,
 				9C57F1F71DF2C2020090C2EF /* zh-Hans */,
 				9C2CB4841E17A720005BEDA7 /* ja */,
+				9C5AE1ED1E5BE8650006D791 /* ko */,
+				9C5AE1FD1E5BECD10006D791 /* fr */,
+				9C5AE20D1E5BECF50006D791 /* de */,
+				9C5AE21D1E5BED1F0006D791 /* it */,
+				9C5AE22D1E5BED8B0006D791 /* pt-PT */,
+				9C5AE23D1E5BEE270006D791 /* es */,
+				9C5AE24D1E5BEE470006D791 /* ar */,
+				9C5AE25D1E5BEE5C0006D791 /* ru */,
 			);
 			name = StepTargetViewController.xib;
 			path = Main/SubView/Step;
@@ -1603,6 +1779,14 @@
 				9C57F1F91DF2C2100090C2EF /* en */,
 				9C57F1FD1DF2C2150090C2EF /* zh-Hans */,
 				9C2CB4851E17A720005BEDA7 /* ja */,
+				9C5AE1EE1E5BE8650006D791 /* ko */,
+				9C5AE1FE1E5BECD10006D791 /* fr */,
+				9C5AE20E1E5BECF50006D791 /* de */,
+				9C5AE21E1E5BED1F0006D791 /* it */,
+				9C5AE22E1E5BED8B0006D791 /* pt-PT */,
+				9C5AE23E1E5BEE270006D791 /* es */,
+				9C5AE24E1E5BEE470006D791 /* ar */,
+				9C5AE25E1E5BEE5C0006D791 /* ru */,
 			);
 			name = HeartRateContentView.xib;
 			path = Main/SubView/HeartRate;
@@ -1614,6 +1798,14 @@
 				9C57F1FF1DF2C2260090C2EF /* en */,
 				9C57F2031DF2C22E0090C2EF /* zh-Hans */,
 				9C2CB4861E17A720005BEDA7 /* ja */,
+				9C5AE1EF1E5BE8650006D791 /* ko */,
+				9C5AE1FF1E5BECD10006D791 /* fr */,
+				9C5AE20F1E5BECF50006D791 /* de */,
+				9C5AE21F1E5BED1F0006D791 /* it */,
+				9C5AE22F1E5BED8C0006D791 /* pt-PT */,
+				9C5AE23F1E5BEE270006D791 /* es */,
+				9C5AE24F1E5BEE470006D791 /* ar */,
+				9C5AE25F1E5BEE5C0006D791 /* ru */,
 			);
 			name = SleepContentView.xib;
 			path = Main/SubView/Sleep;
@@ -1625,6 +1817,14 @@
 				9C57F2051DF2C24A0090C2EF /* en */,
 				9C57F2091DF2C2570090C2EF /* zh-Hans */,
 				9C2CB4871E17A720005BEDA7 /* ja */,
+				9C5AE1F01E5BE8650006D791 /* ko */,
+				9C5AE2001E5BECD10006D791 /* fr */,
+				9C5AE2101E5BECF50006D791 /* de */,
+				9C5AE2201E5BED1F0006D791 /* it */,
+				9C5AE2301E5BED8C0006D791 /* pt-PT */,
+				9C5AE2401E5BEE270006D791 /* es */,
+				9C5AE2501E5BEE470006D791 /* ar */,
+				9C5AE2601E5BEE5C0006D791 /* ru */,
 			);
 			name = SleepSettingViewController.xib;
 			path = Main/SubView/Sleep;
@@ -1636,6 +1836,14 @@
 				9C57F20B1DF2C2620090C2EF /* en */,
 				9C57F20F1DF2C26C0090C2EF /* zh-Hans */,
 				9C2CB4881E17A720005BEDA7 /* ja */,
+				9C5AE1F11E5BE8650006D791 /* ko */,
+				9C5AE2011E5BECD10006D791 /* fr */,
+				9C5AE2111E5BECF50006D791 /* de */,
+				9C5AE2211E5BED1F0006D791 /* it */,
+				9C5AE2311E5BED8C0006D791 /* pt-PT */,
+				9C5AE2411E5BEE270006D791 /* es */,
+				9C5AE2511E5BEE480006D791 /* ar */,
+				9C5AE2611E5BEE5D0006D791 /* ru */,
 			);
 			name = BloodPressureContentView.xib;
 			path = Main/SubView/BloodPressure;
@@ -1647,6 +1855,14 @@
 				9C57F2111DF2C2760090C2EF /* en */,
 				9C57F2151DF2C27B0090C2EF /* zh-Hans */,
 				9C2CB4891E17A720005BEDA7 /* ja */,
+				9C5AE1F21E5BE8650006D791 /* ko */,
+				9C5AE2021E5BECD10006D791 /* fr */,
+				9C5AE2121E5BECF50006D791 /* de */,
+				9C5AE2221E5BED1F0006D791 /* it */,
+				9C5AE2321E5BED8C0006D791 /* pt-PT */,
+				9C5AE2421E5BEE270006D791 /* es */,
+				9C5AE2521E5BEE480006D791 /* ar */,
+				9C5AE2621E5BEE5D0006D791 /* ru */,
 			);
 			name = BloodO2ContentView.xib;
 			path = Main/SubView/BloodO2;
@@ -1658,6 +1874,14 @@
 				9C57F2171DF2C2990090C2EF /* en */,
 				9C57F21B1DF2C29E0090C2EF /* zh-Hans */,
 				9C2CB48A1E17A720005BEDA7 /* ja */,
+				9C5AE1F31E5BE8650006D791 /* ko */,
+				9C5AE2031E5BECD10006D791 /* fr */,
+				9C5AE2131E5BECF60006D791 /* de */,
+				9C5AE2231E5BED1F0006D791 /* it */,
+				9C5AE2331E5BED8C0006D791 /* pt-PT */,
+				9C5AE2431E5BEE270006D791 /* es */,
+				9C5AE2531E5BEE480006D791 /* ar */,
+				9C5AE2631E5BEE5D0006D791 /* ru */,
 			);
 			name = StepHistoryViewController.xib;
 			path = History/Step;
@@ -1669,6 +1893,14 @@
 				9C57F2211DF2C2AD0090C2EF /* en */,
 				9C57F2241DF2C2B10090C2EF /* zh-Hans */,
 				9C2CB48B1E17A720005BEDA7 /* ja */,
+				9C5AE1F41E5BE8660006D791 /* ko */,
+				9C5AE2041E5BECD10006D791 /* fr */,
+				9C5AE2141E5BECF60006D791 /* de */,
+				9C5AE2241E5BED200006D791 /* it */,
+				9C5AE2341E5BED8C0006D791 /* pt-PT */,
+				9C5AE2441E5BEE280006D791 /* es */,
+				9C5AE2541E5BEE480006D791 /* ar */,
+				9C5AE2641E5BEE5D0006D791 /* ru */,
 			);
 			name = HeartRateHistoryViewController.xib;
 			path = History/Heart;
@@ -1680,6 +1912,14 @@
 				9C57F2261DF2C2C70090C2EF /* en */,
 				9C57F22A1DF2C2CD0090C2EF /* zh-Hans */,
 				9C2CB48C1E17A720005BEDA7 /* ja */,
+				9C5AE1F51E5BE8660006D791 /* ko */,
+				9C5AE2051E5BECD10006D791 /* fr */,
+				9C5AE2151E5BECF60006D791 /* de */,
+				9C5AE2251E5BED200006D791 /* it */,
+				9C5AE2351E5BED8C0006D791 /* pt-PT */,
+				9C5AE2451E5BEE280006D791 /* es */,
+				9C5AE2551E5BEE480006D791 /* ar */,
+				9C5AE2651E5BEE5D0006D791 /* ru */,
 			);
 			name = SleepHistoryViewController.xib;
 			path = History/Sleep;
@@ -1691,6 +1931,14 @@
 				9C57F22C1DF2C2D30090C2EF /* en */,
 				9C57F2301DF2C2D80090C2EF /* zh-Hans */,
 				9C2CB48D1E17A720005BEDA7 /* ja */,
+				9C5AE1F61E5BE8660006D791 /* ko */,
+				9C5AE2061E5BECD10006D791 /* fr */,
+				9C5AE2161E5BECF60006D791 /* de */,
+				9C5AE2261E5BED200006D791 /* it */,
+				9C5AE2361E5BED8C0006D791 /* pt-PT */,
+				9C5AE2461E5BEE280006D791 /* es */,
+				9C5AE2561E5BEE480006D791 /* ar */,
+				9C5AE2661E5BEE5D0006D791 /* ru */,
 			);
 			name = BooldHistoryViewController.xib;
 			path = History/Blood;
@@ -1702,6 +1950,14 @@
 				9C57F2321DF2C2E10090C2EF /* en */,
 				9C57F2361DF2C2E60090C2EF /* zh-Hans */,
 				9C2CB48E1E17A721005BEDA7 /* ja */,
+				9C5AE1F71E5BE8660006D791 /* ko */,
+				9C5AE2071E5BECD10006D791 /* fr */,
+				9C5AE2171E5BECF60006D791 /* de */,
+				9C5AE2271E5BED200006D791 /* it */,
+				9C5AE2371E5BED8C0006D791 /* pt-PT */,
+				9C5AE2471E5BEE280006D791 /* es */,
+				9C5AE2571E5BEE480006D791 /* ar */,
+				9C5AE2671E5BEE5D0006D791 /* ru */,
 			);
 			name = BOHistoryViewController.xib;
 			path = History/BloodO2;
@@ -1713,6 +1969,14 @@
 				9C57F2381DF2C2F50090C2EF /* en */,
 				9C57F23C1DF2C2FA0090C2EF /* zh-Hans */,
 				9C2CB48F1E17A721005BEDA7 /* ja */,
+				9C5AE1F81E5BE8660006D791 /* ko */,
+				9C5AE2081E5BECD20006D791 /* fr */,
+				9C5AE2181E5BECF60006D791 /* de */,
+				9C5AE2281E5BED200006D791 /* it */,
+				9C5AE2381E5BED8D0006D791 /* pt-PT */,
+				9C5AE2481E5BEE280006D791 /* es */,
+				9C5AE2581E5BEE490006D791 /* ar */,
+				9C5AE2681E5BEE5E0006D791 /* ru */,
 			);
 			name = UserInfoCell.xib;
 			path = Setting/UserInfo;

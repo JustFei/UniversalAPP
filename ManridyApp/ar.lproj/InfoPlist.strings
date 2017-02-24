@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  ManridyApp
+
+  Created by JustFei on 2016/12/3.
+  Copyright © 2016年 Manridy.Bobo.com. All rights reserved.
+*/
+
+// App在英语环境环境下显示的名称
+CFBundleDisplayName = "iwear";

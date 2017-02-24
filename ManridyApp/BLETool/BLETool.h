@@ -218,6 +218,9 @@ typedef enum{
 //search my peripheral
 - (void)writeSearchPeripheralWithONorOFF:(BOOL)state;
 
+//peripheral shake when unconnect
+- (void)writePeripheralShakeWhenUnconnectWithOforOff:(BOOL)state;
+
 //stop peripheral
 - (void)writeStopPeripheralRemind;
 

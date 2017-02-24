@@ -1,0 +1,396 @@
+/* 
+  Localizable.strings
+  ManridyApp
+
+  Created by JustFei on 2016/12/3.
+  Copyright © 2016年 Manridy.Bobo.com. All rights reserved.
+*/
+
+//MARK: 关于界面
+
+//app Name
+"appName" = "iwear";
+
+//软件版本号
+"softWare" = "소프트웨어 버전 NO.：V%@";
+
+//硬件版本号
+"hardWare" = "버전 NO.：V%@";
+
+//MARK: 设备绑定界面
+//搜索
+"search" = "검색";
+
+//设备绑定
+"perBind" = "장비 바인딩";
+
+//已绑定的设备
+"haveBindPer" = "장비가 이미 바인딩됐습니다";
+
+//未绑定设备
+"haveNoBindPer" = "장비가 바인딩되지 않았습니다";
+
+//正在连接设备...
+"bindingPer" = "장비 연결 중...";
+
+//提示
+"tips" = "알림";
+
+//请选择设备以绑定
+"choosePerToBind" = "바인딩할 장비 선택";
+
+//去选择
+"goToChoose" = "확정";
+
+//已成功解除绑定
+"disbindPerSuccess" = "바인딩 해제 성공";
+
+//我知道了
+"IKnow" = "확정";
+
+//已绑定设备：设备名
+"haveBindPerName" = "장비가 이미 바인딩됐습니다：%@";
+
+//连接异常，请重新尝试绑定
+"bindErrorAndTryAgain" = "실패했습니다.다시 시도해주세요";
+
+//确定
+"sure" = "확정";
+
+//绑定设备
+"bindPer" = "장비 바인딩";
+
+//解除绑定
+"disbindPer" = "바인딩 해제";
+
+//MARK: 提醒界面
+//来电提醒
+"phoneRemind" = "캐치콜 ";
+
+//短信提醒
+"messageRemind" = "메시지 알림";
+
+//防丢提醒
+"lossRemind" = "분실 방지 알림";
+
+//查找设备
+"findPer" = "장비 찾기";
+
+//久坐提醒
+"sedentaryRemind" = "오래 앉지 않도록 한 알림";
+
+//开始时间
+"beginTime" = "시작 시간";
+
+//结束时间
+"endTime" = "종료 시간";
+
+//午休免打扰
+"unDisturb" = "낮잠 방해금지";
+
+//闹钟设置
+"clockSet" = "알람 설정";
+
+//闹钟1
+"clock1" = "알람 1";
+
+//闹钟2
+"clock2" = "알람 2";
+
+//闹钟3
+"clock3" = "알람 3";
+
+//提醒设置
+"remindSet" = "알림 설정";
+
+//请连接上设备后在设置
+"connectPerAndSet" = "장비가 연결되는지 확인";
+
+//开始查找
+"startSearch" = "검색 시작";
+
+//正在查找设备
+"searchingPer" = "장비(%d...) 검색 중…";
+
+//停止查找
+"stopSearch" = "검색 중지";
+
+//MARK: 用户信息界面
+//性别
+"gender" = "성별";
+
+//年龄
+"age" = "연령";
+
+//身高
+"height" = "신장";
+
+//体重
+"weight" = "체중";
+
+//请输入年龄
+"inputAge" = "연령 입력";
+
+//请输入身高
+"inputHeight" = "신장 입력";
+
+//请输入体重
+"inputWeight" = "체중 입력";
+
+//岁
+"year" = "(세)";
+
+//男
+"male" = "남";
+
+//女
+"Female" = "여";
+
+//用户信息
+"userInfo" = "사용자 정보";
+
+//从相册选择
+"choosePhotoFromPhotoAlbum" = "로컬 앨범";
+
+//拍照
+"takeAPhoto" = "사진 찍기";
+
+//取消
+"cancel" = "취소";
+
+//保存成功
+"saveSuccess" = "저장 성공！";
+
+//保存失败,请重新尝试
+"saveFailAndTryAgain" = "실패,다시 시도해주세요！";
+
+//修改成功
+"changeSuccess" = "수정 완료！";
+
+//修改失败，请重新尝试
+"changeFailAndTryAgain" = "수정 실패,다시 시도해주세요!";
+
+//信息输入不完整
+"infoNotComplete" = "완전한 정보를 입력해주세요!";
+
+//请输入用户名
+"inputUserName" = "사용자 이름을 입력해주세요";
+
+//保存
+"save" = "저장";
+
+//MARK: 设置界面
+//设置
+"set" = "설정";
+
+//信息提醒
+"infoRemind" = "알림 설정";
+
+//关于
+"about" = "정보";
+
+//用户名
+"userName" = "사용자 이름";
+
+//MARK: 月份选择界面
+//1月
+"January" = "일월";
+
+//2月
+"February" = "이월";
+
+//3月
+"March" = "삼월";
+
+//4月
+"April" = "사월";
+
+//5月
+"May" = "오월";
+
+//6月
+"June" = "육월";
+
+//7月
+"July" = "칠월";
+
+//8月
+"August" = "팔월";
+
+//9月
+"September" = "구월";
+
+//10月
+"October" = "십월";
+
+//11月
+"November" = "십일월";
+
+//12月
+"December" = "십이월";
+
+//MARK：计步历史
+//历史记录
+"history" = "역사 기록";
+
+//当前月份
+"currentMonth" = "%ld월";
+
+//本月计步统计:
+"currentMonthData" = "이번 달 걸음 통계:모두（%ld걸음/%.1f KM/%ld칼로리）";
+
+//平均公里和卡路里
+"averagerMandK" = "%.1f KM/%ld 킬로칼로리";
+
+//MARK: 心率历史
+//当月平均心率
+"averagerHR" = "이번 달 평균 심률";
+
+//偏低
+"low" = "낮음";
+
+//正常
+"normal" = "정상";
+
+//偏高
+"high" = "높음";
+
+//当天平均心率
+"currentDayAveragerHR" = "당일 평균 심률";
+
+//睡眠历史界面
+//睡眠不足
+"lackofSleep" = "수면 부족";
+
+//睡眠偏少
+"lessofSleep" = "수면 적음";
+
+//睡眠正常
+"normalofSleep" = "수면 정상";
+
+//睡眠充足
+"moreofSleep" = "수면 충분";
+
+//当天睡眠数据
+"currentDaySleepData" = "수면:%@H ,깊은 잠%@h\n 겉잠 %@h";
+
+//当天没有睡眠数据
+"currentDayNOSleepData" = "수면 기록 없음";
+
+//MARK: 血压历史界面
+//心率
+"HRData" = "심률:%ld";
+
+//本月平均血压值
+"currentMonthBPData" = "이번 달 평균:고압:%ld저압:%ld심률:%ld";
+
+//当天的心率
+"currentDayHRData" = "심률:%@";
+
+//当天的血压值
+"currentDayBPData" = "%@ BP";
+
+//MARK: 血氧历史界面
+//当天的血氧值
+"currentDayBOData" = "%@ 하루 SpO2";
+
+//MARK:计步当前
+//本周计步统计
+"currentWeekStepData" = "이번 주 걸음 통계:모두%ld 걸음（%.1f  KM/%ld 칼로리）";
+
+//步
+"step" = "%@：%@걸음 통계";
+
+//设备连接中。。。
+"perConnecting" = "장비 연결 중...";
+
+//未连接上设备，点击重试
+"canNotConnectPer" = "실패,다시 시도해주세요";
+
+//MARK: 运动目标设置界面
+//目标设置
+"targetSet" = "목표 설정";
+
+//保存成功
+"saveSuccess" = "저장 성공";
+
+//保存失败，重试
+"saveFail" = "실패,다시 시도해주세요";
+
+//正在设置目标
+"settingTarget" = "스포츠 목표 설정 중…";
+
+//设置超时，请重试
+//"setOverTime" = "Timeout, please try again。";
+
+//请先去设置个人信息
+"plzSetUserInfoFirst" = "개인정보를 먼저 설정하세요. 아니면 이 기능을 사용할 수 없습니다.";
+
+//Mark :心率当前
+//心率次/分
+"currentHRData" = " %@：%@회/분";
+
+//最近几次心率
+"lastTimesHRData" = "심률";
+
+//MARK: 睡眠当前
+//此次睡眠
+"currentSleepData" = "이번 수면:%@-%@겉잠 ,low%.1fh 깊은 잠:%.1fh";
+
+//MARK: 血压当前
+//点击血压的值
+"currenBPData" = "%@: 고압:%@저압:%@심률:%@";
+
+//MARK: Main界面
+//计步
+"Step" = "걸음";
+//心率
+"HeartHeart" = "심률";
+//睡眠
+"Sleep" = "수면";
+//血压
+"BloodPressure" = "혈압";
+//血氧
+"BloodO2" = "SpO2";
+
+//未绑定设备，前去绑定
+"haveNOBindPer" = "장비가 바인딩되지 않고 설정화면에 가 바인딩하기...";
+
+//公里/千卡
+"currentStepAndKCal" = "%.1f KM/%@ 킬로칼로리";
+
+//浅睡
+"lowSleepData" = "겉잠%.2fH";
+//深睡
+"deepSleepData" = "깊은 잠%.2fH";
+
+//最近几次睡眠
+"lastTimeSleep" = "최근 몇번의 수면 기록";
+
+//今日血压
+"todayBP" = "오늘의 혈압";
+
+//今日血氧
+"todayBO" = "오늘의 SpO2";
+
+//MARK: BLETool
+//该设备尚未打开蓝牙
+"phoneNotOpenBLE" = "블루투스 끔.시스템 블루투스 열으세요";
+
+//蓝牙已打开
+"bleHaveOpen" = "블루투스 이미 열었어요";
+
+//设备意外断开，等待重连
+"bleReConnect" = "의외적으로 중단되는데 다시 연결 대기…";
+
+//手环丢失通知
+"perDismissNodify" = "밴드 분실 알림";
+
+//通知副标题
+"PerDismissNodifySubtitle" = "Warning! Device disconnect, please confirm!！";
+
+//通知正文
+"PerDismissNodifyContent" = "주의!당신의 장비가 %@에 연결 중단되는데 확인하세요!";
+
+
+

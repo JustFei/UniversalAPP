@@ -424,6 +424,32 @@ static BLETool *bleTool = nil;
     }
 }
 
+//设备断开后震动提醒
+- (void)writePeripheralShakeWhenUnconnectWithOforOff:(BOOL)state
+{
+    NSString *searchStr;
+    if (state) {
+        //设备开启丢失模式
+        searchStr = @"FC100201";
+    }else {
+        //设备关闭丢失模式
+        searchStr = @"FC100200";
+    }
+    
+    while (1) {
+        if (searchStr.length < 40) {
+            searchStr = [searchStr stringByAppendingString:@"00"];
+        }else {
+            break;
+        }
+    }
+    DLog(@"search == %@",searchStr);
+    //写入操作
+    if (self.currentDev.peripheral) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:searchStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
 //stop peripheral
 - (void)writeStopPeripheralRemind
 {
@@ -725,7 +751,7 @@ static BLETool *bleTool = nil;
         // 标题
         content.title = NSLocalizedString(@"perDismissNodify", nil);
         // 次标题
-        content.subtitle = NSLocalizedString(@"PerDismissNodifySubtitle", nil);
+        //content.subtitle = NSLocalizedString(@"PerDismissNodifySubtitle", nil);
         // 内容
         NSDate *date = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

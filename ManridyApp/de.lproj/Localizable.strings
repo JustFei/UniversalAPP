@@ -1,0 +1,396 @@
+/* 
+  Localizable.strings
+  ManridyApp
+
+  Created by JustFei on 2016/12/3.
+  Copyright © 2016年 Manridy.Bobo.com. All rights reserved.
+*/
+
+//MARK: 关于界面
+
+//app Name
+"appName" = "iwear";
+
+//软件版本号
+"softWare" = "Version der Software NO.：V%@";
+
+//硬件版本号
+"hardWare" = "Firmware-Version NO.：V%@";
+
+//MARK: 设备绑定界面
+//搜索
+"search" = "Suchen";
+
+//设备绑定
+"perBind" = "Geräte werden gepaart.";
+
+//已绑定的设备
+"haveBindPer" = "Geräte werden nicht gepaart.";
+
+//未绑定设备
+"haveNoBindPer" = "Geräte werden nicht gepaart.";
+
+//正在连接设备...
+"bindingPer" = "Verbinden ...";
+
+//提示
+"tips" = "Benachrichtigung";
+
+//请选择设备以绑定
+"choosePerToBind" = "Wählen Sie Gerät zur Paarung";
+
+//去选择
+"goToChoose" = "OK";
+
+//已成功解除绑定
+"disbindPerSuccess" = "Entbinden fertig";
+
+//我知道了
+"IKnow" = "OK";
+
+//已绑定设备：设备名
+"haveBindPerName" = "Geräte werden gepaart.：%@";
+
+//连接异常，请重新尝试绑定
+"bindErrorAndTryAgain" = "Fehlgeschlagen, versuchen Sie es bitte erneut.";
+
+//确定
+"sure" = "OK";
+
+//绑定设备
+"bindPer" = "Gerät paaren";
+
+//解除绑定
+"disbindPer" = "Paarung entbinden";
+
+//MARK: 提醒界面
+//来电提醒
+"phoneRemind" = "Benachrichtigung vom Anruf";
+
+//短信提醒
+"messageRemind" = "Benachrichtigung vom SMS";
+
+//防丢提醒
+"lossRemind" = "Anti-verlorene Mahnung";
+
+//查找设备
+"findPer" = "Gerät finden";
+
+//久坐提醒
+"sedentaryRemind" = "Mahnung vom Bewegungsmangel";
+
+//开始时间
+"beginTime" = "Startzeit";
+
+//结束时间
+"endTime" = "Endzeit";
+
+//午休免打扰
+"unDisturb" = "Keine Störung während des Mittagsschlafs";
+
+//闹钟设置
+"clockSet" = "Wecker einstellen";
+
+//闹钟1
+"clock1" = "Wecker 1";
+
+//闹钟2
+"clock2" = "Wecker 2";
+
+//闹钟3
+"clock3" = "Wecker 3";
+
+//提醒设置
+"remindSet" = "Benachrichtigung einstellen";
+
+//请连接上设备后在设置
+"connectPerAndSet" = "Bestätigen Sie, dass das Gerät verbindet ist.";
+
+//开始查找
+"startSearch" = "Suche beginnen";
+
+//正在查找设备
+"searchingPer" = "Handy suchen (%d...)";
+
+//停止查找
+"stopSearch" = "Suche beenden";
+
+//MARK: 用户信息界面
+//性别
+"gender" = "Geschlecht";
+
+//年龄
+"age" = "Alter";
+
+//身高
+"height" = "Größe";
+
+//体重
+"weight" = "Gewicht";
+
+//请输入年龄
+"inputAge" = "Alter eingeben";
+
+//请输入身高
+"inputHeight" = "Größe eingeben";
+
+//请输入体重
+"inputWeight" = "Gewicht eingeben";
+
+//岁
+"year" = "(alt)";
+
+//男
+"male" = "Männlich";
+
+//女
+"Female" = "Weiblich";
+
+//用户信息
+"userInfo" = "Benutzerprofil";
+
+//从相册选择
+"choosePhotoFromPhotoAlbum" = "Fotoalbum";
+
+//拍照
+"takeAPhoto" = "Fotografieren";
+
+//取消
+"cancel" = "Ausfallen";
+
+//保存成功
+"saveSuccess" = "Speichern erfolgreich!！";
+
+//保存失败,请重新尝试
+"saveFailAndTryAgain" = "Fehlgeschlagen, versuchen Sie es bitte erneut！";
+
+//修改成功
+"changeSuccess" = "Ändern fertig！";
+
+//修改失败，请重新尝试
+"changeFailAndTryAgain" = "Fehlgeschlagen, versuchen Sie es bitte erneut!";
+
+//信息输入不完整
+"infoNotComplete" = "Die Informationseingabe ist nicht abgeschlossen";
+
+//请输入用户名
+"inputUserName" = "Benutzername eingeben";
+
+//保存
+"save" = "Speichern";
+
+//MARK: 设置界面
+//设置
+"set" = "Einstellen";
+
+//信息提醒
+"infoRemind" = "Benachrichtigung einstellen";
+
+//关于
+"about" = "Über";
+
+//用户名
+"userName" = "Benutzername";
+
+//MARK: 月份选择界面
+//1月
+"January" = "Januar";
+
+//2月
+"February" = "Februar";
+
+//3月
+"March" = "März";
+
+//4月
+"April" = "April";
+
+//5月
+"May" = "Mai";
+
+//6月
+"June" = "Juni";
+
+//7月
+"July" = "Juli";
+
+//8月
+"August" = "August";
+
+//9月
+"September" = "September";
+
+//10月
+"October" = "Oktober";
+
+//11月
+"November" = "November";
+
+//12月
+"December" = "Dezember";
+
+//MARK：计步历史
+//历史记录
+"history" = "Historie";
+
+//当前月份
+"currentMonth" = "%ldMonat";
+
+//本月计步统计:
+"currentMonthData" = "Schritte dieses Monats: insgesamt (%ld Schritte / %.1 km / %ldcal) ";
+
+//平均公里和卡路里
+"averagerMandK" = "%.1f km /%ld kcal";
+
+//MARK: 心率历史
+//当月平均心率
+"averagerHR" = "Avg Herzfrequenz";
+
+//偏低
+"low" = "Gering";
+
+//正常
+"normal" = "Normal";
+
+//偏高
+"high" = "Hoch";
+
+//当天平均心率
+"currentDayAveragerHR" = "Avg Herzfrequenz am Tag";
+
+//睡眠历史界面
+//睡眠不足
+"lackofSleep" = "Schlafmangel";
+
+//睡眠偏少
+"lessofSleep" = "Weniger Schlaf";
+
+//睡眠正常
+"normalofSleep" = "Normaler Schlaf";
+
+//睡眠充足
+"moreofSleep" = "Guter Schlaf";
+
+//当天睡眠数据
+"currentDaySleepData" = "Schlaf:%@H ,Tiefschlaf%@h\n Halbschlaf %@h";
+
+//当天没有睡眠数据
+"currentDayNOSleepData" = "Kein Protokoll vom Schlaf";
+
+//MARK: 血压历史界面
+//心率
+"HRData" = "Herzfrequenz: %ld";
+
+//本月平均血压值
+"currentMonthBPData" = "Avg dieses Monats：Hochdruck：%ld Niederdruck：%ld Herzfrequenz：%ld";
+
+//当天的心率
+"currentDayHRData" = "Herzfrequenz: %@";
+
+//当天的血压值
+"currentDayBPData" = "%@ BP";
+
+//MARK: 血氧历史界面
+//当天的血氧值
+"currentDayBOData" = "%@täglicher SpO2 Wert";
+
+//MARK:计步当前
+//本周计步统计
+"currentWeekStepData" = "Schritte dieser Woche: insgesamt %ld Schritte (%.1f km /%ld kcal)";
+
+//步
+"step" = "%@：%@Schritte zählen";
+
+//设备连接中。。。
+"perConnecting" = "Verbinden ...";
+
+//未连接上设备，点击重试
+"canNotConnectPer" = "Fehlgeschlagen, klicken Sie es, um erneut zu versuchen.";
+
+//MARK: 运动目标设置界面
+//目标设置
+"targetSet" = "Zielsetzung";
+
+//保存成功
+"saveSuccess" = "Speichern erfolgreich!";
+
+//保存失败，重试
+"saveFail" = "Fehlgeschlagen, versuchen Sie es bitte erneut";
+
+//正在设置目标
+"settingTarget" = "Ziel der Bewegung einstellen";
+
+//设置超时，请重试
+//"setOverTime" = "Timeout, please try again。";
+
+//请先去设置个人信息
+"plzSetUserInfoFirst" = "Vor der Anwendung setzen Sie bitte die Benutzerinformationen .";
+
+//Mark :心率当前
+//心率次/分
+"currentHRData" = "%@：%@Mal / Min";
+
+//最近几次心率
+"lastTimesHRData" = "Herzfrequenz";
+
+//MARK: 睡眠当前
+//此次睡眠
+"currentSleepData" = "The data：%@-%@ L-Sleep：%.1fH D-Sleep：%.1fH";
+
+//MARK: 血压当前
+//点击血压的值
+"currenBPData" = "%@:Hochdruck：%@ Niederdruck：%@ Herzfrequenz：%@";
+
+//MARK: Main界面
+//计步
+"Step" = "Schritte";
+//心率
+"HeartHeart" = "Herzfrequenz";
+//睡眠
+"Sleep" = "Schlaf";
+//血压
+"BloodPressure" = "Blutdruck";
+//血氧
+"BloodO2" = "SpO2";
+
+//未绑定设备，前去绑定
+"haveNOBindPer" = "Gerät nicht gepaart, paaren Sie auf der Schnittstelle für Einstellung... ";
+
+//公里/千卡
+"currentStepAndKCal" = "%.1f km /%@ kcal";
+
+//浅睡
+"lowSleepData" = "Halbschlaf%.2fH";
+//深睡
+"deepSleepData" = "Tiefschlaf%.2fH";
+
+//最近几次睡眠
+"lastTimeSleep" = "Kürzliches Protokoll vom Schlaf";
+
+//今日血压
+"todayBP" = "Blutdruck heute";
+
+//今日血氧
+"todayBO" = "SpO2 heute";
+
+//MARK: BLETool
+//该设备尚未打开蓝牙
+"phoneNotOpenBLE" = "Bluetooth ist geschlossen, öffnen Sie Bluetooth";
+
+//蓝牙已打开
+"bleHaveOpen" = "Bluetooth ist geöffnet";
+
+//设备意外断开，等待重连
+"bleReConnect" = "Verbindung unerwartet getrennt, warten das Gerät auf Wiederverbindung";
+
+//手环丢失通知
+"perDismissNodify" = "Benachrichtigung über Verlust vom Armband";
+
+//通知副标题
+"PerDismissNodifySubtitle" = "Warning! Device disconnect, please confirm!！";
+
+//通知正文
+"PerDismissNodifyContent" = "Seien Sie vorsichtig! Das Gerät wurde von% @ getrennt, bestätigen Sie bitte!";
+
+
+
