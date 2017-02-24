@@ -237,7 +237,7 @@
 "currentMonth" = "%ldMese  ";
 
 //本月计步统计:
-"currentMonthData" = "Statistiche dei passi del mese corrente: in totale % ldpassi (1fkm% /% ldcal.) ";
+"currentMonthData" = "Statistiche dei passi del mese corrente: in totale %ld passi (%.1f km /%ld cal.) ";
 
 //平均公里和卡路里
 "averagerMandK" = " %.1fKm/%ldkcal";
@@ -296,7 +296,7 @@
 
 //MARK:计步当前
 //本周计步统计
-"currentWeekStepData" = "Statistiche dei passi della settimana corrente: in totale % ldpassi (1fkm% /% ldcal.) ";
+"currentWeekStepData" = "Statistiche dei passi della settimana corrente: in totale %ld passi (%1f km /%ld cal.) ";
 
 //步
 "step" = "%@：%@Contapassi";

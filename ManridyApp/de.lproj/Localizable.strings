@@ -237,7 +237,7 @@
 "currentMonth" = "%ldMonat";
 
 //本月计步统计:
-"currentMonthData" = "Schritte dieses Monats: insgesamt (%ld Schritte / %.1 km / %ldcal) ";
+"currentMonthData" = "Schritte dieses Monats: insgesamt (%ld Schritte / %.1fkm / %ldcal) ";
 
 //平均公里和卡路里
 "averagerMandK" = "%.1f km /%ld kcal";

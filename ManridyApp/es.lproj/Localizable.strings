@@ -357,7 +357,7 @@
 "haveNOBindPer" = "Dispositivo no encadenado, por favor vaya a la sesión de configuración a definirlo ";
 
 //公里/千卡
-"currentStepAndKCal" = "%.1f km/ %ld kcal";
+"currentStepAndKCal" = "%.1f km/ %@ kcal";
 
 //浅睡
 "lowSleepData" = "Sueño ligero%.2fH";

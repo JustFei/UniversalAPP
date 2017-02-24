@@ -177,7 +177,6 @@
 		10F5F7F61D9928050045FA4C /* temper_alart_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7F31D9928050045FA4C /* temper_alart_icon@2x.png */; };
 		10F5F7F71D9928050045FA4C /* temper_alart_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7F41D9928050045FA4C /* temper_alart_icon@3x.png */; };
 		10FF5CDA1DC33BEA0059FE00 /* PhoneRemindTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FF5CD81DC33BEA0059FE00 /* PhoneRemindTableViewCell.m */; };
-		10FF5CDB1DC33BEA0059FE00 /* PhoneRemindTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CD91DC33BEA0059FE00 /* PhoneRemindTableViewCell.xib */; };
 		10FF5CE81DC341150059FE00 /* alert_call.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CDC1DC341150059FE00 /* alert_call.png */; };
 		10FF5CE91DC341150059FE00 /* alert_call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CDD1DC341150059FE00 /* alert_call@2x.png */; };
 		10FF5CEA1DC341150059FE00 /* alert_call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FF5CDE1DC341150059FE00 /* alert_call@3x.png */; };
@@ -210,6 +209,7 @@
 		9C06C1B81DE04A6500418C7C /* SPO2_old_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1B21DE04A6500418C7C /* SPO2_old_icon@3x.png */; };
 		9C06C1BD1DE05C7A00418C7C /* BOHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C06C1BB1DE05C7A00418C7C /* BOHistoryViewController.m */; };
 		9C15BB501DCD79A900A049E9 /* ClockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15BB4F1DCD79A900A049E9 /* ClockModel.m */; };
+		9C19541B1E5FCDF5006DEAED /* PhoneRemindTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C19541D1E5FCDF5006DEAED /* PhoneRemindTableViewCell.xib */; };
 		9C1B27711DDE8E2C009663F0 /* BloodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27701DDE8E2C009663F0 /* BloodModel.m */; };
 		9C1B27741DDE9EBE009663F0 /* BloodO2Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */; };
 		9C1B27791DDEFCE0009663F0 /* BooldHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */; };
@@ -460,7 +460,6 @@
 		10F5F7F41D9928050045FA4C /* temper_alart_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temper_alart_icon@3x.png"; sourceTree = "<group>"; };
 		10FF5CD71DC33BEA0059FE00 /* PhoneRemindTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneRemindTableViewCell.h; path = Setting/PhoneRemind/PhoneRemindTableViewCell.h; sourceTree = "<group>"; };
 		10FF5CD81DC33BEA0059FE00 /* PhoneRemindTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneRemindTableViewCell.m; path = Setting/PhoneRemind/PhoneRemindTableViewCell.m; sourceTree = "<group>"; };
-		10FF5CD91DC33BEA0059FE00 /* PhoneRemindTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhoneRemindTableViewCell.xib; path = Setting/PhoneRemind/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
 		10FF5CDC1DC341150059FE00 /* alert_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert_call.png; sourceTree = "<group>"; };
 		10FF5CDD1DC341150059FE00 /* alert_call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_call@2x.png"; sourceTree = "<group>"; };
 		10FF5CDE1DC341150059FE00 /* alert_call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_call@3x.png"; sourceTree = "<group>"; };
@@ -500,6 +499,18 @@
 		9C06C1BB1DE05C7A00418C7C /* BOHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOHistoryViewController.m; path = History/BloodO2/BOHistoryViewController.m; sourceTree = "<group>"; };
 		9C15BB4E1DCD79A900A049E9 /* ClockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockModel.h; sourceTree = "<group>"; };
 		9C15BB4F1DCD79A900A049E9 /* ClockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockModel.m; sourceTree = "<group>"; };
+		9C19541C1E5FCDF5006DEAED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
+		9C1954221E5FCDFF006DEAED /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
+		9C1954351E5FCE0F006DEAED /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/PhoneRemindTableViewCell.xib"; sourceTree = "<group>"; };
+		9C1954361E5FCE12006DEAED /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
+		9C1954371E5FCE16006DEAED /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
+		9C1954381E5FCE1B006DEAED /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
+		9C1954391E5FCE1E006DEAED /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
+		9C19543A1E5FCE21006DEAED /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
+		9C19543B1E5FCE24006DEAED /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/PhoneRemindTableViewCell.xib"; sourceTree = "<group>"; };
+		9C19543C1E5FCE27006DEAED /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
+		9C19543D1E5FCE2A006DEAED /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ar; path = ar.lproj/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
+		9C19543E1E5FCE2D006DEAED /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
 		9C1B276F1DDE8E2C009663F0 /* BloodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodModel.h; path = BLETool/Model/BloodModel.h; sourceTree = "<group>"; };
 		9C1B27701DDE8E2C009663F0 /* BloodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BloodModel.m; path = BLETool/Model/BloodModel.m; sourceTree = "<group>"; };
 		9C1B27721DDE9EBE009663F0 /* BloodO2Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodO2Model.h; path = BLETool/Model/BloodO2Model.h; sourceTree = "<group>"; };
@@ -933,7 +944,7 @@
 				10EE961C1DB4BFC70048D594 /* PhoneRemindViewController.m */,
 				10FF5CD71DC33BEA0059FE00 /* PhoneRemindTableViewCell.h */,
 				10FF5CD81DC33BEA0059FE00 /* PhoneRemindTableViewCell.m */,
-				10FF5CD91DC33BEA0059FE00 /* PhoneRemindTableViewCell.xib */,
+				9C19541D1E5FCDF5006DEAED /* PhoneRemindTableViewCell.xib */,
 				10FF5CF41DC352FB0059FE00 /* PhoneRemindView.h */,
 				10FF5CF51DC352FB0059FE00 /* PhoneRemindView.m */,
 				10FF5CF71DC35AEC0059FE00 /* SectionModel.h */,
@@ -1414,7 +1425,7 @@
 				10F5F7781D98F3560045FA4C /* walk_run_now@2x.png in Resources */,
 				9CC559791E2F58E30074AE54 /* alert_sedentary@3x.png in Resources */,
 				9C06C1B31DE04A6500418C7C /* SPO2_now_icon.png in Resources */,
-				10FF5CDB1DC33BEA0059FE00 /* PhoneRemindTableViewCell.xib in Resources */,
+				9C19541B1E5FCDF5006DEAED /* PhoneRemindTableViewCell.xib in Resources */,
 				10C47EBB1DA8A55F00D949CA /* ble_lock_oper@3x.png in Resources */,
 				10C47EC81DA8DE0D00D949CA /* TemperatureWarningViewController.xib in Resources */,
 				10C47EB91DA8A55F00D949CA /* ble_lock_oper.png in Resources */,
@@ -1680,6 +1691,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		9C19541D1E5FCDF5006DEAED /* PhoneRemindTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C19541C1E5FCDF5006DEAED /* Base */,
+				9C1954221E5FCDFF006DEAED /* en */,
+				9C1954351E5FCE0F006DEAED /* zh-Hans */,
+				9C1954361E5FCE12006DEAED /* ja */,
+				9C1954371E5FCE16006DEAED /* ko */,
+				9C1954381E5FCE1B006DEAED /* fr */,
+				9C1954391E5FCE1E006DEAED /* de */,
+				9C19543A1E5FCE21006DEAED /* it */,
+				9C19543B1E5FCE24006DEAED /* pt-PT */,
+				9C19543C1E5FCE27006DEAED /* es */,
+				9C19543D1E5FCE2A006DEAED /* ar */,
+				9C19543E1E5FCE2D006DEAED /* ru */,
+			);
+			name = PhoneRemindTableViewCell.xib;
+			path = Setting/PhoneRemind;
+			sourceTree = "<group>";
+		};
 		9C57F1CB1DF279300090C2EF /* Launch Screen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
