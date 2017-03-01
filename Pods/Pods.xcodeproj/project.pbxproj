@@ -10,7 +10,22 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
-		<key>047B9E0C638055BC96158F879D5DA7B4</key>
+		<key>035811D603D276BE2D70BDAA9ABBB0D1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PNChartLabel.m</string>
+			<key>path</key>
+			<string>PNChart/PNChartLabel.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>03FFACBCAD502EA9CA5DC1281930C2F8</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -61,7 +76,7 @@
 		<key>0534F739F2837E86BC1A040E8379132D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>204B576A2D1C784A2565BF23764D71FC</string>
+			<string>E4C4583031D68CD93F28BFD7386E3EDD</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -75,7 +90,7 @@
 		<key>0587C954EFFA0AB810BB44683DD13FD0</key>
 		<dict>
 			<key>fileRef</key>
-			<string>1A4989C65CBDA38277E8EF3D4762D8A8</string>
+			<string>D8BA89A44C6B192827016EE99CB703CA</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -89,7 +104,7 @@
 		<key>07BE8FB349E5A77D889413C3E79DD91C</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>0D9D3DE5D14C4270B7DF7BEFDA38FF67</string>
+			<string>E42BB9B39827B9D5E3CE2051359C392E</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -126,21 +141,6 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
-		<key>07F72C028194D352DFDEB69224A94F3B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>PNRadarChartDataItem.m</string>
-			<key>path</key>
-			<string>PNChart/PNRadarChartDataItem.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>0951ECB79A8DDBA8DC3077FA1CC84E6B</key>
 		<dict>
 			<key>fileRef</key>
@@ -168,10 +168,25 @@
 			<key>remoteInfo</key>
 			<string>UICountingLabel</string>
 		</dict>
+		<key>0B98A8E220EEEFB94836579B89862268</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PNRadarChartDataItem.m</string>
+			<key>path</key>
+			<string>PNChart/PNRadarChartDataItem.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>0BC8ACAA1BBCD83153EF57E2B89FB594</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>CF76D5BADBDA3C2F4EB6C42C98B52210</string>
+			<string>9A322E882FF0D7F912BE9755DE7E953A</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -208,19 +223,6 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>0BF19E09E3E20BE96C55F348202AE2F7</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>UICountingLabel.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>0C1E8E9B74C17D471ECF7F9FA1A19283</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -254,7 +256,7 @@
 		<key>0CBF122348D4148217965C239897816C</key>
 		<dict>
 			<key>fileRef</key>
-			<string>86EDF28DB110F45EF487975E3FBD4D42</string>
+			<string>D7BED22DD36472EB386BFD8FD684E8A6</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -265,16 +267,33 @@
 				</array>
 			</dict>
 		</dict>
-		<key>0D9D3DE5D14C4270B7DF7BEFDA38FF67</key>
+		<key>0CC72042C18677BF8224EDB76F1B1BB6</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PNPieChart.m</string>
 			<key>path</key>
-			<string>UICountingLabel.xcconfig</string>
+			<string>PNChart/PNPieChart.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0D4C74B84C2A929E0AF7170C082B1481</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PNLineChartData.m</string>
+			<key>path</key>
+			<string>PNChart/PNLineChartData.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -298,7 +317,7 @@
 		<key>0EF8E9AA652DBE2745A7D5C8CD2E3BDE</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B5AB8F494902EB7E5AACC58AC3F985AC</string>
+			<string>69FDEBDC77EB5F55E415822111C92566</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -310,7 +329,7 @@
 		<key>0F8A8E0D6FAEBF758E0B4D620335F094</key>
 		<dict>
 			<key>fileRef</key>
-			<string>DA6B70ED6243A5F3D8121AC220141399</string>
+			<string>B6B532DEB5D70DDD8BC7361F6CFC3DDB</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -320,21 +339,6 @@
 					<string>Public</string>
 				</array>
 			</dict>
-		</dict>
-		<key>10024E4196DA47B878A9FB2993EABB55</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>PNColor.m</string>
-			<key>path</key>
-			<string>PNChart/PNColor.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>11929A53A8AD141288485C2968E5803E</key>
 		<dict>
@@ -363,6 +367,21 @@
 			<key>productType</key>
 			<string>com.apple.product-type.library.static</string>
 		</dict>
+		<key>121626AB9B0EDDA3122FA2E1167DD0AF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PNBarChart.m</string>
+			<key>path</key>
+			<string>PNChart/PNBarChart.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>14B8B9B15ECBE87983FF987239AB2D7B</key>
 		<dict>
 			<key>children</key>
@@ -379,7 +398,7 @@
 		<key>17BD014F3F44802FCC685A9699939841</key>
 		<dict>
 			<key>fileRef</key>
-			<string>AC266020C70102D41C43048DDBE03542</string>
+			<string>6219751C9BD5E936AF77D3DDD1513B27</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -403,40 +422,10 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>1A4989C65CBDA38277E8EF3D4762D8A8</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>PNRadarChartDataItem.h</string>
-			<key>path</key>
-			<string>PNChart/PNRadarChartDataItem.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1AAF93ACAFEFA910BEBC74D1D0706E16</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>PNLineChartData.m</string>
-			<key>path</key>
-			<string>PNChart/PNLineChartData.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>1AFA89153325A09AD73AD0F15FE4EC4E</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>54291C670ADEFA5B03F07AB5267F5E8B</string>
+			<string>9778252EA6B4B0B88EEEFA19576EFABE</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -496,9 +485,39 @@
 		<key>1D4FD9ACBBFC163C59F7A78369FBB9D3</key>
 		<dict>
 			<key>fileRef</key>
-			<string>07F72C028194D352DFDEB69224A94F3B</string>
+			<string>0B98A8E220EEEFB94836579B89862268</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>1D94E3AFC853D449BA2F068089F1BDCC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>PNScatterChart.h</string>
+			<key>path</key>
+			<string>PNChart/PNScatterChart.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1EEBFF7EB33784CEE655FA5D0BD01AEF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FMResultSet.h</string>
+			<key>path</key>
+			<string>src/fmdb/FMResultSet.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>1F97048AF18C3EFEDE731BDEECCD58A8</key>
 		<dict>
@@ -513,21 +532,6 @@
 			<string>Release</string>
 			<key>isa</key>
 			<string>XCConfigurationList</string>
-		</dict>
-		<key>204B576A2D1C784A2565BF23764D71FC</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>PNLineChart.h</string>
-			<key>path</key>
-			<string>PNChart/PNLineChart.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>22AC24FB203DD637A4821D1DB88F43D6</key>
 		<dict>
@@ -546,29 +550,14 @@
 		<key>25C88260A14B98983773DBF10AB08109</key>
 		<dict>
 			<key>fileRef</key>
-			<string>576F4862D64D65312778F8D63EA4A954</string>
+			<string>3A06DB74F0CFA41777369BD5A80B1985</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>2790C6344493A605B9FB7682ABDA6A84</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>FMResultSet.h</string>
-			<key>path</key>
-			<string>src/fmdb/FMResultSet.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>282081E035E7A843068E8BCC2E07C217</key>
 		<dict>
 			<key>fileRef</key>
-			<string>F6163C96A2F0AA93E177B0A019EF4C27</string>
+			<string>E5BDA96C05954E4CA305CA106833187B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -580,24 +569,9 @@
 		<key>29DF470902A11CAC8CDF083B192720B9</key>
 		<dict>
 			<key>fileRef</key>
-			<string>41A3C8EBA4EEE9E872341DC52C9319B9</string>
+			<string>A9763E26AFA6CDA96EC9392436A34602</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>2AE8E6BB27FB4BD9FB457A629541EF38</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>FMDatabaseQueue.h</string>
-			<key>path</key>
-			<string>src/fmdb/FMDatabaseQueue.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>2B342A1143B39C7E396A50C6540E2639</key>
 		<dict>
@@ -635,18 +609,18 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>2E7E9CB3ACB1299DB44B25588267B354</key>
+		<key>2E5400B910725BE7FF3205A4DE7C7283</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>PNPieChart.h</string>
+			<string>PNCircleChart.m</string>
 			<key>path</key>
-			<string>PNChart/PNPieChart.h</string>
+			<string>PNChart/PNCircleChart.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -681,7 +655,7 @@
 		<key>313531CEDA0294311D87B4F4C3F073F4</key>
 		<dict>
 			<key>fileRef</key>
-			<string>7FA176755C9AE645759C878F21BC4F48</string>
+			<string>69584B45171158468727BD41E995EE72</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -695,7 +669,7 @@
 		<key>314C84ABF21EF2F912E3363C86682545</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C1A7ED285A9109B9A7A6627EBA380A3D</string>
+			<string>F219ACC9ADB0835184B35119363D4A12</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -759,11 +733,11 @@
 		<key>341D1A2819428C275A10E6ADE382BD68</key>
 		<dict>
 			<key>fileRef</key>
-			<string>9278B0B6CFB50AE23E2A563BB64FB799</string>
+			<string>68E1151AEB5F0E00184D3256D8E123B5</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>34B782432580314D6C80AAA3ECF097C2</key>
+		<key>3482629814956338201B78ACC7D9E24E</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -771,17 +745,79 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PNRadarChart.m</string>
 			<key>path</key>
-			<string>MBProgressHUD-dummy.m</string>
+			<string>PNChart/PNRadarChart.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>34F81B36033689A113CE96C35E319BC2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>FMDatabase.m</string>
+			<key>path</key>
+			<string>src/fmdb/FMDatabase.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>36AE58FFD9D059051FFEC5560E8D8FE3</key>
 		<dict>
 			<key>fileRef</key>
-			<string>69D83C93D95414ED04233739073C7EBB</string>
+			<string>CD4C2FA97B26760A14D3655523A963CC</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>38BC44C00657FECC44330326D1F75CD4</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>71E09D8CCFBD911F61A6FC7208501590</string>
+				<string>AB05B89B79CC87759F1D8ED1CCDF5EA9</string>
+				<string>ED21B1E02A49E1DCCCCBEAA944507164</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>MBProgressHUD</string>
+			<key>path</key>
+			<string>MBProgressHUD</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>392C719721EFACE8B9B2937517AF7BC4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UICountingLabel-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3A06DB74F0CFA41777369BD5A80B1985</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PNBar.m</string>
+			<key>path</key>
+			<string>PNChart/PNBar.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>3AC899FD215914230EB9D8B57AD910D0</key>
 		<dict>
@@ -796,19 +832,6 @@
 			<string>Release</string>
 			<key>isa</key>
 			<string>XCConfigurationList</string>
-		</dict>
-		<key>3CB3860E1EA5C8BE6714A367E09D0E73</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>UICountingLabel-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>3CC453E6A9B100582E3E31F67B59D1BD</key>
 		<dict>
@@ -826,7 +849,7 @@
 		<key>3D0F69C4CA35EB6A1F686BA88B19B4F6</key>
 		<dict>
 			<key>fileRef</key>
-			<string>9B4E81B3B6E4FF7A865966F9C0D303E4</string>
+			<string>D1C03ED6E85317430CE30662EC773B9B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -908,42 +931,74 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>41A3C8EBA4EEE9E872341DC52C9319B9</key>
+		<key>3FD0D0F08DD1CF418FCFBC46CD1C64D7</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>PNPieChartDataItem.m</string>
+			<string>PNPieChartDataItem.h</string>
 			<key>path</key>
-			<string>PNChart/PNPieChartDataItem.m</string>
+			<string>PNChart/PNPieChartDataItem.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>42334D7A687AA8BEF8CBCF97A83EEE75</key>
+		<key>40238B2E56DD7022AB26F6134DF7BCEB</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>children</key>
+			<array>
+				<string>E42BB9B39827B9D5E3CE2051359C392E</string>
+				<string>81F3F36B4588D660CD6C4AFF7CC2AC41</string>
+				<string>392C719721EFACE8B9B2937517AF7BC4</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>PNScatterChart.m</string>
+			<string>Support Files</string>
 			<key>path</key>
-			<string>PNChart/PNScatterChart.m</string>
+			<string>../Target Support Files/UICountingLabel</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>433160031B235552408CCB2F63662B59</key>
 		<dict>
 			<key>fileRef</key>
-			<string>6C00D59521313E06248E3CE43F269A58</string>
+			<string>035811D603D276BE2D70BDAA9ABBB0D1</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>446AC7AD4B3A3C5C25EC3CB94ED6996A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>PNChart-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>463A0408CE3D7F10608BD41C4CA1C7A6</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9C8273524F3131E892088D8D8F3F426A</string>
+				<string>9EDC7DB2DD89654F9F8D30B2E2F08B60</string>
+				<string>38BC44C00657FECC44330326D1F75CD4</string>
+				<string>5AC84060BAC6D35E6991F3024241D9C3</string>
+				<string>E41F3F9E726C0D883D87DBF9F59F0BD3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>46466917761A5E66775C288595E19C14</key>
 		<dict>
@@ -961,7 +1016,7 @@
 		<key>4674AD99E2EE316EA3992818FCF80C8A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>55B25D6199DBE6044A6A1B6089A68AC3</string>
+			<string>F42857AC528BCEE64ED74A4678EB30FD</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -985,62 +1040,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>4A826ED4860AC83C5D3C33FDC5DBB1E5</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>PNPieChart.m</string>
-			<key>path</key>
-			<string>PNChart/PNPieChart.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4AA51B178EF14DF6AEAAD187F7D4DC7F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>PNCircleChart.h</string>
-			<key>path</key>
-			<string>PNChart/PNCircleChart.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4B41F9807965FC7110C72FE33EDBFB16</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>FMDB-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4E4C055F51B5FA55DC90B8C5B70B0D13</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>UICountingLabel-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>50515C59A6FA9DFFEBCD2ADCEEE7F80C</key>
 		<dict>
 			<key>containerPortal</key>
@@ -1054,10 +1053,23 @@
 			<key>remoteInfo</key>
 			<string>MBProgressHUD</string>
 		</dict>
+		<key>5338C50751A76ACA9D4EDDF13A7AC146</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>PNChart.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>5413F23427989FCF17AF9C47EF22F035</key>
 		<dict>
 			<key>fileRef</key>
-			<string>2E7E9CB3ACB1299DB44B25588267B354</string>
+			<string>F76BA0A4513B52966E041498B9998828</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1067,19 +1079,6 @@
 					<string>Public</string>
 				</array>
 			</dict>
-		</dict>
-		<key>54291C670ADEFA5B03F07AB5267F5E8B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>MBProgressHUD.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>54FFF21CE6B756B8930057909E0BF4D2</key>
 		<dict>
@@ -1098,7 +1097,7 @@
 		<key>5504B0E5163CCD9AD452E11EB5D5AB37</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D1119BB1E2929E1891869B182CFC779F</string>
+			<string>BC41A6482EF82306CFE56B85612D7F91</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1108,21 +1107,6 @@
 					<string>Public</string>
 				</array>
 			</dict>
-		</dict>
-		<key>55B25D6199DBE6044A6A1B6089A68AC3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>PNScatterChartData.h</string>
-			<key>path</key>
-			<string>PNChart/PNScatterChartData.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>564A14CA4640C4C015EAFE835FE67FD7</key>
 		<dict>
@@ -1137,35 +1121,31 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>56BB2CA03653990D4ABE9541C31C017B</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B7DDCA3B274B6166389D659762F0E9BE</string>
-				<string>99B2B40508748997578A06C7CBE7C5D2</string>
-				<string>A06872B01B21D551E40EE6C3866E0873</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>MBProgressHUD</string>
-			<key>path</key>
-			<string>MBProgressHUD</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>576F4862D64D65312778F8D63EA4A954</key>
+		<key>57216D8919F1CF14B8151FE824A631E0</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>PNBar.m</string>
+			<string>PNBar.h</string>
 			<key>path</key>
-			<string>PNChart/PNBar.m</string>
+			<string>PNChart/PNBar.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>574F503B5A84E7A8E172DCE0D3F3480E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PNChart-prefix.pch</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1179,6 +1159,21 @@
 			<string>text.script.sh</string>
 			<key>path</key>
 			<string>Pods-ManridyApp-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>581C22E2E73B9787E1328B456B4B37CB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>FMResultSet.m</string>
+			<key>path</key>
+			<string>src/fmdb/FMResultSet.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1196,17 +1191,77 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>5A78F89368581E7F68D26E2DCD021D7F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>path</key>
+			<string>Bugly.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5AC84060BAC6D35E6991F3024241D9C3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>57216D8919F1CF14B8151FE824A631E0</string>
+				<string>3A06DB74F0CFA41777369BD5A80B1985</string>
+				<string>6A7D7D2A33A0C0007AB32AAF81DA5729</string>
+				<string>121626AB9B0EDDA3122FA2E1167DD0AF</string>
+				<string>DFA60563B95F1B10ACD59CF8D57DE390</string>
+				<string>D7BED22DD36472EB386BFD8FD684E8A6</string>
+				<string>DB088EB690AD01B189D8340590A08F3D</string>
+				<string>035811D603D276BE2D70BDAA9ABBB0D1</string>
+				<string>C3C1B4239F110BB852DA69D8BC7E045C</string>
+				<string>2E5400B910725BE7FF3205A4DE7C7283</string>
+				<string>FDBCD57A2EF2FAEEB0D7194A39A4B1E6</string>
+				<string>EC6934F0BF70692CE1FF26514BFE5CBC</string>
+				<string>78806D37887E8FED893239F63F124D0F</string>
+				<string>CD4C2FA97B26760A14D3655523A963CC</string>
+				<string>E4C4583031D68CD93F28BFD7386E3EDD</string>
+				<string>03FFACBCAD502EA9CA5DC1281930C2F8</string>
+				<string>A2E46216D59B27E570A679D72DEF02BF</string>
+				<string>0D4C74B84C2A929E0AF7170C082B1481</string>
+				<string>7F44D474C70E2AB6D3D6D710613B1B86</string>
+				<string>CFB9F8D732C83F6C6388A8B88A0CF392</string>
+				<string>F76BA0A4513B52966E041498B9998828</string>
+				<string>0CC72042C18677BF8224EDB76F1B1BB6</string>
+				<string>3FD0D0F08DD1CF418FCFBC46CD1C64D7</string>
+				<string>A9763E26AFA6CDA96EC9392436A34602</string>
+				<string>BC41A6482EF82306CFE56B85612D7F91</string>
+				<string>3482629814956338201B78ACC7D9E24E</string>
+				<string>D8BA89A44C6B192827016EE99CB703CA</string>
+				<string>0B98A8E220EEEFB94836579B89862268</string>
+				<string>1D94E3AFC853D449BA2F068089F1BDCC</string>
+				<string>7192BD6855DF7B6FB421EE07F8AF65D4</string>
+				<string>F42857AC528BCEE64ED74A4678EB30FD</string>
+				<string>662B9D2FEFC89143C95520DC7B832C86</string>
+				<string>6219751C9BD5E936AF77D3DDD1513B27</string>
+				<string>68E1151AEB5F0E00184D3256D8E123B5</string>
+				<string>B2285481CE243CA27DBCD16C2F646110</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>PNChart</string>
+			<key>path</key>
+			<string>PNChart</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>5BCCDCCF958170D36CEFBDAF0E6ACBF3</key>
 		<dict>
 			<key>fileRef</key>
-			<string>95F02C14EC2E07065C695D5F8C93AC2F</string>
+			<string>2E5400B910725BE7FF3205A4DE7C7283</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>5CEF5FD8E6F221A79E169664C73141F0</key>
 		<dict>
 			<key>fileRef</key>
-			<string>96E200CFDD87C8648025CA47F1748425</string>
+			<string>1D94E3AFC853D449BA2F068089F1BDCC</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1258,7 +1313,24 @@
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
-		<key>618F8EA5A9C830D6E7D164D6B091FFE0</key>
+		<key>6011ECC2B5FE1D80812797927B34FC50</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9A322E882FF0D7F912BE9755DE7E953A</string>
+				<string>D1C03ED6E85317430CE30662EC773B9B</string>
+				<string>AAF49BDFF360708D14567E87DC76C619</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/FMDB</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6219751C9BD5E936AF77D3DDD1513B27</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1267,16 +1339,16 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>PNBarChart.h</string>
+			<string>PNScatterChartDataItem.h</string>
 			<key>path</key>
-			<string>PNChart/PNBarChart.h</string>
+			<string>PNChart/PNScatterChartDataItem.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>626430F406C88BE237B2BA154047084D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B41AE5AE58A9FE3D6B17581C54C7A0AA</string>
+			<string>3FD0D0F08DD1CF418FCFBC46CD1C64D7</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1303,14 +1375,59 @@
 		<key>648E7F45D6E4DCE98EED9D4E2F003C1E</key>
 		<dict>
 			<key>fileRef</key>
-			<string>34B782432580314D6C80AAA3ECF097C2</string>
+			<string>937A0414E2DE796E66965E7252132E39</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>662B9D2FEFC89143C95520DC7B832C86</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PNScatterChartData.m</string>
+			<key>path</key>
+			<string>PNChart/PNScatterChartData.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>68E1151AEB5F0E00184D3256D8E123B5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PNScatterChartDataItem.m</string>
+			<key>path</key>
+			<string>PNChart/PNScatterChartDataItem.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69584B45171158468727BD41E995EE72</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FMDB.h</string>
+			<key>path</key>
+			<string>src/fmdb/FMDB.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>695A3FA15E903AE48EB0B3BE336F2467</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B7DDCA3B274B6166389D659762F0E9BE</string>
+			<string>71E09D8CCFBD911F61A6FC7208501590</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1321,7 +1438,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>69D83C93D95414ED04233739073C7EBB</key>
+		<key>69FDEBDC77EB5F55E415822111C92566</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1330,9 +1447,24 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>PNGenericChart.m</string>
+			<string>FMDatabasePool.m</string>
 			<key>path</key>
-			<string>PNChart/PNGenericChart.m</string>
+			<string>src/fmdb/FMDatabasePool.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6A7D7D2A33A0C0007AB32AAF81DA5729</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>PNBarChart.h</string>
+			<key>path</key>
+			<string>PNChart/PNBarChart.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1346,21 +1478,6 @@
 			<string>7CEEB7F4CD0B847C8524FB6C3FD41570</string>
 			<key>targetProxy</key>
 			<string>0B3939F86A32E13DFD69595ADA5363F6</string>
-		</dict>
-		<key>6C00D59521313E06248E3CE43F269A58</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>PNChartLabel.m</string>
-			<key>path</key>
-			<string>PNChart/PNChartLabel.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>6F44354344CE6524F1221216AC74D43B</key>
 		<dict>
@@ -1391,23 +1508,6 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>6F7E69C906A562CC0F8752C9833D649A</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0BF19E09E3E20BE96C55F348202AE2F7</string>
-				<string>C1A7ED285A9109B9A7A6627EBA380A3D</string>
-				<string>D7D61731DE5A7D30279ED089B6AC43AA</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>UICountingLabel</string>
-			<key>path</key>
-			<string>UICountingLabel</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>70D77451E3EAF2A63E8E4880D03E6ABB</key>
 		<dict>
 			<key>fileRef</key>
@@ -1415,23 +1515,38 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>714AFE7DB36CBD48AD9789511F1AF48E</key>
+		<key>7192BD6855DF7B6FB421EE07F8AF65D4</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PNScatterChart.m</string>
 			<key>path</key>
-			<string>PNChart.xcconfig</string>
+			<string>PNChart/PNScatterChart.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>71E09D8CCFBD911F61A6FC7208501590</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>MBProgressHUD.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>72CECA62A833691AC044274AA2550C22</key>
 		<dict>
 			<key>fileRef</key>
-			<string>0BF19E09E3E20BE96C55F348202AE2F7</string>
+			<string>97C8FADD08BE9776D86C991C4FB550B4</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1476,14 +1591,29 @@
 		<key>77B4564906BB549D7246B83A985BBC41</key>
 		<dict>
 			<key>fileRef</key>
-			<string>10024E4196DA47B878A9FB2993EABB55</string>
+			<string>EC6934F0BF70692CE1FF26514BFE5CBC</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>78806D37887E8FED893239F63F124D0F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>PNGenericChart.h</string>
+			<key>path</key>
+			<string>PNChart/PNGenericChart.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>79F9B8831AECDBE11645B90300E16B4E</key>
 		<dict>
 			<key>fileRef</key>
-			<string>FA8335F182026735CF33738D7856154F</string>
+			<string>662B9D2FEFC89143C95520DC7B832C86</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -1505,6 +1635,21 @@
 			<string>Pods-ManridyApp</string>
 			<key>path</key>
 			<string>Target Support Files/Pods-ManridyApp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7CC88E723694749CC90AE27EF6538208</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FMDatabaseAdditions.h</string>
+			<key>path</key>
+			<string>src/fmdb/FMDatabaseAdditions.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1536,7 +1681,7 @@
 		<key>7D46F515F1D3566E93392E1092C17A0D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>EBFF77226ED30BB7EB2491B746E0BBE7</string>
+			<string>DFA60563B95F1B10ACD59CF8D57DE390</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1553,7 +1698,7 @@
 			<array>
 				<string>93A4A3777CF96A4AAC1D13BA6DCCEA73</string>
 				<string>14B8B9B15ECBE87983FF987239AB2D7B</string>
-				<string>8F07D9DDC0E6241D7E9F1DD6E4F77BF2</string>
+				<string>463A0408CE3D7F10608BD41C4CA1C7A6</string>
 				<string>0EA5467CA2A4E1413F07057CACF7692F</string>
 				<string>9E278F52231E0F261F5A68F68926DABC</string>
 			</array>
@@ -1562,7 +1707,7 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>7E907A5D3F55B4621914084A704FE2F3</key>
+		<key>7F44D474C70E2AB6D3D6D710613B1B86</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1571,51 +1716,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>FMDatabase.h</string>
+			<string>PNLineChartDataItem.h</string>
 			<key>path</key>
-			<string>src/fmdb/FMDatabase.h</string>
+			<string>PNChart/PNLineChartDataItem.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>7F7FC7729E191A7E780B0D781B556ED9</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7E907A5D3F55B4621914084A704FE2F3</string>
-				<string>89D28509CAF58F015E3EDF6DCAAF9A2A</string>
-				<string>98DA25A760A82E4F7E7820DCB5D97723</string>
-				<string>A856E0609FADFD33E3053BF4544CA598</string>
-				<string>DA6B70ED6243A5F3D8121AC220141399</string>
-				<string>B5AB8F494902EB7E5AACC58AC3F985AC</string>
-				<string>2AE8E6BB27FB4BD9FB457A629541EF38</string>
-				<string>F6163C96A2F0AA93E177B0A019EF4C27</string>
-				<string>7FA176755C9AE645759C878F21BC4F48</string>
-				<string>2790C6344493A605B9FB7682ABDA6A84</string>
-				<string>C8FFD82E7418B4632C9222CAD0CE5DF0</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>standard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7FA176755C9AE645759C878F21BC4F48</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>FMDB.h</string>
-			<key>path</key>
-			<string>src/fmdb/FMDB.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>83108D12D5EA8F0C092B4CFA280A8440</key>
+		<key>81F3F36B4588D660CD6C4AFF7CC2AC41</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1624,23 +1731,7 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>path</key>
-			<string>PNChart-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>844ED10E953877FC2C885AD2B4A0A364</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7F7FC7729E191A7E780B0D781B556ED9</string>
-				<string>960FD74E2D45EA8FB25DF41B9C207054</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>FMDB</string>
-			<key>path</key>
-			<string>FMDB</string>
+			<string>UICountingLabel-dummy.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1657,42 +1748,12 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>86EDF28DB110F45EF487975E3FBD4D42</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>PNChartDelegate.h</string>
-			<key>path</key>
-			<string>PNChart/PNChartDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>8748703A8D0AB53829309194A3699DAC</key>
 		<dict>
 			<key>fileRef</key>
-			<string>1AAF93ACAFEFA910BEBC74D1D0706E16</string>
+			<string>0D4C74B84C2A929E0AF7170C082B1481</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>89D28509CAF58F015E3EDF6DCAAF9A2A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>FMDatabase.m</string>
-			<key>path</key>
-			<string>src/fmdb/FMDatabase.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>8B2D82357BE4C2A10AB2CD4724B8E654</key>
 		<dict>
@@ -1725,23 +1786,7 @@
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
-		<key>8F07D9DDC0E6241D7E9F1DD6E4F77BF2</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>844ED10E953877FC2C885AD2B4A0A364</string>
-				<string>56BB2CA03653990D4ABE9541C31C017B</string>
-				<string>F2F5EAED3C3AC4E11072FADFDC729C61</string>
-				<string>6F7E69C906A562CC0F8752C9833D649A</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9278B0B6CFB50AE23E2A563BB64FB799</key>
+		<key>937A0414E2DE796E66965E7252132E39</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1749,10 +1794,8 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>PNScatterChartDataItem.m</string>
 			<key>path</key>
-			<string>PNChart/PNScatterChartDataItem.m</string>
+			<string>MBProgressHUD-dummy.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1778,7 +1821,7 @@
 		<key>9413B669A6203AD71A048A8F824ECDD9</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>54291C670ADEFA5B03F07AB5267F5E8B</string>
+			<string>9778252EA6B4B0B88EEEFA19576EFABE</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -1815,39 +1858,20 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>95F02C14EC2E07065C695D5F8C93AC2F</key>
+		<key>9778252EA6B4B0B88EEEFA19576EFABE</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>PNCircleChart.m</string>
+			<string>text.xcconfig</string>
 			<key>path</key>
-			<string>PNChart/PNCircleChart.m</string>
+			<string>MBProgressHUD.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>960FD74E2D45EA8FB25DF41B9C207054</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>CF76D5BADBDA3C2F4EB6C42C98B52210</string>
-				<string>9B4E81B3B6E4FF7A865966F9C0D303E4</string>
-				<string>4B41F9807965FC7110C72FE33EDBFB16</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/FMDB</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>96E200CFDD87C8648025CA47F1748425</key>
+		<key>97C8FADD08BE9776D86C991C4FB550B4</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1855,10 +1879,8 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>PNScatterChart.h</string>
 			<key>path</key>
-			<string>PNChart/PNScatterChart.h</string>
+			<string>UICountingLabel.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1877,62 +1899,7 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>98DA25A760A82E4F7E7820DCB5D97723</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>FMDatabaseAdditions.h</string>
-			<key>path</key>
-			<string>src/fmdb/FMDatabaseAdditions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>99B2B40508748997578A06C7CBE7C5D2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>MBProgressHUD.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9B4E81B3B6E4FF7A865966F9C0D303E4</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>FMDB-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9BE00D5AC18981CA059B56C171A9F49C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>DCBE8F59DEA188A4E759168ED510936D</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>9BF72A87EF8B358A980A03A0905A6FB6</key>
+		<key>99795A93F5A146FB0FD325B7B7F2E175</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1945,10 +1912,52 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>9A322E882FF0D7F912BE9755DE7E953A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>FMDB.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9BE00D5AC18981CA059B56C171A9F49C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>57216D8919F1CF14B8151FE824A631E0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>9C8273524F3131E892088D8D8F3F426A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F2EB4358BE68948F43292E596ED3610F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Bugly</string>
+			<key>path</key>
+			<string>Bugly</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>9CAE2C37C2B1DFDFA5FF80B83A14A537</key>
 		<dict>
 			<key>fileRef</key>
-			<string>4E4C055F51B5FA55DC90B8C5B70B0D13</string>
+			<string>81F3F36B4588D660CD6C4AFF7CC2AC41</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -1978,6 +1987,22 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>9EDC7DB2DD89654F9F8D30B2E2F08B60</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>AB78161E85D69E57342A31AC8074F331</string>
+				<string>6011ECC2B5FE1D80812797927B34FC50</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>FMDB</string>
+			<key>path</key>
+			<string>FMDB</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>9F12FB4A63E20F601CFB2E64A65B57C1</key>
 		<dict>
 			<key>buildConfigurationList</key>
@@ -2002,23 +2027,6 @@
 			<string>312B0DE759F76A35B8913019496CD471</string>
 			<key>productType</key>
 			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>A06872B01B21D551E40EE6C3866E0873</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>54291C670ADEFA5B03F07AB5267F5E8B</string>
-				<string>34B782432580314D6C80AAA3ECF097C2</string>
-				<string>9BF72A87EF8B358A980A03A0905A6FB6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/MBProgressHUD</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>A0AD7186ABCFC9A861831DE545829607</key>
 		<dict>
@@ -2063,14 +2071,29 @@
 		<key>A0BBBCA2093633B23B1C3184351A8535</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D361A9ED26208FEFC9AE8DF5471501D6</string>
+			<string>CFB9F8D732C83F6C6388A8B88A0CF392</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>A2E46216D59B27E570A679D72DEF02BF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>PNLineChartData.h</string>
+			<key>path</key>
+			<string>PNChart/PNLineChartData.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>A350C5704A1F233DAD830E081E00F8C1</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A856E0609FADFD33E3053BF4544CA598</string>
+			<string>AC1BF3793A4D309DB65C34E13E52FDF3</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2095,21 +2118,6 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>A367CF59CEBD9B492FFE6FF1C4A6252C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>PNGenericChart.h</string>
-			<key>path</key>
-			<string>PNChart/PNGenericChart.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>A561A67BF274ABC8C70A4FFA23D56C59</key>
 		<dict>
 			<key>fileRef</key>
@@ -2117,22 +2125,7 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>A79173281006206F41068748C365076A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>PNChartLabel.h</string>
-			<key>path</key>
-			<string>PNChart/PNChartLabel.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A856E0609FADFD33E3053BF4544CA598</key>
+		<key>A9763E26AFA6CDA96EC9392436A34602</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2141,16 +2134,16 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>FMDatabaseAdditions.m</string>
+			<string>PNPieChartDataItem.m</string>
 			<key>path</key>
-			<string>src/fmdb/FMDatabaseAdditions.m</string>
+			<string>PNChart/PNPieChartDataItem.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>AA3380FCEFFCC36B3FC3B12F1EB40081</key>
 		<dict>
 			<key>fileRef</key>
-			<string>618F8EA5A9C830D6E7D164D6B091FFE0</string>
+			<string>6A7D7D2A33A0C0007AB32AAF81DA5729</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2190,7 +2183,33 @@
 			<key>productType</key>
 			<string>com.apple.product-type.library.static</string>
 		</dict>
-		<key>AC266020C70102D41C43048DDBE03542</key>
+		<key>AAF49BDFF360708D14567E87DC76C619</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FMDB-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AB05B89B79CC87759F1D8ED1CCDF5EA9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>MBProgressHUD.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AB2026DDA3F9E35104923051E52FA74F</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2199,19 +2218,64 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>PNScatterChartDataItem.h</string>
+			<string>FMDatabase.h</string>
 			<key>path</key>
-			<string>PNChart/PNScatterChartDataItem.h</string>
+			<string>src/fmdb/FMDatabase.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>AF49DFF3E132579A19BD754A46F0458B</key>
+		<key>AB78161E85D69E57342A31AC8074F331</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>714AFE7DB36CBD48AD9789511F1AF48E</string>
-				<string>83108D12D5EA8F0C092B4CFA280A8440</string>
-				<string>C92A651856C0D2E1BF312D9CB7A5A3D0</string>
+				<string>AB2026DDA3F9E35104923051E52FA74F</string>
+				<string>34F81B36033689A113CE96C35E319BC2</string>
+				<string>7CC88E723694749CC90AE27EF6538208</string>
+				<string>AC1BF3793A4D309DB65C34E13E52FDF3</string>
+				<string>B6B532DEB5D70DDD8BC7361F6CFC3DDB</string>
+				<string>69FDEBDC77EB5F55E415822111C92566</string>
+				<string>CAC55861E0DE5858BD6C775D0606592B</string>
+				<string>E5BDA96C05954E4CA305CA106833187B</string>
+				<string>69584B45171158468727BD41E995EE72</string>
+				<string>1EEBFF7EB33784CEE655FA5D0BD01AEF</string>
+				<string>581C22E2E73B9787E1328B456B4B37CB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>standard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AC1BF3793A4D309DB65C34E13E52FDF3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>FMDatabaseAdditions.m</string>
+			<key>path</key>
+			<string>src/fmdb/FMDatabaseAdditions.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B2192F0C1DDCB5F2590BF46EEF56F96A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7192BD6855DF7B6FB421EE07F8AF65D4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>B2285481CE243CA27DBCD16C2F646110</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>5338C50751A76ACA9D4EDDF13A7AC146</string>
+				<string>446AC7AD4B3A3C5C25EC3CB94ED6996A</string>
+				<string>574F503B5A84E7A8E172DCE0D3F3480E</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -2221,13 +2285,6 @@
 			<string>../Target Support Files/PNChart</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B2192F0C1DDCB5F2590BF46EEF56F96A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>42334D7A687AA8BEF8CBCF97A83EEE75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
 		</dict>
 		<key>B23DC416AA7EB4A54906B4D4E900A49F</key>
 		<dict>
@@ -2246,7 +2303,7 @@
 		<key>B418C9BDCF8C6BAC2E3942F157BB6D4C</key>
 		<dict>
 			<key>fileRef</key>
-			<string>98DA25A760A82E4F7E7820DCB5D97723</string>
+			<string>7CC88E723694749CC90AE27EF6538208</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2257,7 +2314,21 @@
 				</array>
 			</dict>
 		</dict>
-		<key>B41AE5AE58A9FE3D6B17581C54C7A0AA</key>
+		<key>B4F21291A02951A7387F423B9C03C4B5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C3C1B4239F110BB852DA69D8BC7E045C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>B6B532DEB5D70DDD8BC7361F6CFC3DDB</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2266,45 +2337,16 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>PNPieChartDataItem.h</string>
+			<string>FMDatabasePool.h</string>
 			<key>path</key>
-			<string>PNChart/PNPieChartDataItem.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B4F21291A02951A7387F423B9C03C4B5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4AA51B178EF14DF6AEAAD187F7D4DC7F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>B5AB8F494902EB7E5AACC58AC3F985AC</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>FMDatabasePool.m</string>
-			<key>path</key>
-			<string>src/fmdb/FMDatabasePool.m</string>
+			<string>src/fmdb/FMDatabasePool.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>B77927700BDB735EFD057FD05F96ABD3</key>
 		<dict>
 			<key>fileRef</key>
-			<string>F3D98ED6E10A2B4B5DFCE98EEC8E903D</string>
+			<string>FDBCD57A2EF2FAEEB0D7194A39A4B1E6</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2315,23 +2357,10 @@
 				</array>
 			</dict>
 		</dict>
-		<key>B7DDCA3B274B6166389D659762F0E9BE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>MBProgressHUD.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>B8569DCE6F8B6E96BABDCF6176348080</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A79173281006206F41068748C365076A</string>
+			<string>DB088EB690AD01B189D8340590A08F3D</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2345,14 +2374,14 @@
 		<key>BA5B0CFF5CF1606237BC4880F513F1C1</key>
 		<dict>
 			<key>fileRef</key>
-			<string>83108D12D5EA8F0C092B4CFA280A8440</string>
+			<string>446AC7AD4B3A3C5C25EC3CB94ED6996A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>BAA10F9E639A745D0A90128D1713065E</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A367CF59CEBD9B492FFE6FF1C4A6252C</string>
+			<string>78806D37887E8FED893239F63F124D0F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2363,18 +2392,18 @@
 				</array>
 			</dict>
 		</dict>
-		<key>BE5179DD1A0533C3E45DDB31EAA1F4FD</key>
+		<key>BC41A6482EF82306CFE56B85612D7F91</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>PNBarChart.m</string>
+			<string>PNRadarChart.h</string>
 			<key>path</key>
-			<string>PNChart/PNBarChart.m</string>
+			<string>PNChart/PNRadarChart.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2397,7 +2426,7 @@
 		<key>C04F0B9A21CBBB234CCEC947AAB1863C</key>
 		<dict>
 			<key>fileRef</key>
-			<string>E1C0E0ECACBC057B29826982FA167866</string>
+			<string>7F44D474C70E2AB6D3D6D710613B1B86</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2407,19 +2436,6 @@
 					<string>Public</string>
 				</array>
 			</dict>
-		</dict>
-		<key>C1A7ED285A9109B9A7A6627EBA380A3D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>UICountingLabel.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C330815E909DABD594043F065E6ADDE8</key>
 		<dict>
@@ -2431,6 +2447,21 @@
 			<string>7CEEB7F4CD0B847C8524FB6C3FD41570</string>
 			<key>targetProxy</key>
 			<string>C473B5386B6D0F1406931C77547FE0D1</string>
+		</dict>
+		<key>C3C1B4239F110BB852DA69D8BC7E045C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>PNCircleChart.h</string>
+			<key>path</key>
+			<string>PNChart/PNCircleChart.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C473B5386B6D0F1406931C77547FE0D1</key>
 		<dict>
@@ -2448,7 +2479,7 @@
 		<key>C7BA904A87CCDF175A63DBF60D6810A9</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>CF76D5BADBDA3C2F4EB6C42C98B52210</string>
+			<string>9A322E882FF0D7F912BE9755DE7E953A</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -2485,45 +2516,17 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
-		<key>C8FFD82E7418B4632C9222CAD0CE5DF0</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>FMResultSet.m</string>
-			<key>path</key>
-			<string>src/fmdb/FMResultSet.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C92A651856C0D2E1BF312D9CB7A5A3D0</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>PNChart-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>C9C0D6B46AFE88EDB82E96E463EBCEA5</key>
 		<dict>
 			<key>fileRef</key>
-			<string>047B9E0C638055BC96158F879D5DA7B4</string>
+			<string>03FFACBCAD502EA9CA5DC1281930C2F8</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>CA027706DD6805766F1F4EC548E72440</key>
 		<dict>
 			<key>fileRef</key>
-			<string>89D28509CAF58F015E3EDF6DCAAF9A2A</string>
+			<string>34F81B36033689A113CE96C35E319BC2</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2545,23 +2548,55 @@
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
-		<key>CCA9C08C9CBDE367B7BB38B6C0547B94</key>
-		<dict>
-			<key>fileRef</key>
-			<string>99B2B40508748997578A06C7CBE7C5D2</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>CF76D5BADBDA3C2F4EB6C42C98B52210</key>
+		<key>CAC55861E0DE5858BD6C775D0606592B</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FMDatabaseQueue.h</string>
 			<key>path</key>
-			<string>FMDB.xcconfig</string>
+			<string>src/fmdb/FMDatabaseQueue.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CCA9C08C9CBDE367B7BB38B6C0547B94</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AB05B89B79CC87759F1D8ED1CCDF5EA9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CD4C2FA97B26760A14D3655523A963CC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PNGenericChart.m</string>
+			<key>path</key>
+			<string>PNChart/PNGenericChart.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CFB9F8D732C83F6C6388A8B88A0CF392</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PNLineChartDataItem.m</string>
+			<key>path</key>
+			<string>PNChart/PNLineChartDataItem.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2593,7 +2628,7 @@
 		<key>D0C5FF5485EAA2CDA03E9796B407697A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>2AE8E6BB27FB4BD9FB457A629541EF38</string>
+			<string>CAC55861E0DE5858BD6C775D0606592B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2618,7 +2653,7 @@
 		<key>D0D5FFE53407F16C9CD3D0ECF43ACE93</key>
 		<dict>
 			<key>fileRef</key>
-			<string>7E907A5D3F55B4621914084A704FE2F3</string>
+			<string>AB2026DDA3F9E35104923051E52FA74F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2629,22 +2664,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>D1119BB1E2929E1891869B182CFC779F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>PNRadarChart.h</string>
-			<key>path</key>
-			<string>PNChart/PNRadarChart.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D361A9ED26208FEFC9AE8DF5471501D6</key>
+		<key>D1C03ED6E85317430CE30662EC773B9B</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2652,10 +2672,8 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>PNLineChartDataItem.m</string>
 			<key>path</key>
-			<string>PNChart/PNLineChartDataItem.m</string>
+			<string>FMDB-dummy.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2704,7 +2722,7 @@
 		<key>D4BB89BDF99E495DB80F410BB63DED12</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>714AFE7DB36CBD48AD9789511F1AF48E</string>
+			<string>5338C50751A76ACA9D4EDDF13A7AC146</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -2769,24 +2787,7 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>D7D61731DE5A7D30279ED089B6AC43AA</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0D9D3DE5D14C4270B7DF7BEFDA38FF67</string>
-				<string>4E4C055F51B5FA55DC90B8C5B70B0D13</string>
-				<string>3CB3860E1EA5C8BE6714A367E09D0E73</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/UICountingLabel</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DA6B70ED6243A5F3D8121AC220141399</key>
+		<key>D7BED22DD36472EB386BFD8FD684E8A6</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2795,13 +2796,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>FMDatabasePool.h</string>
+			<string>PNChartDelegate.h</string>
 			<key>path</key>
-			<string>src/fmdb/FMDatabasePool.h</string>
+			<string>PNChart/PNChartDelegate.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>DCBE8F59DEA188A4E759168ED510936D</key>
+		<key>D8BA89A44C6B192827016EE99CB703CA</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2810,16 +2811,31 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>PNBar.h</string>
+			<string>PNRadarChartDataItem.h</string>
 			<key>path</key>
-			<string>PNChart/PNBar.h</string>
+			<string>PNChart/PNRadarChartDataItem.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DB088EB690AD01B189D8340590A08F3D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>PNChartLabel.h</string>
+			<key>path</key>
+			<string>PNChart/PNChartLabel.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>DEFA3504695E9DFDE1177DAB22884470</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C8FFD82E7418B4632C9222CAD0CE5DF0</string>
+			<string>581C22E2E73B9787E1328B456B4B37CB</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2828,7 +2844,7 @@
 				<string>-DOS_OBJECT_USE_OBJC=0</string>
 			</dict>
 		</dict>
-		<key>E1C0E0ECACBC057B29826982FA167866</key>
+		<key>DFA60563B95F1B10ACD59CF8D57DE390</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2837,9 +2853,9 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>PNLineChartDataItem.h</string>
+			<string>PNChart.h</string>
 			<key>path</key>
-			<string>PNChart/PNLineChartDataItem.h</string>
+			<string>PNChart/PNChart.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2856,6 +2872,66 @@
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
+		<key>E41F3F9E726C0D883D87DBF9F59F0BD3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>97C8FADD08BE9776D86C991C4FB550B4</string>
+				<string>F219ACC9ADB0835184B35119363D4A12</string>
+				<string>40238B2E56DD7022AB26F6134DF7BCEB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>UICountingLabel</string>
+			<key>path</key>
+			<string>UICountingLabel</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E42BB9B39827B9D5E3CE2051359C392E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>UICountingLabel.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E4C4583031D68CD93F28BFD7386E3EDD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>PNLineChart.h</string>
+			<key>path</key>
+			<string>PNChart/PNLineChart.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E5BDA96C05954E4CA305CA106833187B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>FMDatabaseQueue.m</string>
+			<key>path</key>
+			<string>src/fmdb/FMDatabaseQueue.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>E9001FCA1D7F025E918399909B4942DA</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -2870,25 +2946,42 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>EBFF77226ED30BB7EB2491B746E0BBE7</key>
+		<key>EC6934F0BF70692CE1FF26514BFE5CBC</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>PNChart.h</string>
+			<string>PNColor.m</string>
 			<key>path</key>
-			<string>PNChart/PNChart.h</string>
+			<string>PNChart/PNColor.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ED21B1E02A49E1DCCCCBEAA944507164</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9778252EA6B4B0B88EEEFA19576EFABE</string>
+				<string>937A0414E2DE796E66965E7252132E39</string>
+				<string>99795A93F5A146FB0FD325B7B7F2E175</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/MBProgressHUD</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>EE0F7B7B30E9726C12E6B0EC1E09F913</key>
 		<dict>
 			<key>fileRef</key>
-			<string>FAE80CD168A120976E23C2B797684D3D</string>
+			<string>A2E46216D59B27E570A679D72DEF02BF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2902,63 +2995,40 @@
 		<key>F13D0FBCC285014C83B02F48CB3DCB85</key>
 		<dict>
 			<key>fileRef</key>
-			<string>BE5179DD1A0533C3E45DDB31EAA1F4FD</string>
+			<string>121626AB9B0EDDA3122FA2E1167DD0AF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>F219ACC9ADB0835184B35119363D4A12</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UICountingLabel.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>F2A39F65539F4A7F28DDDD09F52A7F78</key>
 		<dict>
 			<key>fileRef</key>
-			<string>FB3227253C827B38B58FB55BD6082412</string>
+			<string>3482629814956338201B78ACC7D9E24E</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>F2F5EAED3C3AC4E11072FADFDC729C61</key>
+		<key>F2EB4358BE68948F43292E596ED3610F</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>DCBE8F59DEA188A4E759168ED510936D</string>
-				<string>576F4862D64D65312778F8D63EA4A954</string>
-				<string>618F8EA5A9C830D6E7D164D6B091FFE0</string>
-				<string>BE5179DD1A0533C3E45DDB31EAA1F4FD</string>
-				<string>EBFF77226ED30BB7EB2491B746E0BBE7</string>
-				<string>86EDF28DB110F45EF487975E3FBD4D42</string>
-				<string>A79173281006206F41068748C365076A</string>
-				<string>6C00D59521313E06248E3CE43F269A58</string>
-				<string>4AA51B178EF14DF6AEAAD187F7D4DC7F</string>
-				<string>95F02C14EC2E07065C695D5F8C93AC2F</string>
-				<string>F3D98ED6E10A2B4B5DFCE98EEC8E903D</string>
-				<string>10024E4196DA47B878A9FB2993EABB55</string>
-				<string>A367CF59CEBD9B492FFE6FF1C4A6252C</string>
-				<string>69D83C93D95414ED04233739073C7EBB</string>
-				<string>204B576A2D1C784A2565BF23764D71FC</string>
-				<string>047B9E0C638055BC96158F879D5DA7B4</string>
-				<string>FAE80CD168A120976E23C2B797684D3D</string>
-				<string>1AAF93ACAFEFA910BEBC74D1D0706E16</string>
-				<string>E1C0E0ECACBC057B29826982FA167866</string>
-				<string>D361A9ED26208FEFC9AE8DF5471501D6</string>
-				<string>2E7E9CB3ACB1299DB44B25588267B354</string>
-				<string>4A826ED4860AC83C5D3C33FDC5DBB1E5</string>
-				<string>B41AE5AE58A9FE3D6B17581C54C7A0AA</string>
-				<string>41A3C8EBA4EEE9E872341DC52C9319B9</string>
-				<string>D1119BB1E2929E1891869B182CFC779F</string>
-				<string>FB3227253C827B38B58FB55BD6082412</string>
-				<string>1A4989C65CBDA38277E8EF3D4762D8A8</string>
-				<string>07F72C028194D352DFDEB69224A94F3B</string>
-				<string>96E200CFDD87C8648025CA47F1748425</string>
-				<string>42334D7A687AA8BEF8CBCF97A83EEE75</string>
-				<string>55B25D6199DBE6044A6A1B6089A68AC3</string>
-				<string>FA8335F182026735CF33738D7856154F</string>
-				<string>AC266020C70102D41C43048DDBE03542</string>
-				<string>9278B0B6CFB50AE23E2A563BB64FB799</string>
-				<string>AF49DFF3E132579A19BD754A46F0458B</string>
+				<string>5A78F89368581E7F68D26E2DCD021D7F</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>PNChart</string>
-			<key>path</key>
-			<string>PNChart</string>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3073,7 +3143,7 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>F3D98ED6E10A2B4B5DFCE98EEC8E903D</key>
+		<key>F42857AC528BCEE64ED74A4678EB30FD</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3082,38 +3152,38 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>PNColor.h</string>
+			<string>PNScatterChartData.h</string>
 			<key>path</key>
-			<string>PNChart/PNColor.h</string>
+			<string>PNChart/PNScatterChartData.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>F6163C96A2F0AA93E177B0A019EF4C27</key>
+		<key>F76BA0A4513B52966E041498B9998828</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>FMDatabaseQueue.m</string>
+			<string>PNPieChart.h</string>
 			<key>path</key>
-			<string>src/fmdb/FMDatabaseQueue.m</string>
+			<string>PNChart/PNPieChart.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>F950C4A6125F2E3F272AFE3B89B476AC</key>
 		<dict>
 			<key>fileRef</key>
-			<string>4A826ED4860AC83C5D3C33FDC5DBB1E5</string>
+			<string>0CC72042C18677BF8224EDB76F1B1BB6</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>F977B243321331B58666E9284634101A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>2790C6344493A605B9FB7682ABDA6A84</string>
+			<string>1EEBFF7EB33784CEE655FA5D0BD01AEF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3124,40 +3194,10 @@
 				</array>
 			</dict>
 		</dict>
-		<key>FA8335F182026735CF33738D7856154F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>PNScatterChartData.m</string>
-			<key>path</key>
-			<string>PNChart/PNScatterChartData.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FAE80CD168A120976E23C2B797684D3D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>PNLineChartData.h</string>
-			<key>path</key>
-			<string>PNChart/PNLineChartData.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>FB0F995CD8A126E89DE997A4D845C3BF</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>714AFE7DB36CBD48AD9789511F1AF48E</string>
+			<string>5338C50751A76ACA9D4EDDF13A7AC146</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -3194,25 +3234,25 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>FB3227253C827B38B58FB55BD6082412</key>
+		<key>FDBCD57A2EF2FAEEB0D7194A39A4B1E6</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>PNRadarChart.m</string>
+			<string>PNColor.h</string>
 			<key>path</key>
-			<string>PNChart/PNRadarChart.m</string>
+			<string>PNChart/PNColor.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>FE1929E0DD758282F5D51EC5754B5E59</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>0D9D3DE5D14C4270B7DF7BEFDA38FF67</string>
+			<string>E42BB9B39827B9D5E3CE2051359C392E</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>

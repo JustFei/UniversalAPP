@@ -7,13 +7,11 @@
 //
 
 #import "AppDelegate.h"
-
 #import <UserNotifications/UserNotifications.h>
 #import "manridyBleDevice.h"
-//#import <CoreTelephony/CTCallCenter.h>
-//#import <CoreTelephony/CTCall.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <Bugly/Bugly.h>
 
 @interface AppDelegate () <BleDiscoverDelegate, BleConnectDelegate ,BleReceiveSearchResquset , UNUserNotificationCenterDelegate>
 {
@@ -37,6 +35,8 @@ static void completionCallback(SystemSoundID mySSID)
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [Bugly startWithAppId:@"2d7b0139a9"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -47,10 +47,8 @@ static void completionCallback(SystemSoundID mySSID)
     self.myBleTool.connectDelegate = self;
     self.myBleTool.searchDelegate = self;
 
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"]) {
-        _isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
-        DLog(@"有没有绑定设备 == %d",_isBind);
-//    }
+    _isBind = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"];
+    DLog(@"有没有绑定设备 == %d",_isBind);
     
     self.mainVc = [[MainViewController alloc] init];
     
