@@ -759,7 +759,7 @@ static BLETool *bleTool = nil;
         NSString *dateStr = [formatter stringFromDate:date];
         content.body = [NSString stringWithFormat:NSLocalizedString(@"PerDismissNodifyContent", nil),dateStr];
         // 通知的提示声音，这里用的默认的声音
-        content.sound = [UNNotificationSound defaultSound];
+        content.sound = [UNNotificationSound soundNamed:@"alert.wav"];
         
         // 标识符
         content.categoryIdentifier = @"categoryIndentifier";
