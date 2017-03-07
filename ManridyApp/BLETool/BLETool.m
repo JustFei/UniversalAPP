@@ -168,15 +168,8 @@ static BLETool *bleTool = nil;
     now=[NSDate date];
     comps = [calendar components:unitFlags fromDate:now];
     
-    NSString *currentStr = [NSString stringWithFormat:@"%02ld%02ld%02ld%02ld%02ld%02ld%02ld",[comps year] % 100 ,[comps month] ,[comps day] ,[comps hour] ,[comps minute] ,[comps second] ,[comps weekday] - 1];
+    NSString *currentStr = [NSString stringWithFormat:@"%02d%02d%02d%02d%02d%02d%02d",[comps year] % 100 ,[comps month] ,[comps day] ,[comps hour] ,[comps minute] ,[comps second] ,[comps weekday] - 1];
 //    NSLog(@"-----------weekday is %ld",(long)[comps weekday]);//在这里需要注意的是：星期日是数字1，星期一时数字2，以此类推。。。
-//    NSLog(@"-----------month is %d",[comps month]);
-//    NSLog(@"-----------day is %d",[comps day]);
-//    
-//    
-//    NSDateFormatter *currentFormatter = [[NSDateFormatter alloc] init];
-//    [currentFormatter setDateFormat:@"yyMMddhhmmssEEE"];
-//    NSString *currentStr = [currentFormatter stringFromDate:currentDate];
     
     //传入时间和头，返回协议字符串
     NSString *protocolStr = [NSStringTool protocolAddInfo:currentStr head:@"00"];
@@ -581,6 +574,34 @@ static BLETool *bleTool = nil;
     }
 }
 
+//写入名称
+- (void)writePeripheralNameWithNameString:(NSString *)name
+{
+    
+    NSString *lengthInterval = [NSStringTool ToHex:name.length / 2];
+    if (lengthInterval.length < 2) {
+        while (1) {
+            lengthInterval = [@"0" stringByAppendingString:lengthInterval];
+            if (lengthInterval.length >= 2) {
+                break;
+            }
+        }
+    }
+    NSString *protocolStr = [[@"FC0F07" stringByAppendingString:lengthInterval]stringByAppendingString:name];
+    
+    while (1) {
+        if (protocolStr.length < 40) {
+            protocolStr = [protocolStr stringByAppendingString:@"00"];
+        }else {
+            break;
+        }
+    }
+    //写入操作
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
 //临时写入保持连接
 - (void)writeToKeepConnect
 {
@@ -949,10 +970,10 @@ static BLETool *bleTool = nil;
         }else if ([headStr isEqualToString:@"0f"] || [headStr isEqualToString:@"0F"]) {
             //判断是版本号还是电量
             NSString *typeStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
-            if ([typeStr isEqualToString:@"06"]) {
+            if ([typeStr isEqualToString:@"06"]) {//电量
                 NSString *batteryStr = [NSString stringWithFormat:@"%x", hexBytes[8]];
                 DLog(@"电量：%@",batteryStr);
-            }else {
+            }else if ([typeStr isEqualToString:@"05"]) {//版本号
                 int maint = hexBytes[7];
                 int miint = hexBytes[8];
                 int reint = hexBytes[9];
@@ -960,6 +981,10 @@ static BLETool *bleTool = nil;
                 NSString *versionStr = [[[NSString stringWithFormat:@"%d", maint] stringByAppendingString:[NSString stringWithFormat:@".%d",miint]] stringByAppendingString:[NSString stringWithFormat:@".%d",reint]];
                 if ([self.receiveDelegate respondsToSelector:@selector(receiveVersionWithVersionStr:)]) {
                     [self.receiveDelegate receiveVersionWithVersionStr:versionStr];
+                }
+            }else if ([typeStr isEqualToString:@"07"]) {//改名称
+                if ([self.receiveDelegate respondsToSelector:@selector(receiveChangePerNameSuccess:)]) {
+                    [self.receiveDelegate receiveChangePerNameSuccess:YES];
                 }
             }
         }else if ([headStr isEqualToString:@"fc"] || [headStr isEqualToString:@"FC"]) {

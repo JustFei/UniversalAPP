@@ -126,6 +126,9 @@ typedef enum{
 //get pair success?
 - (void)receivePairWitheModel:(manridyModel *)manridyModel;
 
+//change peripheral name success?
+- (void)receiveChangePerNameSuccess:(BOOL)success;
+
 @end
 
 @protocol BleReceiveSearchResquset <NSObject>
@@ -235,6 +238,9 @@ typedef enum{
 
 //set sedentary alert
 - (void)writeSedentaryAlertWithSedentaryModel:(SedentaryModel *)sedentaryModel;
+
+//写入名称
+- (void)writePeripheralNameWithNameString:(NSString *)name;
 
 //临时写入保持连接
 - (void)writeToKeepConnect;

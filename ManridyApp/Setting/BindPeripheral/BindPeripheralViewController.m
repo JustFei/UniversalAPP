@@ -13,7 +13,7 @@
 
 #define WIDTH self.view.frame.size.width
 
-@interface BindPeripheralViewController () <UITableViewDelegate ,UITableViewDataSource ,BleDiscoverDelegate ,BleConnectDelegate ,BleReceiveDelegate ,UIAlertViewDelegate>
+@interface BindPeripheralViewController () <UITableViewDelegate ,UITableViewDataSource ,BleDiscoverDelegate ,BleConnectDelegate ,BleReceiveDelegate ,UIAlertViewDelegate, UITextFieldDelegate>
 {
     NSMutableArray *_dataArr;
     NSInteger index;
@@ -40,6 +40,7 @@
 @property (nonatomic ,strong) BLETool *myBleTool;
 
 @property (nonatomic ,strong) MBProgressHUD *hud;
+@property (nonatomic ,copy) NSString *changeName;
 
 @end
 
@@ -157,7 +158,6 @@
         self.myBleTool.isReconnect = YES;
         _isConnected = YES;
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        self.hud.mode = MBProgressHUDModeAnnularDeterminate;
         self.hud.mode = MBProgressHUDModeIndeterminate;
         [self.hud.label setText:NSLocalizedString(@"bindingPer", nil)];
     }else {
@@ -179,9 +179,6 @@
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"bindPeripheralName"];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"peripheralUUID"];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isBind"];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isFindMyPeripheral"];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isRemindPhone"];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isRemindMessage"];
     
     self.navigationItem.rightBarButtonItem.enabled = YES;
     
@@ -200,6 +197,21 @@
     }
     [_dataArr removeAllObjects];
     [self.peripheralList deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)changePeripheralName:(UILongPressGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        if (ifConnect) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"修改名称" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            alertView.tag = 103;
+            [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+            UITextField *nameField = [alertView textFieldAtIndex:0];
+            nameField.delegate = self;
+            nameField.placeholder = @"请输入修改的名称";
+            [alertView show];
+        }
+    }
 }
 
 #pragma mark - UITableViewDataSource && UITableViewDelegate
@@ -302,6 +314,24 @@
                 [self.myBleTool connectDevice:self.myBleTool.currentDev];
             }
         }
+            break;
+        case 103:
+        {
+            if (buttonIndex == alertView.firstOtherButtonIndex) {
+                //改名字
+                self.changeName = [alertView textFieldAtIndex:0].text;
+                NSString *name_utf_8 =  [[[alertView textFieldAtIndex:0].text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByReplacingOccurrencesOfString:@"%" withString:@""];
+                self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                if (name_utf_8.length >30) {
+                    self.hud.mode = MBProgressHUDModeText;
+                    self.hud.label.text = @"名字长度过长";
+                    [self.hud showAnimated:YES];
+                    [self.hud hideAnimated:YES afterDelay:2];
+                }else {
+                    [self.myBleTool writePeripheralNameWithNameString:name_utf_8];
+                }
+            }
+        }
         default:
             break;
     }
@@ -331,6 +361,16 @@
     [[NSUserDefaults standardUserDefaults] setValue:device.peripheral.identifier.UUIDString forKey:@"bindPeripheralID"];
     [[NSUserDefaults standardUserDefaults] setValue:device.deviceName forKey:@"bindPeripheralName"];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isBind"];
+    //同步提醒设置
+    Remind *rem = [[Remind alloc] init];
+    rem.phone = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindPhone"];
+    rem.message = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindMessage"];
+    [self.myBleTool writePhoneAndMessageRemindToPeripheral:rem];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"]) {
+            [self.myBleTool writePeripheralShakeWhenUnconnectWithOforOff:[[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"]];
+        }
+    });
     
     UIAlertView *view = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"tips", nil) message:[NSString stringWithFormat:NSLocalizedString(@"haveBindPerName", nil),device.deviceName] delegate:self cancelButtonTitle:NSLocalizedString(@"IKnow", nil) otherButtonTitles:nil, nil];
     view.tag = 100;
@@ -363,6 +403,21 @@
 - (void)receiveVersionWithVersionStr:(NSString *)versionStr
 {
     [[NSUserDefaults standardUserDefaults] setObject:versionStr forKey:@"version"];
+}
+
+- (void)receiveChangePerNameSuccess:(BOOL)success
+{
+    if (success) {
+        manridyBleDevice *current = self.myBleTool.currentDev;
+        current.deviceName = self.changeName;
+        _isConnected = NO;
+        self.myBleTool.isReconnect = NO;
+        [self.myBleTool unConnectDevice];
+        index = -1;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.myBleTool connectDevice:current];
+        });
+    }
 }
 
 #pragma mark - 懒加载
@@ -412,6 +467,10 @@
     if (!_perNameLabel) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, WIDTH * 220 / 320, 200, 19)];
         label.alpha = 0;
+        UILongPressGestureRecognizer *lp = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(changePeripheralName:)];
+        lp.minimumPressDuration = 3.0;
+        label.userInteractionEnabled = YES;
+        [label addGestureRecognizer:lp];
         
         [label setTextColor:[UIColor colorWithWhite:1 alpha:0.4]];
         label.textAlignment = NSTextAlignmentCenter;
