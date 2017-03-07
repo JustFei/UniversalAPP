@@ -389,7 +389,6 @@
     }
     
     return strTemp;
-    
 }
 
 + (float)getMileage:(NSInteger)step withHeight:(float)height

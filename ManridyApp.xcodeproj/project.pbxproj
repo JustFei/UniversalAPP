@@ -208,6 +208,7 @@
 		9C06C1B71DE04A6500418C7C /* SPO2_old_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1B11DE04A6500418C7C /* SPO2_old_icon@2x.png */; };
 		9C06C1B81DE04A6500418C7C /* SPO2_old_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C06C1B21DE04A6500418C7C /* SPO2_old_icon@3x.png */; };
 		9C06C1BD1DE05C7A00418C7C /* BOHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C06C1BB1DE05C7A00418C7C /* BOHistoryViewController.m */; };
+		9C0845511E6A9D5F00C9E04F /* AlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0845501E6A9D5F00C9E04F /* AlertTool.m */; };
 		9C15BB501DCD79A900A049E9 /* ClockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15BB4F1DCD79A900A049E9 /* ClockModel.m */; };
 		9C19541B1E5FCDF5006DEAED /* PhoneRemindTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C19541D1E5FCDF5006DEAED /* PhoneRemindTableViewCell.xib */; };
 		9C1B27711DDE8E2C009663F0 /* BloodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27701DDE8E2C009663F0 /* BloodModel.m */; };
@@ -497,6 +498,8 @@
 		9C06C1B21DE04A6500418C7C /* SPO2_old_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SPO2_old_icon@3x.png"; sourceTree = "<group>"; };
 		9C06C1BA1DE05C7A00418C7C /* BOHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOHistoryViewController.h; path = History/BloodO2/BOHistoryViewController.h; sourceTree = "<group>"; };
 		9C06C1BB1DE05C7A00418C7C /* BOHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOHistoryViewController.m; path = History/BloodO2/BOHistoryViewController.m; sourceTree = "<group>"; };
+		9C08454F1E6A9D5F00C9E04F /* AlertTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertTool.h; path = AlertTool/AlertTool.h; sourceTree = "<group>"; };
+		9C0845501E6A9D5F00C9E04F /* AlertTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertTool.m; path = AlertTool/AlertTool.m; sourceTree = "<group>"; };
 		9C15BB4E1DCD79A900A049E9 /* ClockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockModel.h; sourceTree = "<group>"; };
 		9C15BB4F1DCD79A900A049E9 /* ClockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockModel.m; sourceTree = "<group>"; };
 		9C19541C1E5FCDF5006DEAED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PhoneRemindTableViewCell.xib; sourceTree = "<group>"; };
@@ -974,6 +977,7 @@
 		10F5F7061D98C6280045FA4C /* ManridyApp */ = {
 			isa = PBXGroup;
 			children = (
+				9C08454E1E6A9D3200C9E04F /* AlertTool */,
 				9C728F651DD5DAE400BEF69E /* PopupView */,
 				102474D91DAA2F0A00F70E4F /* BLETool */,
 				109FBB981DAA18A8008FF0D3 /* FMDBTool */,
@@ -1279,6 +1283,15 @@
 				9C57F2331DF2C2E10090C2EF /* BOHistoryViewController.xib */,
 			);
 			name = BloodO2;
+			sourceTree = "<group>";
+		};
+		9C08454E1E6A9D3200C9E04F /* AlertTool */ = {
+			isa = PBXGroup;
+			children = (
+				9C08454F1E6A9D5F00C9E04F /* AlertTool.h */,
+				9C0845501E6A9D5F00C9E04F /* AlertTool.m */,
+			);
+			name = AlertTool;
 			sourceTree = "<group>";
 		};
 		9C1B27751DDEFCBB009663F0 /* Blood */ = {
@@ -1668,6 +1681,7 @@
 				1012C7211DBEFE470013E99B /* SleepHistoryViewController.m in Sources */,
 				9CF2F6C41DD458010091ECB5 /* Remind.m in Sources */,
 				10C47EC71DA8DE0D00D949CA /* TemperatureWarningViewController.m in Sources */,
+				9C0845511E6A9D5F00C9E04F /* AlertTool.m in Sources */,
 				104A706D1D9BAD2B00CC73F5 /* UserInfoCell.m in Sources */,
 				10FF5CDA1DC33BEA0059FE00 /* PhoneRemindTableViewCell.m in Sources */,
 				104A70641D9B724D00CC73F5 /* SettingContentView.m in Sources */,

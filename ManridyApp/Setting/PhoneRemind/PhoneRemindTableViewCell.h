@@ -19,7 +19,7 @@ typedef void(^ClockSwitchValueChangeBlock)(void);
 @property (weak, nonatomic) IBOutlet UILabel *startLabel;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UILabel *endLabel;
-@property (weak, nonatomic) IBOutlet UIButton *endButton;
+@property (strong, nonatomic) IBOutlet UIButton *endButton;
 @property (weak, nonatomic) IBOutlet UILabel *bolanghaolabel;
 
 

@@ -36,7 +36,7 @@
 @property (nonatomic ,weak) UIButton *selectButton;
 @property (nonatomic ,strong) BLETool *myBleTool;
 @property (nonatomic ,strong) FMDBTool *myFmdbTool;
-@property (nonatomic ,strong) UIAlertController *searchVC;
+@property (nonatomic ,strong) AlertTool *searchVC;
 @property (nonatomic ,strong) Remind *remindModel;
 @property (nonatomic ,strong) UISwitch *phoneSwitch;
 @property (nonatomic ,strong) UISwitch *messageSwitch;
@@ -183,7 +183,9 @@
 {
     if (!self.timePicker.hidden) {
         self.timePicker.hidden = YES;
-        [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:self.clockTimeArr];
+        if (self.myBleTool.connectState == kBLEstateDidConnected) {
+            [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:self.clockTimeArr];
+        }
     }
 }
 
@@ -202,7 +204,8 @@
 - (void)searchPeripheral:(UIButton *)sender
 {
     [self.myBleTool writeSearchPeripheralWithONorOFF:YES];
-    [self presentViewController:self.searchVC animated:YES completion:nil];
+    [self.searchVC show];
+    //[self presentViewController:self.searchVC animated:YES completion:nil];
     
     //设置倒计时总时长
     secondsCountDown = 10;//10秒倒计时
@@ -278,12 +281,18 @@
     //修改倒计时标签现实内容
     DLog(@"%d",secondsCountDown);
     if (self.searchVC) {
-        self.searchVC.message = [NSString stringWithFormat:NSLocalizedString(@"searchingPer", nil),secondsCountDown];
+        if (SYSTEM_VERSION >= 8.0) {
+            self.searchVC.alertController.message = [NSString stringWithFormat:NSLocalizedString(@"searchingPer", nil),secondsCountDown];
+        }else {
+            self.searchVC.alertView.message = [NSString stringWithFormat:NSLocalizedString(@"searchingPer", nil),secondsCountDown];
+        }
+        //self.searchVC.message = [NSString stringWithFormat:NSLocalizedString(@"searchingPer", nil),secondsCountDown];
         //当倒计时到0时，做需要的操作
         if(secondsCountDown==0){
             [countDownTimer invalidate];
             secondsCountDown = 10;
-            [self.searchVC dismissViewControllerAnimated:YES completion:nil];
+            [self.searchVC dismissFromSuperview];
+            //[self.searchVC dismissViewControllerAnimated:YES completion:nil];
             self.searchVC = nil;
         }
     }
@@ -317,30 +326,37 @@
 
 - (void)presentAlertController:(UISwitch *)sender
 {
-    UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"connectPerAndSet", nil) preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *ac = [UIAlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    AlertTool *aTool = [AlertTool alertWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"connectPerAndSet", nil) style:UIAlertControllerStyleAlert];
+    [aTool addAction:[AlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
         [sender setOn:!sender.on];
-    }];
-    [vc addAction:ac];
-    [self presentViewController:vc animated:YES completion:nil];
+    }]];
+    [aTool show];
 }
 
 - (void)startTimeChoose:(UIButton *)sender
 {
     self.pickerString = sender.titleLabel.text;
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    AlertTool *aTool ;
+    if (iPhone4) {
+        aTool = [AlertTool alertWithTitle:@"" message:nil style:UIAlertControllerStyleActionSheet];
+    }else if (iPhone5) {
+        aTool = [AlertTool alertWithTitle:@"\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
+    }else if (iPhone6) {
+        aTool = [AlertTool alertWithTitle:@"\n\n\n\n\n\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
+    }else if (iPhone6p) {
+        aTool = [AlertTool alertWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
+    }
+    [aTool addAction:[AlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:AlertToolStyleDefault handler:nil]];
+    [aTool addAction:[AlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
         [sender setTitle:self.pickerString forState:UIControlStateNormal];
         //写入久坐提醒的开始时间
         self.sedModel.sedentaryStartTime = self.pickerString;
         [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
         //写入数据库
         [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
-    }];
-    [alert addAction:cancelAction];
-    [alert addAction:okAction];
-    UIDatePicker *startTimePickerView = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, alert.view.frame.size.width - 30, 216)];
+    }]];
+
+    UIDatePicker *startTimePickerView = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.center.x - (self.view.frame.size.width - 50) / 2, self.view.frame.size.width - 50, self.view.frame.size.height / 3)];
     startTimePickerView.tag = 10000;
     startTimePickerView.datePickerMode = UIDatePickerModeTime;
     //[startTimePickerView setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"]];
@@ -358,27 +374,40 @@
     [startTimePickerView setDate:currentDate];
     // 当值发生改变的时候调用的方法
     [startTimePickerView addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [alert.view addSubview:startTimePickerView];
+    [aTool addSubviewToAlert:startTimePickerView];
     
-    [self presentViewController:alert animated:YES completion:nil];
+   [aTool show];
 }
 
 - (void)endTimeChoose:(UIButton *)sender
 {
     self.pickerString = sender.titleLabel.text;
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [sender setTitle:self.pickerString forState:UIControlStateNormal];
-        //写入久坐提醒的结束时间
-        self.sedModel.sedentaryEndTime = self.pickerString;
-        [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
-        //写入数据库
-        [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
-    }];
-    [alert addAction:cancelAction];
-    [alert addAction:okAction];
-    UIDatePicker *startTimePickerView = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, alert.view.frame.size.width - 30, 216)];
+    AlertTool *aTool ;
+    if (iPhone4) {
+        aTool = [AlertTool alertWithTitle:@"" message:nil style:UIAlertControllerStyleActionSheet];
+    }else if (iPhone5) {
+        aTool = [AlertTool alertWithTitle:@"\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
+    }else if (iPhone6) {
+        aTool = [AlertTool alertWithTitle:@"\n\n\n\n\n\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
+    }else if (iPhone6p) {
+        aTool = [AlertTool alertWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
+    }
+    
+    [aTool addAction:[AlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:AlertToolStyleDefault handler:nil]];
+    [aTool addAction:[AlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
+        
+        if (self.myBleTool.connectState == kBLEstateDidConnected) {
+            [sender setTitle:self.pickerString forState:UIControlStateNormal];
+            //写入久坐提醒的结束时间
+            self.sedModel.sedentaryEndTime = self.pickerString;
+            [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
+            //写入数据库
+            [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
+        }
+        
+    }]];
+
+    UIDatePicker *startTimePickerView = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.center.x - (self.view.frame.size.width - 50) / 2, self.view.frame.size.width - 50, self.view.frame.size.height / 3)];
     startTimePickerView.tag = 10000;
     startTimePickerView.datePickerMode = UIDatePickerModeTime;
     //[startTimePickerView setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"]];
@@ -396,9 +425,9 @@
     [startTimePickerView setDate:currentDate];
     // 当值发生改变的时候调用的方法
     [startTimePickerView addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [alert.view addSubview:startTimePickerView];
+    [aTool addSubviewToAlert:startTimePickerView];
     
-    [self presentViewController:alert animated:YES completion:nil];
+    [aTool show];
 }
 
 #pragma mark - UIPickerViewDelegate && UIPickerViewDateSource
@@ -719,15 +748,14 @@
     if (manridyModel.receiveDataType == ReturnModelTypePairSuccess) {
         if (manridyModel.isReciveDataRight == ResponsEcorrectnessDataFail) {
             if (manridyModel.pairSuccess == NO) {
-                UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:@"配对失败，请重试。" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *okAC = [UIAlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                AlertTool *aTool = [AlertTool alertWithTitle:NSLocalizedString(@"tips", nil) message:@"配对失败，请重试。" style:UIAlertControllerStyleAlert];
+                [aTool addAction:[AlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
                     [self.phoneSwitch setOn:NO];
                     [self.messageSwitch setOn:NO];
                     [[NSUserDefaults standardUserDefaults] setBool:self.phoneSwitch.on forKey:@"isRemindPhone"];
                     [[NSUserDefaults standardUserDefaults] setBool:self.messageSwitch.on forKey:@"isRemindMessage"];
-                }];
-                [vc addAction:okAC];
-                [self presentViewController:vc animated:YES completion:nil];
+                }]];
+                [aTool show];
             }
         }
     }
@@ -743,7 +771,8 @@
 {
     [countDownTimer invalidate];
     secondsCountDown = 10;
-    [self.searchVC dismissViewControllerAnimated:YES completion:nil];
+    [self.searchVC dismissFromSuperview];
+    //[self.searchVC dismissViewControllerAnimated:YES completion:nil];
     self.searchVC = nil;
 }
 
@@ -764,7 +793,7 @@
 - (UITableView *)remindTableView
 {
     if (!_remindTableView) {
-        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 16)];
+        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height  - 60)];
         view.tableFooterView = [[UIView alloc] init];
         view.allowsSelection = NO;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesBegan)];
@@ -820,11 +849,11 @@
     return _myBleTool;
 }
 
-- (UIAlertController *)searchVC
+- (AlertTool *)searchVC
 {
     if (!_searchVC) {
-        _searchVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:[NSString stringWithFormat:NSLocalizedString(@"searchingPer", nil),10] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ac = [UIAlertAction actionWithTitle:NSLocalizedString(@"stopSearch", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        _searchVC = [AlertTool alertWithTitle:NSLocalizedString(@"tips", nil) message:[NSString stringWithFormat:NSLocalizedString(@"searchingPer", nil),10] style:UIAlertControllerStyleAlert];
+        AlertAction *ac = [AlertAction actionWithTitle:NSLocalizedString(@"stopSearch", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
             [countDownTimer invalidate];
             secondsCountDown = 10;
             [self.myBleTool writeSearchPeripheralWithONorOFF:NO];

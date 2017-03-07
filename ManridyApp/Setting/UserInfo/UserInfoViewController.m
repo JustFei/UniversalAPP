@@ -119,6 +119,8 @@
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userheadimage"]) {
         NSData *imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"userheadimage"];
         [self.headImageView setImage:[UIImage imageWithData:imageData]];
+    }else {
+        self.headImageView.backgroundColor = [UIColor whiteColor];
     }
     
 }
@@ -167,9 +169,9 @@
      *  弹出提示框
      */
     //初始化提示框
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    AlertTool *alert = [AlertTool alertWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet];
     //按钮：从相册选择，类型：UIAlertActionStyleDefault
-    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"choosePhotoFromPhotoAlbum", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alert addAction:[AlertAction actionWithTitle:NSLocalizedString(@"choosePhotoFromPhotoAlbum", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
         UIImagePickerController *PickerImage = [[UIImagePickerController alloc]init];
         //获取方式1：通过相册（呈现全部相册），UIImagePickerControllerSourceTypePhotoLibrary
         //获取方式2，通过相机，UIImagePickerControllerSourceTypeCamera
@@ -183,7 +185,7 @@
         [self presentViewController:PickerImage animated:YES completion:nil];
     }]];
     //按钮：拍照，类型：UIAlertActionStyleDefault
-    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"takeAPhoto", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alert addAction:[AlertAction actionWithTitle:NSLocalizedString(@"takeAPhoto", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
         UIImagePickerController *PickerImage = [[UIImagePickerController alloc]init];
         //获取方式1：通过相册（呈现全部相册），UIImagePickerControllerSourceTypePhotoLibrary
         //获取方式2，通过相机，UIImagePickerControllerSourceTypeCamera
@@ -197,8 +199,8 @@
         [self presentViewController:PickerImage animated:YES completion:nil];
     }]];
     //按钮：取消，类型：UIAlertActionStyleCancel
-    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
+    [alert addAction:[AlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:AlertToolStyleCancel handler:nil]];
+    [alert show];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -280,12 +282,10 @@
         DLog(@"gang gang set == %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]);
         
     }else {
-        UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"infoNotComplete", nil) preferredStyle:UIAlertControllerStyleAlert];
-        [vc addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }]];
+        AlertTool *vc = [AlertTool alertWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"infoNotComplete", nil) style:UIAlertControllerStyleAlert];
+        [vc addAction:[AlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:AlertToolStyleDefault handler:nil]];
         
-        [self presentViewController:vc animated:YES completion:nil];
+        [vc show];
          
     }
 }
@@ -518,7 +518,7 @@
 {
     if (!_headImageView) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 63.5 * WIDTH / 320, 80, 127 * WIDTH / 320, 127 * WIDTH / 320)];
-        imageView.backgroundColor = [UIColor redColor];
+        imageView.backgroundColor = [UIColor whiteColor];
         imageView.image = [UIImage imageNamed:@"set_userphoto"];
         
         imageView.layer.masksToBounds = YES;

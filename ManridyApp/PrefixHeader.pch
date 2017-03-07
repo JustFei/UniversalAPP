@@ -12,11 +12,23 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
+#import "AlertTool.h"
+#import "BLETool.h"
+
 #ifdef DEBUG
 #   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
 #   define DLog(...)
 #endif
+
+//判断屏幕高度
+#define iPhone4 ([UIScreen mainScreen].bounds.size.height == 480.0)
+#define iPhone5 ([UIScreen mainScreen].bounds.size.height == 568.0)
+#define iPhone6 ([UIScreen mainScreen].bounds.size.height == 667.0)
+#define iPhone6p ([UIScreen mainScreen].bounds.size.height == 736.0)
+
+//判断手环当前连接
+#define ifConnect ([BLETool shareInstance].connectState == kBLEstateDidConnected)
 
 //#endif /* Log_h */
 

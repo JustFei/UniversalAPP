@@ -19,7 +19,7 @@
 //    CTCallCenter *_callCenter;
     BOOL _isBind;
 }
-@property (nonatomic ,strong) UIAlertController *searchVC;
+@property (nonatomic ,strong) AlertTool *searchVC;
 
 @end
 
@@ -137,9 +137,10 @@ static void completionCallback(SystemSoundID mySSID)
 {
     if (OnorOFF) {
         if (self.searchVC != nil) {
-            [self.searchVC dismissViewControllerAnimated:YES completion:nil];
+            [self.searchVC dismissFromSuperview];
+            self.searchVC = nil;
         }
-        [self.window.rootViewController presentViewController:self.searchVC animated:YES completion:nil];
+        [self.searchVC show];
         [self requestNotify];
         
         NSString *soundFile = [[NSBundle mainBundle] pathForResource:@"alert" ofType:@"wav"];
@@ -148,7 +149,7 @@ static void completionCallback(SystemSoundID mySSID)
         AudioServicesPlayAlertSound(soundID);
         AudioServicesAddSystemSoundCompletion(soundID, NULL, NULL,(void*)completionCallback ,NULL);
     }else {
-        [self.searchVC dismissViewControllerAnimated:YES completion:nil];
+        [self.searchVC dismissFromSuperview];
         AudioServicesDisposeSystemSoundID(soundID);
     }
 }
@@ -214,15 +215,16 @@ static void completionCallback(SystemSoundID mySSID)
 }
 
 #pragma mark - 懒加载
-- (UIAlertController *)searchVC
+- (AlertTool *)searchVC
 {
     if (!_searchVC) {
-        _searchVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"正在查找设备" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ac = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self.myBleTool writeStopPeripheralRemind];
-            AudioServicesDisposeSystemSoundID(soundID);
-        }];
-        [_searchVC addAction:ac];
+        _searchVC = [AlertTool alertWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"searchingPer", nil) style:UIAlertControllerStyleAlert];
+        [_searchVC addAction:[AlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
+            if (ifConnect) {
+                [self.myBleTool writeStopPeripheralRemind];
+                AudioServicesDisposeSystemSoundID(soundID);
+            }
+        }]];
     }
     
     return _searchVC;

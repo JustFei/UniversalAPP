@@ -161,9 +161,10 @@
         self.hud.mode = MBProgressHUDModeIndeterminate;
         [self.hud.label setText:NSLocalizedString(@"bindingPer", nil)];
     }else {
-        UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"choosePerToBind", nil) preferredStyle:UIAlertControllerStyleAlert];
-        [vc addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"goToChoose", nil) style:UIAlertActionStyleDefault handler:nil]];
-        [self presentViewController:vc animated:YES completion:nil];
+        AlertTool *aTool = [AlertTool alertWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"choosePerToBind", nil) style:UIAlertControllerStyleAlert];
+        [aTool addAction:[AlertAction actionWithTitle:NSLocalizedString(@"goToChoose", nil) style:AlertToolStyleDefault handler:nil]];
+        [aTool show];
+
     }
 }
 

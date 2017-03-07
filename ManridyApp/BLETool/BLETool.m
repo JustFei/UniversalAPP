@@ -182,7 +182,7 @@ static BLETool *bleTool = nil;
     NSString *protocolStr = [NSStringTool protocolAddInfo:currentStr head:@"00"];
     
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
         DLog(@"time success");
     }
@@ -226,7 +226,7 @@ static BLETool *bleTool = nil;
         NSString *protocolStr = [NSString stringWithFormat:@"FC0100%@0000",clockStateStr];
         
         //写入操作
-        if (self.currentDev.peripheral) {
+        if (self.currentDev.peripheral && self.writeCharacteristic) {
             [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
         }
         
@@ -236,7 +236,7 @@ static BLETool *bleTool = nil;
         NSString *protocolStr = [NSStringTool protocolAddInfo:@"01" head:@"01"];
         
         //写入操作
-        if (self.currentDev.peripheral) {
+        if (self.currentDev.peripheral && self.writeCharacteristic) {
             [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
             DLog(@"clock success");
         }
@@ -249,7 +249,7 @@ static BLETool *bleTool = nil;
     NSString *protocolStr = [NSStringTool protocolAddInfo:[NSString stringWithFormat:@"%ld",type] head:@"03"];
     
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type: CBCharacteristicWriteWithResponse];
         DLog(@"motion success");
     }
@@ -261,7 +261,7 @@ static BLETool *bleTool = nil;
     NSString *protocolStr = [NSStringTool protocolAddInfo:nil head:@"04"];
     
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -271,7 +271,7 @@ static BLETool *bleTool = nil;
     NSString *protocolStr = [NSStringTool protocolAddInfo:nil head:@"05"];
     
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
         DLog(@"gps success");
     }
@@ -285,7 +285,7 @@ static BLETool *bleTool = nil;
     userInfoStr = [NSStringTool protocolAddInfo:userInfoStr head:@"06"];
     
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:userInfoStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -296,7 +296,7 @@ static BLETool *bleTool = nil;
     NSString *targetStr = [NSStringTool protocolAddInfo:target head:@"07"];
     
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:targetStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -310,7 +310,7 @@ static BLETool *bleTool = nil;
         {
             NSString *stopStr = [NSStringTool protocolAddInfo:@"00" head:@"09"];
             
-            if (self.currentDev.peripheral) {
+            if (self.currentDev.peripheral && self.writeCharacteristic) {
                 [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:stopStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
             }
         }
@@ -320,7 +320,7 @@ static BLETool *bleTool = nil;
         {
             NSString *startStr = [NSStringTool protocolAddInfo:@"01" head:@"09"];
             
-            if (self.currentDev.peripheral) {
+            if (self.currentDev.peripheral && self.writeCharacteristic) {
                 [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:startStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
             }
         }
@@ -340,7 +340,7 @@ static BLETool *bleTool = nil;
         {
             NSString *lastStr = [NSStringTool protocolAddInfo:@"00" head:@"0A"];
             
-            if (self.currentDev.peripheral) {
+            if (self.currentDev.peripheral && self.writeCharacteristic) {
                 [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:lastStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
                 DLog(@"heartRate success");
             }
@@ -351,7 +351,7 @@ static BLETool *bleTool = nil;
         {
             NSString *historyStr = [NSStringTool protocolAddInfo:@"01" head:@"0A"];
             
-            if (self.currentDev.peripheral) {
+            if (self.currentDev.peripheral && self.writeCharacteristic) {
                 [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:historyStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
             }
         }
@@ -384,7 +384,7 @@ static BLETool *bleTool = nil;
     }
     
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:sleepStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -394,7 +394,7 @@ static BLETool *bleTool = nil;
 {
     NSString *remindStr;
     remindStr = [NSStringTool protocolForRemind:remindModel];
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:remindStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -419,7 +419,7 @@ static BLETool *bleTool = nil;
     }
     DLog(@"search == %@",searchStr);
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:searchStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -445,7 +445,7 @@ static BLETool *bleTool = nil;
     }
     DLog(@"search == %@",searchStr);
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:searchStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -462,7 +462,7 @@ static BLETool *bleTool = nil;
             break;
         }
     }
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:stopStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -489,7 +489,7 @@ static BLETool *bleTool = nil;
     }
     
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:bloodStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -516,7 +516,7 @@ static BLETool *bleTool = nil;
     }
     
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:bloodStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -527,7 +527,7 @@ static BLETool *bleTool = nil;
     NSString *protocolStr = [NSStringTool protocolAddInfo:@"" head:@"0f"];
     
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -576,7 +576,7 @@ static BLETool *bleTool = nil;
     NSString *protocolStr = [NSStringTool protocolAddInfo:info head:@"16"];
     DLog(@"protocolStr = %@",protocolStr);
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -585,7 +585,7 @@ static BLETool *bleTool = nil;
 - (void)writeToKeepConnect
 {
     //写入操作
-    if (self.currentDev.peripheral) {
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"fc0f00"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -620,12 +620,9 @@ static BLETool *bleTool = nil;
             message = NSLocalizedString(@"phoneNotOpenBLE", nil);
             self.systemBLEstate = 4;
             DLog(@"message == %@",message);
-            UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:message preferredStyle:UIAlertControllerStyleAlert];
-            [vc addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:UIAlertActionStyleDefault handler:nil]];
-            
-            AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            UIViewController *currentvc = delegate.window.rootViewController;
-            [currentvc presentViewController:vc  animated:YES completion:nil];
+            AlertTool *aTool = [AlertTool alertWithTitle:NSLocalizedString(@"tips", nil) message:message style:UIAlertControllerStyleAlert];
+            [aTool addAction:[AlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:AlertToolStyleDefault handler:nil]];
+            [aTool show];
         }
             break;
         case 5:

@@ -83,10 +83,10 @@
         [self.myFmdbTool modifySleepTargetWithID:1 model:self.sleepTargetLabel.text.integerValue];
         
     }else {
-        UIAlertController *vc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"plzSetUserInfoFirst", nil) preferredStyle:UIAlertControllerStyleAlert];
-        [vc addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:UIAlertActionStyleDefault handler:nil]];
+        AlertTool *vc = [AlertTool alertWithTitle:NSLocalizedString(@"tips", nil) message:NSLocalizedString(@"plzSetUserInfoFirst", nil) style:UIAlertControllerStyleAlert];
+        [vc addAction:[AlertAction actionWithTitle:NSLocalizedString(@"IKnow", nil) style:AlertToolStyleDefault handler:nil]];
         
-        [self presentViewController:vc animated:YES completion:nil];
+        [vc show];
     }
     
 }
