@@ -318,17 +318,19 @@
         case 103:
         {
             if (buttonIndex == alertView.firstOtherButtonIndex) {
-                //改名字
-                self.changeName = [alertView textFieldAtIndex:0].text;
-                NSString *name_utf_8 =  [[[alertView textFieldAtIndex:0].text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByReplacingOccurrencesOfString:@"%" withString:@""];
-                self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                if (name_utf_8.length >30) {
-                    self.hud.mode = MBProgressHUDModeText;
-                    self.hud.label.text = @"名字长度过长";
-                    [self.hud showAnimated:YES];
-                    [self.hud hideAnimated:YES afterDelay:2];
-                }else {
-                    [self.myBleTool writePeripheralNameWithNameString:name_utf_8];
+                if ([alertView textFieldAtIndex:0].text.length != 0) {
+                    //改名字
+                    self.changeName = [alertView textFieldAtIndex:0].text;
+                    NSString *name_utf_8 =  [[[alertView textFieldAtIndex:0].text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByReplacingOccurrencesOfString:@"%" withString:@""];
+                    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                    if (name_utf_8.length >30) {
+                        self.hud.mode = MBProgressHUDModeText;
+                        self.hud.label.text = @"名字长度过长";
+                        [self.hud showAnimated:YES];
+                        [self.hud hideAnimated:YES afterDelay:2];
+                    }else {
+                        [self.myBleTool writePeripheralNameWithNameString:name_utf_8];
+                    }
                 }
             }
         }
