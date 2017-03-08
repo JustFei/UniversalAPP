@@ -14,7 +14,7 @@
 {
     manridyBleDevice *per = [[manridyBleDevice alloc] init];
     NSString *advName = [advertisementData objectForKey:@"kCBAdvDataLocalName"];
-    DLog(@"perName == %@    advName == %@",cbPeripheral.name ,advName);
+    //DLog(@"perName == %@    advName == %@",cbPeripheral.name ,advName);
     per.peripheral = cbPeripheral;
     per.deviceName = cbPeripheral.name;
     CBUUID *serverUUID = ((NSArray *)[advertisementData objectForKey:@"kCBAdvDataServiceUUIDs"]).firstObject;

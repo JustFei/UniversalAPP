@@ -16,7 +16,6 @@
 #import "BloodO2Model.h"
 #import "SedentaryModel.h"
 
-
 @implementation FMDBTool
 
 static FMDatabase *_fmdb;
@@ -64,7 +63,7 @@ static FMDatabase *_fmdb;
         [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists SleepData(id integer primary key,date text, startTime text, endTime text, deepSleep text, lowSleep text, sumSleep text, currentDataCount integer, sumDataCount integer);"]];
         
         //SedentaryData
-        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists SedentaryData(id integer primary key,sedentary bool, unDisturb bool, macAddress text, startSedentaryTime text, endSedentaryTime text, startDisturbTime text, endDisturbTime text, timeInterval integer, stepInterval integer);"]];
+        [_fmdb executeUpdate:[NSString stringWithFormat:@"create table if not exists SedentaryData1_1_3(id integer primary key,sedentary bool, unDisturb bool, startSedentaryTime text, endSedentaryTime text, startDisturbTime text, endDisturbTime text, timeInterval integer, stepInterval integer);"]];
     }
     
     return self;
@@ -630,9 +629,9 @@ static FMDatabase *_fmdb;
 }
 
 #pragma mark - SedentaryData
-- (BOOL)insertSedentaryData:(SedentaryModel *)model withMacAddress:(NSString *)macAddress
+- (BOOL)insertSedentaryData:(SedentaryModel *)model
 {
-    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO SedentaryData(sedentary, unDisturb, macAddress, startSedentaryTime, endSedentaryTime, startDisturbTime, endDisturbTime, timeInterval, stepInterval) VALUES ('%d', '%d', '%@', '%@', '%@', '%@', '%@', '%d', '%d');", model.sedentaryAlert, model.unDisturb, macAddress, model.sedentaryStartTime, model.sedentaryEndTime, model.disturbStartTime, model.disturbEndTime, model.timeInterval, model.stepInterval];
+    NSString *insertSql = [NSString stringWithFormat:@"INSERT INTO SedentaryData1_1_3(sedentary, unDisturb, startSedentaryTime, endSedentaryTime, startDisturbTime, endDisturbTime, timeInterval, stepInterval) VALUES ('%d', '%d', '%@', '%@', '%@', '%@', '%d', '%d');", model.sedentaryAlert, model.unDisturb, model.sedentaryStartTime, model.sedentaryEndTime, model.disturbStartTime, model.disturbEndTime, model.timeInterval, model.stepInterval];
     
     BOOL result = [_fmdb executeUpdate:insertSql];
     if (result) {
@@ -643,11 +642,11 @@ static FMDatabase *_fmdb;
     return result;
 }
 
-- (BOOL)modifySedentaryData:(SedentaryModel *)model withMacAddress:(NSString *)macAddress
+- (BOOL)modifySedentaryData:(SedentaryModel *)model
 {
-    NSString *modifySql = [NSString stringWithFormat:@"update SedentaryData set sedentary = ?, unDisturb = ?, startSedentaryTime = ?, endSedentaryTime = ?, startDisturbTime = ?, endDisturbTime = ? where macAddress = ?"];
+    NSString *modifySql = [NSString stringWithFormat:@"update SedentaryData1_1_3 set sedentary = ?, unDisturb = ?, startSedentaryTime = ?, endSedentaryTime = ?, startDisturbTime = ?, endDisturbTime = ? where id = ?"];
     
-    BOOL modifyResult = [_fmdb executeUpdate:modifySql, @(model.sedentaryAlert), @(model.unDisturb), model.sedentaryStartTime, model.sedentaryEndTime, model.disturbStartTime, model.disturbEndTime, macAddress];
+    BOOL modifyResult = [_fmdb executeUpdate:modifySql, @(model.sedentaryAlert), @(model.unDisturb), model.sedentaryStartTime, model.sedentaryEndTime, model.disturbStartTime, model.disturbEndTime, @(1)];
     
     if (modifyResult) {
         DLog(@"修改sedentaryData成功");
@@ -658,21 +657,15 @@ static FMDatabase *_fmdb;
     return modifyResult;
 }
 
-- (NSArray *)querySedentaryWithMac:(NSString *)macAddress
+- (NSArray *)querySedentary
 {
     NSString *queryString;
     
     FMResultSet *set;
     
-    if (macAddress == nil) {
-        queryString = [NSString stringWithFormat:@"SELECT * FROM SedentaryData;"];
-        
-        set = [_fmdb executeQuery:queryString];
-    }else {
-        queryString = [NSString stringWithFormat:@"SELECT * FROM SedentaryData where macAddress = ?;"];
-        
-        set = [_fmdb executeQuery:queryString ,macAddress];
-    }
+    queryString = [NSString stringWithFormat:@"SELECT * FROM SedentaryData1_1_3;"];
+    
+    set = [_fmdb executeQuery:queryString];
     
     NSMutableArray *arrM = [NSMutableArray array];
     

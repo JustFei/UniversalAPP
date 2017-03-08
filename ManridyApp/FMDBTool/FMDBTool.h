@@ -104,11 +104,11 @@ typedef enum : NSUInteger {
 - (void)CloseDataBase;
 
 #pragma mark - SedentaryData
-- (BOOL)insertSedentaryData:(SedentaryModel *)model withMacAddress:(NSString *)macAddress;
+- (BOOL)insertSedentaryData:(SedentaryModel *)model;
 
-- (BOOL)modifySedentaryData:(SedentaryModel *)model withMacAddress:(NSString *)macAddress;
+- (BOOL)modifySedentaryData:(SedentaryModel *)model;
 
-- (NSArray *)querySedentaryWithMac:(NSString *)macAddress;
+- (NSArray *)querySedentary;
 
 - (BOOL)deleteSendentaryData:(SedentaryModel *)model;
 

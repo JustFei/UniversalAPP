@@ -213,7 +213,7 @@ static BLETool *bleTool = nil;
         
         clockStateStr = [clockStateStr stringByAppendingString:clockDataStr];
         
-        DLog(@"设置闹钟的协议文本部分%@, 长度为%ld",clockStateStr ,(unsigned long)clockStateStr.length);
+        DLog(@"闹钟的协议 == %@",clockStateStr);
         
         //传入时间和头，返回协议字符串
         NSString *protocolStr = [NSString stringWithFormat:@"FC0100%@0000",clockStateStr];
@@ -389,6 +389,7 @@ static BLETool *bleTool = nil;
     remindStr = [NSStringTool protocolForRemind:remindModel];
     if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:remindStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+        DLog(@"电话短信提醒协议 == %@",remindStr);
     }
 }
 
@@ -436,7 +437,7 @@ static BLETool *bleTool = nil;
             break;
         }
     }
-    DLog(@"search == %@",searchStr);
+    DLog(@"防丢协议 == %@",searchStr);
     //写入操作
     if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:searchStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
@@ -567,7 +568,7 @@ static BLETool *bleTool = nil;
     
     
     NSString *protocolStr = [NSStringTool protocolAddInfo:info head:@"16"];
-    DLog(@"protocolStr = %@",protocolStr);
+    DLog(@"久坐协议 = %@",protocolStr);
     //写入操作
     if (self.currentDev.peripheral && self.writeCharacteristic) {
         [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
@@ -665,7 +666,6 @@ static BLETool *bleTool = nil;
 {
     
     manridyBleDevice *device = [[manridyBleDevice alloc] initWith:peripheral andAdvertisementData:advertisementData andRSSI:RSSI];
-    DLog(@"%@",device);
     //当你发现你感兴趣的连接外围设备，停止扫描其他设备，以节省电能。
     if (device.deviceName != nil ) {
         if (![self.deviceArr containsObject:peripheral]) {

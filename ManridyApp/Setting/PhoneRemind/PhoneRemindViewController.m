@@ -61,10 +61,10 @@
     _clockArr = @[NSLocalizedString(@"clock1", nil),NSLocalizedString(@"clock2", nil),NSLocalizedString(@"clock3", nil)];
     
     //查找久坐提醒的本地存储
-    NSArray *sedArr = [self.myFmdbTool querySedentaryWithMac:self.myBleTool.currentDev.deviceName];
+    NSArray *sedArr = [self.myFmdbTool querySedentary];
     if (sedArr.count == 0 && self.myBleTool.connectState == kBLEstateDidConnected) {
         //保存一个初始的状态
-        [self.myFmdbTool insertSedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
+        [self.myFmdbTool insertSedentaryData:self.sedModel];
     }else {
         self.sedModel = sedArr.firstObject;
     }
@@ -225,7 +225,7 @@
                 [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
                 [self.remindTableView reloadSections:[NSIndexSet indexSetWithIndex:1]withRowAnimation:UITableViewRowAnimationFade];
                 //写入数据库
-                [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
+                [self.myFmdbTool modifySedentaryData:self.sedModel];
             }else {
                 [self presentAlertController:sender];
             }
@@ -238,7 +238,7 @@
                 [self.remindTableView reloadSections:[NSIndexSet indexSetWithIndex:1]
                                     withRowAnimation:UITableViewRowAnimationFade];
                 //写入数据库
-                [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
+                [self.myFmdbTool modifySedentaryData:self.sedModel];
             }else {
                 [self presentAlertController:sender];
             }
@@ -256,7 +256,7 @@
                 self.sedModel.unDisturb = NO;
                 [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
                 //写入数据库
-                [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
+                [self.myFmdbTool modifySedentaryData:self.sedModel];
             }else {
                 [self presentAlertController:sender];
             }
@@ -267,7 +267,7 @@
                 self.sedModel.unDisturb = YES;
                 [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
                 //写入数据库
-                [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
+                [self.myFmdbTool modifySedentaryData:self.sedModel];
             }else {
                 [self presentAlertController:sender];
             }
@@ -353,7 +353,7 @@
         self.sedModel.sedentaryStartTime = self.pickerString;
         [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
         //写入数据库
-        [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
+        [self.myFmdbTool modifySedentaryData:self.sedModel];
     }]];
 
     UIDatePicker *startTimePickerView = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.center.x - (self.view.frame.size.width - 50) / 2, self.view.frame.size.width - 50, self.view.frame.size.height / 3)];
@@ -402,7 +402,7 @@
             self.sedModel.sedentaryEndTime = self.pickerString;
             [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
             //写入数据库
-            [self.myFmdbTool modifySedentaryData:self.sedModel withMacAddress:self.myBleTool.currentDev.deviceName];
+            [self.myFmdbTool modifySedentaryData:self.sedModel];
         }
         
     }]];

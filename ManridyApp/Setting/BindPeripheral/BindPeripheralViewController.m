@@ -10,6 +10,7 @@
 #import "BLETool.h"
 #import "manridyBleDevice.h"
 #import "MBProgressHUD.h"
+#import "FMDBTool.h"
 
 #define WIDTH self.view.frame.size.width
 
@@ -22,25 +23,17 @@
 
 @property (nonatomic ,weak) UIView *downView;
 @property (nonatomic ,weak) UITableView *peripheralList;
-
 @property (nonatomic ,weak) UIButton *bindButton;
-
 @property (nonatomic ,weak) UIButton *disbindButton;
-
 @property (nonatomic ,strong) UIImageView *lockImageView;
-
 @property (nonatomic ,weak) UIImageView *connectImageView;
-
 @property (nonatomic ,strong) UIImageView *refreshImageView;
-
 @property (nonatomic ,strong) UILabel *bindStateLabel;
-
 @property (nonatomic ,strong) UILabel *perNameLabel;
-
 @property (nonatomic ,strong) BLETool *myBleTool;
-
 @property (nonatomic ,strong) MBProgressHUD *hud;
 @property (nonatomic ,copy) NSString *changeName;
+@property (nonatomic ,strong) FMDBTool *myFmdbTool;
 
 @end
 
@@ -214,6 +207,17 @@
     }
 }
 
+- (void)pairPhoneAndMessage
+{
+    //同步提醒设置
+    Remind *rem = [[Remind alloc] init];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindPhone"] && [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindMessage"]) {
+        rem.phone = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindPhone"];
+        rem.message = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindMessage"];
+        [self.myBleTool writePhoneAndMessageRemindToPeripheral:rem];
+    }
+}
+
 #pragma mark - UITableViewDataSource && UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -363,15 +367,53 @@
     [[NSUserDefaults standardUserDefaults] setValue:device.peripheral.identifier.UUIDString forKey:@"bindPeripheralID"];
     [[NSUserDefaults standardUserDefaults] setValue:device.deviceName forKey:@"bindPeripheralName"];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isBind"];
-    //同步提醒设置
-    Remind *rem = [[Remind alloc] init];
-    rem.phone = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindPhone"];
-    rem.message = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemindMessage"];
-    [self.myBleTool writePhoneAndMessageRemindToPeripheral:rem];
+    
+    //写入电话短信配对提醒
+    [self pairPhoneAndMessage];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
         if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"]) {
+            //写入防丢提醒
             [self.myBleTool writePeripheralShakeWhenUnconnectWithOforOff:[[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"]];
+        }else {
+            [self.myBleTool writePeripheralShakeWhenUnconnectWithOforOff:NO];   //防丢置为NO，类似初始化
         }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+            SedentaryModel *model = [self.myFmdbTool querySedentary].firstObject;
+            if (model) {
+                //写入久坐提醒
+                [self.myBleTool writeSedentaryAlertWithSedentaryModel:model];
+            }else {
+                model.sedentaryAlert = NO;
+                model.unDisturb = NO;
+                model.disturbStartTime = @"12:00";
+                model.disturbEndTime = @"14:00";
+                model.sedentaryStartTime = @"09:00";
+                model.sedentaryEndTime = @"18:00";
+                model.stepInterval = 100;
+                //写入久坐提醒
+                [self.myBleTool writeSedentaryAlertWithSedentaryModel:model];
+            }
+            
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+                NSMutableArray *clockArr = [self.myFmdbTool queryClockData];
+                if (clockArr.count != 0) {
+                    //写入闹钟数据
+                    [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:clockArr];
+                }else {
+                    ClockModel *model = [[ClockModel alloc] init];
+                    for (NSInteger i = 0; index < 3; i ++) {
+                        model.ID = i;
+                        model.time = @"08:00";
+                        model.isOpen = NO;
+                        [clockArr addObject:model];
+                    }
+                    //写入闹钟数据
+                    [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:clockArr];
+                }
+                
+            });
+        });
     });
     
     UIAlertView *view = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"tips", nil) message:[NSString stringWithFormat:NSLocalizedString(@"haveBindPerName", nil),device.deviceName] delegate:self cancelButtonTitle:NSLocalizedString(@"IKnow", nil) otherButtonTitles:nil, nil];
@@ -419,6 +461,22 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.myBleTool connectDevice:current];
         });
+    }
+}
+
+- (void)receivePairWitheModel:(manridyModel *)manridyModel
+{
+    if (manridyModel.receiveDataType == ReturnModelTypePairSuccess) {
+        if (manridyModel.isReciveDataRight == ResponsEcorrectnessDataFail) {
+            if (manridyModel.pairSuccess == NO) {
+                AlertTool *aTool = [AlertTool alertWithTitle:NSLocalizedString(@"tips", nil) message:@"配对失败，请重试。" style:UIAlertControllerStyleAlert];
+                [aTool addAction:[AlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
+                    //失败了就继续配对
+                    [self pairPhoneAndMessage];
+                }]];
+                [aTool show];
+            }
+        }
     }
 }
 
@@ -555,6 +613,14 @@
     }
     
     return _disbindButton;
+}
+
+- (FMDBTool *)myFmdbTool
+{
+    if (!_myFmdbTool) {
+        _myFmdbTool = [[FMDBTool alloc] initWithPath:@"UserList"];
+    }
+    return _myFmdbTool;
 }
 
 @end
