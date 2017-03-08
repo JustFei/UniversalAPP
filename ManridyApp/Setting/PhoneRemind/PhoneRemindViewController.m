@@ -340,9 +340,9 @@
     if (iPhone4) {
         aTool = [AlertTool alertWithTitle:@"" message:nil style:UIAlertControllerStyleActionSheet];
     }else if (iPhone5) {
-        aTool = [AlertTool alertWithTitle:@"\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
-    }else if (iPhone6) {
         aTool = [AlertTool alertWithTitle:@"\n\n\n\n\n\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
+    }else if (iPhone6) {
+        aTool = [AlertTool alertWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
     }else if (iPhone6p) {
         aTool = [AlertTool alertWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
     }
@@ -386,9 +386,9 @@
     if (iPhone4) {
         aTool = [AlertTool alertWithTitle:@"" message:nil style:UIAlertControllerStyleActionSheet];
     }else if (iPhone5) {
-        aTool = [AlertTool alertWithTitle:@"\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
-    }else if (iPhone6) {
         aTool = [AlertTool alertWithTitle:@"\n\n\n\n\n\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
+    }else if (iPhone6) {
+        aTool = [AlertTool alertWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
     }else if (iPhone6p) {
         aTool = [AlertTool alertWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n\n\n" message:nil style:UIAlertControllerStyleActionSheet];
     }

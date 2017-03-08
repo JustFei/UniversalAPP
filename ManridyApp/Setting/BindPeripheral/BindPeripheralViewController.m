@@ -421,7 +421,9 @@
     [view show];
     
     [self.myBleTool writeTimeToPeripheral:[NSDate date]];
-    [self.myBleTool writeRequestVersion];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(300 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+        [self.myBleTool writeRequestVersion];
+    });
 }
 
 
@@ -446,6 +448,7 @@
 #pragma mark - BleReceiveDelegate
 - (void)receiveVersionWithVersionStr:(NSString *)versionStr
 {
+    DLog(@"固件版本号 == %@",versionStr);
     [[NSUserDefaults standardUserDefaults] setObject:versionStr forKey:@"version"];
 }
 
