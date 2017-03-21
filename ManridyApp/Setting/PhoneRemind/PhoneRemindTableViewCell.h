@@ -23,6 +23,6 @@ typedef void(^ClockSwitchValueChangeBlock)(void);
 @property (weak, nonatomic) IBOutlet UILabel *bolanghaolabel;
 
 
-@property (nonatomic ,copy) ClockSwitchValueChangeBlock _clockSwitchValueChangeBlock;
+@property (nonatomic ,copy) ClockSwitchValueChangeBlock clockSwitchValueChangeBlock;
 
 @end

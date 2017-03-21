@@ -57,8 +57,12 @@
         data02.inflexionPointColor = PNLightBlue;
         data02.inflexionPointStyle = PNLineChartPointStyleCircle;
         data02.getData = ^(NSUInteger index) {
-            CGFloat yValue = [self.dataArr[index] floatValue];
-            DLog(@"%f",yValue);
+            CGFloat yValue;
+            if (index < self.dataArr.count) {
+                CGFloat yValue = [self.dataArr[index] floatValue];
+                DLog(@"%f",yValue);
+            }
+            
             return [PNLineChartDataItem dataItemWithY:yValue];
         };
         

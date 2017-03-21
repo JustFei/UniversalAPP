@@ -6,35 +6,35 @@
   Copyright © 2016年 Manridy.Bobo.com. All rights reserved.
 */
 
-//MARK: 关于界面
+//TODO: 关于界面
 
 //app Name
 "appName" = "iwear";
 
 //软件版本号
-"softWare" = "Versão de software NO.：V%@";
+"softWare" = "Software version NO.：V%@";
 
 //硬件版本号
-"hardWare" = "Versão do firmware NO.：V%@";
+"hardWare" = "Hardware version NO.：V%@";
 
-//MARK: 设备绑定界面
+//TODO: 设备绑定界面
 //搜索
-"search" = "Procura";
+"search" = "Search";
 
 //设备绑定
-"perBind" = "Dispositivo estiver acoplado";
+"perBind" = "Paired devices";
 
 //已绑定的设备
-"haveBindPer" = "Dispositivo não acoplado";
+"haveBindPer" = "Device has been paired";
 
 //未绑定设备
-"haveNoBindPer" = "Dispositivo não acoplado";
+"haveNoBindPer" = "No paired devices";
 
 //正在连接设备...
-"bindingPer" = "Conexão de dispositivo ...";
+"bindingPer" = "connecting...";
 
 //提示
-"tips" = "Dicas";
+"tips" = "Remind";
 
 //请选择设备以绑定
 "choosePerToBind" = "Please select the device for pair";
@@ -63,7 +63,7 @@
 //解除绑定
 "disbindPer" = "Release pair";
 
-//MARK: 提醒界面
+//TODO: 提醒界面
 //来电提醒
 "phoneRemind" = "In coming Call";
 
@@ -115,7 +115,7 @@
 //停止查找
 "stopSearch" = "Stop";
 
-//MARK: 用户信息界面
+//TODO: 用户信息界面
 //性别
 "gender" = "Gender";
 
@@ -179,7 +179,7 @@
 //保存
 "save" = "Save";
 
-//MARK: 设置界面
+//TODO: 设置界面
 //设置
 "set" = "Setting";
 
@@ -192,7 +192,7 @@
 //用户名
 "userName" = "Nickname";
 
-//MARK: 月份选择界面
+//TODO: 月份选择界面
 //1月
 "January" = "Jan.";
 
@@ -229,7 +229,7 @@
 //12月
 "December" = "Dec.";
 
-//MARK：计步历史
+//TODO：计步历史
 //历史记录
 "history" = "History";
 
@@ -242,7 +242,7 @@
 //平均公里和卡路里
 "averagerMandK" = "%.1fKM/%ldKcar";
 
-//MARK: 心率历史
+//TODO: 心率历史
 //当月平均心率
 "averagerHR" = "Avg heart rate";
 
@@ -277,7 +277,7 @@
 //当天没有睡眠数据
 "currentDayNOSleepData" = "No data";
 
-//MARK: 血压历史界面
+//TODO: 血压历史界面
 //心率
 "HRData" = "Hr:%ld";
 
@@ -290,11 +290,11 @@
 //当天的血压值
 "currentDayBPData" = "%@ BP";
 
-//MARK: 血氧历史界面
+//TODO: 血氧历史界面
 //当天的血氧值
 "currentDayBOData" = "%@ SpO2";
 
-//MARK:计步当前
+//TODO:计步当前
 //本周计步统计
 "currentWeekStepData" = "This week：%ldSteps（%.1fKM/%ldKcal）";
 
@@ -307,7 +307,7 @@
 //未连接上设备，点击重试
 "canNotConnectPer" = "Not connected, click Retry";
 
-//MARK: 运动目标设置界面
+//TODO: 运动目标设置界面
 //目标设置
 "targetSet" = "Target setting";
 
@@ -326,22 +326,22 @@
 //请先去设置个人信息
 "plzSetUserInfoFirst" = "Before use, please set the user information。";
 
-//Mark :心率当前
+//TODO :心率当前
 //心率次/分
 "currentHRData" = "%@：%@BPM";
 
 //最近几次心率
 "lastTimesHRData" = "Hr";
 
-//MARK: 睡眠当前
+//TODO: 睡眠当前
 //此次睡眠
 "currentSleepData" = "The data：%@-%@ L-Sleep：%.1fH D-Sleep：%.1fH";
 
-//MARK: 血压当前
+//TODO: 血压当前
 //点击血压的值
 "currenBPData" = "%@: HP：%@ Lp：%@ Hr：%@";
 
-//MARK: Main界面
+//TODO: Main界面
 //计步
 "Step" = "Steps";
 //心率
@@ -373,7 +373,7 @@
 //今日血氧
 "todayBO" = "Today-SpO2";
 
-//MARK: BLETool
+//TODO: BLETool
 //该设备尚未打开蓝牙
 "phoneNotOpenBLE" = "Please open the system Bluetooth";
 

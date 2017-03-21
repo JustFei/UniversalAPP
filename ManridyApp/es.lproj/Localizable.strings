@@ -25,7 +25,7 @@
 "perBind" = "Dispositivo encadenado";
 
 //已绑定的设备
-"haveBindPer" = "El Dispositivo está encadenado";
+"haveBindPer" = "Dispositivo encadenado";
 
 //未绑定设备
 "haveNoBindPer" = "Dispositivo no encadenado";
@@ -120,7 +120,7 @@
 "gender" = "Sexo";
 
 //年龄
-"age" = "Altura";
+"age" = "Edad";
 
 //身高
 "height" = "Altura";
@@ -299,7 +299,7 @@
 "currentWeekStepData" = "Estadística podómetro esta semana, en total %ld pasos (%.1f km/ %ld kcal)";
 
 //步
-"step" = "%@：%@Paso";
+"step" = "%@：%@Podómetro";
 
 //设备连接中。。。
 "perConnecting" = "Está conectando...";
@@ -362,7 +362,7 @@
 //浅睡
 "lowSleepData" = "Sueño ligero%.2fH";
 //深睡
-"deepSleepData" = "Не глубокий сон%.2fH";
+"deepSleepData" = "Sueño profundo%.2fH";
 
 //最近几次睡眠
 "lastTimeSleep" = "Últimos registros de sueño";

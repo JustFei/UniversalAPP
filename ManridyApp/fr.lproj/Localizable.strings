@@ -25,7 +25,7 @@
 "perBind" = "Équipements liés";
 
 //已绑定的设备
-"haveBindPer" = "Équipements non liés";
+"haveBindPer" = "Équipements liés";
 
 //未绑定设备
 "haveNoBindPer" = "Équipements non liés";
@@ -288,7 +288,7 @@
 "currentDayHRData" = "Fréquence cardiaque:%@";
 
 //当天的血压值
-"currentDayBPData" = "%@ BP";
+"currentDayBPData" = "%@  Tension artérielle du N";
 
 //MARK: 血氧历史界面
 //当天的血氧值
@@ -343,7 +343,7 @@
 
 //MARK: Main界面
 //计步
-"Step" = "Pas";
+"Step" = "Comptage de pas";
 //心率
 "HeartHeart" = "Fréquence cardiaque";
 //睡眠

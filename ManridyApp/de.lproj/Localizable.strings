@@ -22,10 +22,10 @@
 "search" = "Suchen";
 
 //设备绑定
-"perBind" = "Geräte werden gepaart.";
+"perBind" = "Geräte paaren.";
 
 //已绑定的设备
-"haveBindPer" = "Geräte werden nicht gepaart.";
+"haveBindPer" = "Geräte werden gepaart.";
 
 //未绑定设备
 "haveNoBindPer" = "Geräte werden nicht gepaart.";
@@ -288,7 +288,7 @@
 "currentDayHRData" = "Herzfrequenz: %@";
 
 //当天的血压值
-"currentDayBPData" = "%@ BP";
+"currentDayBPData" = "%@ Blutdruck";
 
 //MARK: 血氧历史界面
 //当天的血氧值
@@ -335,7 +335,7 @@
 
 //MARK: 睡眠当前
 //此次睡眠
-"currentSleepData" = "The data：%@-%@ L-Sleep：%.1fH D-Sleep：%.1fH";
+"currentSleepData" = "Schlaf dieses Mals:%@-%@ ,Halbschlaf:%.1fh Tiefschlaf:%.1fh";
 
 //MARK: 血压当前
 //点击血压的值
@@ -343,7 +343,7 @@
 
 //MARK: Main界面
 //计步
-"Step" = "Schritte";
+"Step" = "Schritte zählen";
 //心率
 "HeartHeart" = "Herzfrequenz";
 //睡眠

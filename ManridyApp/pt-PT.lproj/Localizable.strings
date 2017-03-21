@@ -22,7 +22,7 @@
 "search" = "Procura";
 
 //设备绑定
-"perBind" = "Encadernação de dispositivo	";
+"perBind" = "Encadernação de dispositivo";
 
 //已绑定的设备
 "haveBindPer" = "Dispositivo estiver acoplado";
@@ -288,7 +288,7 @@
 "currentDayHRData" = "Frequência cardíaca:%@";
 
 //当天的血压值
-"currentDayBPData" = "%@ BP";
+"currentDayBPData" = "%@ Número de valores de pressão arterial";
 
 //MARK: 血氧历史界面
 //当天的血氧值
@@ -335,7 +335,7 @@
 
 //MARK: 睡眠当前
 //此次睡眠
-"currentSleepData" = "The data：%@-%@ L-Sleep：%.1fH D-Sleep：%.1fH";
+"currentSleepData" = "Sono:%@-%@sono leve:%.1fH sono profundo:%.1fH";
 
 //MARK: 血压当前
 //点击血压的值
@@ -343,7 +343,7 @@
 
 //MARK: Main界面
 //计步
-"Step" = "Passo";
+"Step" = "Hodômetro";
 //心率
 "HeartHeart" = "Frequência cardíaca";
 //睡眠

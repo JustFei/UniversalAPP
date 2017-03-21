@@ -590,7 +590,36 @@
                     cell.iconImageView.image = [UIImage imageNamed:imgArr[indexPath.row]];
                     cell.timeSwitch.hidden = NO;
                     [cell.timeSwitch setOn:self.sedModel.sedentaryAlert];
-                    [cell.timeSwitch addTarget:self action:@selector(openSedentary:) forControlEvents:UIControlEventValueChanged];
+//                    [cell.timeSwitch addTarget:self action:@selector(openSedentary:) forControlEvents:UIControlEventValueChanged];
+                    __weak typeof(cell) weakCell = cell;
+                    cell.clockSwitchValueChangeBlock = ^ {
+                        if (!weakCell.timeSwitch.on) {
+                            if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                                [weakCell.timeSwitch setOn:NO];
+                                self.sedentaryModel.isExpanded = NO;
+                                self.sedModel.sedentaryAlert = NO;
+                                [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
+                                [self.remindTableView reloadSections:[NSIndexSet indexSetWithIndex:1]withRowAnimation:UITableViewRowAnimationFade];
+                                //写入数据库
+                                [self.myFmdbTool modifySedentaryData:self.sedModel];
+                            }else {
+                                [self presentAlertController:weakCell.timeSwitch];
+                            }
+                        }else {
+                            if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                                [weakCell.timeSwitch setOn:YES];
+                                self.sedentaryModel.isExpanded = YES;
+                                self.sedModel.sedentaryAlert = YES;
+                                [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
+                                [self.remindTableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+                                                    withRowAnimation:UITableViewRowAnimationFade];
+                                //写入数据库
+                                [self.myFmdbTool modifySedentaryData:self.sedModel];
+                            }else {
+                                [self presentAlertController:weakCell.timeSwitch];
+                            }
+                        }
+                    };
                     cell.timeSwitch.tag = 1000;
                 }
                     break;
@@ -621,7 +650,33 @@
                     NSLog(@"1-2 == %@",cell.functionName.text);
                     cell.timeSwitch.hidden = NO;
                     [cell.timeSwitch setOn:self.sedModel.unDisturb];
-                    [cell.timeSwitch addTarget:self action:@selector(openUnDisturb:) forControlEvents:UIControlEventValueChanged];
+//                    [cell.timeSwitch addTarget:self action:@selector(openUnDisturb:) forControlEvents:UIControlEventValueChanged];
+                    __weak typeof(cell) weakCell = cell;
+                    cell.clockSwitchValueChangeBlock = ^ {
+                        if (!weakCell.timeSwitch.on) {
+                            if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                                [weakCell.timeSwitch setOn:NO];
+                                //关闭勿扰模式
+                                self.sedModel.unDisturb = NO;
+                                [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
+                                //写入数据库
+                                [self.myFmdbTool modifySedentaryData:self.sedModel];
+                            }else {
+                                [self presentAlertController:weakCell.timeSwitch];
+                            }
+                        }else {
+                            if (self.myBleTool.connectState == kBLEstateDidConnected) {
+                                [weakCell.timeSwitch setOn:YES];
+                                //打开勿扰模式
+                                self.sedModel.unDisturb = YES;
+                                [self.myBleTool writeSedentaryAlertWithSedentaryModel:self.sedModel];
+                                //写入数据库
+                                [self.myFmdbTool modifySedentaryData:self.sedModel];
+                            }else {
+                                [self presentAlertController:weakCell.timeSwitch];
+                            }
+                        }
+                    };
                     cell.timeSwitch.tag = 1001;
                 }
                     break;
@@ -660,7 +715,7 @@
             __weak typeof(cell) weakCell = cell;
             __weak typeof(self) weakSelf = self;
             
-            cell._clockSwitchValueChangeBlock =^{
+            cell.clockSwitchValueChangeBlock =^{
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
                     ClockModel *model = self.clockTimeArr[indexPath.row];
                     model.isOpen = weakCell.timeSwitch.on;
@@ -668,7 +723,6 @@
                     [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:self.clockTimeArr];
                     [self.remindTableView reloadData];
                 }else {
-//                    [weakCell.timeSwitch setOn:!weakCell.timeSwitch.on];
                     [weakSelf presentAlertController:weakCell.timeSwitch];
                 }
             };

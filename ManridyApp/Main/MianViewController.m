@@ -471,43 +471,29 @@
 - (void)receiveHeartRateDataWithModel:(manridyModel *)manridyModel
 {
     @autoreleasepool {
-    if (manridyModel.isReciveDataRight) {
-        if (manridyModel.receiveDataType == ReturnModelTypeHeartRateModel) {
-            
-            NSMutableString *mutableTime = [NSMutableString stringWithString:manridyModel.heartRateModel.time];
-            [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
-            
-            if (manridyModel.heartRateModel.heartRateState == HeartRateDataHistoryData) {
-                //当总数据为00时说明没有数据，可以不用存储
-                if (manridyModel.heartRateModel.sumDataCount.integerValue) {
-                    
-                    //如果当前数据为最后一条数据时，在屏幕上显示，其他的数据全部存储到数据库即可
-                    [self.heartRateView.heartRateLabel setText:manridyModel.heartRateModel.heartRate];
-                    
-                    [self.myFmdbTool insertHeartRateModel:manridyModel.heartRateModel];
+        if (manridyModel.isReciveDataRight) {
+            if (manridyModel.receiveDataType == ReturnModelTypeHeartRateModel) {
+                
+                NSMutableString *mutableTime = [NSMutableString stringWithString:manridyModel.heartRateModel.time];
+                [mutableTime replaceOccurrencesOfString:@"-" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, mutableTime.length)];
+                
+                if (manridyModel.heartRateModel.heartRateState == HeartRateDataHistoryData) {
+                    //当总数据为00时说明没有数据，可以不用存储
+                    if (manridyModel.heartRateModel.sumDataCount.integerValue) {
+                        
+                        //如果当前数据为最后一条数据时，在屏幕上显示，其他的数据全部存储到数据库即可
+                        [self.heartRateView.heartRateLabel setText:manridyModel.heartRateModel.heartRate];
+                        
+                        [self.myFmdbTool insertHeartRateModel:manridyModel.heartRateModel];
+                    }
+                    [self queryHeartDataAndShow];
+                    self.haveNewHeartRate = NO;
+                }else if (manridyModel.heartRateModel.heartRateState == HeartRateDataLastData) {
+                    [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
+                    self.haveNewHeartRate = YES;
                 }
-                [self queryHeartDataAndShow];
-                self.haveNewHeartRate = NO;
-            }else if (manridyModel.heartRateModel.heartRateState == HeartRateDataLastData) {
-                [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
-                self.haveNewHeartRate = YES;
-#if 0
-                if (self.heartRateView.dataArr.count == 7) {
-                    //先移除掉前面的第一个数据
-                    [self.heartRateView.dataArr removeObjectAtIndex:0];
-                    [self.heartRateView.dateArr removeObjectAtIndex:0];
-                    //再讲推送的数据添加到最后一个
-                    
-                    [self.heartRateView.dateArr addObject:mutableTime];
-                    [self.heartRateView.dataArr addObject:manridyModel.heartRateModel.heartRate];
-                }else if (self.heartRateView.dataArr.count < 7) {
-                    [self.heartRateView.dateArr addObject:mutableTime];
-                    [self.heartRateView.dataArr addObject:manridyModel.heartRateModel.heartRate];
-                }
-#endif
             }
         }
-    }
     }
 }
 

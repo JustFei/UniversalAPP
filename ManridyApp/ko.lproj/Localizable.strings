@@ -288,7 +288,7 @@
 "currentDayHRData" = "심률:%@";
 
 //当天的血压值
-"currentDayBPData" = "%@ BP";
+"currentDayBPData" = "%@ 호 혈압치";
 
 //MARK: 血氧历史界面
 //当天的血氧值

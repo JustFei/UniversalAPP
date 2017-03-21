@@ -23,8 +23,8 @@
 
 - (IBAction)changeState:(UISwitch *)sender
 {
-    if (self._clockSwitchValueChangeBlock) {
-        self._clockSwitchValueChangeBlock();
+    if (self.clockSwitchValueChangeBlock) {
+        self.clockSwitchValueChangeBlock();
     }
 }
 

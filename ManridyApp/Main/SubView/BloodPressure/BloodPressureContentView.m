@@ -65,9 +65,6 @@
         [self.highBloodChart setYValues:self.hbArr];
         [self.highBloodChart strokeChart];
         
-        //为什么当时要移除最后一个数据呢？？
-//        [self.hbArr removeObjectAtIndex:self.hbArr.count - 1];
-//        [self.lbArr removeObjectAtIndex:self.lbArr.count - 1];
     }else {
         //仅仅展示个坐标系
         [self.highBloodChart setYLabels:@[@1,@2,@3,@4,@5,@6,@7,@8]];

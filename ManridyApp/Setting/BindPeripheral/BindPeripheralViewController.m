@@ -402,7 +402,7 @@
                     [self.myBleTool writeClockToPeripheral:ClockDataSetClock withClockArr:clockArr];
                 }else {
                     ClockModel *model = [[ClockModel alloc] init];
-                    for (NSInteger i = 0; index < 3; i ++) {
+                    for (NSInteger i = 0; i < 3; i ++) {
                         model.ID = i;
                         model.time = @"08:00";
                         model.isOpen = NO;

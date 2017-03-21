@@ -71,9 +71,6 @@
         [self.sumSleepChart setYValues:self.sumDataArr];
         [self.sumSleepChart strokeChart];
         
-        //TODO: 为什么当初要移除掉数组的最后一个呢？
-//        [self.sumDataArr removeObjectAtIndex:self.sumDataArr.count - 1];
-//        [self.deepDataArr removeObjectAtIndex:self.deepDataArr.count - 1];
     }else {
         //仅仅展示个坐标系
         [self.sumSleepChart setYLabels:@[@1,@2,@3,@4,@5,@6,@7,@8]];

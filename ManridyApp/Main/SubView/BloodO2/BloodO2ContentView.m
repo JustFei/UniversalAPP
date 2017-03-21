@@ -66,8 +66,13 @@
 //        data02.pointLabelColor = [UIColor redColor];
 //        data02.pointLabelFont = [UIFont systemFontOfSize:15];
         data02.getData = ^(NSUInteger index) {
-            CGFloat yValue = [self.boArr[index] floatValue];
-            DLog(@"%f",yValue);
+            //TODO:数组越界出现在这里
+            CGFloat yValue;
+            if (index < self.boArr.count) {
+                yValue = [self.boArr[index] floatValue];
+                DLog(@"%f",yValue);
+            }
+            
             return [PNLineChartDataItem dataItemWithY:yValue];
         };
         
@@ -76,7 +81,6 @@
     }else {
         [self.BOChart strokeChart];
     }
-    
 }
 
 - (void)queryBOWithBloodArr:(NSArray *)BODataArr
@@ -137,10 +141,12 @@
                         lineIndex:(NSInteger)lineIndex
                        pointIndex:(NSInteger)pointIndex
 {
-    NSString *time = [self.timeArr[pointIndex] substringToIndex:5];
-    NSString *bo = self.boArr[pointIndex];
-    
-    [self.currentBOLabel setText:[NSString stringWithFormat:@"%@：%ld%%",time ,bo.integerValue]];
+    if (pointIndex < self.timeArr.count) {
+        NSString *time = [self.timeArr[pointIndex] substringToIndex:5];
+        NSString *bo = self.boArr[pointIndex];
+        
+        [self.currentBOLabel setText:[NSString stringWithFormat:@"%@：%ld%%",time ,bo.integerValue]];
+    }
 }
 
 #pragma mark - 懒加载
