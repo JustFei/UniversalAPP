@@ -48,7 +48,7 @@
         UserInfoModel *model = _userArr.firstObject;
         
         if (model.sleepTarget != 0) {
-            self.sleepTargetLabel.text = [NSString stringWithFormat:@"%ld",model.sleepTarget];
+            self.sleepTargetLabel.text = [NSString stringWithFormat:@"%ld",(long)model.sleepTarget];
         }
     });
 }

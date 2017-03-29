@@ -154,7 +154,7 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
-            NSString *dateStr = [NSString stringWithFormat:@"%ld/%02ld/%02ld",(long)iCurYear ,iCurMonth ,i];
+            NSString *dateStr = [NSString stringWithFormat:@"%ld/%02ld/%02ld",(long)iCurYear ,(long)iCurMonth ,i];
             DLog(@"%@",dateStr);
             
             NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateStr];
@@ -179,7 +179,7 @@
             double avergaeMileage = (sumMileage / haveDataDays);
             
             [self.sumStepAndMilAndkCal setText:[NSString stringWithFormat:NSLocalizedString(@"currentMonthData", nil),(long)sumStep ,(double)sumMileage / 1000 ,sumkCal]];
-            [self.averageStepLabel setText:[NSString stringWithFormat:@"%ld",(sumStep / haveDataDays)]];
+            [self.averageStepLabel setText:[NSString stringWithFormat:@"%d",(sumStep / haveDataDays)]];
             [self.averagerMileageAndkCalLabel setText:[NSString stringWithFormat:NSLocalizedString(@"averagerMandK", nil),avergaeMileage / 1000 ,(sumkCal / haveDataDays)]];
             NSArray *_userArr = [self.myFmdbTool queryAllUserInfo];
             if (_userArr.count != 0) {
@@ -285,7 +285,7 @@
     currentFormatter.dateFormat = @"yyyy";
     NSString *yyyyStr = [currentFormatter stringFromDate:currentDate];
 
-    NSString *string = [NSString stringWithFormat:@"%@/%ld/15", yyyyStr, indexPath.row + 1];
+    NSString *string = [NSString stringWithFormat:@"%@/%d/15", yyyyStr, indexPath.row + 1];
     currentFormatter.dateFormat = @"yyyy/MM/dd";
     NSDate *date=[currentFormatter dateFromString:string];
     

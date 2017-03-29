@@ -168,7 +168,7 @@ static BLETool *bleTool = nil;
     now=[NSDate date];
     comps = [calendar components:unitFlags fromDate:now];
     
-    NSString *currentStr = [NSString stringWithFormat:@"%02ld%02ld%02ld%02ld%02ld%02ld%02ld",[comps year] % 100 ,[comps month] ,[comps day] ,[comps hour] ,[comps minute] ,[comps second] ,[comps weekday] - 1];
+    NSString *currentStr = [NSString stringWithFormat:@"%02d%02ld%02ld%02ld%02ld%02ld%02ld",[comps year] % 100 ,[comps month] ,[comps day] ,[comps hour] ,[comps minute] ,[comps second] ,[comps weekday] - 1];
 //    NSLog(@"-----------weekday is %ld",(long)[comps weekday]);//在这里需要注意的是：星期日是数字1，星期一时数字2，以此类推。。。
     
     //传入时间和头，返回协议字符串
@@ -239,7 +239,7 @@ static BLETool *bleTool = nil;
 //get motionInfo
 - (void)writeMotionRequestToPeripheralWithMotionType:(MotionType)type
 {
-    NSString *protocolStr = [NSStringTool protocolAddInfo:[NSString stringWithFormat:@"%ld",type] head:@"03"];
+    NSString *protocolStr = [NSStringTool protocolAddInfo:[NSString stringWithFormat:@"%ld",(unsigned long)type] head:@"03"];
     
     //写入操作
     if (self.currentDev.peripheral && self.writeCharacteristic) {
@@ -543,8 +543,10 @@ static BLETool *bleTool = nil;
             ss = @"02";     //久坐关闭，勿扰开启
         }
     }else {
+#warning change T2T1 time
         //001e
-        T2T1 = @"003c" ;    //60分钟提醒间隔
+        T2T1 = @"001e" ;    //30分钟提醒间隔
+        //T2T1 = @"003c" ;    //60分钟提醒间隔
         IHIM = [sedentaryModel.sedentaryStartTime stringByReplacingOccurrencesOfString:@":" withString:@""];
         IhIm = [sedentaryModel.sedentaryEndTime stringByReplacingOccurrencesOfString:@":" withString:@""];
         SHSM = [sedentaryModel.disturbStartTime stringByReplacingOccurrencesOfString:@":" withString:@""];

@@ -635,8 +635,9 @@
                     [cell.endButton setTitle:self.sedModel.sedentaryEndTime forState:UIControlStateNormal];
                     cell.bolanghaolabel.hidden = NO;
                     cell.bolanghaolabel.text = @"~";
-                    [cell.startButton addTarget:self action:@selector(startTimeChoose:) forControlEvents:UIControlEventTouchUpInside];
-                    [cell.endButton addTarget:self action:@selector(endTimeChoose:) forControlEvents:UIControlEventTouchUpInside];
+#warning cancel start time and end time
+                    //[cell.startButton addTarget:self action:@selector(startTimeChoose:) forControlEvents:UIControlEventTouchUpInside];
+                    //[cell.endButton addTarget:self action:@selector(endTimeChoose:) forControlEvents:UIControlEventTouchUpInside];
                 }
                     break;
                 case 2:
@@ -644,7 +645,7 @@
                     cell.bolanghaolabel.hidden = NO;
                     cell.bolanghaolabel.text = [NSString stringWithFormat:@"%@~%@",self.sedModel.disturbStartTime,self.sedModel.disturbEndTime];
                     [cell.bolanghaolabel setFont:[UIFont systemFontOfSize:13]];
-                    [cell.bolanghaolabel setTextColor:[UIColor grayColor]];
+                    [cell.bolanghaolabel setTextColor:[UIColor whiteColor]];
                     cell.iconImageView.hidden = YES;
                     cell.functionName.text = funArr[indexPath.row + 1];
                     NSLog(@"1-2 == %@",cell.functionName.text);

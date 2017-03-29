@@ -59,24 +59,12 @@
                             <constraint firstAttribute="height" constant="1" id="2S6-p3-1d5"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始时间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smm-Iw-G9c">
-                        <rect key="frame" x="15" y="15" width="49.5" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.062745098040000002" green="0.45098039220000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIG-ce-nXu">
-                        <rect key="frame" x="69.5" y="7" width="42" height="30"/>
+                        <rect key="frame" x="45" y="7" width="42" height="30"/>
                         <state key="normal" title="09:00">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结束时间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLU-AL-b1p">
-                        <rect key="frame" x="203.5" y="13.5" width="57.5" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.062745098040000002" green="0.45098039220000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXC-7r-urv">
                         <rect key="frame" x="266" y="7" width="39" height="30"/>
                         <state key="normal" title="18:00">
@@ -93,19 +81,15 @@
                 <constraints>
                     <constraint firstItem="Jrg-F5-JOs" firstAttribute="leading" secondItem="f7E-Wb-jAn" secondAttribute="trailing" constant="17" id="05l-AX-5hS"/>
                     <constraint firstItem="feT-uC-xT0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7M4-Zo-e6k"/>
-                    <constraint firstItem="Smm-Iw-G9c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="7bq-fM-Sdh"/>
                     <constraint firstAttribute="trailing" secondItem="h1c-2e-bwT" secondAttribute="trailing" id="8SZ-O6-WTm"/>
-                    <constraint firstItem="NXC-7r-urv" firstAttribute="leading" secondItem="kLU-AL-b1p" secondAttribute="trailing" constant="5" id="8zJ-nn-0bO"/>
                     <constraint firstItem="Jrg-F5-JOs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9Iq-De-u6W"/>
                     <constraint firstItem="NXC-7r-urv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ABz-M7-Uol"/>
+                    <constraint firstItem="Jrg-F5-JOs" firstAttribute="leading" secondItem="cIG-ce-nXu" secondAttribute="leading" id="CQf-Zi-RTP"/>
                     <constraint firstItem="yg7-u6-cvg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EUX-Ep-hIo"/>
-                    <constraint firstItem="Smm-Iw-G9c" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Fzb-ue-u1f"/>
                     <constraint firstItem="f7E-Wb-jAn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="H43-HZ-8uM"/>
                     <constraint firstItem="h1c-2e-bwT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Nf4-IN-soY"/>
                     <constraint firstItem="xhc-nU-LvB" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="PoT-DJ-hNo"/>
                     <constraint firstAttribute="trailing" secondItem="NXC-7r-urv" secondAttribute="trailing" constant="15" id="VZA-Ar-lca"/>
-                    <constraint firstItem="cIG-ce-nXu" firstAttribute="leading" secondItem="Smm-Iw-G9c" secondAttribute="trailing" constant="5" id="cbz-yM-QLL"/>
-                    <constraint firstItem="kLU-AL-b1p" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dcL-wZ-75D"/>
                     <constraint firstAttribute="bottom" secondItem="h1c-2e-bwT" secondAttribute="bottom" id="ftl-Xr-V55"/>
                     <constraint firstItem="f7E-Wb-jAn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kqG-Ts-OVd"/>
                     <constraint firstItem="cIG-ce-nXu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nFg-Av-U0J"/>
@@ -118,12 +102,10 @@
             <connections>
                 <outlet property="bolanghaolabel" destination="xhc-nU-LvB" id="SAe-3m-1Ut"/>
                 <outlet property="endButton" destination="NXC-7r-urv" id="4Gy-H9-2ag"/>
-                <outlet property="endLabel" destination="kLU-AL-b1p" id="aY7-04-ItS"/>
                 <outlet property="functionName" destination="Jrg-F5-JOs" id="2nH-oe-Fw0"/>
                 <outlet property="halvingLine" destination="h1c-2e-bwT" id="8EM-KF-Cg7"/>
                 <outlet property="iconImageView" destination="f7E-Wb-jAn" id="MAa-d7-gza"/>
                 <outlet property="startButton" destination="cIG-ce-nXu" id="D7T-8r-4pl"/>
-                <outlet property="startLabel" destination="Smm-Iw-G9c" id="1N3-v8-cJF"/>
                 <outlet property="timeButton" destination="feT-uC-xT0" id="TRJ-X7-Xxp"/>
                 <outlet property="timeSwitch" destination="yg7-u6-cvg" id="3d1-8E-iHw"/>
             </connections>

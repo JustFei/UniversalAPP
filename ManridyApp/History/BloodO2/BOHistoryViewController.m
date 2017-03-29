@@ -133,7 +133,7 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
-            NSString *dateStr = [NSString stringWithFormat:@"%02ld/%02ld/%02ld",iCurYear ,iCurMonth ,i];
+            NSString *dateStr = [NSString stringWithFormat:@"%02ld/%02ld/%02ld",(long)iCurYear ,iCurMonth ,i];
             DLog(@"%@",dateStr);
             bo = 0;
             
@@ -147,14 +147,14 @@
                 }
                 sumBo += bo / queryArr.count;
                 //当天的平均高，低压
-                [_boArr addObject:[NSString stringWithFormat:@"%ld",bo / queryArr.count]];
+                [_boArr addObject:[NSString stringWithFormat:@"%lu",bo / queryArr.count]];
                 haveDataDays ++;
             }
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             NSInteger averageBo = sumBo / haveDataDays;
-            [self.boLabel setText:[NSString stringWithFormat:@"%ld",averageBo]];
+            [self.boLabel setText:[NSString stringWithFormat:@"%ld",(long)averageBo]];
             double progress = averageBo / 100.000;
             
             if (progress <= 1) {
