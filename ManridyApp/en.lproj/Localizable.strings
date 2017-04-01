@@ -295,8 +295,11 @@
 "currentDayBOData" = "%@ SpO2";
 
 //TODO:计步当前
-//本周计步统计
+//本周计步统计（公制）
 "currentWeekStepData" = "This week：%ldSteps（%.1fKM/%ldKcal）";
+
+//本周计步统计（英制）
+"currentWeekStepDataImperial" = "This week：%ldSteps（%.1fMI/%ldKcal）";
 
 //步
 "step" = "%@：%@Setps";
@@ -392,5 +395,12 @@
 //通知正文
 "PerDismissNodifyContent" = "Warning! Your bracelet in%@leave the connection range, may be lost!";
 
+//MARK: 未翻译部分
+//单位设置
+"UnitsSetting" = "UnitsSetting";
 
+//公制单位
+"Metric" = "Metric（cm/km/kg）";
 
+//英制单位
+"ImperialSystem" = "Imperial（In/mi/lb）";

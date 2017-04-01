@@ -10,13 +10,14 @@
 #import "AppDelegate.h"
 #import "StepHistoryViewController.h"
 #import "BindPeripheralViewController.h"
-
+#import "UnitsTool.h"
 
 @interface StepContentView () 
 {
     NSInteger sumStep;
     NSInteger sumMileage;
     NSInteger sumkCal;
+    BOOL _isMetric;
 }
 @end
 
@@ -105,7 +106,10 @@
         }
     }
     //    double mileage = sumMileage;
-    [self.weekStatisticsLabel setText:[NSString stringWithFormat:NSLocalizedString(@"currentWeekStepData", nil),sumStep ,sumMileage / 1000.f ,sumkCal]];
+    _isMetric = [self isMetricOrImperialSystem];
+    //判断单位是英制还是公制
+    //TODO: 这里翻译还要改一下
+    [self.weekStatisticsLabel setText:[NSString stringWithFormat:_isMetric ?  NSLocalizedString(@"currentWeekStepData", nil) : NSLocalizedString(@"currentWeekStepDataImperial", nil),sumStep ,_isMetric ?  sumMileage / 1000.f : [UnitsTool kmAndMi:sumMileage / 1000.f withMode:ImperialToMetric] ,sumkCal]];
     sumStep = sumMileage = sumkCal = 0;
 }
 
@@ -159,6 +163,17 @@
     }else {
         BindPeripheralViewController *vc = [[BindPeripheralViewController alloc] init];
         [[self findViewController:self].navigationController pushViewController:vc animated:YES];
+    }
+}
+
+//判断是否是公制单位
+- (BOOL)isMetricOrImperialSystem
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"]) {
+        BOOL isMetric = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"];
+        return isMetric;
+    }else {
+        return NO;
     }
 }
 

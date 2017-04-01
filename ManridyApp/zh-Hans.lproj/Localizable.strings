@@ -292,8 +292,11 @@
 "currentDayBOData" = "%@号血氧值";
 
 //MARK:计步当前
-//本周计步统计
+//本周计步统计（公制）
 "currentWeekStepData" = "本周计步统计：%ld步（%.1f公里/%ld千卡）";
+
+//本周计步统计
+"currentWeekStepDataImperial" = "本周计步统计：%ld步（%.1f英里/%ld千卡）";
 
 //步
 "step" = "%@：%@步";
@@ -389,4 +392,12 @@
 //通知正文
 "PerDismissNodifyContent" = "注意！您的手环已于%@离开可连接范围，可能丢失！请注意！";
 
+//MARK: 未翻译部分
+//单位设置
+"UnitsSetting" = "单位设置";
 
+//公制单位
+"Metric" = "公制（厘米/千米/公斤）";
+
+//英制单位
+"ImperialSystem" = "英制（英寸/英里/英镑）";

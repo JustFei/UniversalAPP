@@ -93,7 +93,6 @@
     Remind *model = [[Remind alloc] init];
     model.phone = 1;
     model.message = 1;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated

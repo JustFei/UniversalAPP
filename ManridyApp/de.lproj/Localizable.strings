@@ -295,8 +295,11 @@
 "currentDayBOData" = "%@täglicher SpO2 Wert";
 
 //MARK:计步当前
-//本周计步统计
+//本周计步统计（公制）
 "currentWeekStepData" = "Schritte dieser Woche: insgesamt %ld Schritte (%.1f km /%ld kcal)";
+
+//本周计步统计（英制）
+"currentWeekStepDataImperial" = "Schritte dieser Woche: insgesamt %ld Schritte (%.1f mi /%ld kcal)";
 
 //步
 "step" = "%@：%@Schritte zählen";
@@ -392,5 +395,13 @@
 //通知正文
 "PerDismissNodifyContent" = "Seien Sie vorsichtig! Das Gerät wurde von% @ getrennt, bestätigen Sie bitte!";
 
+//MARK: 未翻译部分
+//单位设置
+"UnitsSetting" = "UnitsSetting";
 
+//公制单位
+"Metric" = "Metric（cm/km/kg）";
+
+//英制单位
+"ImperialSystem" = "Imperial（In/mi/lb）";
 

@@ -297,8 +297,11 @@
 "currentDayBOData" = "قيمة أكسجين الدم اليومية  %@";
 
 //MARK:计步当前
-//1本周计步统计
-"currentWeekStepData" = "احصاءات عدد الخطوات في هذا الاسبوع: اجمالي (%.1fكم/%ldكالوري）)";
+//1本周计步统计（公制）
+"currentWeekStepData" = "احصاءات عدد الخطوات في هذا الاسبوع: اجمالي (%.1f km/%ld kcal）)";
+
+//1本周计步统计（英制）
+"currentWeekStepDataImperial" = "احصاءات عدد الخطوات في هذا الاسبوع: اجمالي (%.1f mi/%ld kcal）)";
 
 //步
 "step" = "%@：%@احصاءات عدد الخطوات";
@@ -397,5 +400,13 @@
 //通知正文
 "PerDismissNodifyContent" = "انتبه: لقد انقطع الاتصال لجهازك %@.يرجي التأكيد.";
 
+//MARK: 未翻译部分
+//单位设置
+"UnitsSetting" = "UnitsSetting";
 
+//公制单位
+"Metric" = "Metric（cm/km/kg）";
+
+//英制单位
+"ImperialSystem" = "Imperial（In/mi/lb）";
 

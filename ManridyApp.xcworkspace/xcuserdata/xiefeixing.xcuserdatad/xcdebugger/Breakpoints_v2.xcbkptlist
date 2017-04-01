@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/BLETool/BLETool.m"
-            timestampString = "512305123.133871"
+            filePath = "ManridyApp/UnitsTool/UnitsTool.m"
+            timestampString = "512648935.449278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "559"
-            endingLineNumber = "559"
-            landmarkName = "-writeSedentaryAlertWithSedentaryModel:"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "+kmAndMi:withMode:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/BLETool/BLETool.m"
-            timestampString = "512305123.133871"
+            filePath = "ManridyApp/AppDelegate.m"
+            timestampString = "512713057.183627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "574"
-            endingLineNumber = "574"
-            landmarkName = "-writeSedentaryAlertWithSedentaryModel:"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

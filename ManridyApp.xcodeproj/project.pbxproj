@@ -81,10 +81,15 @@
 		9C57F2311DF2C2E10090C2EF /* BOHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F2331DF2C2E10090C2EF /* BOHistoryViewController.xib */; };
 		9C57F2371DF2C2F50090C2EF /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F2391DF2C2F50090C2EF /* UserInfoCell.xib */; };
 		9C5F32581E57E38000C6C947 /* alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C5F32571E57E38000C6C947 /* alert.wav */; };
+		9C65C8EA1E8DE7C2001A4525 /* UnitsSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C65C8E91E8DE7C2001A4525 /* UnitsSettingTableViewCell.m */; };
 		9C728F681DD5DB2800BEF69E /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C728F671DD5DB2800BEF69E /* PopupView.m */; };
 		9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F691DD5DB4B00BEF69E /* PopupView.xib */; };
+		9C8017E61E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8017E51E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.m */; };
+		9C8017E81E8F628B00654868 /* gotham.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C8017E71E8F628B00654868 /* gotham.ttf */; };
+		9CB7010A1E8B5923004B97D0 /* UnitsSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB701091E8B5923004B97D0 /* UnitsSettingViewController.m */; };
 		9CC5597C1E2F72170074AE54 /* SedentaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5597B1E2F72170074AE54 /* SedentaryModel.m */; };
 		9CCFE1B31DD9CCA200FD5B6F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFE1B21DD9CCA200FD5B6F /* AboutViewController.m */; };
+		9CDCF9581E8E4C89006625BD /* UnitsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDCF9571E8E4C89006625BD /* UnitsTool.m */; };
 		9CF2F6C41DD458010091ECB5 /* Remind.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2F6C31DD458010091ECB5 /* Remind.m */; };
 		EC8F9D09241EC54AC7AD2BEE /* libPods-ManridyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9871DE041C8D7829FF5269 /* libPods-ManridyApp.a */; };
 /* End PBXBuildFile section */
@@ -390,13 +395,22 @@
 		9C5AE2691E5BEE5E0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C5AE26A1E5BEE5E0006D791 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C5F32571E57E38000C6C947 /* alert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alert.wav; sourceTree = "<group>"; };
+		9C65C8E81E8DE7C2001A4525 /* UnitsSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitsSettingTableViewCell.h; path = Setting/UnitsSetting/UnitsSettingTableViewCell.h; sourceTree = "<group>"; };
+		9C65C8E91E8DE7C2001A4525 /* UnitsSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnitsSettingTableViewCell.m; path = Setting/UnitsSetting/UnitsSettingTableViewCell.m; sourceTree = "<group>"; };
 		9C728F661DD5DB2800BEF69E /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupView.h; path = PopupView/PopupView.h; sourceTree = "<group>"; };
 		9C728F671DD5DB2800BEF69E /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupView.m; path = PopupView/PopupView.m; sourceTree = "<group>"; };
 		9C728F691DD5DB4B00BEF69E /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupView.xib; path = PopupView/PopupView.xib; sourceTree = "<group>"; };
+		9C8017E41E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+YHBaseChangeDefaultFont.h"; path = "Category/UILabel+YHBaseChangeDefaultFont.h"; sourceTree = "<group>"; };
+		9C8017E51E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+YHBaseChangeDefaultFont.m"; path = "Category/UILabel+YHBaseChangeDefaultFont.m"; sourceTree = "<group>"; };
+		9C8017E71E8F628B00654868 /* gotham.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gotham.ttf; sourceTree = "<group>"; };
+		9CB701081E8B5923004B97D0 /* UnitsSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitsSettingViewController.h; path = Setting/UnitsSetting/UnitsSettingViewController.h; sourceTree = "<group>"; };
+		9CB701091E8B5923004B97D0 /* UnitsSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnitsSettingViewController.m; path = Setting/UnitsSetting/UnitsSettingViewController.m; sourceTree = "<group>"; };
 		9CC5597A1E2F72170074AE54 /* SedentaryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SedentaryModel.h; path = BLETool/Model/SedentaryModel.h; sourceTree = "<group>"; };
 		9CC5597B1E2F72170074AE54 /* SedentaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SedentaryModel.m; path = BLETool/Model/SedentaryModel.m; sourceTree = "<group>"; };
 		9CCFE1B11DD9CCA200FD5B6F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Setting/About/AboutViewController.h; sourceTree = "<group>"; };
 		9CCFE1B21DD9CCA200FD5B6F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = Setting/About/AboutViewController.m; sourceTree = "<group>"; };
+		9CDCF9561E8E4C89006625BD /* UnitsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitsTool.h; path = UnitsTool/UnitsTool.h; sourceTree = "<group>"; };
+		9CDCF9571E8E4C89006625BD /* UnitsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnitsTool.m; path = UnitsTool/UnitsTool.m; sourceTree = "<group>"; };
 		9CF2F6C21DD458010091ECB5 /* Remind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Remind.h; path = BLETool/Model/Remind.h; sourceTree = "<group>"; };
 		9CF2F6C31DD458010091ECB5 /* Remind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Remind.m; path = BLETool/Model/Remind.m; sourceTree = "<group>"; };
 		FA9871DE041C8D7829FF5269 /* libPods-ManridyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ManridyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -532,6 +546,7 @@
 				10EE961A1DB4BFA70048D594 /* PhoneRemind */,
 				10C47E971DA88F7500D949CA /* BindPeripheral */,
 				9CCFE1B01DD9CC7200FD5B6F /* About */,
+				9CB701071E8B58B1004B97D0 /* UnitsSetting */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -659,10 +674,12 @@
 		10F5F7061D98C6280045FA4C /* ManridyApp */ = {
 			isa = PBXGroup;
 			children = (
+				9C8017E31E8F5E0C00654868 /* Category */,
 				9C08454E1E6A9D3200C9E04F /* AlertTool */,
 				9C728F651DD5DAE400BEF69E /* PopupView */,
 				102474D91DAA2F0A00F70E4F /* BLETool */,
 				109FBB981DAA18A8008FF0D3 /* FMDBTool */,
+				9CDCF9551E8E4C4C006625BD /* UnitsTool */,
 				10F5F7211D98ED950045FA4C /* Main */,
 				103820EE1DB86E9000E92410 /* History */,
 				104A705E1D9B71C300CC73F5 /* Setting */,
@@ -674,6 +691,7 @@
 		10F5F7071D98C6280045FA4C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9C8017E01E8F5B6900654868 /* Resource */,
 				10F5F70A1D98C6280045FA4C /* AppDelegate.h */,
 				10F5F70B1D98C6280045FA4C /* AppDelegate.m */,
 				10F5F7131D98C6280045FA4C /* Assets.xcassets */,
@@ -829,6 +847,34 @@
 			name = PopupView;
 			sourceTree = "<group>";
 		};
+		9C8017E01E8F5B6900654868 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				9C8017E71E8F628B00654868 /* gotham.ttf */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		9C8017E31E8F5E0C00654868 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				9C8017E41E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.h */,
+				9C8017E51E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		9CB701071E8B58B1004B97D0 /* UnitsSetting */ = {
+			isa = PBXGroup;
+			children = (
+				9CB701081E8B5923004B97D0 /* UnitsSettingViewController.h */,
+				9CB701091E8B5923004B97D0 /* UnitsSettingViewController.m */,
+				9C65C8E81E8DE7C2001A4525 /* UnitsSettingTableViewCell.h */,
+				9C65C8E91E8DE7C2001A4525 /* UnitsSettingTableViewCell.m */,
+			);
+			name = UnitsSetting;
+			sourceTree = "<group>";
+		};
 		9CCFE1B01DD9CC7200FD5B6F /* About */ = {
 			isa = PBXGroup;
 			children = (
@@ -836,6 +882,15 @@
 				9CCFE1B21DD9CCA200FD5B6F /* AboutViewController.m */,
 			);
 			name = About;
+			sourceTree = "<group>";
+		};
+		9CDCF9551E8E4C4C006625BD /* UnitsTool */ = {
+			isa = PBXGroup;
+			children = (
+				9CDCF9561E8E4C89006625BD /* UnitsTool.h */,
+				9CDCF9571E8E4C89006625BD /* UnitsTool.m */,
+			);
+			name = UnitsTool;
 			sourceTree = "<group>";
 		};
 		AC2AC006B33A3099561DC0AA /* Frameworks */ = {
@@ -943,6 +998,7 @@
 				9C57F22B1DF2C2D30090C2EF /* BooldHistoryViewController.xib in Resources */,
 				9C57F2251DF2C2C70090C2EF /* SleepHistoryViewController.xib in Resources */,
 				9C57F20A1DF2C2620090C2EF /* BloodPressureContentView.xib in Resources */,
+				9C8017E81E8F628B00654868 /* gotham.ttf in Resources */,
 				9C57F1F81DF2C2100090C2EF /* HeartRateContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1017,6 +1073,8 @@
 			files = (
 				10F5F7841D98F8640045FA4C /* MianViewController.m in Sources */,
 				1042FC7A1DA9F20400467F01 /* SleepSettingViewController.m in Sources */,
+				9C65C8EA1E8DE7C2001A4525 /* UnitsSettingTableViewCell.m in Sources */,
+				9C8017E61E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.m in Sources */,
 				102474E91DAA412F00F70E4F /* NSStringTool.m in Sources */,
 				103820F21DB86F1300E92410 /* StepHistoryViewController.m in Sources */,
 				102474E71DAA412F00F70E4F /* BLETool.m in Sources */,
@@ -1032,6 +1090,7 @@
 				9C06C1BD1DE05C7A00418C7C /* BOHistoryViewController.m in Sources */,
 				9C06C19C1DDFE2FC00418C7C /* BloodO2ContentView.m in Sources */,
 				10F5F7DD1D9927270045FA4C /* BloodPressureContentView.m in Sources */,
+				9CB7010A1E8B5923004B97D0 /* UnitsSettingViewController.m in Sources */,
 				102474E51DAA412F00F70E4F /* AllBleFmdb.m in Sources */,
 				102474FE1DAA41E000F70E4F /* SportTargetModel.m in Sources */,
 				10EE961D1DB4BFC70048D594 /* PhoneRemindViewController.m in Sources */,
@@ -1065,6 +1124,7 @@
 				10F5F7091D98C6280045FA4C /* main.m in Sources */,
 				10826A581DBA17540031DB83 /* HeartRateHistoryViewController.m in Sources */,
 				1033145B1DC0622D0089B4EB /* TempViewController.m in Sources */,
+				9CDCF9581E8E4C89006625BD /* UnitsTool.m in Sources */,
 				10FF5CF61DC352FB0059FE00 /* PhoneRemindView.m in Sources */,
 				104A70611D9B720500CC73F5 /* SettingViewController.m in Sources */,
 				10826A541DBA12600031DB83 /* TitleMenuViewController.m in Sources */,

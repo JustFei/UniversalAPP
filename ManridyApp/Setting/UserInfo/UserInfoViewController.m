@@ -13,6 +13,7 @@
 #import "UserInfoModel.h"
 #import "MBProgressHUD.h"
 #import "UserListViewController.h"
+#import "UnitsTool.h"
 
 #define WIDTH self.view.frame.size.width
 
@@ -52,6 +53,8 @@
 
 @property (nonatomic ,weak) UIPickerView *genderPickerView;
 
+@property (nonatomic ,assign) BOOL isMetric;
+
 @end
 
 @implementation UserInfoViewController
@@ -60,10 +63,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.isMetric = [self isMetricOrImperialSystem];
     _nameArr = @[NSLocalizedString(@"gender", nil),NSLocalizedString(@"age", nil),NSLocalizedString(@"height", nil),NSLocalizedString(@"weight", nil)];
     _fieldPlaceholdeArr = @[@"",NSLocalizedString(@"inputAge", nil),NSLocalizedString(@"inputHeight", nil),NSLocalizedString(@"inputWeight", nil)];
-    _unitArr = @[@"",NSLocalizedString(@"year", nil),@"(cm)",@"(kg)"];
+    _unitArr = @[@"",NSLocalizedString(@"year", nil),self.isMetric ? @"(cm)" : @"(In)",self.isMetric ? @"(kg)" : @"(lb)"];
     _genderArr = @[NSLocalizedString(@"male", nil),NSLocalizedString(@"Female", nil)];
     
     self.navigationItem.title = NSLocalizedString(@"userInfo", nil);
@@ -122,7 +125,17 @@
     }else {
         self.headImageView.backgroundColor = [UIColor whiteColor];
     }
-    
+}
+
+//判断是否是公制单位
+- (BOOL)isMetricOrImperialSystem
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"]) {
+        BOOL isMetric = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"];
+        return isMetric;
+    }else {
+        return NO;
+    }
 }
 
 - (void)keyboardWillChangeFrame:(NSNotification *)notification
@@ -247,7 +260,11 @@
         
         NSArray *userArr = [self.myFmdbTool queryAllUserInfo];
         
-        UserInfoModel *model = [UserInfoModel userInfoModelWithUserName:self.userNameTextField.text andGender:self.genderLabel.text andAge:self.ageTextField.text.integerValue andHeight:self.heightTextField.text.integerValue andWeight:self.weightTextField.text.integerValue andStepLength:self.steplengthTextField.text.integerValue andStepTarget:0 andSleepTarget:0];
+        //计算出在英制和公制下的身高体重
+        NSInteger height = self.isMetric ? self.heightTextField.text.integerValue : [UnitsTool cmAndInch:self.heightTextField.text.integerValue withMode:ImperialToMetric];
+        NSInteger weight = self.isMetric ? self.weightTextField.text.integerValue : [UnitsTool kgAndLb:self.weightTextField.text.integerValue withMode:ImperialToMetric];
+        
+        UserInfoModel *model = [UserInfoModel userInfoModelWithUserName:self.userNameTextField.text andGender:self.genderLabel.text andAge:self.ageTextField.text.integerValue andHeight:height andWeight:weight andStepLength:self.steplengthTextField.text.integerValue andStepTarget:0 andSleepTarget:0];
        
         if (userArr.count == 0) {
            BOOL isSuccess = [self.myFmdbTool insertUserInfoModel:model];
@@ -452,11 +469,11 @@
                 self.heightTextField = cell.textField;
                 if (_userArr.count != 0) {
                     UserInfoModel *model = _userArr.firstObject;
-                    [self.heightTextField setText:[NSString stringWithFormat:@"%ld",(long)model.height]];
+                    //判断是英制还是公制
+                    [self.heightTextField setText:[NSString stringWithFormat:@"%ld",(long)self.isMetric ? model.height : [UnitsTool cmAndInch:model.height withMode:MetricToImperial]]];
                 }
                 
             }
-                
                 break;
             case 3:
             {
@@ -464,7 +481,7 @@
                 self.weightTextField = cell.textField;
                 if (_userArr.count != 0) {
                     UserInfoModel *model = _userArr.firstObject;
-                    [self.weightTextField setText:[NSString stringWithFormat:@"%ld",(long)model.weight]];
+                    [self.weightTextField setText:[NSString stringWithFormat:@"%ld",(long)self.isMetric ? model.weight : [UnitsTool kgAndLb:model.weight withMode:MetricToImperial]]];
                 }
                 
             }

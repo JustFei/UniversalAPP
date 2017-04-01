@@ -295,8 +295,11 @@
 "currentDayBOData" = "%@ Valore quotidiano SpO2";
 
 //MARK:计步当前
-//本周计步统计
-"currentWeekStepData" = "Statistiche dei passi della settimana corrente: in totale %ld passi (%1f km /%ld cal.) ";
+//本周计步统计（公制）
+"currentWeekStepData" = "Statistiche dei passi della settimana corrente: in totale %ld passi (%.1f km /%ld cal.) ";
+
+//本周计步统计（英制）
+"currentWeekStepDataImperial" = "Statistiche dei passi della settimana corrente: in totale %ld passi (%.1f mi /%ld cal.) ";
 
 //步
 "step" = "%@：%@Contapassi";
@@ -392,6 +395,14 @@
 //通知正文
 "PerDismissNodifyContent" = "Attenzione! Il dispositivo è stato disconnesso da%@, si prega di confermare!";
 
+//MARK: 未翻译部分
+//单位设置
+"UnitsSetting" = "UnitsSetting";
 
+//公制单位
+"Metric" = "Metric（cm/km/kg）";
+
+//英制单位
+"ImperialSystem" = "Imperial（In/mi/lb）";
 
 

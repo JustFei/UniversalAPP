@@ -295,8 +295,11 @@
 "currentDayBOData" = "%@ 하루 SpO2";
 
 //MARK:计步当前
-//本周计步统计
+//本周计步统计（）
 "currentWeekStepData" = "이번 주 걸음 통계:모두%ld 걸음（%.1f  KM/%ld 칼로리）";
+
+//本周计步统计
+"currentWeekStepDataImperial" = "이번 주 걸음 통계:모두%ld 걸음（%.1f  MI/%ld 칼로리）";
 
 //步
 "step" = "%@：%@걸음 통계";
@@ -392,5 +395,13 @@
 //通知正文
 "PerDismissNodifyContent" = "주의!당신의 장비가 %@에 연결 중단되는데 확인하세요!";
 
+//MARK: 未翻译部分
+//单位设置
+"UnitsSetting" = "UnitsSetting";
 
+//公制单位
+"Metric" = "Metric（cm/km/kg）";
+
+//英制单位
+"ImperialSystem" = "Imperial（In/mi/lb）";
 

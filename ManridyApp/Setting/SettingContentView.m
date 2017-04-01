@@ -11,6 +11,7 @@
 #import "BindPeripheralViewController.h"
 #import "PhoneRemindViewController.h"
 #import "AboutViewController.h"
+#import "UnitsSettingViewController.h"
 
 #define WIDTH self.frame.size.width
 
@@ -37,8 +38,8 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        _dataArr = @[@"用户信息",@"信息提醒",@"防丢设置",@"查看电量",@"设备锁定",@"关于"];
-        _dataArr = @[NSLocalizedString(@"userInfo", nil),NSLocalizedString(@"infoRemind", nil),NSLocalizedString(@"perBind", nil),NSLocalizedString(@"about", nil)];
-        _imageNameArr = @[@"set_user_icon",@"set_alart_icon",@"set_ble_icon",@"set_about_icon"];
+        _dataArr = @[NSLocalizedString(@"userInfo", nil),NSLocalizedString(@"infoRemind", nil),NSLocalizedString(@"perBind", nil),NSLocalizedString(@"about", nil),NSLocalizedString(@"UnitsSetting", nil)];
+        _imageNameArr = @[@"set_user_icon",@"set_alart_icon",@"set_ble_icon",@"set_about_icon",@""];
     }
     return self;
 }
@@ -155,6 +156,11 @@
             [[self findViewController:self].navigationController pushViewController:vc animated:YES];
         }
             break;
+        case 4:
+        {
+            UnitsSettingViewController *vc = [[UnitsSettingViewController alloc] init];
+            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
+        }
         default:
             break;
     }

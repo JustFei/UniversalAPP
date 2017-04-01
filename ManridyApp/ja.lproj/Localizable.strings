@@ -299,8 +299,11 @@
 "currentDayBOData" = "%@SpO2";
 
 //MARK:计步当前
-//本周计步统计
+//本周计步统计（公制）
 "currentWeekStepData" = "今週歩数計：%ld steps（%.1f KM/%ld Kcal）";
+
+//本周计步统计（英制）
+"currentWeekStepDataImperial" = "今週歩数計：%ld steps（%.1f MI/%ld Kcal）";
 
 //步
 "step" = "%@：%@歩";
@@ -397,4 +400,12 @@
 //通知正文
 "PerDismissNodifyContent" = "警告！設備が切れ、失われているかどうか確認して下さい！";
 
+//MARK: 未翻译部分
+//单位设置
+"UnitsSetting" = "UnitsSetting";
 
+//公制单位
+"Metric" = "Metric（cm/km/kg）";
+
+//英制单位
+"ImperialSystem" = "Imperial（In/mi/lb）";

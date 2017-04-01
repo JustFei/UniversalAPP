@@ -236,8 +236,11 @@
 //当前月份
 "currentMonth" = "%ldMois";
 
-//本月计步统计:
+//本月计步统计:（公制）
 "currentMonthData" = "Statistiques de podomètre de ce mois-ci: (%ldpas/%.1fkm/%ldcal) en total";
+
+//本月计步统计:（英制）
+"currentMonthDataImperial" = "Statistiques de podomètre de ce mois-ci: (%ldpas/%.1fmi/%ldcal) en total";
 
 //平均公里和卡路里
 "averagerMandK" = " %.1fKm/%ldkcal";
@@ -297,6 +300,9 @@
 //MARK:计步当前
 //本周计步统计
 "currentWeekStepData" = "Statistiques de podomètre de cette semaine-ci: %ld pas(%.1f km/%ld cal) en total";
+
+//本周计步统计
+"currentWeekStepData" = "Statistiques de podomètre de cette semaine-ci: %ld pas(%.1f mi/%ld cal) en total";
 
 //步
 "step" = "%@：%@Comptage de pas";
@@ -392,5 +398,13 @@
 //通知正文
 "PerDismissNodifyContent" = "REMARQUE! Votre appareil a été déconnecté avec %@, confirmez!";
 
+//MARK: 未翻译部分
+//单位设置
+"UnitsSetting" = "UnitsSetting";
 
+//公制单位
+"Metric" = "Metric（cm/km/kg）";
+
+//英制单位
+"ImperialSystem" = "Imperial（In/mi/lb）";
 
