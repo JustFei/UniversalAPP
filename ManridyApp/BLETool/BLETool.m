@@ -7,7 +7,6 @@
 //
 
 #import "BLETool.h"
-#import <CoreBluetooth/CoreBluetooth.h>
 #import "manridyBleDevice.h"
 #import "manridyModel.h"
 #import "NSStringTool.h"
@@ -24,20 +23,13 @@
 #define kCurrentVersion @"1.0"
 
 
-@interface BLETool () <CBCentralManagerDelegate,CBPeripheralDelegate , UNUserNotificationCenterDelegate>
-
+@interface BLETool () <UNUserNotificationCenterDelegate>
 
 @property (nonatomic ,strong) CBCharacteristic *notifyCharacteristic;
 @property (nonatomic ,strong) CBCharacteristic *writeCharacteristic;
-
 @property (nonatomic ,strong) NSMutableArray *deviceArr;
-
-@property (nonatomic ,strong) CBCentralManager *myCentralManager;
-
 @property (nonatomic ,strong) AllBleFmdb *fmTool;
-
 @property (nonatomic ,strong) UIAlertView *disConnectView;
-
 @property (nonatomic, strong) UNMutableNotificationContent *notiContent;
 
 @end

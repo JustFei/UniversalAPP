@@ -8,14 +8,18 @@
 
 #import "UpdateViewController.h"
 #import "PNChart.h"
+#import <iOSDFULibrary/iOSDFULibrary-Swift.h>
+#import "BLETool.h"
 
-@interface UpdateViewController ()
+@interface UpdateViewController () <LoggerDelegate, DFUServiceDelegate, DFUProgressDelegate>
 
 @property (nonatomic, strong) UIImageView *updateArrow;
 @property (nonatomic, strong) UILabel *updateStateLabel;
 @property (nonatomic, strong) UIButton *sureButton;
 @property (nonatomic, strong) PNCircleChart *updateCircle;
 @property (nonatomic, strong) UILabel *currentLabel;
+@property (nonatomic, strong) DFUServiceController *controller;
+@property (nonatomic, strong) BLETool *myBleTool;
 
 @end
 
@@ -26,6 +30,8 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithRed:37.0 / 255.0 green:154.0 / 255.0 blue:219.0 / 255.0 alpha:1];
     [self createUI];
+    
+    [self otaWithFile];
 }
 
 - (void)createUI
@@ -52,18 +58,7 @@
     [self.view addSubview:self.updateArrow];
     
     [self.updateCircle strokeChart];
-    
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
-        // Do something useful in the background and update the HUD periodically.
-        [self doSomeWorkWithProgress];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.updateArrow.hidden = YES;
-            self.updateStateLabel.text = @"升级成功!";
-            [self.updateStateLabel setTextColor:[UIColor whiteColor]];
-            self.sureButton.hidden = NO;
-            self.currentLabel.hidden = YES;
-        });
-    });
+    self.myBleTool = [BLETool shareInstance];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,6 +67,27 @@
 }
 
 #pragma mark - Action
+- (void)otaWithFile
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"hex" ofType:@"zip"];
+    DFUFirmware *firmware = [[DFUFirmware alloc] initWithUrlToZipFile:[NSURL fileURLWithPath:filePath]];
+    // To start the DFU operation the DFUServiceInitiator must be used
+    //1.创建 DFU 对象
+    DFUServiceInitiator *initiator = [[DFUServiceInitiator alloc] initWithCentralManager: self.myBleTool.myCentralManager target:self.myBleTool.currentDev.peripheral];
+    //2.选择刷入的固件
+    [initiator withFirmwareFile:firmware];
+    
+    initiator.logger = self;
+    initiator.delegate = self;
+    initiator.progressDelegate = self;
+    
+    self.controller = [initiator start];
+    [self.controller pause];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.controller resume];
+    });
+}
+
 - (void)backAction:(UIButton *)sender
 {
     CATransition * animation = [CATransition animation];
@@ -109,22 +125,79 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)doSomeWorkWithProgress
+#pragma mark - DFU Service delegate methods
+#pragma mark -LoggerDelegate
+-(void)logWith:(enum LogLevel)level message:(NSString *)message
 {
-    float progress = 0.0f;
-    while (progress < 1.0f) {
-        //if (self.canceled) break;
-        progress += 0.01f;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Instead we could have also passed a reference to the HUD
-            // to the HUD to myProgressTask as a method parameter.
-            [self.updateCircle updateChartByCurrent:@(progress)];
-            int pro = progress * 100;
-            DLog(@"%d",pro);
-            self.currentLabel.text = [NSString stringWithFormat:@"已完成%d%%", pro];
-        });
-        usleep(50000);
+    NSLog(@"%ld: %@", (long) level, message);
+}
+
+#pragma mark -DFUServiceDelegate
+-(void)didStateChangedTo:(enum DFUState)state
+{
+    switch (state) {
+        case DFUStateConnecting:
+            self.currentLabel.text = @"Connecting...";
+            break;
+        case DFUStateStarting:
+            self.currentLabel.text = @"Starting DFU...";
+            break;
+        case DFUStateEnablingDfuMode:
+            self.currentLabel.text = @"Enabling DFU Bootloader...";
+            break;
+        case DFUStateUploading:
+            self.currentLabel.text = @"Uploading...";
+            break;
+        case DFUStateValidating:
+            self.currentLabel.text = @"Validating...";
+            break;
+        case DFUStateDisconnecting:
+            self.currentLabel.text = @"Disconnecting...";
+            break;
+        case DFUStateCompleted:
+        {
+            self.updateArrow.hidden = YES;
+            self.updateStateLabel.text = @"升级成功!";
+            [self.updateStateLabel setTextColor:[UIColor whiteColor]];
+            self.sureButton.hidden = NO;
+            self.currentLabel.hidden = YES;
+            
+            //此处需要重新设置下CentralManager 的代理方法，不然不会设置peripheral 的delegate
+            self.myBleTool.myCentralManager.delegate = self.myBleTool;
+            [self.myBleTool connectDevice:self.myBleTool.currentDev];
+        }
+            break;
+        case DFUStateAborted:
+        {
+            self.currentLabel.text = @"Upload aborted";
+            //[self.hud hideAnimated:YES afterDelay:2];
+        }
+            break;
+        default:
+            break;
     }
+}
+
+-(void)didErrorOccur:(enum DFUError)error withMessage:(NSString *)message
+{
+    NSLog(@"Error %ld: %@", (long) error, message);
+    
+    self.updateArrow.hidden = YES;
+    self.updateStateLabel.text = @"升级失败!";
+    [self.updateStateLabel setTextColor:[UIColor redColor]];
+    self.sureButton.hidden = NO;
+    self.currentLabel.hidden = YES;
+    //[self.myBleTool connectDevice:self.myBleTool.currentDev];
+}
+
+#pragma mark -DFUProgressDelegate
+-(void)onUploadProgress:(NSInteger)part totalParts:(NSInteger)totalParts progress:(NSInteger)percentage
+currentSpeedBytesPerSecond:(double)speed avgSpeedBytesPerSecond:(double)avgSpeed
+{
+    NSLog(@"Progress: %ld%% (part %ld/%ld). Speed: %f bps, Avg speed: %f bps", (long) percentage, (long) part, (long) totalParts, speed, avgSpeed);
+    
+    [self.updateCircle updateChartByCurrent:@(percentage)];
+    self.currentLabel.text = [NSString stringWithFormat:@"已完成%ld%%", percentage];
 }
 
 #pragma mark - lazy
@@ -132,7 +205,7 @@
 {
     if (!_updateCircle) {
         //进度环
-        _updateCircle = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.view.center.x - 57.5, 205, 115, 115) total:@(1) current:@(0) clockwise:YES shadow:YES shadowColor:[UIColor colorWithWhite:1 alpha:0.5] displayCountingLabel:NO overrideLineWidth:@(3)];
+        _updateCircle = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.view.center.x - 57.5, 205, 115, 115) total:@(100) current:@(0) clockwise:YES shadow:YES shadowColor:[UIColor colorWithWhite:1 alpha:0.5] displayCountingLabel:NO overrideLineWidth:@(3)];
         _updateCircle.backgroundColor = [UIColor clearColor];
         [_updateCircle setStrokeColor:[UIColor whiteColor]];
         //[_updateCircle setStrokeColorGradientStart:[UIColor colorWithWhite:1 alpha:0.5]];

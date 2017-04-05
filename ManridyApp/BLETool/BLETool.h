@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "manridyModel.h"
+#import <CoreBluetooth/CoreBluetooth.h>
+#import "manridyBleDevice.h"
 
 @class manridyModel;
 
@@ -31,8 +33,6 @@ typedef enum{
     SystemBLEStatePoweredOff,
     SystemBLEStatePoweredOn,
 } SystemBLEState;
-
-@class manridyBleDevice;
 
 //扫描设备协议
 @protocol BleDiscoverDelegate <NSObject>
@@ -138,26 +138,20 @@ typedef enum{
 
 @end
 
-@interface BLETool : NSObject
+@interface BLETool : NSObject <CBCentralManagerDelegate,CBPeripheralDelegate>
 
 + (instancetype)shareInstance;
 
 //当前连接的设备
 @property (nonatomic ,strong) manridyBleDevice *currentDev;
-
 @property (nonatomic ,assign) kBLEstate connectState; //support add observer ,abandon @readonly ,don't change it anyway.
-
 @property (nonatomic ,weak) id <BleDiscoverDelegate>discoverDelegate;
-
 @property (nonatomic ,weak) id <BleConnectDelegate>connectDelegate;
-
 @property (nonatomic ,weak) id <BleReceiveDelegate>receiveDelegate;
-
 @property (nonatomic ,weak) id <BleReceiveSearchResquset>searchDelegate;
-
 @property (nonatomic ,assign) BOOL isReconnect;
-
 @property(nonatomic, assign,) SystemBLEState systemBLEstate;
+@property (nonatomic ,strong) CBCentralManager *myCentralManager;
 
 #pragma mark - action of connecting layer -连接层操作
 //判断有没有当前设备有没有连接的

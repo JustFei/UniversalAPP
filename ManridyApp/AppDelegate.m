@@ -35,19 +35,19 @@ static void completionCallback(SystemSoundID mySSID)
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    //获得字体族的名字
-    NSArray *arr = [UIFont familyNames];    
-    
-    for (NSString *family in arr) {
-        //打印字体族名
-        NSLog(@"%@", family);
-        NSArray *arr2 = [UIFont fontNamesForFamilyName:family];
-        
-        for (NSString *name in arr2) {
-            
-            NSLog(@"***%@", name);
-        }
-    }
+//    //获得字体族的名字
+//    NSArray *arr = [UIFont familyNames];    
+//    
+//    for (NSString *family in arr) {
+//        //打印字体族名
+//        NSLog(@"%@", family);
+//        NSArray *arr2 = [UIFont fontNamesForFamilyName:family];
+//        
+//        for (NSString *name in arr2) {
+//            
+//            NSLog(@"***%@", name);
+//        }
+//    }
     
     
     [Bugly startWithAppId:@"2d7b0139a9"];
