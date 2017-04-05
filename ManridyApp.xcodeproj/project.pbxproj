@@ -89,6 +89,7 @@
 		9CB7010A1E8B5923004B97D0 /* UnitsSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB701091E8B5923004B97D0 /* UnitsSettingViewController.m */; };
 		9CC5597C1E2F72170074AE54 /* SedentaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5597B1E2F72170074AE54 /* SedentaryModel.m */; };
 		9CCFE1B31DD9CCA200FD5B6F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFE1B21DD9CCA200FD5B6F /* AboutViewController.m */; };
+		9CD9EE501E94880C00915918 /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD9EE4F1E94880C00915918 /* UpdateViewController.m */; };
 		9CDCF9581E8E4C89006625BD /* UnitsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDCF9571E8E4C89006625BD /* UnitsTool.m */; };
 		9CF2F6C41DD458010091ECB5 /* Remind.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2F6C31DD458010091ECB5 /* Remind.m */; };
 		EC8F9D09241EC54AC7AD2BEE /* libPods-ManridyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9871DE041C8D7829FF5269 /* libPods-ManridyApp.a */; };
@@ -409,6 +410,8 @@
 		9CC5597B1E2F72170074AE54 /* SedentaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SedentaryModel.m; path = BLETool/Model/SedentaryModel.m; sourceTree = "<group>"; };
 		9CCFE1B11DD9CCA200FD5B6F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Setting/About/AboutViewController.h; sourceTree = "<group>"; };
 		9CCFE1B21DD9CCA200FD5B6F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = Setting/About/AboutViewController.m; sourceTree = "<group>"; };
+		9CD9EE4E1E94880C00915918 /* UpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateViewController.h; path = Setting/About/Update/UpdateViewController.h; sourceTree = "<group>"; };
+		9CD9EE4F1E94880C00915918 /* UpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateViewController.m; path = Setting/About/Update/UpdateViewController.m; sourceTree = "<group>"; };
 		9CDCF9561E8E4C89006625BD /* UnitsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitsTool.h; path = UnitsTool/UnitsTool.h; sourceTree = "<group>"; };
 		9CDCF9571E8E4C89006625BD /* UnitsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnitsTool.m; path = UnitsTool/UnitsTool.m; sourceTree = "<group>"; };
 		9CF2F6C21DD458010091ECB5 /* Remind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Remind.h; path = BLETool/Model/Remind.h; sourceTree = "<group>"; };
@@ -880,8 +883,18 @@
 			children = (
 				9CCFE1B11DD9CCA200FD5B6F /* AboutViewController.h */,
 				9CCFE1B21DD9CCA200FD5B6F /* AboutViewController.m */,
+				9CD9EE4D1E9487A100915918 /* Update */,
 			);
 			name = About;
+			sourceTree = "<group>";
+		};
+		9CD9EE4D1E9487A100915918 /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				9CD9EE4E1E94880C00915918 /* UpdateViewController.h */,
+				9CD9EE4F1E94880C00915918 /* UpdateViewController.m */,
+			);
+			name = Update;
 			sourceTree = "<group>";
 		};
 		9CDCF9551E8E4C4C006625BD /* UnitsTool */ = {
@@ -1096,6 +1109,7 @@
 				10EE961D1DB4BFC70048D594 /* PhoneRemindViewController.m in Sources */,
 				9C1B27791DDEFCE0009663F0 /* BooldHistoryViewController.m in Sources */,
 				10C47E9A1DA88F9900D949CA /* BindPeripheralViewController.m in Sources */,
+				9CD9EE501E94880C00915918 /* UpdateViewController.m in Sources */,
 				102474FB1DAA41E000F70E4F /* SetTimeModel.m in Sources */,
 				109D4E771DAF7B7300E11890 /* UserInfoModel.m in Sources */,
 				104A70681D9BA46A00CC73F5 /* UserInfoViewController.m in Sources */,

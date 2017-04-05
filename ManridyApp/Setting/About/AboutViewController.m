@@ -7,6 +7,8 @@
 //
 
 #import "AboutViewController.h"
+#import "MBProgressHUD.h"
+#import "UpdateViewController.h"
 
 #define WIDTH self.view.frame.size.width
 #define HEIGHT self.view.frame.size.height
@@ -19,6 +21,8 @@
 @property (nonatomic ,strong) UIView *cutView;
 @property (nonatomic ,strong) UILabel *softwareLabel;
 @property (nonatomic ,strong) UILabel *hardwareLabel;
+@property (nonatomic ,strong) UIButton *checkUpdateButton;
+@property (nonatomic ,strong) MBProgressHUD *hud;
 
 @end
 
@@ -65,12 +69,78 @@
         self.hardwareLabel.hidden = YES;
     }
     [self.view addSubview:self.hardwareLabel];
+    
+    self.checkUpdateButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.checkUpdateButton.frame = CGRectMake(self.view.frame.size.width - 100, self.hardwareLabel.frame.origin.y, 80, 30);
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"检查更新"];
+    NSRange strRange = {0,[str length]};
+    [str addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:strRange];
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:108.0 / 255.0 green:108.0 / 255.0 blue:108.0 / 255.0 alpha:1] range:strRange];
+    [self.checkUpdateButton setAttributedTitle:str forState:UIControlStateNormal];
+    
+    [self.checkUpdateButton addTarget:self action:@selector(checkUpdate:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.checkUpdateButton];
 }
 
 #pragma mark - Action
-- (void)checkUpDate:(UIButton *)sender
+- (void)checkUpdate:(UIButton *)sender
 {
+    self.hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    self.hud.mode = MBProgressHUDModeIndeterminate;
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //检查设备固件的版本号:高于1.3.4的才支持空中升级
+        NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
+        version = [version stringByReplacingOccurrencesOfString:@"." withString:@""];
+        if (version.integerValue >= 134) {
+            [self.hud hideAnimated:YES];
+            UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"更新提示" message:@"有新版本，是否更新" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAc = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                UpdateViewController *udVC = [[UpdateViewController alloc] init];
+                 CATransition * animation = [CATransition animation];
+                animation.duration = 0.5;    //  时间
+                
+                /**  type：动画类型
+                 *  pageCurl       向上翻一页
+                 *  pageUnCurl     向下翻一页
+                 *  rippleEffect   水滴
+                 *  suckEffect     收缩
+                 *  cube           方块
+                 *  oglFlip        上下翻转
+                 */
+                animation.type = @"rippleEffect";
+                
+                /**  type：页面转换类型
+                 *  kCATransitionFade       淡出
+                 *  kCATransitionMoveIn     覆盖
+                 *  kCATransitionReveal     底部显示
+                 *  kCATransitionPush       推出
+                 */
+                //animation.type = kCATransitionMoveIn;
+                
+                //PS：type 更多效果请 搜索： CATransition
+                
+                /**  subtype：出现的方向
+                 *  kCATransitionFromRight       右
+                 *  kCATransitionFromLeft        左
+                 *  kCATransitionFromTop         上
+                 *  kCATransitionFromBottom      下
+                 */
+                //animation.subtype = kCATransitionFromBottom;
+                
+                [self.view.window.layer addAnimation:animation forKey:nil];
+                [self presentViewController:udVC animated:YES completion:nil];
+            }];
+            UIAlertAction *cancelAc = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            [vc addAction:okAc];
+            [vc addAction:cancelAc];
+            [self presentViewController:vc animated:YES completion:nil];
+        }else {
+            self.hud.label.text = @"暂无更新";
+            self.hud.mode = MBProgressHUDModeText;
+            [self.hud hideAnimated:YES afterDelay:2];
+        }
+    });
 }
 
 - (void)didReceiveMemoryWarning {

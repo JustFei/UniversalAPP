@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/UnitsTool/UnitsTool.m"
-            timestampString = "512648935.449278"
+            filePath = "ManridyApp/Setting/About/Update/UpdateViewController.m"
+            timestampString = "513068391.141921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "+kmAndMi:withMode:"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "-createUI"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/AppDelegate.m"
-            timestampString = "512713057.183627"
+            filePath = "ManridyApp/Setting/About/Update/UpdateViewController.m"
+            timestampString = "513068095.874573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-createUI"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManridyApp/Setting/About/Update/UpdateViewController.m"
+            timestampString = "513068391.141921"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-doSomeWorkWithProgress"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
