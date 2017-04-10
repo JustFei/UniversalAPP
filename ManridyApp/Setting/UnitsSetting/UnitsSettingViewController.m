@@ -8,6 +8,7 @@
 
 #import "UnitsSettingViewController.h"
 #import "UnitsSettingTableViewCell.h"
+#import "BLETool.h"
 
 @interface UnitsSettingViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -86,13 +87,17 @@
 //修改设置的公制英制属性
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 0) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMetric"];
-    }else {
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isMetric"];
+    if ([BLETool shareInstance].connectState == kBLEstateDidConnected) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        if (indexPath.row == 0) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMetric"];
+            [[BLETool shareInstance] writeUnitToPeripheral:NO];
+        }else {
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isMetric"];
+            [[BLETool shareInstance] writeUnitToPeripheral:YES];
+        }
+        [tableView reloadData];
     }
-    [tableView reloadData];
 }
 
 //判断是否是公制单位

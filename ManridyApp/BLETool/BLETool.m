@@ -606,6 +606,17 @@ static BLETool *bleTool = nil;
     }
 }
 
+/*推送公制和英制单位
+ ImperialSystem  YES = 英制
+ NO  = 公制
+ */
+- (void)writeUnitToPeripheral:(BOOL)ImperialSystem
+{
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:ImperialSystem ? @"FC170001" : @"FC170000"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
 #pragma mark - CBCentralManagerDelegate
 //检查设备蓝牙开关的状态
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
