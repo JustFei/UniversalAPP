@@ -239,8 +239,14 @@
 //本月计步统计:
 "currentMonthData" = "이번 달 걸음 통계:모두（%ld걸음/%.1f KM/%ld칼로리）";
 
+//本月计步统计:
+"currentMonthDataImperial" = "이번 달 걸음 통계:모두（%ld걸음/%.1f MI/%ld칼로리）";
+
 //平均公里和卡路里
-"averagerMandK" = "%.1f KM/%ld 킬로칼로리";
+"averagerMandK" = "%.1f KM/%ld Kcal";
+
+//平均公里和卡路里
+"averagerMandKImperial" = "%.1f MI/%ld Kcal";
 
 //MARK: 心率历史
 //当月平均心率
@@ -360,7 +366,10 @@
 "haveNOBindPer" = "장비가 바인딩되지 않고 설정화면에 가 바인딩하기...";
 
 //公里/千卡
-"currentStepAndKCal" = "%.1f KM/%@ 킬로칼로리";
+"currentStepAndKCal" = "%.1f KM/%@ Kcal";
+
+//英里/千卡
+"currentStepAndKCalImperial" = "%.1fMI/%@Kcal";
 
 //浅睡
 "lowSleepData" = "겉잠%.2fH";

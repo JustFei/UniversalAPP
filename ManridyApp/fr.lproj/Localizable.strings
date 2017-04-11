@@ -245,6 +245,9 @@
 //平均公里和卡路里
 "averagerMandK" = " %.1fKm/%ldkcal";
 
+//平均公里和卡路里
+"averagerMandKImperial" = "%.1f MI/%ld Kcal";
+
 //MARK: 心率历史
 //当月平均心率
 "averagerHR" = "Fréquence cardiaque moyenne de ce mois-ci";
@@ -302,7 +305,7 @@
 "currentWeekStepData" = "Statistiques de podomètre de cette semaine-ci: %ld pas(%.1f km/%ld cal) en total";
 
 //本周计步统计
-"currentWeekStepData" = "Statistiques de podomètre de cette semaine-ci: %ld pas(%.1f mi/%ld cal) en total";
+"currentWeekStepDataImperial" = "Statistiques de podomètre de cette semaine-ci: %ld pas(%.1f mi/%ld cal) en total";
 
 //步
 "step" = "%@：%@Comptage de pas";
@@ -364,6 +367,9 @@
 
 //公里/千卡
 "currentStepAndKCal" = " %.1fKm/%@kcal";
+
+//英里/千卡
+"currentStepAndKCalImperial" = "%.1fMI/%@Kcal";
 
 //浅睡
 "lowSleepData" = "Sommeil léger%.2fH";

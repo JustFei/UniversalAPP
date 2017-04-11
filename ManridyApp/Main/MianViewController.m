@@ -20,6 +20,7 @@
 #import "BooldHistoryViewController.h"
 #import "BOHistoryViewController.h"
 #import "NSStringTool.h"
+#import "UnitsTool.h"
 
 #import "SettingViewController.h"
 
@@ -360,7 +361,7 @@
                     {
                         [self.stepView.stepLabel setText:manridyModel.sportModel.stepNumber];
                         double mileage = manridyModel.sportModel.mileageNumber.integerValue / 1000.f;
-                        [self.stepView.mileageAndkCalLabel setText:[NSString stringWithFormat:NSLocalizedString(@"currentStepAndKCal", nil),mileage ,manridyModel.sportModel.kCalNumber]];
+                        [self.stepView.mileageAndkCalLabel setText:[UnitsTool isMetricOrImperialSystem] ? [NSString stringWithFormat:NSLocalizedString(@"currentStepAndKCal", nil),mileage ,manridyModel.sportModel.kCalNumber] : [NSString stringWithFormat:NSLocalizedString(@"currentStepAndKCalImperial", nil),[UnitsTool kmAndMi:mileage withMode:MetricToImperial], manridyModel.sportModel.kCalNumber] ];
 
                         if (_userArr.count != 0) {
                             

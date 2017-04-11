@@ -243,8 +243,14 @@
 //本月计步统计:
 "currentMonthData" = "今月歩数統計：（%ld步/%.1fKM/%ldKcal）";
 
+//本月计步统计:
+"currentMonthDataImperial" = "今月歩数統計：（%ld步/%.1fMI/%ldKcal）";
+
 //平均公里和卡路里  平均キロ及びカロリー
-"averagerMandK" = "%.1fKM/%ldKcar";
+"averagerMandK" = "%.1fKM/%ldKcal";
+
+//平均公里和卡路里
+"averagerMandKImperial" = "%.1f MI/%ld Kcal";
 
 //MARK: 心率历史
 //当月平均心率
@@ -366,6 +372,9 @@
 
 //公里/千卡
 "currentStepAndKCal" = "%.1f KM/%@ Kcal";
+
+//英里/千卡
+"currentStepAndKCalImperial" = "%.1fMI/%@Kcal";
 
 //浅睡
 "lowSleepData" = "浅い睡眠 %0.2fH";

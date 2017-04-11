@@ -237,10 +237,17 @@
 "currentMonth" = "%ldМесяц";
 
 //本月计步统计:
-"currentMonthData" = "Подсчет количества шагов на этот месяц : всего %ld шагов (%.1f км/%ld ккал)";
+"currentMonthData" = "Подсчет количества шагов на этот месяц : всего %ld шагов (%.1f км/%ld Kcal)";
+
+//本月计步统计:
+"currentMonthDataImperial" = "Подсчет количества шагов на этот месяц : всего %ld шагов (%.1f MI/%ld кcal)";
+
 
 //平均公里和卡路里
-"averagerMandK" = " (%.1f км/%ld ккал)";
+"averagerMandK" = " (%.1f км/%ld Kcal)";
+
+//平均公里和卡路里
+"averagerMandKImperial" = "%.1f MI/%ld Kcal";
 
 //MARK: 心率历史
 //当月平均心率
@@ -296,10 +303,10 @@
 
 //MARK:计步当前
 //本周计步统计（公制）
-"currentWeekStepData" = "Подсчет количества шагов на эту неделю : всего %ld шагов (%.1f км/%ld ккал)";
+"currentWeekStepData" = "Подсчет количества шагов на эту неделю : всего %ld шагов (%.1f км/%ld Kcal)";
 
 //本周计步统计（英制）
-"currentWeekStepDataImperial" = "Подсчет количества шагов на эту неделю : всего %ld шагов (%.1f mi/%ld ккал)";
+"currentWeekStepDataImperial" = "Подсчет количества шагов на эту неделю : всего %ld шагов (%.1f mi/%ld Kcal)";
 
 //步
 "step" = "%@：%@Подсчет количества шагов";
@@ -360,7 +367,10 @@
 "haveNOBindPer" = "Не привязали к устройству, прошу привязать к устройству на интерфейсе";
 
 //公里/千卡
-"currentStepAndKCal" = " (%.1f км/%@ ккал)";
+"currentStepAndKCal" = " (%.1f км/%@ Kcal)";
+
+//英里/千卡
+"currentStepAndKCalImperial" = "%.1fMI/%@Kcal";
 
 //浅睡
 "lowSleepData" = "Не глубокий сон%.2fH";

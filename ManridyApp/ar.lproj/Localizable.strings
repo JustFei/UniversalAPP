@@ -237,10 +237,16 @@
 "currentMonth" = "%ldشهر";
 
 //1本月计步统计:
-"currentMonthData" = "احصاءات عدد الخطوات في هذا الشهر:  اجمالي (%.1fكم/%ldكالوري）";
+"currentMonthData" = "احصاءات عدد الخطوات في هذا الشهر:  اجمالي (%.1f KM/%ld Kcal）";
+
+//本月计步统计:
+"currentMonthDataImperial" = "احصاءات عدد الخطوات في هذا الشهر:  اجمالي (%.1f MI/%ld Kcal）";
 
 //平均公里和卡路里
-"averagerMandK" = "%.1fكم/%ldكالوري";
+"averagerMandK" = "%.1f KM/%ld Kcal";
+
+//平均公里和卡路里
+"averagerMandKImperial" = "%.1f MI/%ld Kcal";
 
 //MARK: 心率历史
 //当月平均心率
@@ -366,6 +372,9 @@
 
 //公里/千卡
 "currentStepAndKCal" = "%.1fكم/%ldكالوري";
+
+//英里/千卡
+"currentStepAndKCalImperial" = "%.1fMI/%@Kcal";
 
 //浅睡
 "lowSleepData" = "نوم خفيف%.2fH";

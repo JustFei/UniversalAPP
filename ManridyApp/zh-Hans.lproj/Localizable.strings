@@ -236,8 +236,14 @@
 //本月计步统计:
 "currentMonthData" = "本月计步统计：共（%ld步/%.1f公里/%ld千卡）";
 
+//本月计步统计:
+"currentMonthDataImperial" = "本月计步统计：共（%ld步/%.1f英里/%ld千卡）";
+
 //平均公里和卡路里
 "averagerMandK" = "%.1f公里/%ld千卡";
+
+//平均公里和卡路里
+"averagerMandKImperial" = "%.1f英里/%ld千卡";
 
 //MARK: 心率历史
 //当月平均心率
@@ -358,6 +364,9 @@
 
 //公里/千卡
 "currentStepAndKCal" = "%.1f公里/%@千卡";
+
+//英里/千卡
+"currentStepAndKCalImperial" = "%.1f英里/%@千卡";
 
 //浅睡
 "lowSleepData" = "浅睡%0.2f小时";

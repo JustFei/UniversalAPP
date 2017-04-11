@@ -239,8 +239,14 @@
 //本月计步统计:
 "currentMonthData" = "estatísticas pedômetro deste mês: total (%ld passo /%.1f km /%ld kcal)";
 
+//本月计步统计:
+"currentMonthDataImperial" =  "estatísticas pedômetro deste mês: total (%ld passo /%.1f mi /%ld kcal)";
+
 //平均公里和卡路里
 "averagerMandK" = "%.1f Km /%ld kcal";
+
+//平均公里和卡路里
+"averagerMandKImperial" = "%.1f MI/%ld Kcal";
 
 //MARK: 心率历史
 //当月平均心率
@@ -361,6 +367,9 @@
 
 //公里/千卡
 "currentStepAndKCal" = "%.1f Km /%@ kcal";
+
+//英里/千卡
+"currentStepAndKCalImperial" = "%.1fMI/%@Kcal";
 
 //浅睡
 "lowSleepData" = "Sono leve%.2fH";

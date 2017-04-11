@@ -28,4 +28,15 @@
     return mode == MetricToImperial ? param * 0.62137 : param / 0.62137;
 }
 
+//判断是否是公制单位
++ (BOOL)isMetricOrImperialSystem
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"]) {
+        BOOL isMetric = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"];
+        return isMetric;
+    }else {
+        return NO;
+    }
+}
+
 @end

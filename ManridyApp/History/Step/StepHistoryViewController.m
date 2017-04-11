@@ -14,6 +14,7 @@
 #import "SportModel.h"
 #import "UserInfoModel.h"
 #import "NSStringTool.h"
+#import "UnitsTool.h"
 
 @interface StepHistoryViewController () <DropdownMenuDelegate, TitleMenuDelegate>
 {
@@ -178,9 +179,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             double avergaeMileage = (sumMileage / haveDataDays);
             
-            [self.sumStepAndMilAndkCal setText:[NSString stringWithFormat:NSLocalizedString(@"currentMonthData", nil),(long)sumStep ,(double)sumMileage / 1000 ,sumkCal]];
+            [self.sumStepAndMilAndkCal setText:[UnitsTool isMetricOrImperialSystem] ? [NSString stringWithFormat:NSLocalizedString(@"currentMonthData", nil),(long)sumStep ,(double)sumMileage / 1000 ,sumkCal] : [NSString stringWithFormat:NSLocalizedString(@"currentMonthDataImperial", nil),(long)sumStep ,[UnitsTool kmAndMi:(double)sumMileage / 1000 withMode:MetricToImperial], sumkCal]];
             [self.averageStepLabel setText:[NSString stringWithFormat:@"%ld",(sumStep / haveDataDays)]];
-            [self.averagerMileageAndkCalLabel setText:[NSString stringWithFormat:NSLocalizedString(@"averagerMandK", nil),avergaeMileage / 1000 ,(sumkCal / haveDataDays)]];
+            [self.averagerMileageAndkCalLabel setText: [UnitsTool isMetricOrImperialSystem] ? [NSString stringWithFormat:NSLocalizedString(@"averagerMandK", nil),avergaeMileage / 1000 ,(sumkCal / haveDataDays)] : [NSString stringWithFormat:NSLocalizedString(@"averagerMandKImperial", nil),[UnitsTool kmAndMi:avergaeMileage / 1000 withMode:MetricToImperial], (sumkCal / haveDataDays)]];
             NSArray *_userArr = [self.myFmdbTool queryAllUserInfo];
             if (_userArr.count != 0) {
                 

@@ -21,5 +21,6 @@ typedef enum : NSUInteger {
 + (NSInteger)kgAndLb:(NSInteger)param withMode:(Mode)mode;
 /** 千米转英里 */
 + (NSInteger)kmAndMi:(NSInteger)param withMode:(Mode)mode;
-
+//判断是否是公制单位
++ (BOOL)isMetricOrImperialSystem;
 @end

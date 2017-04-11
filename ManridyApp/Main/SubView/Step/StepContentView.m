@@ -106,7 +106,7 @@
         }
     }
     //    double mileage = sumMileage;
-    _isMetric = [self isMetricOrImperialSystem];
+    _isMetric = [UnitsTool isMetricOrImperialSystem];
     //判断单位是英制还是公制
     //TODO: 这里翻译还要改一下
     [self.weekStatisticsLabel setText:[NSString stringWithFormat:_isMetric ?  NSLocalizedString(@"currentWeekStepData", nil) : NSLocalizedString(@"currentWeekStepDataImperial", nil),sumStep ,_isMetric ?  sumMileage / 1000.f : [UnitsTool kmAndMi:sumMileage / 1000.f withMode:ImperialToMetric] ,sumkCal]];
@@ -163,17 +163,6 @@
     }else {
         BindPeripheralViewController *vc = [[BindPeripheralViewController alloc] init];
         [[self findViewController:self].navigationController pushViewController:vc animated:YES];
-    }
-}
-
-//判断是否是公制单位
-- (BOOL)isMetricOrImperialSystem
-{
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"]) {
-        BOOL isMetric = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"];
-        return isMetric;
-    }else {
-        return NO;
     }
 }
 
