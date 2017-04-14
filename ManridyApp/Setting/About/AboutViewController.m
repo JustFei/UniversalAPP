@@ -63,12 +63,7 @@
     
     self.hardwareLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.softwareLabel.frame.origin.y + 45 * WIDTH / 320, (WIDTH - 30) * WIDTH / 320,30)];
     self.hardwareLabel.backgroundColor = [UIColor clearColor];
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"version"] && [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"]) {
-        [self.hardwareLabel setText:[NSString stringWithFormat:NSLocalizedString(@"hardWare", nil),[[NSUserDefaults standardUserDefaults] objectForKey:@"version"]]];
-    }else {
-        self.hardwareLabel.hidden = YES;
-    }
-    [self.view addSubview:self.hardwareLabel];
+    
     
     self.checkUpdateButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.checkUpdateButton.frame = CGRectMake(self.view.frame.size.width - 100, self.hardwareLabel.frame.origin.y, 80, 30);
@@ -76,10 +71,18 @@
     NSRange strRange = {0,[str length]};
     [str addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:strRange];
     [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:108.0 / 255.0 green:108.0 / 255.0 blue:108.0 / 255.0 alpha:1] range:strRange];
-    [self.checkUpdateButton setAttributedTitle:str forState:UIControlStateNormal];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"version"] && [[NSUserDefaults standardUserDefaults] boolForKey:@"isBind"]) {
+        [self.checkUpdateButton setAttributedTitle:str forState:UIControlStateNormal];
+        [self.hardwareLabel setText:[NSString stringWithFormat:NSLocalizedString(@"hardWare", nil),[[NSUserDefaults standardUserDefaults] objectForKey:@"version"]]];
+    }else {
+        self.checkUpdateButton.hidden = YES;
+        self.hardwareLabel.hidden = YES;
+    }
     
     [self.checkUpdateButton addTarget:self action:@selector(checkUpdate:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.checkUpdateButton];
+    [self.view addSubview:self.hardwareLabel];
 }
 
 #pragma mark - Action
