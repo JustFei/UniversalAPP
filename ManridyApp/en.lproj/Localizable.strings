@@ -77,16 +77,16 @@
 "findPer" = "Find device";
 
 //久坐提醒
-"sedentaryRemind" = "久坐提醒";
+"sedentaryRemind" = "Sedentary reminder";
 
 //开始时间
-"beginTime" = "开始时间";
+"beginTime" = "start time";
 
 //结束时间
-"endTime" = "结束时间";
+"endTime" = "end time";
 
 //午休免打扰
-"unDisturb" = "午休免打扰";
+"unDisturb" = "nap time";
 
 //闹钟设置
 "clockSet" = "Clock setting";

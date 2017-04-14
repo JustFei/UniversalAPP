@@ -38,7 +38,10 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        _dataArr = @[@"用户信息",@"信息提醒",@"防丢设置",@"查看电量",@"设备锁定",@"关于"];
-        _dataArr = @[NSLocalizedString(@"userInfo", nil),NSLocalizedString(@"infoRemind", nil),NSLocalizedString(@"perBind", nil),NSLocalizedString(@"about", nil),NSLocalizedString(@"UnitsSetting", nil)];
+        _dataArr = @[NSLocalizedString(@"userInfo", nil),NSLocalizedString(@"infoRemind", nil),NSLocalizedString(@"perBind", nil),NSLocalizedString(@"about", nil)
+                     //先隐藏单位设置功能
+                     //,NSLocalizedString(@"UnitsSetting", nil)
+                     ];
         _imageNameArr = @[@"set_user_icon",@"set_alart_icon",@"set_ble_icon",@"set_about_icon",@""];
     }
     return self;
