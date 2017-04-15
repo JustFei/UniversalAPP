@@ -160,7 +160,7 @@ static BLETool *bleTool = nil;
     now=[NSDate date];
     comps = [calendar components:unitFlags fromDate:now];
     
-    NSString *currentStr = [NSString stringWithFormat:@"%02d%02ld%02ld%02ld%02ld%02ld%02ld",[comps year] % 100 ,[comps month] ,[comps day] ,[comps hour] ,[comps minute] ,[comps second] ,[comps weekday] - 1];
+    NSString *currentStr = [NSString stringWithFormat:@"%02ld%02ld%02ld%02ld%02ld%02ld%02ld",[comps year] % 100 ,[comps month] ,[comps day] ,[comps hour] ,[comps minute] ,[comps second] ,[comps weekday] - 1];
 //    NSLog(@"-----------weekday is %ld",(long)[comps weekday]);//在这里需要注意的是：星期日是数字1，星期一时数字2，以此类推。。。
     
     //传入时间和头，返回协议字符串

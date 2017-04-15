@@ -56,6 +56,7 @@
 		10FF5CDA1DC33BEA0059FE00 /* PhoneRemindTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FF5CD81DC33BEA0059FE00 /* PhoneRemindTableViewCell.m */; };
 		10FF5CF61DC352FB0059FE00 /* PhoneRemindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FF5CF51DC352FB0059FE00 /* PhoneRemindView.m */; };
 		10FF5CF91DC35AEC0059FE00 /* SectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FF5CF81DC35AEC0059FE00 /* SectionModel.m */; };
+		379214FFF8B44A58D27690FC /* Pods_ManridyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B061710DC4AF3D442E877BC3 /* Pods_ManridyApp.framework */; };
 		9C06C19C1DDFE2FC00418C7C /* BloodO2ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C06C19B1DDFE2FC00418C7C /* BloodO2ContentView.m */; };
 		9C06C1BD1DE05C7A00418C7C /* BOHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C06C1BB1DE05C7A00418C7C /* BOHistoryViewController.m */; };
 		9C0845511E6A9D5F00C9E04F /* AlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0845501E6A9D5F00C9E04F /* AlertTool.m */; };
@@ -64,8 +65,6 @@
 		9C1B27711DDE8E2C009663F0 /* BloodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27701DDE8E2C009663F0 /* BloodModel.m */; };
 		9C1B27741DDE9EBE009663F0 /* BloodO2Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */; };
 		9C1B27791DDEFCE0009663F0 /* BooldHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */; };
-		9C2ADA371E94D9FF00DABB0C /* iOSDFULibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2ADA351E94D9FF00DABB0C /* iOSDFULibrary.framework */; };
-		9C2ADA381E94D9FF00DABB0C /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2ADA361E94D9FF00DABB0C /* Zip.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		9C2ADA3E1E94DF7600DABB0C /* hex.zip in Resources */ = {isa = PBXBuildFile; fileRef = 9C2ADA3D1E94DF7600DABB0C /* hex.zip */; };
 		9C57F1C91DF279300090C2EF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F1CB1DF279300090C2EF /* Launch Screen.storyboard */; };
 		9C57F1D11DF2882F0090C2EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F1D31DF2882F0090C2EF /* InfoPlist.strings */; };
@@ -87,8 +86,6 @@
 		9C65C8EA1E8DE7C2001A4525 /* UnitsSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C65C8E91E8DE7C2001A4525 /* UnitsSettingTableViewCell.m */; };
 		9C728F681DD5DB2800BEF69E /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C728F671DD5DB2800BEF69E /* PopupView.m */; };
 		9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C728F691DD5DB4B00BEF69E /* PopupView.xib */; };
-		9C729A2D1EA0A98600498C64 /* iOSDFULibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C729A2B1EA0A98600498C64 /* iOSDFULibrary.framework */; };
-		9C729A2E1EA0A98600498C64 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C729A2C1EA0A98600498C64 /* Zip.framework */; };
 		9C8017E61E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8017E51E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.m */; };
 		9C8017E81E8F628B00654868 /* gotham.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C8017E71E8F628B00654868 /* gotham.ttf */; };
 		9CB7010A1E8B5923004B97D0 /* UnitsSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB701091E8B5923004B97D0 /* UnitsSettingViewController.m */; };
@@ -97,21 +94,7 @@
 		9CD9EE501E94880C00915918 /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD9EE4F1E94880C00915918 /* UpdateViewController.m */; };
 		9CDCF9581E8E4C89006625BD /* UnitsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDCF9571E8E4C89006625BD /* UnitsTool.m */; };
 		9CF2F6C41DD458010091ECB5 /* Remind.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2F6C31DD458010091ECB5 /* Remind.m */; };
-		EC8F9D09241EC54AC7AD2BEE /* libPods-ManridyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9871DE041C8D7829FF5269 /* libPods-ManridyApp.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		9C2ADA321E94D95600DABB0C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1012C71E1DBEFE470013E99B /* SleepHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepHistoryViewController.h; path = History/Sleep/SleepHistoryViewController.h; sourceTree = "<group>"; };
@@ -235,8 +218,6 @@
 		9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BloodO2Model.m; path = BLETool/Model/BloodO2Model.m; sourceTree = "<group>"; };
 		9C1B27761DDEFCE0009663F0 /* BooldHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BooldHistoryViewController.h; path = History/Blood/BooldHistoryViewController.h; sourceTree = "<group>"; };
 		9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BooldHistoryViewController.m; path = History/Blood/BooldHistoryViewController.m; sourceTree = "<group>"; };
-		9C2ADA351E94D9FF00DABB0C /* iOSDFULibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSDFULibrary.framework; path = "/Users/xiefeixing/Desktop/桌面 - 谢飞的MacBook Pro/Desktop/公司资料/ProjectList/iwear/ManridyApp/iOSDFULibrary.framework"; sourceTree = "<absolute>"; };
-		9C2ADA361E94D9FF00DABB0C /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = "/Users/xiefeixing/Desktop/桌面 - 谢飞的MacBook Pro/Desktop/公司资料/ProjectList/iwear/ManridyApp/Zip.framework"; sourceTree = "<absolute>"; };
 		9C2ADA3D1E94DF7600DABB0C /* hex.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = hex.zip; sourceTree = "<group>"; };
 		9C2CB4821E17A71F005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
 		9C2CB4831E17A71F005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/StepContentView.xib; sourceTree = "<group>"; };
@@ -422,8 +403,6 @@
 		9C728F661DD5DB2800BEF69E /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupView.h; path = PopupView/PopupView.h; sourceTree = "<group>"; };
 		9C728F671DD5DB2800BEF69E /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupView.m; path = PopupView/PopupView.m; sourceTree = "<group>"; };
 		9C728F691DD5DB4B00BEF69E /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupView.xib; path = PopupView/PopupView.xib; sourceTree = "<group>"; };
-		9C729A2B1EA0A98600498C64 /* iOSDFULibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iOSDFULibrary.framework; sourceTree = "<group>"; };
-		9C729A2C1EA0A98600498C64 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Zip.framework; sourceTree = "<group>"; };
 		9C8017E41E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+YHBaseChangeDefaultFont.h"; path = "Category/UILabel+YHBaseChangeDefaultFont.h"; sourceTree = "<group>"; };
 		9C8017E51E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+YHBaseChangeDefaultFont.m"; path = "Category/UILabel+YHBaseChangeDefaultFont.m"; sourceTree = "<group>"; };
 		9C8017E71E8F628B00654868 /* gotham.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gotham.ttf; sourceTree = "<group>"; };
@@ -439,7 +418,7 @@
 		9CDCF9571E8E4C89006625BD /* UnitsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnitsTool.m; path = UnitsTool/UnitsTool.m; sourceTree = "<group>"; };
 		9CF2F6C21DD458010091ECB5 /* Remind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Remind.h; path = BLETool/Model/Remind.h; sourceTree = "<group>"; };
 		9CF2F6C31DD458010091ECB5 /* Remind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Remind.m; path = BLETool/Model/Remind.m; sourceTree = "<group>"; };
-		FA9871DE041C8D7829FF5269 /* libPods-ManridyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ManridyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B061710DC4AF3D442E877BC3 /* Pods_ManridyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ManridyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,12 +426,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C2ADA381E94D9FF00DABB0C /* Zip.framework in Frameworks */,
-				9C2ADA371E94D9FF00DABB0C /* iOSDFULibrary.framework in Frameworks */,
 				10EE961F1DB4C06E0048D594 /* CoreTelephony.framework in Frameworks */,
-				9C729A2D1EA0A98600498C64 /* iOSDFULibrary.framework in Frameworks */,
-				9C729A2E1EA0A98600498C64 /* Zip.framework in Frameworks */,
-				EC8F9D09241EC54AC7AD2BEE /* libPods-ManridyApp.a in Frameworks */,
+				379214FFF8B44A58D27690FC /* Pods_ManridyApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -937,10 +912,8 @@
 		AC2AC006B33A3099561DC0AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9C729A2B1EA0A98600498C64 /* iOSDFULibrary.framework */,
-				9C729A2C1EA0A98600498C64 /* Zip.framework */,
 				10EE961E1DB4C06E0048D594 /* CoreTelephony.framework */,
-				FA9871DE041C8D7829FF5269 /* libPods-ManridyApp.a */,
+				B061710DC4AF3D442E877BC3 /* Pods_ManridyApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -959,7 +932,6 @@
 				C5290CEC20ADD0AFD8A67138 /* [CP] Embed Pods Frameworks */,
 				D79C6F2FB09D100D36213912 /* [CP] Copy Pods Resources */,
 				9C3097691E7FB5CC00D478AC /* ShellScript */,
-				9C2ADA321E94D95600DABB0C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1077,7 +1049,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+			shellScript = "";
 		};
 		C5290CEC20ADD0AFD8A67138 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1598,7 +1570,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1102E622F505968B236A5DC2 /* Pods-ManridyApp.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1614,10 +1585,12 @@
 				INFOPLIST_FILE = ManridyApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks $(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.manridy.universal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -1625,7 +1598,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4E1494B2899EFE9DB4EFAD91 /* Pods-ManridyApp.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1641,10 +1613,12 @@
 				INFOPLIST_FILE = ManridyApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks $(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.manridy.universal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};

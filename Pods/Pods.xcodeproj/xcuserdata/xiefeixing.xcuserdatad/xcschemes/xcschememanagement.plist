@@ -29,30 +29,50 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Zip.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>iOSDFULibrary.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>11929A53A8AD141288485C2968E5803E</key>
+		<key>016D982990393D4CF14C8AE7998AEC65</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7CEEB7F4CD0B847C8524FB6C3FD41570</key>
+		<key>23CF27B2BA6AC7125EFFEDA8C5AA819F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F12FB4A63E20F601CFB2E64A65B57C1</key>
+		<key>410BE64BD17CDEA8D4ABDE8326ED5C82</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AAE3F666C1BF1C176A356DB246BA6CC9</key>
+		<key>6C18C789438292FED01EB702705FC9AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D058B89EB3B3DF45457A2DCD3971AFFE</key>
+		<key>8855C7E643A19AE2B45A93C8D065F58C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D9A9FAD73C4BA4315DB9E2CBFB1E6CD7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DBA6001481CEA0EBA031CC5C94508FAA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -9,6 +9,7 @@
 #import "UpdateViewController.h"
 #import "PNChart.h"
 #import <iOSDFULibrary/iOSDFULibrary-Swift.h>
+#import <iOSDFULibrary/iOSDFULibrary-umbrella.h>
 #import "BLETool.h"
 
 @interface UpdateViewController () <LoggerDelegate, DFUServiceDelegate, DFUProgressDelegate>
@@ -75,7 +76,7 @@
     //1.创建 DFU 对象
     DFUServiceInitiator *initiator = [[DFUServiceInitiator alloc] initWithCentralManager: self.myBleTool.myCentralManager target:self.myBleTool.currentDev.peripheral];
     //2.选择刷入的固件
-    [initiator withFirmwareFile:firmware];
+    [initiator withFirmware:firmware];
     
     initiator.logger = self;
     initiator.delegate = self;
