@@ -418,3 +418,6 @@
 
 //英制单位
 "ImperialSystem" = "Imperial（In/mi/lb）";
+
+//检查更新
+"checkUpdate" = "更新検査";

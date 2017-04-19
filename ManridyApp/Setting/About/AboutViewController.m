@@ -66,8 +66,8 @@
     
     
     self.checkUpdateButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.checkUpdateButton.frame = CGRectMake(self.view.frame.size.width - 100, self.hardwareLabel.frame.origin.y, 80, 30);
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"检查更新"];
+    self.checkUpdateButton.frame = CGRectMake(self.view.frame.size.width - 150, self.hardwareLabel.frame.origin.y, 120, 30);
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"checkUpdate", nil)];
     NSRange strRange = {0,[str length]};
     [str addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:strRange];
     [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:108.0 / 255.0 green:108.0 / 255.0 blue:108.0 / 255.0 alpha:1] range:strRange];

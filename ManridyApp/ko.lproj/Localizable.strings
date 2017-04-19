@@ -414,3 +414,5 @@
 //英制单位
 "ImperialSystem" = "Imperial（In/mi/lb）";
 
+//检查更新
+"checkUpdate" = "소프트웨어 업데이트";
