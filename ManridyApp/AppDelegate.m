@@ -48,7 +48,10 @@ static void completionCallback(SystemSoundID mySSID)
 //            NSLog(@"***%@", name);
 //        }
 //    }
-    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isMetric"];
+    });
     
     [Bugly startWithAppId:@"2d7b0139a9"];
     

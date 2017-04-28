@@ -64,4 +64,13 @@
 //解析血氧数据（12|92）
 - (manridyModel *)analysisBloodO2Data:(NSData *)data WithHeadStr:(NSString *)head;
 
+//解析拍照的数据（19|89）
+- (manridyModel *)analysisTakePhoto:(NSData *)data WithHeadStr:(NSString *)head;
+
+//解析分段计步的数据（1A|8A）
+- (manridyModel *)analysisSegmentedStep:(NSData *)data WithHeadStr:(NSString *)head;
+
+//解析分段计步的数据（1B|8B）
+- (manridyModel *)analysisSegmentedRun:(NSData *)data WithHeadStr:(NSString *)head;
+
 @end

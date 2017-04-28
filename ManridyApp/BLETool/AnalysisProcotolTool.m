@@ -473,7 +473,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         NSString *hourStr = [timeStr substringWithRange:NSMakeRange(7, 2)];
         NSString *minStr = [timeStr substringWithRange:NSMakeRange(10, 2)];
         
-        NSString *dateString = [NSString stringWithFormat:@"%@/%@-%@:%@",monthStr ,dayStr ,hourStr ,minStr];
+        NSString *dateString = [NSString stringWithFormat:@"%@/%@-%@:%@", monthStr, dayStr, hourStr, minStr];
         
         model.heartRateModel.time = dateString;
         model.heartRateModel.heartRate = HrStr;
@@ -774,6 +774,124 @@ union LAT{
     }
     
     return model;
+}
+
+#pragma mark 解析拍照的数据（19|89）
+//解析拍照的数据（19|89）
+- (manridyModel *)analysisTakePhoto:(NSData *)data WithHeadStr:(NSString *)head
+{
+    manridyModel *model = [[manridyModel alloc] init];
+    model.receiveDataType = ReturnModelTypeTakePhoto;
+    
+    const unsigned char *hexBytes = [data bytes];
+    NSString *ENStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
+    NSString *STStr = [NSString stringWithFormat:@"%02x", hexBytes[2]];
+    
+    if ([ENStr isEqualToString:@"81"]) {
+        model.takePhotoModel.cameraMode = CameraModeEnterCameraMode;
+        model.takePhotoModel.enterCameraMode = [head isEqualToString:@"19"] ? YES : NO;
+    }else if ([ENStr isEqualToString:@"80"]) {
+        model.takePhotoModel.cameraMode = CameraModeExitCameraMode;
+        model.takePhotoModel.exitCameraMode = [head isEqualToString:@"19"] ? YES : NO;
+    }else if ([ENStr isEqualToString:@"00"]) {
+        if ([STStr isEqualToString:@"81"]) {
+            model.takePhotoModel.cameraMode = CameraModeTakePhotoAction;
+            model.takePhotoModel.takePhotoAction = [head isEqualToString:@"19"] ? YES : NO;
+        }else if ([STStr isEqualToString:@"80"]) {
+            model.takePhotoModel.cameraMode = CameraModePhotoActionFinish;
+            model.takePhotoModel.photoActionFinish = [head isEqualToString:@"19"] ? YES : NO;
+        }
+    }
+    
+    return model;
+}
+
+#pragma mark 解析分段计步的数据（1A|8A）
+//解析分段计步的数据（1A|8A）
+- (manridyModel *)analysisSegmentedStep:(NSData *)data WithHeadStr:(NSString *)head
+{
+    //将nsdata 转为 byte 数组
+    NSUInteger len = [data length];
+    Byte *byteData = (Byte*)malloc(len);
+    memcpy(byteData, [data bytes], len);
+    
+    int ah = (byteData[2] << 4 | byteData[3] >> 4) & 0x0fff;
+    int ch = (byteData[4] >> 4 | byteData[3] << 4) & 0x0fff;
+    int timeInterval = byteData[18];
+    NSData *stepData = [data subdataWithRange:NSMakeRange(5, 3)];
+    int stepValue = [NSStringTool parseIntFromData:stepData];
+    
+    NSData *mileageData = [data subdataWithRange:NSMakeRange(8, 3)];
+    int mileageValue = [NSStringTool parseIntFromData:mileageData];
+    
+    NSData *kcalData = [data subdataWithRange:NSMakeRange(11, 3)];
+    int kcalValue = [NSStringTool parseIntFromData:kcalData];
+    
+    NSData *startTimeData = [data subdataWithRange:NSMakeRange(14, 4)];
+    int startTimeValue = [NSStringTool parseIntFromData:startTimeData];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSString *startTimeStr = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:startTimeValue]];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateStr = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:startTimeValue]];
+    
+    manridyModel *model = [[manridyModel alloc] init];
+    model.segmentStepModel.AHCount = ah;
+    model.segmentStepModel.CHCount = ch;
+    model.segmentStepModel.stepNumber = [NSString stringWithFormat:@"%d",stepValue];
+    model.segmentStepModel.kCalNumber = [NSString stringWithFormat:@"%d",kcalValue];
+    model.segmentStepModel.mileageNumber = [NSString stringWithFormat:@"%d",mileageValue];
+    model.segmentStepModel.startTime = startTimeStr;
+    model.segmentStepModel.date = dateStr;
+    model.segmentStepModel.timeInterval = timeInterval;
+    
+    NSLog(@"segmentStepModel == %@", model.segmentStepModel);
+    
+    return  model;
+}
+
+#pragma mark - 解析分段跑步的数据（1B|8B）
+//解析分段跑步的数据（1B|8B）
+- (manridyModel *)analysisSegmentedRun:(NSData *)data WithHeadStr:(NSString *)head
+{
+    //将nsdata 转为 byte 数组
+    NSUInteger len = [data length];
+    Byte *byteData = (Byte*)malloc(len);
+    memcpy(byteData, [data bytes], len);
+    
+    int ah = (byteData[2] << 4 | byteData[3] >> 4) & 0x0fff;
+    int ch = (byteData[4] >> 4 | byteData[3] << 4) & 0x0fff;
+    int timeInterval = byteData[18];
+    NSData *stepData = [data subdataWithRange:NSMakeRange(5, 3)];
+    int stepValue = [NSStringTool parseIntFromData:stepData];
+    
+    NSData *mileageData = [data subdataWithRange:NSMakeRange(8, 3)];
+    int mileageValue = [NSStringTool parseIntFromData:mileageData];
+    
+    NSData *kcalData = [data subdataWithRange:NSMakeRange(11, 3)];
+    int kcalValue = [NSStringTool parseIntFromData:kcalData];
+    
+    NSData *startTimeData = [data subdataWithRange:NSMakeRange(14, 4)];
+    int startTimeValue = [NSStringTool parseIntFromData:startTimeData];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSString *startTimeStr = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:startTimeValue]];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateStr = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:startTimeValue]];
+    
+    manridyModel *model = [[manridyModel alloc] init];
+    model.segmentRunModel.AHCount = ah;
+    model.segmentRunModel.CHCount = ch;
+    model.segmentRunModel.stepNumber = [NSString stringWithFormat:@"%d",stepValue];
+    model.segmentRunModel.kCalNumber = [NSString stringWithFormat:@"%d",kcalValue];
+    model.segmentRunModel.mileageNumber = [NSString stringWithFormat:@"%d",mileageValue];
+    model.segmentRunModel.startTime = startTimeStr;
+    model.segmentRunModel.date = dateStr;
+    model.segmentRunModel.timeInterval = timeInterval;
+    
+    NSLog(@"segmentRunModel == %@", model.segmentStepModel);
+    
+    return  model;
 }
 
 @end

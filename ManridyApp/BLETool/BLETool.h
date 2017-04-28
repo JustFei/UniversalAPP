@@ -129,6 +129,9 @@ typedef enum{
 //change peripheral name success?
 - (void)receiveChangePerNameSuccess:(BOOL)success;
 
+//拍照指令
+- (void)receiveTakePhoto:(manridyModel *)manridyModel;
+
 @end
 
 @protocol BleReceiveSearchResquset <NSObject>
@@ -244,5 +247,15 @@ ImperialSystem  YES = 英制
                 NO  = 公制
 */
 - (void)writeUnitToPeripheral:(BOOL)ImperialSystem;
+
+#pragma mark -拍照
+/** 打开设备的拍照模式 */
+- (void)writeOpenCameraMode;
+
+/** 完成拍照 */
+- (void)writePhotoFinish;
+
+/** 关闭设备的拍照模式 */
+- (void)writeCloseCameraMode;
 
 @end

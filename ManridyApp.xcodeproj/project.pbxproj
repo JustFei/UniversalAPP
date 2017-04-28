@@ -89,10 +89,13 @@
 		9C8017E61E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8017E51E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.m */; };
 		9C8017E81E8F628B00654868 /* gotham.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C8017E71E8F628B00654868 /* gotham.ttf */; };
 		9CB7010A1E8B5923004B97D0 /* UnitsSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB701091E8B5923004B97D0 /* UnitsSettingViewController.m */; };
+		9CBCBC3D1EB312AF005161F4 /* SegmentedStepModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBCBC3C1EB312AF005161F4 /* SegmentedStepModel.m */; };
+		9CBCBC401EB34784005161F4 /* SegmentedRunModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBCBC3F1EB34784005161F4 /* SegmentedRunModel.m */; };
 		9CC5597C1E2F72170074AE54 /* SedentaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5597B1E2F72170074AE54 /* SedentaryModel.m */; };
 		9CCFE1B31DD9CCA200FD5B6F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFE1B21DD9CCA200FD5B6F /* AboutViewController.m */; };
 		9CD9EE501E94880C00915918 /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD9EE4F1E94880C00915918 /* UpdateViewController.m */; };
 		9CDCF9581E8E4C89006625BD /* UnitsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDCF9571E8E4C89006625BD /* UnitsTool.m */; };
+		9CE082F01EB1DB87009565A9 /* TakePhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE082EF1EB1DB87009565A9 /* TakePhotoModel.m */; };
 		9CF2F6C41DD458010091ECB5 /* Remind.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2F6C31DD458010091ECB5 /* Remind.m */; };
 /* End PBXBuildFile section */
 
@@ -408,6 +411,10 @@
 		9C8017E71E8F628B00654868 /* gotham.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gotham.ttf; sourceTree = "<group>"; };
 		9CB701081E8B5923004B97D0 /* UnitsSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitsSettingViewController.h; path = Setting/UnitsSetting/UnitsSettingViewController.h; sourceTree = "<group>"; };
 		9CB701091E8B5923004B97D0 /* UnitsSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnitsSettingViewController.m; path = Setting/UnitsSetting/UnitsSettingViewController.m; sourceTree = "<group>"; };
+		9CBCBC3B1EB312AF005161F4 /* SegmentedStepModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentedStepModel.h; path = BLETool/Model/SegmentedStepModel.h; sourceTree = "<group>"; };
+		9CBCBC3C1EB312AF005161F4 /* SegmentedStepModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentedStepModel.m; path = BLETool/Model/SegmentedStepModel.m; sourceTree = "<group>"; };
+		9CBCBC3E1EB34784005161F4 /* SegmentedRunModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentedRunModel.h; path = BLETool/Model/SegmentedRunModel.h; sourceTree = "<group>"; };
+		9CBCBC3F1EB34784005161F4 /* SegmentedRunModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentedRunModel.m; path = BLETool/Model/SegmentedRunModel.m; sourceTree = "<group>"; };
 		9CC5597A1E2F72170074AE54 /* SedentaryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SedentaryModel.h; path = BLETool/Model/SedentaryModel.h; sourceTree = "<group>"; };
 		9CC5597B1E2F72170074AE54 /* SedentaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SedentaryModel.m; path = BLETool/Model/SedentaryModel.m; sourceTree = "<group>"; };
 		9CCFE1B11DD9CCA200FD5B6F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Setting/About/AboutViewController.h; sourceTree = "<group>"; };
@@ -416,6 +423,8 @@
 		9CD9EE4F1E94880C00915918 /* UpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateViewController.m; path = Setting/About/Update/UpdateViewController.m; sourceTree = "<group>"; };
 		9CDCF9561E8E4C89006625BD /* UnitsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitsTool.h; path = UnitsTool/UnitsTool.h; sourceTree = "<group>"; };
 		9CDCF9571E8E4C89006625BD /* UnitsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnitsTool.m; path = UnitsTool/UnitsTool.m; sourceTree = "<group>"; };
+		9CE082EE1EB1DB87009565A9 /* TakePhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TakePhotoModel.h; path = BLETool/Model/TakePhotoModel.h; sourceTree = "<group>"; };
+		9CE082EF1EB1DB87009565A9 /* TakePhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TakePhotoModel.m; path = BLETool/Model/TakePhotoModel.m; sourceTree = "<group>"; };
 		9CF2F6C21DD458010091ECB5 /* Remind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Remind.h; path = BLETool/Model/Remind.h; sourceTree = "<group>"; };
 		9CF2F6C31DD458010091ECB5 /* Remind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Remind.m; path = BLETool/Model/Remind.m; sourceTree = "<group>"; };
 		B061710DC4AF3D442E877BC3 /* Pods_ManridyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ManridyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -505,6 +514,12 @@
 				9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */,
 				9CC5597A1E2F72170074AE54 /* SedentaryModel.h */,
 				9CC5597B1E2F72170074AE54 /* SedentaryModel.m */,
+				9CE082EE1EB1DB87009565A9 /* TakePhotoModel.h */,
+				9CE082EF1EB1DB87009565A9 /* TakePhotoModel.m */,
+				9CBCBC3B1EB312AF005161F4 /* SegmentedStepModel.h */,
+				9CBCBC3C1EB312AF005161F4 /* SegmentedStepModel.m */,
+				9CBCBC3E1EB34784005161F4 /* SegmentedRunModel.h */,
+				9CBCBC3F1EB34784005161F4 /* SegmentedRunModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1088,6 +1103,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CBCBC3D1EB312AF005161F4 /* SegmentedStepModel.m in Sources */,
 				10F5F7841D98F8640045FA4C /* MianViewController.m in Sources */,
 				1042FC7A1DA9F20400467F01 /* SleepSettingViewController.m in Sources */,
 				9C65C8EA1E8DE7C2001A4525 /* UnitsSettingTableViewCell.m in Sources */,
@@ -1107,6 +1123,7 @@
 				9C06C1BD1DE05C7A00418C7C /* BOHistoryViewController.m in Sources */,
 				9C06C19C1DDFE2FC00418C7C /* BloodO2ContentView.m in Sources */,
 				10F5F7DD1D9927270045FA4C /* BloodPressureContentView.m in Sources */,
+				9CE082F01EB1DB87009565A9 /* TakePhotoModel.m in Sources */,
 				9CB7010A1E8B5923004B97D0 /* UnitsSettingViewController.m in Sources */,
 				102474E51DAA412F00F70E4F /* AllBleFmdb.m in Sources */,
 				102474FE1DAA41E000F70E4F /* SportTargetModel.m in Sources */,
@@ -1138,6 +1155,7 @@
 				9CC5597C1E2F72170074AE54 /* SedentaryModel.m in Sources */,
 				10826A531DBA12600031DB83 /* DropdownMenuView.m in Sources */,
 				109FBB9B1DAA18FB008FF0D3 /* FMDBTool.m in Sources */,
+				9CBCBC401EB34784005161F4 /* SegmentedRunModel.m in Sources */,
 				10CB0F031D9A13960063AD0C /* MenuContentView.m in Sources */,
 				10F5F7091D98C6280045FA4C /* main.m in Sources */,
 				10826A581DBA17540031DB83 /* HeartRateHistoryViewController.m in Sources */,

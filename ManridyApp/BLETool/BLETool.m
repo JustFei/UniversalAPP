@@ -617,6 +617,31 @@ static BLETool *bleTool = nil;
     }
 }
 
+#pragma mark -拍照
+/** 打开设备的拍照模式 */
+- (void)writeOpenCameraMode
+{
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC1981"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
+/** 完成拍照 */
+- (void)writePhotoFinish
+{
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC190080"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
+/** 关闭设备的拍照模式 */
+- (void)writeCloseCameraMode
+{
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC1980"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
 #pragma mark - CBCentralManagerDelegate
 //检查设备蓝牙开关的状态
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
@@ -1020,6 +1045,12 @@ static BLETool *bleTool = nil;
             manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisBloodO2Data:value WithHeadStr:headStr];
             if ([self.receiveDelegate respondsToSelector:@selector(receiveBloodO2DataWithModel:)]) {
                 [self.receiveDelegate receiveBloodO2DataWithModel:model];
+            }
+        }else if ([headStr isEqualToString:@"19"]) {
+            //开始拍照
+            manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisTakePhoto:value WithHeadStr:headStr];
+            if ([self.receiveDelegate respondsToSelector:@selector(receiveTakePhoto:)]) {
+                [self.receiveDelegate receiveTakePhoto:model];
             }
         }
     }

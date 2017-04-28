@@ -107,4 +107,31 @@
     return _sedentaryModel;
 }
 
+- (TakePhotoModel *)takePhotoModel
+{
+    if (!_takePhotoModel) {
+        _takePhotoModel = [[TakePhotoModel alloc] init];
+    }
+    
+    return _takePhotoModel;
+}
+
+- (SegmentedStepModel *)segmentStepModel
+{
+    if (!_segmentStepModel) {
+        _segmentStepModel = [[SegmentedStepModel alloc] init];
+    }
+    
+    return _segmentStepModel;
+}
+
+- (SegmentedRunModel *)segmentRunModel
+{
+    if (!_segmentRunModel) {
+        _segmentRunModel = [[SegmentedRunModel alloc] init];
+    }
+    
+    return _segmentRunModel;
+}
+
 @end

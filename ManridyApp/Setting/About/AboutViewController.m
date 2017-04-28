@@ -82,6 +82,8 @@
     
     [self.checkUpdateButton addTarget:self action:@selector(checkUpdate:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.checkUpdateButton];
+#warning 先隐藏检查更新按钮
+    self.checkUpdateButton.hidden = YES;
     [self.view addSubview:self.hardwareLabel];
 }
 

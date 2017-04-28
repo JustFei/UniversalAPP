@@ -18,6 +18,9 @@
 #import "BloodModel.h"
 #import "BloodO2Model.h"
 #import "SedentaryModel.h"
+#import "TakePhotoModel.h"
+#import "SegmentedStepModel.h"
+#import "SegmentedRunModel.h"
 
 typedef enum : NSUInteger {
     ResponsEcorrectnessDataFail = 0,
@@ -36,7 +39,8 @@ typedef enum : NSUInteger {
     ReturnModelTypePairSuccess,
     ReturnModelTypeHeartRateStateModel,
     ReturnModelTypeBloodModel,
-    ReturnModelTypeBloodO2Model
+    ReturnModelTypeBloodO2Model,
+    ReturnModelTypeTakePhoto
 } ReturnModelType;
 
 typedef enum : NSUInteger {
@@ -48,49 +52,58 @@ typedef enum : NSUInteger {
 @interface manridyModel : NSObject
 
 //判断返回数据是否成功
-@property (nonatomic ,assign) ResponsEcorrectnessData isReciveDataRight;
+@property (nonatomic, assign) ResponsEcorrectnessData isReciveDataRight;
 
 //返回信息的类型
-@property (nonatomic ,assign) ReturnModelType receiveDataType;
+@property (nonatomic, assign) ReturnModelType receiveDataType;
 
 //判断运动信息清零是否成功
-@property (nonatomic ,assign) SportZero sportZero;
+@property (nonatomic, assign) SportZero sportZero;
 
 //返回设置时间数据
-@property (nonatomic ,strong) SetTimeModel *setTimeModel;
+@property (nonatomic, strong) SetTimeModel *setTimeModel;
 
 //返回运动目标数据
-@property (nonatomic ,strong) SportTargetModel *sportTargetModel;
+@property (nonatomic, strong) SportTargetModel *sportTargetModel;
 
 //返回运动信息数据
-@property (nonatomic ,strong) SportModel *sportModel;
+@property (nonatomic, strong) SportModel *sportModel;
 
 //返回用户信息数据
-@property (nonatomic ,strong) UserInfoModel *userInfoModel;
+@property (nonatomic, strong) UserInfoModel *userInfoModel;
 
 //返回心率数据
-@property (nonatomic ,strong) HeartRateModel *heartRateModel;
+@property (nonatomic, strong) HeartRateModel *heartRateModel;
 
 //返回睡眠数据
-@property (nonatomic ,strong) SleepModel *sleepModel;
+@property (nonatomic, strong) SleepModel *sleepModel;
 
 //闹钟数据模型
-@property (nonatomic ,strong) NSMutableArray *clockModelArr;
+@property (nonatomic, strong) NSMutableArray *clockModelArr;
 
 //电话短信提醒模型
-@property (nonatomic ,strong) Remind *remindModel;
+@property (nonatomic, strong) Remind *remindModel;
 
 //血压模型
-@property (nonatomic ,strong) BloodModel *bloodModel;
+@property (nonatomic, strong) BloodModel *bloodModel;
 
 //血氧模型
-@property (nonatomic ,strong) BloodO2Model *bloodO2Model;
+@property (nonatomic, strong) BloodO2Model *bloodO2Model;
 
 //配对是否成功
-@property (nonatomic ,assign) BOOL pairSuccess;
+@property (nonatomic, assign) BOOL pairSuccess;
 
 //久坐模型
-@property (nonatomic ,strong) SedentaryModel *sedentaryModel;
+@property (nonatomic, strong) SedentaryModel *sedentaryModel;
+
+//是否拍照
+@property (nonatomic, strong) TakePhotoModel *takePhotoModel;
+
+//分段计步
+@property (nonatomic, strong) SegmentedStepModel *segmentStepModel;
+
+//分段跑步
+@property (nonatomic, strong) SegmentedRunModel *segmentRunModel;
 
 @end
 

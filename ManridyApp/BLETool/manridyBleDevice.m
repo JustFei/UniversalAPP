@@ -16,7 +16,7 @@
     NSString *advName = [advertisementData objectForKey:@"kCBAdvDataLocalName"];
     //DLog(@"perName == %@    advName == %@",cbPeripheral.name ,advName);
     per.peripheral = cbPeripheral;
-    per.deviceName = cbPeripheral.name;
+    per.deviceName = advName;
     CBUUID *serverUUID = ((NSArray *)[advertisementData objectForKey:@"kCBAdvDataServiceUUIDs"]).firstObject;
     per.uuidString = serverUUID.UUIDString;
     per.RSSI = RSSI;
