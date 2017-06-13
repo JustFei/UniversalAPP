@@ -1128,6 +1128,8 @@
 {
     if (!_pageControl) {
         UIPageControl *view = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 338, self.view.frame.size.width, 37)];
+        view.pageIndicatorTintColor = COLOR_WITH_HEX(0x1e88e5, 0.54);
+        view.currentPageIndicatorTintColor =COLOR_WITH_HEX(0x1e88e5, 0.87);
         view.numberOfPages = 5;
         view.currentPage = 0;
         view.enabled = NO;

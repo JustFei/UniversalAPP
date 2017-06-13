@@ -102,6 +102,7 @@
 /* Begin PBXFileReference section */
 		1012C71E1DBEFE470013E99B /* SleepHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepHistoryViewController.h; path = History/Sleep/SleepHistoryViewController.h; sourceTree = "<group>"; };
 		1012C71F1DBEFE470013E99B /* SleepHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SleepHistoryViewController.m; path = History/Sleep/SleepHistoryViewController.m; sourceTree = "<group>"; };
+		1015FD181EEFB9DF00CA91B7 /* ColorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorConstants.h; sourceTree = "<group>"; };
 		102474D61DAA277B00F70E4F /* StepDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepDataModel.h; path = FMDBTool/Model/StepModel/StepDataModel.h; sourceTree = "<group>"; };
 		102474D71DAA277B00F70E4F /* StepDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepDataModel.m; path = FMDBTool/Model/StepModel/StepDataModel.m; sourceTree = "<group>"; };
 		102474DB1DAA412F00F70E4F /* AllBleFmdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllBleFmdb.h; path = BLETool/AllBleFmdb.h; sourceTree = "<group>"; };
@@ -721,6 +722,7 @@
 				9C57F1D31DF2882F0090C2EF /* InfoPlist.strings */,
 				9C57F1D91DF288D50090C2EF /* Localizable.strings */,
 				9C57F1DB1DF28A0E0090C2EF /* PrefixHeader.pch */,
+				1015FD181EEFB9DF00CA91B7 /* ColorConstants.h */,
 				9C5F32571E57E38000C6C947 /* alert.wav */,
 			);
 			name = "Supporting Files";
