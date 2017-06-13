@@ -617,28 +617,67 @@ static BLETool *bleTool = nil;
     }
 }
 
-#pragma mark -拍照
-/** 打开设备的拍照模式 */
-- (void)writeOpenCameraMode
+/** 拍照部分 */
+- (void)writeCameraMode:(kCameraMode)mode
 {
     if (self.currentDev.peripheral && self.writeCharacteristic) {
-        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC1981"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+        switch (mode) {
+            /** 打开设备的拍照模式 */
+            case kCameraModeOpenCamera:
+                [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC1981"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+                break;
+            /** 完成拍照 */
+            case kCameraModePhotoFinish:
+                [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC190080"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+                break;
+            /** 关闭设备的拍照模式 */
+            case kCameraModeCloseCamera:
+                [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC1980"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+                break;
+                
+            default:
+                break;
+        }
+        
     }
 }
 
-/** 完成拍照 */
-- (void)writePhotoFinish
+/** 分段计步获取 */
+- (void)writeSegementStepWithHistoryMode:(HistoryMode)mode
 {
     if (self.currentDev.peripheral && self.writeCharacteristic) {
-        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC190080"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+        switch (mode) {
+            case HistoryModeData:
+                [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC1A02"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+                break;
+            case HistoryModeCount:
+                [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC1A04"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+                break;
+                
+            default:
+                break;
+        }
     }
 }
 
-/** 关闭设备的拍照模式 */
-- (void)writeCloseCameraMode
+/** 分段跑步获取 */
+- (void)writeSegementRunWithHistoryMode:(HistoryMode)mode
 {
     if (self.currentDev.peripheral && self.writeCharacteristic) {
-        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC1980"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+        switch (mode) {
+            case HistoryModeData:
+                [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC1B02"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+                break;
+            case HistoryModeCount:
+                [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC1B04"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+                break;
+            case HistoryModeCurrent:
+                [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:@"FC1B08"] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+                break;
+                
+            default:
+                break;
+        }
     }
 }
 
@@ -1051,6 +1090,18 @@ static BLETool *bleTool = nil;
             manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisTakePhoto:value WithHeadStr:headStr];
             if ([self.receiveDelegate respondsToSelector:@selector(receiveTakePhoto:)]) {
                 [self.receiveDelegate receiveTakePhoto:model];
+            }
+        }else if ([headStr isEqualToString:@"1A"] || [headStr isEqualToString:@"1a"]) {
+            //分段计步数据
+            manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisTakePhoto:value WithHeadStr:headStr];
+            if ([self.receiveDelegate respondsToSelector:@selector(receiveSegementStep:)]) {
+                [self.receiveDelegate receiveSegementStep:model];
+            }
+        }else if ([headStr isEqualToString:@"1B"] || [headStr isEqualToString:@"1b"]) {
+            //跑步数据
+            manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisTakePhoto:value WithHeadStr:headStr];
+            if ([self.receiveDelegate respondsToSelector:@selector(receiveSegementRun:)]) {
+                [self.receiveDelegate receiveSegementRun:model];
             }
         }
     }

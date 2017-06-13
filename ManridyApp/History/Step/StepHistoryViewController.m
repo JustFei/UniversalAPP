@@ -155,7 +155,7 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 1; i <= days; i ++) {
-            NSString *dateStr = [NSString stringWithFormat:@"%ld/%02ld/%02ld",(long)iCurYear ,(long)iCurMonth ,i];
+            NSString *dateStr = [NSString stringWithFormat:@"%ld/%02ld/%02ld",(long)iCurYear ,(long)iCurMonth ,(long)i];
             DLog(@"%@",dateStr);
             
             NSArray *queryArr = [self.myFmdbTool queryStepWithDate:dateStr];

@@ -62,9 +62,6 @@
         data02.itemCount = self.BOChart.xLabels.count;
         data02.inflexionPointColor = PNLightBlue;
         data02.inflexionPointStyle = PNLineChartPointStyleCircle;
-//        data02.showPointLabel = YES;
-//        data02.pointLabelColor = [UIColor redColor];
-//        data02.pointLabelFont = [UIFont systemFontOfSize:15];
         data02.getData = ^(NSUInteger index) {
             //TODO:数组越界出现在这里
             CGFloat yValue;

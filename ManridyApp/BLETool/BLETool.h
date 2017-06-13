@@ -14,17 +14,35 @@
 
 @class manridyModel;
 
+/**
+ 心率测试开关
+ HeartRateTestStateStop：停止心率测量
+ HeartRateTestStateStart：开始心率测量
+ */
 typedef enum : NSUInteger {
     HeartRateTestStateStop = 0,
     HeartRateTestStateStart,
 } HeartRateTestState;
 
+/**
+ 当前设备的连接状态
+ kBLEstateDisConnected：未连接
+ kBLEstateDidConnected：已连接
+ */
 typedef enum{
     kBLEstateDisConnected = 0,
     kBLEstateDidConnected,
-//    kBLEstateBindUnConnected,
 }kBLEstate;
 
+/**
+ 系统蓝牙的状态
+ SystemBLEStateUnknown：蓝牙装填未知
+ SystemBLEStateResetting：与系统服务的连接暂时丢失，即将更新。
+ SystemBLEStateUnsupported：该平台不支持蓝牙低功耗中央/客户端角色。
+ SystemBLEStateUnauthorized：该应用程序未被授权使用蓝牙低功耗角色。
+ SystemBLEStatePoweredOff：蓝牙当前已关机。
+ SystemBLEStatePoweredOn：蓝牙目前已打开并可用。
+ */
 typedef enum{
     SystemBLEStateUnknown = 0,
     SystemBLEStateResetting,
@@ -34,7 +52,31 @@ typedef enum{
     SystemBLEStatePoweredOn,
 } SystemBLEState;
 
-//扫描设备协议
+/**
+ 拍照模式
+ kCameraModeOpenCamera：打开相机
+ kCameraModePhotoFinish：拍照已完成
+ kCameraModeCloseCamera：关闭相机
+ */
+typedef enum : NSUInteger {
+    kCameraModeOpenCamera = 0,
+    kCameraModePhotoFinish,
+    kCameraModeCloseCamera,
+} kCameraMode;
+
+/**
+ 历史数据模式
+ HistoryModeData：具体的历史数据
+ HistoryModeCount：历史数据条数
+ HistoryModeCurrent：获取当前跑步情况，此条仅仅针对跑步数据有用！！！！
+ */
+typedef enum : NSUInteger {
+    HistoryModeData = 0,
+    HistoryModeCount,
+    HistoryModeCurrent,
+} HistoryMode;
+
+#pragma mark - 扫描设备协议
 @protocol BleDiscoverDelegate <NSObject>
 
 @optional
@@ -42,7 +84,7 @@ typedef enum{
 
 @end
 
-//连接协议
+#pragma mark - 连接协议
 @protocol BleConnectDelegate <NSObject>
 
 @optional
@@ -69,7 +111,7 @@ typedef enum{
 
 @end
 
-//写入协议
+#pragma mark - 写入协议
 @protocol BleReceiveDelegate <NSObject>
 
 @optional
@@ -80,60 +122,67 @@ typedef enum{
  */
 - (void)receiveDataWithModel:(manridyModel *)manridyModel;
 
-//不同数据类型的回调
-//set time
+/** 不同数据类型的回调 */
+/** set time */
 - (void)receiveSetTimeDataWithModel:(manridyModel *)manridyModel;
 
-//set clock
+/** set clock */
 - (void)receiveSetClockDataWithModel:(manridyModel *)manridyModel;
 
-//motion data
+/** motion data */
 - (void)receiveMotionDataWithModel:(manridyModel *)manridyModel;
 
-//motion zero
+/** motion zero */
 - (void)receiveSetMotionZeroWithModel:(manridyModel *)manridyModel;
 
-//GPS data
+/** GPS data */
 - (void)receiveGPSWithModel:(manridyModel *)manridyModel;
 
-//user info
+/** user info */
 - (void)receiveUserInfoWithModel:(manridyModel *)manridyModel;
 
-//set motion target
+/** set motion target */
 - (void)receiveMotionTargetWithModel:(manridyModel *)manridyModel;
 
-//set heart rate test state
+/** set heart rate test state */
 - (void)receiveHeartRateTestWithModel:(manridyModel *)manridyModel;
 
-//get heart rate data
+/** get heart rate data */
 - (void)receiveHeartRateDataWithModel:(manridyModel *)manridyModel;
 
-//get sleepInfo
+/** get sleepInfo */
 - (void)receiveSleepInfoWithModel:(manridyModel *)manridyModel;
 
-//get search feedback
+/** get search feedback */
 - (void)receiveSearchFeedback;
 
-//get blood
+/** get blood */
 - (void)receiveBloodDataWithModel:(manridyModel *)manridyModel;
 
-//get bloodO2
+/** get bloodO2 */
 - (void)receiveBloodO2DataWithModel:(manridyModel *)manridyModel;
 
-//get version
+/** get version */
 - (void)receiveVersionWithVersionStr:(NSString *)versionStr;
 
-//get pair success?
+/** get pair success? */
 - (void)receivePairWitheModel:(manridyModel *)manridyModel;
 
-//change peripheral name success?
+/** change peripheral name success? */
 - (void)receiveChangePerNameSuccess:(BOOL)success;
 
-//拍照指令
+/** 拍照指令 */
 - (void)receiveTakePhoto:(manridyModel *)manridyModel;
+
+/** 分段计步 */
+- (void)receiveSegementStep:(manridyModel *)manridyModel;
+
+/** 分段跑步 */
+- (void)receiveSegementRun:(manridyModel *)manridyModel;
 
 @end
 
+#pragma mark - 设备请求查找手机
 @protocol BleReceiveSearchResquset <NSObject>
 
 @optional
@@ -145,7 +194,7 @@ typedef enum{
 
 + (instancetype)shareInstance;
 
-//当前连接的设备
+/** 当前连接的设备 */
 @property (nonatomic ,strong) manridyBleDevice *currentDev;
 @property (nonatomic ,assign) kBLEstate connectState; //support add observer ,abandon @readonly ,don't change it anyway.
 @property (nonatomic ,weak) id <BleDiscoverDelegate>discoverDelegate;
@@ -157,105 +206,104 @@ typedef enum{
 @property (nonatomic ,strong) CBCentralManager *myCentralManager;
 
 #pragma mark - action of connecting layer -连接层操作
-//判断有没有当前设备有没有连接的
+/** 判断有没有当前设备有没有连接的 */
 - (BOOL)retrievePeripherals;
 
-//扫描设备
+/** 扫描设备 */
 - (void)scanDevice;
 
-//停止扫描
+/** 停止扫描 */
 - (void)stopScan;
 
-//连接设备
+/** 连接设备 */
 - (void)connectDevice:(manridyBleDevice *)device;
 
-//断开设备连接
+/** 断开设备连接 */
 - (void)unConnectDevice;
 
-//重连设备
+/** 重连设备 */
 //- (void)reConnectDevice:(BOOL)isConnect;
 
-//检索已连接的外接设备
+/** 检索已连接的外接设备 */
 - (NSArray *)retrieveConnectedPeripherals;
 
-#pragma mark - get sdk version -获取SDK版本号
+#pragma mark - 获取SDK版本号
 - (NSString *)getManridyBleSDKVersion;
 
-#pragma mark - data of write -数据层操作
-//set time
+#pragma mark - 写入/请求相关数据
+/** set time */
 - (void)writeTimeToPeripheral:(NSDate *)currentDate;
 
-//set clock
+/** set clock */
 - (void)writeClockToPeripheral:(ClockData)state withClockArr:(NSMutableArray *)clockArr;
 
-//get motionInfo
+/** get motionInfo */
 - (void)writeMotionRequestToPeripheralWithMotionType:(MotionType)type;
 
-//set motionInfo zero
+/** set motionInfo zero */
 - (void)writeMotionZeroToPeripheral;
 
-//get GPS data
+/** get GPS data */
 - (void)writeGPSToPeripheral;
 
-//set userInfo
+/** set userInfo */
 - (void)writeUserInfoToPeripheralWeight:(NSString *)weight andHeight:(NSString *)height;
 
-//set motion target
+/** set motion target */
 - (void)writeMotionTargetToPeripheral:(NSString *)target;
 
-//set heart rate test state
+/** set heart rate test state */
 - (void)writeHeartRateTestStateToPeripheral:(HeartRateTestState)state;
 
-//get heart rate data
+/** get heart rate data */
 - (void)writeHeartRateRequestToPeripheral:(HeartRateData)heartRateData;
 
-//get sleepInfo
+/** get sleepInfo */
 - (void)writeSleepRequestToperipheral:(SleepData)sleepData;
 
-//photo and message remind
+/** photo and message remind */
 - (void)writePhoneAndMessageRemindToPeripheral:(Remind *)remindModel;
 
-//search my peripheral
+/** search my peripheral */
 - (void)writeSearchPeripheralWithONorOFF:(BOOL)state;
 
-//peripheral shake when unconnect
+/** peripheral shake when unconnect */
 - (void)writePeripheralShakeWhenUnconnectWithOforOff:(BOOL)state;
 
-//stop peripheral
+/** stop peripheral */
 - (void)writeStopPeripheralRemind;
 
-//get blood data
+/** get blood data */
 - (void)writeBloodToPeripheral:(BloodData)bloodData;
 
-//get blood O2 data
+/** get blood O2 data */
 - (void)writeBloodO2ToPeripheral:(BloodO2Data)bloodO2Data;
 
-//get version from peripheral
+/** get version from peripheral */
 - (void)writeRequestVersion;
 
-//set sedentary alert
+/** set sedentary alert */
 - (void)writeSedentaryAlertWithSedentaryModel:(SedentaryModel *)sedentaryModel;
 
-//写入名称
+/** 写入名称 */
 - (void)writePeripheralNameWithNameString:(NSString *)name;
 
-//临时写入保持连接
+/** 临时写入保持连接 */
 - (void)writeToKeepConnect;
 
-/*推送公制和英制单位
+/** 推送公制和英制单位
 ImperialSystem  YES = 英制
                 NO  = 公制
 */
 - (void)writeUnitToPeripheral:(BOOL)ImperialSystem;
 
-#pragma mark -拍照
-/** 打开设备的拍照模式 */
-- (void)writeOpenCameraMode;
+/** 拍照 */
+- (void)writeCameraMode:(kCameraMode)mode;
 
-/** 完成拍照 */
-- (void)writePhotoFinish;
+/** 分段计步获取 */
+- (void)writeSegementStepWithHistoryMode:(HistoryMode)mode;
 
-/** 关闭设备的拍照模式 */
-- (void)writeCloseCameraMode;
+/** 分段跑步获取 */
+- (void)writeSegementRunWithHistoryMode:(HistoryMode)mode;
 
 @end

@@ -12,7 +12,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"date = %@ AHCount = %ld CHCount = %ld stepNumber = %@ kCalNumber = %@ mileageNumber = %@ startTime = %@ timeInterval = %ld ", _date, _AHCount,  _CHCount, _stepNumber, _kCalNumber, _mileageNumber, _startTime, _timeInterval];
+    return [NSString stringWithFormat:@"date = %@ AHCount = %ld CHCount = %ld stepNumber = %@ kCalNumber = %@ mileageNumber = %@ startTime = %@ timeInterval = %ld ", _date, (long)_AHCount,  (long)_CHCount, _stepNumber, _kCalNumber, _mileageNumber, _startTime, (long)_timeInterval];
 }
 
 @end
