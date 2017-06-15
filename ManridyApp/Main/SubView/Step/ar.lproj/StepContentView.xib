@@ -30,13 +30,13 @@
                                 <constraint firstAttribute="width" constant="181" id="0GD-u5-05u"/>
                                 <constraint firstAttribute="height" constant="38" id="9xT-gZ-6vx"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                            <color key="textColor" red="0.96078431369999995" green="0.6588235294" blue="0.086274509799999996" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s62-xy-M4s">
                             <rect key="frame" x="97.5" y="233" width="181" height="1"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="5kE-Kl-mxd"/>
                                 <constraint firstAttribute="width" constant="181" id="Nzp-tZ-W8n"/>
@@ -50,14 +50,14 @@
                                 <constraint firstAttribute="height" constant="22" id="IIC-ab-NNP"/>
                                 <constraint firstAttribute="width" constant="180" id="Ymd-ZZ-FUk"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <color key="textColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54333578019999995" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عدد من خطوات اليوم" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgk-fV-KOc">
-                            <rect key="frame" x="127.5" y="144" width="121" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="138" y="144" width="100.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.96078431369999995" green="0.6588235294" blue="0.086274509799999996" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="step_icon01" translatesAutoresizingMaskIntoConstraints="NO" id="0ej-qs-qpu">
@@ -73,13 +73,13 @@
                                 <constraint firstAttribute="width" constant="35" id="cOU-nc-iDY"/>
                                 <constraint firstAttribute="height" constant="35" id="rwx-BL-SuM"/>
                             </constraints>
-                            <state key="normal" image="walk_target_icon.png"/>
+                            <state key="normal" image="all_targetsetting"/>
                             <connections>
                                 <action selector="setTargetAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="KUf-VF-EKF"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.14509803921568629" green="0.60392156862745094" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="0ej-qs-qpu" firstAttribute="centerX" secondItem="E9c-y2-W5j" secondAttribute="centerX" id="2w1-cB-Bff"/>
                         <constraint firstItem="tgk-fV-KOc" firstAttribute="top" secondItem="E9c-y2-W5j" secondAttribute="top" constant="144" id="6rd-pO-UEd"/>
@@ -132,7 +132,7 @@
         </view>
     </objects>
     <resources>
-        <image name="step_icon01" width="16" height="16"/>
-        <image name="walk_target_icon.png" width="18" height="19"/>
+        <image name="all_targetsetting" width="24" height="24"/>
+        <image name="step_icon01" width="248" height="255"/>
     </resources>
 </document>

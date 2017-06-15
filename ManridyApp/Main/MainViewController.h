@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "StepContentView.h"
 #import "HeartRateContentView.h"
-#import "TemperatureContentView.h"
+//#import "TemperatureContentView.h"
 #import "SleepContentView.h"
 #import "BloodPressureContentView.h"
 #import "BloodO2ContentView.h"
@@ -21,7 +21,7 @@
 
 @property (nonatomic ,strong) HeartRateContentView *heartRateView;
 
-@property (nonatomic ,strong) TemperatureContentView *temperatureView;
+//@property (nonatomic ,strong) TemperatureContentView *temperatureView;
 
 @property (nonatomic ,strong) SleepContentView *sleepView;
 

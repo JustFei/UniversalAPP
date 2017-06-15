@@ -36,8 +36,6 @@
 		109FBB9B1DAA18FB008FF0D3 /* FMDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 109FBB9A1DAA18FB008FF0D3 /* FMDBTool.m */; };
 		10C47E9A1DA88F9900D949CA /* BindPeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C47E991DA88F9900D949CA /* BindPeripheralViewController.m */; };
 		10C47EC11DA8C4FA00D949CA /* StepTargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C47EC01DA8C4FA00D949CA /* StepTargetViewController.m */; };
-		10C47EC71DA8DE0D00D949CA /* TemperatureWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C47EC51DA8DE0D00D949CA /* TemperatureWarningViewController.m */; };
-		10C47EC81DA8DE0D00D949CA /* TemperatureWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C47EC61DA8DE0D00D949CA /* TemperatureWarningViewController.xib */; };
 		10CB0F031D9A13960063AD0C /* MenuContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CB0F021D9A13960063AD0C /* MenuContentView.m */; };
 		10CB0F071D9A25130063AD0C /* FunctionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CB0F051D9A25130063AD0C /* FunctionCell.m */; };
 		10CB0F081D9A25130063AD0C /* FunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10CB0F061D9A25130063AD0C /* FunctionCell.xib */; };
@@ -49,8 +47,6 @@
 		10F5F7841D98F8640045FA4C /* MianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7811D98F8640045FA4C /* MianViewController.m */; };
 		10F5F78D1D98F8E10045FA4C /* StepContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F78C1D98F8E10045FA4C /* StepContentView.m */; };
 		10F5F7931D991BF40045FA4C /* HeartRateContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7921D991BF40045FA4C /* HeartRateContentView.m */; };
-		10F5F7A71D991E990045FA4C /* TemperatureContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7A61D991E990045FA4C /* TemperatureContentView.m */; };
-		10F5F7A91D991EAB0045FA4C /* TemperatureContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10F5F7A81D991EAB0045FA4C /* TemperatureContentView.xib */; };
 		10F5F7D71D99251B0045FA4C /* SleepContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7D61D99251B0045FA4C /* SleepContentView.m */; };
 		10F5F7DD1D9927270045FA4C /* BloodPressureContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7DC1D9927270045FA4C /* BloodPressureContentView.m */; };
 		10FF5CDA1DC33BEA0059FE00 /* PhoneRemindTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FF5CD81DC33BEA0059FE00 /* PhoneRemindTableViewCell.m */; };
@@ -158,9 +154,6 @@
 		10C47E991DA88F9900D949CA /* BindPeripheralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BindPeripheralViewController.m; path = Setting/BindPeripheral/BindPeripheralViewController.m; sourceTree = "<group>"; };
 		10C47EBF1DA8C4FA00D949CA /* StepTargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepTargetViewController.h; path = Main/SubView/Step/StepTargetViewController.h; sourceTree = "<group>"; };
 		10C47EC01DA8C4FA00D949CA /* StepTargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepTargetViewController.m; path = Main/SubView/Step/StepTargetViewController.m; sourceTree = "<group>"; };
-		10C47EC41DA8DE0D00D949CA /* TemperatureWarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemperatureWarningViewController.h; path = Main/SubView/Temperature/TemperatureWarningViewController.h; sourceTree = "<group>"; };
-		10C47EC51DA8DE0D00D949CA /* TemperatureWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemperatureWarningViewController.m; path = Main/SubView/Temperature/TemperatureWarningViewController.m; sourceTree = "<group>"; };
-		10C47EC61DA8DE0D00D949CA /* TemperatureWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TemperatureWarningViewController.xib; path = Main/SubView/Temperature/TemperatureWarningViewController.xib; sourceTree = "<group>"; };
 		10CB0F011D9A13960063AD0C /* MenuContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuContentView.h; path = Main/MenuView/MenuContentView.h; sourceTree = "<group>"; };
 		10CB0F021D9A13960063AD0C /* MenuContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuContentView.m; path = Main/MenuView/MenuContentView.m; sourceTree = "<group>"; };
 		10CB0F041D9A25130063AD0C /* FunctionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FunctionCell.h; path = Main/MenuView/FunctionCell.h; sourceTree = "<group>"; };
@@ -181,9 +174,6 @@
 		10F5F78C1D98F8E10045FA4C /* StepContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepContentView.m; path = Main/SubView/Step/StepContentView.m; sourceTree = "<group>"; };
 		10F5F7911D991BF40045FA4C /* HeartRateContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateContentView.h; path = Main/SubView/HeartRate/HeartRateContentView.h; sourceTree = "<group>"; };
 		10F5F7921D991BF40045FA4C /* HeartRateContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateContentView.m; path = Main/SubView/HeartRate/HeartRateContentView.m; sourceTree = "<group>"; };
-		10F5F7A51D991E990045FA4C /* TemperatureContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemperatureContentView.h; path = Main/SubView/Temperature/TemperatureContentView.h; sourceTree = "<group>"; };
-		10F5F7A61D991E990045FA4C /* TemperatureContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemperatureContentView.m; path = Main/SubView/Temperature/TemperatureContentView.m; sourceTree = "<group>"; };
-		10F5F7A81D991EAB0045FA4C /* TemperatureContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TemperatureContentView.xib; path = Main/SubView/Temperature/TemperatureContentView.xib; sourceTree = "<group>"; };
 		10F5F7D51D99251B0045FA4C /* SleepContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepContentView.h; path = Main/SubView/Sleep/SleepContentView.h; sourceTree = "<group>"; };
 		10F5F7D61D99251B0045FA4C /* SleepContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SleepContentView.m; path = Main/SubView/Sleep/SleepContentView.m; sourceTree = "<group>"; };
 		10F5F7DB1D9927270045FA4C /* BloodPressureContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodPressureContentView.h; path = Main/SubView/BloodPressure/BloodPressureContentView.h; sourceTree = "<group>"; };
@@ -744,7 +734,6 @@
 			children = (
 				10F5F78A1D98F8D70045FA4C /* Step */,
 				10F5F7901D991B770045FA4C /* HeartRate */,
-				10F5F7A41D991E470045FA4C /* Temperature */,
 				10F5F7D41D9924EF0045FA4C /* Sleep */,
 				10F5F7DA1D9926E80045FA4C /* BloodPressure */,
 				9C06C1991DDFE2BF00418C7C /* BloodO2 */,
@@ -773,19 +762,6 @@
 				9C57F1FA1DF2C2100090C2EF /* HeartRateContentView.xib */,
 			);
 			name = HeartRate;
-			sourceTree = "<group>";
-		};
-		10F5F7A41D991E470045FA4C /* Temperature */ = {
-			isa = PBXGroup;
-			children = (
-				10F5F7A51D991E990045FA4C /* TemperatureContentView.h */,
-				10F5F7A61D991E990045FA4C /* TemperatureContentView.m */,
-				10F5F7A81D991EAB0045FA4C /* TemperatureContentView.xib */,
-				10C47EC41DA8DE0D00D949CA /* TemperatureWarningViewController.h */,
-				10C47EC51DA8DE0D00D949CA /* TemperatureWarningViewController.m */,
-				10C47EC61DA8DE0D00D949CA /* TemperatureWarningViewController.xib */,
-			);
-			name = Temperature;
 			sourceTree = "<group>";
 		};
 		10F5F7D41D9924EF0045FA4C /* Sleep */ = {
@@ -1013,10 +989,8 @@
 				10CB0F081D9A25130063AD0C /* FunctionCell.xib in Resources */,
 				9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */,
 				9C19541B1E5FCDF5006DEAED /* PhoneRemindTableViewCell.xib in Resources */,
-				10C47EC81DA8DE0D00D949CA /* TemperatureWarningViewController.xib in Resources */,
 				9C57F1FE1DF2C2260090C2EF /* SleepContentView.xib in Resources */,
 				1033145C1DC0622D0089B4EB /* TempViewController.xib in Resources */,
-				10F5F7A91D991EAB0045FA4C /* TemperatureContentView.xib in Resources */,
 				9C2ADA3E1E94DF7600DABB0C /* hex.zip in Resources */,
 				9C57F1D71DF288D50090C2EF /* Localizable.strings in Resources */,
 				9C57F1C91DF279300090C2EF /* Launch Screen.storyboard in Resources */,
@@ -1113,7 +1087,6 @@
 				102474E91DAA412F00F70E4F /* NSStringTool.m in Sources */,
 				103820F21DB86F1300E92410 /* StepHistoryViewController.m in Sources */,
 				102474E71DAA412F00F70E4F /* BLETool.m in Sources */,
-				10F5F7A71D991E990045FA4C /* TemperatureContentView.m in Sources */,
 				10FF5CF91DC35AEC0059FE00 /* SectionModel.m in Sources */,
 				102474E81DAA412F00F70E4F /* manridyBleDevice.m in Sources */,
 				10F5F70C1D98C6280045FA4C /* AppDelegate.m in Sources */,
@@ -1146,7 +1119,6 @@
 				10F5F78D1D98F8E10045FA4C /* StepContentView.m in Sources */,
 				1012C7211DBEFE470013E99B /* SleepHistoryViewController.m in Sources */,
 				9CF2F6C41DD458010091ECB5 /* Remind.m in Sources */,
-				10C47EC71DA8DE0D00D949CA /* TemperatureWarningViewController.m in Sources */,
 				9C0845511E6A9D5F00C9E04F /* AlertTool.m in Sources */,
 				104A706D1D9BAD2B00CC73F5 /* UserInfoCell.m in Sources */,
 				10FF5CDA1DC33BEA0059FE00 /* PhoneRemindTableViewCell.m in Sources */,

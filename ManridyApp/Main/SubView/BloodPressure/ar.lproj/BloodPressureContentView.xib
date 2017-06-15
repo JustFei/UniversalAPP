@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,13 +24,13 @@
                                 <constraint firstAttribute="width" constant="170" id="t4S-uQ-2jI"/>
                                 <constraint firstAttribute="height" constant="38" id="uGM-NB-nqu"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                            <color key="textColor" red="0.21960784310000001" green="0.5568627451" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJP-c2-QQo">
                             <rect key="frame" x="97" y="233" width="181" height="1"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="8QE-sA-hdO"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="181" id="YQw-GM-vFQ"/>
@@ -39,15 +39,15 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="معدل ضربات القلب:0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyy-sv-sZa">
-                            <rect key="frame" x="137" y="264" width="100" height="36"/>
+                            <rect key="frame" x="137" y="264" width="100" height="14.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="wDD-VR-00N"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54333578019999995" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bp_old_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-7N-yYW">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bloodpresure_icon01" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-7N-yYW">
                             <rect key="frame" x="58" y="61" width="258" height="271"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="258" id="QUZ-iW-TgI"/>
@@ -60,12 +60,12 @@
                                 <constraint firstAttribute="width" constant="130" id="phz-CS-4Yf"/>
                                 <constraint firstAttribute="height" constant="30" id="s4q-Kh-7qg"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.21960784310000001" green="0.5568627451" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.1450980392" green="0.60392156860000001" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="3tT-Ww-UQj" firstAttribute="top" secondItem="AUl-Tc-j30" secondAttribute="top" constant="183" id="214-AP-V2n"/>
                         <constraint firstItem="fyy-sv-sZa" firstAttribute="centerX" secondItem="AUl-Tc-j30" secondAttribute="centerX" id="315-Pf-WeV"/>
@@ -115,6 +115,6 @@
         </view>
     </objects>
     <resources>
-        <image name="bp_old_icon.png" width="258" height="270"/>
+        <image name="bloodpresure_icon01" width="247" height="256"/>
     </resources>
 </document>

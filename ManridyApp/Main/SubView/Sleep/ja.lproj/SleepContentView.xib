@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,13 +24,13 @@
                                 <constraint firstAttribute="width" constant="180" id="SBT-X9-myG"/>
                                 <constraint firstAttribute="height" constant="38" id="otv-87-99V"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                            <color key="textColor" red="0.4823529412" green="0.1215686275" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11u-bd-ERy">
                             <rect key="frame" x="97" y="233" width="181" height="1"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="Ehg-eL-RGz"/>
                                 <constraint firstAttribute="width" constant="181" id="Fxi-kP-1Xe"/>
@@ -39,63 +39,21 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="深眠:0H/浅眠:0H" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtr-da-WQW">
-                            <rect key="frame" x="97.5" y="251" width="180" height="17"/>
+                            <rect key="frame" x="97.5" y="250" width="180" height="14.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="180" id="PF8-b9-6oV"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54333578019999995" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日睡眠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHK-vw-NFT">
-                            <rect key="frame" x="153" y="144" width="69.5" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="159" y="144" width="57.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.4823529412" green="0.1215686275" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBY-KA-arW" userLabel="4">
-                            <rect key="frame" x="216.5" y="240" width="26" height="2"/>
-                            <color key="backgroundColor" red="0.1137254902" green="0.44705882349999998" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="26" id="G0S-cQ-1ix"/>
-                                <constraint firstAttribute="height" constant="2" id="tO0-pt-VGf"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zyv-r5-4rf" userLabel="3">
-                            <rect key="frame" x="188.5" y="240" width="26" height="2"/>
-                            <color key="backgroundColor" red="0.1137254902" green="0.44705882349999998" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="2" id="7il-rJ-wsI"/>
-                                <constraint firstAttribute="width" constant="26" id="LeP-Pc-30l"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWd-Sd-7Yc" userLabel="2">
-                            <rect key="frame" x="160.5" y="240" width="26" height="2"/>
-                            <color key="backgroundColor" red="0.1137254902" green="0.44705882349999998" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="26" id="Etc-zD-kXd"/>
-                                <constraint firstAttribute="height" constant="2" id="j4X-8F-cMi"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6P-gI-XL0" userLabel="1">
-                            <rect key="frame" x="132.5" y="240" width="26" height="2"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="26" id="5DB-ff-oQX"/>
-                                <constraint firstAttribute="height" constant="2" id="cRh-Oq-eDu"/>
-                            </constraints>
-                        </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep debt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cp-Ww-0rR">
-                            <rect key="frame" x="152.5" y="273" width="70" height="22"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="70" id="IhC-Wp-dbD"/>
-                                <constraint firstAttribute="height" constant="22" id="ZbX-ie-njQ"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sleep_now_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="h2H-0x-LTA">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sleep_icon01" translatesAutoresizingMaskIntoConstraints="NO" id="h2H-0x-LTA">
                             <rect key="frame" x="58.5" y="61" width="258" height="271"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="258" id="0p8-sE-Vnh"/>
@@ -108,37 +66,27 @@
                                 <constraint firstAttribute="height" constant="40" id="gmh-DD-U0V"/>
                                 <constraint firstAttribute="width" constant="40" id="r9t-c9-H4K"/>
                             </constraints>
-                            <state key="normal" image="sleep_target.png"/>
+                            <state key="normal" image="all_targetsetting"/>
                             <connections>
                                 <action selector="sleepTargetAction:" destination="glG-8L-ndL" eventType="touchUpInside" id="qCx-Pc-Wt1"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.1450980392" green="0.60392156860000001" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="UWd-Sd-7Yc" firstAttribute="top" secondItem="11u-bd-ERy" secondAttribute="bottom" constant="6" id="6mJ-jc-zdv"/>
                         <constraint firstItem="lHK-vw-NFT" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" id="7tW-CD-gNI"/>
-                        <constraint firstItem="UWd-Sd-7Yc" firstAttribute="top" secondItem="w6P-gI-XL0" secondAttribute="top" id="8vZ-qD-UE7"/>
                         <constraint firstItem="YQc-5G-8TM" firstAttribute="top" secondItem="YMG-93-Tfc" secondAttribute="top" constant="183" id="Fqp-dS-mhz"/>
                         <constraint firstAttribute="height" constant="375" id="Iek-3L-afY"/>
-                        <constraint firstItem="Zyv-r5-4rf" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" constant="14" id="JMb-ae-alh"/>
                         <constraint firstItem="h2H-0x-LTA" firstAttribute="top" secondItem="YMG-93-Tfc" secondAttribute="top" constant="61" id="MzJ-s5-tks"/>
-                        <constraint firstItem="fBY-KA-arW" firstAttribute="top" secondItem="w6P-gI-XL0" secondAttribute="top" id="NXm-nY-nKZ"/>
-                        <constraint firstItem="Zyv-r5-4rf" firstAttribute="top" secondItem="w6P-gI-XL0" secondAttribute="top" id="Sh7-fM-EXe"/>
-                        <constraint firstItem="gtr-da-WQW" firstAttribute="top" secondItem="w6P-gI-XL0" secondAttribute="bottom" constant="9" id="Vod-Tp-jJO"/>
-                        <constraint firstItem="3Cp-Ww-0rR" firstAttribute="top" secondItem="gtr-da-WQW" secondAttribute="bottom" constant="5" id="YFh-jO-Ohr"/>
                         <constraint firstItem="gtr-da-WQW" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" id="aJm-R6-rWl"/>
                         <constraint firstItem="h2H-0x-LTA" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" id="bEg-6w-qF1"/>
+                        <constraint firstItem="gtr-da-WQW" firstAttribute="top" secondItem="11u-bd-ERy" secondAttribute="bottom" constant="16" id="d1Z-5c-MCz"/>
                         <constraint firstItem="HJH-Lw-7su" firstAttribute="top" secondItem="YMG-93-Tfc" secondAttribute="top" constant="335" id="egh-QN-Cc6"/>
                         <constraint firstItem="lHK-vw-NFT" firstAttribute="top" secondItem="YMG-93-Tfc" secondAttribute="top" constant="144" id="f7d-z1-hJy"/>
-                        <constraint firstItem="3Cp-Ww-0rR" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" id="hGj-VV-vbV"/>
-                        <constraint firstItem="fBY-KA-arW" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" constant="42" id="kZR-H9-Jcq"/>
                         <constraint firstItem="11u-bd-ERy" firstAttribute="top" secondItem="YQc-5G-8TM" secondAttribute="bottom" constant="12" id="kje-of-qYf"/>
                         <constraint firstItem="11u-bd-ERy" firstAttribute="centerX" secondItem="YQc-5G-8TM" secondAttribute="centerX" id="nTP-Zf-doO"/>
                         <constraint firstItem="YQc-5G-8TM" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" id="rA9-VQ-Gfr"/>
-                        <constraint firstItem="UWd-Sd-7Yc" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" constant="-14" id="tZa-O9-X57"/>
                         <constraint firstAttribute="trailing" secondItem="HJH-Lw-7su" secondAttribute="trailing" id="xrT-XA-XBW"/>
-                        <constraint firstItem="w6P-gI-XL0" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" constant="-42" id="ygw-1V-PVH"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent sleep：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5s-3A-N5T">
@@ -170,18 +118,13 @@
                 <outlet property="deepAndLowSleepLabel" destination="gtr-da-WQW" id="jsl-Xy-czD"/>
                 <outlet property="downView" destination="Qxk-3h-F6a" id="pKo-I7-FQH"/>
                 <outlet property="progressImageView" destination="h2H-0x-LTA" id="jb3-Xv-tR2"/>
-                <outlet property="sleepStateLabel" destination="3Cp-Ww-0rR" id="dY3-8E-hst"/>
-                <outlet property="sleepStateView1" destination="w6P-gI-XL0" id="7Jg-hU-otQ"/>
-                <outlet property="sleepStateView2" destination="UWd-Sd-7Yc" id="Ziq-ru-NlA"/>
-                <outlet property="sleepStateView3" destination="Zyv-r5-4rf" id="e1z-Nm-d5c"/>
-                <outlet property="sleepStateView4" destination="fBY-KA-arW" id="cVP-fH-6sa"/>
                 <outlet property="sleepSumLabel" destination="YQc-5G-8TM" id="MoC-Gr-vcS"/>
             </connections>
             <point key="canvasLocation" x="115.5" y="374.5"/>
         </view>
     </objects>
     <resources>
-        <image name="sleep_now_icon.png" width="258" height="271"/>
-        <image name="sleep_target.png" width="22" height="22"/>
+        <image name="all_targetsetting" width="24" height="24"/>
+        <image name="sleep_icon01" width="247" height="255"/>
     </resources>
 </document>

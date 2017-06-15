@@ -86,7 +86,7 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     self.stepView.dateArr = [self getWeekBeginAndEnd:[NSDate date]];
-    self.temperatureView.dateArr = self.stepView.dateArr;
+//    self.temperatureView.dateArr = self.stepView.dateArr;
     
     [self hiddenFunctionView];
     _currentPage = 0;
