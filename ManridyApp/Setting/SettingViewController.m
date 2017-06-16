@@ -33,7 +33,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-   self.setView.backgroundColor = [UIColor colorWithRed:37.0 / 255.0 green:154.0 / 255.0 blue:219.0 / 255.0 alpha:1];
+   self.setView.backgroundColor = COLOR_WITH_HEX(0xf5f5f5, 1);
 //    [self.view addSubview:self.setView];
 }
 
@@ -52,7 +52,7 @@
 - (SettingContentView *)setView
 {
     if (!_setView) {
-        SettingContentView *view = [[SettingContentView alloc] initWithFrame:self.view.bounds];
+        SettingContentView *view = [[SettingContentView alloc] initWithFrame:CGRectMake(0, -64, self.view.frame.size.width, self.view.frame.size.height + 64)];
         
         
         [self.view addSubview:view];

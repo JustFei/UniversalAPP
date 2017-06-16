@@ -38,11 +38,14 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        _dataArr = @[@"用户信息",@"信息提醒",@"防丢设置",@"查看电量",@"设备锁定",@"关于"];
-        _dataArr = @[NSLocalizedString(@"userInfo", nil),NSLocalizedString(@"infoRemind", nil),NSLocalizedString(@"perBind", nil),NSLocalizedString(@"about", nil)
+        _dataArr = @[NSLocalizedString(@"userInfo", nil),
+                     NSLocalizedString(@"perBind", nil),
+                     NSLocalizedString(@"infoRemind", nil),
+                     NSLocalizedString(@"about", nil)
                      //先隐藏单位设置功能
                      //,NSLocalizedString(@"UnitsSetting", nil)
                      ];
-        _imageNameArr = @[@"set_user_icon",@"set_alart_icon",@"set_ble_icon",@"set_about_icon",@""];
+        _imageNameArr = @[@"set_userinfo",@"set_bluetooth",@"set_remind",@"set_about"];
     }
     return self;
 }
@@ -63,10 +66,10 @@
     self.userNameLabel.frame = CGRectMake(self.center.x - 100 * WIDTH / 320, 215 * WIDTH / 320, 200 * WIDTH / 320, 34 * WIDTH / 320);
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH * 261 / 320, WIDTH, 13 * WIDTH / 320)];
-    view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+    view.backgroundColor = COLOR_WITH_HEX(0x000000, 0.15);
     [self addSubview:view];
     
-    self.functionTableView.frame = CGRectMake(0, WIDTH * 274 / 320, WIDTH, self.frame.size.height - WIDTH * 274 / 320);
+    self.functionTableView.frame = CGRectMake(0, WIDTH * 274 / 320, WIDTH, self.frame.size.height - WIDTH * 210 / 320);
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]) {
         [self.userNameLabel setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]];
@@ -102,7 +105,8 @@
     
     cell.imageView.image = [UIImage imageNamed:_imageNameArr[indexPath.row]];
     cell.textLabel.text = _dataArr[indexPath.row];
-    [cell.textLabel setTextColor:[UIColor whiteColor]];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
+    [cell.textLabel setTextColor:COLOR_WITH_HEX(0x000000, 0.87)];
     
 //    cell.contentView.backgroundColor = [UIColor colorWithRed:48.0 / 255.0 green:110.0 / 255.0 blue:187.0 / 255.0 alpha:0.7];
     UIView *view = [[UIView alloc] initWithFrame:cell.contentView.frame];
@@ -133,6 +137,12 @@
             break;
         case 1:
         {
+            BindPeripheralViewController *vc = [[BindPeripheralViewController alloc] init];
+            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 2:
+        {
             PhoneRemindViewController *vc = [[PhoneRemindViewController alloc] init];
             NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
             version = [version stringByReplacingOccurrencesOfString:@"." withString:@""];
@@ -142,14 +152,7 @@
                 vc.haveSedentary = NO;
             }
             //测试
-//            vc.haveSedentary = NO;
-            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
-        }
-            break;
-         
-        case 2:
-        {
-            BindPeripheralViewController *vc = [[BindPeripheralViewController alloc] init];
+            //            vc.haveSedentary = NO;
             [[self findViewController:self].navigationController pushViewController:vc animated:YES];
         }
             break;
@@ -174,8 +177,7 @@
 {
     if (!_headView) {
         UIImageView *view = [[UIImageView alloc] init];
-        view.image = [UIImage imageNamed:@""];
-        view.backgroundColor = [UIColor whiteColor];
+        view.image = [UIImage imageNamed:@"set_avatar"];
         
         [self addSubview:view];
         _headView = view;
@@ -189,7 +191,8 @@
     if (!_userNameLabel) {
         UILabel *label = [[UILabel alloc] init];
         label.text = NSLocalizedString(@"userName", nil);
-        label.textColor = [UIColor whiteColor];
+        label.textColor = COLOR_WITH_HEX(0xffffff, 0.87);
+        label.font = [UIFont systemFontOfSize:14];
         label.textAlignment = NSTextAlignmentCenter;
         
         [self addSubview:label];

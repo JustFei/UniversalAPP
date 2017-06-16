@@ -37,7 +37,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.upView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 261 * WIDTH / 320)];
-    self.upView.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
+    self.upView.backgroundColor = COLOR_WITH_HEX(0x1e88e5, 1);
     [self.view addSubview:self.upView];
     
     self.headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 76 * WIDTH / 320, 62, 152 * WIDTH / 320, 161 * WIDTH / 320)];

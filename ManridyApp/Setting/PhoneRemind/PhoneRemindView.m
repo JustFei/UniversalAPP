@@ -23,7 +23,7 @@
     [self.contentView addSubview:button];
     button.frame = CGRectMake(0, 0, WIDTH, 44);
     
-    self.contentView.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
+    self.contentView.backgroundColor = COLOR_WITH_HEX(0x1e88e5, 1);
     
     return self;
 }

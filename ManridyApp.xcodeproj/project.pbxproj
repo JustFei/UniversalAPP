@@ -20,8 +20,6 @@
 		102474FC1DAA41E000F70E4F /* SleepModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474F21DAA41E000F70E4F /* SleepModel.m */; };
 		102474FD1DAA41E000F70E4F /* SportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474F41DAA41E000F70E4F /* SportModel.m */; };
 		102474FE1DAA41E000F70E4F /* SportTargetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474F61DAA41E000F70E4F /* SportTargetModel.m */; };
-		1033145B1DC0622D0089B4EB /* TempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103314591DC0622D0089B4EB /* TempViewController.m */; };
-		1033145C1DC0622D0089B4EB /* TempViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1033145A1DC0622D0089B4EB /* TempViewController.xib */; };
 		103820F21DB86F1300E92410 /* StepHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103820F11DB86F1300E92410 /* StepHistoryViewController.m */; };
 		103E4BFC1DB0C77E0051BF03 /* UserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103E4BFB1DB0C77E0051BF03 /* UserListViewController.m */; };
 		1042FC7A1DA9F20400467F01 /* SleepSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1042FC781DA9F20400467F01 /* SleepSettingViewController.m */; };
@@ -123,9 +121,6 @@
 		102474F41DAA41E000F70E4F /* SportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SportModel.m; path = BLETool/Model/SportModel.m; sourceTree = "<group>"; };
 		102474F51DAA41E000F70E4F /* SportTargetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SportTargetModel.h; path = BLETool/Model/SportTargetModel.h; sourceTree = "<group>"; };
 		102474F61DAA41E000F70E4F /* SportTargetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SportTargetModel.m; path = BLETool/Model/SportTargetModel.m; sourceTree = "<group>"; };
-		103314581DC0622D0089B4EB /* TempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempViewController.h; path = History/Temp/TempViewController.h; sourceTree = "<group>"; };
-		103314591DC0622D0089B4EB /* TempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempViewController.m; path = History/Temp/TempViewController.m; sourceTree = "<group>"; };
-		1033145A1DC0622D0089B4EB /* TempViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TempViewController.xib; path = History/Temp/TempViewController.xib; sourceTree = "<group>"; };
 		103820F01DB86F1300E92410 /* StepHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepHistoryViewController.h; path = History/Step/StepHistoryViewController.h; sourceTree = "<group>"; };
 		103820F11DB86F1300E92410 /* StepHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepHistoryViewController.m; path = History/Step/StepHistoryViewController.m; sourceTree = "<group>"; };
 		103E4BFA1DB0C77E0051BF03 /* UserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserListViewController.h; path = Setting/UserInfo/UserListViewController.h; sourceTree = "<group>"; };
@@ -515,23 +510,12 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		103314571DC062160089B4EB /* Temp */ = {
-			isa = PBXGroup;
-			children = (
-				103314581DC0622D0089B4EB /* TempViewController.h */,
-				103314591DC0622D0089B4EB /* TempViewController.m */,
-				1033145A1DC0622D0089B4EB /* TempViewController.xib */,
-			);
-			name = Temp;
-			sourceTree = "<group>";
-		};
 		103820EE1DB86E9000E92410 /* History */ = {
 			isa = PBXGroup;
 			children = (
 				10826A4E1DBA12540031DB83 /* MonthDropDownMenuView */,
 				103820EF1DB86EE000E92410 /* Step */,
 				10826A551DBA126A0031DB83 /* HeartRate */,
-				103314571DC062160089B4EB /* Temp */,
 				1012C71D1DBEFE280013E99B /* Sleep */,
 				9C1B27751DDEFCBB009663F0 /* Blood */,
 				9C06C1B91DE05C5000418C7C /* BloodO2 */,
@@ -990,7 +974,6 @@
 				9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */,
 				9C19541B1E5FCDF5006DEAED /* PhoneRemindTableViewCell.xib in Resources */,
 				9C57F1FE1DF2C2260090C2EF /* SleepContentView.xib in Resources */,
-				1033145C1DC0622D0089B4EB /* TempViewController.xib in Resources */,
 				9C2ADA3E1E94DF7600DABB0C /* hex.zip in Resources */,
 				9C57F1D71DF288D50090C2EF /* Localizable.strings in Resources */,
 				9C57F1C91DF279300090C2EF /* Launch Screen.storyboard in Resources */,
@@ -1133,7 +1116,6 @@
 				10CB0F031D9A13960063AD0C /* MenuContentView.m in Sources */,
 				10F5F7091D98C6280045FA4C /* main.m in Sources */,
 				10826A581DBA17540031DB83 /* HeartRateHistoryViewController.m in Sources */,
-				1033145B1DC0622D0089B4EB /* TempViewController.m in Sources */,
 				9CDCF9581E8E4C89006625BD /* UnitsTool.m in Sources */,
 				10FF5CF61DC352FB0059FE00 /* PhoneRemindView.m in Sources */,
 				104A70611D9B720500CC73F5 /* SettingViewController.m in Sources */,

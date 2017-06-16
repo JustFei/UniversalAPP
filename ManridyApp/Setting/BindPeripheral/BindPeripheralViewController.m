@@ -67,17 +67,17 @@
     self.navigationItem.title = NSLocalizedString(@"perBind", nil);
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    self.view.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
+    self.view.backgroundColor = COLOR_WITH_HEX(0x1e88e5, 1);
     
-    UIImageView *bluetoothImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 80, WIDTH * 120 / 320, 30, 46)];
+    UIImageView *bluetoothImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 80, WIDTH * 56 / 320, 30, 46)];
     [self.view addSubview:bluetoothImageView];
     [bluetoothImageView setImage:[UIImage imageNamed:@"ble_icon"]];
     
-    self.lockImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x + 50, WIDTH * 120 / 320, 30, 46)];
+    self.lockImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x + 50, WIDTH * 56 / 320, 30, 46)];
     [self.view addSubview:self.lockImageView];
     [self.lockImageView setImage:[UIImage imageNamed:@"ble_lock_oper"]];
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH * 261 / 320, WIDTH, 13 * WIDTH / 320)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH * 197 / 320, WIDTH, 13 * WIDTH / 320)];
     view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     [self.view addSubview:view];
 }
@@ -487,7 +487,7 @@
 - (UIImageView *)connectImageView
 {
     if (!_connectImageView) {
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 25, WIDTH * 136.5 / 320, 50, 13)];
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 25, WIDTH * 72.5 / 320, 50, 13)];
         [self.view addSubview:view];
         _connectImageView = view;
     }
@@ -498,7 +498,7 @@
 - (UIImageView *)refreshImageView
 {
     if (!_refreshImageView) {
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(self.downView.center.x - 44, 100, 88, 78.5)];
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(self.downView.center.x - 44, 36, 88, 78.5)];
         [view setImage:[UIImage imageNamed:@"ble_refresh"]];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(searchPeripheral)];
         [view addGestureRecognizer:tap];
@@ -514,7 +514,7 @@
 - (UILabel *)bindStateLabel
 {
     if (!_bindStateLabel) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, WIDTH * 190 / 320, 200, 19)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, WIDTH * 126 / 320, 200, 19)];
         [label setTextColor:[UIColor colorWithWhite:1 alpha:0.4]];
         label.textAlignment = NSTextAlignmentCenter;
         
@@ -528,7 +528,7 @@
 - (UILabel *)perNameLabel
 {
     if (!_perNameLabel) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, WIDTH * 220 / 320, 200, 19)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, WIDTH * 156 / 320, 200, 19)];
         label.alpha = 0;
         UILongPressGestureRecognizer *lp = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(changePeripheralName:)];
         lp.minimumPressDuration = 3.0;
@@ -549,7 +549,7 @@
 - (UIView *)downView
 {
     if (!_downView) {
-        UIView *downView = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH * 274 / 320, WIDTH, self.view.frame.size.height - (WIDTH * 274 / 320))];
+        UIView *downView = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH * 210 / 320, WIDTH, self.view.frame.size.height - (WIDTH * 274 / 320))];
         downView.backgroundColor = [UIColor whiteColor];
         
         [self.view addSubview:downView];

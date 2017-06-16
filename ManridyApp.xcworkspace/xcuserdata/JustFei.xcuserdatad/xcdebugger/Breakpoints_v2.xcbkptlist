@@ -26,7 +26,7 @@
                   moduleName = "ManridyApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mofujian/Desktop/ProjectList/ProjectList/iwear/ManridyApp/ManridyApp/Main/SubView/BloodO2/BloodO2ContentView.m"
-                  timestampString = "519206035.812159"
+                  timestampString = "519294829.049205"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "65"
@@ -41,7 +41,7 @@
                   moduleName = "ManridyApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mofujian/Desktop/ProjectList/ProjectList/iwear/ManridyApp/ManridyApp/Main/SubView/BloodO2/BloodO2ContentView.m"
-                  timestampString = "519206035.815226"
+                  timestampString = "519294829.052487"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "65"
@@ -64,6 +64,22 @@
             startingLineNumber = "59"
             endingLineNumber = "59"
             landmarkName = "-showChartViewWithData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManridyApp/Setting/SettingContentView.m"
+            timestampString = "519294609.571864"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-layoutSubviews"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

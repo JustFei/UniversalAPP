@@ -65,7 +65,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="step_icon01" translatesAutoresizingMaskIntoConstraints="NO" id="0ej-qs-qpu">
-                            <rect key="frame" x="59" y="61" width="258" height="271"/>
+                            <rect key="frame" x="59" y="64" width="258" height="271"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="258" id="c1V-Mm-Xcc"/>
                                 <constraint firstAttribute="height" constant="271" id="ixf-Nr-zkk"/>
@@ -97,7 +97,7 @@
                         <constraint firstItem="kCX-kz-kc3" firstAttribute="top" secondItem="E9c-y2-W5j" secondAttribute="top" constant="183" id="eO7-or-pkx"/>
                         <constraint firstItem="8wT-kz-VMz" firstAttribute="centerX" secondItem="E9c-y2-W5j" secondAttribute="centerX" id="fVg-Vk-jRt"/>
                         <constraint firstAttribute="trailing" secondItem="gv1-lF-8aj" secondAttribute="trailing" id="hNS-Lq-AFW"/>
-                        <constraint firstItem="0ej-qs-qpu" firstAttribute="top" secondItem="E9c-y2-W5j" secondAttribute="top" constant="61" id="hmR-Ql-3O2"/>
+                        <constraint firstItem="0ej-qs-qpu" firstAttribute="top" secondItem="E9c-y2-W5j" secondAttribute="top" constant="64" id="hmR-Ql-3O2"/>
                         <constraint firstItem="8wT-kz-VMz" firstAttribute="top" secondItem="s62-xy-M4s" secondAttribute="bottom" constant="17" id="mPI-J5-14b"/>
                     </constraints>
                     <variation key="default">

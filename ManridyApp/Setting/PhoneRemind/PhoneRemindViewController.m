@@ -95,7 +95,7 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     self.navigationItem.titleView = titleLabel;
     
-    self.view.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
+    self.view.backgroundColor = COLOR_WITH_HEX(0x1e88e5, 1);
     
     self.remindTableView.backgroundColor = [UIColor clearColor];
 //    self.remindTableView.tableHeaderView = nil;
@@ -772,7 +772,7 @@
     
     if (section == 2) {
         PhoneRemindView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"phoneHead"];
-        view.backgroundColor = [UIColor redColor];
+//        view.backgroundColor = [UIColor redColor];
         
         SectionModel *sectionModel = _sectionArr.lastObject;
         view.model = sectionModel;
@@ -848,7 +848,7 @@
 - (UITableView *)remindTableView
 {
     if (!_remindTableView) {
-        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height  - 60)];
+        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height  - 60)];
         view.tableFooterView = [[UIView alloc] init];
         view.allowsSelection = NO;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesBegan)];

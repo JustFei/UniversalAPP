@@ -73,7 +73,7 @@
     
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换用户" style:UIBarButtonItemStylePlain target:self action:@selector(changeUser)];
     
-    self.view.backgroundColor = [UIColor colorWithRed:77.0 / 255.0 green:170.0 / 255.0 blue:225.0 / 255.0 alpha:1];
+    self.view.backgroundColor = COLOR_WITH_HEX(0x1e88e5, 1);
     
     _userArr = [self.myFmdbTool queryAllUserInfo];
     
@@ -88,7 +88,7 @@
     self.userNameTextField.borderStyle = UITextBorderStyleNone;
     self.userNameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 261 * WIDTH / 320, self.view.frame.size.width, 13 * WIDTH / 320)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 197 * WIDTH / 320, self.view.frame.size.width, 13 * WIDTH / 320)];
     view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     [self.view addSubview:view];
     
@@ -534,7 +534,7 @@
 - (UIImageView *)headImageView
 {
     if (!_headImageView) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 63.5 * WIDTH / 320, 80, 127 * WIDTH / 320, 127 * WIDTH / 320)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 63.5 * WIDTH / 320, 16, 127 * WIDTH / 320, 127 * WIDTH / 320)];
         imageView.backgroundColor = [UIColor whiteColor];
         imageView.image = [UIImage imageNamed:@"set_userphoto"];
         
@@ -557,7 +557,7 @@
 - (UITextField *)userNameTextField
 {
     if (!_userNameTextField) {
-        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(self.view.center.x - 100 * WIDTH / 320, 215 * WIDTH / 320, 200 * WIDTH / 320, 34)];
+        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(self.view.center.x - 100 * WIDTH / 320, 151 * WIDTH / 320, 200 * WIDTH / 320, 34)];
         textField.placeholder = NSLocalizedString(@"inputUserName", nil);
 //        textField.delegate = self;
         
@@ -576,7 +576,7 @@
 - (UITableView *)infoTableView
 {
     if (!_infoTableView) {
-        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 274 * WIDTH / 320, WIDTH, WIDTH * 220 / 320) style:UITableViewStylePlain];
+        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 210 * WIDTH / 320, WIDTH, WIDTH * 220 / 320) style:UITableViewStylePlain];
         view.tableFooterView = [[UIView alloc] init];
         view.scrollEnabled = NO;
         view.allowsSelection = NO;
@@ -597,7 +597,7 @@
 - (UIButton *)saveButton
 {
     if (!_saveButton) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.view.center.x - 85 * WIDTH / 320, self.view.frame.size.height - 64 * WIDTH / 320, 170 * WIDTH / 320, 44)];
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.view.center.x - 85 * WIDTH / 320, self.view.frame.size.height - 128 * WIDTH / 320, 170 * WIDTH / 320, 44)];
         [button addTarget:self action:@selector(saveUserInfo) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:NSLocalizedString(@"save", nil) forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

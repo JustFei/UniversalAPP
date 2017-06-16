@@ -76,11 +76,15 @@ static void completionCallback(SystemSoundID mySSID)
     [self.myBleTool addObserver:self forKeyPath:@"systemBLEstate" options: NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
     
     //设置navigationBar为透明无线
-//    [nc.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//    [nc.navigationBar setShadowImage:[UIImage new]];
+    [nc.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [nc.navigationBar setShadowImage:[UIImage new]];
 //    nc.navigationBar.clipsToBounds = YES;
 //    [[nc.navigationBar subviews].firstObject setAlpha:1];
+    nc.navigationBar.translucent = NO;
+    nc.edgesForExtendedLayout = UIRectEdgeNone;
+    nc.extendedLayoutIncludesOpaqueBars = YES;
     nc.navigationBar.barTintColor = COLOR_WITH_HEX(0x1e88e5, 1);
+//    nc.navigationBar.backgroundColor = COLOR_WITH_HEX(0x1e88e5, 1);
     
     //修改title颜色和font
     [nc.navigationBar setTitleTextAttributes:@{@"NSForegroundColorAttributeName":[UIColor whiteColor], @"NSFontAttributeName":[UIFont systemFontOfSize:15]}];
