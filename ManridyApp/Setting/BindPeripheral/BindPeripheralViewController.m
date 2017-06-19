@@ -549,7 +549,7 @@
 - (UIView *)downView
 {
     if (!_downView) {
-        UIView *downView = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH * 210 / 320, WIDTH, self.view.frame.size.height - (WIDTH * 274 / 320))];
+        UIView *downView = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH * 210 / 320, WIDTH, self.view.frame.size.height - (WIDTH * 254 / 320))];
         downView.backgroundColor = [UIColor whiteColor];
         
         [self.view addSubview:downView];

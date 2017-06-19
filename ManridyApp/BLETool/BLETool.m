@@ -681,6 +681,21 @@ static BLETool *bleTool = nil;
     }
 }
 
+/**
+ 时间格式设置
+ YES = 12 时
+ NO = 24 时
+ */
+- (void)writeTimeFormatterToPeripheral:(BOOL)twelveFormatter
+{
+    NSString *protocolStr = [NSString stringWithFormat:@"fc1800%@", twelveFormatter ? @"01" : @"00"];
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
+        // wait操作-1，当别的消息进来就会阻塞，知道这条消息收到回调，signal+1后，才会继续执行。保证了消息的队列发送，保证稳定性。
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+    NSLog(@"同步时间格式");
+}
+
 #pragma mark - CBCentralManagerDelegate
 //检查设备蓝牙开关的状态
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
@@ -1085,6 +1100,12 @@ static BLETool *bleTool = nil;
             if ([self.receiveDelegate respondsToSelector:@selector(receiveBloodO2DataWithModel:)]) {
                 [self.receiveDelegate receiveBloodO2DataWithModel:model];
             }
+        }else if ([headStr isEqualToString:@"17"] || [headStr isEqualToString:@"97"]) {
+            //单位设置是否成功
+            [[NSNotificationCenter defaultCenter] postNotificationName:SET_UNITS_DATA object:nil userInfo:@{@"success":[headStr isEqualToString:@"17"]? @YES : @NO}];
+        }else if ([headStr isEqualToString:@"18"] || [headStr isEqualToString:@"98"]) {
+            //单位设置是否成功
+            [[NSNotificationCenter defaultCenter] postNotificationName:SET_TIME_FORMATTER object:nil userInfo:@{@"success":[headStr isEqualToString:@"18"]? @YES : @NO}];
         }else if ([headStr isEqualToString:@"19"]) {
             //开始拍照
             manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisTakePhoto:value WithHeadStr:headStr];

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -52,13 +52,6 @@
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1c-2e-bwT">
-                        <rect key="frame" x="0.0" y="42" width="320" height="1"/>
-                        <color key="backgroundColor" red="0.41568627450980389" green="0.76862745098039209" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="2S6-p3-1d5"/>
-                        </constraints>
-                    </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIG-ce-nXu">
                         <rect key="frame" x="45" y="7" width="42" height="30"/>
                         <state key="normal" title="09:00">
@@ -81,16 +74,13 @@
                 <constraints>
                     <constraint firstItem="Jrg-F5-JOs" firstAttribute="leading" secondItem="f7E-Wb-jAn" secondAttribute="trailing" constant="17" id="05l-AX-5hS"/>
                     <constraint firstItem="feT-uC-xT0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7M4-Zo-e6k"/>
-                    <constraint firstAttribute="trailing" secondItem="h1c-2e-bwT" secondAttribute="trailing" id="8SZ-O6-WTm"/>
                     <constraint firstItem="Jrg-F5-JOs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9Iq-De-u6W"/>
                     <constraint firstItem="NXC-7r-urv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ABz-M7-Uol"/>
                     <constraint firstItem="yg7-u6-cvg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EUX-Ep-hIo"/>
                     <constraint firstItem="f7E-Wb-jAn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="H43-HZ-8uM"/>
-                    <constraint firstItem="h1c-2e-bwT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Nf4-IN-soY"/>
                     <constraint firstItem="xhc-nU-LvB" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="PoT-DJ-hNo"/>
                     <constraint firstItem="Jrg-F5-JOs" firstAttribute="leading" secondItem="cIG-ce-nXu" secondAttribute="leading" id="RAA-Lx-X9G"/>
                     <constraint firstAttribute="trailing" secondItem="NXC-7r-urv" secondAttribute="trailing" constant="15" id="VZA-Ar-lca"/>
-                    <constraint firstAttribute="bottom" secondItem="h1c-2e-bwT" secondAttribute="bottom" id="ftl-Xr-V55"/>
                     <constraint firstItem="f7E-Wb-jAn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kqG-Ts-OVd"/>
                     <constraint firstItem="cIG-ce-nXu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nFg-Av-U0J"/>
                     <constraint firstItem="yg7-u6-cvg" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="rDF-ls-lga"/>
@@ -103,7 +93,6 @@
                 <outlet property="bolanghaolabel" destination="xhc-nU-LvB" id="SAe-3m-1Ut"/>
                 <outlet property="endButton" destination="NXC-7r-urv" id="4Gy-H9-2ag"/>
                 <outlet property="functionName" destination="Jrg-F5-JOs" id="2nH-oe-Fw0"/>
-                <outlet property="halvingLine" destination="h1c-2e-bwT" id="8EM-KF-Cg7"/>
                 <outlet property="iconImageView" destination="f7E-Wb-jAn" id="MAa-d7-gza"/>
                 <outlet property="startButton" destination="cIG-ce-nXu" id="D7T-8r-4pl"/>
                 <outlet property="timeButton" destination="feT-uC-xT0" id="TRJ-X7-Xxp"/>

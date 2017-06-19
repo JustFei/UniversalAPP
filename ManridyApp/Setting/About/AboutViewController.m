@@ -34,7 +34,7 @@
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = COLOR_WITH_HEX(0xf5f5f5, 1);
     
     self.upView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 261 * WIDTH / 320)];
     self.upView.backgroundColor = COLOR_WITH_HEX(0x1e88e5, 1);

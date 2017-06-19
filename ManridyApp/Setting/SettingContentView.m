@@ -7,11 +7,13 @@
 //
 
 #import "SettingContentView.h"
-#import "UserInfoViewController.h"
+#import "UserInfoViewController1.h"
 #import "BindPeripheralViewController.h"
 #import "PhoneRemindViewController.h"
 #import "AboutViewController.h"
+#import "TakePhotoViewController.h"
 #import "UnitsSettingViewController.h"
+#import "TimeFormatterViewController.h"
 
 #define WIDTH self.frame.size.width
 
@@ -41,11 +43,14 @@
         _dataArr = @[NSLocalizedString(@"userInfo", nil),
                      NSLocalizedString(@"perBind", nil),
                      NSLocalizedString(@"infoRemind", nil),
+                     @"遥控拍照",
+                     @"单位设置",
+                     @"时间格式",
                      NSLocalizedString(@"about", nil)
                      //先隐藏单位设置功能
                      //,NSLocalizedString(@"UnitsSetting", nil)
                      ];
-        _imageNameArr = @[@"set_userinfo",@"set_bluetooth",@"set_remind",@"set_about"];
+        _imageNameArr = @[@"set_userinfo",@"set_bluetooth",@"set_remind",@"set_take",@"set_unit",@"set_time",@"set_about"];
     }
     return self;
 }
@@ -71,13 +76,15 @@
     
     self.functionTableView.frame = CGRectMake(0, WIDTH * 274 / 320, WIDTH, self.frame.size.height - WIDTH * 210 / 320);
     
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]) {
-        [self.userNameLabel setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"currentusername"]];
+    //用户名
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_NAME_SETTING]) {
+        [self.userNameLabel setText:[[NSUserDefaults standardUserDefaults] objectForKey:USER_NAME_SETTING]];
     }
     
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userheadimage"]) {
+    //用户头像
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_HEADIMAGE_SETTING]) {
 //        [self.headView setImage:[[NSUserDefaults standardUserDefaults] objectForKey:@"userheadimage"]];
-        NSData *imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"userheadimage"];
+        NSData *imageData = [[NSUserDefaults standardUserDefaults] objectForKey:USER_HEADIMAGE_SETTING];
         [self.headView setImage:[UIImage imageWithData:imageData]];
     }
 }
@@ -109,11 +116,11 @@
     [cell.textLabel setTextColor:COLOR_WITH_HEX(0x000000, 0.87)];
     
 //    cell.contentView.backgroundColor = [UIColor colorWithRed:48.0 / 255.0 green:110.0 / 255.0 blue:187.0 / 255.0 alpha:0.7];
-    UIView *view = [[UIView alloc] initWithFrame:cell.contentView.frame];
-    
-    view.backgroundColor = [UIColor colorWithRed:48.0 / 255.0 green:110.0 / 255.0 blue:187.0 / 255.0 alpha:0.7];//设置选中后cell的背景颜色
-    
-    cell.selectedBackgroundView = view;
+//    UIView *view = [[UIView alloc] initWithFrame:cell.contentView.frame];
+//    
+//    view.backgroundColor = [UIColor colorWithRed:48.0 / 255.0 green:110.0 / 255.0 blue:187.0 / 255.0 alpha:0.7];//设置选中后cell的背景颜色
+//    
+//    cell.selectedBackgroundView = view;
     
     return cell;
 }
@@ -126,12 +133,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 //    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    
     switch (indexPath.row) {
         case 0:
         {
-            UserInfoViewController *vc = [[UserInfoViewController alloc] init];
+            UserInfoViewController1 *vc = [[UserInfoViewController1 alloc] init];
             [[self findViewController:self].navigationController pushViewController:vc animated:YES];
         }
             break;
@@ -158,7 +163,8 @@
             break;
         case 3:
         {
-            AboutViewController *vc = [[AboutViewController alloc] init];
+            
+            TakePhotoViewController *vc = [[TakePhotoViewController alloc] init];
             [[self findViewController:self].navigationController pushViewController:vc animated:YES];
         }
             break;
@@ -167,6 +173,19 @@
             UnitsSettingViewController *vc = [[UnitsSettingViewController alloc] init];
             [[self findViewController:self].navigationController pushViewController:vc animated:YES];
         }
+            break;
+        case 5:
+        {
+            TimeFormatterViewController *vc = [[TimeFormatterViewController alloc] init];
+            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 6:
+        {
+            AboutViewController *vc = [[AboutViewController alloc] init];
+            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
+        }
+            break;
         default:
             break;
     }
@@ -191,7 +210,7 @@
     if (!_userNameLabel) {
         UILabel *label = [[UILabel alloc] init];
         label.text = NSLocalizedString(@"userName", nil);
-        label.textColor = COLOR_WITH_HEX(0xffffff, 0.87);
+        label.textColor = COLOR_WITH_HEX(0x000000, 0.87);
         label.font = [UIFont systemFontOfSize:14];
         label.textAlignment = NSTextAlignmentCenter;
         

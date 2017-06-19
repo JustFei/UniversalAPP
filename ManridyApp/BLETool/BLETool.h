@@ -306,4 +306,7 @@ ImperialSystem  YES = 英制
 /** 分段跑步获取 */
 - (void)writeSegementRunWithHistoryMode:(HistoryMode)mode;
 
+/** 同步时间格式 */
+- (void)writeTimeFormatterToPeripheral:(BOOL)twelveFormatter;
+
 @end

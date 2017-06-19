@@ -56,7 +56,7 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
         _funcArr = @[@[NSLocalizedString(@"phoneRemind", nil),NSLocalizedString(@"messageRemind", nil),NSLocalizedString(@"lossRemind", nil),NSLocalizedString(@"findPer", nil)],@[NSLocalizedString(@"sedentaryRemind", nil),NSLocalizedString(@"beginTime", nil),NSLocalizedString(@"endTime", nil),NSLocalizedString(@"unDisturb", nil)],@[NSLocalizedString(@"clockSet", nil)]];
-        _imageArr = @[@[@"alert_call",@"alert_sms",@"alert_lose",@"alert_find"],@[@"alert_sedentary"],@[@"alert_clock"]];
+        _imageArr = @[@[@"remind_phone",@"remind_msg",@"remind_antilost",@"remind_find"],@[@"remind_sit"],@[@"remind_alarmclock"]];
     
     _clockArr = @[NSLocalizedString(@"clock1", nil),NSLocalizedString(@"clock2", nil),NSLocalizedString(@"clock3", nil)];
     
@@ -95,7 +95,7 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     self.navigationItem.titleView = titleLabel;
     
-    self.view.backgroundColor = COLOR_WITH_HEX(0x1e88e5, 1);
+    self.view.backgroundColor = COLOR_WITH_HEX(0xf5f5f5, 1);
     
     self.remindTableView.backgroundColor = [UIColor clearColor];
 //    self.remindTableView.tableHeaderView = nil;
@@ -515,6 +515,8 @@
     NSArray *imgArr = _imageArr[indexPath.section];
     NSArray *funArr = _funcArr[indexPath.section];
     
+    cell.functionName.textColor = COLOR_WITH_HEX(0x000000, 0.87);
+    cell.functionName.font = [UIFont systemFontOfSize:14];
     switch (indexPath.section) {
         case 0:
         {
@@ -645,7 +647,7 @@
                     cell.bolanghaolabel.hidden = NO;
                     cell.bolanghaolabel.text = [NSString stringWithFormat:@"%@~%@",self.sedModel.disturbStartTime,self.sedModel.disturbEndTime];
                     [cell.bolanghaolabel setFont:[UIFont systemFontOfSize:13]];
-                    [cell.bolanghaolabel setTextColor:[UIColor whiteColor]];
+//                    [cell.bolanghaolabel setTextColor:[UIColor whiteColor]];
                     cell.iconImageView.hidden = YES;
                     cell.functionName.text = funArr[indexPath.row + 1];
                     NSLog(@"1-2 == %@",cell.functionName.text);
@@ -702,12 +704,12 @@
             if (self.clockTimeArr.count == 0) {
                 [cell.timeButton setTitle:@"08:00" forState:UIControlStateNormal];
                 [cell.timeSwitch setOn:NO];
-                [cell.timeButton setTitleColor:cell.timeSwitch.on ? [UIColor whiteColor] : [UIColor grayColor] forState:UIControlStateNormal];
+                [cell.timeButton setTitleColor:cell.timeSwitch.on ? COLOR_WITH_HEX(0x1e88e5, 1) : [UIColor grayColor] forState:UIControlStateNormal];
             }else {
                 ClockModel *model = self.clockTimeArr[indexPath.row];
                 [cell.timeButton setTitle:model.time forState:UIControlStateNormal];
                 [cell.timeSwitch setOn:model.isOpen];
-                [cell.timeButton setTitleColor:cell.timeSwitch.on ? [UIColor whiteColor] : [UIColor grayColor] forState:UIControlStateNormal];
+                [cell.timeButton setTitleColor:cell.timeSwitch.on ? COLOR_WITH_HEX(0x1e88e5, 1) : [UIColor grayColor] forState:UIControlStateNormal];
             }
             cell.timeButton.tag = indexPath.row;
             [cell.timeButton addTarget:self action:@selector(presentPickerView:) forControlEvents:UIControlEventTouchUpInside];
@@ -760,7 +762,7 @@
 {
     if (section == 0) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , 16)];
-        view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+        view.backgroundColor = COLOR_WITH_HEX(0x000000, 0.15);
         return view;
     }
     
@@ -772,7 +774,6 @@
     
     if (section == 2) {
         PhoneRemindView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"phoneHead"];
-//        view.backgroundColor = [UIColor redColor];
         
         SectionModel *sectionModel = _sectionArr.lastObject;
         view.model = sectionModel;
@@ -853,7 +854,7 @@
         view.allowsSelection = NO;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesBegan)];
         [view addGestureRecognizer:tap];
-        view.separatorStyle = UITableViewCellSeparatorStyleNone;
+        view.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         
         view.backgroundColor = [UIColor clearColor];
         

@@ -23,7 +23,8 @@
     [self.contentView addSubview:button];
     button.frame = CGRectMake(0, 0, WIDTH, 44);
     
-    self.contentView.backgroundColor = COLOR_WITH_HEX(0x1e88e5, 1);
+    self.contentView.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor clearColor];
     
     return self;
 }
@@ -95,8 +96,8 @@
     if (!_functionLabel) {
 //        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 11, 80, 21)];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 25, 150, 21)];
-        label.font = [UIFont systemFontOfSize:15];
-        label.textColor = [UIColor whiteColor];
+        label.font = [UIFont systemFontOfSize:14];
+        label.textColor = COLOR_WITH_HEX(0x000000, 0.87);
         [self.contentView addSubview:label];
         _functionLabel = label;
     }

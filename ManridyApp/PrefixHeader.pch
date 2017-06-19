@@ -15,6 +15,8 @@
 #import "AlertTool.h"
 #import "BLETool.h"
 #import "ColorConstants.h"
+#import "MBProgressHUD.h"
+#import "Masonry.h"
 
 #ifdef DEBUG
 #   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
@@ -30,6 +32,27 @@
 
 //判断手环当前连接
 #define ifConnect ([BLETool shareInstance].connectState == kBLEstateDidConnected)
+
+#define USER_INFO_SETTING @"UserInfoSetting"
+#define USER_NAME_SETTING @"UserNameSetting"
+#define USER_HEADIMAGE_SETTING @"UserHeadimageSetting"
+//单位设置
+#define SET_UNITS_DATA @"SetUnitsData"
+//时间格式设置
+#define SET_TIME_FORMATTER @"SetTimeFormatter"
+
+//时间格式设置保存
+#define TIME_FORMATTER_SETTING @"TimeFormatterSetting"
+//时间制式
+#define TIME_FORMATTER @"TimeFormatter"         //yes：12时，no：24时
+//拍照
+#define SET_TAKE_PHOTO @"SetTakePhoto"
+//单位设置保存
+#define UNITS_SETTING @"UnitsSetting"
+//长度单位
+#define LONG_MEASURE @"LongMeasure"             //yes：英制，no：公制
+//重量单位
+#define HUNDRED_WEIGHT @"HundredWeight"         //yes：英制，no：公制
 
 //#endif /* Log_h */
 
