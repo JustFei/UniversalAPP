@@ -55,7 +55,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sleep_icon01" translatesAutoresizingMaskIntoConstraints="NO" id="h2H-0x-LTA">
-                            <rect key="frame" x="58.5" y="61" width="258" height="271"/>
+                            <rect key="frame" x="58.5" y="65" width="258" height="271"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="258" id="0p8-sE-Vnh"/>
                                 <constraint firstAttribute="height" constant="271" id="w9h-ya-oc0"/>
@@ -78,7 +78,7 @@
                         <constraint firstItem="lHK-vw-NFT" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" id="7tW-CD-gNI"/>
                         <constraint firstItem="YQc-5G-8TM" firstAttribute="top" secondItem="YMG-93-Tfc" secondAttribute="top" constant="183" id="Fqp-dS-mhz"/>
                         <constraint firstAttribute="height" constant="375" id="Iek-3L-afY"/>
-                        <constraint firstItem="h2H-0x-LTA" firstAttribute="top" secondItem="YMG-93-Tfc" secondAttribute="top" constant="61" id="MzJ-s5-tks"/>
+                        <constraint firstItem="h2H-0x-LTA" firstAttribute="top" secondItem="YMG-93-Tfc" secondAttribute="top" constant="65" id="MzJ-s5-tks"/>
                         <constraint firstItem="gtr-da-WQW" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" id="aJm-R6-rWl"/>
                         <constraint firstItem="h2H-0x-LTA" firstAttribute="centerX" secondItem="YMG-93-Tfc" secondAttribute="centerX" id="bEg-6w-qF1"/>
                         <constraint firstItem="HJH-Lw-7su" firstAttribute="top" secondItem="YMG-93-Tfc" secondAttribute="top" constant="335" id="egh-QN-Cc6"/>

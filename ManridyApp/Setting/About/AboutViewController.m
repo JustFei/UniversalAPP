@@ -13,7 +13,7 @@
 #define WIDTH self.view.frame.size.width
 #define HEIGHT self.view.frame.size.height
 
-@interface AboutViewController ()
+@interface AboutViewController () < NSXMLParserDelegate >
 
 @property (nonatomic ,strong) UIView *upView;
 @property (nonatomic ,strong) UIImageView *headImageView;
@@ -23,6 +23,8 @@
 @property (nonatomic ,strong) UILabel *hardwareLabel;
 @property (nonatomic ,strong) UIButton *checkUpdateButton;
 @property (nonatomic ,strong) MBProgressHUD *hud;
+@property (nonatomic, strong) NSString *filePath;
+@property (nonatomic, strong) UIAlertController *updateAc;
 
 @end
 
@@ -82,8 +84,7 @@
     
     [self.checkUpdateButton addTarget:self action:@selector(checkUpdate:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.checkUpdateButton];
-#warning 先隐藏检查更新按钮
-    self.checkUpdateButton.hidden = YES;
+//    self.checkUpdateButton.hidden = YES;
     [self.view addSubview:self.hardwareLabel];
 }
 
@@ -91,66 +92,191 @@
 - (void)checkUpdate:(UIButton *)sender
 {
     self.hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    self.hud.mode = MBProgressHUDModeIndeterminate;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        //检查设备固件的版本号:高于1.3.4的才支持空中升级
-        NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
-        version = [version stringByReplacingOccurrencesOfString:@"." withString:@""];
-        if (version.integerValue >= 134) {
-            [self.hud hideAnimated:YES];
-            UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"更新提示" message:@"有新版本，是否更新" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *okAc = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                UpdateViewController *udVC = [[UpdateViewController alloc] init];
-                 CATransition * animation = [CATransition animation];
-                animation.duration = 0.5;    //  时间
-                
-                /**  type：动画类型
-                 *  pageCurl       向上翻一页
-                 *  pageUnCurl     向下翻一页
-                 *  rippleEffect   水滴
-                 *  suckEffect     收缩
-                 *  cube           方块
-                 *  oglFlip        上下翻转
-                 */
-                animation.type = @"rippleEffect";
-                
-                /**  type：页面转换类型
-                 *  kCATransitionFade       淡出
-                 *  kCATransitionMoveIn     覆盖
-                 *  kCATransitionReveal     底部显示
-                 *  kCATransitionPush       推出
-                 */
-                //animation.type = kCATransitionMoveIn;
-                
-                //PS：type 更多效果请 搜索： CATransition
-                
-                /**  subtype：出现的方向
-                 *  kCATransitionFromRight       右
-                 *  kCATransitionFromLeft        左
-                 *  kCATransitionFromTop         上
-                 *  kCATransitionFromBottom      下
-                 */
-                //animation.subtype = kCATransitionFromBottom;
-                
-                [self.view.window.layer addAnimation:animation forKey:nil];
-                [self presentViewController:udVC animated:YES completion:nil];
-            }];
-            UIAlertAction *cancelAc = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-            [vc addAction:okAc];
-            [vc addAction:cancelAc];
-            [self presentViewController:vc animated:YES completion:nil];
-        }else {
-            self.hud.label.text = @"暂无更新";
-            self.hud.mode = MBProgressHUDModeText;
+        
+        if ([BLETool shareInstance].connectState == kBLEstateDisConnected) {
+            //[((AppDelegate *)[UIApplication sharedApplication].delegate) showTheStateBar];
+            self.hud.label.text = @"设备未连接，无法更新";
             [self.hud hideAnimated:YES afterDelay:2];
+        }else {
+//            self.loadingToast = [[MDToast alloc] initWithText:@"检查更新中" duration: 10000];
+            self.hud.mode = MBProgressHUDModeIndeterminate;
+            self.hud.label.text = @"检查更新中";
+            
+            NSURL *url = [NSURL URLWithString:@"http://39.108.92.15:12345/version.xml"];
+            
+            NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:1 timeoutInterval:10.0];
+            [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc]init] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+                NSLog(@"connectionError == %@", connectionError);
+                if (!connectionError) {
+                    //创建xml解析器
+                    NSXMLParser *parser = [[NSXMLParser alloc]initWithData:data];
+                    //设置代理
+                    parser.delegate = self;
+                    //开始解析
+                    [parser parse];
+                }else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.hud.label setText:@"网络异常，请连接网络后再尝试"];
+                        [self.hud hideAnimated:YES afterDelay:2];
+                    });
+                }
+            }];
         }
+        
+//        //检查设备固件的版本号:高于1.3.4的才支持空中升级
+//        NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
+//        version = [version stringByReplacingOccurrencesOfString:@"." withString:@""];
+//        if (version.integerValue >= 134) {
+//            [self.hud hideAnimated:YES];
+//            UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"更新提示" message:@"有新版本，是否更新" preferredStyle:UIAlertControllerStyleAlert];
+//            UIAlertAction *okAc = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//                UpdateViewController *udVC = [[UpdateViewController alloc] init];
+//                 CATransition * animation = [CATransition animation];
+//                animation.duration = 0.5;    //  时间
+//                
+//                /**  type：动画类型
+//                 *  pageCurl       向上翻一页
+//                 *  pageUnCurl     向下翻一页
+//                 *  rippleEffect   水滴
+//                 *  suckEffect     收缩
+//                 *  cube           方块
+//                 *  oglFlip        上下翻转
+//                 */
+//                animation.type = @"rippleEffect";
+//                
+//                /**  type：页面转换类型
+//                 *  kCATransitionFade       淡出
+//                 *  kCATransitionMoveIn     覆盖
+//                 *  kCATransitionReveal     底部显示
+//                 *  kCATransitionPush       推出
+//                 */
+//                //animation.type = kCATransitionMoveIn;
+//                
+//                //PS：type 更多效果请 搜索： CATransition
+//                
+//                /**  subtype：出现的方向
+//                 *  kCATransitionFromRight       右
+//                 *  kCATransitionFromLeft        左
+//                 *  kCATransitionFromTop         上
+//                 *  kCATransitionFromBottom      下
+//                 */
+//                //animation.subtype = kCATransitionFromBottom;
+//                
+//                [self.view.window.layer addAnimation:animation forKey:nil];
+//                [self presentViewController:udVC animated:YES completion:nil];
+//            }];
+//            UIAlertAction *cancelAc = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+//            [vc addAction:okAc];
+//            [vc addAction:cancelAc];
+//            [self presentViewController:vc animated:YES completion:nil];
+//        }else {
+//            self.hud.label.text = @"暂无更新";
+//            self.hud.mode = MBProgressHUDModeText;
+//            [self.hud hideAnimated:YES afterDelay:2];
+//        }
     });
+}
+
+#pragma mark - NSXMLParserDelegate
+- (void)parserDidStartDocument:(NSXMLParser *)parser {
+    NSLog(@"1.开始文档");
+}
+
+//每发现一个开始节点就调用
+
+/**
+ *  每发现一个节点就调用
+ *  *  @param parser        解析器
+ *  @param elementName   节点名字
+ *  @param attributeDict 属性字典
+ */
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(nullable NSString *)namespaceURI qualifiedName:(nullable NSString *)qName attributes:(NSDictionary<NSString *, NSString *> *)attributeDict
+{
+    NSLog(@"2.发现节点：%@",elementName);
+    if ([elementName isEqualToString:@"product"])
+    {
+        //获取 id 号
+        NSString *idcount = attributeDict[@"id"];
+        if ([idcount isEqualToString:@"0001"]) {
+            self.filePath = [@"http://39.108.92.15:12345" stringByAppendingString:[NSString stringWithFormat:@"/0001/%@", attributeDict[@"file"]]];
+            NSString *verInServer = attributeDict[@"least"];
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:@"version"]) {
+                NSString *hardVer = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
+                if (verInServer >= hardVer) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.hud hideAnimated:YES afterDelay:1];
+                        //提示是否更新
+                        [self presentViewController:self.updateAc animated:YES completion:nil];
+                    });
+                }else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.hud.label setText:@"暂无更新"];
+                        [self.hud hideAnimated:YES afterDelay:2];
+                    });
+                }
+            }
+        }
+    }
+    
+    //    [self.elementNameString setString:@""];
+}
+
+//发现节点内容
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+    
+    NSLog(@"3.发现节点内容：%@",string);
+    //把发现的内容进行拼接
+    //    [self.elementNameString appendString:string];
+}
+
+//发现结束节点
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(nullable NSString *)namespaceURI qualifiedName:(nullable NSString *)qName
+{
+    NSLog(@"3.发现结束节点 %@",elementName);
+    //    NSLog(@"拼接的内容%@",self.elementNameString);
+    
+    if ([elementName isEqualToString:@"name"])
+    {
+        //        self.video.name = self.elementNameString;
+    }else if ([elementName isEqualToString:@"teacher"])
+    {
+        //        self.video.teacher = self.elementNameString;
+    }
+}
+
+//解析完毕调用
+- (void)parserDidEndDocument:(NSXMLParser *)parser
+{
+    NSLog(@"解析完毕---------");
+    
+    //    NSLog(@"%@",self.video);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - lazy
+- (UIAlertController *)updateAc
+{
+    if (!_updateAc) {
+        _updateAc = [UIAlertController alertControllerWithTitle:@"更新提示" message:@"有新的更新，是否现在更新？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAc = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *okAc = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UpdateViewController *vc = [[UpdateViewController alloc] init];
+            vc.filePa = self.filePath;
+            [self presentViewController:vc animated:YES completion:nil];
+        }];
+        [_updateAc addAction:cancelAc];
+        [_updateAc addAction:okAc];
+    }
+    
+    return _updateAc;
 }
 
 

@@ -48,7 +48,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bloodpresure_icon01" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-7N-yYW">
-                            <rect key="frame" x="58" y="61" width="258" height="271"/>
+                            <rect key="frame" x="58" y="65" width="258" height="271"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="258" id="QUZ-iW-TgI"/>
                                 <constraint firstAttribute="height" constant="271" id="xfu-pc-ffU"/>
@@ -75,7 +75,7 @@
                         <constraint firstItem="mJP-c2-QQo" firstAttribute="top" secondItem="3tT-Ww-UQj" secondAttribute="bottom" constant="12" id="GIQ-XL-YX9"/>
                         <constraint firstItem="I1f-Q1-Rgp" firstAttribute="centerX" secondItem="AUl-Tc-j30" secondAttribute="centerX" id="MmI-QJ-InC"/>
                         <constraint firstItem="3tT-Ww-UQj" firstAttribute="top" secondItem="I1f-Q1-Rgp" secondAttribute="bottom" constant="30" id="PQM-Ev-7hT"/>
-                        <constraint firstItem="bfU-7N-yYW" firstAttribute="top" secondItem="AUl-Tc-j30" secondAttribute="top" constant="61" id="Ztx-eh-Q03"/>
+                        <constraint firstItem="bfU-7N-yYW" firstAttribute="top" secondItem="AUl-Tc-j30" secondAttribute="top" constant="65" id="Ztx-eh-Q03"/>
                         <constraint firstItem="mJP-c2-QQo" firstAttribute="centerX" secondItem="3tT-Ww-UQj" secondAttribute="centerX" id="a40-06-8uK"/>
                         <constraint firstItem="3tT-Ww-UQj" firstAttribute="centerX" secondItem="AUl-Tc-j30" secondAttribute="centerX" id="elh-DB-eCC"/>
                     </constraints>

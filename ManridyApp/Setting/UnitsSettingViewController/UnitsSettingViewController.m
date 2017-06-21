@@ -50,12 +50,20 @@ static NSString * const UnitsSettingTableViewCellID = @"UnitsSettingTableViewCel
 
 - (void)saveUnitsAction
 {
-    NSArray *arr1 = self.dataArr.firstObject;
-    UnitsSettingModel *model = arr1.lastObject;//英制的选择
-    
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    [self.hud showAnimated:YES];
-    [[BLETool shareInstance] writeUnitToPeripheral:model.isSelect];
+    
+    if ([BLETool shareInstance].connectState == kBLEstateDisConnected) {
+        MBProgressHUD *dishud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        dishud.label.text = @"未连接";
+        [dishud hideAnimated:YES afterDelay:2];
+    } else {
+        NSArray *arr1 = self.dataArr.firstObject;
+        UnitsSettingModel *model = arr1.lastObject;//英制的选择
+        
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        //    [self.hud showAnimated:YES];
+        [[BLETool shareInstance] writeUnitToPeripheral:model.isSelect];
+    }
 }
 
 /*推送公制和英制单位
@@ -203,8 +211,8 @@ static NSString * const UnitsSettingTableViewCellID = @"UnitsSettingTableViewCel
             }
             _dataArr = mutArr;
         }else {
-            NSArray *sec1 = @[@"公制(米/公里)", @"英制(英寸/英尺/英里)"];
-            NSArray *sec2 = @[@"公制(公斤/千克)",@"英制(磅)"];
+            NSArray *sec1 = @[@"公制(米/公里/千克)", @"英制(英寸/英尺/英磅)"];
+//            NSArray *sec2 = @[@"公制(公斤)",@"英制()"];
             NSMutableArray *mutArr1 = [NSMutableArray array];
             NSMutableArray *mutArr2 = [NSMutableArray array];
             for (int index = 0; index < sec1.count; index ++) {
@@ -213,13 +221,13 @@ static NSString * const UnitsSettingTableViewCellID = @"UnitsSettingTableViewCel
                 model.isSelect = index == 0 ? YES : NO;
                 [mutArr1 addObject:model];
             }
-            for (int index = 0; index < sec2.count; index ++) {
-                UnitsSettingModel *model = [[UnitsSettingModel alloc] init];
-                model.name = sec2[index];
-                model.isSelect = index == 0 ? YES : NO;
-                [mutArr2 addObject:model];
-            }
-            _dataArr = @[mutArr1, mutArr2];
+//            for (int index = 0; index < sec2.count; index ++) {
+//                UnitsSettingModel *model = [[UnitsSettingModel alloc] init];
+//                model.name = sec2[index];
+//                model.isSelect = index == 0 ? YES : NO;
+//                [mutArr2 addObject:model];
+//            }
+            _dataArr = @[mutArr1];
         }
     }
     

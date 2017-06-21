@@ -48,7 +48,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bloodoxygen_icon01" translatesAutoresizingMaskIntoConstraints="NO" id="Ulc-G6-KEI">
-                            <rect key="frame" x="58" y="61" width="258" height="271"/>
+                            <rect key="frame" x="58" y="65" width="258" height="271"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="258" id="24g-kg-JVy"/>
                                 <constraint firstAttribute="height" constant="271" id="gIo-Sn-Hmd"/>
@@ -74,7 +74,7 @@
                     <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="qZ9-kp-vkK" firstAttribute="centerX" secondItem="ypK-QU-EpA" secondAttribute="centerX" id="300-1W-2Zt"/>
-                        <constraint firstItem="Ulc-G6-KEI" firstAttribute="top" secondItem="ypK-QU-EpA" secondAttribute="top" constant="61" id="4St-uz-ZAD"/>
+                        <constraint firstItem="Ulc-G6-KEI" firstAttribute="top" secondItem="ypK-QU-EpA" secondAttribute="top" constant="65" id="4St-uz-ZAD"/>
                         <constraint firstItem="TgI-sJ-LZX" firstAttribute="centerX" secondItem="ypK-QU-EpA" secondAttribute="centerX" id="5Fx-N0-ClF"/>
                         <constraint firstAttribute="height" constant="375" id="5e4-62-0T5"/>
                         <constraint firstItem="Mxt-Ja-lhm" firstAttribute="centerX" secondItem="qZ9-kp-vkK" secondAttribute="centerX" id="Qyw-wA-vol"/>

@@ -10,4 +10,6 @@
 
 @interface UpdateViewController : UIViewController
 
+@property (nonatomic, copy) NSString *filePa;
+
 @end

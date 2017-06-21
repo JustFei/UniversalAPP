@@ -24,6 +24,7 @@
 		1042FC7A1DA9F20400467F01 /* SleepSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1042FC781DA9F20400467F01 /* SleepSettingViewController.m */; };
 		104A70611D9B720500CC73F5 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A70601D9B720500CC73F5 /* SettingViewController.m */; };
 		104A70641D9B724D00CC73F5 /* SettingContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 104A70631D9B724D00CC73F5 /* SettingContentView.m */; };
+		105FF05B1EFA0AAE00807BD1 /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105FF05A1EFA0AAE00807BD1 /* UpdateViewController.m */; };
 		10826A531DBA12600031DB83 /* DropdownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10826A501DBA12600031DB83 /* DropdownMenuView.m */; };
 		10826A541DBA12600031DB83 /* TitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10826A521DBA12600031DB83 /* TitleMenuViewController.m */; };
 		10826A581DBA17540031DB83 /* HeartRateHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10826A571DBA17540031DB83 /* HeartRateHistoryViewController.m */; };
@@ -89,7 +90,6 @@
 		9CBCBC401EB34784005161F4 /* SegmentedRunModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBCBC3F1EB34784005161F4 /* SegmentedRunModel.m */; };
 		9CC5597C1E2F72170074AE54 /* SedentaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5597B1E2F72170074AE54 /* SedentaryModel.m */; };
 		9CCFE1B31DD9CCA200FD5B6F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFE1B21DD9CCA200FD5B6F /* AboutViewController.m */; };
-		9CD9EE501E94880C00915918 /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD9EE4F1E94880C00915918 /* UpdateViewController.m */; };
 		9CDCF9581E8E4C89006625BD /* UnitsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDCF9571E8E4C89006625BD /* UnitsTool.m */; };
 		9CE082F01EB1DB87009565A9 /* TakePhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE082EF1EB1DB87009565A9 /* TakePhotoModel.m */; };
 		9CF2F6C41DD458010091ECB5 /* Remind.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2F6C31DD458010091ECB5 /* Remind.m */; };
@@ -131,6 +131,8 @@
 		104A70601D9B720500CC73F5 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Setting/SettingViewController.m; sourceTree = "<group>"; };
 		104A70621D9B724D00CC73F5 /* SettingContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingContentView.h; path = Setting/SettingContentView.h; sourceTree = "<group>"; };
 		104A70631D9B724D00CC73F5 /* SettingContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingContentView.m; path = Setting/SettingContentView.m; sourceTree = "<group>"; };
+		105FF0591EFA0AAE00807BD1 /* UpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateViewController.h; path = Setting/About/Update/UpdateViewController.h; sourceTree = "<group>"; };
+		105FF05A1EFA0AAE00807BD1 /* UpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateViewController.m; path = Setting/About/Update/UpdateViewController.m; sourceTree = "<group>"; };
 		10826A4F1DBA12600031DB83 /* DropdownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropdownMenuView.h; path = History/MonthDropDownMenuView/DropdownMenuView.h; sourceTree = "<group>"; };
 		10826A501DBA12600031DB83 /* DropdownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropdownMenuView.m; path = History/MonthDropDownMenuView/DropdownMenuView.m; sourceTree = "<group>"; };
 		10826A511DBA12600031DB83 /* TitleMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleMenuViewController.h; path = History/MonthDropDownMenuView/TitleMenuViewController.h; sourceTree = "<group>"; };
@@ -403,8 +405,6 @@
 		9CC5597B1E2F72170074AE54 /* SedentaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SedentaryModel.m; path = BLETool/Model/SedentaryModel.m; sourceTree = "<group>"; };
 		9CCFE1B11DD9CCA200FD5B6F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Setting/About/AboutViewController.h; sourceTree = "<group>"; };
 		9CCFE1B21DD9CCA200FD5B6F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = Setting/About/AboutViewController.m; sourceTree = "<group>"; };
-		9CD9EE4E1E94880C00915918 /* UpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateViewController.h; path = Setting/About/Update/UpdateViewController.h; sourceTree = "<group>"; };
-		9CD9EE4F1E94880C00915918 /* UpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateViewController.m; path = Setting/About/Update/UpdateViewController.m; sourceTree = "<group>"; };
 		9CDCF9561E8E4C89006625BD /* UnitsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitsTool.h; path = UnitsTool/UnitsTool.h; sourceTree = "<group>"; };
 		9CDCF9571E8E4C89006625BD /* UnitsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnitsTool.m; path = UnitsTool/UnitsTool.m; sourceTree = "<group>"; };
 		9CE082EE1EB1DB87009565A9 /* TakePhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TakePhotoModel.h; path = BLETool/Model/TakePhotoModel.h; sourceTree = "<group>"; };
@@ -538,10 +538,10 @@
 				10B7A06C1EF7D26B004C0A1A /* UserInfoViewController */,
 				10EE961A1DB4BFA70048D594 /* PhoneRemind */,
 				10C47E971DA88F7500D949CA /* BindPeripheral */,
-				9CCFE1B01DD9CC7200FD5B6F /* About */,
 				10B7A0771EF7E768004C0A1A /* TakePhotoViewController */,
 				10B7A07C1EF7E768004C0A1A /* TimeFormatterViewController */,
 				10B7A07F1EF7E768004C0A1A /* UnitsSettingViewController */,
+				9CCFE1B01DD9CC7200FD5B6F /* About */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -895,8 +895,8 @@
 		9CD9EE4D1E9487A100915918 /* Update */ = {
 			isa = PBXGroup;
 			children = (
-				9CD9EE4E1E94880C00915918 /* UpdateViewController.h */,
-				9CD9EE4F1E94880C00915918 /* UpdateViewController.m */,
+				105FF0591EFA0AAE00807BD1 /* UpdateViewController.h */,
+				105FF05A1EFA0AAE00807BD1 /* UpdateViewController.m */,
 			);
 			name = Update;
 			sourceTree = "<group>";
@@ -1113,7 +1113,6 @@
 				10EE961D1DB4BFC70048D594 /* PhoneRemindViewController.m in Sources */,
 				9C1B27791DDEFCE0009663F0 /* BooldHistoryViewController.m in Sources */,
 				10C47E9A1DA88F9900D949CA /* BindPeripheralViewController.m in Sources */,
-				9CD9EE501E94880C00915918 /* UpdateViewController.m in Sources */,
 				102474FB1DAA41E000F70E4F /* SetTimeModel.m in Sources */,
 				109D4E771DAF7B7300E11890 /* UserInfoModel.m in Sources */,
 				102474E61DAA412F00F70E4F /* AnalysisProcotolTool.m in Sources */,
@@ -1123,6 +1122,7 @@
 				10C47EC11DA8C4FA00D949CA /* StepTargetViewController.m in Sources */,
 				102474D81DAA277B00F70E4F /* StepDataModel.m in Sources */,
 				10F5F7D71D99251B0045FA4C /* SleepContentView.m in Sources */,
+				105FF05B1EFA0AAE00807BD1 /* UpdateViewController.m in Sources */,
 				10F5F78D1D98F8E10045FA4C /* StepContentView.m in Sources */,
 				10B7A08A1EF7E768004C0A1A /* UnitsSettingTableViewCell.m in Sources */,
 				1012C7211DBEFE470013E99B /* SleepHistoryViewController.m in Sources */,

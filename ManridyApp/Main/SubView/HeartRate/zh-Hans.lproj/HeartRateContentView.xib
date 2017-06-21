@@ -65,7 +65,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartrate_icon01" translatesAutoresizingMaskIntoConstraints="NO" id="aVV-p5-Idx">
-                            <rect key="frame" x="58.5" y="61" width="258" height="271"/>
+                            <rect key="frame" x="58.5" y="65" width="258" height="271"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="258" id="Vhc-7n-8Gp"/>
                                 <constraint firstAttribute="height" constant="271" id="YvM-fo-vIz"/>
@@ -105,7 +105,7 @@
                         <constraint firstItem="LR2-tG-6XU" firstAttribute="top" secondItem="92X-Tg-A0A" secondAttribute="top" id="JOG-rK-w7h"/>
                         <constraint firstItem="mQq-V4-Tap" firstAttribute="top" secondItem="92X-Tg-A0A" secondAttribute="bottom" constant="9" id="Nb4-o1-3jO"/>
                         <constraint firstItem="urf-jH-vKJ" firstAttribute="top" secondItem="rmH-vT-jbm" secondAttribute="bottom" constant="6" id="STB-P1-46x"/>
-                        <constraint firstItem="aVV-p5-Idx" firstAttribute="top" secondItem="xze-WW-jw8" secondAttribute="top" constant="61" id="SlQ-ej-g6o"/>
+                        <constraint firstItem="aVV-p5-Idx" firstAttribute="top" secondItem="xze-WW-jw8" secondAttribute="top" constant="65" id="SlQ-ej-g6o"/>
                         <constraint firstItem="rmH-vT-jbm" firstAttribute="centerX" secondItem="Awu-gB-sWC" secondAttribute="centerX" id="UBM-bd-0Wl"/>
                         <constraint firstItem="Awu-gB-sWC" firstAttribute="centerX" secondItem="xze-WW-jw8" secondAttribute="centerX" id="YH2-EK-7Ti"/>
                         <constraint firstItem="urf-jH-vKJ" firstAttribute="top" secondItem="92X-Tg-A0A" secondAttribute="top" id="Yol-9x-5zh"/>

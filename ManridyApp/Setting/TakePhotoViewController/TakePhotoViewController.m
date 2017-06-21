@@ -91,6 +91,9 @@
 {
     if ([BLETool shareInstance].connectState == kBLEstateDisConnected) {
 //        [((AppDelegate *)[UIApplication sharedApplication].delegate) showTheStateBar];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.label.text = @"该功能需要连接设备";
+        [hud hideAnimated:YES afterDelay:2];
     }else {
         [[NSNotificationCenter defaultCenter]
          addObserver:self selector:@selector(setTakePhoto:) name:SET_TAKE_PHOTO object:nil];

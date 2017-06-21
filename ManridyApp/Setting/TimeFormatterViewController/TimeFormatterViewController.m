@@ -55,9 +55,16 @@ static NSString * const TimeFormatterSettingTableViewCellID = @"TimeFormatterSet
 - (void)saveTimeFormatterAction
 {
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    UnitsSettingModel *model = ((NSArray*)self.dataArr.firstObject).firstObject;
     
-    [[BLETool shareInstance] writeTimeFormatterToPeripheral:model.isSelect];
+    if ([BLETool shareInstance].connectState == kBLEstateDisConnected) {
+        MBProgressHUD *dishud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        dishud.label.text = @"未连接";
+        [dishud hideAnimated:YES afterDelay:2];
+    } else {
+        UnitsSettingModel *model = ((NSArray*)self.dataArr.firstObject).firstObject;
+        
+        [[BLETool shareInstance] writeTimeFormatterToPeripheral:model.isSelect];
+    }
 }
 
 - (void)setTimeFormatterWeatherSuccess:(NSNotification *)noti
