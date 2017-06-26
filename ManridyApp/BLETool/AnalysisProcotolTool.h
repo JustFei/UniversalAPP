@@ -58,6 +58,9 @@
 //解析GPS的数据（0D|8D）
 //- (manridyModel *)analysisGPSData:(NSData *)data WithHeadStr:(NSString *)head;
 
+//解析固件维护指令的数据（0F|8F）
+- (manridyModel *)analysisFirmwareData:(NSData *)data WithHeadStr:(NSString *)head;
+
 //解析血压数据（11|91）
 - (manridyModel *)analysisBloodData:(NSData *)data WithHeadStr:(NSString *)head;
 

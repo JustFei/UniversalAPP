@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		1012C7211DBEFE470013E99B /* SleepHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1012C71F1DBEFE470013E99B /* SleepHistoryViewController.m */; };
+		10237E9E1F00A1B200A2E178 /* APPRemindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10237E991F00A1B200A2E178 /* APPRemindModel.m */; };
+		10237E9F1F00A1B200A2E178 /* APPRemindTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10237E9B1F00A1B200A2E178 /* APPRemindTableViewCell.m */; };
+		10237EA01F00A1B200A2E178 /* APPRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10237E9D1F00A1B200A2E178 /* APPRemindViewController.m */; };
+		10237EA91F00B89E00A2E178 /* DimmingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10237EA81F00B89E00A2E178 /* DimmingViewController.m */; };
+		10237EAC1F00BE1300A2E178 /* FirmwareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10237EAB1F00BE1300A2E178 /* FirmwareModel.m */; };
+		10237EB91F0120D800A2E178 /* QRCodeScanningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 10237EAF1F0120D800A2E178 /* QRCodeScanningVC.m */; };
+		10237EBA1F0120D800A2E178 /* SGQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 10237EB01F0120D800A2E178 /* SGQRCode.bundle */; };
+		10237EBB1F0120D800A2E178 /* SGQRCodeConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 10237EB21F0120D800A2E178 /* SGQRCodeConst.m */; };
+		10237EBC1F0120D800A2E178 /* SGQRCodeScanningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 10237EB41F0120D800A2E178 /* SGQRCodeScanningVC.m */; };
+		10237EBD1F0120D800A2E178 /* SGQRCodeScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10237EB61F0120D800A2E178 /* SGQRCodeScanningView.m */; };
+		10237EBE1F0120D800A2E178 /* UIImage+SGHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 10237EB81F0120D800A2E178 /* UIImage+SGHelper.m */; };
 		102474D81DAA277B00F70E4F /* StepDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474D71DAA277B00F70E4F /* StepDataModel.m */; };
 		102474E51DAA412F00F70E4F /* AllBleFmdb.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474DC1DAA412F00F70E4F /* AllBleFmdb.m */; };
 		102474E61DAA412F00F70E4F /* AnalysisProcotolTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 102474DE1DAA412F00F70E4F /* AnalysisProcotolTool.m */; };
@@ -98,7 +109,31 @@
 /* Begin PBXFileReference section */
 		1012C71E1DBEFE470013E99B /* SleepHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepHistoryViewController.h; path = History/Sleep/SleepHistoryViewController.h; sourceTree = "<group>"; };
 		1012C71F1DBEFE470013E99B /* SleepHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SleepHistoryViewController.m; path = History/Sleep/SleepHistoryViewController.m; sourceTree = "<group>"; };
-		1015FD181EEFB9DF00CA91B7 /* ColorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorConstants.h; sourceTree = "<group>"; };
+		1015FD181EEFB9DF00CA91B7 /* ColorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorConstants.h; path = ../ColorConstants.h; sourceTree = "<group>"; };
+		10237E981F00A1B200A2E178 /* APPRemindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPRemindModel.h; sourceTree = "<group>"; };
+		10237E991F00A1B200A2E178 /* APPRemindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPRemindModel.m; sourceTree = "<group>"; };
+		10237E9A1F00A1B200A2E178 /* APPRemindTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPRemindTableViewCell.h; sourceTree = "<group>"; };
+		10237E9B1F00A1B200A2E178 /* APPRemindTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPRemindTableViewCell.m; sourceTree = "<group>"; };
+		10237E9C1F00A1B200A2E178 /* APPRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPRemindViewController.h; sourceTree = "<group>"; };
+		10237E9D1F00A1B200A2E178 /* APPRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPRemindViewController.m; sourceTree = "<group>"; };
+		10237EA31F00AFD900A2E178 /* FrameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameConstants.h; sourceTree = "<group>"; };
+		10237EA41F00AFD900A2E178 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		10237EA51F00AFD900A2E178 /* TextConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextConstants.h; sourceTree = "<group>"; };
+		10237EA71F00B89E00A2E178 /* DimmingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DimmingViewController.h; sourceTree = "<group>"; };
+		10237EA81F00B89E00A2E178 /* DimmingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DimmingViewController.m; sourceTree = "<group>"; };
+		10237EAA1F00BE1300A2E178 /* FirmwareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirmwareModel.h; path = BLETool/Model/FirmwareModel.h; sourceTree = "<group>"; };
+		10237EAB1F00BE1300A2E178 /* FirmwareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirmwareModel.m; path = BLETool/Model/FirmwareModel.m; sourceTree = "<group>"; };
+		10237EAE1F0120D800A2E178 /* QRCodeScanningVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanningVC.h; sourceTree = "<group>"; };
+		10237EAF1F0120D800A2E178 /* QRCodeScanningVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanningVC.m; sourceTree = "<group>"; };
+		10237EB01F0120D800A2E178 /* SGQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SGQRCode.bundle; sourceTree = "<group>"; };
+		10237EB11F0120D800A2E178 /* SGQRCodeConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGQRCodeConst.h; sourceTree = "<group>"; };
+		10237EB21F0120D800A2E178 /* SGQRCodeConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeConst.m; sourceTree = "<group>"; };
+		10237EB31F0120D800A2E178 /* SGQRCodeScanningVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGQRCodeScanningVC.h; sourceTree = "<group>"; };
+		10237EB41F0120D800A2E178 /* SGQRCodeScanningVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeScanningVC.m; sourceTree = "<group>"; };
+		10237EB51F0120D800A2E178 /* SGQRCodeScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGQRCodeScanningView.h; sourceTree = "<group>"; };
+		10237EB61F0120D800A2E178 /* SGQRCodeScanningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeScanningView.m; sourceTree = "<group>"; };
+		10237EB71F0120D800A2E178 /* UIImage+SGHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SGHelper.h"; sourceTree = "<group>"; };
+		10237EB81F0120D800A2E178 /* UIImage+SGHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SGHelper.m"; sourceTree = "<group>"; };
 		102474D61DAA277B00F70E4F /* StepDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepDataModel.h; path = FMDBTool/Model/StepModel/StepDataModel.h; sourceTree = "<group>"; };
 		102474D71DAA277B00F70E4F /* StepDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepDataModel.m; path = FMDBTool/Model/StepModel/StepDataModel.m; sourceTree = "<group>"; };
 		102474DB1DAA412F00F70E4F /* AllBleFmdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllBleFmdb.h; path = BLETool/AllBleFmdb.h; sourceTree = "<group>"; };
@@ -437,6 +472,59 @@
 			name = Sleep;
 			sourceTree = "<group>";
 		};
+		10237E971F00A1B200A2E178 /* APPRemindViewController */ = {
+			isa = PBXGroup;
+			children = (
+				10237E981F00A1B200A2E178 /* APPRemindModel.h */,
+				10237E991F00A1B200A2E178 /* APPRemindModel.m */,
+				10237E9A1F00A1B200A2E178 /* APPRemindTableViewCell.h */,
+				10237E9B1F00A1B200A2E178 /* APPRemindTableViewCell.m */,
+				10237E9C1F00A1B200A2E178 /* APPRemindViewController.h */,
+				10237E9D1F00A1B200A2E178 /* APPRemindViewController.m */,
+			);
+			name = APPRemindViewController;
+			path = Setting/APPRemindViewController;
+			sourceTree = "<group>";
+		};
+		10237EA11F00AFD900A2E178 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				10237EA31F00AFD900A2E178 /* FrameConstants.h */,
+				1015FD181EEFB9DF00CA91B7 /* ColorConstants.h */,
+				10237EA41F00AFD900A2E178 /* Log.h */,
+				10237EA51F00AFD900A2E178 /* TextConstants.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		10237EA61F00B89E00A2E178 /* DimmingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				10237EA71F00B89E00A2E178 /* DimmingViewController.h */,
+				10237EA81F00B89E00A2E178 /* DimmingViewController.m */,
+			);
+			name = DimmingViewController;
+			path = Setting/DimmingViewController;
+			sourceTree = "<group>";
+		};
+		10237EAD1F0120D800A2E178 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				10237EAE1F0120D800A2E178 /* QRCodeScanningVC.h */,
+				10237EAF1F0120D800A2E178 /* QRCodeScanningVC.m */,
+				10237EB01F0120D800A2E178 /* SGQRCode.bundle */,
+				10237EB11F0120D800A2E178 /* SGQRCodeConst.h */,
+				10237EB21F0120D800A2E178 /* SGQRCodeConst.m */,
+				10237EB31F0120D800A2E178 /* SGQRCodeScanningVC.h */,
+				10237EB41F0120D800A2E178 /* SGQRCodeScanningVC.m */,
+				10237EB51F0120D800A2E178 /* SGQRCodeScanningView.h */,
+				10237EB61F0120D800A2E178 /* SGQRCodeScanningView.m */,
+				10237EB71F0120D800A2E178 /* UIImage+SGHelper.h */,
+				10237EB81F0120D800A2E178 /* UIImage+SGHelper.m */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
 		102474D41DAA274200F70E4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,6 +592,8 @@
 				9CBCBC3C1EB312AF005161F4 /* SegmentedStepModel.m */,
 				9CBCBC3E1EB34784005161F4 /* SegmentedRunModel.h */,
 				9CBCBC3F1EB34784005161F4 /* SegmentedRunModel.m */,
+				10237EAA1F00BE1300A2E178 /* FirmwareModel.h */,
+				10237EAB1F00BE1300A2E178 /* FirmwareModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -538,9 +628,11 @@
 				10B7A06C1EF7D26B004C0A1A /* UserInfoViewController */,
 				10EE961A1DB4BFA70048D594 /* PhoneRemind */,
 				10C47E971DA88F7500D949CA /* BindPeripheral */,
+				10237E971F00A1B200A2E178 /* APPRemindViewController */,
 				10B7A0771EF7E768004C0A1A /* TakePhotoViewController */,
 				10B7A07C1EF7E768004C0A1A /* TimeFormatterViewController */,
 				10B7A07F1EF7E768004C0A1A /* UnitsSettingViewController */,
+				10237EA61F00B89E00A2E178 /* DimmingViewController */,
 				9CCFE1B01DD9CC7200FD5B6F /* About */,
 			);
 			name = Setting;
@@ -705,6 +797,7 @@
 		10F5F7061D98C6280045FA4C /* ManridyApp */ = {
 			isa = PBXGroup;
 			children = (
+				10237EAD1F0120D800A2E178 /* QRCode */,
 				9C8017E31E8F5E0C00654868 /* Category */,
 				9C08454E1E6A9D3200C9E04F /* AlertTool */,
 				9C728F651DD5DAE400BEF69E /* PopupView */,
@@ -723,6 +816,7 @@
 			isa = PBXGroup;
 			children = (
 				9C8017E01E8F5B6900654868 /* Resource */,
+				10237EA11F00AFD900A2E178 /* Constants */,
 				10F5F70A1D98C6280045FA4C /* AppDelegate.h */,
 				10F5F70B1D98C6280045FA4C /* AppDelegate.m */,
 				10F5F7131D98C6280045FA4C /* Assets.xcassets */,
@@ -732,7 +826,6 @@
 				9C57F1D31DF2882F0090C2EF /* InfoPlist.strings */,
 				9C57F1D91DF288D50090C2EF /* Localizable.strings */,
 				9C57F1DB1DF28A0E0090C2EF /* PrefixHeader.pch */,
-				1015FD181EEFB9DF00CA91B7 /* ColorConstants.h */,
 				9C5F32571E57E38000C6C947 /* alert.wav */,
 			);
 			name = "Supporting Files";
@@ -999,6 +1092,7 @@
 				9C19541B1E5FCDF5006DEAED /* PhoneRemindTableViewCell.xib in Resources */,
 				9C57F1FE1DF2C2260090C2EF /* SleepContentView.xib in Resources */,
 				9C2ADA3E1E94DF7600DABB0C /* hex.zip in Resources */,
+				10237EBA1F0120D800A2E178 /* SGQRCode.bundle in Resources */,
 				9C57F1D71DF288D50090C2EF /* Localizable.strings in Resources */,
 				9C57F1C91DF279300090C2EF /* Launch Screen.storyboard in Resources */,
 				9C57F2041DF2C24A0090C2EF /* SleepSettingViewController.xib in Resources */,
@@ -1092,14 +1186,19 @@
 				103820F21DB86F1300E92410 /* StepHistoryViewController.m in Sources */,
 				102474E71DAA412F00F70E4F /* BLETool.m in Sources */,
 				10B7A0881EF7E768004C0A1A /* TimeFormatterViewController.m in Sources */,
+				10237EAC1F00BE1300A2E178 /* FirmwareModel.m in Sources */,
+				10237EA91F00B89E00A2E178 /* DimmingViewController.m in Sources */,
 				10FF5CF91DC35AEC0059FE00 /* SectionModel.m in Sources */,
 				10B7A0741EF7D26B004C0A1A /* UserInfoTableViewCell.m in Sources */,
 				102474E81DAA412F00F70E4F /* manridyBleDevice.m in Sources */,
+				10237EBD1F0120D800A2E178 /* SGQRCodeScanningView.m in Sources */,
+				10237EBB1F0120D800A2E178 /* SGQRCodeConst.m in Sources */,
 				10F5F70C1D98C6280045FA4C /* AppDelegate.m in Sources */,
 				10F5F7931D991BF40045FA4C /* HeartRateContentView.m in Sources */,
 				102474FA1DAA41E000F70E4F /* manridyModel.m in Sources */,
 				102474FC1DAA41E000F70E4F /* SleepModel.m in Sources */,
 				10B7A0891EF7E768004C0A1A /* UnitsSettingModel.m in Sources */,
+				10237EB91F0120D800A2E178 /* QRCodeScanningVC.m in Sources */,
 				10B7A0751EF7D26B004C0A1A /* UserInfoViewController1.m in Sources */,
 				102474F91DAA41E000F70E4F /* HeartRateModel.m in Sources */,
 				9C728F681DD5DB2800BEF69E /* PopupView.m in Sources */,
@@ -1112,9 +1211,11 @@
 				102474FE1DAA41E000F70E4F /* SportTargetModel.m in Sources */,
 				10EE961D1DB4BFC70048D594 /* PhoneRemindViewController.m in Sources */,
 				9C1B27791DDEFCE0009663F0 /* BooldHistoryViewController.m in Sources */,
+				10237E9E1F00A1B200A2E178 /* APPRemindModel.m in Sources */,
 				10C47E9A1DA88F9900D949CA /* BindPeripheralViewController.m in Sources */,
 				102474FB1DAA41E000F70E4F /* SetTimeModel.m in Sources */,
 				109D4E771DAF7B7300E11890 /* UserInfoModel.m in Sources */,
+				10237EBE1F0120D800A2E178 /* UIImage+SGHelper.m in Sources */,
 				102474E61DAA412F00F70E4F /* AnalysisProcotolTool.m in Sources */,
 				9CCFE1B31DD9CCA200FD5B6F /* AboutViewController.m in Sources */,
 				9C1B27711DDE8E2C009663F0 /* BloodModel.m in Sources */,
@@ -1124,6 +1225,7 @@
 				10F5F7D71D99251B0045FA4C /* SleepContentView.m in Sources */,
 				105FF05B1EFA0AAE00807BD1 /* UpdateViewController.m in Sources */,
 				10F5F78D1D98F8E10045FA4C /* StepContentView.m in Sources */,
+				10237EA01F00A1B200A2E178 /* APPRemindViewController.m in Sources */,
 				10B7A08A1EF7E768004C0A1A /* UnitsSettingTableViewCell.m in Sources */,
 				1012C7211DBEFE470013E99B /* SleepHistoryViewController.m in Sources */,
 				9CF2F6C41DD458010091ECB5 /* Remind.m in Sources */,
@@ -1133,6 +1235,7 @@
 				10B7A0861EF7E768004C0A1A /* CameraViewController.m in Sources */,
 				9C15BB501DCD79A900A049E9 /* ClockModel.m in Sources */,
 				102474FD1DAA41E000F70E4F /* SportModel.m in Sources */,
+				10237EBC1F0120D800A2E178 /* SGQRCodeScanningVC.m in Sources */,
 				9CC5597C1E2F72170074AE54 /* SedentaryModel.m in Sources */,
 				10826A531DBA12600031DB83 /* DropdownMenuView.m in Sources */,
 				109FBB9B1DAA18FB008FF0D3 /* FMDBTool.m in Sources */,
@@ -1144,6 +1247,7 @@
 				10826A581DBA17540031DB83 /* HeartRateHistoryViewController.m in Sources */,
 				9CDCF9581E8E4C89006625BD /* UnitsTool.m in Sources */,
 				10FF5CF61DC352FB0059FE00 /* PhoneRemindView.m in Sources */,
+				10237E9F1F00A1B200A2E178 /* APPRemindTableViewCell.m in Sources */,
 				104A70611D9B720500CC73F5 /* SettingViewController.m in Sources */,
 				10826A541DBA12600031DB83 /* TitleMenuViewController.m in Sources */,
 				10CB0F071D9A25130063AD0C /* FunctionCell.m in Sources */,

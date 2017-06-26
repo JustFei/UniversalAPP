@@ -84,6 +84,7 @@ static void completionCallback(SystemSoundID mySSID)
     nc.edgesForExtendedLayout = UIRectEdgeNone;
     nc.extendedLayoutIncludesOpaqueBars = YES;
     nc.navigationBar.barTintColor = COLOR_WITH_HEX(0x1e88e5, 1);
+//    nc.navigationController.navigationBar.barTintColor = WHITE_COLOR;
 //    nc.navigationBar.backgroundColor = COLOR_WITH_HEX(0x1e88e5, 1);
     
     //修改title颜色和font

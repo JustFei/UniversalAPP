@@ -377,11 +377,16 @@ static BLETool *bleTool = nil;
 //photo and message remind
 - (void)writePhoneAndMessageRemindToPeripheral:(Remind *)remindModel
 {
-    NSString *remindStr;
-    remindStr = [NSStringTool protocolForRemind:remindModel];
+    NSString *protocolStr;
+    protocolStr = [NSStringTool protocolForRemind:remindModel];
+    
+////    [self addMessageToQueue:[NSStringTool hexToBytes:protocolStr]];
+//    NSLog(@"设置同步电话短信");
+//    NSString *remindStr;
+//    remindStr = [NSStringTool protocolForRemind:remindModel];
     if (self.currentDev.peripheral && self.writeCharacteristic) {
-        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:remindStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
-        DLog(@"电话短信提醒协议 == %@",remindStr);
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+        DLog(@"电话短信提醒协议 == %@",protocolStr);
     }
 }
 
@@ -511,6 +516,21 @@ static BLETool *bleTool = nil;
 - (void)writeRequestVersion
 {
     NSString *protocolStr = [NSStringTool protocolAddInfo:@"" head:@"0f"];
+    
+    //写入操作
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
+/** 设置设备亮度 */
+- (void)writeDimmingToPeripheral:(float)value
+{
+    NSString *dim = [NSStringTool ToHex:value];
+    if (dim.length < 2) {
+        dim = [NSString stringWithFormat:@"0%@", dim];
+    }
+    NSString *protocolStr = [NSString stringWithFormat:@"fc0f04%@", dim];
     
     //写入操作
     if (self.currentDev.peripheral && self.writeCharacteristic) {
@@ -1019,7 +1039,9 @@ static BLETool *bleTool = nil;
             if ([self.receiveDelegate respondsToSelector:@selector(receivePairWitheModel:)]) {
                 [self.receiveDelegate receivePairWitheModel:model];
             }
-            
+            //询问设备是否配对成功
+//            manridyModel *model = [[AnalysisProcotolTool shareInstance]analysisPairData:value WithHeadStr:headStr];
+            [[NSNotificationCenter defaultCenter] postNotificationName:GET_PAIR object:model];
         }else if ([headStr isEqualToString:@"09"] || [headStr isEqualToString:@"89"]) {
             //心率开关
             manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisHeartStateData:value WithHeadStr:headStr];
@@ -1052,6 +1074,10 @@ static BLETool *bleTool = nil;
 //                [_fmTool saveGPSToDataBase:model];
             }
         }else if ([headStr isEqualToString:@"0f"] || [headStr isEqualToString:@"0F"]) {
+            //设备维护指令()
+            manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisFirmwareData:value WithHeadStr:headStr];
+            [[NSNotificationCenter defaultCenter] postNotificationName:SET_FIRMWARE object:model];
+            
             //判断是版本号还是电量
             NSString *typeStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
             if ([typeStr isEqualToString:@"06"]) {//电量

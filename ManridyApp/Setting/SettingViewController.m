@@ -54,7 +54,6 @@
     if (!_setView) {
         SettingContentView *view = [[SettingContentView alloc] initWithFrame:CGRectMake(0, -64, self.view.frame.size.width, self.view.frame.size.height + 64)];
         
-        
         [self.view addSubview:view];
         _setView = view;
     }

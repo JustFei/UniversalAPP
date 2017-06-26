@@ -56,6 +56,7 @@ static NSString * const UnitsSettingTableViewCellID = @"UnitsSettingTableViewCel
         MBProgressHUD *dishud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         dishud.label.text = @"未连接";
         [dishud hideAnimated:YES afterDelay:2];
+        [self.hud hideAnimated:YES];
     } else {
         NSArray *arr1 = self.dataArr.firstObject;
         UnitsSettingModel *model = arr1.lastObject;//英制的选择

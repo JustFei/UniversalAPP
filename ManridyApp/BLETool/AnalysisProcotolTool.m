@@ -394,6 +394,8 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         if ([TT isEqualToString:@"f0"] || [TT isEqualToString:@"F0"]) {
             if (![SS isEqualToString:@"00"]) {
                 model.pairSuccess = NO;
+            }else {
+                model.pairSuccess = YES;
             }
         }
     }
@@ -645,6 +647,42 @@ union LAT{
     return model;
 }
 #endif
+
+#pragma mark 解析固件维护指令的数据（0F|8F）
+- (manridyModel *)analysisFirmwareData:(NSData *)data WithHeadStr:(NSString *)head
+{
+    const unsigned char *hexBytes = [data bytes];
+    NSString *typeStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
+    manridyModel *model = [[manridyModel alloc] init];
+    if ([head isEqualToString:@"0f"]) {
+        model.isReciveDataRight = ResponsEcorrectnessDataRgith;
+        model.receiveDataType = ReturnModelTypeFirwmave;
+        
+        if ([typeStr isEqualToString:@"04"]) {//亮度
+            model.firmwareModel.mode = FirmwareModeSetLCD;
+        }else if ([typeStr isEqualToString:@"05"]) {//版本号
+            int maint = hexBytes[7];
+            int miint = hexBytes[8];
+            int reint = hexBytes[9];
+            
+            NSString *versionStr = [[[NSString stringWithFormat:@"%d", maint] stringByAppendingString:[NSString stringWithFormat:@".%d",miint]] stringByAppendingString:[NSString stringWithFormat:@".%d",reint]];
+            
+            model.firmwareModel.mode = FirmwareModeGetVersion;
+            model.firmwareModel.version = versionStr;
+        }else if ([typeStr isEqualToString:@"06"]) {//电量
+            NSString *batteryStr = [NSString stringWithFormat:@"%x", hexBytes[8]];
+            model.firmwareModel.mode = FirmwareModeGetElectricity;
+            model.firmwareModel.PerElectricity = [NSString stringWithFormat:@"%d", [NSStringTool parseIntFromData:[data subdataWithRange:NSMakeRange(8, 1)]]];
+            NSLog(@"电量：%@",batteryStr);
+        }else  if ([typeStr isEqualToString:@"07"]) {//改名称
+            model.firmwareModel.mode = FirmwareModeSetPerName;
+        }
+    }else if ([head isEqualToString:@"8f"]) {
+        model.isReciveDataRight = ResponsEcorrectnessDataFail;
+    }
+    
+    return model;
+}
 
 #pragma mark 解析血压的数据（11|91）
 //解析血压数据（11|91）

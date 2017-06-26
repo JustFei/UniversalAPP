@@ -44,7 +44,7 @@
     
     self.headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x - 76 * WIDTH / 320, 62, 152 * WIDTH / 320, 161 * WIDTH / 320)];
     self.headImageView.backgroundColor = [UIColor clearColor];
-    self.headImageView.image = [UIImage imageNamed:@"about_icon"];
+    self.headImageView.image = [UIImage imageNamed:@"about_image"];
     [self.upView addSubview:self.headImageView];
     
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 50, self.headImageView.frame.origin.y + self.headImageView.frame.size.height + 10, 100, 30)];
@@ -96,86 +96,40 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         if ([BLETool shareInstance].connectState == kBLEstateDisConnected) {
-            //[((AppDelegate *)[UIApplication sharedApplication].delegate) showTheStateBar];
             self.hud.label.text = @"设备未连接，无法更新";
             [self.hud hideAnimated:YES afterDelay:2];
         }else {
-//            self.loadingToast = [[MDToast alloc] initWithText:@"检查更新中" duration: 10000];
             self.hud.mode = MBProgressHUDModeIndeterminate;
             self.hud.label.text = @"检查更新中";
+            NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
+            if ([version compare:@"1.4.0" options:NSNumericSearch] == NSOrderedDescending || [version compare:@"1.4.0" options:NSNumericSearch] == NSOrderedSame) {
+                NSURL *url = [NSURL URLWithString:@"http://39.108.92.15:12345/version.xml"];
+                
+                NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:1 timeoutInterval:10.0];
+                [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc]init] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+                    NSLog(@"connectionError == %@", connectionError);
+                    if (!connectionError) {
+                        //创建xml解析器
+                        NSXMLParser *parser = [[NSXMLParser alloc]initWithData:data];
+                        //设置代理
+                        parser.delegate = self;
+                        //开始解析
+                        [parser parse];
+                    }else {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.hud.label setText:@"网络异常，请连接网络后再尝试"];
+                            [self.hud hideAnimated:YES afterDelay:2];
+                        });
+                    }
+                }];
+            }else {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.hud.label setText:@"暂无更新"];
+                    [self.hud hideAnimated:YES afterDelay:1.5];
+                });
+            }
             
-            NSURL *url = [NSURL URLWithString:@"http://39.108.92.15:12345/version.xml"];
-            
-            NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:1 timeoutInterval:10.0];
-            [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc]init] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
-                NSLog(@"connectionError == %@", connectionError);
-                if (!connectionError) {
-                    //创建xml解析器
-                    NSXMLParser *parser = [[NSXMLParser alloc]initWithData:data];
-                    //设置代理
-                    parser.delegate = self;
-                    //开始解析
-                    [parser parse];
-                }else {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.hud.label setText:@"网络异常，请连接网络后再尝试"];
-                        [self.hud hideAnimated:YES afterDelay:2];
-                    });
-                }
-            }];
         }
-        
-//        //检查设备固件的版本号:高于1.3.4的才支持空中升级
-//        NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
-//        version = [version stringByReplacingOccurrencesOfString:@"." withString:@""];
-//        if (version.integerValue >= 134) {
-//            [self.hud hideAnimated:YES];
-//            UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"更新提示" message:@"有新版本，是否更新" preferredStyle:UIAlertControllerStyleAlert];
-//            UIAlertAction *okAc = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//                UpdateViewController *udVC = [[UpdateViewController alloc] init];
-//                 CATransition * animation = [CATransition animation];
-//                animation.duration = 0.5;    //  时间
-//                
-//                /**  type：动画类型
-//                 *  pageCurl       向上翻一页
-//                 *  pageUnCurl     向下翻一页
-//                 *  rippleEffect   水滴
-//                 *  suckEffect     收缩
-//                 *  cube           方块
-//                 *  oglFlip        上下翻转
-//                 */
-//                animation.type = @"rippleEffect";
-//                
-//                /**  type：页面转换类型
-//                 *  kCATransitionFade       淡出
-//                 *  kCATransitionMoveIn     覆盖
-//                 *  kCATransitionReveal     底部显示
-//                 *  kCATransitionPush       推出
-//                 */
-//                //animation.type = kCATransitionMoveIn;
-//                
-//                //PS：type 更多效果请 搜索： CATransition
-//                
-//                /**  subtype：出现的方向
-//                 *  kCATransitionFromRight       右
-//                 *  kCATransitionFromLeft        左
-//                 *  kCATransitionFromTop         上
-//                 *  kCATransitionFromBottom      下
-//                 */
-//                //animation.subtype = kCATransitionFromBottom;
-//                
-//                [self.view.window.layer addAnimation:animation forKey:nil];
-//                [self presentViewController:udVC animated:YES completion:nil];
-//            }];
-//            UIAlertAction *cancelAc = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-//            [vc addAction:okAc];
-//            [vc addAction:cancelAc];
-//            [self presentViewController:vc animated:YES completion:nil];
-//        }else {
-//            self.hud.label.text = @"暂无更新";
-//            self.hud.mode = MBProgressHUDModeText;
-//            [self.hud hideAnimated:YES afterDelay:2];
-//        }
     });
 }
 
@@ -199,12 +153,12 @@
     {
         //获取 id 号
         NSString *idcount = attributeDict[@"id"];
-        if ([idcount isEqualToString:@"0001"]) {
-            self.filePath = [@"http://39.108.92.15:12345" stringByAppendingString:[NSString stringWithFormat:@"/0001/%@", attributeDict[@"file"]]];
+        if ([idcount isEqualToString:@"0000"]) {
+            self.filePath = [@"http://39.108.92.15:12345" stringByAppendingString:[NSString stringWithFormat:@"/0000/%@", attributeDict[@"file"]]];
             NSString *verInServer = attributeDict[@"least"];
             if ([[NSUserDefaults standardUserDefaults] objectForKey:@"version"]) {
                 NSString *hardVer = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
-                if (verInServer >= hardVer) {
+                if ([verInServer compare:hardVer options:NSNumericSearch] == NSOrderedDescending) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.hud hideAnimated:YES afterDelay:1];
                         //提示是否更新

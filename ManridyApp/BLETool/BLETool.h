@@ -282,6 +282,9 @@ typedef enum : NSUInteger {
 /** get version from peripheral */
 - (void)writeRequestVersion;
 
+/** 设置设备亮度 */
+- (void)writeDimmingToPeripheral:(float)value;
+
 /** set sedentary alert */
 - (void)writeSedentaryAlertWithSedentaryModel:(SedentaryModel *)sedentaryModel;
 

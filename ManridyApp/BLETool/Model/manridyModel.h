@@ -21,6 +21,7 @@
 #import "TakePhotoModel.h"
 #import "SegmentedStepModel.h"
 #import "SegmentedRunModel.h"
+#import "FirmwareModel.h"
 
 typedef enum : NSUInteger {
     ResponsEcorrectnessDataFail = 0,
@@ -40,7 +41,8 @@ typedef enum : NSUInteger {
     ReturnModelTypeHeartRateStateModel,
     ReturnModelTypeBloodModel,
     ReturnModelTypeBloodO2Model,
-    ReturnModelTypeTakePhoto
+    ReturnModelTypeTakePhoto,
+    ReturnModelTypeFirwmave
 } ReturnModelType;
 
 typedef enum : NSUInteger {
@@ -104,6 +106,9 @@ typedef enum : NSUInteger {
 
 //分段跑步
 @property (nonatomic, strong) SegmentedRunModel *segmentRunModel;
+
+//固件维护指令
+@property (nonatomic, strong) FirmwareModel *firmwareModel;
 
 @end
 

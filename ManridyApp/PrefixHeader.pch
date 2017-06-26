@@ -14,7 +14,9 @@
 
 #import "AlertTool.h"
 #import "BLETool.h"
+#import "FrameConstants.h"
 #import "ColorConstants.h"
+#import "TextConstants.h"
 #import "MBProgressHUD.h"
 #import "Masonry.h"
 

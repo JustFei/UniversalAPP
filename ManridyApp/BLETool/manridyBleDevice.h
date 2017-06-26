@@ -20,6 +20,8 @@
 @property (nonatomic ,strong) NSString *uuidString;
 //设备名
 @property (nonatomic ,strong) NSString *deviceName;
+//Mac地址
+@property (nonatomic, strong) NSString *macAddress;
 
 - (instancetype)initWith:(CBPeripheral *)cbPeripheral andAdvertisementData:(NSDictionary *)advertisementData andRSSI:(NSNumber *)RSSI;
 

@@ -134,4 +134,13 @@
     return _segmentRunModel;
 }
 
+- (FirmwareModel *)firmwareModel
+{
+    if (!_firmwareModel) {
+        _firmwareModel = [[FirmwareModel alloc] init];
+    }
+    
+    return _firmwareModel;
+}
+
 @end

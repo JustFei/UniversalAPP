@@ -362,6 +362,10 @@
     unsigned char val = 0;
     val |= (model.phone<<0);
     val |= (model.message<<2);
+    val |= (model.qq<<3);
+    val |= (model.wechat<<4);
+    val |= (model.whatsApp<<5);
+    val |= (model.facebook<<6);
     protocolStr = [protocolStr stringByAppendingString: [NSString stringWithFormat:@"%02x",val]];
     while (1) {
         if (protocolStr.length < 40) {
@@ -370,7 +374,7 @@
             break;
         }
     }
-    DLog(@"协议为 == %@",protocolStr);
+    NSLog(@"协议为 == %@",protocolStr);
     
     return protocolStr;
 }

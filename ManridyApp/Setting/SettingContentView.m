@@ -7,13 +7,6 @@
 //
 
 #import "SettingContentView.h"
-#import "UserInfoViewController1.h"
-#import "BindPeripheralViewController.h"
-#import "PhoneRemindViewController.h"
-#import "AboutViewController.h"
-#import "TakePhotoViewController.h"
-#import "UnitsSettingViewController.h"
-#import "TimeFormatterViewController.h"
 
 #define WIDTH self.frame.size.width
 
@@ -21,6 +14,7 @@
 {
     NSArray *_dataArr;
     NSArray *_imageNameArr;
+    NSArray *_classArr;
 }
 
 @property (nonatomic ,weak) UIImageView *headView;
@@ -40,17 +34,106 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        _dataArr = @[@"用户信息",@"信息提醒",@"防丢设置",@"查看电量",@"设备锁定",@"关于"];
-        _dataArr = @[NSLocalizedString(@"userInfo", nil),
-                     NSLocalizedString(@"perBind", nil),
-                     NSLocalizedString(@"infoRemind", nil),
-                     @"遥控拍照",
-                     @"单位设置",
-                     @"时间格式",
-                     NSLocalizedString(@"about", nil)
-                     //先隐藏单位设置功能
-                     //,NSLocalizedString(@"UnitsSetting", nil)
-                     ];
-        _imageNameArr = @[@"set_userinfo",@"set_bluetooth",@"set_remind",@"set_take",@"set_unit",@"set_time",@"set_about"];
+        
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"version"]) {
+            NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
+            
+            //debug 用
+//            version = @"2.1";
+            //如果大于2.0，显示全部
+            if ([version compare:@"1.4.0" options:NSNumericSearch] == NSOrderedDescending || [version compare:@"1.4.0" options:NSNumericSearch] == NSOrderedSame) {
+                _dataArr = @[NSLocalizedString(@"userInfo", nil),
+                             NSLocalizedString(@"perBind", nil),
+                             NSLocalizedString(@"infoRemind", nil),
+                             @"APP通知",
+                             @"遥控拍照",
+                             @"单位设置",
+                             @"时间格式",
+                             @"亮度调节",
+                             NSLocalizedString(@"about", nil)
+                             ];
+                _imageNameArr = @[@"set_userinfo",
+                                  @"set_bluetooth",
+                                  @"set_remind",
+                                  @"remind_app",
+                                  @"set_take",
+                                  @"set_unit",
+                                  @"set_time",
+                                  @"set_dimming",
+                                  @"set_about"];
+                _classArr = @[@"UserInfoViewController1",
+                              @"BindPeripheralViewController",
+                              @"PhoneRemindViewController",
+                              @"APPRemindViewController",
+                              @"TakePhotoViewController",
+                              @"UnitsSettingViewController",
+                              @"TimeFormatterViewController",
+                              @"DimmingViewController",
+                              @"AboutViewController"];
+            }else if ([version compare:@"1.3.4" options:NSNumericSearch] == NSOrderedDescending) {
+                _dataArr = @[NSLocalizedString(@"userInfo", nil),
+                             NSLocalizedString(@"perBind", nil),
+                             NSLocalizedString(@"infoRemind", nil),
+                             @"单位设置",
+                             @"时间格式",
+                             NSLocalizedString(@"about", nil)
+                             ];
+                _imageNameArr = @[@"set_userinfo",
+                                  @"set_bluetooth",
+                                  @"set_remind",
+                                  @"set_unit",
+                                  @"set_time",
+                                  @"set_about"];
+                _classArr = @[@"UserInfoViewController1",
+                              @"BindPeripheralViewController",
+                              @"PhoneRemindViewController",
+                              @"UnitsSettingViewController",
+                              @"TimeFormatterViewController",
+                              @"AboutViewController"];
+            }else {
+                _dataArr = @[NSLocalizedString(@"userInfo", nil),
+                             NSLocalizedString(@"perBind", nil),
+                             NSLocalizedString(@"infoRemind", nil),
+                             NSLocalizedString(@"about", nil)
+                             ];
+                _imageNameArr = @[@"set_userinfo",
+                                  @"set_bluetooth",
+                                  @"set_remind",
+                                  @"set_about"];
+                _classArr = @[@"UserInfoViewController1",
+                              @"BindPeripheralViewController",
+                              @"PhoneRemindViewController",
+                              @"AboutViewController"];
+            }
+        }else {
+            _dataArr = @[NSLocalizedString(@"userInfo", nil),
+                         NSLocalizedString(@"perBind", nil),
+                         NSLocalizedString(@"infoRemind", nil),
+                         //                             @"APP通知",
+                         //                             @"遥控拍照",
+                         //                             @"单位设置",
+                         //                             @"时间格式",
+                         NSLocalizedString(@"about", nil)
+                         ];
+            _imageNameArr = @[@"set_userinfo",
+                              @"set_bluetooth",
+                              @"set_remind",
+                              //                                  @"remind_app",
+                              //                                  @"set_take",
+                              //                                  @"set_unit",
+                              //                                  @"set_time",
+                              @"set_about"];
+            _classArr = @[@"UserInfoViewController1",
+                          @"BindPeripheralViewController",
+                          @"PhoneRemindViewController",
+                          //                              @"APPRemindViewController",
+                          //                              @"TakePhotoViewController",
+                          //                              @"UnitsSettingViewController",
+                          //                              @"TimeFormatterViewController",
+                          @"AboutViewController"];
+        }
+        
+        
     }
     return self;
 }
@@ -74,7 +157,13 @@
     view.backgroundColor = COLOR_WITH_HEX(0x000000, 0.15);
     [self addSubview:view];
     
-    self.functionTableView.frame = CGRectMake(0, WIDTH * 274 / 320, WIDTH, self.frame.size.height - WIDTH * 210 / 320);
+    [self.functionTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(view.mas_bottom);
+        make.left.equalTo(self.mas_left);
+        make.right.equalTo(self.mas_right);
+        make.bottom.equalTo(self.mas_bottom);
+    }];
+//    .frame = CGRectMake(0, WIDTH * 274 / 320, WIDTH, WIDTH * (self.frame.size.height - 338) / 320);
     
     //用户名
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_NAME_SETTING]) {
@@ -132,63 +221,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    switch (indexPath.row) {
-        case 0:
-        {
-            UserInfoViewController1 *vc = [[UserInfoViewController1 alloc] init];
-            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 1:
-        {
-            BindPeripheralViewController *vc = [[BindPeripheralViewController alloc] init];
-            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 2:
-        {
-            PhoneRemindViewController *vc = [[PhoneRemindViewController alloc] init];
-            NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
-            version = [version stringByReplacingOccurrencesOfString:@"." withString:@""];
-            if (version.integerValue >= 128) {
-                vc.haveSedentary = YES;
-            }else {
-                vc.haveSedentary = NO;
-            }
-            //测试
-            //            vc.haveSedentary = NO;
-            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 3:
-        {
-            
-            TakePhotoViewController *vc = [[TakePhotoViewController alloc] init];
-            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 4:
-        {
-            UnitsSettingViewController *vc = [[UnitsSettingViewController alloc] init];
-            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 5:
-        {
-            TimeFormatterViewController *vc = [[TimeFormatterViewController alloc] init];
-            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 6:
-        {
-            AboutViewController *vc = [[AboutViewController alloc] init];
-            [[self findViewController:self].navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        default:
-            break;
-    }
+    id pushVC = [[NSClassFromString(_classArr[indexPath.row]) alloc] init];
+    [[self findViewController:self].navigationController pushViewController:pushVC animated:YES];
 }
 
 #pragma mark - 懒加载
