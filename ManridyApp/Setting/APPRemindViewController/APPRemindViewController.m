@@ -23,7 +23,7 @@ static NSString *const APPRemindTableViewCellID = @"APPRemindTableViewCell";
 
 - (void)viewDidLoad
 {
-    self.title = @"久坐提醒";
+    self.title = @"应用提醒";
 //    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24) type:MDButtonTypeFlat rippleColor:nil];
 //    [leftButton setImageNormal:[UIImage imageNamed:@"ic_back"]];
 //    [leftButton addTarget:self action:@selector(backViewController) forControlEvents:UIControlEventTouchUpInside];
@@ -98,8 +98,6 @@ static NSString *const APPRemindTableViewCellID = @"APPRemindTableViewCell";
     [self.hud hideAnimated:YES];
     manridyModel *model = [noti object];
     if (model.isReciveDataRight) {
-//        MDToast *sucToast = [[MDToast alloc] initWithText:@"保存成功" duration:1.5];
-//        [sucToast show];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.label.text = @"保存成功";
         [hud hideAnimated:YES afterDelay:2];
@@ -118,10 +116,6 @@ static NSString *const APPRemindTableViewCellID = @"APPRemindTableViewCell";
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.label.text = @"保存失败";
             [hud hideAnimated:YES afterDelay:2];
-//            MDToast *sucToast = [[MDToast alloc] initWithText:@"配对失败，请配对设备，否则无法使用该功能" duration:3];
-//            [sucToast show];
-            //保存选项至本地
-            //[[NSUserDefaults standardUserDefaults] setBool:NO forKey:MESSAGE_SWITCH_SETTING];
         }
     }
 }

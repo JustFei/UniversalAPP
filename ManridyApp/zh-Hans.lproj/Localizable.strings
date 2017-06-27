@@ -413,3 +413,122 @@
 
 //检查更新
 "checkUpdate" = "检查更新";
+
+
+//MARK:6.27新增的部分
+"NotConnectToUpdate" = "设备未连接，无法更新";
+
+//更新中
+"CheckingUpdate" = "检查更新中";
+
+//网络异常
+"NetError" = "网络异常，请连接网络后再尝试";
+
+//暂无更新
+"NOUpdate" = "暂无更新";
+
+//有新的更新，是否更新
+"ChoseWheatherUpdate" = "有新的更新，是否现在更新？";
+
+//手环查找中
+"PeripheralFinding" = "手环查找中。。。";
+
+"PeriPheralFindingBody" = "您的手环正在查找您。。。";
+
+//APP 提醒
+"APPRemind" = "应用提醒";
+
+//设备未连接
+"NoConnectToSave" = "设备尚未连接";
+
+//微信
+"wechat" = "微信";
+
+//配对失败
+"PairFail" = "配对失败，请重试。";
+
+"BleTakePhoto" = "遥控拍照";
+
+"SavePicSuccess" = "保存图片成功";
+
+"SavePicFail" = "保存图片失败";
+
+"LightAdjust" = "亮度调节";
+
+"SetPerLight" = "设置手表的亮度";
+
+"low" = "低";
+
+"mid" = "中";
+
+"lightHight" = "高";
+
+"QRScanInfo" = "扫描到的信息";
+
+"Connect" = "连接";
+
+"ScanError" = "扫描异常";
+
+"TryAgain" = "请重新尝试";
+
+"APPRemind" = "APP通知";
+
+"UnitsSetting" = "单位设置";
+
+"TimeFormatter" = "时间格式";
+
+"ScanQR" = "扫一扫";
+
+"PutQrIntoView" = "将二维码/条码放入框内, 即可自动扫描";
+
+"OpenFlashLight" = "打开照明灯";
+
+"CloseFlashLight" = "关闭照明灯";
+
+"UserPerTabkePhoto" = "使用手表遥控拍照";
+
+"TakePhoto" = "开始拍照";
+
+"FunNeesConnectPer" = "该功能需要连接设备";
+
+"ChoseViewToShow" = "选择需要在设备上显示的界面";
+
+"12TimeFormatter" = "12时";
+
+"24TimeFormatter" = "24时";
+
+"LengthSetting" = "长度单位设置";
+
+"m/km/kg" = "公制(米/公里/千克)";
+
+"ln/£" = "英制(英寸/英尺/英磅)";
+
+"HardwareUpdate" = "固件升级";
+
+"UpdatingNotUsePhone" = "升级中请勿使设备远离手机";
+
+"UpdateSuccess" = "升级成功!";
+
+"UpdateFail" = "升级失败!";
+
+"Complete%" = "已完成%ld%%";
+
+"PlsChose" = "请选择";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

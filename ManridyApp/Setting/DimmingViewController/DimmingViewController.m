@@ -228,16 +228,13 @@
         //这里不能直接写 if (isFirst),必须如下写法
         if (model.isReciveDataRight == ResponsEcorrectnessDataRgith) {
             [[NSUserDefaults standardUserDefaults] setFloat:self.slider.value forKey:DIMMING_SETTING];
-//            MDToast *sucToast = [[MDToast alloc] initWithText:@"保存成功" duration:1.5];
-//            [sucToast show];
+
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.mode = MBProgressHUDModeText;
             hud.label.text = @"保存成功";
             [hud hideAnimated:YES afterDelay:2];
         }else {
             //做失败处理
-//            MDToast *sucToast = [[MDToast alloc] initWithText:@"保存失败，稍后再试" duration:1.5];
-//            [sucToast show];
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.mode = MBProgressHUDModeText;
             hud.label.text = @"保存失败";

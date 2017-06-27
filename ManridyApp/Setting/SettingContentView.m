@@ -33,7 +33,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        _dataArr = @[@"用户信息",@"信息提醒",@"防丢设置",@"查看电量",@"设备锁定",@"关于"];
         
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"version"]) {
             NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];

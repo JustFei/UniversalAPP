@@ -213,7 +213,7 @@ static NSString * const UnitsSettingTableViewCellID = @"UnitsSettingTableViewCel
             _dataArr = mutArr;
         }else {
             NSArray *sec1 = @[@"公制(米/公里/千克)", @"英制(英寸/英尺/英磅)"];
-//            NSArray *sec2 = @[@"公制(公斤)",@"英制()"];
+
             NSMutableArray *mutArr1 = [NSMutableArray array];
             NSMutableArray *mutArr2 = [NSMutableArray array];
             for (int index = 0; index < sec1.count; index ++) {

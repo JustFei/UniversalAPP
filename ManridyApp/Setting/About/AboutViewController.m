@@ -218,7 +218,7 @@
 - (UIAlertController *)updateAc
 {
     if (!_updateAc) {
-        _updateAc = [UIAlertController alertControllerWithTitle:@"更新提示" message:@"有新的更新，是否现在更新？" preferredStyle:UIAlertControllerStyleAlert];
+        _updateAc = [UIAlertController alertControllerWithTitle:@"提示" message:@"有新的更新，是否现在更新？" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *cancelAc = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
         UIAlertAction *okAc = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

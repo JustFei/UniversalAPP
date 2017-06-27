@@ -77,7 +77,6 @@
 		9C1B27711DDE8E2C009663F0 /* BloodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27701DDE8E2C009663F0 /* BloodModel.m */; };
 		9C1B27741DDE9EBE009663F0 /* BloodO2Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */; };
 		9C1B27791DDEFCE0009663F0 /* BooldHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */; };
-		9C2ADA3E1E94DF7600DABB0C /* hex.zip in Resources */ = {isa = PBXBuildFile; fileRef = 9C2ADA3D1E94DF7600DABB0C /* hex.zip */; };
 		9C57F1C91DF279300090C2EF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F1CB1DF279300090C2EF /* Launch Screen.storyboard */; };
 		9C57F1D11DF2882F0090C2EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F1D31DF2882F0090C2EF /* InfoPlist.strings */; };
 		9C57F1D71DF288D50090C2EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C57F1D91DF288D50090C2EF /* Localizable.strings */; };
@@ -258,7 +257,6 @@
 		9C1B27731DDE9EBE009663F0 /* BloodO2Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BloodO2Model.m; path = BLETool/Model/BloodO2Model.m; sourceTree = "<group>"; };
 		9C1B27761DDEFCE0009663F0 /* BooldHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BooldHistoryViewController.h; path = History/Blood/BooldHistoryViewController.h; sourceTree = "<group>"; };
 		9C1B27771DDEFCE0009663F0 /* BooldHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BooldHistoryViewController.m; path = History/Blood/BooldHistoryViewController.m; sourceTree = "<group>"; };
-		9C2ADA3D1E94DF7600DABB0C /* hex.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = hex.zip; sourceTree = "<group>"; };
 		9C2CB4821E17A71F005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
 		9C2CB4831E17A71F005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/StepContentView.xib; sourceTree = "<group>"; };
 		9C2CB4841E17A720005BEDA7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/StepTargetViewController.xib; sourceTree = "<group>"; };
@@ -815,7 +813,6 @@
 		10F5F7071D98C6280045FA4C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9C8017E01E8F5B6900654868 /* Resource */,
 				10237EA11F00AFD900A2E178 /* Constants */,
 				10F5F70A1D98C6280045FA4C /* AppDelegate.h */,
 				10F5F70B1D98C6280045FA4C /* AppDelegate.m */,
@@ -958,14 +955,6 @@
 			name = PopupView;
 			sourceTree = "<group>";
 		};
-		9C8017E01E8F5B6900654868 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				9C2ADA3D1E94DF7600DABB0C /* hex.zip */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
 		9C8017E31E8F5E0C00654868 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -1091,7 +1080,6 @@
 				9C728F6A1DD5DB4B00BEF69E /* PopupView.xib in Resources */,
 				9C19541B1E5FCDF5006DEAED /* PhoneRemindTableViewCell.xib in Resources */,
 				9C57F1FE1DF2C2260090C2EF /* SleepContentView.xib in Resources */,
-				9C2ADA3E1E94DF7600DABB0C /* hex.zip in Resources */,
 				10237EBA1F0120D800A2E178 /* SGQRCode.bundle in Resources */,
 				9C57F1D71DF288D50090C2EF /* Localizable.strings in Resources */,
 				9C57F1C91DF279300090C2EF /* Launch Screen.storyboard in Resources */,
