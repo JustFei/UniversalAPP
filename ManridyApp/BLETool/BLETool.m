@@ -716,6 +716,15 @@ static BLETool *bleTool = nil;
     NSLog(@"同步时间格式");
 }
 
+/** 添加睡眠的测试协议 */
+- (void)writeSleepTest
+{
+    NSString *protocolStr = @"fc0c03";
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
 #pragma mark - CBCentralManagerDelegate
 //检查设备蓝牙开关的状态
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central

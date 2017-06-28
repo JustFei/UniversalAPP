@@ -86,7 +86,6 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     self.stepView.dateArr = [self getWeekBeginAndEnd:[NSDate date]];
-//    self.temperatureView.dateArr = self.stepView.dateArr;
     
     [self hiddenFunctionView];
     _currentPage = 0;
@@ -94,6 +93,17 @@
     Remind *model = [[Remind alloc] init];
     model.phone = 1;
     model.message = 1;
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(writeSleepTest:)];
+    [self.view addGestureRecognizer:longPress];
+}
+
+- (void)writeSleepTest:(UILongPressGestureRecognizer *)ges
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.myBleTool writeSleepTest];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated

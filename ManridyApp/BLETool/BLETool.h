@@ -312,4 +312,7 @@ ImperialSystem  YES = 英制
 /** 同步时间格式 */
 - (void)writeTimeFormatterToPeripheral:(BOOL)twelveFormatter;
 
+/** 添加睡眠的测试协议 */
+- (void)writeSleepTest;
+
 @end

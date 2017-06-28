@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Setting/TimeFormatterViewController/TimeFormatterViewController.m"
-            timestampString = "520156646.183791"
+            filePath = "ManridyApp/Main/MianViewController.m"
+            timestampString = "520340800.298098"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-setTimeFormatterWeatherSuccess:"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-writeSleepTest:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Setting/TimeFormatterViewController/TimeFormatterViewController.m"
-            timestampString = "520156666.119532"
+            filePath = "ManridyApp/Main/SubView/HeartRate/HeartRateContentView.m"
+            timestampString = "520342083.7591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-saveTimeFormatterAction"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-showChartViewWithData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,77 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManridyApp/BLETool/BLETool.m"
-            timestampString = "520156672.959239"
+            filePath = "ManridyApp/Main/SubView/HeartRate/HeartRateContentView.m"
+            timestampString = "520342083.7591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "712"
-            endingLineNumber = "712"
-            landmarkName = "-writeTimeFormatterToPeripheral:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Setting/BindPeripheral/BindPeripheralViewController.m"
-            timestampString = "520168893.964028"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
-            landmarkName = "-scanQR:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Setting/BindPeripheral/BindPeripheralViewController.m"
-            timestampString = "520168905.285431"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "-scanQR:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManridyApp/Setting/BindPeripheral/BindPeripheralViewController.m"
-            timestampString = "520168941.87761"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
-            landmarkName = "-manridyBLEDidDiscoverDeviceWithMAC:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManridyApp/AppDelegate.m"
-            timestampString = "520248586.669237"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "-connectBLE"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-showChartViewWithData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -67,8 +67,6 @@
         };
         
         self.heartChart.chartData = @[data02];
-        
-
         [self.heartChart strokeChart];
     }else {
         //仅仅展示个坐标系

@@ -1,0 +1,538 @@
+//MARK: 关于界面
+
+//app Name
+"appName" = "iwear";
+
+//软件版本号
+"softWare" = "軟體版本號：V%@";
+
+//硬件版本号
+"hardWare" = "硬件版本号：V%@";
+
+//MARK: 设备绑定界面
+//搜索
+"search" = "搜索";
+
+//设备绑定
+"perBind" = "設備綁定";
+
+//已绑定的设备
+"haveBindPer" = "已綁定設備";
+
+//未绑定设备
+"haveNoBindPer" = "未綁定設備";
+
+//正在连接设备...
+"bindingPer" = "正在連接設備...";
+
+//提示
+"tips" = "提示";
+
+//请选择设备以绑定
+"choosePerToBind" = "請選擇設備以綁定";
+
+//去选择
+"goToChoose" = "去選擇";
+
+//已成功解除绑定
+"disbindPerSuccess" = "已成功解除綁定";
+
+//我知道了
+"IKnow" = "我知道了";
+
+//已绑定设备：设备名
+"haveBindPerName" = "已綁定設備：%@";
+
+//连接异常，请重新尝试绑定
+"bindErrorAndTryAgain" = "連接異常，請靠近設備並嘗試再次連接";
+
+//确定
+"sure" = "確定";
+
+//绑定设备
+"bindPer" = "綁定設備";
+
+//解除绑定
+"disbindPer" = "解除綁定";
+
+//MARK: 提醒界面
+//来电提醒
+"phoneRemind" = "來電提醒";
+
+//短信提醒
+"messageRemind" = "短信提醒";
+
+//防丢提醒
+"lossRemind" = "防丟提醒";
+
+//查找设备
+"findPer" = "查找設備";
+
+//久坐提醒
+"sedentaryRemind" = "久坐提醒";
+
+//开始时间
+"beginTime" = "開始時間";
+
+//结束时间
+"endTime" = "結束時間";
+
+//午休免打扰
+"unDisturb" = "午休免打擾";
+
+//闹钟设置
+"clockSet" = "鬧鐘設置";
+
+//闹钟1
+"clock1" = "鬧鐘1";
+
+//闹钟2
+"clock2" = "鬧鐘2";
+
+//闹钟3
+"clock3" = "鬧鐘3";
+
+//提醒设置
+"remindSet" = "提醒設置";
+
+//请连接上设备后再设置
+"connectPerAndSet" = "請連接上設備後再設置";
+
+//开始查找
+"startSearch" = "開始查找";
+
+//正在查找设备
+"searchingPer" = "正在查找設備(%d...)";
+
+//停止查找
+"stopSearch" = "停止查找";
+
+//MARK: 用户信息界面
+//性别
+"gender" = "性別";
+
+//年龄
+"age" = "年齡";
+
+//身高
+"height" = "身高";
+
+//体重
+"weight" = "體重";
+
+//请输入年龄
+"inputAge" = "請輸入年齡";
+
+//请输入身高
+"inputHeight" = "請輸入身高";
+
+//请输入体重
+"inputWeight" = "請輸入體重";
+
+//岁
+"year" = "(歲)";
+
+//男
+"male" = "男";
+
+//女
+"Female" = "女";
+
+//用户信息
+"userInfo" = "用戶信息";
+
+//从相册选择
+"choosePhotoFromPhotoAlbum" = "從相冊選擇";
+
+//拍照
+"takeAPhoto" = "拍照";
+
+//取消
+"cancel" = "取消";
+
+//保存失败,请重新尝试
+"saveFailAndTryAgain" = "保存失敗，請重新嘗試！";
+
+//修改成功
+"changeSuccess" = "修改成功！";
+
+//修改失败，请重新尝试
+"changeFailAndTryAgain" = "修改失敗，請重新嘗試！";
+
+//信息输入不完整
+"infoNotComplete" = "信息輸入不完整，可能會對數據測量產生影響，請輸入完整！";
+
+//请输入用户名
+"inputUserName" = "請輸入用戶名";
+
+//保存
+"save" = "保存";
+
+//MARK: 设置界面
+//设置
+"set" = "設置";
+
+//信息提醒
+"infoRemind" = "提醒設置";
+
+//关于
+"about" = "關於";
+
+//用户名
+"userName" = "用戶名";
+
+//MARK: 月份选择界面
+//1月
+"January" = "1月";
+
+//2月
+"February" = "2月";
+
+//3月
+"March" = "3月";
+
+//4月
+"April" = "4月";
+
+//5月
+"May" = "5月";
+
+//6月
+"June" = "6月";
+
+//7月
+"July" = "7月";
+
+//8月
+"August" = "8月";
+
+//9月
+"September" = "9月";
+
+//10月
+"October" = "10月";
+
+//11月
+"November" = "11月";
+
+//12月
+"December" = "12月";
+
+//MARK：计步历史
+//历史记录
+"history" = "歷史記錄";
+
+//当前月份
+"currentMonth" = "%ld月";
+
+//本月计步统计:
+"currentMonthData" = "本月計步統計：共（%ld步/%.1f公里/%ld千卡）";
+
+//本月计步统计:
+"currentMonthDataImperial" = "本月計步統計：共（%ld步/%.1f英里/%ld千卡）";
+
+//平均公里和卡路里
+"averagerMandK" = "%.1f公里/%ld千卡";
+
+//平均公里和卡路里
+"averagerMandKImperial" = "%.1f英里/%ld千卡";
+
+//MARK: 心率历史
+//当月平均心率
+"averagerHR" = "當月平均心率";
+
+//偏低
+"low" = "偏低";
+
+//正常
+"normal" = "正常";
+
+//偏高
+"high" = "偏高";
+
+//当天平均心率
+"currentDayAveragerHR" = "當天平均心率";
+
+//睡眠历史界面
+//睡眠不足
+"lackofSleep" = "睡眠不足";
+
+//睡眠偏少
+"lessofSleep" = "睡眠偏少";
+
+//睡眠正常
+"normalofSleep" = "睡眠正常";
+
+//睡眠充足
+"moreofSleep" = "睡眠充足";
+
+//当天睡眠数据
+"currentDaySleepData" = "睡眠%@小时：深睡%@小时\n浅睡%@小时";
+
+//当天没有睡眠数据
+"currentDayNOSleepData" = "當天沒有睡眠數據";
+
+//MARK: 血压历史界面
+//心率
+"HRData" = "心率:%ld";
+
+//本月平均血压值
+"currentMonthBPData" = "本月平均血壓值 高壓：%ld 低壓：%ld 心率：%ld";
+
+//当天的心率
+"currentDayHRData" = "心率:%@";
+
+//当天的血压值
+"currentDayBPData" = "%@日血壓值";
+
+//MARK: 血氧历史界面
+//当天的血氧值
+"currentDayBOData" = "%@号血氧值";
+
+//MARK:计步当前
+//本周计步统计（公制）
+"currentWeekStepData" = "本週計步統計：%ld步（%.1f公里/%ld千卡）";
+
+//本周计步统计
+"currentWeekStepDataImperial" = "本週計步統計：%ld步（%.1f英里/%ld千卡）";
+//步
+"step" = "%@：%@步";
+
+//设备连接中...
+"perConnecting" = "設備連接中...";
+//未连接上设备，点击重试
+"canNotConnectPer" = "未連接上設備，點擊重試";
+
+//MARK: 运动目标设置界面
+//目标设置
+"targetSet" ="目標設置";
+
+//保存成功
+"saveSuccess" = "保存成功";
+
+//保存失败，重试
+"saveFail" = "保存失敗，請重新嘗試";
+
+//正在设置目标
+"settingTarget" = "正在設置運動目標";
+
+//设置超时，请重试
+"setOverTime" = "設置超時，請連接或靠近設備並重試。";
+
+//请先设置用户信息
+"plzSetUserInfoFirst" = "請先設置用戶信息，否則無法使用此功能。";
+
+//Mark :心率当前
+//心率次/分
+"currentHRData" = "%@：%@次/分鐘";
+
+//最近几次心率
+"lastTimesHRData" = "最近幾次心率";
+//MARK: 睡眠当前
+//此次睡眠
+"currentSleepData" = "此次睡眠：%@-%@ 淺睡：%.1f時 深睡：%.1f時";
+
+//MARK: 血压当前
+//点击血压的值
+"currenBPData" = "%@: 高壓：%@ 低壓：%@ 心率：%@";
+
+//MARK: Main界面
+//计步
+"Step" = "計步";
+//心率
+"HeartHeart" = "心率";
+//睡眠
+"Sleep" = "睡眠";
+//血压
+"BloodPressure" = "血壓";
+//血氧
+"BloodO2" = "血氧";
+
+//未绑定设备，前去绑定
+"haveNOBindPer" = "未綁定設備，請前往設置綁定設備";
+
+//公里/千卡
+"currentStepAndKCal" = "%.1f公里/%@千卡";
+//英里/千卡
+"currentStepAndKCalImperial" = "%.1f英里/%@千卡";
+
+//浅睡
+"lowSleepData" = "淺睡%0.2f小時";
+//深睡
+"deepSleepData" ="深睡%.2f小時";
+
+//最近几次睡眠
+"lastTimeSleep" = "最近幾次睡眠";
+
+//今日血压
+"todayBP" ="今日血壓";
+
+//今日血氧
+"todayBO" = "今日血氧";
+
+//MARK: BLETool
+//请开启蓝牙
+"phoneNotOpenBLE" = "請開啟藍牙";
+
+//蓝牙已开启
+"bleHaveOpen" = "藍牙已開啟";
+
+//设备意外断开，等待重连
+"bleReConnect" = "設備意外斷開，等待重連";
+
+//手环丢失通知
+"perDismissNodify" = "手環丟失通知";
+
+//通知副标题
+"PerDismissNodifySubtitle" = "注意！您的手環已經處於非連接狀態，可能已經丟失！";
+
+//通知正文
+"PerDismissNodifyContent" = "注意！您的手環已於%@離開可連接範圍，可能丟失！請注意！";
+
+//MARK: 未翻译部分
+//单位设置
+"UnitsSetting" = "單位設置";
+
+//公制单位
+"Metric" = "公制（厘米/千米/公斤）";
+
+//英制单位
+"ImperialSystem" = "英制（英寸/英里/英鎊）";
+
+//检查更新
+"checkUpdate" = "檢查更新";
+
+
+//MARK:6.27新增的部分
+"NotConnectToUpdate" = "設備未連接，無法更新";
+
+//更新中
+"CheckingUpdate" = "檢查更新中";
+
+//网络异常
+"NetError" = "網絡異常，請連接網絡後再嘗試";
+
+//暂无更新
+"NOUpdate" = "暫無更新";
+
+//有新的更新，是否更新
+"ChoseWheatherUpdate" = "有新的更新%@，是否現在更新？";
+
+//手环查找中
+"PeripheralFinding" = "手環查找中...";
+
+"PeriPheralFindingBody" = "您的手環正在查找您...";
+
+//APP 提醒
+"APPRemind" = "應用提醒";
+
+//设备未连接
+"NoConnectToSave" = "設備尚未連接";
+
+//微信
+"wechat" = "微信";
+
+//配对失败
+"PairFail" = "配對失敗，請重試。";
+
+//遥控拍照
+"BleTakePhoto" = "遙控拍照";
+
+//保存图片成功
+"SavePicSuccess" = "保存圖片成功";
+
+//保存图片失败
+"SavePicFail" = "保存圖片失敗";
+
+//亮度调节
+"LightAdjust" = "亮度調節";
+
+//设置手表的亮度
+"SetPerLight" = "設置手錶的亮度";
+
+//低
+"low" = "低";
+
+//中
+"mid" = "中";
+
+//高
+"lightHight" = "高";
+
+//扫描到的信息
+"QRScanInfo" = "掃描到的信息";
+
+//连接
+"Connect" = "連接";
+
+//扫描异常
+"ScanError" = "掃描異常";
+
+//请重新尝试
+"TryAgain" = "請重新嘗試";
+
+//APP通知
+"APPRemind" = "APP通知";
+
+//单位设置
+"UnitsSetting" = "單位設置";
+
+//时间格式
+"TimeFormatter" = "時間格式";
+
+//扫一扫
+"ScanQR" = "掃一掃";
+
+//将二维码/条码放入框内, 即可自动扫描
+"PutQrIntoView" = "將二維碼/條碼放入框內, 即可自動掃描";
+
+//打开照明灯
+"OpenFlashLight" = "打開照明燈";
+
+//关闭照明灯
+"CloseFlashLight" = "關閉照明燈";
+
+//使用手表遥控拍照
+"UserPerTabkePhoto" = "使用手錶遙控拍照";
+
+//开始拍照
+"TakePhoto" = "開始拍照";
+
+//该功能需要连接设备
+"FunNeesConnectPer" = "該功能需要連接設備";
+
+//选择需要在设备上显示的界面
+"ChoseViewToShow" = "選擇需要在設備上顯示的界面";
+
+//12时
+"12TimeFormatter" = "12時";
+
+//24时
+"24TimeFormatter" = "24時";
+
+//长度单位设置
+"LengthSetting" = "長度單位設置";
+
+//公制(米/公里/千克)
+"m/km/kg" = "公制(米/公里/千克)";
+
+//英制(英寸/英尺/英磅)
+"ln/£" = "英制(英寸/英尺/英鎊)";
+
+//固件升级
+"HardwareUpdate" = "固件升級";
+
+//升级中请勿使设备远离手机
+"UpdatingNotUsePhone" = "升級中請勿使設備遠離手機";
+
+//升级成功!
+"UpdateSuccess" = "升級成功!";
+
+//升级失败!
+"UpdateFail" = "升級失敗!";
+
+//已完成%ld%%
+"Complete%" = "已完成%ld%%";
+
+//请选择
+"PlsChose" = "請選擇";

@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "防丢提醒"; ObjectID = "Jrg-F5-JOs"; */
+"Jrg-F5-JOs.text" = "防丢提醒";
+
+/* Class = "UIButton"; normalTitle = "18:00"; ObjectID = "NXC-7r-urv"; */
+"NXC-7r-urv.normalTitle" = "18:00";
+
+/* Class = "UIButton"; normalTitle = "09:00"; ObjectID = "cIG-ce-nXu"; */
+"cIG-ce-nXu.normalTitle" = "09:00";
+
+/* Class = "UIButton"; normalTitle = "08:00"; ObjectID = "feT-uC-xT0"; */
+"feT-uC-xT0.normalTitle" = "08:00";
+
+/* Class = "UILabel"; text = "~"; ObjectID = "xhc-nU-LvB"; */
+"xhc-nU-LvB.text" = "~";

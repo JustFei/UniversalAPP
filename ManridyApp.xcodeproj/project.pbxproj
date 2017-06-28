@@ -161,6 +161,54 @@
 		103820F11DB86F1300E92410 /* StepHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepHistoryViewController.m; path = History/Step/StepHistoryViewController.m; sourceTree = "<group>"; };
 		1042FC771DA9F20400467F01 /* SleepSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepSettingViewController.h; path = Main/SubView/Sleep/SleepSettingViewController.h; sourceTree = "<group>"; };
 		1042FC781DA9F20400467F01 /* SleepSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SleepSettingViewController.m; path = Main/SubView/Sleep/SleepSettingViewController.m; sourceTree = "<group>"; };
+		10453F151F038D500005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/PhoneRemindTableViewCell.strings"; sourceTree = "<group>"; };
+		10453F161F038D500005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		10453F171F038D500005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/StepContentView.xib"; sourceTree = "<group>"; };
+		10453F181F038D500005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/StepTargetViewController.xib"; sourceTree = "<group>"; };
+		10453F191F038D500005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/HeartRateContentView.xib"; sourceTree = "<group>"; };
+		10453F1A1F038D510005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/SleepContentView.xib"; sourceTree = "<group>"; };
+		10453F1B1F038D510005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/SleepSettingViewController.xib"; sourceTree = "<group>"; };
+		10453F1C1F038D510005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/BloodPressureContentView.xib"; sourceTree = "<group>"; };
+		10453F1D1F038D510005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/BloodO2ContentView.xib"; sourceTree = "<group>"; };
+		10453F1E1F038D510005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/StepHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F1F1F038D510005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/HeartRateHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F201F038D520005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/SleepHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F211F038D520005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/BooldHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F221F038D520005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/BOHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F231F038D520005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		10453F241F038D520005FA75 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		10453F251F038D600005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/PhoneRemindTableViewCell.strings"; sourceTree = "<group>"; };
+		10453F261F038D600005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		10453F271F038D600005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/StepContentView.xib"; sourceTree = "<group>"; };
+		10453F281F038D600005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/StepTargetViewController.xib"; sourceTree = "<group>"; };
+		10453F291F038D610005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/HeartRateContentView.xib"; sourceTree = "<group>"; };
+		10453F2A1F038D610005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/SleepContentView.xib"; sourceTree = "<group>"; };
+		10453F2B1F038D610005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/SleepSettingViewController.xib"; sourceTree = "<group>"; };
+		10453F2C1F038D610005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/BloodPressureContentView.xib"; sourceTree = "<group>"; };
+		10453F2D1F038D610005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/BloodO2ContentView.xib"; sourceTree = "<group>"; };
+		10453F2E1F038D610005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/StepHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F2F1F038D610005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/HeartRateHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F301F038D620005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/SleepHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F311F038D620005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/BooldHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F321F038D620005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/BOHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F331F038D620005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		10453F341F038D620005FA75 /* zh-Hant-MO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-MO"; path = "zh-Hant-MO.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		10453F351F038D6C0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/PhoneRemindTableViewCell.strings"; sourceTree = "<group>"; };
+		10453F361F038D6C0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		10453F371F038D6C0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/StepContentView.xib"; sourceTree = "<group>"; };
+		10453F381F038D6D0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/StepTargetViewController.xib"; sourceTree = "<group>"; };
+		10453F391F038D6D0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HeartRateContentView.xib"; sourceTree = "<group>"; };
+		10453F3A1F038D6D0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/SleepContentView.xib"; sourceTree = "<group>"; };
+		10453F3B1F038D6D0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/SleepSettingViewController.xib"; sourceTree = "<group>"; };
+		10453F3C1F038D6D0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/BloodPressureContentView.xib"; sourceTree = "<group>"; };
+		10453F3D1F038D6D0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/BloodO2ContentView.xib"; sourceTree = "<group>"; };
+		10453F3E1F038D6D0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/StepHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F3F1F038D6E0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HeartRateHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F401F038D6E0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/SleepHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F411F038D6E0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/BooldHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F421F038D6E0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/BOHistoryViewController.xib"; sourceTree = "<group>"; };
+		10453F431F038D6E0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		10453F441F038D6E0005FA75 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		104A705F1D9B720500CC73F5 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Setting/SettingViewController.h; sourceTree = "<group>"; };
 		104A70601D9B720500CC73F5 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Setting/SettingViewController.m; sourceTree = "<group>"; };
 		104A70621D9B724D00CC73F5 /* SettingContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingContentView.h; path = Setting/SettingContentView.h; sourceTree = "<group>"; };
@@ -1058,6 +1106,9 @@
 				es,
 				ar,
 				ru,
+				"zh-Hant-HK",
+				"zh-Hant-MO",
+				"zh-Hant-TW",
 			);
 			mainGroup = 10F5F6FB1D98C6270045FA4C;
 			productRefGroup = 10F5F7051D98C6270045FA4C /* Products */;
@@ -1260,6 +1311,9 @@
 				9C19543C1E5FCE27006DEAED /* es */,
 				9C19543D1E5FCE2A006DEAED /* ar */,
 				9C19543E1E5FCE2D006DEAED /* ru */,
+				10453F151F038D500005FA75 /* zh-Hant-HK */,
+				10453F251F038D600005FA75 /* zh-Hant-MO */,
+				10453F351F038D6C0005FA75 /* zh-Hant-TW */,
 			);
 			name = PhoneRemindTableViewCell.xib;
 			path = Setting/PhoneRemind;
@@ -1280,6 +1334,9 @@
 				9C5AE23B1E5BEE260006D791 /* es */,
 				9C5AE24B1E5BEE470006D791 /* ar */,
 				9C5AE25B1E5BEE5C0006D791 /* ru */,
+				10453F161F038D500005FA75 /* zh-Hant-HK */,
+				10453F261F038D600005FA75 /* zh-Hant-MO */,
+				10453F361F038D6C0005FA75 /* zh-Hant-TW */,
 			);
 			name = "Launch Screen.storyboard";
 			sourceTree = "<group>";
@@ -1298,6 +1355,9 @@
 				9C5AE2491E5BEE280006D791 /* es */,
 				9C5AE2591E5BEE490006D791 /* ar */,
 				9C5AE2691E5BEE5E0006D791 /* ru */,
+				10453F231F038D520005FA75 /* zh-Hant-HK */,
+				10453F331F038D620005FA75 /* zh-Hant-MO */,
+				10453F431F038D6E0005FA75 /* zh-Hant-TW */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1316,6 +1376,9 @@
 				9C5AE24A1E5BEE280006D791 /* es */,
 				9C5AE25A1E5BEE490006D791 /* ar */,
 				9C5AE26A1E5BEE5E0006D791 /* ru */,
+				10453F241F038D520005FA75 /* zh-Hant-HK */,
+				10453F341F038D620005FA75 /* zh-Hant-MO */,
+				10453F441F038D6E0005FA75 /* zh-Hant-TW */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1334,6 +1397,9 @@
 				9C5AE23C1E5BEE260006D791 /* es */,
 				9C5AE24C1E5BEE470006D791 /* ar */,
 				9C5AE25C1E5BEE5C0006D791 /* ru */,
+				10453F171F038D500005FA75 /* zh-Hant-HK */,
+				10453F271F038D600005FA75 /* zh-Hant-MO */,
+				10453F371F038D6C0005FA75 /* zh-Hant-TW */,
 			);
 			name = StepContentView.xib;
 			path = Main/SubView/Step;
@@ -1353,6 +1419,9 @@
 				9C5AE23D1E5BEE270006D791 /* es */,
 				9C5AE24D1E5BEE470006D791 /* ar */,
 				9C5AE25D1E5BEE5C0006D791 /* ru */,
+				10453F181F038D500005FA75 /* zh-Hant-HK */,
+				10453F281F038D600005FA75 /* zh-Hant-MO */,
+				10453F381F038D6D0005FA75 /* zh-Hant-TW */,
 			);
 			name = StepTargetViewController.xib;
 			path = Main/SubView/Step;
@@ -1372,6 +1441,9 @@
 				9C5AE23E1E5BEE270006D791 /* es */,
 				9C5AE24E1E5BEE470006D791 /* ar */,
 				9C5AE25E1E5BEE5C0006D791 /* ru */,
+				10453F191F038D500005FA75 /* zh-Hant-HK */,
+				10453F291F038D610005FA75 /* zh-Hant-MO */,
+				10453F391F038D6D0005FA75 /* zh-Hant-TW */,
 			);
 			name = HeartRateContentView.xib;
 			path = Main/SubView/HeartRate;
@@ -1391,6 +1463,9 @@
 				9C5AE23F1E5BEE270006D791 /* es */,
 				9C5AE24F1E5BEE470006D791 /* ar */,
 				9C5AE25F1E5BEE5C0006D791 /* ru */,
+				10453F1A1F038D510005FA75 /* zh-Hant-HK */,
+				10453F2A1F038D610005FA75 /* zh-Hant-MO */,
+				10453F3A1F038D6D0005FA75 /* zh-Hant-TW */,
 			);
 			name = SleepContentView.xib;
 			path = Main/SubView/Sleep;
@@ -1410,6 +1485,9 @@
 				9C5AE2401E5BEE270006D791 /* es */,
 				9C5AE2501E5BEE470006D791 /* ar */,
 				9C5AE2601E5BEE5C0006D791 /* ru */,
+				10453F1B1F038D510005FA75 /* zh-Hant-HK */,
+				10453F2B1F038D610005FA75 /* zh-Hant-MO */,
+				10453F3B1F038D6D0005FA75 /* zh-Hant-TW */,
 			);
 			name = SleepSettingViewController.xib;
 			path = Main/SubView/Sleep;
@@ -1429,6 +1507,9 @@
 				9C5AE2411E5BEE270006D791 /* es */,
 				9C5AE2511E5BEE480006D791 /* ar */,
 				9C5AE2611E5BEE5D0006D791 /* ru */,
+				10453F1C1F038D510005FA75 /* zh-Hant-HK */,
+				10453F2C1F038D610005FA75 /* zh-Hant-MO */,
+				10453F3C1F038D6D0005FA75 /* zh-Hant-TW */,
 			);
 			name = BloodPressureContentView.xib;
 			path = Main/SubView/BloodPressure;
@@ -1448,6 +1529,9 @@
 				9C5AE2421E5BEE270006D791 /* es */,
 				9C5AE2521E5BEE480006D791 /* ar */,
 				9C5AE2621E5BEE5D0006D791 /* ru */,
+				10453F1D1F038D510005FA75 /* zh-Hant-HK */,
+				10453F2D1F038D610005FA75 /* zh-Hant-MO */,
+				10453F3D1F038D6D0005FA75 /* zh-Hant-TW */,
 			);
 			name = BloodO2ContentView.xib;
 			path = Main/SubView/BloodO2;
@@ -1467,6 +1551,9 @@
 				9C5AE2431E5BEE270006D791 /* es */,
 				9C5AE2531E5BEE480006D791 /* ar */,
 				9C5AE2631E5BEE5D0006D791 /* ru */,
+				10453F1E1F038D510005FA75 /* zh-Hant-HK */,
+				10453F2E1F038D610005FA75 /* zh-Hant-MO */,
+				10453F3E1F038D6D0005FA75 /* zh-Hant-TW */,
 			);
 			name = StepHistoryViewController.xib;
 			path = History/Step;
@@ -1486,6 +1573,9 @@
 				9C5AE2441E5BEE280006D791 /* es */,
 				9C5AE2541E5BEE480006D791 /* ar */,
 				9C5AE2641E5BEE5D0006D791 /* ru */,
+				10453F1F1F038D510005FA75 /* zh-Hant-HK */,
+				10453F2F1F038D610005FA75 /* zh-Hant-MO */,
+				10453F3F1F038D6E0005FA75 /* zh-Hant-TW */,
 			);
 			name = HeartRateHistoryViewController.xib;
 			path = History/Heart;
@@ -1505,6 +1595,9 @@
 				9C5AE2451E5BEE280006D791 /* es */,
 				9C5AE2551E5BEE480006D791 /* ar */,
 				9C5AE2651E5BEE5D0006D791 /* ru */,
+				10453F201F038D520005FA75 /* zh-Hant-HK */,
+				10453F301F038D620005FA75 /* zh-Hant-MO */,
+				10453F401F038D6E0005FA75 /* zh-Hant-TW */,
 			);
 			name = SleepHistoryViewController.xib;
 			path = History/Sleep;
@@ -1524,6 +1617,9 @@
 				9C5AE2461E5BEE280006D791 /* es */,
 				9C5AE2561E5BEE480006D791 /* ar */,
 				9C5AE2661E5BEE5D0006D791 /* ru */,
+				10453F211F038D520005FA75 /* zh-Hant-HK */,
+				10453F311F038D620005FA75 /* zh-Hant-MO */,
+				10453F411F038D6E0005FA75 /* zh-Hant-TW */,
 			);
 			name = BooldHistoryViewController.xib;
 			path = History/Blood;
@@ -1543,6 +1639,9 @@
 				9C5AE2471E5BEE280006D791 /* es */,
 				9C5AE2571E5BEE480006D791 /* ar */,
 				9C5AE2671E5BEE5D0006D791 /* ru */,
+				10453F221F038D520005FA75 /* zh-Hant-HK */,
+				10453F321F038D620005FA75 /* zh-Hant-MO */,
+				10453F421F038D6E0005FA75 /* zh-Hant-TW */,
 			);
 			name = BOHistoryViewController.xib;
 			path = History/BloodO2;
