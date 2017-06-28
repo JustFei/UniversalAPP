@@ -18,9 +18,9 @@
 
 @property (nonatomic ,copy) NSMutableArray *dateArr;
 @property (nonatomic ,strong) NSMutableArray *dataArr;
-@property (weak, nonatomic) IBOutlet UIView *state1;
-@property (weak, nonatomic) IBOutlet UIView *state2;
-@property (weak, nonatomic) IBOutlet UIView *state4;
+//@property (weak, nonatomic) IBOutlet UIView *state1;
+//@property (weak, nonatomic) IBOutlet UIView *state2;
+//@property (weak, nonatomic) IBOutlet UIView *state4;
 @property (nonatomic ,weak) PNLineChart *heartChart;
 
 - (void)drawProgress:(CGFloat )progress;

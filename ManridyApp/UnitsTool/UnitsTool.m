@@ -7,6 +7,7 @@
 //
 
 #import "UnitsTool.h"
+#import "UnitsSettingModel.h"
 
 @implementation UnitsTool
 
@@ -31,11 +32,13 @@
 //判断是否是公制单位
 + (BOOL)isMetricOrImperialSystem
 {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"]) {
-        BOOL isMetric = [[NSUserDefaults standardUserDefaults] boolForKey:@"isMetric"];
-        return isMetric;
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:UNITS_SETTING]) {
+        NSArray *arr = [[NSUserDefaults standardUserDefaults] objectForKey:UNITS_SETTING];
+        NSData *data = arr.firstObject;
+        UnitsSettingModel *model = ((NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:data]).firstObject;
+        return model.isSelect;
     }else {
-        return NO;
+        return YES;
     }
 }
 

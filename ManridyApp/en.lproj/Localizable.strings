@@ -416,3 +416,149 @@
 
 //检查更新
 "checkUpdate" = "Check version";
+
+
+//MARK:6.27新增的部分
+"NotConnectToUpdate" = "Device not connected, can not be updated";
+
+//更新中
+"CheckingUpdate" = "Check for updates";
+
+
+//网络异常
+"NetError" = "Network abnormal, please connect to the network and try again.";
+
+
+//暂无更新
+"NOUpdate" = "No update";
+
+
+//有新的更新，是否更新
+"ChoseWheatherUpdate" = "There is a new version%@, whether to update now?";
+
+//手环查找中
+"PeripheralFinding" = "Find the bracelet ...";
+
+"PeriPheralFindingBody" = "您的手环正在查找您。。。";
+
+//APP 提醒
+"APPRemind" = "App Reminder";
+
+//设备未连接
+"NoConnectToSave" = "Device not connected";
+
+
+//微信
+"wechat" = "WeChat";
+
+
+//配对失败
+"PairFail" = "Pairing failed, please try again.";
+
+
+"BleTakePhoto" = "Remote control camera";
+
+"SavePicSuccess" = "Save picture success";
+
+
+"SavePicFail" = "Save picture failed";
+
+
+"LightAdjust" = "Brightness adjustment";
+
+
+
+"SetPerLight" = "Set the brightness of the watch";
+
+
+"low" = "low";
+
+
+"mid" = "mid";
+
+
+"lightHight" = "hight";
+
+
+"QRScanInfo" = "Scan to information.";
+
+
+"Connect" = "Connect";
+
+
+"ScanError" = "Scan abnormal";
+
+
+"TryAgain" = "Please try again";
+
+
+"APPRemind" = "APP notice";
+
+
+"UnitsSetting" = "Unit setting";
+
+
+"TimeFormatter" = "Time format";
+
+
+
+"ScanQR" = "scan it";
+
+
+
+"PutQrIntoView" = "Will be two-dimensional code / bar code into the box, you can automatically scan";
+
+
+
+"OpenFlashLight" = "Turn on the lights";
+
+
+"CloseFlashLight" = "Turn off the lights";
+
+
+"UserPerTabkePhoto" = "Use the watch remote control camera";
+
+
+"TakePhoto" = "Start taking pictures";
+
+
+"FunNeesConnectPer" = "This feature requires connection device";
+
+
+"ChoseViewToShow" = "Select interface displayed on the device";
+
+
+"12TimeFormatter" = "12 -hour";
+
+
+"24TimeFormatter" = "24 -hour";
+
+
+"LengthSetting" = "Length unit setting";
+
+
+"m/km/kg" = "Metric (m / km / kg)";
+
+
+"ln/£" = "Imperial (inch / foot / pound)";
+
+
+"HardwareUpdate" = "Firmware upgrade";
+
+
+"UpdatingNotUsePhone" = "Do not keep the device away from the phone during the upgrade";
+
+
+"UpdateSuccess" = "Upgrade success!";
+
+
+
+"UpdateFail" = "Upgrade failed!";
+
+
+
+"Complete%" = "Completed% ld %%";
+
+
+"PlsChose" = "please choose";
+

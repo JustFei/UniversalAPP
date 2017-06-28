@@ -693,43 +693,43 @@
             }
         }
         
-        if (sum <= 6) {
-            [self.sleepView.sleepStateLabel setText:NSLocalizedString(@"lackofSleep", nil)];
-            [self.sleepView.sleepStateLabel setTextColor:[UIColor redColor]];
-            
-            [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor redColor]];
-            [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
-            [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
-            [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
-            
-        }else if (sum > 6 && sum < 7) {
-            [self.sleepView.sleepStateLabel setText:NSLocalizedString(@"lessofSleep", nil)];
-            [self.sleepView.sleepStateLabel setTextColor:[UIColor orangeColor]];
-            
-            [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
-            [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor orangeColor]];
-            [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
-            [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
-            
-        }else if (sum >= 7 && sum < 8) {
-            [self.sleepView.sleepStateLabel setText:NSLocalizedString(@"normalofSleep", nil)];
-            [self.sleepView.sleepStateLabel setTextColor:[UIColor yellowColor]];
-            
-            [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
-            [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
-            [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor yellowColor]];
-            [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
-            
-        }else if (sum >= 8) {
-            [self.sleepView.sleepStateLabel setText:NSLocalizedString(@"moreofSleep", nil)];
-            [self.sleepView.sleepStateLabel setTextColor:[UIColor greenColor]];
-            
-            [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
-            [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
-            [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
-            [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor greenColor]];
-            
-        }
+//        if (sum <= 6) {
+//            [self.sleepView.sleepStateLabel setText:NSLocalizedString(@"lackofSleep", nil)];
+//            [self.sleepView.sleepStateLabel setTextColor:[UIColor redColor]];
+//            
+//            [self.sleepView.sleepStateView1 setBackgroundColor:[UIColor redColor]];
+//            [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
+//            [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
+//            [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
+//            
+//        }else if (sum > 6 && sum < 7) {
+//            [self.sleepView.sleepStateLabel setText:NSLocalizedString(@"lessofSleep", nil)];
+//            [self.sleepView.sleepStateLabel setTextColor:[UIColor orangeColor]];
+//            
+//            [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
+//            [self.sleepView.sleepStateView2 setBackgroundColor:[UIColor orangeColor]];
+//            [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
+//            [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
+//            
+//        }else if (sum >= 7 && sum < 8) {
+//            [self.sleepView.sleepStateLabel setText:NSLocalizedString(@"normalofSleep", nil)];
+//            [self.sleepView.sleepStateLabel setTextColor:[UIColor yellowColor]];
+//            
+//            [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
+//            [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
+//            [self.sleepView.sleepStateView3 setBackgroundColor:[UIColor yellowColor]];
+//            [self.sleepView.sleepStateView4 setBackgroundColor:kCurrentStateOFF];
+//            
+//        }else if (sum >= 8) {
+//            [self.sleepView.sleepStateLabel setText:NSLocalizedString(@"moreofSleep", nil)];
+//            [self.sleepView.sleepStateLabel setTextColor:[UIColor greenColor]];
+//            
+//            [self.sleepView.sleepStateView1 setBackgroundColor:kCurrentStateOFF];
+//            [self.sleepView.sleepStateView2 setBackgroundColor:kCurrentStateOFF];
+//            [self.sleepView.sleepStateView3 setBackgroundColor:kCurrentStateOFF];
+//            [self.sleepView.sleepStateView4 setBackgroundColor:[UIColor greenColor]];
+//            
+//        }
     }
     
     }
@@ -777,25 +777,25 @@
     double doubleHeart = lastHeartRate.doubleValue;
     [self.heartRateView drawProgress:doubleHeart];
     
-    if (heart < 60) {
-        self.heartRateView.state1.backgroundColor = [UIColor redColor];
-        self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
-        self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
-        
-        self.heartRateView.heartStateLabel.text = NSLocalizedString(@"low", nil);
-    }else if (heart >= 60 && heart <= 100) {
-        self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
-        self.heartRateView.state2.backgroundColor = [UIColor greenColor];
-        self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
-        
-        self.heartRateView.heartStateLabel.text = NSLocalizedString(@"normal", nil);
-    }else {
-        self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
-        self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
-        self.heartRateView.state4.backgroundColor = [UIColor redColor];
-        
-        self.heartRateView.heartStateLabel.text = NSLocalizedString(@"high", nil);
-    }
+//    if (heart < 60) {
+//        self.heartRateView.state1.backgroundColor = [UIColor redColor];
+//        self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
+//        self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
+//        
+//        self.heartRateView.heartStateLabel.text = NSLocalizedString(@"low", nil);
+//    }else if (heart >= 60 && heart <= 100) {
+//        self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
+//        self.heartRateView.state2.backgroundColor = [UIColor greenColor];
+//        self.heartRateView.state4.backgroundColor = kCurrentStateOFF;
+//        
+//        self.heartRateView.heartStateLabel.text = NSLocalizedString(@"normal", nil);
+//    }else {
+//        self.heartRateView.state1.backgroundColor = kCurrentStateOFF;
+//        self.heartRateView.state2.backgroundColor = kCurrentStateOFF;
+//        self.heartRateView.state4.backgroundColor = [UIColor redColor];
+//        
+//        self.heartRateView.heartStateLabel.text = NSLocalizedString(@"high", nil);
+//    }
     }
 }
 
@@ -809,32 +809,32 @@
         case 0:
         {
             StepHistoryViewController *vc = [[StepHistoryViewController alloc] initWithNibName:@"StepHistoryViewController" bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
+            [self presentViewController: vc animated:YES completion:nil];
         }
             break;
         case 1:
         {
             HeartRateHistoryViewController *vc = [[HeartRateHistoryViewController alloc] initWithNibName:@"HeartRateHistoryViewController" bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
+            [self presentViewController: vc animated:YES completion:nil];
         }
             break;
         case 2:
         {
             SleepHistoryViewController *vc = [[SleepHistoryViewController alloc] initWithNibName:@"SleepHistoryViewController" bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
+            [self presentViewController: vc animated:YES completion:nil];
         }
             break;
         case 3:
         {
             BooldHistoryViewController *vc = [[BooldHistoryViewController alloc] initWithNibName:@"BooldHistoryViewController" bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
+            [self presentViewController: vc animated:YES completion:nil];
         }
             break;
         case 4
         :
         {
             BOHistoryViewController *vc = [[BOHistoryViewController alloc] initWithNibName:@"BOHistoryViewController" bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
+            [self presentViewController: vc animated:YES completion:nil];
         }
             
         default:

@@ -162,6 +162,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.hud hideAnimated:YES afterDelay:1];
                         //提示是否更新
+                        [self.updateAc setMessage:[NSString stringWithFormat:@"有新的更新%@，是否现在更新？", verInServer]];
                         [self presentViewController:self.updateAc animated:YES completion:nil];
                     });
                 }else {
@@ -218,7 +219,7 @@
 - (UIAlertController *)updateAc
 {
     if (!_updateAc) {
-        _updateAc = [UIAlertController alertControllerWithTitle:@"提示" message:@"有新的更新，是否现在更新？" preferredStyle:UIAlertControllerStyleAlert];
+        _updateAc = [UIAlertController alertControllerWithTitle:@"提示" message:@"" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *cancelAc = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
         UIAlertAction *okAc = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

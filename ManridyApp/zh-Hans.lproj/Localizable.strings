@@ -428,7 +428,7 @@
 "NOUpdate" = "暂无更新";
 
 //有新的更新，是否更新
-"ChoseWheatherUpdate" = "有新的更新，是否现在更新？";
+"ChoseWheatherUpdate" = "有新的更新%@，是否现在更新？";
 
 //手环查找中
 "PeripheralFinding" = "手环查找中。。。";
@@ -447,72 +447,106 @@
 //配对失败
 "PairFail" = "配对失败，请重试。";
 
+//遥控拍照
 "BleTakePhoto" = "遥控拍照";
 
+//保存图片成功
 "SavePicSuccess" = "保存图片成功";
 
+//保存图片失败
 "SavePicFail" = "保存图片失败";
 
+//亮度调节
 "LightAdjust" = "亮度调节";
 
+//设置手表的亮度
 "SetPerLight" = "设置手表的亮度";
 
+//低
 "low" = "低";
 
+//中
 "mid" = "中";
 
+//高
 "lightHight" = "高";
 
+//扫描到的信息
 "QRScanInfo" = "扫描到的信息";
 
+//连接
 "Connect" = "连接";
 
+//扫描异常
 "ScanError" = "扫描异常";
 
+//请重新尝试
 "TryAgain" = "请重新尝试";
 
+//APP通知
 "APPRemind" = "APP通知";
 
+//单位设置
 "UnitsSetting" = "单位设置";
 
+//时间格式
 "TimeFormatter" = "时间格式";
 
+//扫一扫
 "ScanQR" = "扫一扫";
 
+//将二维码/条码放入框内, 即可自动扫描
 "PutQrIntoView" = "将二维码/条码放入框内, 即可自动扫描";
 
+//打开照明灯
 "OpenFlashLight" = "打开照明灯";
 
+//关闭照明灯
 "CloseFlashLight" = "关闭照明灯";
 
+//使用手表遥控拍照
 "UserPerTabkePhoto" = "使用手表遥控拍照";
 
+//开始拍照
 "TakePhoto" = "开始拍照";
 
+//该功能需要连接设备
 "FunNeesConnectPer" = "该功能需要连接设备";
 
+//选择需要在设备上显示的界面
 "ChoseViewToShow" = "选择需要在设备上显示的界面";
 
+//12时
 "12TimeFormatter" = "12时";
 
+//24时
 "24TimeFormatter" = "24时";
 
+//长度单位设置
 "LengthSetting" = "长度单位设置";
 
+//公制(米/公里/千克)
 "m/km/kg" = "公制(米/公里/千克)";
 
+//英制(英寸/英尺/英磅)
 "ln/£" = "英制(英寸/英尺/英磅)";
 
+//固件升级
 "HardwareUpdate" = "固件升级";
 
+//升级中请勿使设备远离手机
 "UpdatingNotUsePhone" = "升级中请勿使设备远离手机";
 
+//升级成功!
 "UpdateSuccess" = "升级成功!";
 
+//升级失败!
 "UpdateFail" = "升级失败!";
 
+//已完成%ld%%
 "Complete%" = "已完成%ld%%";
 
+//请选择
 "PlsChose" = "请选择";
 
 

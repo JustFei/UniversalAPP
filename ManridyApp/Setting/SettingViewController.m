@@ -40,7 +40,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:YES];
-    [self.setView removeFromSuperview];
+//    [self.setView removeFromSuperview];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +52,7 @@
 - (SettingContentView *)setView
 {
     if (!_setView) {
-        SettingContentView *view = [[SettingContentView alloc] initWithFrame:CGRectMake(0, -64, self.view.frame.size.width, self.view.frame.size.height + 64)];
+        SettingContentView *view = [[SettingContentView alloc] initWithFrame:CGRectMake(0, -64, self.view.frame.size.width, self.view.frame.size.height)];
         
         [self.view addSubview:view];
         _setView = view;

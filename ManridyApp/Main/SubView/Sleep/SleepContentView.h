@@ -15,13 +15,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *sleepStateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentSleepStateLabel;
 
-@property (weak, nonatomic) IBOutlet UIView *sleepStateView1;
-
-@property (weak, nonatomic) IBOutlet UIView *sleepStateView2;
-
-@property (weak, nonatomic) IBOutlet UIView *sleepStateView3;
-
-@property (weak, nonatomic) IBOutlet UIView *sleepStateView4;
+//@property (weak, nonatomic) IBOutlet UIView *sleepStateView1;
+//
+//@property (weak, nonatomic) IBOutlet UIView *sleepStateView2;
+//
+//@property (weak, nonatomic) IBOutlet UIView *sleepStateView3;
+//
+//@property (weak, nonatomic) IBOutlet UIView *sleepStateView4;
 
 @property (weak, nonatomic) IBOutlet UIView *downView;
 

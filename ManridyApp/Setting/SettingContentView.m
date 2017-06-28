@@ -220,6 +220,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     id pushVC = [[NSClassFromString(_classArr[indexPath.row]) alloc] init];
     [[self findViewController:self].navigationController pushViewController:pushVC animated:YES];
 }
