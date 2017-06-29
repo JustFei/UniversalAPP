@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Awu-gB-sWC"; */
+"Awu-gB-sWC.text" = "0";
+
+/* Class = "UILabel"; text = "Letzter Messwert"; ObjectID = "LKH-Tj-9ib"; */
+"LKH-Tj-9ib.text" = "Letzter Messwert";
+
+/* Class = "UILabel"; text = "Kürzliche Messwerte"; ObjectID = "bEB-IB-Z7L"; */
+"bEB-IB-Z7L.text" = "Kürzliche Messwerte";
+
+/* Class = "UILabel"; text = "Normal"; ObjectID = "mQq-V4-Tap"; */
+"mQq-V4-Tap.text" = "Normal";

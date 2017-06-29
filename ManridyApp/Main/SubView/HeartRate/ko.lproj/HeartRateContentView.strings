@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Awu-gB-sWC"; */
+"Awu-gB-sWC.text" = "0";
+
+/* Class = "UILabel"; text = "마지막 한번의 측정"; ObjectID = "LKH-Tj-9ib"; */
+"LKH-Tj-9ib.text" = "마지막 한번의 측정";
+
+/* Class = "UILabel"; text = "최근 몇번의 심률 측정"; ObjectID = "bEB-IB-Z7L"; */
+"bEB-IB-Z7L.text" = "최근 몇번의 심률 측정";
+
+/* Class = "UILabel"; text = "정상"; ObjectID = "mQq-V4-Tap"; */
+"mQq-V4-Tap.text" = "정상";

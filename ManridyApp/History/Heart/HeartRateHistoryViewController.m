@@ -407,10 +407,9 @@
 - (PNCircleChart *)heartCircleChart
 {
     if (!_heartCircleChart) {
-        PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@200 current:@0 clockwise:YES shadow:YES shadowColor:[UIColor colorWithRed:12.0 / 255.0 green:97.0 / 255.0 blue:158.0 / 255.0 alpha:1] displayCountingLabel:NO overrideLineWidth:@5];
+        PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@200 current:@0 clockwise:YES shadow:YES shadowColor:TEXT_WHITE_COLOR_LEVEL0 displayCountingLabel:NO overrideLineWidth:@5];
         view.backgroundColor = [UIColor clearColor];
-        [view setStrokeColor:[UIColor colorWithRed:76.0 / 255.0 green:81.0 / 255.0 blue:197.0 / 255.0 alpha:1]];
-        [view setStrokeColorGradientStart:[UIColor colorWithRed:76.0 / 255.0 green:81.0 / 255.0 blue:197.0 / 255.0 alpha:1]];
+        [view setStrokeColor:WHITE_COLOR];
         
         [self.view addSubview:view];
         _heartCircleChart = view;

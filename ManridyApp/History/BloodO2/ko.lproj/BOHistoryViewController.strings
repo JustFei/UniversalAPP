@@ -1,0 +1,24 @@
+
+/* Class = "UIButton"; normalTitle = "    "; ObjectID = "7XK-YA-M5u"; */
+"7XK-YA-M5u.normalTitle" = "    ";
+
+/* Class = "UILabel"; text = "2016//11/19"; ObjectID = "9hS-6i-jZh"; */
+"9hS-6i-jZh.text" = "2016//11/19";
+
+/* Class = "UIButton"; normalTitle = "10月"; ObjectID = "YMy-aR-dvs"; */
+"YMy-aR-dvs.normalTitle" = "10月";
+
+/* Class = "UILabel"; text = "역사 기록"; ObjectID = "ewV-TL-M0P"; */
+"ewV-TL-M0P.text" = "역사 기록";
+
+/* Class = "UILabel"; text = "%"; ObjectID = "fGe-r6-uir"; */
+"fGe-r6-uir.text" = "%";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "gMf-9L-FCp"; */
+"gMf-9L-FCp.text" = "0";
+
+/* Class = "UILabel"; text = "Average daily"; ObjectID = "ggT-u4-5eW"; */
+"ggT-u4-5eW.text" = "Average daily";
+
+/* Class = "UILabel"; text = "이번 달 SpO2 평균치"; ObjectID = "yYo-Fo-9wu"; */
+"yYo-Fo-9wu.text" = "이번 달 SpO2 평균치";

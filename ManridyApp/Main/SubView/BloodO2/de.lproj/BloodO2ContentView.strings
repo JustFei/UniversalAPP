@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "2016//11/19 11:55"; ObjectID = "Dh2-ei-SUo"; */
+"Dh2-ei-SUo.text" = "2016//11/19 11:55";
+
+/* Class = "UILabel"; text = "Letzter Messwert"; ObjectID = "TgI-sJ-LZX"; */
+"TgI-sJ-LZX.text" = "Letzter Messwert";
+
+/* Class = "UILabel"; text = "SpO2 heute："; ObjectID = "fxI-fw-iZi"; */
+"fxI-fw-iZi.text" = "SpO2 heute：";
+
+/* Class = "UILabel"; text = "%"; ObjectID = "nFi-FC-jLN"; */
+"nFi-FC-jLN.text" = "%";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "qZ9-kp-vkK"; */
+"qZ9-kp-vkK.text" = "0";

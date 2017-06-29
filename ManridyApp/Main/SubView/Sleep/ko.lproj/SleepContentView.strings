@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "오늘의 수면："; ObjectID = "D5s-3A-N5T"; */
+"D5s-3A-N5T.text" = "오늘의 수면：";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "YQc-5G-8TM"; */
+"YQc-5G-8TM.text" = "0";
+
+/* Class = "UILabel"; text = "깊은 잠0h/겉잠 0h"; ObjectID = "gtr-da-WQW"; */
+"gtr-da-WQW.text" = "깊은 잠0h/겉잠 0h";
+
+/* Class = "UILabel"; text = "오늘의 수면"; ObjectID = "lHK-vw-NFT"; */
+"lHK-vw-NFT.text" = "오늘의 수면";

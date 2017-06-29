@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "0/0"; ObjectID = "3tT-Ww-UQj"; */
+"3tT-Ww-UQj.text" = "0/0";
+
+/* Class = "UILabel"; text = "Последнее значение содержания кислорода в крови"; ObjectID = "I1f-Q1-Rgp"; */
+"I1f-Q1-Rgp.text" = "Последнее значение содержания кислорода в крови";
+
+/* Class = "UILabel"; text = "Кровяное давление на сегодняшний день："; ObjectID = "cDp-tt-7N5"; */
+"cDp-tt-7N5.text" = "Кровяное давление на сегодняшний день：";
+
+/* Class = "UILabel"; text = "Темп битья сердца :0"; ObjectID = "fyy-sv-sZa"; */
+"fyy-sv-sZa.text" = "Темп битья сердца :0";

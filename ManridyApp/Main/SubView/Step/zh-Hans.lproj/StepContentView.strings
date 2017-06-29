@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "0公里/0千卡"; ObjectID = "8wT-kz-VMz"; */
+"8wT-kz-VMz.text" = "0公里/0千卡";
+
+/* Class = "UILabel"; text = "本周计步统计：0步（0公里/0千卡）"; ObjectID = "Rwp-9Z-xNi"; */
+"Rwp-9Z-xNi.text" = "本周计步统计：0步（0公里/0千卡）";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "kCX-kz-kc3"; */
+"kCX-kz-kc3.text" = "0";
+
+/* Class = "UILabel"; text = "今日步数"; ObjectID = "tgk-fV-KOc"; */
+"tgk-fV-KOc.text" = "今日步数";

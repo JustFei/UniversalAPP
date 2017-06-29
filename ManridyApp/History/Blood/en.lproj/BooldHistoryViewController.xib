@@ -57,7 +57,7 @@
                                 <constraint firstAttribute="width" constant="100" id="hei-DV-zrF"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bloodpresure_icon02" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-Ff-vGv">
@@ -74,11 +74,11 @@
                                 <constraint firstAttribute="height" constant="30" id="n6f-53-6M9"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.1176470588" green="0.53333333329999999" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.2196078431372549" green="0.55686274509803924" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="QVv-zR-Jfr" firstAttribute="top" secondItem="Tur-i8-PxF" secondAttribute="bottom" constant="30" id="1CF-sI-06p"/>
                         <constraint firstItem="cA4-3R-C1h" firstAttribute="top" secondItem="JLG-eX-uJe" secondAttribute="top" constant="264" id="AuM-5e-2HU"/>
@@ -100,7 +100,7 @@
                         <constraint firstAttribute="width" constant="46" id="PEz-vY-IBs"/>
                     </constraints>
                     <state key="normal" title="10月">
-                        <color key="titleColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="chooseMouthAction:" destination="-1" eventType="touchUpInside" id="PQ3-Kf-aTY"/>
@@ -127,13 +127,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This month：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQP-xe-Zwb">
-                    <rect key="frame" x="8" y="383" width="359" height="14"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="0.0" y="375" width="375" height="40"/>
+                    <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="aRD-kV-FwQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qts-wJ-Dhq" userLabel="downView">
-                    <rect key="frame" x="0.0" y="397" width="375" height="270"/>
+                    <rect key="frame" x="0.0" y="415" width="375" height="252"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
@@ -142,8 +146,8 @@
                 <constraint firstItem="lDE-im-9gh" firstAttribute="top" secondItem="4lp-ay-ypQ" secondAttribute="top" constant="23" id="0Ci-jJ-fld"/>
                 <constraint firstItem="JLG-eX-uJe" firstAttribute="leading" secondItem="4lp-ay-ypQ" secondAttribute="leading" id="7Lc-Zk-5g2"/>
                 <constraint firstItem="uQ9-Si-Bzr" firstAttribute="centerY" secondItem="lDE-im-9gh" secondAttribute="centerY" id="7a6-7f-7Qd"/>
-                <constraint firstItem="LQP-xe-Zwb" firstAttribute="leading" secondItem="4lp-ay-ypQ" secondAttribute="leading" constant="8" id="BmY-my-Adr"/>
-                <constraint firstItem="LQP-xe-Zwb" firstAttribute="top" secondItem="JLG-eX-uJe" secondAttribute="bottom" constant="8" id="Dy4-zh-NpV"/>
+                <constraint firstItem="LQP-xe-Zwb" firstAttribute="leading" secondItem="4lp-ay-ypQ" secondAttribute="leading" id="BmY-my-Adr"/>
+                <constraint firstItem="LQP-xe-Zwb" firstAttribute="top" secondItem="JLG-eX-uJe" secondAttribute="bottom" id="Dy4-zh-NpV"/>
                 <constraint firstItem="qts-wJ-Dhq" firstAttribute="top" secondItem="LQP-xe-Zwb" secondAttribute="bottom" id="JNQ-YG-Vqj"/>
                 <constraint firstAttribute="bottom" secondItem="qts-wJ-Dhq" secondAttribute="bottom" id="NsS-Hh-WL4"/>
                 <constraint firstAttribute="trailing" secondItem="qts-wJ-Dhq" secondAttribute="trailing" id="OyH-3e-xUd"/>
@@ -151,7 +155,7 @@
                 <constraint firstItem="qts-wJ-Dhq" firstAttribute="leading" secondItem="4lp-ay-ypQ" secondAttribute="leading" id="dz2-Z2-tOo"/>
                 <constraint firstItem="uQ9-Si-Bzr" firstAttribute="centerX" secondItem="4lp-ay-ypQ" secondAttribute="centerX" id="eZS-Xx-6a9"/>
                 <constraint firstItem="2V6-P2-Ezt" firstAttribute="top" secondItem="nEd-Ff-vGv" secondAttribute="top" id="m7x-we-bc5"/>
-                <constraint firstAttribute="trailing" secondItem="LQP-xe-Zwb" secondAttribute="trailing" constant="8" id="mlC-XP-f3h"/>
+                <constraint firstAttribute="trailing" secondItem="LQP-xe-Zwb" secondAttribute="trailing" id="mlC-XP-f3h"/>
                 <constraint firstItem="lDE-im-9gh" firstAttribute="leading" secondItem="4lp-ay-ypQ" secondAttribute="leading" constant="8" id="nS0-cQ-vHG"/>
                 <constraint firstAttribute="trailing" secondItem="2V6-P2-Ezt" secondAttribute="trailing" constant="6" id="q4c-6Q-nNL"/>
                 <constraint firstAttribute="trailing" secondItem="JLG-eX-uJe" secondAttribute="trailing" id="ryg-fe-meT"/>

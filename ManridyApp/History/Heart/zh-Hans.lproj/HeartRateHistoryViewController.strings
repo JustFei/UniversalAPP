@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "低"; ObjectID = "8wT-kz-VMz"; */
+"8wT-kz-VMz.text" = "低";
+
+/* Class = "UILabel"; text = "本月："; ObjectID = "Rwp-9Z-xNi"; */
+"Rwp-9Z-xNi.text" = "本月：";
+
+/* Class = "UILabel"; text = "历史记录"; ObjectID = "TiG-Bf-0J2"; */
+"TiG-Bf-0J2.text" = "历史记录";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "kCX-kz-kc3"; */
+"kCX-kz-kc3.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "10月"; ObjectID = "nik-V7-UXU"; */
+"nik-V7-UXU.normalTitle" = "10月";
+
+/* Class = "UIButton"; normalTitle = "      "; ObjectID = "oWQ-lW-GlY"; */
+"oWQ-lW-GlY.normalTitle" = "      ";
+
+/* Class = "UILabel"; text = "平均每日"; ObjectID = "tgk-fV-KOc"; */
+"tgk-fV-KOc.text" = "平均每日";

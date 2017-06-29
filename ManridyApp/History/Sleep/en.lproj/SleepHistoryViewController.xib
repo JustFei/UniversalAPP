@@ -62,13 +62,13 @@
                                 <constraint firstAttribute="height" constant="22" id="lGj-U0-WpQ"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <color key="textColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average daily" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMf-Qb-m2c">
                             <rect key="frame" x="136.5" y="144" width="102.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebf-8v-7Qu">
@@ -78,7 +78,7 @@
                                 <constraint firstAttribute="width" constant="46" id="hge-cQ-GZa"/>
                             </constraints>
                             <state key="normal" title="10月">
-                                <color key="titleColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="chooseMouthAction:" destination="-1" eventType="touchUpInside" id="4Le-ZD-LnP"/>
@@ -112,7 +112,7 @@
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" red="0.1176470588" green="0.53333333329999999" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.4823529411764706" green="0.12156862745098039" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="nxK-fg-W9Z" firstAttribute="top" secondItem="Fbm-sv-xqv" secondAttribute="top" constant="183" id="2h4-cb-ovm"/>
                         <constraint firstItem="zdn-l6-e2s" firstAttribute="centerX" secondItem="Fbm-sv-xqv" secondAttribute="centerX" id="34P-Md-fxe"/>

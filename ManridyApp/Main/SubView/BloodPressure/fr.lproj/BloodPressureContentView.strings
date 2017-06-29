@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "0/0"; ObjectID = "3tT-Ww-UQj"; */
+"3tT-Ww-UQj.text" = "0/0";
+
+/* Class = "UILabel"; text = "Dernière mesure"; ObjectID = "I1f-Q1-Rgp"; */
+"I1f-Q1-Rgp.text" = "Dernière mesure";
+
+/* Class = "UILabel"; text = "Tension artérielle d'aujourd'hui："; ObjectID = "cDp-tt-7N5"; */
+"cDp-tt-7N5.text" = "Tension artérielle d'aujourd'hui：";
+
+/* Class = "UILabel"; text = "Fréquence cardiaque:0"; ObjectID = "fyy-sv-sZa"; */
+"fyy-sv-sZa.text" = "Fréquence cardiaque:0";

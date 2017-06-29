@@ -28,9 +28,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This month：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rwp-9Z-xNi">
-                    <rect key="frame" x="8" y="383" width="359" height="13.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="0.0" y="375" width="375" height="40"/>
+                    <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="qmk-c5-HyK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9c-y2-W5j">
@@ -53,13 +57,13 @@
                                 <constraint firstAttribute="width" constant="180" id="Ymd-ZZ-FUk"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <color key="textColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average daily" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgk-fV-KOc">
                             <rect key="frame" x="136.5" y="144" width="102.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nik-V7-UXU">
@@ -69,7 +73,7 @@
                                 <constraint firstAttribute="height" constant="30" id="Oby-wq-xqI"/>
                             </constraints>
                             <state key="normal" title="10月">
-                                <color key="titleColor" red="0.66274509800000003" green="0.86666666670000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="chooseMouthAction:" destination="-1" eventType="touchUpInside" id="nZs-tT-PvV"/>
@@ -113,7 +117,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.1176470588" green="0.53333333329999999" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.82745098039215681" green="0.18431372549019609" blue="0.18431372549019609" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="0ej-qs-qpu" firstAttribute="centerX" secondItem="E9c-y2-W5j" secondAttribute="centerX" id="2w1-cB-Bff"/>
                         <constraint firstItem="tgk-fV-KOc" firstAttribute="top" secondItem="E9c-y2-W5j" secondAttribute="top" constant="144" id="6rd-pO-UEd"/>
@@ -135,20 +139,20 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VoQ-kG-BTQ">
-                    <rect key="frame" x="0.0" y="396.5" width="375" height="270.5"/>
+                    <rect key="frame" x="0.0" y="415" width="375" height="252"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="VoQ-kG-BTQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1Dz-2I-MNM"/>
-                <constraint firstItem="Rwp-9Z-xNi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="5yy-D3-k3G"/>
+                <constraint firstItem="Rwp-9Z-xNi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5yy-D3-k3G"/>
                 <constraint firstAttribute="bottom" secondItem="VoQ-kG-BTQ" secondAttribute="bottom" id="6jG-nR-LN7"/>
                 <constraint firstAttribute="trailing" secondItem="VoQ-kG-BTQ" secondAttribute="trailing" id="8wa-Tf-ScU"/>
                 <constraint firstItem="E9c-y2-W5j" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Eaz-oK-oWi"/>
-                <constraint firstItem="Rwp-9Z-xNi" firstAttribute="top" secondItem="E9c-y2-W5j" secondAttribute="bottom" constant="8" id="Ttk-1P-DSA"/>
+                <constraint firstItem="Rwp-9Z-xNi" firstAttribute="top" secondItem="E9c-y2-W5j" secondAttribute="bottom" id="Ttk-1P-DSA"/>
                 <constraint firstItem="VoQ-kG-BTQ" firstAttribute="top" secondItem="Rwp-9Z-xNi" secondAttribute="bottom" id="XdT-ob-fjL"/>
-                <constraint firstAttribute="trailing" secondItem="Rwp-9Z-xNi" secondAttribute="trailing" constant="8" id="l7l-Mu-Qxq"/>
+                <constraint firstAttribute="trailing" secondItem="Rwp-9Z-xNi" secondAttribute="trailing" id="l7l-Mu-Qxq"/>
                 <constraint firstAttribute="trailing" secondItem="E9c-y2-W5j" secondAttribute="trailing" id="qlK-OT-3rN"/>
                 <constraint firstItem="E9c-y2-W5j" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xa7-zc-SXr"/>
             </constraints>

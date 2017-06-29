@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "0km/0cal"; ObjectID = "8wT-kz-VMz"; */
+"8wT-kz-VMz.text" = "0km/0cal";
+
+/* Class = "UILabel"; text = "Подсчет количества шагов на эту неделю : всего 0 шагов (0 км/0 ккал)"; ObjectID = "Rwp-9Z-xNi"; */
+"Rwp-9Z-xNi.text" = "Подсчет количества шагов на эту неделю : всего 0 шагов (0 км/0 ккал)";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "kCX-kz-kc3"; */
+"kCX-kz-kc3.text" = "0";
+
+/* Class = "UILabel"; text = "Количество шагов на сегодняшний день"; ObjectID = "tgk-fV-KOc"; */
+"tgk-fV-KOc.text" = "Количество шагов на сегодняшний день";

@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Sueño hoy："; ObjectID = "D5s-3A-N5T"; */
+"D5s-3A-N5T.text" = "Sueño hoy：";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "YQc-5G-8TM"; */
+"YQc-5G-8TM.text" = "0";
+
+/* Class = "UILabel"; text = "sueño profundo: 0h / sueño ligero: 0h"; ObjectID = "gtr-da-WQW"; */
+"gtr-da-WQW.text" = "sueño profundo: 0h / sueño ligero: 0h";
+
+/* Class = "UILabel"; text = "Sueño hoy"; ObjectID = "lHK-vw-NFT"; */
+"lHK-vw-NFT.text" = "Sueño hoy";

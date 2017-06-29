@@ -174,7 +174,6 @@
         PNCircleChart *view = [[PNCircleChart alloc] initWithFrame:CGRectMake(self.progressImageView.frame.origin.x + 15, self.progressImageView.frame.origin.y + 27, self.progressImageView.frame.size.width - 30, self.progressImageView.frame.size.height - 40) total:@100 current:@0 clockwise:YES shadow:YES shadowColor:COLOR_WITH_HEX(0xd81b60, 0.15) displayCountingLabel:NO overrideLineWidth:@8];
         view.backgroundColor = [UIColor clearColor];
         [view setStrokeColor:COLOR_WITH_HEX(0xd81b60, 0.87)];
-//        [view setStrokeColorGradientStart:[UIColor blackColor]];
         
         [self addSubview:view];
         _BOCircleChart = view;

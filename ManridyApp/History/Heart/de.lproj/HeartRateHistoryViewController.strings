@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "low"; ObjectID = "8wT-kz-VMz"; */
+"8wT-kz-VMz.text" = "low";
+
+/* Class = "UILabel"; text = "Herzfrequenz dieses Monat:"; ObjectID = "Rwp-9Z-xNi"; */
+"Rwp-9Z-xNi.text" = "Herzfrequenz dieses Monat:";
+
+/* Class = "UILabel"; text = "Historie"; ObjectID = "TiG-Bf-0J2"; */
+"TiG-Bf-0J2.text" = "Historie";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "kCX-kz-kc3"; */
+"kCX-kz-kc3.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "10月"; ObjectID = "nik-V7-UXU"; */
+"nik-V7-UXU.normalTitle" = "10月";
+
+/* Class = "UIButton"; normalTitle = "      "; ObjectID = "oWQ-lW-GlY"; */
+"oWQ-lW-GlY.normalTitle" = "      ";
+
+/* Class = "UILabel"; text = "Avg Herzfrequenz"; ObjectID = "tgk-fV-KOc"; */
+"tgk-fV-KOc.text" = "Avg Herzfrequenz";

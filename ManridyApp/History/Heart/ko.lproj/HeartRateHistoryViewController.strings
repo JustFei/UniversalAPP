@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "low"; ObjectID = "8wT-kz-VMz"; */
+"8wT-kz-VMz.text" = "low";
+
+/* Class = "UILabel"; text = "이번 달 심률 통계："; ObjectID = "Rwp-9Z-xNi"; */
+"Rwp-9Z-xNi.text" = "이번 달 심률 통계：";
+
+/* Class = "UILabel"; text = "역사 기록"; ObjectID = "TiG-Bf-0J2"; */
+"TiG-Bf-0J2.text" = "역사 기록";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "kCX-kz-kc3"; */
+"kCX-kz-kc3.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "10月"; ObjectID = "nik-V7-UXU"; */
+"nik-V7-UXU.normalTitle" = "10月";
+
+/* Class = "UIButton"; normalTitle = "      "; ObjectID = "oWQ-lW-GlY"; */
+"oWQ-lW-GlY.normalTitle" = "      ";
+
+/* Class = "UILabel"; text = "이번 달 평균 심률"; ObjectID = "tgk-fV-KOc"; */
+"tgk-fV-KOc.text" = "이번 달 평균 심률";

@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "10月"; ObjectID = "2V6-P2-Ezt"; */
+"2V6-P2-Ezt.normalTitle" = "10月";
+
+/* Class = "UILabel"; text = "Statistiche della pressione sanguigna del mese corrente:"; ObjectID = "LQP-xe-Zwb"; */
+"LQP-xe-Zwb.text" = "Statistiche della pressione sanguigna del mese corrente:";
+
+/* Class = "UILabel"; text = "0/0"; ObjectID = "QVv-zR-Jfr"; */
+"QVv-zR-Jfr.text" = "0/0";
+
+/* Class = "UILabel"; text = "Average daily"; ObjectID = "Tur-i8-PxF"; */
+"Tur-i8-PxF.text" = "Average daily";
+
+/* Class = "UILabel"; text = "Hr:0"; ObjectID = "cA4-3R-C1h"; */
+"cA4-3R-C1h.text" = "Hr:0";
+
+/* Class = "UIButton"; normalTitle = "    "; ObjectID = "lDE-im-9gh"; */
+"lDE-im-9gh.normalTitle" = "    ";
+
+/* Class = "UILabel"; text = "Storia"; ObjectID = "uQ9-Si-Bzr"; */
+"uQ9-Si-Bzr.text" = "Storia";

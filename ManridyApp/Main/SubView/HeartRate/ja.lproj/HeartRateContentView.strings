@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Awu-gB-sWC"; */
+"Awu-gB-sWC.text" = "0";
+
+/* Class = "UILabel"; text = "前回心拍数"; ObjectID = "LKH-Tj-9ib"; */
+"LKH-Tj-9ib.text" = "前回心拍数";
+
+/* Class = "UILabel"; text = "最近心拍数測定："; ObjectID = "bEB-IB-Z7L"; */
+"bEB-IB-Z7L.text" = "最近心拍数測定：";
+
+/* Class = "UILabel"; text = "正常"; ObjectID = "mQq-V4-Tap"; */
+"mQq-V4-Tap.text" = "正常";

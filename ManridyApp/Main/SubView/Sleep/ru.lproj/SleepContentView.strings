@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Сегодняшний сон："; ObjectID = "D5s-3A-N5T"; */
+"D5s-3A-N5T.text" = "Сегодняшний сон：";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "YQc-5G-8TM"; */
+"YQc-5G-8TM.text" = "0";
+
+/* Class = "UILabel"; text = "глубокий сон0h / неглубокий сон 0h"; ObjectID = "gtr-da-WQW"; */
+"gtr-da-WQW.text" = "глубокий сон0h / неглубокий сон 0h";
+
+/* Class = "UILabel"; text = "Сегодняшний сон"; ObjectID = "lHK-vw-NFT"; */
+"lHK-vw-NFT.text" = "Сегодняшний сон";
