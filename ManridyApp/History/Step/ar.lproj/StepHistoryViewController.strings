@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "0KM/0Kcal"; ObjectID = "8wT-kz-VMz"; */
+"8wT-kz-VMz.text" = "0KM/0Kcal";
+
+/* Class = "UILabel"; text = "التاريخ"; ObjectID = "OBV-ct-Vbc"; */
+"OBV-ct-Vbc.text" = "التاريخ";
+
+/* Class = "UILabel"; text = "احصاءات عدد الخطوات في هذا الشهر:  اجمالي (0كم/0كالوري）"; ObjectID = "Rwp-9Z-xNi"; */
+"Rwp-9Z-xNi.text" = "احصاءات عدد الخطوات في هذا الشهر:  اجمالي (0كم/0كالوري）";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "kCX-kz-kc3"; */
+"kCX-kz-kc3.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "10月"; ObjectID = "nik-V7-UXU"; */
+"nik-V7-UXU.normalTitle" = "10月";
+
+/* Class = "UIButton"; normalTitle = "    "; ObjectID = "oWQ-lW-GlY"; */
+"oWQ-lW-GlY.normalTitle" = "    ";
+
+/* Class = "UILabel"; text = "متوسط عدد من خطوات يوميا"; ObjectID = "tgk-fV-KOc"; */
+"tgk-fV-KOc.text" = "متوسط عدد من خطوات يوميا";

@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "0KM/0Kcal"; ObjectID = "8wT-kz-VMz"; */
+"8wT-kz-VMz.text" = "0KM/0Kcal";
+
+/* Class = "UILabel"; text = "역사 기록"; ObjectID = "OBV-ct-Vbc"; */
+"OBV-ct-Vbc.text" = "역사 기록";
+
+/* Class = "UILabel"; text = "이번 달 걸음 통계:모두（0걸음/0KM/0칼로리）"; ObjectID = "Rwp-9Z-xNi"; */
+"Rwp-9Z-xNi.text" = "이번 달 걸음 통계:모두（0걸음/0KM/0칼로리）";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "kCX-kz-kc3"; */
+"kCX-kz-kc3.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "10月"; ObjectID = "nik-V7-UXU"; */
+"nik-V7-UXU.normalTitle" = "10月";
+
+/* Class = "UIButton"; normalTitle = "    "; ObjectID = "oWQ-lW-GlY"; */
+"oWQ-lW-GlY.normalTitle" = "    ";
+
+/* Class = "UILabel"; text = "일평균 걸음"; ObjectID = "tgk-fV-KOc"; */
+"tgk-fV-KOc.text" = "일평균 걸음";

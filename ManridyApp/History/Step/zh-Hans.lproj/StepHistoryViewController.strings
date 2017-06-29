@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "0公里/0千卡"; ObjectID = "8wT-kz-VMz"; */
+"8wT-kz-VMz.text" = "0公里/0千卡";
+
+/* Class = "UILabel"; text = "历史记录"; ObjectID = "OBV-ct-Vbc"; */
+"OBV-ct-Vbc.text" = "历史记录";
+
+/* Class = "UILabel"; text = "本月计步统计：共 (0步/0公里/0千卡）"; ObjectID = "Rwp-9Z-xNi"; */
+"Rwp-9Z-xNi.text" = "本月计步统计：共 (0步/0公里/0千卡）";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "kCX-kz-kc3"; */
+"kCX-kz-kc3.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "10月"; ObjectID = "nik-V7-UXU"; */
+"nik-V7-UXU.normalTitle" = "10月";
+
+/* Class = "UIButton"; normalTitle = "    "; ObjectID = "oWQ-lW-GlY"; */
+"oWQ-lW-GlY.normalTitle" = "    ";
+
+/* Class = "UILabel"; text = "日平均步数"; ObjectID = "tgk-fV-KOc"; */
+"tgk-fV-KOc.text" = "日平均步数";

@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "0KM/0Kcal"; ObjectID = "8wT-kz-VMz"; */
+"8wT-kz-VMz.text" = "0KM/0Kcal";
+
+/* Class = "UILabel"; text = "Storia"; ObjectID = "OBV-ct-Vbc"; */
+"OBV-ct-Vbc.text" = "Storia";
+
+/* Class = "UILabel"; text = "Statistiche dei passi del mese corrente: in totale 0passi (0km% /0cal.) "; ObjectID = "Rwp-9Z-xNi"; */
+"Rwp-9Z-xNi.text" = "Statistiche dei passi del mese corrente: in totale 0passi (0km% /0cal.) ";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "kCX-kz-kc3"; */
+"kCX-kz-kc3.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "10月"; ObjectID = "nik-V7-UXU"; */
+"nik-V7-UXU.normalTitle" = "10月";
+
+/* Class = "UIButton"; normalTitle = "    "; ObjectID = "oWQ-lW-GlY"; */
+"oWQ-lW-GlY.normalTitle" = "    ";
+
+/* Class = "UILabel"; text = "Numero medio dei passi quotidiano "; ObjectID = "tgk-fV-KOc"; */
+"tgk-fV-KOc.text" = "Numero medio dei passi quotidiano ";
