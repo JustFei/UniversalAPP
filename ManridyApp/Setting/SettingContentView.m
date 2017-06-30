@@ -40,7 +40,7 @@
             //debug 用
 //            version = @"2.1";
             //如果大于2.0，显示全部
-            if ([version compare:@"2.0" options:NSNumericSearch] == NSOrderedDescending || [version compare:@"2.0" options:NSNumericSearch] == NSOrderedSame) {
+            if ([version compare:@"1.3.5" options:NSNumericSearch] == NSOrderedDescending || [version compare:@"1.3.5" options:NSNumericSearch] == NSOrderedSame) {
                 _dataArr = @[NSLocalizedString(@"userInfo", nil),
                              NSLocalizedString(@"perBind", nil),
                              NSLocalizedString(@"infoRemind", nil),
@@ -64,32 +64,6 @@
                               @"BindPeripheralViewController",
                               @"PhoneRemindViewController",
                               @"APPRemindViewController",
-                              @"TakePhotoViewController",
-                              @"UnitsSettingViewController",
-                              @"TimeFormatterViewController",
-                              @"DimmingViewController",
-                              @"AboutViewController"];
-            }else if ([version compare:@"1.3.5" options:NSNumericSearch] == NSOrderedDescending) {
-                _dataArr = @[NSLocalizedString(@"userInfo", nil),
-                             NSLocalizedString(@"perBind", nil),
-                             NSLocalizedString(@"infoRemind", nil),
-                             NSLocalizedString(@"BleTakePhoto", nil),
-                             NSLocalizedString(@"UnitsSetting", nil),
-                             NSLocalizedString(@"TimeFormatter", nil),
-                             NSLocalizedString(@"LightAdjust", nil),
-                             NSLocalizedString(@"about", nil)
-                             ];
-                _imageNameArr = @[@"set_userinfo",
-                                  @"set_bluetooth",
-                                  @"set_remind",
-                                  @"set_take",
-                                  @"set_unit",
-                                  @"set_time",
-                                  @"set_dimming",
-                                  @"set_about"];
-                _classArr = @[@"UserInfoViewController1",
-                              @"BindPeripheralViewController",
-                              @"PhoneRemindViewController",
                               @"TakePhotoViewController",
                               @"UnitsSettingViewController",
                               @"TimeFormatterViewController",
