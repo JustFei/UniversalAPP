@@ -532,7 +532,7 @@
 "UpdateFail" = "升級失敗!";
 
 //已完成%ld%%
-"Complete%" = "已完成%ld%%";
+"Complete" = "已完成%ld%%";
 
 //请选择
 "PlsChose" = "請選擇";

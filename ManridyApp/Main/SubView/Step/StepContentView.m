@@ -89,6 +89,8 @@
             yValue = 0;
         }
         
+        DLog(@"---------%f",yValue);
+        
         return [PNLineChartDataItem dataItemWithY:yValue];
     };
     
@@ -180,6 +182,7 @@
         
         view.yGridLinesColor = [UIColor clearColor];
         view.showYGridLines = YES;
+        view.yGridLinesColor = [UIColor grayColor];
         
         [self.downView addSubview:view];
         _stepChart = view;

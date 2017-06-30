@@ -496,12 +496,13 @@
         SectionModel *model = _sectionArr[section];
         return model.functionNameArr.count;
     }else if (section == 1) {
-        if (self.haveSedentary) {
+        NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
+        version = [version stringByReplacingOccurrencesOfString:@"." withString:@""];
+        if (version.integerValue >= 128) {
             return self.sedentaryModel.isExpanded ? 3 : 1;
         }else {
             return 0;
         }
-        
     }else {
         SectionModel *model = _sectionArr[section];
         return model.isExpanded ? 3 : 0;
@@ -768,13 +769,12 @@
     
     if (section == 1) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , 1)];
-        view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+//        view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
         return view;
     }
     
     if (section == 2) {
         PhoneRemindView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"phoneHead"];
-        
         SectionModel *sectionModel = _sectionArr.lastObject;
         view.model = sectionModel;
         view.expandCallback = ^(BOOL isExpanded) {

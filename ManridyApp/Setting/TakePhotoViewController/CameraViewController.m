@@ -28,7 +28,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"遥控拍照";
+    self.title = NSLocalizedString(@"BleTakePhoto", nil);
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    [titleLabel setText:NSLocalizedString(@"userInfo", nil)];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = titleLabel;
     self.view.backgroundColor = SETTING_BACKGROUND_COLOR;
     
     [self cameraDistrict];
@@ -151,7 +156,7 @@
 - (void)photoBtnDidClick {
     AVCaptureConnection *conntion = [self.imageOutput connectionWithMediaType:AVMediaTypeVideo];
     if (!conntion) {
-        NSLog(@"拍照失败!");
+//        NSLog(@"拍照失败!");
         return;
     }
     [self.imageOutput captureStillImageAsynchronouslyFromConnection:conntion completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
@@ -177,14 +182,14 @@
 {
     NSString *msg = nil ;
     if(error != NULL){
-        msg = @"保存图片失败" ;
+        msg = NSLocalizedString(@"SavePicFail", nil);
     }else{
-        msg = @"保存图片成功" ;
+        msg = NSLocalizedString(@"SavePicSuccess", nil);
     }
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"保存图片结果提示"
                                                     message:msg
                                                    delegate:self
-                                          cancelButtonTitle:@"确定"
+                                          cancelButtonTitle:NSLocalizedString(@"sure", nil)
                                           otherButtonTitles:nil];
     [alert show];
 }

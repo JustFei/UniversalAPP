@@ -29,12 +29,12 @@
 //从相册获取
 - (void)SGQRCodeInformationFromeAibum:(NSNotification *)noti {
     NSString *string = noti.object;
-    self.alert = [UIAlertController alertControllerWithTitle:@"扫描到的信息" message:string preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    self.alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"QRScanInfo", nil) message:string preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //退出扫描页面
         [self.navigationController popViewControllerAnimated:YES];
     }];
-    UIAlertAction *contentAC = [UIAlertAction actionWithTitle:@"连接" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *contentAC = [UIAlertAction actionWithTitle:NSLocalizedString(@"Connect", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //连接设备
         self.scanResult(string);
         [self.navigationController popViewControllerAnimated:YES];
@@ -49,12 +49,12 @@
     SGQRCodeLog(@"noti - - %@", noti);
     NSString *string = noti.object;
     if ([self checkMacAdress:string]) {
-        self.alert = [UIAlertController alertControllerWithTitle:@"扫描到的信息" message:string preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"QRScanInfo", nil) message:string preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             //退出扫描页面
             [self.navigationController popViewControllerAnimated:YES];
         }];
-        UIAlertAction *contentAC = [UIAlertAction actionWithTitle:@"连接" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *contentAC = [UIAlertAction actionWithTitle:NSLocalizedString(@"Connect", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             //连接设备
             if (self.scanResult) {
                 self.scanResult(string);
@@ -66,8 +66,8 @@
         [self.alert addAction:contentAC];
         [self presentViewController:self.alert animated:YES completion:nil];
     }else {
-        self.alert = [UIAlertController alertControllerWithTitle:@"扫描异常" message:@"请重新尝试" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"ScanError", nil) message:NSLocalizedString(@"TryAgain", nil) preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             //退出扫描页面
             [self.navigationController popViewControllerAnimated:YES];
         }];

@@ -23,8 +23,11 @@
     [self.contentView addSubview:button];
     button.frame = CGRectMake(0, 0, WIDTH, 44);
     
-    self.contentView.backgroundColor = [UIColor clearColor];
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundView = ({
+        UIView * view = [[UIView alloc] initWithFrame:self.bounds];
+        view.backgroundColor = CLEAR_COLOR;
+        view;
+    });
     
     return self;
 }
@@ -70,7 +73,7 @@
 {
     if (!_cutView) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 16)];
-        view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+//        view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
         
         [self.contentView addSubview:view];
         _cutView = view;

@@ -96,13 +96,13 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         if ([BLETool shareInstance].connectState == kBLEstateDisConnected) {
-            self.hud.label.text = @"设备未连接，无法更新";
+            self.hud.label.text = NSLocalizedString(@"NotConnectToUpdate", nil);
             [self.hud hideAnimated:YES afterDelay:2];
         }else {
             self.hud.mode = MBProgressHUDModeIndeterminate;
-            self.hud.label.text = @"检查更新中";
+            self.hud.label.text = NSLocalizedString(@"CheckingUpdate", nil);
             NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
-            if ([version compare:@"1.4.0" options:NSNumericSearch] == NSOrderedDescending || [version compare:@"1.4.0" options:NSNumericSearch] == NSOrderedSame) {
+            if ([version compare:@"2.0" options:NSNumericSearch] == NSOrderedDescending || [version compare:@"2.0" options:NSNumericSearch] == NSOrderedSame) {
                 NSURL *url = [NSURL URLWithString:@"http://39.108.92.15:12345/version.xml"];
                 
                 NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:1 timeoutInterval:10.0];
@@ -117,14 +117,14 @@
                         [parser parse];
                     }else {
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            [self.hud.label setText:@"网络异常，请连接网络后再尝试"];
+                            [self.hud.label setText:NSLocalizedString(@"NetError", nil)];
                             [self.hud hideAnimated:YES afterDelay:2];
                         });
                     }
                 }];
             }else {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self.hud.label setText:@"暂无更新"];
+                    [self.hud.label setText:NSLocalizedString(@"NOUpdate", nil)];
                     [self.hud hideAnimated:YES afterDelay:1.5];
                 });
             }
@@ -162,12 +162,12 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.hud hideAnimated:YES afterDelay:1];
                         //提示是否更新
-                        [self.updateAc setMessage:[NSString stringWithFormat:@"有新的更新%@，是否现在更新？", verInServer]];
+                        [self.updateAc setMessage:[NSString stringWithFormat:NSLocalizedString(@"ChoseWheatherUpdate", nil), verInServer]];
                         [self presentViewController:self.updateAc animated:YES completion:nil];
                     });
                 }else {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.hud.label setText:@"暂无更新"];
+                        [self.hud.label setText:NSLocalizedString(@"NOUpdate", nil)];
                         [self.hud hideAnimated:YES afterDelay:2];
                     });
                 }
@@ -219,10 +219,10 @@
 - (UIAlertController *)updateAc
 {
     if (!_updateAc) {
-        _updateAc = [UIAlertController alertControllerWithTitle:@"提示" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        _updateAc = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"tips", nil) message:@"" preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *cancelAc = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
-        UIAlertAction *okAc = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *cancelAc = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *okAc = [UIAlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             UpdateViewController *vc = [[UpdateViewController alloc] init];
             vc.filePa = self.filePath;
             [self presentViewController:vc animated:YES completion:nil];

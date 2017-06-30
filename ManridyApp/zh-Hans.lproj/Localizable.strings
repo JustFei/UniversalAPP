@@ -544,7 +544,7 @@
 "UpdateFail" = "升级失败!";
 
 //已完成%ld%%
-"Complete%" = "已完成%ld%%";
+"Complete" = "已完成%ld%%";
 
 //请选择
 "PlsChose" = "请选择";

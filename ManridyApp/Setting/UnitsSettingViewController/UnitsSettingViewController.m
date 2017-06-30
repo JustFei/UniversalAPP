@@ -23,10 +23,10 @@ static NSString * const UnitsSettingTableViewCellID = @"UnitsSettingTableViewCel
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"单位设置";
+    self.title = NSLocalizedString(@"UnitsSetting", nil);
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"保存", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveUnitsAction)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"save", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveUnitsAction)];
     self.navigationItem.rightBarButtonItem = rightItem;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
@@ -54,7 +54,7 @@ static NSString * const UnitsSettingTableViewCellID = @"UnitsSettingTableViewCel
     
     if ([BLETool shareInstance].connectState == kBLEstateDisConnected) {
         MBProgressHUD *dishud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        dishud.label.text = @"未连接";
+        dishud.label.text = NSLocalizedString(@"NoConnectToSave", nil);
         [dishud hideAnimated:YES afterDelay:2];
         [self.hud hideAnimated:YES];
     } else {
@@ -89,7 +89,7 @@ static NSString * const UnitsSettingTableViewCellID = @"UnitsSettingTableViewCel
         [[NSUserDefaults standardUserDefaults] setObject:saveArr forKey:UNITS_SETTING];
         [self.hud hideAnimated:YES];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.label.text = @"保存成功";
+        hud.label.text = NSLocalizedString(@"saveSuccess", nil);
         [hud hideAnimated:YES afterDelay:1.5];
         NSArray *arr1 = self.dataArr.firstObject;
         NSArray *arr2 = self.dataArr.lastObject;
@@ -105,7 +105,7 @@ static NSString * const UnitsSettingTableViewCellID = @"UnitsSettingTableViewCel
         //做失败处理
         [self.hud hideAnimated:YES];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.label.text = @"保存失败，稍后再试";
+        hud.label.text = NSLocalizedString(@"saveFailAndTryAgain", nil);
         [hud hideAnimated:YES afterDelay:1.5];
     }
 }
@@ -155,7 +155,7 @@ static NSString * const UnitsSettingTableViewCellID = @"UnitsSettingTableViewCel
     UIView *headerView = [[UIView alloc] init];
     headerView.backgroundColor = CLEAR_COLOR;
     UILabel *sectionTitleLabel = [[UILabel alloc] init];
-    [sectionTitleLabel setText:section == 0 ? @"长度单位设置" : @"重量单位设置"];
+    [sectionTitleLabel setText:section == 0 ? NSLocalizedString(@"LengthSetting", nil) : @""];
     [sectionTitleLabel setFont:[UIFont systemFontOfSize:14]];
     [sectionTitleLabel setTextColor:TEXT_BLACK_COLOR_LEVEL3];
     [headerView addSubview:sectionTitleLabel];
@@ -212,7 +212,7 @@ static NSString * const UnitsSettingTableViewCellID = @"UnitsSettingTableViewCel
             }
             _dataArr = mutArr;
         }else {
-            NSArray *sec1 = @[@"公制(米/公里/千克)", @"英制(英寸/英尺/英磅)"];
+            NSArray *sec1 = @[NSLocalizedString(@"m/km/kg", nil), NSLocalizedString(@"ln/£", nil)];
 
             NSMutableArray *mutArr1 = [NSMutableArray array];
             NSMutableArray *mutArr2 = [NSMutableArray array];

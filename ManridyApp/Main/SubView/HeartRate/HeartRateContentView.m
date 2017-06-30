@@ -51,29 +51,25 @@
     if (haveData) {
         [self.heartChart setXLabels:self.dateArr];
         
-        PNLineChartData *data02 = [PNLineChartData new];
-        data02.color = PNTwitterColor;
-        data02.itemCount = self.heartChart.xLabels.count;
-        data02.inflexionPointColor = PNLightBlue;
-        data02.inflexionPointStyle = PNLineChartPointStyleCircle;
-        data02.getData = ^(NSUInteger index) {
-            CGFloat yValue;
-            if (index < self.dataArr.count) {
-                CGFloat yValue = [self.dataArr[index] floatValue];
-                DLog(@"%f",yValue);
-            }
+        PNLineChartData *data01 = [PNLineChartData new];
+        data01.color = PNTwitterColor;
+        data01.itemCount = self.dataArr.count;
+        data01.inflexionPointColor = PNLightBlue;
+        data01.inflexionPointStyle = PNLineChartPointStyleCircle;
+        data01.getData = ^(NSUInteger index) {
+            CGFloat yValue = [self.dataArr[index] floatValue];
+            DLog(@"1=======%f",yValue);
             
             return [PNLineChartDataItem dataItemWithY:yValue];
         };
         
-        self.heartChart.chartData = @[data02];
+        self.heartChart.chartData = @[data01];
         [self.heartChart strokeChart];
+        
     }else {
         //仅仅展示个坐标系
         [self.heartChart strokeChart];
-        
     }
-    
 }
 
 #pragma mark - PNChartDelegate
@@ -99,11 +95,12 @@
         view.backgroundColor = [UIColor clearColor];
         view.delegate = self;
         view.showCoordinateAxis = YES;
-        view.yValueMin = 0;
-        view.yValueMax = 200;
+//        view.yValueMin = 0;
+//        view.yValueMax = 220;
         
         view.yGridLinesColor = [UIColor clearColor];
         view.showYGridLines = YES;
+        view.yGridLinesColor = [UIColor grayColor];
         
         
         [self.downView addSubview:view];

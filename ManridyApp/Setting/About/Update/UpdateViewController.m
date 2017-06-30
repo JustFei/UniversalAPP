@@ -31,7 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithRed:37.0 / 255.0 green:154.0 / 255.0 blue:219.0 / 255.0 alpha:1];
-    
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
     [BLETool shareInstance].connectDelegate = self;
     [self createUI];
     
@@ -41,6 +41,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
 //    [((AppDelegate *)[UIApplication sharedApplication].delegate) resetDelegate];
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 
 - (void)dealloc
@@ -68,7 +69,7 @@
 {
     //固件升级
     UILabel *firmwareLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 100, 55, 200, 30)];
-    [firmwareLabel setText:@"固件升级"];
+    [firmwareLabel setText:NSLocalizedString(@"HardwareUpdate", nil)];
     [firmwareLabel setTextColor:[UIColor whiteColor]];
     firmwareLabel.textAlignment = NSTextAlignmentCenter;
     [firmwareLabel setFont:[UIFont systemFontOfSize:30]];
@@ -77,7 +78,7 @@
     //升级中请勿使设备远离手机
     UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(firmwareLabel.frame.origin.x, 99, 200, 11)];
     [tipLabel setTextColor:[UIColor colorWithWhite:1 alpha:0.5]];
-    [tipLabel setText:@"升级中请勿使设备远离手机"];
+    [tipLabel setText:NSLocalizedString(@"UpdatingNotUsePhone", nil)];
     tipLabel.textAlignment = NSTextAlignmentCenter;
     [tipLabel setFont:[UIFont systemFontOfSize:11]];
     [self.view addSubview:tipLabel];
@@ -187,7 +188,7 @@
         case DFUStateCompleted:
         {
             self.updateArrow.hidden = YES;
-            self.updateStateLabel.text = @"升级成功!";
+            self.updateStateLabel.text = NSLocalizedString(@"UpdateSuccess", nil);
             [self.updateStateLabel setTextColor:[UIColor whiteColor]];
             self.currentLabel.hidden = YES;
             
@@ -216,7 +217,7 @@
     NSLog(@"Error %ld: %@", (long) error, message);
     
     self.updateArrow.hidden = YES;
-    self.updateStateLabel.text = @"升级失败!";
+    self.updateStateLabel.text = NSLocalizedString(@"UpdateFail", nil);
     [self.updateStateLabel setTextColor:[UIColor redColor]];
     self.sureButton.hidden = NO;
     self.currentLabel.hidden = YES;
@@ -253,7 +254,7 @@
     NSLog(@"Progress: %ld%% (part %ld/%ld). Speed: %f bps, Avg speed: %f bps", (long) progress, (long) part, (long) totalParts, currentSpeedBytesPerSecond, avgSpeedBytesPerSecond);
     
     [self.updateCircle updateChartByCurrent:@(progress)];
-    self.currentLabel.text = [NSString stringWithFormat:@"已完成%ld%%", (long)progress];
+    self.currentLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Complete", nil), (long)progress];
 }
 
 
@@ -291,7 +292,7 @@
     if (!_sureButton) {
         _sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _sureButton.frame = CGRectMake(self.updateCircle.center.x - 20, self.updateStateLabel.frame.origin.y + 29, 40, 12);
-        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"确定"];
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"sure", nil)];
         NSRange strRange = {0,[str length]};
         [str addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:strRange];
         [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:1.0 / 255.0 green:255.0 / 255.0 blue:252.0 / 255.0 alpha:1] range:strRange];
@@ -310,7 +311,7 @@
     if (!_currentLabel) {
         _currentLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 50, self.updateCircle.frame.origin.y + 133, 100, 11)];
         [_currentLabel setFont:[UIFont systemFontOfSize:11]];
-        [_currentLabel setText:@"已完成0%"];
+        [_currentLabel setText:@"Complete"];
         [_currentLabel setTextColor:[UIColor colorWithWhite:1 alpha:0.5]];
         _currentLabel.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:_currentLabel];

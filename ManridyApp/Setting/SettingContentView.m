@@ -40,15 +40,15 @@
             //debug 用
 //            version = @"2.1";
             //如果大于2.0，显示全部
-            if ([version compare:@"1.4.0" options:NSNumericSearch] == NSOrderedDescending || [version compare:@"1.4.0" options:NSNumericSearch] == NSOrderedSame) {
+            if ([version compare:@"2.0" options:NSNumericSearch] == NSOrderedDescending || [version compare:@"2.0" options:NSNumericSearch] == NSOrderedSame) {
                 _dataArr = @[NSLocalizedString(@"userInfo", nil),
                              NSLocalizedString(@"perBind", nil),
                              NSLocalizedString(@"infoRemind", nil),
-                             @"APP通知",
-                             @"遥控拍照",
-                             @"单位设置",
-                             @"时间格式",
-                             @"亮度调节",
+                             NSLocalizedString(@"APPRemind", nil),
+                             NSLocalizedString(@"BleTakePhoto", nil),
+                             NSLocalizedString(@"UnitsSetting", nil),
+                             NSLocalizedString(@"TimeFormatter", nil),
+                             NSLocalizedString(@"LightAdjust", nil),
                              NSLocalizedString(@"about", nil)
                              ];
                 _imageNameArr = @[@"set_userinfo",
@@ -69,25 +69,31 @@
                               @"TimeFormatterViewController",
                               @"DimmingViewController",
                               @"AboutViewController"];
-            }else if ([version compare:@"1.3.4" options:NSNumericSearch] == NSOrderedDescending) {
+            }else if ([version compare:@"1.3.5" options:NSNumericSearch] == NSOrderedDescending) {
                 _dataArr = @[NSLocalizedString(@"userInfo", nil),
                              NSLocalizedString(@"perBind", nil),
                              NSLocalizedString(@"infoRemind", nil),
-                             @"单位设置",
-                             @"时间格式",
+                             NSLocalizedString(@"BleTakePhoto", nil),
+                             NSLocalizedString(@"UnitsSetting", nil),
+                             NSLocalizedString(@"TimeFormatter", nil),
+                             NSLocalizedString(@"LightAdjust", nil),
                              NSLocalizedString(@"about", nil)
                              ];
                 _imageNameArr = @[@"set_userinfo",
                                   @"set_bluetooth",
                                   @"set_remind",
+                                  @"set_take",
                                   @"set_unit",
                                   @"set_time",
+                                  @"set_dimming",
                                   @"set_about"];
                 _classArr = @[@"UserInfoViewController1",
                               @"BindPeripheralViewController",
                               @"PhoneRemindViewController",
+                              @"TakePhotoViewController",
                               @"UnitsSettingViewController",
                               @"TimeFormatterViewController",
+                              @"DimmingViewController",
                               @"AboutViewController"];
             }else {
                 _dataArr = @[NSLocalizedString(@"userInfo", nil),
@@ -108,27 +114,15 @@
             _dataArr = @[NSLocalizedString(@"userInfo", nil),
                          NSLocalizedString(@"perBind", nil),
                          NSLocalizedString(@"infoRemind", nil),
-                         //                             @"APP通知",
-                         //                             @"遥控拍照",
-                         //                             @"单位设置",
-                         //                             @"时间格式",
                          NSLocalizedString(@"about", nil)
                          ];
             _imageNameArr = @[@"set_userinfo",
                               @"set_bluetooth",
                               @"set_remind",
-                              //                                  @"remind_app",
-                              //                                  @"set_take",
-                              //                                  @"set_unit",
-                              //                                  @"set_time",
                               @"set_about"];
             _classArr = @[@"UserInfoViewController1",
                           @"BindPeripheralViewController",
                           @"PhoneRemindViewController",
-                          //                              @"APPRemindViewController",
-                          //                              @"TakePhotoViewController",
-                          //                              @"UnitsSettingViewController",
-                          //                              @"TimeFormatterViewController",
                           @"AboutViewController"];
         }
         
@@ -202,13 +196,6 @@
     cell.textLabel.text = _dataArr[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     [cell.textLabel setTextColor:COLOR_WITH_HEX(0x000000, 0.87)];
-    
-//    cell.contentView.backgroundColor = [UIColor colorWithRed:48.0 / 255.0 green:110.0 / 255.0 blue:187.0 / 255.0 alpha:0.7];
-//    UIView *view = [[UIView alloc] initWithFrame:cell.contentView.frame];
-//    
-//    view.backgroundColor = [UIColor colorWithRed:48.0 / 255.0 green:110.0 / 255.0 blue:187.0 / 255.0 alpha:0.7];//设置选中后cell的背景颜色
-//    
-//    cell.selectedBackgroundView = view;
     
     return cell;
 }

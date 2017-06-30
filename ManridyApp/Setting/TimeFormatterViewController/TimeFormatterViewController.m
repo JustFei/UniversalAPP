@@ -26,10 +26,10 @@ static NSString * const TimeFormatterSettingTableViewCellID = @"TimeFormatterSet
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"时间格式";
+    self.title = NSLocalizedString(@"TimeFormatter", nil);
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"保存", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveTimeFormatterAction)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"save", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveTimeFormatterAction)];
     self.navigationItem.rightBarButtonItem = rightItem;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
@@ -58,7 +58,7 @@ static NSString * const TimeFormatterSettingTableViewCellID = @"TimeFormatterSet
     
     if ([BLETool shareInstance].connectState == kBLEstateDisConnected) {
         MBProgressHUD *dishud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        dishud.label.text = @"未连接";
+        dishud.label.text = NSLocalizedString(@"NoConnectToSave", nil);
         [dishud hideAnimated:YES afterDelay:2];
     } else {
         UnitsSettingModel *model = ((NSArray*)self.dataArr.firstObject).firstObject;
@@ -86,7 +86,7 @@ static NSString * const TimeFormatterSettingTableViewCellID = @"TimeFormatterSet
         [self.hud hideAnimated:YES];
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.label.text = @"保存成功";
+        hud.label.text = NSLocalizedString(@"saveSuccess", nil);
         [hud hideAnimated:YES afterDelay:1.5];
         UnitsSettingModel *model = ((NSArray *)self.dataArr.firstObject).firstObject;//12小时制
         //保存设置到本地
@@ -97,7 +97,7 @@ static NSString * const TimeFormatterSettingTableViewCellID = @"TimeFormatterSet
         //做失败处理
         [self.hud hideAnimated:YES];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.label.text = @"保存失败，稍后再试";
+        hud.label.text = NSLocalizedString(@"saveFailAndTryAgain", nil);
         [hud hideAnimated:YES afterDelay:1.5];
     }
 }
@@ -147,7 +147,7 @@ static NSString * const TimeFormatterSettingTableViewCellID = @"TimeFormatterSet
     UIView *headerView = [[UIView alloc] init];
     headerView.backgroundColor = CLEAR_COLOR;
     UILabel *sectionTitleLabel = [[UILabel alloc] init];
-    [sectionTitleLabel setText:@"选择需要在设备上显示的界面"];
+    [sectionTitleLabel setText:NSLocalizedString(@"ChoseViewToShow", nil)];
     [sectionTitleLabel setFont:[UIFont systemFontOfSize:14]];
     [sectionTitleLabel setTextColor:TEXT_BLACK_COLOR_LEVEL3];
     [headerView addSubview:sectionTitleLabel];
@@ -204,7 +204,7 @@ static NSString * const TimeFormatterSettingTableViewCellID = @"TimeFormatterSet
             }
             _dataArr = mutArr;
         }else {
-            NSArray *sec1 = @[@"12时", @"24时"];
+            NSArray *sec1 = @[NSLocalizedString(@"12TimeFormatter", nil), @"24TimeFormatter"];
             NSMutableArray *mutArr1 = [NSMutableArray array];
             for (int index = 0; index < sec1.count; index ++) {
                 UnitsSettingModel *model = [[UnitsSettingModel alloc] init];

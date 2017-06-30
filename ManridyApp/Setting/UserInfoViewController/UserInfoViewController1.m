@@ -55,7 +55,11 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.isMetric = [self isMetricOrImperialSystem];
-    self.navigationItem.title = @"用户信息";
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    [titleLabel setText:NSLocalizedString(@"userInfo", nil)];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = titleLabel;
     self.view.backgroundColor = COLOR_WITH_HEX(0x1e88e5, 1);
     
     self.userNameTextField.borderStyle = UITextBorderStyleNone;
@@ -82,12 +86,11 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
         make.bottom.equalTo(self.view.mas_bottom);
     }];
     
-    self.title = @"用户信息";
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     [self setSaveUI];
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"保存", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveUserInfo)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"save", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveUserInfo)];
     self.navigationItem.rightBarButtonItem = rightItem;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
@@ -138,7 +141,7 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
 - (void)setHeadImage
 {
     AlertTool *alert = [AlertTool alertWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet];
-    [alert addAction:[AlertAction actionWithTitle:NSLocalizedString(@"相册", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
+    [alert addAction:[AlertAction actionWithTitle:NSLocalizedString(@"choosePhotoFromPhotoAlbum", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
         UIImagePickerController *PickerImage = [[UIImagePickerController alloc]init];
         PickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;//方式1
         //允许编辑，即放大裁剪
@@ -149,7 +152,7 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
         [self presentViewController:PickerImage animated:YES completion:nil];
     }]];
     //按钮：拍照，类型：UIAlertActionStyleDefault
-    [alert addAction:[AlertAction actionWithTitle:NSLocalizedString(@"拍照", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
+    [alert addAction:[AlertAction actionWithTitle:NSLocalizedString(@"takeAPhoto", nil) style:AlertToolStyleDefault handler:^(AlertAction *action) {
         UIImagePickerController *PickerImage = [[UIImagePickerController alloc]init];
         PickerImage.sourceType = UIImagePickerControllerSourceTypeCamera;//方式1
         //允许编辑，即放大裁剪
@@ -160,7 +163,7 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
         [self presentViewController:PickerImage animated:YES completion:nil];
     }]];
     //按钮：取消，类型：UIAlertActionStyleCancel
-    [alert addAction:[AlertAction actionWithTitle:NSLocalizedString(@"取消", nil) style:AlertToolStyleCancel handler:nil]];
+    [alert addAction:[AlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:AlertToolStyleCancel handler:nil]];
     [alert show];
 }
 
@@ -182,10 +185,10 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
 - (void)showInfoPickerView:(NSString *)infoText
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         self.currentIndex = -1;
     }];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         switch (self.pickerType) {
             case PickerTypeGender:
                 self.infoModel.gender = self.currentIndex;
@@ -216,7 +219,7 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
         case PickerTypeGender:
         {
             NSInteger index;
-            if (![infoText isEqualToString:@"请选择"]) {
+            if (![infoText isEqualToString:NSLocalizedString(@"PlsChose", nil)]) {
                 index = self.infoModel.gender;
             }else {
                 index = 0;
@@ -228,7 +231,7 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
         case PickerTypeAge:
         {
             NSInteger index;
-            if (![infoText isEqualToString:@"请选择"]) {
+            if (![infoText isEqualToString:NSLocalizedString(@"PlsChose", nil)]) {
                 index = self.infoModel.age;
             }else {
                 index = 0;
@@ -240,7 +243,7 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
         case PickerTypeHeight:
         {
             NSInteger index;
-            if (![infoText isEqualToString:@"请选择"]) {
+            if (![infoText isEqualToString:NSLocalizedString(@"PlsChose", nil)]) {
                 index = self.infoModel.height;
             }else {
                 index = 0;
@@ -252,7 +255,7 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
         case PickerTypeWeight:
         {
             NSInteger index;
-            if (![infoText isEqualToString:@"请选择"]) {
+            if (![infoText isEqualToString:NSLocalizedString(@"PlsChose", nil)]) {
                 index = self.infoModel.weight;
             }else {
                 index = 0;
@@ -275,7 +278,7 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
     [self.view endEditing:YES];
     if ([BLETool shareInstance].connectState == kBLEstateDisConnected) {
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        self.hud.label.text = @"设备未连接";
+        self.hud.label.text = NSLocalizedString(@"NoConnectToSave", nil);
         [self.hud hideAnimated:YES afterDelay:2];
     }else {
         self.hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
@@ -290,19 +293,19 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
     if (manridyModel.receiveDataType == ReturnModelTypeUserInfoModel) {
         if (manridyModel.isReciveDataRight == ResponsEcorrectnessDataRgith) {
             //写入本地
-            self.hud.label.text = @"保存成功";
+            self.hud.label.text = NSLocalizedString(@"saveSuccess", nil);
             [self.hud hideAnimated:YES afterDelay:2];
             //保存用户名
-            [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text ? self.userNameTextField.text : @"用户名" forKey:USER_NAME_SETTING];
+            [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text ? self.userNameTextField.text : NSLocalizedString(@"userName", nil) forKey:USER_NAME_SETTING];
             //保存用户头像
             NSData *imageData = UIImagePNGRepresentation(self.headImageView.image);
             [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:USER_HEADIMAGE_SETTING];
             //保存用户的其他基本信息
-            self.infoModel.userName = self.userNameTextField.text ? self.userNameTextField.text : @"用户名";
+            self.infoModel.userName = self.userNameTextField.text ? self.userNameTextField.text : NSLocalizedString(@"userName", nil);
             NSData *infoData = [NSKeyedArchiver archivedDataWithRootObject:self.infoModel];
             [[NSUserDefaults standardUserDefaults] setObject:infoData forKey:USER_INFO_SETTING];
         }else {
-            self.hud.label.text = @"保存失败";
+            self.hud.label.text = NSLocalizedString(@"saveFail", nil);
             [self.hud hideAnimated:YES afterDelay:2];
         }
     }
@@ -462,7 +465,7 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
 {
     if (!_userNameTextField) {
         UITextField *textField = [[UITextField alloc] init];
-        textField.placeholder = [[NSUserDefaults standardUserDefaults] objectForKey:USER_NAME_SETTING] ? [[NSUserDefaults standardUserDefaults] objectForKey:USER_NAME_SETTING] : @"用户名";
+        textField.placeholder = [[NSUserDefaults standardUserDefaults] objectForKey:USER_NAME_SETTING] ? [[NSUserDefaults standardUserDefaults] objectForKey:USER_NAME_SETTING] : NSLocalizedString(@"userName", nil);
         
 //        [textField setValue:WHITE_COLOR forKeyPath:@"_placeholderLabel.textColor"];
         textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -505,18 +508,18 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
 - (NSArray *)dataArr
 {
     if (!_dataArr) {
-        NSArray *nameArr = @[NSLocalizedString(@"性别", nil),NSLocalizedString(@"年龄", nil),NSLocalizedString(@"身高", nil),NSLocalizedString(@"体重", nil)];
+        NSArray *nameArr = @[NSLocalizedString(@"gender", nil),NSLocalizedString(@"age", nil),NSLocalizedString(@"height", nil),NSLocalizedString(@"weight", nil)];
         NSArray *fieldPlaceholdeArr;
         if (self.infoModel) {
-            fieldPlaceholdeArr = @[self.infoModel.gender ? @"女" : @"男",
-                                   self.infoModel.age ? self.ageArr[self.infoModel.age] : @"请选择",
-                                   self.infoModel.height ? self.heightArr[self.infoModel.height] : @"请选择",
-                                   self.infoModel.weight ? self.weightArr[self.infoModel.weight] : @"请选择"];
+            fieldPlaceholdeArr = @[self.infoModel.gender ? NSLocalizedString(@"Female", nil) : NSLocalizedString(@"male", nil),
+                                   self.infoModel.age ? self.ageArr[self.infoModel.age] : NSLocalizedString(@"PlsChose", nil),
+                                   self.infoModel.height ? self.heightArr[self.infoModel.height] : NSLocalizedString(@"PlsChose", nil),
+                                   self.infoModel.weight ? self.weightArr[self.infoModel.weight] : NSLocalizedString(@"PlsChose", nil)];
         }else {
-            fieldPlaceholdeArr = @[@"请选择",@"请选择",@"请选择",@"请选择"];
+            fieldPlaceholdeArr = @[NSLocalizedString(@"PlsChose", nil),NSLocalizedString(@"PlsChose", nil),NSLocalizedString(@"PlsChose", nil),NSLocalizedString(@"PlsChose", nil)];
         }
         
-        NSArray *unitArr = @[@"",NSLocalizedString(@"岁", nil),self.isMetric ? @"(cm)" : @"(In)",self.isMetric ? @"(kg)" : @"(lb)"];
+        NSArray *unitArr = @[@"",NSLocalizedString(@"year", nil),self.isMetric ? @"(cm)" : @"(In)",self.isMetric ? @"(kg)" : @"(lb)"];
         NSMutableArray *mutArr = [NSMutableArray array];
         for (int index = 0; index < nameArr.count; index ++) {
             UserInfoSettingModel *model = [[UserInfoSettingModel alloc] init];
@@ -549,7 +552,7 @@ static NSString * const UserInfoTableViewCellID = @"UserInfoTableViewCell";
 - (NSArray *)genderArr
 {
     if (!_genderArr) {
-        _genderArr = @[@"男",@"女"];
+        _genderArr = @[NSLocalizedString(@"Female", nil) , NSLocalizedString(@"male", nil)];
     }
     return _genderArr;
 }

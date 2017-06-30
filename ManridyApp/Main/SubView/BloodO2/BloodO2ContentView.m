@@ -159,6 +159,7 @@
         
         view.yGridLinesColor = [UIColor clearColor];
         view.showYGridLines = YES;
+        view.yGridLinesColor = [UIColor grayColor];
         
         [self.downView addSubview:view];
         _BOChart = view;

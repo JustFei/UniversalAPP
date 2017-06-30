@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"亮度调节";
+    self.title = NSLocalizedString(@"LightAdjust", nil);
     
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.view.backgroundColor = SETTING_BACKGROUND_COLOR;
@@ -42,7 +42,7 @@
 - (void)createUI
 {
     UILabel *infoLabel = [[UILabel alloc] init];
-    [infoLabel setText:@"设置手表的亮度"];
+    [infoLabel setText:NSLocalizedString(@"SetPerLight", nil)];
     [infoLabel setTextColor:TEXT_BLACK_COLOR_LEVEL3];
     [infoLabel setFont:[UIFont systemFontOfSize:14]];
     [self.view addSubview:infoLabel];
@@ -90,7 +90,7 @@
         [self changeDimLabel:index];
         _slider.value = value;
     }else {
-        [_currentDimLabel setText:@"中"];
+        [_currentDimLabel setText:NSLocalizedString(@"mid", nil)];
         _slider.value = 1;
     }
     _slider.continuous = NO;
@@ -151,7 +151,7 @@
         sender.value = _currentDim;
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeText;
-        hud.label.text = @"设备未连接";
+        hud.label.text = NSLocalizedString(@"NoConnectToSave", nil);
         [hud hideAnimated:YES afterDelay:2];
     }else {
         [self writeVlaueToPer:sender.value];
@@ -164,7 +164,7 @@
         self.slider.value = _currentDim;
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeText;
-        hud.label.text = @"设备未连接";
+        hud.label.text = NSLocalizedString(@"NoConnectToSave", nil);
         [hud hideAnimated:YES afterDelay:2];
     }else {
         if (self.slider.value == 0) {
@@ -183,7 +183,7 @@
         //        [((AppDelegate *)[UIApplication sharedApplication].delegate) showTheStateBar];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeText;
-        hud.label.text = @"设备未连接";
+        hud.label.text = NSLocalizedString(@"NoConnectToSave", nil);
         [hud hideAnimated:YES afterDelay:2];
     }else {
         if (self.slider.value == 2) {
@@ -207,13 +207,13 @@
 {
     switch (index) {
         case 0:
-            self.currentDimLabel.text = @"低";
+            self.currentDimLabel.text = NSLocalizedString(@"low", nil);
             break;
         case 1:
-            self.currentDimLabel.text = @"中";
+            self.currentDimLabel.text = NSLocalizedString(@"mid", nil);
             break;
         case 2:
-            self.currentDimLabel.text = @"高";
+            self.currentDimLabel.text = NSLocalizedString(@"lightHight", nil);
             break;
             
         default:
@@ -231,13 +231,13 @@
 
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.mode = MBProgressHUDModeText;
-            hud.label.text = @"保存成功";
+            hud.label.text = NSLocalizedString(@"saveSuccess", nil);
             [hud hideAnimated:YES afterDelay:2];
         }else {
             //做失败处理
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.mode = MBProgressHUDModeText;
-            hud.label.text = @"保存失败";
+            hud.label.text = NSLocalizedString(@"saveFail", nil);
             [hud hideAnimated:YES afterDelay:2];
         }
     }
