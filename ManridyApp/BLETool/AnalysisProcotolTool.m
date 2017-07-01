@@ -822,8 +822,15 @@ union LAT{
     model.receiveDataType = ReturnModelTypeTakePhoto;
     
     const unsigned char *hexBytes = [data bytes];
-    NSString *ENStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
-    NSString *STStr = [NSString stringWithFormat:@"%02x", hexBytes[2]];
+    NSString *ENStr;
+    NSString *STStr;
+    if ([head isEqualToString:@"19"]) {
+        ENStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
+        STStr = [NSString stringWithFormat:@"%02x", hexBytes[2]];
+    }else if ([head isEqualToString:@"fc"] || [head isEqualToString:@"FC"]) {
+        ENStr = [NSString stringWithFormat:@"%02x", hexBytes[2]];
+        STStr = [NSString stringWithFormat:@"%02x", hexBytes[3]];
+    }
     
     if ([ENStr isEqualToString:@"81"]) {
         model.takePhotoModel.cameraMode = CameraModeEnterCameraMode;
@@ -834,7 +841,7 @@ union LAT{
     }else if ([ENStr isEqualToString:@"00"]) {
         if ([STStr isEqualToString:@"81"]) {
             model.takePhotoModel.cameraMode = CameraModeTakePhotoAction;
-            model.takePhotoModel.takePhotoAction = [head isEqualToString:@"19"] ? YES : NO;
+            model.takePhotoModel.takePhotoAction = [head isEqualToString:@"fc"] || [head isEqualToString:@"FC"] ? YES : NO;
         }else if ([STStr isEqualToString:@"80"]) {
             model.takePhotoModel.cameraMode = CameraModePhotoActionFinish;
             model.takePhotoModel.photoActionFinish = [head isEqualToString:@"19"] ? YES : NO;

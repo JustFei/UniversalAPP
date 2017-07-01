@@ -1105,19 +1105,6 @@ static BLETool *bleTool = nil;
                     [self.receiveDelegate receiveChangePerNameSuccess:YES];
                 }
             }
-        }else if ([headStr isEqualToString:@"fc"] || [headStr isEqualToString:@"FC"]) {
-            NSString *secondStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
-            NSString *TTStr = [NSString stringWithFormat:@"%02x", hexBytes[3]];
-            if ([secondStr isEqualToString:@"10"]) {
-                if ([self.searchDelegate respondsToSelector:@selector(receivePeripheralRequestToRemindPhoneWithState:)]) {
-                    if ([TTStr isEqualToString:@"00"]) {
-                        [self.searchDelegate receivePeripheralRequestToRemindPhoneWithState:NO];
-                    }else {
-                        [self.searchDelegate receivePeripheralRequestToRemindPhoneWithState:YES];
-                    }
-                    
-                }
-            }
         }else if ([headStr isEqualToString:@"10"]) {
             if ([self.receiveDelegate respondsToSelector:@selector(receiveSearchFeedback)]) {
                 [self.receiveDelegate receiveSearchFeedback];
@@ -1140,12 +1127,10 @@ static BLETool *bleTool = nil;
         }else if ([headStr isEqualToString:@"18"] || [headStr isEqualToString:@"98"]) {
             //单位设置是否成功
             [[NSNotificationCenter defaultCenter] postNotificationName:SET_TIME_FORMATTER object:nil userInfo:@{@"success":[headStr isEqualToString:@"18"]? @YES : @NO}];
-        }else if ([headStr isEqualToString:@"19"]) {
+        }else  if ([headStr isEqualToString:@"19"] || [headStr isEqualToString:@"99"]) {
             //开始拍照
             manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisTakePhoto:value WithHeadStr:headStr];
-            if ([self.receiveDelegate respondsToSelector:@selector(receiveTakePhoto:)]) {
-                [self.receiveDelegate receiveTakePhoto:model];
-            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:SET_TAKE_PHOTO object:model];
         }else if ([headStr isEqualToString:@"1A"] || [headStr isEqualToString:@"1a"]) {
             //分段计步数据
             manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisTakePhoto:value WithHeadStr:headStr];
@@ -1157,6 +1142,22 @@ static BLETool *bleTool = nil;
             manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisTakePhoto:value WithHeadStr:headStr];
             if ([self.receiveDelegate respondsToSelector:@selector(receiveSegementRun:)]) {
                 [self.receiveDelegate receiveSegementRun:model];
+            }
+        }else if ([headStr isEqualToString:@"fc"] || [headStr isEqualToString:@"FC"]) {
+            NSString *secondStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
+            NSString *TTStr = [NSString stringWithFormat:@"%02x", hexBytes[3]];
+            if ([secondStr isEqualToString:@"10"]) {
+                if ([self.searchDelegate respondsToSelector:@selector(receivePeripheralRequestToRemindPhoneWithState:)]) {
+                    if ([TTStr isEqualToString:@"00"]) {
+                        [self.searchDelegate receivePeripheralRequestToRemindPhoneWithState:NO];
+                    }else {
+                        [self.searchDelegate receivePeripheralRequestToRemindPhoneWithState:YES];
+                    }
+                    
+                }
+            }else if ([secondStr isEqualToString:@"19"]) {
+                manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisTakePhoto:value WithHeadStr:headStr];
+                [[NSNotificationCenter defaultCenter] postNotificationName:SET_TAKE_PHOTO object:model];
             }
         }
     }
