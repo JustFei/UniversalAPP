@@ -958,88 +958,88 @@
         switch (self.pageControl.currentPage) {
             case 0:
             {
-                if (self.haveNewStep) {
+//                if (self.haveNewStep) {
                     self.haveNewStep = NO;
                     [self.stepView showStepStateLabel];
-                }
+//                }
             }
                 break;
             case 1:
             {
-                if (self.myBleTool.connectState == kBLEstateDidConnected ) {
-                    if (self.haveNewHeartRate) {
-                        [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
-                        [self.heartRateView showHRStateLabel];
-                    }
-                }else {
-                    if (self.haveNewHeartRate) {
-                        [self queryHeartDataAndShow];
-                        self.haveNewHeartRate = NO;
-                        [self.heartRateView showHRStateLabel];
-                    }
-                }
-            }
-                break;
-            case 2:
-            {
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                    if (self.haveNewSleep) {
+//                    if (self.haveNewSleep) {
                         [self.myBleTool writeSleepRequestToperipheral:SleepDataHistoryData];
                         self.sleepView.currentSleepStateLabel.text = NSLocalizedString(@"lastTimeSleep", nil);
-                    }
+//                    }
                 }else {
                     NSDate *currentDate = [NSDate date];
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     formatter.dateFormat = @"yyyy/MM/dd";
                     NSString *currentDateString = [formatter stringFromDate:currentDate];
-                    if (self.haveNewSleep) {
+//                    if (self.haveNewSleep) {
                         [self querySleepDataBaseWithDateString:currentDateString];
                         self.haveNewSleep = NO;
                         self.sleepView.currentSleepStateLabel.text = NSLocalizedString(@"lastTimeSleep", nil);
-                    }
+//                    }
+                }
+            }
+                break;
+            case 2:
+            {
+                if (self.myBleTool.connectState == kBLEstateDidConnected ) {
+//                    if (self.haveNewHeartRate) {
+                        [self.myBleTool writeHeartRateRequestToPeripheral:HeartRateDataHistoryData];
+                        [self.heartRateView showHRStateLabel];
+//                    }
+                }else {
+//                    if (self.haveNewHeartRate) {
+                        [self queryHeartDataAndShow];
+                        self.haveNewHeartRate = NO;
+                        [self.heartRateView showHRStateLabel];
+//                    }
                 }
             }
                 break;
             case 3:
             {
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                    if (self.haveNewBP) {
+//                    if (self.haveNewBP) {
                         [self.myBleTool writeBloodToPeripheral:BloodDataHistoryData];
                         self.bloodPressureView.currentBPLabel.text = NSLocalizedString(@"todayBP", nil);
-                    }
+//                    }
                 }else {
                     NSDate *currentDate = [NSDate date];
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     formatter.dateFormat = @"yyyy/MM/dd";
                     NSString *currentDateString = [formatter stringFromDate:currentDate];
                     
-                    if (self.haveNewBP) {
+//                    if (self.haveNewBP) {
                         NSArray *bloodArr = [self.myFmdbTool queryBloodWithDate:currentDateString];
                         [self.bloodPressureView queryBloodWithBloodArr:bloodArr];
                         self.haveNewBP = NO;
                         self.bloodPressureView.currentBPLabel.text = NSLocalizedString(@"todayBP", nil);
-                    }
+//                    }
                 }
             }
                 break;
             case 4:
             {
                 if (self.myBleTool.connectState == kBLEstateDidConnected) {
-                    if (self.haveNewBO) {
+//                    if (self.haveNewBO) {
                         [self.myBleTool writeBloodO2ToPeripheral:BloodO2DataHistoryData];
                         self.boView.currentBOLabel.text = NSLocalizedString(@"todayBO", nil);
-                    }
+//                    }
                 }else {
                     NSDate *currentDate = [NSDate date];
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     formatter.dateFormat = @"yyyy/MM/dd";
                     NSString *currentDateString = [formatter stringFromDate:currentDate];
-                    if (self.haveNewBO) {
+//                    if (self.haveNewBO) {
                         NSArray *bloodArr = [self.myFmdbTool queryBloodO2WithDate:currentDateString];
                         [self.boView queryBOWithBloodArr:bloodArr];
                         self.haveNewBO = NO;
                         self.boView.currentBOLabel.text = NSLocalizedString(@"todayBO", nil);
-                    }
+//                    }
                 }
             }
                 break;
@@ -1082,13 +1082,10 @@
         self.stepView = [[StepContentView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
         [view addSubview:self.stepView];
         
-        self.heartRateView = [[HeartRateContentView alloc] initWithFrame:CGRectMake(WIDTH, 0, WIDTH, HEIGHT)];
+        self.heartRateView = [[HeartRateContentView alloc] initWithFrame:CGRectMake(2 * WIDTH, 0, WIDTH, HEIGHT)];
         [view addSubview:self.heartRateView];
         
-//        self.temperatureView = [[TemperatureContentView alloc] initWithFrame:CGRectMake(2 * WIDTH, 0, WIDTH, HEIGHT)];
-//        [view addSubview:self.temperatureView];
-        
-        self.sleepView = [[SleepContentView alloc] initWithFrame:CGRectMake(2 * WIDTH, 0, WIDTH, HEIGHT)];
+        self.sleepView = [[SleepContentView alloc] initWithFrame:CGRectMake(WIDTH, 0, WIDTH, HEIGHT)];
         [view addSubview:self.sleepView];
         
         self.bloodPressureView = [[BloodPressureContentView alloc] initWithFrame:CGRectMake(3 * WIDTH, 0, WIDTH, HEIGHT)];

@@ -851,12 +851,11 @@ static BLETool *bleTool = nil;
         if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"]) {
             BOOL isFindMyPeripheral = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFindMyPeripheral"];
             
-            /**TODO:这里的延迟操作会因为在后台的原因停止执行，目前测试在8秒钟左右可以实现稳定延迟。*/
+            /**TODO:这里的延迟操作会因为在后台的原因停止执行，目前测试在5秒钟左右可以实现稳定延迟。*/
             if (isFindMyPeripheral) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [self delayMethod];
                 });
-                
             }
         }
         
