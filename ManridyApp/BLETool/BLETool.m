@@ -289,30 +289,23 @@ static BLETool *bleTool = nil;
 //set heart rate test state
 - (void)writeHeartRateTestStateToPeripheral:(HeartRateTestState)state
 {
+    NSString *protocolStr;
     switch (state) {
         case HeartRateTestStateStop:
-            //stop heart rate test
-        {
-            NSString *stopStr = [NSStringTool protocolAddInfo:@"00" head:@"09"];
-            
-            if (self.currentDev.peripheral && self.writeCharacteristic) {
-                [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:stopStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
-            }
-        }
+            protocolStr = [NSStringTool protocolAddInfo:@"00" head:@"09"];
             break;
         case HeartRateTestStateStart:
-            //start heart rate test
-        {
-            NSString *startStr = [NSStringTool protocolAddInfo:@"01" head:@"09"];
-            
-            if (self.currentDev.peripheral && self.writeCharacteristic) {
-                [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:startStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
-            }
-        }
+            protocolStr = [NSStringTool protocolAddInfo:@"01" head:@"09"];
+            break;
+        case HeartRateDataStateSingle:
+            protocolStr = [NSStringTool protocolAddInfo:@"02" head:@"09"];
             break;
             
         default:
             break;
+    }
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
 
@@ -1056,7 +1049,6 @@ static BLETool *bleTool = nil;
             if ([self.receiveDelegate respondsToSelector:@selector(receiveHeartRateTestWithModel:)]) {
                 [self.receiveDelegate receiveHeartRateTestWithModel:model];
             }
-            
         }else if([headStr isEqualToString:@"0a"] || [headStr isEqualToString:@"0A"] || [headStr isEqualToString:@"8a"] || [headStr isEqualToString:@"8A"]) {
             //获取心率数据
             manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisHeartData:value WithHeadStr:headStr];
@@ -1146,7 +1138,13 @@ static BLETool *bleTool = nil;
         }else if ([headStr isEqualToString:@"fc"] || [headStr isEqualToString:@"FC"]) {
             NSString *secondStr = [NSString stringWithFormat:@"%02x", hexBytes[1]];
             NSString *TTStr = [NSString stringWithFormat:@"%02x", hexBytes[3]];
-            if ([secondStr isEqualToString:@"10"]) {
+            if ([secondStr isEqualToString:@"09"]) {
+                //心率开关
+                manridyModel *model = [[AnalysisProcotolTool shareInstance] analysisHeartStateData:value WithHeadStr:headStr];
+                if ([self.receiveDelegate respondsToSelector:@selector(receiveHeartRateTestWithModel:)]) {
+                    [self.receiveDelegate receiveHeartRateTestWithModel:model];
+                }
+            }else if ([secondStr isEqualToString:@"10"]) {
                 if ([self.searchDelegate respondsToSelector:@selector(receivePeripheralRequestToRemindPhoneWithState:)]) {
                     if ([TTStr isEqualToString:@"00"]) {
                         [self.searchDelegate receivePeripheralRequestToRemindPhoneWithState:NO];

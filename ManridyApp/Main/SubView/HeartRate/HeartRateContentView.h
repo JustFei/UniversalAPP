@@ -9,19 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "PNChart.h"
 
+typedef void(^HrTestBlock)(void);
+
 @interface HeartRateContentView : UIView < PNChartDelegate >
 
 @property (weak, nonatomic) IBOutlet UILabel *heartRateLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *heartStateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *hrTestBtn;
 @property (strong, nonatomic) IBOutlet UILabel *currentHRStateLabel;
-
-@property (nonatomic ,copy) NSMutableArray *dateArr;
-@property (nonatomic ,strong) NSMutableArray *dataArr;
-//@property (weak, nonatomic) IBOutlet UIView *state1;
-//@property (weak, nonatomic) IBOutlet UIView *state2;
-//@property (weak, nonatomic) IBOutlet UIView *state4;
-@property (nonatomic ,weak) PNLineChart *heartChart;
+@property (nonatomic, copy) NSMutableArray *dateArr;
+@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, weak) PNLineChart *heartChart;
+@property (nonatomic, copy) HrTestBlock hrTestBlock;
 
 - (void)drawProgress:(CGFloat )progress;
 - (void)showChartViewWithData:(BOOL)haveData;

@@ -22,6 +22,7 @@
 typedef enum : NSUInteger {
     HeartRateTestStateStop = 0,
     HeartRateTestStateStart,
+    HeartRateDataStateSingle
 } HeartRateTestState;
 
 /**

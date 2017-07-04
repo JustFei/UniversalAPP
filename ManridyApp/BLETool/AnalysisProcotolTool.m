@@ -408,9 +408,19 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
 {
     manridyModel *model = [[manridyModel alloc] init];
     model.receiveDataType = ReturnModelTypeHeartRateStateModel;
-    
-    if ([head isEqualToString:@"09"]) {
+    const unsigned char *hexBytes = [data bytes];
+    NSString *TT = [NSString stringWithFormat:@"%02x", hexBytes[1]];
+    NSString *SS = [NSString stringWithFormat:@"%02x", hexBytes[2]];
+    if ([head isEqualToString:@"09"] || [head isEqualToString:@"fc"]) {
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
+        if ([TT isEqualToString:@"02"] && [SS isEqualToString:@"00"]) {
+            model.heartRateModel.singleTestSuccess = YES;
+            model.heartRateModel.heartRateState = HeartRateDataSingleTestSuccess;
+        }else if ([TT isEqualToString:@"02"] && [SS isEqualToString:@"01"]) {
+            model.heartRateModel.heartRateState = HeartRateDataContinuous;
+        }else if ([TT isEqualToString:@"09"]) {
+            model.heartRateModel.heartRateState = HeartRateDataUpload;
+        }
     }else if ([head isEqualToString:@"89"]) {
         model.isReciveDataRight = ResponsEcorrectnessDataFail;
     }

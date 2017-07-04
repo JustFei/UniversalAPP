@@ -28,6 +28,12 @@
         
         self = [[NSBundle mainBundle] loadNibNamed:@"HeartRateContentView" owner:self options:nil].firstObject;
         self.frame = frame;
+        self.hrTestBtn.layer.cornerRadius = 18;
+        self.hrTestBtn.layer.masksToBounds = YES;
+        self.hrTestBtn.layer.borderWidth = 1;
+        self.hrTestBtn.layer.borderColor = COLOR_WITH_HEX(0xd32f2f, 0.87).CGColor;
+        [self.hrTestBtn setTitleColor:COLOR_WITH_HEX(0xd32f2f, 0.87) forState:UIControlStateNormal];
+        [self.hrTestBtn addTarget:self action:@selector(hrTestAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -69,6 +75,17 @@
     }else {
         //仅仅展示个坐标系
         [self.heartChart strokeChart];
+    }
+}
+
+#pragma mark - Action
+- (void)hrTestAction:(UIButton *)sender
+{
+    if ([sender.titleLabel.text isEqualToString:@"测量"]) {
+        [[BLETool shareInstance] writeHeartRateTestStateToPeripheral:HeartRateDataStateSingle];
+        sender.enabled = NO;
+    }else {
+        [[BLETool shareInstance] writeHeartRateTestStateToPeripheral:HeartRateTestStateStop];
     }
 }
 
