@@ -100,10 +100,10 @@
 
 - (void)writeSleepTest:(UILongPressGestureRecognizer *)ges
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [self.myBleTool writeSleepTest];
-    });
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        [self.myBleTool writeSleepTest];
+//    });
 }
 
 - (void)viewWillAppear:(BOOL)animated

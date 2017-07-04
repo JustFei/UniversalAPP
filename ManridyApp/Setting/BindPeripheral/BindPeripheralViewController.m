@@ -64,7 +64,12 @@
        [self creatUnBindView];
     }
     
-    self.navigationItem.title = NSLocalizedString(@"perBind", nil);
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    [titleLabel setText:NSLocalizedString(@"perBind", nil)];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = titleLabel;
+//    self.navigationItem.title = NSLocalizedString(@"perBind", nil);
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     self.view.backgroundColor = COLOR_WITH_HEX(0x1e88e5, 1);

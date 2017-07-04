@@ -21,7 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"遥控拍照";
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    [titleLabel setText:NSLocalizedString(@"BleTakePhoto", nil)];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = titleLabel;
+//    self.title = @"遥控拍照";
     self.view.backgroundColor = SETTING_BACKGROUND_COLOR;
     
     [self createUI];

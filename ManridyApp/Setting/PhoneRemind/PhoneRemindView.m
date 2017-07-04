@@ -86,7 +86,7 @@
 {
     if (!_iconImageView) {
 //        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(8, 9, 25, 22)];
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(8, 23, 20, 20)];
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(16, 23, 20, 20)];
         [self.contentView addSubview:view];
         _iconImageView = view;
     }

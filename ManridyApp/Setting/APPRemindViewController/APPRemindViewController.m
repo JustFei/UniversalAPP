@@ -23,7 +23,11 @@ static NSString *const APPRemindTableViewCellID = @"APPRemindTableViewCell";
 
 - (void)viewDidLoad
 {
-    self.title = NSLocalizedString(@"APPRemind", nil);
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    [titleLabel setText:NSLocalizedString(@"APPRemind", nil)];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = titleLabel;
     
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"save", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveAction)];
     self.navigationItem.rightBarButtonItem = rightItem;

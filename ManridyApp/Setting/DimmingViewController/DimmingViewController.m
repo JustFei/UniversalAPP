@@ -23,7 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = NSLocalizedString(@"LightAdjust", nil);
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    [titleLabel setText:NSLocalizedString(@"LightAdjust", nil)];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = titleLabel;
     
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.view.backgroundColor = SETTING_BACKGROUND_COLOR;
