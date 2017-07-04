@@ -71,7 +71,7 @@
 {
     [super viewDidLoad];
     
-    _titleArr = @[NSLocalizedString(@"Step", nil),NSLocalizedString(@"HeartHeart", nil),NSLocalizedString(@"Sleep", nil),NSLocalizedString(@"BloodPressure", nil),NSLocalizedString(@"BloodO2", nil)];
+    _titleArr = @[NSLocalizedString(@"Step", nil),NSLocalizedString(@"Sleep", nil),NSLocalizedString(@"BloodPressure", nil),NSLocalizedString(@"HeartHeart", nil),NSLocalizedString(@"BloodO2", nil)];
     self.haveNewStep = YES;
     self.haveNewHeartRate = YES;
     self.haveNewSleep = YES;

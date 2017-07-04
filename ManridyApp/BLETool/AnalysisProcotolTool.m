@@ -527,6 +527,16 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         NSString *mm = [startTimeStr substringWithRange:NSMakeRange(10, 2)];
         startTimeStr = [NSString stringWithFormat:@"20%@/%@/%@ %02ld:%02ld",yy ,MM ,dd ,hh.integerValue ,mm.integerValue];
         
+        //判断开始时间是否大于晚上八点，如果大于晚上八点就记录为第二天的数据
+        NSString *startDateStr = [NSString stringWithFormat:@"20%@/%@/%@",yy ,MM ,dd];;
+        if (hh.integerValue >= 20) {
+            NSDateFormatter *plusOneDayFormatter = [[NSDateFormatter alloc] init];
+            [plusOneDayFormatter setDateFormat:@"yyyy/MM/dd"];
+            NSDate *oldDate = [plusOneDayFormatter dateFromString:startDateStr];
+            NSDate *newDate = [NSDate dateWithTimeInterval:24*60*60 sinceDate:oldDate];
+            startDateStr = [plusOneDayFormatter stringFromDate:newDate];
+        }
+        
         NSData *endTime = [data subdataWithRange:NSMakeRange(9, 5)];
         NSString *endTimeStr = [NSString stringWithFormat:@"%@",endTime];
         NSString *endyy = [endTimeStr substringWithRange:NSMakeRange(1, 2)];
@@ -535,7 +545,6 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         NSString *endhh = [endTimeStr substringWithRange:NSMakeRange(7, 2)];
         NSString *endmm = [endTimeStr substringWithRange:NSMakeRange(10, 2)];
         endTimeStr = [NSString stringWithFormat:@"20%@/%@/%@ %02ld:%02ld",endyy ,endMM ,enddd ,endhh.integerValue ,endmm.integerValue];
-        NSString *endDateStr = [NSString stringWithFormat:@"20%@/%@/%@",endyy ,endMM ,enddd];
         
         NSData *deepSleep = [data subdataWithRange:NSMakeRange(14, 2)];
         int deepSleepVale = [NSStringTool parseIntFromData:deepSleep];
@@ -553,7 +562,7 @@ static AnalysisProcotolTool *analysisProcotolTool = nil;
         model.sleepModel.deepSleep = deepSleepStr;
         model.sleepModel.lowSleep = lowSleepStr;
         model.sleepModel.sumSleep = sumSleepStr;
-        model.sleepModel.date = endDateStr;
+        model.sleepModel.date = startDateStr;
         model.isReciveDataRight = ResponsEcorrectnessDataRgith;
         
     }else if ([head isEqualToString:@"8c"] || [head isEqualToString:@"8C"]) {

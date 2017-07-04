@@ -154,7 +154,7 @@
         view.delegate = self;
         view.backgroundColor = [UIColor clearColor];
         view.showCoordinateAxis = YES;
-        view.yFixedValueMin = 70;
+        view.yFixedValueMin = 95;
         view.yFixedValueMax = 100;
         
         view.yGridLinesColor = [UIColor clearColor];
