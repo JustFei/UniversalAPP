@@ -185,6 +185,7 @@
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"bindPeripheralID"];
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"bindPeripheralName"];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"peripheralUUID"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"version"];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isBind"];
     
     self.navigationItem.rightBarButtonItem.enabled = YES;

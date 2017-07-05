@@ -61,6 +61,8 @@
 #define SET_TIME_FORMATTER @"SetTimeFormatter"
 //窗口设置
 #define SET_WINDOW @"SetWindow"
+//翻腕亮屏通知
+#define WRIST_SETTING_NOTI @"WristSettingNoti"
 
 
 #pragma mark - NSUserDefault 保存的信息的名字
@@ -92,6 +94,8 @@
 #define APP_REMIND_SETTING @"AppRemindSetting"
 //防丢设置保存
 #define LOST_SETTING @"LostSetting"
+//翻腕亮屏设置保存
+#define WRIST_SETTING @"WristSetting"
 //亮度设置保存
 #define DIMMING_SETTING @"DimmingSetting"
 //单位设置保存

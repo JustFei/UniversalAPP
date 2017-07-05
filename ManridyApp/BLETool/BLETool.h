@@ -271,6 +271,9 @@ typedef enum : NSUInteger {
 /** peripheral shake when unconnect */
 - (void)writePeripheralShakeWhenUnconnectWithOforOff:(BOOL)state;
 
+//翻腕亮屏设置
+- (void)writeWristFunWithOff:(BOOL)state;
+
 /** stop peripheral */
 - (void)writeStopPeripheralRemind;
 

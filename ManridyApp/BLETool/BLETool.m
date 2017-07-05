@@ -434,6 +434,19 @@ static BLETool *bleTool = nil;
     }
 }
 
+//翻腕亮屏设置
+- (void)writeWristFunWithOff:(BOOL)state
+{
+    NSString *protocolStr;
+    protocolStr = state ? @"FC1501" : @"FC1500";
+    
+    if (self.currentDev.peripheral && self.writeCharacteristic) {
+        [self.currentDev.peripheral writeValue:[NSStringTool hexToBytes:protocolStr] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+//    [self addMessageToQueue:[NSStringTool hexToBytes:protocolStr]];
+    NSLog(@"翻腕亮屏设置");
+}
+
 //stop peripheral
 - (void)writeStopPeripheralRemind
 {
@@ -1113,6 +1126,8 @@ static BLETool *bleTool = nil;
             if ([self.receiveDelegate respondsToSelector:@selector(receiveBloodO2DataWithModel:)]) {
                 [self.receiveDelegate receiveBloodO2DataWithModel:model];
             }
+        }else if ([headStr isEqualToString:@"15"] || [headStr isEqualToString:@"95"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:WRIST_SETTING_NOTI object:nil userInfo:@{@"success": @YES}];
         }else if ([headStr isEqualToString:@"17"] || [headStr isEqualToString:@"97"]) {
             //单位设置是否成功
             [[NSNotificationCenter defaultCenter] postNotificationName:SET_UNITS_DATA object:nil userInfo:@{@"success":[headStr isEqualToString:@"17"]? @YES : @NO}];

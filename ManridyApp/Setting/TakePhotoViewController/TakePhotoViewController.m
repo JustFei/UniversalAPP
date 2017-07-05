@@ -26,7 +26,6 @@
     [titleLabel setTextColor:[UIColor whiteColor]];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     self.navigationItem.titleView = titleLabel;
-//    self.title = @"遥控拍照";
     self.view.backgroundColor = SETTING_BACKGROUND_COLOR;
     
     [self createUI];

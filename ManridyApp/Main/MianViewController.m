@@ -93,9 +93,9 @@
     Remind *model = [[Remind alloc] init];
     model.phone = 1;
     model.message = 1;
-    
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(writeSleepTest:)];
-    [self.view addGestureRecognizer:longPress];
+//  测试睡眠用
+//    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(writeSleepTest:)];
+//    [self.view addGestureRecognizer:longPress];
 }
 
 - (void)writeSleepTest:(UILongPressGestureRecognizer *)ges

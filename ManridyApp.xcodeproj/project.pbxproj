@@ -56,6 +56,9 @@
 		10CB0F071D9A25130063AD0C /* FunctionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CB0F051D9A25130063AD0C /* FunctionCell.m */; };
 		10CB0F081D9A25130063AD0C /* FunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10CB0F061D9A25130063AD0C /* FunctionCell.xib */; };
 		10D60A7F1F04B20C0035D084 /* StepHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10D60A811F04B20C0035D084 /* StepHistoryViewController.xib */; };
+		10DB78721F0CD74F001CEAB8 /* WristViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DB78711F0CD74F001CEAB8 /* WristViewController.m */; };
+		10DB78751F0CD9DC001CEAB8 /* SedentaryReminderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DB78741F0CD9DC001CEAB8 /* SedentaryReminderTableViewCell.m */; };
+		10DB78781F0CDA61001CEAB8 /* SedentaryReminderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DB78771F0CDA61001CEAB8 /* SedentaryReminderModel.m */; };
 		10EE961D1DB4BFC70048D594 /* PhoneRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EE961C1DB4BFC70048D594 /* PhoneRemindViewController.m */; };
 		10EE961F1DB4C06E0048D594 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EE961E1DB4C06E0048D594 /* CoreTelephony.framework */; };
 		10F5F7091D98C6280045FA4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5F7081D98C6280045FA4C /* main.m */; };
@@ -372,6 +375,12 @@
 		10D60B401F04E42D0035D084 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/HeartRateHistoryViewController.strings; sourceTree = "<group>"; };
 		10D60B411F04E4390035D084 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/HeartRateHistoryViewController.strings; sourceTree = "<group>"; };
 		10D60B421F04E49E0035D084 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/HeartRateHistoryViewController.strings"; sourceTree = "<group>"; };
+		10DB78701F0CD74F001CEAB8 /* WristViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WristViewController.h; sourceTree = "<group>"; };
+		10DB78711F0CD74F001CEAB8 /* WristViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WristViewController.m; sourceTree = "<group>"; };
+		10DB78731F0CD9DC001CEAB8 /* SedentaryReminderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SedentaryReminderTableViewCell.h; sourceTree = "<group>"; };
+		10DB78741F0CD9DC001CEAB8 /* SedentaryReminderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SedentaryReminderTableViewCell.m; sourceTree = "<group>"; };
+		10DB78761F0CDA61001CEAB8 /* SedentaryReminderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SedentaryReminderModel.h; sourceTree = "<group>"; };
+		10DB78771F0CDA61001CEAB8 /* SedentaryReminderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SedentaryReminderModel.m; sourceTree = "<group>"; };
 		10EE961B1DB4BFC70048D594 /* PhoneRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneRemindViewController.h; path = Setting/PhoneRemind/PhoneRemindViewController.h; sourceTree = "<group>"; };
 		10EE961C1DB4BFC70048D594 /* PhoneRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneRemindViewController.m; path = Setting/PhoneRemind/PhoneRemindViewController.m; sourceTree = "<group>"; };
 		10EE961E1DB4C06E0048D594 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -685,6 +694,7 @@
 				10EE961A1DB4BFA70048D594 /* PhoneRemind */,
 				10C47E971DA88F7500D949CA /* BindPeripheral */,
 				10237E971F00A1B200A2E178 /* APPRemindViewController */,
+				10DB786F1F0CD74F001CEAB8 /* WristViewController */,
 				10B7A0771EF7E768004C0A1A /* TakePhotoViewController */,
 				10B7A07C1EF7E768004C0A1A /* TimeFormatterViewController */,
 				10B7A07F1EF7E768004C0A1A /* UnitsSettingViewController */,
@@ -814,6 +824,20 @@
 				10CB0F061D9A25130063AD0C /* FunctionCell.xib */,
 			);
 			name = MenuView;
+			sourceTree = "<group>";
+		};
+		10DB786F1F0CD74F001CEAB8 /* WristViewController */ = {
+			isa = PBXGroup;
+			children = (
+				10DB78761F0CDA61001CEAB8 /* SedentaryReminderModel.h */,
+				10DB78771F0CDA61001CEAB8 /* SedentaryReminderModel.m */,
+				10DB78731F0CD9DC001CEAB8 /* SedentaryReminderTableViewCell.h */,
+				10DB78741F0CD9DC001CEAB8 /* SedentaryReminderTableViewCell.m */,
+				10DB78701F0CD74F001CEAB8 /* WristViewController.h */,
+				10DB78711F0CD74F001CEAB8 /* WristViewController.m */,
+			);
+			name = WristViewController;
+			path = Setting/APPRemindViewController/WristViewController;
 			sourceTree = "<group>";
 		};
 		10EE961A1DB4BFA70048D594 /* PhoneRemind */ = {
@@ -1228,6 +1252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CBCBC3D1EB312AF005161F4 /* SegmentedStepModel.m in Sources */,
+				10DB78781F0CDA61001CEAB8 /* SedentaryReminderModel.m in Sources */,
 				10F5F7841D98F8640045FA4C /* MianViewController.m in Sources */,
 				1042FC7A1DA9F20400467F01 /* SleepSettingViewController.m in Sources */,
 				9C8017E61E8F5F4800654868 /* UILabel+YHBaseChangeDefaultFont.m in Sources */,
@@ -1257,6 +1282,7 @@
 				10B7A0731EF7D26B004C0A1A /* UserInfoSettingModel.m in Sources */,
 				9CE082F01EB1DB87009565A9 /* TakePhotoModel.m in Sources */,
 				102474E51DAA412F00F70E4F /* AllBleFmdb.m in Sources */,
+				10DB78751F0CD9DC001CEAB8 /* SedentaryReminderTableViewCell.m in Sources */,
 				102474FE1DAA41E000F70E4F /* SportTargetModel.m in Sources */,
 				10EE961D1DB4BFC70048D594 /* PhoneRemindViewController.m in Sources */,
 				9C1B27791DDEFCE0009663F0 /* BooldHistoryViewController.m in Sources */,
@@ -1265,6 +1291,7 @@
 				102474FB1DAA41E000F70E4F /* SetTimeModel.m in Sources */,
 				109D4E771DAF7B7300E11890 /* UserInfoModel.m in Sources */,
 				10237EBE1F0120D800A2E178 /* UIImage+SGHelper.m in Sources */,
+				10DB78721F0CD74F001CEAB8 /* WristViewController.m in Sources */,
 				102474E61DAA412F00F70E4F /* AnalysisProcotolTool.m in Sources */,
 				9CCFE1B31DD9CCA200FD5B6F /* AboutViewController.m in Sources */,
 				9C1B27711DDE8E2C009663F0 /* BloodModel.m in Sources */,
